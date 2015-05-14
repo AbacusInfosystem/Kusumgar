@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KusumgarDatabaseEntities;
 
 namespace KusumgarBusinessEntities
 {
   public  class AttributeCodeInfo
     {
-        public int AttributeCodeId { get; set; }
-        public int AttributeId { get; set; }
-        public string AttributeName { get; set; }
-        public string AttributeCodeName { get; set; }
-        public string Code { get; set; }
-        public bool Status { get; set; }
+      public AttributeCodeInfo()
+        {
+           AttributeCodeEntity = new M_Attribute_Code();
+        }
+     
+      public M_Attribute_Code AttributeCodeEntity { get; set; }
 
+      public string Attribute_Name { get; set; }
     }
 }
