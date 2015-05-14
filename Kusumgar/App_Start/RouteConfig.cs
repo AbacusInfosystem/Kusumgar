@@ -183,6 +183,12 @@ namespace Kusumgar
            defaults: new { controller = "Role", action = "Search", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+           name: "menu-29",
+           url: "crm/complaint/search",
+           defaults: new { controller = "Complaint", action = "Search", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region PostLogin
@@ -325,6 +331,46 @@ namespace Kusumgar
             defaults: new { controller = "Contact", action = "Delete_Contact_Custom_Fields", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+
+            #endregion
+
+            #region Complaint
+
+            routes.MapRoute(
+            name: "complaint-1",
+            url: "crm/complaint",
+            defaults: new { controller = "Complaint", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "complaint-2",
+            url: "crm/edit-complaint",
+            defaults: new { controller = "Complaint", action = "GetComplaintById", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "complaint-3",
+            url: "crm/insert-complaint",
+            defaults: new { controller = "Complaint", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "complaint-4",
+            url: "crm/update-complaint",
+            defaults: new { controller = "Complaint", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "complaint-5",
+            url: "crm/search-complaint",
+            defaults: new { controller = "Complaint", action = "GetComplaintList", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "complaint-6",
+            url: "crm/get-customer-id-by-customername/{CustomerName}",
+            defaults: new { controller = "Complaint", action = "GetCustomerId", CustomerName = UrlParameter.Optional }
+            );
 
             #endregion
 

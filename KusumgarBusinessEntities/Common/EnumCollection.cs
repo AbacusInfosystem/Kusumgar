@@ -167,7 +167,14 @@ namespace KusumgarBusinessEntities.Common
         Insert_Attribute_Code_sp,
         Get_Attribute_Code_By_Id_sp,
         Update_Attribute_Code_sp,
-        Get_Attribute_Code_By_Attribute_Name_sp
+        Get_Attribute_Code_By_Attribute_Name_sp,
+
+        // Complaint
+        Insert_Complaint_Sp,
+        Update_Complaint_Sp,
+        Get_Complaint_List_Sp,
+        Get_Complaint_By_Id_Sp,
+        Get_Complaint_By_CustName_Sp,
 
     }
 

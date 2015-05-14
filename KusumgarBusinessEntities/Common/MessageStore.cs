@@ -153,7 +153,7 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
-            #region Contact
+                #region Contact
                 FriendlyMessageInfo CO001 = new FriendlyMessageInfo("CO001", MessageType.Success, "Contact has been added successfully.");
                 hash.Add("CO001", CO001);
 
@@ -169,6 +169,16 @@ namespace KusumgarBusinessEntities.Common
                 FriendlyMessageInfo CO005 = new FriendlyMessageInfo("CO005", MessageType.Success, "Custom Field Deleted successfully.");
                 hash.Add("CO005", CO005); 
             #endregion
+
+                #region Complaint
+
+                FriendlyMessageInfo COM001 = new FriendlyMessageInfo("COM001", MessageType.Success, "Complaint has been added successfully.");
+                hash.Add("COM001", COM001);
+
+                FriendlyMessageInfo COM002 = new FriendlyMessageInfo("COM002", MessageType.Success, "Complaint has been updated successfully.");
+                hash.Add("COM002", COM002);
+
+                #endregion
 
             #endregion
 

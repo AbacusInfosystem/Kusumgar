@@ -235,6 +235,7 @@
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\CustomerController.cs" />
     <Compile Include="Controllers\PostLogin\Dashboard\DashboardController.cs" />
@@ -268,6 +269,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CRM\ComplaintViewModel.cs" />
     <Compile Include="Models\CRM\ContactViewModel.cs" />
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
     <Compile Include="Models\Master\AjaxController.cs" />
@@ -914,6 +916,8 @@
     <Content Include="Scripts\bluimp\main.js" />
     <Content Include="Scripts\bluimp\tmpl.js" />
     <Content Include="Scripts\bluimp\vendor\jquery.ui.widget.js" />
+    <Content Include="Scripts\CRM\Event\complaint_event.js" />
+    <Content Include="Scripts\CRM\Event\complaint_search_event.js" />
     <Content Include="Scripts\CRM\Event\contact_event.js" />
     <Content Include="Scripts\CRM\Event\contact_listing_event.js" />
     <Content Include="Scripts\CRM\Event\customer_billing_details_event.js" />
@@ -922,6 +926,8 @@
     <Content Include="Scripts\CRM\Event\customer_listing_event.js" />
     <Content Include="Scripts\CRM\Event\customer_shipping_details_event.js" />
     <Content Include="Scripts\CRM\Event\custom_field_event.js" />
+    <Content Include="Scripts\CRM\Method\complaint_method.js" />
+    <Content Include="Scripts\CRM\Method\complaint_search_method.js" />
     <Content Include="Scripts\CRM\Method\contact_listing_method.js" />
     <Content Include="Scripts\CRM\Method\contact_method.js" />
     <Content Include="Scripts\CRM\Method\customer_biling_details_method.js" />
@@ -930,6 +936,7 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
     <Content Include="Scripts\CRM\Validation\customer_billing_details_validation.js" />
     <Content Include="Scripts\CRM\Validation\customer_financial_validation.js" />
@@ -1392,6 +1399,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\CRM\Contact\_CustomFields.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\CRM\Complaint\Index.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Complaint\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

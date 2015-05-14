@@ -69,9 +69,9 @@ namespace KusumgarDataAccess
             return retVal;
         }
 
-        public List<AutoCompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
+        public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
         {
-            List<AutoCompleteInfo> customer_List = new List<AutoCompleteInfo>();
+            List<AutocompleteInfo> customer_List = new List<AutocompleteInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
@@ -87,7 +87,7 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    AutoCompleteInfo auto = new AutoCompleteInfo();
+                    AutocompleteInfo auto = new AutocompleteInfo();
 
                     auto.Label = Convert.ToString(dr["Customer_Name"]);
 
@@ -98,6 +98,28 @@ namespace KusumgarDataAccess
             }
 
             return customer_List;
+        }
+
+        public List<AutocompleteInfo> Get_Customer_Id(string CustomerName)
+        {
+            List<AutocompleteInfo> autoList = new List<AutocompleteInfo>();
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+            sqlParam.Add(new SqlParameter("@Customer_Name", CustomerName));
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Customer_By_Name_Sp.ToString(), CommandType.StoredProcedure);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+                    auto.Label = Convert.ToString(dr["Customer_Name"]);
+                    auto.Value = Convert.ToInt32(dr["Company_Id"]);
+                    autoList.Add(auto);
+                }
+            }
+            return autoList;
         }
     }
 }

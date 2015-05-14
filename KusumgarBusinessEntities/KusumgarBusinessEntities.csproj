@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Common\AutoCompleteInfo.cs" />
     <Compile Include="CRM\BankDetailsInfo.cs" />
+    <Compile Include="CRM\ComplaintInfo.cs" />
     <Compile Include="CRM\ContactCustomFieldsInfo.cs" />
     <Compile Include="CRM\ContactInfo.cs" />
     <Compile Include="CRM\CustomerAddressInfo.cs" />

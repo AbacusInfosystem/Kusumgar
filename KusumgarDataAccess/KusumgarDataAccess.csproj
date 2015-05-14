@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRM\ComplaintRepo.cs" />
     <Compile Include="CRM\ContactRepo.cs" />
     <Compile Include="CRM\CustomerRepo.cs" />
     <Compile Include="Master\AjaxRepo.cs" />
