@@ -251,6 +251,7 @@
     <Compile Include="Controllers\PostLogin\Master\TestController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestUnitController.cs" />
     <Compile Include="Controllers\PostLogin\Master\UserController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\VendorController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessRouteCodeController.cs" />
@@ -1392,6 +1393,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\CRM\Contact\_CustomFields.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\Vendor\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_CentralExciseRegistrationDetails.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_CertificationDetails.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_ProductServicesDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
