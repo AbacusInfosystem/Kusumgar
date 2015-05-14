@@ -8,7 +8,7 @@
 
     $('#btnEdit').click(function () {
 
-        $("#frmDefectSearch").attr("action", "/Defect/GetDefectById");
+        $("#frmDefectSearch").attr("action", "/Defect/Get_Defect_By_Id");
 
         $("#frmDefectSearch").attr("method", "post");
 
@@ -20,13 +20,11 @@
     $('#drpDefectTypeName').change(function () {
 
         $('#hdfDefectTypeId').val($('#drpDefectTypeName :selected').val());
-        
     })
  
     if ($("#hdfDefectTypeId").val() != 0) {
         
         $('#drpDefectTypeName').val($("#hdfDefectTypeId").val());
                                           }
-    
-});
+    });
 

@@ -4,23 +4,18 @@
 
         Filter: {  
 
-            FabricTypeName: $('#hdfFabricTypeId').val()
+            Fabric_Type_Id: $('#hdfFabricTypeId').val()
         },
     
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(1),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
-
-    };
+            },
+ };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Test/GetTests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
+    CallAjax("/Test/Get_Tests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
 }
 
 function GetAllTests() {
@@ -29,22 +24,18 @@ function GetAllTests() {
 
         Filter: {
 
-           FabricTypeName: ""
+            Fabric_Type_Id: ""
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+           },
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Test/GetTests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
+    CallAjax("/Test/Get_Tests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
 }
 
 function BindTestInGrid(data, mode) {
@@ -53,13 +44,13 @@ function BindTestInGrid(data, mode) {
 
     var htmlText = "";
 
-    for (i = 0; i < data.TestGrid.length; i++) {
+    for (i = 0; i < data.Test_Grid.length; i++) {
 
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='hidden' id='hdfTestId_" + data.TestGrid[i].TestId + "' value='" + data.TestGrid[i].TestId + "' />";
+        htmlText += "<input type='hidden' id='hdfTestId_" + data.Test_Grid[i].TestEntity.Test_Id + "' value='" + data.Test_Grid[i].TestEntity.Test_Id + "' />";
 
         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -67,72 +58,77 @@ function BindTestInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].FabricTypeName;
+        htmlText += data.Test_Grid[i].Fabric_Type_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].TestName;
+        htmlText += data.Test_Grid[i].TestEntity.Test_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].TestUnitName1;
+        htmlText += data.Test_Grid[i].Test_Unit_Name1;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].TestUnitName2;
-
-        htmlText += "</td>";
-        htmlText += "<td>";
-
-        htmlText += data.TestGrid[i].TestUnitName3;
+        htmlText += data.Test_Grid[i].Test_Unit_Name2;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].TestUnitName4;
+        htmlText += data.Test_Grid[i].Test_Unit_Name3;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].TestUnitName5;
-
-        htmlText += "</td>";
-        htmlText += "<td>";
-
-        htmlText += data.TestGrid[i].TestUnitName6;
-
-        htmlText += "</td>";
-        htmlText += "<td>";
-
-        htmlText += data.TestGrid[i].TestUnitName7;
-
-        htmlText += "</td>";
-        htmlText += "<td>";
-
-        htmlText += data.TestGrid[i].TestUnitName8;
-
-        htmlText += "</td>";
-        htmlText += "<td>";
-
-        htmlText += data.TestGrid[i].TestUnitName9;
+        htmlText += data.Test_Grid[i].Test_Unit_Name4;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.TestGrid[i].TestUnitName10;
+        htmlText += data.Test_Grid[i].Test_Unit_Name5;
 
         htmlText += "</td>";
 
-        if (data.TestGrid[i].Status == true) {
+        htmlText += "<td>";
+
+        htmlText += data.Test_Grid[i].Test_Unit_Name6;
+
+        htmlText += "</td>";
+
+        htmlText += "<td>";
+
+        htmlText += data.Test_Grid[i].Test_Unit_Name7;
+
+        htmlText += "</td>";
+
+        htmlText += "<td>";
+
+        htmlText += data.Test_Grid[i].Test_Unit_Name8;
+
+        htmlText += "</td>";
+
+        htmlText += "<td>";
+
+        htmlText += data.Test_Grid[i].Test_Unit_Name9;
+
+        htmlText += "</td>";
+
+        htmlText += "<td>";
+
+        htmlText += data.Test_Grid[i].Test_Unit_Name10;
+
+        htmlText += "</td>";
+
+        if (data.Test_Grid[i].TestEntity.Status == true) {
 
             htmlText += "<td>";
 
@@ -140,7 +136,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "</td>";
         }
-        if (data.TestGrid[i].Status == false) {
+        if (data.Test_Grid[i].TestEntity.Status == false) {
 
             htmlText += "<td>";
 
@@ -156,13 +152,7 @@ function BindTestInGrid(data, mode) {
 
     $('#tblSearchTest tr:first').after(htmlText);
 
-   
-
-    $('#hdfPageSize').val(data.Pager.PageSize);
-
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-    $('#hdfIsPagingRequired').val(data.Pager.IsPagingRequired);
 
     if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
@@ -179,7 +169,7 @@ function BindTestInGrid(data, mode) {
 
         if ($(this).prop('checked')) {
 
-            alert("ID " + $(this).parents('tr').find('input[id^=hdfTestId]').val())
+            //alert("ID " + $(this).parents('tr').find('input[id^=hdfTestId]').val())
 
             $("#hdfTestId").val($(this).parents('tr').find('input[id^=hdfTestId]').val());
 
@@ -199,22 +189,19 @@ function PageMore(Id) {
 
         Filter: {
 
-            FabricTypeName: $('#hdfFabricTypeId').val()
+            Fabric_Type_Id: $('#hdfFabricTypeId').val()
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
+   
         },
 
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Test/GetTests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
+    CallAjax("/Test/Get_Tests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
 
 }

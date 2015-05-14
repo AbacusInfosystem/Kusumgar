@@ -1,4 +1,4 @@
-﻿@model Kusumgar.Models.Master.TestViewModel
+﻿@model Kusumgar.Models.TestViewModel
 @{
     ViewBag.Title = "Test";
 }
@@ -44,26 +44,26 @@
                                     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
                                     <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
 
-                                    <input type="hidden" id="hdfTestId" name="Test.TestId" value="@Model.Test.TestId" />
+                                    <input type="hidden" id="hdfTestId" name="Test.TestEntity.Test_Id" value="@Model.Test.TestEntity.Test_Id" />
 
                                     <div class="form-group">
                                         <label>Fabric Type</label>
-                                        <select class="form-control" id="drpFabricTypeName" name="Test.FabricTypeName">
+                                        <select class="form-control" id="drpFabricTypeName" name="Test.TestEntity.Fabric_Type_Id">
                                             <option value="">Select Fabric Type </option>
 
 
-                                            @foreach (var item in Model.FabricType)
-                                        {
-                                            if (Model.Test.FabricTypeId == item.FabricTypeId)
+                                            @foreach (var item in Model.Fabric_Type)
                                             {
-                                                <option value="@item.FabricTypeId" selected="selected">@item.FabricTypeName</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="@item.FabricTypeId">@item.FabricTypeName</option>
-                                            }
+                                                if (Model.Test.TestEntity.Fabric_Type_Id == item.FabricTypeEntity.Fabric_Type_Id)
+                                                {
+                                                    <option value="@item.FabricTypeEntity.Fabric_Type_Id" selected="selected">@item.FabricTypeEntity.Fabric_Type_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.FabricTypeEntity.Fabric_Type_Id">@item.FabricTypeEntity.Fabric_Type_Name</option>
+                                                }
 
-                                        }
+                                            }
 
                                         </select>
                                      
@@ -71,81 +71,81 @@
 
                                     <div class="form-group">
                                         <label for="txtTest">Test Name</label>
-                                        <input type="text" class="form-control" id="txtTest" name="Test.TestName" value="@Model.Test.TestName" placeholder="Enter test name">
+                                        <input type="text" class="form-control" id="txtTest" name="Test.TestEntity.Test_Name" value="@Model.Test.TestEntity.Test_Name" placeholder="Enter test name">
                                     </div>
 
 
                                     <div class="form-group">
                                         <label for="txtUnit1">Test Unit #1</label>
-                                        <input type="text" class="form-control" id="txtTestUnit1" name="Test.TestUnitName1" value="@Model.Test.TestUnitName1" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit1" name="Test.TestUnit1" value="@Model.Test.TestUnit1" />
+                                        <input type="text" class="form-control" id="txtTestUnit1" name="Test.Test_Unit_Name1" value="@Model.Test.Test_Unit_Name1" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit1" name="Test.TestEntity.Test_Unit1" value="@Model.Test.TestEntity.Test_Unit1" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit2">Test Unit #2</label>
-                                        <input type="text" class="form-control" id="txtTestUnit2" name="Test.TestUnitName2" value="@Model.Test.TestUnitName2" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit2" name="Test.TestUnit2" value="@Model.Test.TestUnit2" />
+                                        <input type="text" class="form-control" id="txtTestUnit2" name="Test.Test_Unit_Name2" value="@Model.Test.Test_Unit_Name2" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit2" name="Test.TestEntity.Test_Unit2" value="@Model.Test.TestEntity.Test_Unit2" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit3">Test Unit #3</label>
-                                        <input type="text" class="form-control" id="txtTestUnit3" name="Test.TestUnitName3" value="@Model.Test.TestUnitName3" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit3" name="Test.TestUnit3" value="@Model.Test.TestUnit3" />
+                                        <input type="text" class="form-control" id="txtTestUnit3" name="Test.Test_Unit_Name3" value="@Model.Test.Test_Unit_Name3" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit3" name="Test.TestEntity.Test_Unit3" value="@Model.Test.TestEntity.Test_Unit3" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit4">Test Unit #4</label>
-                                        <input type="text" class="form-control" id="txtTestUnit4" name="Test.TestUnitName4" value="@Model.Test.TestUnitName4" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit4" name="Test.TestUnit4" value="@Model.Test.TestUnit4" />
+                                        <input type="text" class="form-control" id="txtTestUnit4" name="Test.Test_Unit_Name4" value="@Model.Test.Test_Unit_Name4" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit4" name="Test.TestEntity.Test_Unit4" value="@Model.Test.TestEntity.Test_Unit4" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit5">Test Unit #5</label>
-                                        <input type="text" class="form-control" id="txtTestUnit5" name="Test.TestUnitName5" value="@Model.Test.TestUnitName5" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit5" name="Test.TestUnit5" value="@Model.Test.TestUnit5" />
+                                        <input type="text" class="form-control" id="txtTestUnit5" name="Test.Test_Unit_Name5" value="@Model.Test.Test_Unit_Name5" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit5" name="Test.TestEntity.Test_Unit5" value="@Model.Test.TestEntity.Test_Unit5" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit6">Test Unit #6</label>
-                                        <input type="text" class="form-control" id="txtTestUnit6" name="Test.TestUnitName6" value="@Model.Test.TestUnitName6" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit6" name="Test.TestUnit6" value="@Model.Test.TestUnit6" />
+                                        <input type="text" class="form-control" id="txtTestUnit6" name="Test.Test_Unit_Name6" value="@Model.Test.Test_Unit_Name6" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit6" name="Test.TestEntity.Test_Unit6" value="@Model.Test.TestEntity.Test_Unit6" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit7">Test Unit #7</label>
-                                        <input type="text" class="form-control" id="txtTestUnit7" name="Test.TestUnitName7" value="@Model.Test.TestUnitName7" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit7" name="Test.TestUnit7" value="@Model.Test.TestUnit7" />
+                                        <input type="text" class="form-control" id="txtTestUnit7" name="Test.Test_Unit_Name7" value="@Model.Test.Test_Unit_Name7" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit7" name="Test.TestEntity.Test_Unit7" value="@Model.Test.TestEntity.Test_Unit7" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit8">Test Unit #8</label>
-                                        <input type="text" class="form-control" id="txtTestUnit8" name="Test.TestUnitName8" value="@Model.Test.TestUnitName8" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit8" name="Test.TestUnit8" value="@Model.Test.TestUnit8" />
+                                        <input type="text" class="form-control" id="txtTestUnit8" name="Test.Test_Unit_Name8" value="@Model.Test.Test_Unit_Name8" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit8" name="Test.TestEntity.Test_Unit8" value="@Model.Test.TestEntity.Test_Unit8" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit9">Test Unit #9</label>
-                                        <input type="text" class="form-control" id="txtTestUnit9" name="Test.TestUnitName9" value="@Model.Test.TestUnitName9" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit9" name="Test.TestUnit9" value="@Model.Test.TestUnit9" />
+                                        <input type="text" class="form-control" id="txtTestUnit9" name="Test.Test_Unit_Name9" value="@Model.Test.Test_Unit_Name9" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit9" name="Test.TestEntity.Test_Unit9" value="@Model.Test.TestEntity.Test_Unit9" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtUnit10">Test Unit #10</label>
-                                        <input type="text" class="form-control" id="txtTestUnit10" name="Test.TestUnitName10" value="@Model.Test.TestUnitName10" placeholder="Enter test unit" />
-                                        <input type="hidden" id="hdfTestUnit10" name="Test.TestUnit10" value="@Model.Test.TestUnit10" />
+                                        <input type="text" class="form-control" id="txtTestUnit10" name="Test.Test_Unit_Name10" value="@Model.Test.Test_Unit_Name10" placeholder="Enter test unit" />
+                                        <input type="hidden" id="hdfTestUnit10" name="Test.TestEntity.Test_Unit10" value="@Model.Test.TestEntity.Test_Unit10" />
                                     </div>
 
 
                                     <div class="form-group">
                                         <label>
-                                            @if (Model.Test.Status == true)
+                                            @if (Model.Test.TestEntity.Status == true)
                                             {
-                                                @:<input type="checkbox" name="Test.Status" value="false" checked />
+                                                @:<input type="checkbox" name="Test.TestEntity.Status" value="false" checked />
                                                                                               
                                             }
                                         else
                                              {
-                                                @:<input type="checkbox" name="Test.Status" value="true" />
+                                                @:<input type="checkbox" name="Test.TestEntity.Status" value="true" />
                                                }
                                             &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 

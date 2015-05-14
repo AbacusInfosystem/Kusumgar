@@ -4,15 +4,14 @@
 
         Filter: {
 
-            DefectTypeName: $('#drpDefectTypeName').val(),
+            Defect_Type_Id: $('#drpDefectTypeName').val(),
 
                 },
-
-    };
+          };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Defect/GetGridByDefectType", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
+    CallAjax("/Defect/Get_Grid_By_Defect_Type", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
 }
 
 function BindDefectInGrid(data, mode) {
@@ -28,23 +27,23 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectTypeName;
+            htmlText += data.DefectGrid[i].Defect_Type_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectCode;
+            htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectName;
+            htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
 
             htmlText += "</td>";
 
-            if (data.DefectGrid[i].Status == true) {
+            if (data.DefectGrid[i].DefectEntity.Status == true) {
 
                 htmlText += "<td>";
 
@@ -52,7 +51,8 @@ function BindDefectInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.DefectGrid[i].Status == false) {
+            if (data.DefectGrid[i].DefectEntity.Status == false) {
+
                 htmlText += "<td>";
 
                 htmlText += "Inactive";
@@ -65,14 +65,14 @@ function BindDefectInGrid(data, mode) {
 
     }
     else {
-
+        htmlText += "<tr>";
         htmlText += "<td colspan='4'>";
 
         htmlText += "No Records";
 
         htmlText += "</td>";
-        
-    }
+        htmlText += "</tr>";
+       }
     $("#tblSearchDefect").find("tr:gt(0)").remove();
 
     $('#tblSearchDefect tr:first').after(htmlText);

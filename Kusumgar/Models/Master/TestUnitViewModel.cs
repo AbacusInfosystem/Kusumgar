@@ -12,40 +12,40 @@ namespace Kusumgar.Models
     {
         public TestUnitViewModel()
         {
-            TestUnit = new TestUnitInfo();
+            Test_Unit = new TestUnitInfo();
 
-            TestUnitGrid = new List<TestUnitInfo>();
+            Test_Unit_Grid = new List<TestUnitInfo>();
            
-            EditMode = new TestUnitEditMode();
+            Edit_Mode = new Test_Unit_Edit_Mode();
            
-            Filter = new TestUnitFilter();
-            
+            Filter = new Test_Unit_Filter();
+
             Pager = new PaginationInfo();
 
-            Pager.PageSize = 2;
-
-            Pager.IsPagingRequired = true;
+            FriendlyMessage = new List<FriendlyMessageInfo>();
        }
 
-        public TestUnitInfo TestUnit { get; set; }
+        public TestUnitInfo Test_Unit { get; set; }
        
-        public List<TestUnitInfo> TestUnitGrid { get; set; }
+        public List<TestUnitInfo> Test_Unit_Grid { get; set; }
        
-        public TestUnitEditMode EditMode { get; set; }
+        public Test_Unit_Edit_Mode Edit_Mode { get; set; }
        
-        public TestUnitFilter Filter { get; set; }
+        public Test_Unit_Filter Filter { get; set; }
        
         public PaginationInfo Pager { get; set; }
+
+        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
     
-        public class TestUnitEditMode
+        public class Test_Unit_Edit_Mode
         {
-            public int TestUnitId { get; set; }
+            public int Test_Unit_Id { get; set; }
 
         }
 
-        public class TestUnitFilter
+        public class Test_Unit_Filter
         {
-            public string TestUnitName { get; set; }
+            public string Test_Unit_Name { get; set; }
 
         }
     }

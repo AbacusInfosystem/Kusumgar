@@ -1,4 +1,4 @@
-﻿@model Kusumgar.Models.Master.TestUnitViewModel
+﻿@model Kusumgar.Models.TestUnitViewModel
 @{
     ViewBag.Title = "Customer";
 }
@@ -39,27 +39,25 @@
 
                                     <div class="form-group">
 
-                                        <input type="hidden" id="hdfPageSize" name="" value="" />
                                         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                        <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
-                                       
-                                        <input type="hidden" id="hdfTestUnitId" name="TestUnit.TestUnitId" value="@Model.TestUnit.TestUnitId" />
+                                        
+                                        <input type="hidden" id="hdfTestUnitId" name="Test_Unit.TestUnitEntity.Test_Unit_Id" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Id" />
                                         <label for="txtTestUnitName">Test Unit Name</label>
-                                        <input type="text" class="form-control" id="txtTestUnitName" name="TestUnit.TestUnitName" value="@Model.TestUnit.TestUnitName" placeholder="Enter test unit name" />
+                                        <input type="text" class="form-control" id="txtTestUnitName" name="Test_Unit.TestUnitEntity.Test_Unit_Name" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Name" placeholder="Enter test unit name" />
                                     </div>
 
                                     <div class="form-group">
                                         <label>
 
-                                            @if(Model.TestUnit.Status== true)
+                                            @if (Model.Test_Unit.TestUnitEntity.Status == true)
                                             {
-                                                @:<input type="checkbox" name="TestUnit.Status" value="false" checked />
+                                                @:<input type="checkbox" name="Test_Unit.TestUnitEntity.Status" value="false" checked />
                                                 
                                             }
                                             else
                                             
                                             {
-                                                @:<input type="checkbox" name="TestUnit.Status" value="true" />
+                                                @:<input type="checkbox" name="Test_Unit.TestUnitEntity.Status" value="true" />
 
                                             }
                                             

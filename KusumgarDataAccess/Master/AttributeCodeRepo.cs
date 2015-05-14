@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
+using KusumgarDatabaseEntities;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
@@ -14,177 +15,147 @@ namespace KusumgarDataAccess
    public class AttributeCodeRepo
     {
         private string _sqlCon = string.Empty;
+        SQLHelperRepo _sqlRepo;
+        public SQLHelperRepo _sqlHelper { get; set; }
 
         public AttributeCodeRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["ProjectTestDB"].ToString();
+            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
+            _sqlRepo = new SQLHelperRepo();
+            _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<AttributeCodeInfo> GetAttributeCodes()
+        public List<AttributeCodeInfo> Get_Attribute_Codes(PaginationInfo pager)
         {
             List<AttributeCodeInfo> retVal = new List<AttributeCodeInfo>();
+            
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Attribute_Codes_sp.ToString(), CommandType.StoredProcedure);
 
-            try
+            var tupleData = GetRows(dt, pager);
+
+            foreach (DataRow dr in tupleData.Item1)
             {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
+                AttributeCodeInfo attributeCodes = new AttributeCodeInfo();
+                
+                attributeCodes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
 
-                    using (SqlCommand command = new SqlCommand("GetAttributeCodes_sp", con))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
+                attributeCodes.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
 
-                        SqlDataReader dataReader = command.ExecuteReader();
+                attributeCodes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
 
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-                                AttributeCodeInfo attributeCodeItem = new AttributeCodeInfo();
+                attributeCodes.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
 
-                                GetValuesFromDataReader(dataReader, attributeCodeItem);
+                attributeCodes.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
 
-                                retVal.Add(attributeCodeItem);
-                            }
-                        }
+                attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.AttributeCodeEntity.Attribute_Id];
 
-                        dataReader.Close();
-                    }
-                }
+                retVal.Add(attributeCodes);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
+          
             return retVal;
         }
 
-        private static void GetValuesFromDataReader(SqlDataReader dataReader, AttributeCodeInfo attributeCode)
+        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
         {
+            List<DataRow> drList = new List<DataRow>();
 
-            attributeCode.AttributeCodeId = Convert.ToInt32(dataReader["AttributeCodeId"]);
-            attributeCode.AttributeId = Convert.ToInt32(dataReader["AttributeId"]);
-            attributeCode.AttributeCodeName = Convert.ToString(dataReader["AttributeCodeName"]);
-            attributeCode.Code = Convert.ToString(dataReader["Code"]);
-            attributeCode.Status = Convert.ToBoolean(dataReader["Status"]);
-            attributeCode.AttributeName = LookupInfo.GetAttributeNames()[attributeCode.AttributeId];
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int count = 0;
 
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                if (pager.IsPagingRequired)
+                {
+                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
+                }
+
+                pager.TotalRecords = count;
+
+                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
+
+                pager.TotalPages = pages;
+            }
+
+            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
         }
-
+        
         public void Insert(AttributeCodeInfo attributeCode)
         {
-            try
-            {
-               using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
-
-                    using (SqlCommand command = new SqlCommand("InsertAttributeCode_sp", con))
-                    {
-                        SetValuesInAttributeCode(command, attributeCode, "Insert");
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Attribute_Code(attributeCode), StoredProcedures.Insert_Attribute_Code_sp.ToString(), CommandType.StoredProcedure);
         }
 
-        private SqlCommand SetValuesInAttributeCode(SqlCommand command, AttributeCodeInfo attributeCode, string mode)
-        {
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@AttributeId", attributeCode.AttributeId));
-            command.Parameters.Add(new SqlParameter("@AttributeCodeName", attributeCode.AttributeCodeName));
-            command.Parameters.Add(new SqlParameter("@Code", attributeCode.Code));
-            command.Parameters.Add(new SqlParameter("@Status", attributeCode.Status));
-        
-            if (mode=="Update")
-            {
-                command.Parameters.Add(new SqlParameter("@AttributeCodeId", attributeCode.AttributeCodeId));
-            }
-
-            return command;
-        }
-
-        public List<AttributeCodeInfo> GetAttributeCodesByAttributeId(int attributeId)
+        public List<AttributeCodeInfo> Get_Attribute_Codes_By_Attribute_Name(int attributeId,PaginationInfo pager)
         {
             List<AttributeCodeInfo> retVal = new List<AttributeCodeInfo>();
+            
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
+            sqlParams.Add(new SqlParameter("@Attribute_Id", attributeId));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Attribute_Code_By_Attribute_Name_sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = GetRows(dt, pager);
+               
+            foreach (DataRow dr in tupleData.Item1)
                 {
-                    con.Open();
 
-                    using (SqlCommand command = new SqlCommand("GetAttributeCodeByAttributeName_sp", con))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
+                    AttributeCodeInfo attributeCodes = new AttributeCodeInfo();
 
-                        command.Parameters.Add(new SqlParameter("@AttributeId", attributeId));
+                    attributeCodes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
 
-                        SqlDataReader dataReader = command.ExecuteReader();
+                    attributeCodes.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
 
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
+                    attributeCodes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
 
-                                AttributeCodeInfo attributeCodeItem = new AttributeCodeInfo();
+                    attributeCodes.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
 
-                                GetValuesFromDataReader(dataReader, attributeCodeItem);
+                    attributeCodes.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
 
-                                retVal.Add(attributeCodeItem);
-                            }
-                        }
+                    attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.AttributeCodeEntity.Attribute_Id];
 
-                        dataReader.Close();
-                    }
+                    retVal.Add(attributeCodes);
                 }
-            }
-
+            
             return retVal;
         }
        
-        public AttributeCodeInfo GetAttributeCodeById(int attributeCodeId)
+        public AttributeCodeInfo Get_Attribute_Code_By_Id(int attributeCodeId)
         {
             AttributeCodeInfo retVal = new AttributeCodeInfo();
-            try
+           
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Attribute_Code_Id", attributeCodeId));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Attribute_Code_By_Id_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
             {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
+                int count = 0;
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                foreach (DataRow dr in drList)
                 {
-                    con.Open();
+                    retVal.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
 
-                    using (SqlCommand command = new SqlCommand("GetAttributeCodeById_sp", con))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
+                    retVal.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
 
-                        command.Parameters.Add(new SqlParameter("@AttributeCodeId", attributeCodeId));
+                    retVal.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
 
-                        SqlDataReader dataReader = command.ExecuteReader();
+                    retVal.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
 
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-                                AttributeCodeInfo attributeCode= new AttributeCodeInfo();
+                    retVal.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
 
-                                GetValuesFromDataReader(dataReader, retVal);
-                            }
-                       }
+                    retVal.Attribute_Name = LookupInfo.GetAttributeNames()[retVal.AttributeCodeEntity.Attribute_Id];
 
-                        dataReader.Close();
-
-                    }
                 }
-
-            }
-            catch (Exception ex)
-            {
-                 throw ex;
             }
 
             return retVal;
@@ -192,28 +163,34 @@ namespace KusumgarDataAccess
 
         public void Update(AttributeCodeInfo attributeCode)
         {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
-
-                    using (SqlCommand command = new SqlCommand("UpdateAttributeCode_sp", con))
-                    {
-                        SetValuesInAttributeCode(command, attributeCode, "Update");
-
-                        command.ExecuteNonQuery();
-
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Attribute_Code(attributeCode), StoredProcedures.Update_Attribute_Code_sp.ToString(), CommandType.StoredProcedure);
 
         }
-   
+
+        private List<SqlParameter> Set_Values_In_Attribute_Code(AttributeCodeInfo attributeCodes)
+        {
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+
+            sqlParamList.Add(new SqlParameter("@Status", attributeCodes.AttributeCodeEntity.Status));
+            
+            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.AttributeCodeEntity.Attribute_Id));
+
+            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.AttributeCodeEntity.Attribute_Code_Name));
+
+            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.AttributeCodeEntity.Code));
+
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.AttributeCodeEntity.UpdatedBy));
+
+            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id == 0)
+            {
+                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.AttributeCodeEntity.CreatedBy));
+            }
+            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id != 0)
+            {
+                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.AttributeCodeEntity.Attribute_Code_Id));
+            }
+
+            return sqlParamList;
+        } 
     }
 }

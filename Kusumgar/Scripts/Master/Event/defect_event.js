@@ -26,7 +26,6 @@
             $('#tblSearchDefect').show();
             SearchDefectTypeForTable();
         }
-      
     });
   
 });

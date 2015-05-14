@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    GetAllTestUnits();
+
     $("#btnSearch").click(function () {
      
            SearchTestUnits();
@@ -7,7 +9,7 @@
 
     $('#btnEdit').click(function () {
 
-        $("#frmTestUnitSearch").attr("action", "/TestUnit/GetTestUnitById");
+        $("#frmTestUnitSearch").attr("action", "/TestUnit/Get_Test_Unit_By_Id");
 
         $("#frmTestUnitSearch").attr("method", "post");
 
@@ -16,11 +18,8 @@
 
     $("#divSearchGridOverlay").hide();
 
-    GetAllTestUnits();
-
     $('#btnView').click(function () {
 
-        //alert("hmm");
         $("#frmTestUnitSearch").attr("action", "/TestUnit/ViewTests");
 
         $("#frmTestUnitSearch").attr("method", "post");

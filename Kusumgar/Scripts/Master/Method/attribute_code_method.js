@@ -4,7 +4,7 @@
 
         Filter: {
 
-            AttributeId: $("#drpAttributeCode").val(),
+            Attribute_Id: $("#drpAttributeCode").val(),
 
         },
 
@@ -12,7 +12,7 @@
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/AttributeCode/GetGridByAttributeName", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
+    CallAjax("/AttributeCode/Get_Grid_By_Attribute_Name", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
 }
 
 function BindAttributeCodesInGrid(data, mode) {
@@ -21,31 +21,31 @@ function BindAttributeCodesInGrid(data, mode) {
 
     var htmlText = "";
 
-    if (data.AttributeCodeGrid.length > 0) {
+    if (data.Attribute_Code_Grid.length > 0) {
 
-        for (i = 0; i < data.AttributeCodeGrid.length; i++) {
+        for (i = 0; i < data.Attribute_Code_Grid.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += data.AttributeCodeGrid[i].AttributeCodeName;
+            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.AttributeCodeGrid[i].AttributeName;
+            htmlText += data.Attribute_Code_Grid[i].Attribute_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.AttributeCodeGrid[i].Code;
+            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Code;
 
             htmlText += "</td>";
 
-            if (data.AttributeCodeGrid[i].Status == true) {
+            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == true) {
 
                 htmlText += "<td>";
 
@@ -53,7 +53,7 @@ function BindAttributeCodesInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.AttributeCodeGrid[i].Status == false) {
+            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == false) {
 
                 htmlText += "<td>";
 
@@ -68,13 +68,15 @@ function BindAttributeCodesInGrid(data, mode) {
     }
 
  else {
-        alert("GG");
+       
         htmlText += "<tr>";
+
         htmlText += "<td colspan='4'>";
 
         htmlText += "No Records";
 
         htmlText += "</td>";
+
         htmlText += "</tr>";
         }
 

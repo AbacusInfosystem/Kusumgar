@@ -4,47 +4,39 @@
 
         Filter: {
 
-            TestUnitName: $('#txtTestUnitName').val()
+            Test_Unit_Name: $('#txtTestUnitName').val()
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(1),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+       },
 
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/TestUnit/GetTestUnits", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestUnitInGrid, "", null);
+    CallAjax("/TestUnit/Get_Test_Units", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestUnitInGrid, "", null);
 }
 
 function GetAllTestUnits() {
-
+   
     var tViewModel = {
 
         Filter: {
 
-            TestUnitName: ""
+            Test_Unit_Name: ""
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+         },
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/TestUnit/GetTestUnits", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestUnitInGrid, "", null);
+    CallAjax("/TestUnit/Get_Test_Units", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestUnitInGrid, "", null);
 }
 
 function BindTestUnitInGrid(data, mode) {
@@ -53,13 +45,13 @@ function BindTestUnitInGrid(data, mode) {
 
     var htmlText = "";
 
-    for (i = 0; i < data.TestUnitGrid.length; i++) {
-
+    for (i = 0; i < data.Test_Unit_Grid.length; i++) {
+       
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.TestUnitGrid[i].TestUnitId + "' value='" + data.TestUnitGrid[i].TestUnitId + "' />";
+        htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' />";
 
         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -67,11 +59,11 @@ function BindTestUnitInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += data.TestUnitGrid[i].TestUnitName;
+        htmlText += data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Name;
 
         htmlText += "</td>";
 
-        if (data.TestUnitGrid[i].Status == true) {
+        if (data.Test_Unit_Grid[i].TestUnitEntity.Status == true) {
 
             htmlText += "<td>";
 
@@ -79,7 +71,8 @@ function BindTestUnitInGrid(data, mode) {
 
             htmlText += "</td>";
         }
-        if (data.TestUnitGrid[i].Status == false) {
+        if (data.Test_Unit_Grid[i].TestUnitEntity.Status == false) {
+
             htmlText += "<td>";
 
             htmlText += "Inactive";
@@ -93,11 +86,7 @@ function BindTestUnitInGrid(data, mode) {
 
     $('#tblSearchTestUnit tr:first').after(htmlText);
 
-    $('#hdfPageSize').val(data.Pager.PageSize);
-
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-    $('#hdfIsPagingRequired').val(data.Pager.IsPagingRequired);
 
     if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
@@ -113,8 +102,6 @@ function BindTestUnitInGrid(data, mode) {
     $('[name="r1"]').on('ifChanged', function (event) {
 
         if ($(this).prop('checked')) {
-
-            alert("ID " + $(this).parents('tr').find('input[id^=hdfTestUnitId]').val())
 
             $("#hdfTestUnitId").val($(this).parents('tr').find('input[id^=hdfTestUnitId]').val());
 
@@ -133,22 +120,17 @@ function PageMore(Id) {
 
         Filter: {
 
-            TestUnitName: $('#txtTestUnitName').val()
+            Test_Unit_Name: $('#txtTestUnitName').val()
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+         },
 
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/TestUnit/GetTestUnits", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestUnitInGrid, "", null);
-
+    CallAjax("/TestUnit/Get_Test_Units", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestUnitInGrid, "", null);
 }

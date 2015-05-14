@@ -4,25 +4,21 @@
 
         Filter: {
 
-             DefectName: $('#txtDefectName').val(),
+             Defect_Name: $('#txtDefectName').val(),
 
-             DefectTypeName: $("#hdfDefectTypeId").val(),
+             Defect_Type_Id: $("#hdfDefectTypeId").val(),
    
-        },
+               },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(1),
+           },
+ };
 
-            PageSize: $('#hdfPageSize').val(),
-        },
-    };
+$("#divSearchGridOverlay").show();
 
-    $("#divSearchGridOverlay").show();
-
-    CallAjax("/Defect/GetDefects", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
+CallAjax("/Defect/Get_Defects", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
 }
 
 function GetAllDefects() {
@@ -31,22 +27,18 @@ function GetAllDefects() {
 
         Filter: {
 
-            DefectTypeName: $("#hdfDefectTypeId").val()
+            Defect_Type_Id: $("#hdfDefectTypeId").val()
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+            },
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Defect/GetDefects", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
+    CallAjax("/Defect/Get_Defects", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
 }
 
 function BindDefectInGrid(data, mode) {
@@ -61,7 +53,7 @@ function BindDefectInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].DefectId + "' value='" + data.DefectGrid[i].DefectId + "' />";
+        htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].DefectEntity.Defect_Id + "' value='" + data.DefectGrid[i].DefectEntity.Defect_Id + "' />";
 
         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -69,23 +61,23 @@ function BindDefectInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += data.DefectGrid[i].DefectTypeName;
+        htmlText += data.DefectGrid[i].Defect_Type_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.DefectGrid[i].DefectCode;
+        htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.DefectGrid[i].DefectName;
+        htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
 
         htmlText += "</td>";
 
-        if (data.DefectGrid[i].Status == true) {
+        if (data.DefectGrid[i].DefectEntity.Status == true) {
 
             htmlText += "<td>";
 
@@ -93,7 +85,7 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "</td>";
         }
-        if (data.DefectGrid[i].Status == false)
+        if (data.DefectGrid[i].DefectEntity.Status == false)
         {
             htmlText += "<td>";
 
@@ -110,13 +102,9 @@ function BindDefectInGrid(data, mode) {
 
     $('#tblSearchDefect tr:first').after(htmlText);
 
-    $('#hdfPageSize').val(data.Pager.PageSize);
+    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-     $('#hdfIsPagingRequired').val(data.Pager.IsPagingRequired);
-
-     if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+  if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
          $('.pagination').html(data.Pager.PageHtmlString);
 }
@@ -131,8 +119,6 @@ function BindDefectInGrid(data, mode) {
 
         if ($(this).prop('checked')) {
 
-            alert("ID " + $(this).parents('tr').find('input[id^=hdfDefectId]').val())
- 
             $("#hdfDefectId").val($(this).parents('tr').find('input[id^=hdfDefectId]').val());
 
             $('#btnEdit').show();
@@ -146,28 +132,25 @@ function BindDefectInGrid(data, mode) {
 function PageMore(Id) {
     
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
-
+   
     var dViewModel = {
 
         Filter: {
 
-                DefectName : $('#txtDefectName').val(),
-                DefectTypeName: $('#drpDefectTypeName').val(),
+            Defect_Name: $('#txtDefectName').val(),
+
+            Defect_Type_Id: $("#hdfDefectTypeId").val(),
+
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
-
+           },
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Defect/GetDefects", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
-   
+    CallAjax("/Defect/Get_Defects", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
+    
 }
