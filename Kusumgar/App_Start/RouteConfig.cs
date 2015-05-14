@@ -732,6 +732,16 @@ namespace Kusumgar
 
             #endregion
 
+            #region Vendor
+
+            routes.MapRoute(
+            name: "vendor-1",
+            url: "master/vendor-creation",
+            defaults: new { controller = "Vendor", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
             #endregion
 
             #region Sales

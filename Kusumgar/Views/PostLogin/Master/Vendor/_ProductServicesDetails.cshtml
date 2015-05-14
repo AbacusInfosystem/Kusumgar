@@ -1,0 +1,63 @@
+﻿<form id="frmProductServices">
+    <div class="row">
+        <div class="col-md-4">
+
+            @*<h4 class="page-header">Major Product/Services </h4>*@
+
+            <div class="form-group">
+                <label for="r1">Original Manufacture :</label> <br>
+                <label>
+                    <input type="radio" name="r1" checked />
+                    yes&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                    <input type="radio" name="r1" checked />
+                    No
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label for="drpHeadOfficeState">Product Type: </label>
+                <select id="drpHeadOfficeState" class="form-control input-sm">
+                    <option>-Select Product Type-</option>
+                    <option>Type</option>
+                    <option>Service</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtInspectionFacility">Inspection Facility :</label> <br>
+                <textarea id="txtInspectionFacility" class="form-control input-sm" placeholder="Enter Inspection Facility"></textarea>
+            </div>
+        </div>
+    
+    </div>
+        <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="txtProductName">Product/Services Name :</label> <br>
+                        <textarea id="txtProductServicesName" class="form-control input-sm" placeholder="Enter Product/Services Name"></textarea>
+                    </div>
+                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtTestingFacility">Testing Facility :</label> <br>
+                    <textarea id="txtTestingFacility" class="form-control input-sm" placeholder="Enter Testing Facility"></textarea>
+                </div>
+            </div>
+                
+              </div>
+            
+      
+       
+    
+    <div class="box-footer">
+        <button type="button" id="btnSaveProductServicesDetails" class="btn btn-success">Save ProductServicesDetails</button>
+        <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+    </div>
+</form>
