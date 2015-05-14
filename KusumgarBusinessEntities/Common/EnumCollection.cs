@@ -176,6 +176,10 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaint_By_Id_Sp,
         Get_Complaint_By_CustName_Sp,
 
+        //ConsumableMaster
+        Get_Consumable_Master_sp,
+        Insert_ConsumableMaster_sp,
+
     }
 
     public enum GenderType

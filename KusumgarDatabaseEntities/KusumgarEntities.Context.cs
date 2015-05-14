@@ -49,7 +49,11 @@ namespace KusumgarDatabaseEntities
         public DbSet<IndustrialGroup> IndustrialGroups { get; set; }
         public DbSet<IndustrialMaster> IndustrialMasters { get; set; }
         public DbSet<IndustrialSupplierMaster> IndustrialSupplierMasters { get; set; }
-        public DbSet<M_Supplier> M_Supplier { get; set; }
-        public DbSet<M_Product_Supplier_Mapping> M_Product_Supplier_Mapping { get; set; }
+        public DbSet<M_Category> M_Category { get; set; }
+        public DbSet<M_Consumable> M_Consumable { get; set; }
+        public DbSet<M_Consumable_Vendors> M_Consumable_Vendors { get; set; }
+        public DbSet<M_Product_Vendors> M_Product_Vendors { get; set; }
+        public DbSet<M_Vendor> M_Vendor { get; set; }
+        public DbSet<M_SubCategory> M_SubCategory { get; set; }
     }
 }

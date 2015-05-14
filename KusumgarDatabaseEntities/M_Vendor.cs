@@ -12,7 +12,7 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Supplier
+    public partial class M_Vendor
     {
         public int Vendor_Id { get; set; }
         public string Vendor_Name { get; set; }
@@ -28,20 +28,12 @@ namespace KusumgarDatabaseEntities
         public Nullable<int> Quality_Certification_Year { get; set; }
         public string Quality_Certification_Category { get; set; }
         public string Performance_Certification { get; set; }
-        public Nullable<int> Performance_Certification_Year { get; set; }
-        public string Performance_Certification_Category { get; set; }
-        public string Inspection_facilities_at_factory { get; set; }
-        public string Testing_facilities_at_factory { get; set; }
         public string Remark_about_Supplier { get; set; }
         public Nullable<bool> Block_Payment { get; set; }
         public string Shipment_Methods { get; set; }
         public string Flagged_Supplier { get; set; }
         public string Delivary_Term_Code { get; set; }
         public Nullable<bool> Is_Approved_By_Director { get; set; }
-        public string CST_No { get; set; }
-        public string SST_No { get; set; }
-        public string VAT_No { get; set; }
-        public string TIN_No { get; set; }
         public string Central_Excise_Registration_Details { get; set; }
         public string Registration_No { get; set; }
         public string Range { get; set; }
@@ -53,9 +45,9 @@ namespace KusumgarDatabaseEntities
         public string VAT_Type { get; set; }
         public Nullable<int> PaymentTerms { get; set; }
         public bool Is_Active { get; set; }
-        public System.DateTime CreatedOn { get; set; }
-        public int CreatedBy { get; set; }
-        public System.DateTime UpdatedOn { get; set; }
-        public int UpdatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
     }
 }

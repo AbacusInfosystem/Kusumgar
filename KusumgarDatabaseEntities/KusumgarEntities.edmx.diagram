@@ -29,8 +29,12 @@
         <EntityTypeShape EntityType="KusumgarModel.IndustrialGroup" Width="1.5" PointX="13.375" PointY="16.75" />
         <EntityTypeShape EntityType="KusumgarModel.IndustrialMaster" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="KusumgarModel.IndustrialSupplierMaster" Width="1.5" PointX="17.375" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Supplier" Width="1.5" PointX="11.375" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Product_Supplier_Mapping" Width="1.5" PointX="17.375" PointY="4.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Category" Width="1.5" PointX="9.375" PointY="5" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Consumable" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Consumable_Vendors" Width="1.5" PointX="17.375" PointY="8.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product_Vendors" Width="1.5" PointX="17.375" PointY="12.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Vendor" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_SubCategory" Width="1.5" PointX="11.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
