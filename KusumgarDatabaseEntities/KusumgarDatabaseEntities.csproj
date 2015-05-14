@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{617D17BC-EAA6-4D36-906F-F49A410205E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KusumgarDatabaseEntities</RootNamespace>
+    <AssemblyName>KusumgarDatabaseEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bank_Details.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Complaint.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact_Custom_Fields.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Addresss.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KusumgarEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KusumgarEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KusumgarEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KusumgarEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KusumgarEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="M_Access_Function.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Attribute_Code.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Defect.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Defect_Type.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Fabric_Type.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Nation.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Payment_Terms.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Product.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Product_Supplier_Mapping.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Role.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Role_Access_Function_Mapping.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_State.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Supplier.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Test.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Test_Unit.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_User.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_User_Role_Mapping.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="KusumgarEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KusumgarEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="KusumgarEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KusumgarEntities.edmx</DependentUpon>
+      <LastGenOutput>KusumgarEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="KusumgarEntities.edmx.diagram">
+      <DependentUpon>KusumgarEntities.edmx</DependentUpon>
+    </None>
+    <None Include="KusumgarEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KusumgarEntities.edmx</DependentUpon>
+      <LastGenOutput>KusumgarEntities.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

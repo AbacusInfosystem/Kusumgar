@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Search Article Process Workcenter";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Search Article Process Workcenter
+
+            <small>Search</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active"> Search Article Process Workcenter</li>
+        </ol>
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- C Article Search -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="txtFullCode">Full Code</label>
+
+                                    <input type="text" class="form-control" id="txtFullCode" placeholder="Enter Full Code">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="btn-group pull-left">
+                                        <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
+                                        <a class="btn btn-primary" href="@Url.Action("Index", "ArticleProcessWorkcenter")" role="button">Create Article Process Workcenter</a>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="btn-group pull-right">
+                                        <button type="button" class="btn btn-warning">Edit Article Process Workcenter</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

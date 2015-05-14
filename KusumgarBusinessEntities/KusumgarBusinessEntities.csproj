@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB0259D3-486B-4B29-A89D-49FE61CB290F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KusumgarBusinessEntities</RootNamespace>
+    <AssemblyName>KusumgarBusinessEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KusumgarDatabaseEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\KusumgarDatabaseEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AutoCompleteInfo.cs" />
+    <Compile Include="CRM\BankDetailsInfo.cs" />
+    <Compile Include="CRM\ContactCustomFieldsInfo.cs" />
+    <Compile Include="CRM\ContactInfo.cs" />
+    <Compile Include="CRM\CustomerAddressInfo.cs" />
+    <Compile Include="CRM\CustomerInfo.cs" />
+    <Compile Include="Common\EnumCollection.cs" />
+    <Compile Include="CRM\EmployeeInfo.cs" />
+    <Compile Include="Common\FriendlyMessageInfo.cs" />
+    <Compile Include="Common\LookupInfo.cs" />
+    <Compile Include="Common\MessageStore.cs" />
+    <Compile Include="Common\PaginationInfo.cs" />
+    <Compile Include="Master\AttributeCodeInfo.cs" />
+    <Compile Include="Master\DefectInfo.cs" />
+    <Compile Include="Master\DefectTypeInfo.cs" />
+    <Compile Include="Master\FabricTypeInfo.cs" />
+    <Compile Include="Master\NationInfo.cs" />
+    <Compile Include="Master\RoleAccessInfo.cs" />
+    <Compile Include="Master\RoleInfo.cs" />
+    <Compile Include="Master\StateInfo.cs" />
+    <Compile Include="Master\TestInfo.cs" />
+    <Compile Include="Master\TestUnitInfo.cs" />
+    <Compile Include="Master\UserInfo.cs" />
+    <Compile Include="Master\UserRoleInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CMS\" />
+    <Folder Include="Planning\" />
+    <Folder Include="Sales\" />
+    <Folder Include="SystemConfig\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

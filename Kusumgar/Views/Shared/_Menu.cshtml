@@ -1,0 +1,28 @@
+﻿@using KusumgarBusinessEntities.CMS;
+
+@using KusumgarBusinessEntities.Common;
+
+<div class="menu-content">
+
+    <ul>
+
+        @{
+            
+            if (Session["User"]!=null)
+            {
+                EmployeeInfo employee = (EmployeeInfo)Session["User"];
+
+                //if (employee.RoleId == Convert.ToInt32(UserRoles.Sales))
+                //{
+                    <li><a id="a1" href="@Url.Action("Dashboard","Index")">Dashboard</a></li>
+                //}
+                
+                <li><a id="aLogout" href="@Url.Action("Logout","Authentication")">Logout</a></li>
+            }
+        }
+
+    </ul>
+
+</div>
+
+<!--if (employee.UserEntity.Role.RoleAccessFunctionMappings.Any(r => r.AccessFunction.AccessFunctionName == AppFunction.SearchBrand.ToString())) -->

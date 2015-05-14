@@ -1,0 +1,150 @@
+﻿@model Kusumgar.Models.Master.DefectTypeViewModel
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    .example-modal .modal {
+        background: transparent!important;
+    }
+</style>
+
+<script src="~/Scripts/Master/Event/defect_type_search_event.js"></script>
+<script src="~/Scripts/Master/Method/defect_type_search_method.js"></script>
+<script src="~/Scripts/Master/Validation/defect_type_search_validation.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Defect - Type
+           
+            <small>Search</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Defect - Type Search</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Customer Search -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form id="frmDefectTypeSearch" method="post">
+ 
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label for="txtDefectTypeName">Defect - Type name</label>
+                                        <input type="text" name="Filter.DefectTypeName" class="form-control" id="txtDefectTypeName" placeholder="Enter defect - type">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-left">
+                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","DefectType")" role="button">Create Defect - Type</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-right">
+
+                                            <input type="hidden" id="hdfPageSize" name="" value="" />
+                                            <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                                            <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
+
+                                            <input type="hidden" id="hdfDefectTypeId" name="EditMode.DefectTypeId" />
+                                           
+                                            <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Defect - Type</button>
+                                            <button type="button" id="btnViewDefects" class="btn btn-primary">View Defects</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                    </form>
+
+                 </div>
+            </div>
+        </div>
+        <!-- Customer Search Ends -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid" id="divDefecTypeGrid">
+                    <div class="box-body table-responsive no-padding">
+
+                        <table class="table table-striped" id="tblSearchDefectType">
+                            <tr>
+                                <th style="width:50px;"></th>
+                                <th>Defect Type</th>
+                                <th style="width:100px;">Status</th>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <ul>
+                               
+                            </ul>
+                        </div>
+                        
+                    </div>
+
+                    <div id="divSearchGridOverlay" class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (left) -->
+        </div>
+
+       
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+
+
+
+
+

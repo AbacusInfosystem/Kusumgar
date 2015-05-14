@@ -1,0 +1,53 @@
+﻿@using KusumgarBusinessEntities.Common;
+
+<div class="box-body" id="message" >
+    <!--style=" position absolute; z-index 10000; left 100px;"-->
+    @if (Model != null && Model.FriendlyMessage != null && Model.FriendlyMessage.Count > 0)
+    {
+
+
+        foreach (var msg in Model.FriendlyMessage)
+        {
+            if (msg.Type == MessageType.Info && msg.TextLength < 200)
+            {
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-info"></i> Alert!</h4>
+                    @Html.Raw(msg.Text)
+                </div>
+
+            }
+            if (msg.Type == MessageType.Danger && msg.TextLength < 200)
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                    @Html.Raw(msg.Text)
+                </div>
+
+            }
+
+            if (msg.Type == MessageType.Success && msg.TextLength < 200)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                    @Html.Raw(msg.Text)
+                </div>
+
+            }
+            if (msg.Type == MessageType.Warning && msg.TextLength < 200)
+            {
+                <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                    @Html.Raw(msg.Text)
+                </div>
+
+            }
+            @*<div class="clear" style="margin: 0; padding: 0; height: 2px">&nbsp;</div>*@
+        }
+
+    }
+</div>
+

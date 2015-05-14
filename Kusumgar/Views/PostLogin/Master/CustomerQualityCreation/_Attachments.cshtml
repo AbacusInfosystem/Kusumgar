@@ -1,0 +1,131 @@
+﻿
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="txtLabel_Details">Label Details</label>
+            <textarea class="form-control" id="txtLabel_Details" placeholder="Enter Label Details"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="txtLabel_Details">Attach Label Details</label>
+            <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+        </div>
+
+        <div class="form-group" >
+            <div id="Labelfiledrag" style="border: 1px dashed;font-weight: bold; text-align: center; padding: 1em 0; margin: 1em 0; color: #555; border-radius: 7px; cursor: default;">
+                or drop files here
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="txtReport_Details">Report Format Details</label>
+            <textarea class="form-control" id="txtReport_Details" placeholder="Enter Label Details"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fileReport_Details">Attach Report Format Details</label>
+            <input type="file" id="fileReport_Details" name="fileselect[]" multiple="multiple" />
+        </div>
+
+        <div class="form-group">
+            <div id="Report_Details_filedrag" style="border: 1px dashed;font-weight: bold; text-align: center; padding: 1em 0; margin: 1em 0; color: #555; border-radius: 7px; cursor: default;">
+                or drop files here
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="txtLabel_Details">Customer Given Information</label>
+            <textarea class="form-control" id="txtCustomer_Given_Information" placeholder="Enter Customer Given Information"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fileCustomer_Given_Information">Attach Customer Given Information</label>
+            <input type="file" id="fileCustomer_Given_Information" name="fileselect[]" multiple="multiple" />
+        </div>
+
+        <div class="form-group">
+            <div id="Customer_Given_Information_filedrag" style="border: 1px dashed;font-weight: bold; text-align: center; padding: 1em 0; margin: 1em 0; color: #555; border-radius: 7px; cursor: default;">
+                or drop files here
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-8 ">
+        <div class="table-responsive no-padding">
+            <table class="table table-hover">
+                <tr>
+                    <th>File Name</th>
+                    <th>File Size</th>
+                    <th>Type</th>
+                    <th style="min-width: 81px;">&nbsp; </th>
+                </tr>
+                <tr>
+                    <td>File 1</td>
+                    <td>1024</td>
+                    <td>Label</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>File 2</td>
+                    <td>1024</td>
+                    <td>Report</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>File 3</td>
+                    <td>1024</td>
+                    <td>Customer Information</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>File 4</td>
+                    <td>1024</td>
+                    <td>Label</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>File 5</td>
+                    <td>1024</td>
+                    <td>Customer Information</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>File 6</td>
+                    <td>1024</td>
+                    <td>Report</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="box-footer">
+    <button type="submit" class="btn btn-success">Save Customer Specific Information</button>
+    <a href="@Url.Action("Search", "CustomerQualityCreation")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+</div>

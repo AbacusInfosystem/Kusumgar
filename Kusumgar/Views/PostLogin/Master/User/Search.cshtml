@@ -1,0 +1,125 @@
+﻿@model Kusumgar.Models.UserViewModel
+@{
+    ViewBag.Title = "Search";
+}
+<script src="~/Scripts/Master/user_search_event.js"></script>
+<script src="~/Scripts/Master/user_search_method.js"></script>
+
+<input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+           Employee
+
+            <small>Search</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active"> Employee Search</li>
+        </ol>
+    </section>
+    <form id="frmSearch_user">
+        <input type="hidden" id="hdnUserId" name="UserId">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtEmployeeName">Employee Name</label>
+                                    <input type="text" class="form-control" id="txtEmployeeName" placeholder="Enter Employee Name" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="btn-group pull-left">
+                                        <button type="button" id="btnSearch" class="btn btn-success">Search</button>
+                                        <a class="btn btn-primary" href="@Url.Action("Index","User")" role="button">Create Employee</a>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="btn-group pull-right">
+                                        <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Employee</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- /.content -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-striped" id="tblUserGrid">
+                            <tr id="subhead">
+                                <th style="width:50px;"></th>
+                                <th style="width:400px;">Employee Name</th>
+                                <th style="width:200px;">ContactNo</th>
+                                <th style="width:200px;">Emails</th>
+                                <th style="width:200px;">Designtation</th>
+                            </tr>
+                            @*@{
+                                    if (Model.UserList.Count > 0)
+                                    {
+                                        foreach (var item in Model.UserList)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <input type="radio" name="r1" />
+                                                </td>
+                                                <td>@item.UserEntity.First_Name</td>
+                                                <td>@item.UserEntity.Mobile_No1</td>
+                                                <td>@item.UserEntity.Personal_Email</td>
+                                                <td>@item.UserEntity.Designtation</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="5">
+                                                No Record Found...
+                                            </td>
+                                        </tr>
+                                    }
+                                }*@
+
+                        </table>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <ul></ul>
+                        </div>
+                        <div id="divSearchGridOverlay" class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+        </form>
+</div>
+<!-- /.content-wrapper -->
+

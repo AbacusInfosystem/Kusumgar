@@ -1,0 +1,358 @@
+﻿@{
+    ViewBag.Title = " Y Article";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Y Article
+
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Y Article</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    @*<form>
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Y Article Full Code</h3>
+                            </div>
+
+                            <div class="box-body">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <label>Attribute</label>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>Code</label>
+                                            </div>
+                                        </div>                                      
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpDenier" class="form-control input-sm">
+                                                    <option>-Select Denier-</option>
+                                                    <option>10 Denier</option>
+                                                    <option>100 Denier</option>
+                                                    <option>1000 Denier</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>1011</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpTwist_Mingle" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Twist/Mingle- </option>
+                                                    <option>Zero High Intermingled</option>
+                                                    <option>Zero Low Intermingled</option>
+                                                    <option>60 twist</option>
+                                                    <option>200 twist</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>0HIM</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpTwist_type" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Twist type-</option>
+                                                    <option>S twist</option>
+                                                    <option>Z twist</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>S</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpPly" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Ply-</option>
+                                                    <option>2 Ply Yarn</option>
+                                                    <option>3 Ply Yarn</option>
+                                                    <option>4 Ply Yarn</option>
+                                                    <option>5 Ply Yarn</option>
+                                                    <option>6 Ply Yarn</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>02</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                 <select id="drpYarn_type" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Yarn type-</option>
+                                                    <option>Polyster texturised</option>
+                                                    <option>Air texturised Nylon</option>
+                                                    <option>Viscose Staple</option>
+                                                    <option>Polyster Cotton Mix</option>
+                                                    <option>Meta aramide</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>NY06</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                 <select id="drpShade" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Shade-</option>
+                                                    <option>Bright Yarn</option>
+                                                    <option>Semi Dull</option>
+                                                    <option>Full Dull</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>BR</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpFilaments" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Filaments-</option>
+                                                    <option>10 Filaments</option>
+                                                    <option>100 Filaments</option>
+                                                    <option>1000 Filaments</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>0010</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                      
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <label>Attribute</label>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>Code</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpOrigin" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Origin-</option>
+                                                    <option>Imported</option>
+                                                    <option>Domestic</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>IM</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpShrinkage" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Shrinkage-</option>
+                                                    <option>High shrinkage</option>
+                                                    <option>low shrinkage</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>HS</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpTenasity" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Tenasity-</option>
+                                                    <option>High Tenacity</option>
+                                                    <option>Super High Tenacity</option>
+                                                    <option>Low Tenacity</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>0HT</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpChemical_Treatment" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Chemical Treatment-</option>
+                                                    <option>High Chemical</option>
+                                                    <option>Super High Chemical</option>
+                                                    <option>Low Chemical</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>HC</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpColour" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Colour-</option>
+                                                    <option>Natural</option>
+                                                    <option>White</option>
+                                                    <option>Black</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>NRL</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-xs-8">
+                                                <select id="drpSupplier" class="form-control input-sm" >
+                                                    
+                                                    <option>-Select Supplier-</option>
+                                                    <option>ALOK IND</option>
+                                                    <option>C.ENKA</option>
+                                                    <option>INVISTA</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
+                                                <label>ALOKI</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="well text-center">
+                                            <label> 04200200    S01NY06 BR0048IM     HS0HT 000NRL SUPRF</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Other Information</h3>
+                            </div>
+
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div class="form-group">
+                                            <label for="txtGivenBy">Given By</label>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control input-sm" id="txtGivenBy" placeholder="Enter given by" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="txtValidatedBy">Validated By</label>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control input-sm" id="txtValidatedBy" placeholder="Enter validated by" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="txtDevelopedUnder">Developed Under</label>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control input-sm" id="txtDevelopedUnder" placeholder="Enter developed under" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="txtLeadTimeToPurchaseRawMaterial">Lead Time to Purchase Raw Material</label>
+                                            <input type="text" class="form-control input-sm" id="txtLeadTimeToPurchaseRawMaterial" placeholder="Enter lead time to purchase raw material" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" name="chkStatus" checked />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="box-footer">
+                            <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
+                            <a href="@Url.Action("Search", "YArticle")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+
+                        </div>
+
+                    </form>*@
+
+                   @Html.Partial("~/Views/PostLogin/Master/YArticle/_YArticle.cshtml")
+
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

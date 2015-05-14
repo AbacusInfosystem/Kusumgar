@@ -1,0 +1,117 @@
+﻿@model Kusumgar.Models.CustomerViewModel
+@using KusumgarBusinessEntities.Common 
+<script src="/Scripts/CRM/Event/customer_financial_event.js"></script>
+<script src="/Scripts/CRM/Method/customer_financial_method.js"></script>
+<script src="/Scripts/CRM/Validation/customer_financial_validation.js"></script>
+
+<form id="frm_financial_Details">
+<div class="row">
+    <div class="col-md-4">
+        <input type="hidden" id="hdnBank_Detail_Id" name="Customer.Bank_Details.Bank_Details_Entity.Bank_Details_Id" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Bank_Details_Id">
+        <div class="form-group">
+            <label for="txtAccountNo" style="color: #333">Account No</label>
+            <input type="text" class="form-control input-sm" id="txtBank_Account_No" placeholder="Enter account no" name="Customer.Bank_Details.Bank_Details_Entity.Bank_Account_No" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Bank_Account_No">
+        </div>
+
+        <div class="form-group">
+            <label for="txtIFSCCode" style="color: #333">IFSC Code</label>
+            <input type="text" class="form-control input-sm" id="txtIFSCCode" placeholder="Enter IFSC code" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Ifsc_Code" name="Customer.Bank_Details.Bank_Details_Entity.Ifsc_Code">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label for="txtBank_Name" style="color: #333">Bank Name</label>
+            <input type="text" class="form-control input-sm" id="txtBank_Name" placeholder="Enter bank name" name="Customer.Bank_Details.Bank_Details_Entity.Bank_Name" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Bank_Name">
+        </div>
+
+        <div class="form-group">
+            <label for="txtBranch_Name" style="color: #333"> Branch Name</label>
+            <input type="text" class="form-control input-sm" id="txtBranch_Name" placeholder="Enter branch name" name="Customer.Bank_Details.Bank_Details_Entity.Branch_Name" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Branch_Name">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label for="txtTaxExcemptionCode" style="color: #333">Tax Excemption Code</label>
+            <input type="text" class="form-control input-sm" id="txtTaxExcemptionCode" name="Customer.Bank_Details.Bank_Details_Entity.Tax_Excemption_Code" placeholder="Enter tax excepmtion code" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Tax_Excemption_Code">
+        </div>
+
+        <div class="form-group">
+            <label for="txtVAT" style="color: #333">VAT</label>
+            <input type="text" class="form-control input-sm" id="txtVAT" placeholder="Enter VAT" name="Customer.Bank_Details.Bank_Details_Entity.Vat" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Vat">
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtSwiftCode" style="color: #333">Swift Code</label>
+                <input type="text" class="form-control input-sm" id="txtSwift_Code" placeholder="Enter swift code" name="Customer.Bank_Details.Bank_Details_Entity.Swift_Code" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Swift_Code">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtBank_Address" style="color: #333">Bank Address</label>
+                <textarea id="txtBank_Address" class="form-control input-sm" rows="2" placeholder="Enter bank address" name="Customer.Bank_Details.Bank_Details_Entity.Bank_Address">@Model.Customer.Bank_Details.Bank_Details_Entity.Bank_Address</textarea>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="color: #333">Currency</label>
+                <select class="form-control input-sm" id="drpCurrency" name="Customer.Bank_Details.Bank_Details_Entity.Currency_Id">
+                    <option value="">-Select Currency-</option>
+                    @foreach (var item in LookupInfo.Get_Currency_Type())
+                    {
+                        if (Model.Customer.Bank_Details.Bank_Details_Entity.Currency_Id == item.Key)
+                        {
+                            <option value="@item.Key" selected="selected">@item.Value</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Key">@item.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtRTGSNo" style="color: #333">RTGS No</label>
+                <input type="text" class="form-control input-sm" id="txtRtgs_No" placeholder="Enter RTGS No" name="Customer.Bank_Details.Bank_Details_Entity.Rtgs_No" value="@Model.Customer.Bank_Details.Bank_Details_Entity.Rtgs_No">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="color: #333">Payment Terms</label>
+                <select class="form-control input-sm" id="drpPaymentTerms" name="Customer.Bank_Details.Bank_Details_Entity.Payment_Term_Id">
+                    <option value="">-Select Payment Term-</option>
+                    @foreach (var item in LookupInfo.Get_Payment_Terms())
+                    {
+                        if (Model.Customer.Bank_Details.Bank_Details_Entity.Payment_Term_Id == item.Key)
+                        {
+                            <option value="@item.Key" selected="selected">@item.Value</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Key">@item.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+<div class="box-footer">
+    <button type="button" id="btnFinancial_Save" class="btn btn-success">Save Financial</button>
+    <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>                         
+</div>
+    </form>

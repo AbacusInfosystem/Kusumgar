@@ -1,0 +1,89 @@
+﻿@model Kusumgar.Models.CustomerViewModel
+@using KusumgarBusinessEntities.Common  
+<script src="/Scripts/CRM/Event/customer_shipping_details_event.js"></script>
+<script src="/Scripts/CRM/Method/customer_shipping_details_method.js"></script>
+<script src="/Scripts/CRM/Validation/customer_shipping_details_validation.js"></script>
+<form id="frm_Shipping" class="form-validate">
+
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Shipping Office Details -->
+            <input type="hidden" id="hdn_Customer_shipping_Address_Id">
+            <div class="form-group">
+                <label style="color: #333">Shipping Office Address</label>
+                <textarea id="txtShippingOfficeAddress" class="form-control  input-sm" rows="2" name="Addresss" placeholder="Enter shipping office address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Landline 1:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" id="txtShippingOfficeLandline1" class="form-control input-sm" name="Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Landline 2:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" id="txtShippingOfficeLandline2" class="form-control input-sm" name="Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Fax no:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-fax"></i>
+                    </div>
+                    <input type="text" id="txtShippingOfficeFaxNo" class="form-control input-sm" name="FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <!-- Shipping Office Details Ends-->
+        </div>
+        <div class="col-md-8 ">
+            <table class="table table-hover" id="tblShipping_Details">
+                <tr>
+                    <th>Shipping Address</th>
+                    <th style="min-width: 81px;">&nbsp; </th>
+                </tr>
+                @foreach (var item in Model.Customer.Customer_Address_List)
+                {
+                    if (item.Customer_Address_Entity.Address_Type == 2)
+                    {
+                        <tr id="Ship_tr_@item.Customer_Address_Entity.Customer_Address_Id">
+
+                            <td>@item.Customer_Address_Entity.Addresss</td>
+                            <td>
+                                <input type="hidden" class="hdn_Customer_shipping_Address_Id" value="@item.Customer_Address_Entity.Customer_Address_Id">
+
+                                <input type="hidden" class="shipping_Address" value="@item.Customer_Address_Entity.Addresss">
+                                <input type="hidden" class="shipping_Landline1" value="@item.Customer_Address_Entity.Landline1">
+                                <input type="hidden" class="shipping_Landline2" value="@item.Customer_Address_Entity.landline2">
+                                <input type="hidden" class="shipping_FaxNo" value="@item.Customer_Address_Entity.FaxNo">
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnEdit" class="btn btn-info btn-sm btn-Shipping"><i class='fa fa-pencil-square-o'></i></button>
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveShippingAddress(@item.Customer_Address_Entity.Customer_Address_Id)"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <button type="button" id="btnSaveShippingAddressDetails" class="btn btn-success">Save Shipping</button>
+        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+    </div>
+</form>
+

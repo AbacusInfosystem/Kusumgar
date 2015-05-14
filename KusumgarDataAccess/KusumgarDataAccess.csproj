@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB7E5A86-A671-4AEB-BF0E-7A61E39B9ED7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KusumgarDataAccess</RootNamespace>
+    <AssemblyName>KusumgarDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KusumgarBusinessEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\KusumgarBusinessEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="KusumgarCrossCutting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\KusumgarCrossCutting.dll</HintPath>
+    </Reference>
+    <Reference Include="KusumgarDatabaseEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\KusumgarDatabaseEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CRM\ContactRepo.cs" />
+    <Compile Include="CRM\CustomerRepo.cs" />
+    <Compile Include="Master\AjaxRepo.cs" />
+    <Compile Include="Master\AttributeCodeRepo.cs" />
+    <Compile Include="Master\DefectRepo.cs" />
+    <Compile Include="Master\DefectTypeRepo.cs" />
+    <Compile Include="Master\NationRepo.cs" />
+    <Compile Include="Master\RoleAccessRepo.cs" />
+    <Compile Include="Master\RoleRepo.cs" />
+    <Compile Include="Master\StateRepo.cs" />
+    <Compile Include="Master\TestRepo.cs" />
+    <Compile Include="Master\TestUnitRepo.cs" />
+    <Compile Include="Master\UserRepo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CommonMethods.cs" />
+    <Compile Include="Utilities\Encrypter.cs" />
+    <Compile Include="Utilities\SQLHelperRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CMS\" />
+    <Folder Include="Login\" />
+    <Folder Include="Planning\" />
+    <Folder Include="Sales\" />
+    <Folder Include="SystemConfig\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

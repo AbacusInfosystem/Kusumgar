@@ -1,0 +1,128 @@
+﻿@model Kusumgar.Models.RoleViewModel
+@using KusumgarBusinessEntities.Common
+<script src="~/Scripts/Master/role_event.js"></script>
+<script src="/Scripts/Master/role_method.js"></script>
+    <script src="~/Scripts/Master/role_validation.js"></script>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+        <h1>
+            Role
+
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Role</li>
+            <li class="active">Master</li>
+        </ol>
+    </section>
+
+    <form id="frmRole">
+        <input type="hidden" class="form-control input-sm" name="Role.RoleEntity.Role_Id" id="hdnRole_Id" value="@Model.Role.RoleEntity.Role_Id">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"></h3>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <label for="txtRole_Name" style="color: #333">Role Name</label>
+                                        <input type="text" class="form-control input-sm" name="Role.RoleEntity.Role_Name" id="txtRole_Name" placeholder="Enter Role name" value="@Model.Role.RoleEntity.Role_Name">
+                                        <input type="hidden" id="hdnRole_Name" value="@Model.Role.RoleEntity.Role_Name">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Access Functions</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select multiple="multiple" id="lst_Available_Access_Function" name="" class="form-control">
+                                            @foreach (var item in Model.Role_Access_List)
+                                            {
+                                                if (!(Model.Selecetd_Role_Access_List.Where(a => a.RoleAccessEntity.Access_Function_Id == item.RoleAccessEntity.Access_Function_Id).Count() > 0))
+                                                {
+                                                    <option value="@item.RoleAccessEntity.Access_Function_Id">@item.Access_Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-default" type="button" id="btn_Function_Add" onclick="javascript: Add('lst_Available_Access_Function', 'lst_Selected_Access_Function');"><span class=" glyphicon glyphicon-arrow-right"></span></button>
+                                    <br /><br />
+                                    <button class="btn btn-default" type="button" id="btn_Function_Remove" onclick="javascript: Add('lst_Selected_Access_Function', 'lst_Available_Access_Function');"><span class=" glyphicon glyphicon-arrow-left"></span></button>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select multiple="multiple" id="lst_Selected_Access_Function" name="Selected_Role_Access" class="form-control">
+                                            @foreach (var item in Model.Selecetd_Role_Access_List)
+                                            {
+                                                <option value="@item.RoleAccessEntity.Access_Function_Id" selected>@item.Access_Name</option>
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @if (Model.Role.RoleEntity.Is_Active == false)
+                                        {
+                                            <label>
+                                                <input type="checkbox" name="chkStatus" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label>
+                                                <input type="checkbox" name="chkStatus" checked />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                            </label>
+                                        }
+                                    </div>
+                                    <input type="hidden" id="hdnActive" name="Role.RoleEntity.Is_Active" value="@Model.Role.RoleEntity.Is_Active.ToString()">
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <button type="button" id="btnSave" class="btn btn-success">Save</button>
+                                <a href="@Url.Action("Search", "Role")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </form>
+</div>
+
+
+<!-- /.content-wrapper -->
+
+

@@ -1,0 +1,61 @@
+﻿@model Kusumgar.Models.ContactViewModel
+@using KusumgarBusinessEntities.Common  
+<script src="/Scripts/CRM/Event/custom_field_event.js"></script>
+<script src="/Scripts/CRM/Method/custom_field_method.js"></script>
+<script src="/Scripts/CRM/Validation/custom_field_validation.js"></script>
+<form id="frmCustom_Fields">
+
+    <input type="hidden" id="hdnContact_Custom_Field_Id">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="hidden" id="hdn_Contact_Custom_Field_Id">
+            <div class="form-group">
+                <label style="color: #333">Field Name :</label>
+                <input type="text" id="txtField_Name" class="form-control input-sm" name="Field_Name" placeholder="Enter Field Name" />
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Field Value :</label>
+                <input type="text" id="txtField_Value" class="form-control input-sm" name="Field_Value" placeholder="Enter Field value" />
+                <!-- /.input group -->
+            </div>
+
+        </div>
+
+        <div class="col-md-8 ">
+            <table class="table table-hover" id="tblCustom_Fields">
+                <tr>
+                    <th>Field Name</th>
+                    <th>Field Value</th>
+                    <th style="min-width: 81px;">&nbsp; </th>
+                </tr>
+                @foreach (var item in Model.contact.Contact_Custom_Fields_List)
+                {
+
+                    <tr id="cust_tr_@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+
+                        <td>@item.Custom_Fields_Entity.Field_Name</td>
+                        <td>@item.Custom_Fields_Entity.Field_Value</td>
+                        <td>
+                            <input type="hidden" class="hdn_Contact_Custom_Field_Id" value="@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+
+                            <input type="hidden" class="Field_Name" value="@item.Custom_Fields_Entity.Field_Name">
+                            <input type="hidden" class="Field_Value" value="@item.Custom_Fields_Entity.Field_Value">
+
+                            <div class="btn-group pull-right">
+                                <button type="button" id="btnEdit" class="btn btn-info btn-sm btn-Shipping"><i class='fa fa-pencil-square-o'></i></button>
+                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveCustomFields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+    <div class="box-footer">
+        <button type="button" class="btn btn-success" id="btnSaveCustomField">Save Custom Field</button>
+        <button type="button" id="btnCancel" class="btn btn-warning">Cancle and Open Search</button>
+    </div>
+
+</form>

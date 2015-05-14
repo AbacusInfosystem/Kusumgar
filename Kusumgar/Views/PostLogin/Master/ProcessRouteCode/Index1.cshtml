@@ -1,0 +1,796 @@
+﻿@{
+    ViewBag.Title = "Customer";
+}
+<script src="~/Scripts/generic.autocomplete.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Process Route Code
+
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Process Route Code</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <br />
+                        <div class="row">
+
+                            <div class="col-md-2">
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Article </label><br>
+                                    <input type="radio" id="YArticle" name="Article" checked> YArticle
+                                    <input type="radio" id="WArticle" name="Article"> WArticle
+                                    <input type="radio" id="GArticle" name="Article"> GArticle
+                                    <input type="radio" id="PArticle" name="Article"> PArticle
+                                    <input type="radio" id="CArticle" name="Article"> CArticle
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtArticleCode" placeholder="Enter Article code" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtProcessRouteCode">Process Route Code</label>
+                                    <input type="text" class="form-control" id="txtProcessRouteCode" placeholder="Enter process route code" />
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn  btn-success process"> Add Process</button>
+                                    <button class="btn  btn-success Steps"> Add Steps</button>
+                                    <button class="btn  btn-success Required"> Add Required Fields</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+
+                        <div class="row"  >
+
+                            <div class="col-md-1">
+                            </div>
+
+                            <div class="col-md-5 processRow" style="display:none;">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #1)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName1" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 1</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessNam2">Process Name (Order #2)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName2" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 2</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName3">Process Name (Order #3)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName3" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 3</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #4)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName4" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 4</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #5)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName5" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 5</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #6)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName6" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 6</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #7)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName7" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 7</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #8)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName8" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 8</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName1">Process Name (Order #9)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName9" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 9</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtProcessName10">Process Name (Order #10)</label> <br>
+                                        <input type="text" class="form-control" id="txtProcessName10" placeholder="Enter process name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Process 10</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                       <button class="btn btn-success" >Add process</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 stepsRow" style="display:none;">
+
+                                <div class="form-group">
+                                    <label for="drpProcess">Process Name </label> <br>
+                                    <select id="drpProcess" class="form-control">
+                                        <option>-Select Process-</option>
+                                        <option>Process 1</option>
+                                        <option>Process 2</option>
+                                        <option>Process 3</option>
+                                        <option>Process 4</option>
+                                        <option>Process 5</option>
+                                        <option>Process 6</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #1)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName1" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 1</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsNam2">Steps Name (Order #2)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName2" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 2</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName3">Steps Name (Order #3)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName3" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 3</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #4)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName4" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 4</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #5)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName5" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 5</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #6)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName6" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 6</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #7)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName7" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 7</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #8)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName8" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 8</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName1">Steps Name (Order #9)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName9" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 9</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtStepsName10">Steps Name (Order #10)</label> <br>
+                                        <input type="text" class="form-control" id="txtStepsName10" placeholder="Enter Steps name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="">Steps 10</label>
+                                        <div class="pull-right">
+                                            <button class="btn btn-box-tool">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-success" id="btnAddSteps" onclick="javascript:AddSteps()">Add Steps</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-5 RequiredFieldRow" style="display:none;">
+                                <div class="form-group">
+                                    <label for="drpProcess">Process Name </label> <br>
+                                    <select id="drpProcess" class="form-control">
+                                        <option>-Select Process-</option>
+                                        <option>Process 1</option>
+                                        <option>Process 2</option>
+                                        <option>Process 3</option>
+                                        <option>Process 4</option>
+                                        <option>Process 5</option>
+                                        <option>Process 6</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="drpProcess">Step Name </label> <br>
+                                    <select id="drpProcess" class="form-control">
+                                        <option>-Select Step-</option>
+                                        <option>Step 1</option>
+                                        <option>Step 2</option>
+                                        <option>Step 3</option>
+                                        <option>Step 4</option>
+                                        <option>Step 5</option>
+                                        <option>Step 6</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtQuality_GSM_Required">Quality GSM Required</label> <br>
+                                    <input type="text" class="form-control" id="txtQuality_GSM_Required" placeholder=" Enter Quality GSM Required" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtWater_Required">Water Required</label> <br>
+                                    <input type="text" class="form-control" id="txtWater_Required" placeholder=" Enter Water Required" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtTemp_Required">Temp Required</label> <br>
+                                    <input type="text" class="form-control" id="txtTemp_Required" placeholder=" Enter Temp Required" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtEnds">Ends</label> <br>
+                                    <input type="text" class="form-control" id="txtEnds" placeholder=" Enter Ends" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtTension_Required">Tension Required</label> <br>
+                                    <input type="text" class="form-control" id="txtTension_Required" placeholder=" Enter Tension Required" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtSpeed_Required">Speed Required</label> <br>
+                                    <input type="text" class="form-control" id="txtSpeed_Required" placeholder=" Enter Speed Required" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 ProcessSteps" style="display:none">
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 1</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" id="PSteps" style="display: none;">
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 2</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 3</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 4</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 5</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 6</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 7</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 8</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 9</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group process">
+                                    <div class="box box-default">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Process 10</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body" style="display: none;" id="PSteps">
+
+
+                                        </div><!-- /.box-body -->
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-1">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="chkIsActive" checked />
+                        &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+
+                    </label>
+                </div>
+
+
+
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
+                <a href="@Url.Action("Search", "ProcessRouteCode")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+
+  
+       
+        $('.process').click(function () {
+            $('.processRow').show();
+            $('.stepsRow').hide();
+            $('.RequiredFieldRow').hide();
+            AddProcesses();
+        });
+
+        $('.Steps').click(function () {
+            $('.stepsRow').show();
+            $('.processRow').hide();
+            $('.RequiredFieldRow').hide();
+            AddProcesses();
+        });
+
+
+        $('.Required').click(function () {
+            $('.stepsRow').hide();
+            $('.processRow').hide();
+            $('.RequiredFieldRow').show();
+            AddProcesses();
+        });
+        
+        $('.close').click(function () {
+            $('.modal').hide();
+        });
+
+
+        $("[id^=Step_]").on('click', function () {
+
+            alert("hi");
+
+            if ($(this).find('i').hasClass('fa-caret-square-o-left')) {
+                $(this).html('');
+                $(this).html('<i class="fa fa-caret-square-o-down"></i>');
+            }
+            else {
+                $(this).html('');
+                $(this).html('<i class="fa fa-caret-square-o-left"></i>');
+                $(this).parent().parent().closest('.Step1').hide();
+            }
+        });
+
+        
+
+    });
+
+    function AddProcesses()
+    {
+        var temp = 0;
+        var processes = "";
+        var arrProcess = new Array();
+        var html = "";
+        $('.processRow').find('input[type=text],select').each(function () {
+
+            if($(this).val() != '')
+            {
+                temp = 1;
+                processes += $(this).val() +', ';
+            }
+        });
+
+        if (temp == 1) {
+            processes = processes.substring(0, processes.length - 2);
+
+            arrProcess = processes.split(',');
+
+            $('.ProcessSteps').show();
+
+            html = '<option>-Select Process-</option>'
+
+            $('.ProcessSteps').find('.process').find("h3.box-title").each(function (i) {
+                $(this).html(arrProcess[i]);             
+            });
+
+            for (var j = 0; j < arrProcess.length; j++) {
+                if (arrProcess[j] != "undefined") {
+                    html += '<option>' + arrProcess[j] + '</option>';
+                }
+            }
+
+            $("[id^='drpProcess']").html("");
+            $("[id^='drpProcess']").html(html);
+
+        }
+        else {
+            $('.ProcessSteps').hide();
+        }
+       
+    }
+
+
+    function AddSteps()
+    {
+        var temp = 0;
+        var htmltext = "";
+        var ProcessName = $('.stepsRow').find('#drpProcess :selected').text();
+        var arrSteps = new Array();
+        var Steps = "";
+
+        $('.stepsRow').find('input[type=text]').each(function () {
+            if ($(this).val() != '') {
+                temp = 1;
+                Steps += $(this).val() + ', ';
+            }
+        });
+
+        if (temp == 1)
+        {
+            Steps = Steps.substring(0, Steps.length - 2);
+
+            arrSteps = Steps.split(',');
+
+            $('.process').each(function (i) {
+
+
+                if ($(this).find("h3.box-title").html() == ProcessName) {
+                    $(this).find("#PSteps").html("");
+                    for (var j = 0; j < arrSteps.length; j++) {
+                        htmltext += '<div class="box-header"> <h3 class="box-title"> ' + arrSteps[j] + ' </h3><button class="btn btn-box-tool pull-right" id="Step_' + j + '" onclick="Steps()"><i class="fa fa-caret-square-o-left"  ></i></button></div>';
+                    }
+                    $(this).find("#PSteps").html(htmltext);
+                }
+            });
+        }
+
+        $('.stepsRow').find('input[type=text],select').each(function () {
+            $(this).val('');
+        });
+        $('.stepsRow').find('#drpProcess').val('');
+    }
+   
+    //function Steps()
+    //{
+    //    $("[id^=Step_]").onclick =  function () {
+
+    //        if ($(this).find('i').hasClass('fa-caret-square-o-left')) {
+    //            $(this).html('');
+    //            $(this).html('<i class="fa fa-caret-square-o-down"></i>');
+    //        }
+    //        else {
+    //            $(this).html('');
+    //            $(this).html('<i class="fa fa-caret-square-o-left"></i>');
+    //            $(this).parent().parent().closest('.Step1').hide();
+    //        }
+
+    //    }
+    //}
+    </script>

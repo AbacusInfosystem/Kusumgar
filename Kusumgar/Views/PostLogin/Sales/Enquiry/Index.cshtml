@@ -1,0 +1,636 @@
+﻿@{
+    ViewBag.Title = "Enquiry";
+}
+<!-- daterange picker -->
+<link href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<!-- InputMask -->
+<script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+<script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+<script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+<script src="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+
+<style>
+    .div-drag-drop {
+        width: 100%;
+        background-color: rgb(255, 255, 214);
+        height: 100px;
+        border: 1px dashed #E7E7E7;
+        text-align: center;
+        color: #878787;
+    }
+
+    .div-highlight {
+        width: 100%;
+        background-color: rgb(255, 255, 214);
+        border: 1px dashed #E7E7E7;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Enquiry
+
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Sales</li>
+            <li class="active">Enquiry</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <form>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <div id="divEnquiryPrerequisites">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Enquiry Prerequisites</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool"><i class="fa fa-bar-chart fa-1x"></i></button>
+                                            <button class="btn btn-box-tool"><i class="fa fa-calculator fa-1x"></i></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body">
+
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-4">
+                                                    <input type="radio" name="r1" id="rdTrial" checked />
+                                                    &nbsp; Trial
+                                                </div>
+                                                <div class="col-md-4 col-xs-4">
+                                                    <input type="radio" name="r1" id="rdStock" />
+                                                    &nbsp; Stock
+                                                </div>
+                                                <div class="col-md-4 col-xs-4">
+                                                    <input type="radio" name="r1" id="rdGenral" />
+                                                    &nbsp; General
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <label for="txtCustomerName">Customer Name :</label>
+                                                <input type="text" id="txtCustomerName" class="form-control input-sm" placeholder="Enter Customer Name" />
+
+                                                <ul class="todo-list ui-sortable">
+                                                    <li>
+                                                        <span class="text">Entered Customer Name</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="form-group">
+                                                        <label for="txtCustomerName">Quality # :</label>
+                                                        <input type="text" id="txtQualityNo" class="form-control input-sm" placeholder="Enter Quality #" />
+
+                                                        <ul class="todo-list ui-sortable">
+                                                            <li>
+                                                                <span class="text">547855662</span>
+                                                                <div class="tools">
+                                                                    <i class="fa fa-remove"></i>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                            <div class="box-body table-responsive no-padding">
+
+                                                        <table class="table table-striped">
+                                                            <tr>
+                                                                <th>Quality Attributes</th>
+                                                                <th>Values</th>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Yarn Type</td>
+                                                                <td>Nylon 66</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Reed
+                                                                </td>
+                                                                <td>50</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Pick
+                                                                </td>
+                                                                <td>62</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Weave
+                                                                </td>
+                                                                <td>62</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Minimum Order Size
+                                                                </td>
+                                                                <td>62</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Ideal Roll Length
+                                                                </td>
+                                                                <td>62</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Our Sample No
+                                                                </td>
+                                                                <td>62</td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+
+                                            @*<div class="form-group">
+                                                        <label>Article # :</label>
+
+                                                        <div class="input-group margin" style="margin: 0px;">
+                                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                                <input type="radio" name="r1" id="rdbGArticle" checked />
+                                                            </div>
+                                                            <!-- /btn-group -->
+                                                            <label for="txtCustomerName">G # : </label>
+                                                            0PES  PLN155  100
+
+                                                        </div>
+
+                                                        <div class="input-group margin" style="margin: 0px;">
+                                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                                <input type="radio" name="r1" id="rdbPArticle" />
+                                                            </div>
+                                                            <!-- /btn-group -->
+                                                            <label for="txtCustomerName">P # : </label>
+                                                            0PES  PLN155  100 4433
+
+                                                        </div>
+
+                                                        <div class="input-group margin" style="margin: 0px;">
+                                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                                <input type="radio" name="r1" id="rdbCArticle" />
+                                                            </div>
+                                                            <!-- /btn-group -->
+                                                            <label for="txtCustomerName">C # : </label>
+                                                            0PES  PLN155  100 4433 5544
+
+                                                        </div>
+                                                        <!-- /input-group -->
+                                                    </div>*@
+
+                                            @*<div id="divQualityDetails" class="row" style="text-align: center;">
+                                                <div class="col-md-12"><b>Yarn Article:</b> 04200200 S01NY06 BR0048IM HS0HT 000NRL SUPRF</div>
+                                                <div class="col-md-12"><i class="fa fa-sort-desc fa-1x"></i></div>
+                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 062.00" 02740</div>
+                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 061.00" 02740</div>
+                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 063.00" 02740</div>
+                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 064.00" 02740</div>
+                                                <div class="col-md-12" style="text-align: center;"><i class="fa fa-sort-desc fa-1x"></i></div>
+                                                <div class="col-md-12"><b>G Article:</b> 0PES PLN155 100</div>
+                                                <div class="col-md-12" style="text-align: center;"><i class="fa fa-sort-desc fa-2x"></i></div>
+                                                <div class="col-md-12"><b>P Article:</b> AAA BBB CCCC PLN155 100</div>
+                                                <div class="col-md-12" style="text-align: center;"><i class="fa fa-sort-desc fa-3x"></i></div>
+                                                <div class="col-md-12"><b>C Article:</b> AAA BBB CCCC EEE FFF PLN155 100</div>
+
+                                            </div>*@
+                                            <br />
+                                            <div class="form-group">
+                                                <button type="button" id="btnCustomerQualityDetails" class="btn btn-success btn-block">No Quality # found. Apply for New !</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div id="divStaggeredOrderItemDetails">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Staggered Order Item Details</h3>
+                                    </div>
+
+                                    <div class="box-body">
+
+                                        <div class="row">
+                                            <div class="col-md-5 col-xs-5">
+                                                <div class="form-group">
+                                                    <label for="txtQuantity">Quantity</label>
+                                                    <div class="input-group">
+                                                        <input type="text" id="txtQuantity" placeholder="Enter Quantity" class="form-control input-sm" />
+                                                        <span class="input-group-addon">Meters</span>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div class="col-md-5 col-xs-5">
+                                                <div class="form-group">
+                                                    <label for="DtDelivery_Date">Delivery Date</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" id="DtDelivery_Date" placeholder="Enter Delivery Date" class="datemask form-control input-sm" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2 col-xs-2">
+                                                <br />
+                                                <button id="btnAdd" class="btn btn-success btn-block">Add</button>
+                                            </div>
+
+                                            <div class="col-md-12 col-xs-12">
+
+                                                <table class="table table-hover">
+                                                    <tr>
+                                                        <th>Quantity</th>
+                                                        <th>Delivery Date</th>
+                                                        <th style="width: 10px;">&nbsp; </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3000</td>
+                                                        <td>03-Apr-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5000</td>
+                                                        <td>23-Mar-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4000</td>
+                                                        <td>23-Jun-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4000</td>
+                                                        <td>27-Aug-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4000</td>
+                                                        <td>03-Oct-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4000</td>
+                                                        <td>14-Nov-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4000</td>
+                                                        <td>20-Dec-2015</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4000</td>
+                                                        <td>10-Jan-2016</td>
+                                                        <td>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <div id="divCustomerQualityDetails" class="div-highlight">
+
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Customer Quality Details</h3>
+                                    </div>
+
+                                    <div class="box-body">
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtWidth_of_fabric">Width of fabric</label>
+                                                    <input type="text" id="txtWidth_of_fabric" placeholder="Enter width of fabric" class="form-control input-sm" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="drpShade">Shades</label>
+                                                    <select id="drpShade" class="form-control input-sm">
+                                                        <option>-Select shade-</option>
+                                                        <option>Bright Yarn</option>
+                                                        <option>Semi Dull</option>
+                                                        <option>Full Dull</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtPrint">Print</label>
+                                                    <input type="text" id="txtPrint" placeholder="Enter Print" class="form-control input-sm" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-3">
+
+                                                <div class="form-group">
+                                                    <label for="txtCoating">Coating</label>
+                                                    <input type="text" id="txtCoating" placeholder="Enter Coating " class="form-control input-sm" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtFinish">Finish</label>
+                                                    <input type="text" id="txtFinish" placeholder="Enter Finish" class="form-control input-sm" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtCustomer_Approved_Sample">Cust. approved sample</label>
+                                                    <input type="text" id="txtCustomer_Approved_Sample" placeholder="Enter cust. app. sample" class="form-control input-sm" />
+                                                    <ul class="todo-list ui-sortable">
+                                                        <li>
+                                                            <span class="text">Sample 1</span>
+                                                            <div class="tools">
+                                                                <i class="fa fa-remove"></i>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtApplication">Application</label>
+                                                    <textarea id="txtApplication" placeholder="Enter application" class="form-control input-sm"></textarea>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtMarket_Segment">Market segment</label>
+                                                    <textarea id="txtMarket_Segment" placeholder="Enter market segment" class="form-control input-sm"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+
+                                                <div class="form-group">
+                                                    <label for="txtPhysical_Appearance">Physical apperarance</label>
+                                                    <textarea id="txtPhysical_Appearance" placeholder="Enter physical appearance " class="form-control input-sm"></textarea>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtLabel_Tagging">Label / Tagging</label>
+                                                    <textarea id="txtLabel_Tagging" placeholder="Enter label / tagging " class="form-control input-sm"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="divQualitySupportingDetails">
+
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Quality Supporting Details</h3>
+                                    </div>
+
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+
+                                                <div class="form-group">
+                                                    <label for="txtRate">Rate</label>
+                                                    <input type="text" id="txtRate" placeholder="Enter Rate" class="form-control input-sm" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtCustomer_Roll_Length">Cust. roll Length</label>
+                                                    <input type="text" id="txtCustomer_Roll_Length" placeholder="Enter customer roll length" class="form-control input-sm">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtPacking">Packing</label>
+                                                    <input type="text" id="txtPacking" placeholder="Enter Packing" class="form-control input-sm" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtDispatch">Dispatch</label>
+                                                    <input type="text" id="txtDispatch" placeholder="Enter Dispatch" class="form-control input-sm" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtAdditional_Customer_Property">Additional Cust. Prop.</label>
+                                                    <textarea id="txtAdditional_Customer_Property" placeholder="Enter add. cust. property " class="form-control input-sm"></textarea>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtSource_of_Inquiry">Source of enquiry</label>
+                                                    <input type="text" id="txtSource_of_Inquiry" placeholder="Enter source of enquiry" class="form-control input-sm" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtAttach_Emails">Attach Emails</label>
+                                                    <div class="div-drag-drop">drag and drop here.</div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="txtAttach_Files">Attach Files</label>
+                                                    <div class="div-drag-drop">drag and drop here.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="txtQuantity">Functional Parameters</label>
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control input-sm" />
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-success btn-flat" type="button">Add</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- /input-group -->
+
+                                                <ul class="todo-list ui-sortable">
+                                                    <li>
+                                                        <span class="text">Test Report 1</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 2</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 4</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 5</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 6</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 7</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 8</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="txtQuantity">Visual Parameters</label>
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-success btn-flat" type="button">Add</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group -->
+
+                                                <ul class="todo-list ui-sortable">
+                                                    <li>
+                                                        <span class="text">Test Report 1</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 2</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Test Report 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
+                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //Datemask dd/mm/yyyy
+        $(".datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+
+        $("#divCustomerQualityDetails").hide();
+
+        $("#btnCustomerQualityDetails").click(function () {
+
+            if ($("#divCustomerQualityDetails").css("display") == "none") {
+
+                $("#divCustomerQualityDetails").slideDown(1000);
+
+                $("#btnCustomerQualityDetails").text("I dont want to create new Quality !");
+            }
+            else {
+
+                $("#divCustomerQualityDetails").slideUp(1000);
+
+                $("#btnCustomerQualityDetails").text("No Quality # found. Apply for New !");
+
+            }
+        });
+    });
+</script>
+
+

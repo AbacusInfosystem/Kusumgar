@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Customer";
+}
+
+
+
+<style>
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    .example-modal .modal {
+        background: transparent !important;
+    }
+</style>
+
+<script src="~/Scripts/Master/Event/defect_search.event.js"></script>
+<script src="~/Scripts/Master/Method/defect_search_method.js"></script>
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Defect
+
+            <small>Search</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Defect Search</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Customer Search -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form id="frmDefectSearch" method="post">
+
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label for="txtDefectTypeName">Defect name</label>
+                                        <input type="text" name="Filter.DefectName"  class="form-control" id="txtDefectName" placeholder="Enter defect - type">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Defect - Type</label>
+                                        <select class="form-control" id="drpDefectTypeName">
+                                            <option value="">Select Defect Type </option>
+                                            @foreach (var item in Model.DefectType)
+                                            {
+                                                if (Model.Defect.DefectTypeId == item.DefectTypeId)
+                                                {
+                                                    <option value="@item.DefectTypeId" selected="selected">@item.DefectTypeName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.DefectTypeId">@item.DefectTypeName</option>
+                                                }
+
+                                            }
+                                        </select>
+                                        <input type="hidden" id="hdfDefectTypeId" name="Filter.DefectTypeName" value="@Model.Filter.DefectTypeName" />
+                                    </div>
+ 
+                                </div>
+
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-left">
+                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","Defect")" role="button">Create Defect</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-right">
+
+                                            <input type="hidden" id="hdfPageSize" name="" value="" />
+                                            <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                                            <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
+
+                                            <input type="hidden" id="hdfDefectId" name="EditMode.DefectId" />
+                                            <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Defect</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- /.box-body -->
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!-- Customer Search Ends -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid" id="divDefecType">
+                    <div class="box-body table-responsive no-padding">
+
+                            <table class="table table-striped" id="tblSearchDefect">
+                                <tr>
+                                    <th style="width:50px;"></th>
+                                    <th>Defect Type</th>
+                                    <th>DefectCode</th>
+                                    <th>DefectName</th>
+                                    <th style="width:100px;">Status</th>
+                                </tr>
+                            </table>
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                          
+                        </ul>
+                    </div>
+
+                    <div id="divSearchGridOverlay" class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (left) -->
+        </div>
+
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+
+        //Date range picker
+        $('#dtpContractExpirationDate').datepicker();
+
+        $("#btnSearch").click(function () {
+            $("#divSearchGridOverlay").show();
+        });
+
+        $("#divSearchGridOverlay").hide();
+    });
+</script>

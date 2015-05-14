@@ -1,0 +1,89 @@
+﻿@model Kusumgar.Models.CustomerViewModel
+@using KusumgarBusinessEntities.Common
+<script src="/Scripts/CRM/Event/customer_billing_details_event.js"></script>
+<script src="/Scripts/CRM/Method/customer_biling_details_method.js"></script>
+<script src="/Scripts/CRM/Validation/customer_billing_details_validation.js"></script>
+<form id="frm_Billing">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Billing Office Details -->
+            <input type="hidden" id="hdn_Customer_Address_Id">
+            <div class="form-group">
+                <label style="color: #333">Billing Office Address</label>
+                <textarea id="txtBillingOfficeAddress" class="form-control input-sm" name="Addresss" rows="2" placeholder="Enter billing office address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Landline 1:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" id="txtBillingOfficeLandline1" name="Landline1" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Landline 2:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" id="txtBillingOfficeLandline2" name="Landline2" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Fax no:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-fax"></i>
+                    </div>
+                    <input type="text" id="txtBillingOfficeFaxNo" name="FaxNo" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <!-- Billing Office Details Ends-->
+        </div>
+        <div class="col-md-8 ">
+            <table class="table table-hover" id="tblBilling_Details">
+                <tr>
+                    <th>Billing Address</th>
+                    <th style="min-width: 81px;">&nbsp; </th>
+                </tr>
+                @foreach (var item in Model.Customer.Customer_Address_List)
+                {
+                    if (item.Customer_Address_Entity.Address_Type == 1)
+                    {
+                        <tr id="Bill_tr_@item.Customer_Address_Entity.Customer_Address_Id">
+                            <td>@item.Customer_Address_Entity.Addresss</td>
+                            <td>
+                                <input type="hidden" class="hdn_Customer_Address_Id" value="@item.Customer_Address_Entity.Customer_Address_Id">
+
+                                <input type="hidden" class="billing_Address" value="@item.Customer_Address_Entity.Addresss">
+                                <input type="hidden" class="billing_Landline1" value="@item.Customer_Address_Entity.Landline1">
+                                <input type="hidden" class="billing_Landline2" value="@item.Customer_Address_Entity.landline2">
+                                <input type="hidden" class="billing_FaxNo" value="@item.Customer_Address_Entity.FaxNo">
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnEdit" class="btn btn-info btn-sm btn-billing"><i class='fa fa-pencil-square-o'></i></button>
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm" onclick="RemoveBillingAddress(@item.Customer_Address_Entity.Customer_Address_Id)"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <button type="button" id="btnSaveBillingAddressDetails" class="btn btn-success">Save Billing</button>
+        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+    </div>
+
+</form>
+
+
