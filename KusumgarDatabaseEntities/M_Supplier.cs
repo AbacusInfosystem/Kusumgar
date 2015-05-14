@@ -14,8 +14,8 @@ namespace KusumgarDatabaseEntities
     
     public partial class M_Supplier
     {
-        public int Supplier_Id { get; set; }
-        public string Supplier_Name { get; set; }
+        public int Vendor_Id { get; set; }
+        public string Vendor_Name { get; set; }
         public string HeadOfficeAddress { get; set; }
         public int Head_Office_State { get; set; }
         public string Head_Office_ZipCode { get; set; }
