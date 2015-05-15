@@ -25,5 +25,14 @@
         }
     });
 
+    $("#btnViewContact").click(function () {
+
+        $("#frmSearch_customer").attr("action", "/crm/contact/search");
+
+        $("#frmSearch_customer").attr("method", "POST");
+
+        $("#frmSearch_customer").submit();
+    });
+
 
 });

@@ -2,9 +2,10 @@
 function SearchContact() {
     var _contactViewModel =
         {
-            FilterVal:
+            Filter_Val:
                 {
-                    Customer_Id: $("#hdnCustomer_Id").val()
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+                    Customer_Name: $("#txtCustomer_Name").val()
                 },
 
             Pager: {
@@ -20,7 +21,7 @@ function SearchContact() {
 
 function BindContactGrid(data) {
 
-
+    $("#txtCustomer_Name").val(data.Filter_Val.Customer_Name);
     $('#tblcontact tr.subhead').html("");
 
     var htmlText = "";
@@ -132,13 +133,13 @@ function PageMore(Id) {
     SearchContact();
 }
 
-var autoCustomerCallback = function (paramObj) {
+//var autoCustomerCallback = function (paramObj) {
 
-    BindCustomerTags(paramObj.item.label, paramObj.item.value);
-}
+//    BindCustomerTags(paramObj.item.label, paramObj.item.value);
+//}
 
-function BindCustomerTags(label, value) {
-    $('#hdnCustomer_Id').val(value);
+//function BindCustomerTags(label, value) {
+//    $('#hdnCustomer_Id').val(value);
 
-    $('#txtCustomer_Name').val(label);
-}
+//    $('#txtCustomer_Name').val(label);
+//}

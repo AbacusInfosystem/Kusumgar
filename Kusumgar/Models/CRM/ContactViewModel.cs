@@ -21,9 +21,7 @@ namespace Kusumgar.Models
 
             Pager = new PaginationInfo();
 
-            Pager.PageSize = 1;
-
-            FilterVal = new Contact_Filter();
+            Filter_Val = new Contact_Filter();
         }
 
         public List<ContactInfo> Contact_List { get; set; }
@@ -34,11 +32,13 @@ namespace Kusumgar.Models
 
         public PaginationInfo Pager { get; set; }
 
-        public Contact_Filter FilterVal { get; set; }
+        public Contact_Filter Filter_Val { get; set; }
     }
 
     public class Contact_Filter
     {
         public int Customer_Id { get; set; }
+
+        public string Customer_Name { get; set; }
     }
 }

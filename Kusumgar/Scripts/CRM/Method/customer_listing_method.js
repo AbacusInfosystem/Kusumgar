@@ -136,6 +136,7 @@ function BindCustomerGrid(data) {
         $('[name="r1"]').on('ifChanged', function (event) {
             if ($(this).prop('checked')) {
                 $("#hdfCompany_Id").val(this.id.replace("r1_", ""));
+                $("#hdfCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#btnEdit").show();
                 $("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();

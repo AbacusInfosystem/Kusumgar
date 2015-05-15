@@ -51,11 +51,13 @@
             "contact.contact_Entity.Mobile1" :
             {
                 required: true,
-                number: true
+                number: true,
+                minlength: 10
             },
             "contact.contact_Entity.Mobile2" :
             {
-                number: true
+                number: true,
+                minlength: 10
             }
         },
         messages: {

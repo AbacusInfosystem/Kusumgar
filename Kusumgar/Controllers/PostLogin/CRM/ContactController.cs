@@ -57,7 +57,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                _contactMgr.Insert_Contact(_contactViewModel.contact);
+                _contactViewModel.contact.contact_Entity.Contact_Id = _contactMgr.Insert_Contact(_contactViewModel.contact);
 
                 _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO001"));
             }
@@ -91,7 +91,7 @@ namespace Kusumgar.Controllers
             {
                 _contactMgr.Insert_Contact_Custom_Fields(_contactViewModel.contact.Custom_Fields);
 
-                _contactViewModel.contact = _contactMgr.Get_Contact_By_Id(_contactViewModel.contact.contact_Entity.Contact_Id);
+                _contactViewModel.contact = _contactMgr.Get_Contact_By_Id(_contactViewModel.contact.Custom_Fields.Custom_Fields_Entity.Contact_Id);
 
                 _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO003"));
             }
@@ -109,6 +109,8 @@ namespace Kusumgar.Controllers
             {
                 _contactMgr.Update_Contact_Custom_Fields(_contactViewModel.contact.Custom_Fields);
 
+                _contactViewModel.contact = _contactMgr.Get_Contact_By_Id(_contactViewModel.contact.Custom_Fields.Custom_Fields_Entity.Contact_Id);
+
                 _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO004"));
             }
             catch (Exception ex)
@@ -123,9 +125,14 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                if (_contactViewModel.FilterVal.Customer_Id != 0)
+                if (_contactViewModel.Filter_Val.Customer_Id != 0)
                 {
-                    _contactViewModel.Contact_List = _contactMgr.Get_Contact_List_By_Name(_contactViewModel.FilterVal.Customer_Id, _contactViewModel.Pager);
+                    _contactViewModel.Contact_List = _contactMgr.Get_Contact_List_By_Name(_contactViewModel.Filter_Val.Customer_Id, _contactViewModel.Pager);
+
+                    if(string.IsNullOrEmpty(_contactViewModel.Filter_Val.Customer_Name))
+                    {
+                        _contactViewModel.Filter_Val.Customer_Name = _contactViewModel.Contact_List.Select(a => a.Customer_Name).FirstOrDefault();
+                    }
                 }
                 else
                 {

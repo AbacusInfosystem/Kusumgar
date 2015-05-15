@@ -68,16 +68,3 @@ function Get_Contact_values()
 
     return _contactViewModel;
 }
-
-
-var autoCustomerCallback = function (paramObj) {
-
-    BindCustomerTags(paramObj.item.label, paramObj.item.value);
-}
-
-function BindCustomerTags(label, value)
-{
-    $('#hdnCustomer_Id').val(value);
-
-    $('#txtCustomer_Name').val(label);
-}

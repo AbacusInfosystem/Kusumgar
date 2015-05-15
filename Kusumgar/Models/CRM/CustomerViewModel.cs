@@ -47,6 +47,8 @@ namespace Kusumgar.Models
     {
         public string Customer_Name { get; set; }
 
+        public int Customer_Id { get; set; }
+
         public string Email { get; set; }
 
         public string Turnover { get; set; }

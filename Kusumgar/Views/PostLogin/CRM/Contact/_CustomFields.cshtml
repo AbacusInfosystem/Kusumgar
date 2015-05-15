@@ -43,7 +43,7 @@
                             <input type="hidden" class="Field_Value" value="@item.Custom_Fields_Entity.Field_Value">
 
                             <div class="btn-group pull-right">
-                                <button type="button" id="btnEdit" class="btn btn-info btn-sm btn-Shipping"><i class='fa fa-pencil-square-o'></i></button>
+                                <button type="button" id="btnEdit" class="btn btn-info btn-sm" onclick="EditCustomFields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-pencil-square-o'></i></button>
                                 <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveCustomFields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
                             </div>
                         </td>
@@ -55,7 +55,7 @@
     </div>
     <div class="box-footer">
         <button type="button" class="btn btn-success" id="btnSaveCustomField">Save Custom Field</button>
-        <button type="button" id="btnCancel" class="btn btn-warning">Cancle and Open Search</button>
+        <a href="@Url.Action("Search","Contact")" id="btnCancel" class="btn btn-warning" role="button">Cancel and Open Search</a>
     </div>
 
 </form>
