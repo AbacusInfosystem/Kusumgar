@@ -22,10 +22,7 @@ namespace Kusumgar.Models
             
             Pager = new PaginationInfo();
 
-            Pager.PageSize = 5;
-
-            Pager.IsPagingRequired = true;
-     
+            FriendlyMessage = new List<FriendlyMessageInfo>();
         }
 
         public DefectInfo Defect { get; set; }
@@ -40,16 +37,18 @@ namespace Kusumgar.Models
 
         public DefectFilter Filter { get; set; }
 
+        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+
         public class DefectEditMode
         {
-            public int DefectId { get; set; }
+            public int Defect_Id { get; set; }
 
         }
 
         public class DefectFilter
         {
-            public int DefectTypeName { get; set; }
-            public string DefectName{get;set;}
+            public int Defect_Type_Id { get; set; }
+            public string Defect_Name{get;set;}
 
          }
 

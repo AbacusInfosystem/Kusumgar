@@ -235,6 +235,7 @@
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\CustomerController.cs" />
     <Compile Include="Controllers\PostLogin\Dashboard\DashboardController.cs" />
@@ -242,8 +243,10 @@
     <Compile Include="Controllers\PostLogin\Master\ArticleProcessWorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\ConsumableMasterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CustomerQualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\GArticleController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PegPlanController.cs" />
     <Compile Include="Controllers\PostLogin\Master\QualityCreationController.cs" />
@@ -268,12 +271,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CRM\ComplaintViewModel.cs" />
     <Compile Include="Models\CRM\ContactViewModel.cs" />
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
     <Compile Include="Models\Master\AjaxController.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
+    <Compile Include="Models\Master\ConsumableMasterViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
+    <Compile Include="Models\Master\IndustrialViewModel.cs" />
     <Compile Include="Models\Master\RoleViewModel.cs" />
     <Compile Include="Models\Master\TestUnitViewModel.cs" />
     <Compile Include="Models\Master\TestViewModel.cs" />
@@ -914,6 +920,8 @@
     <Content Include="Scripts\bluimp\main.js" />
     <Content Include="Scripts\bluimp\tmpl.js" />
     <Content Include="Scripts\bluimp\vendor\jquery.ui.widget.js" />
+    <Content Include="Scripts\CRM\Event\complaint_event.js" />
+    <Content Include="Scripts\CRM\Event\complaint_search_event.js" />
     <Content Include="Scripts\CRM\Event\contact_event.js" />
     <Content Include="Scripts\CRM\Event\contact_listing_event.js" />
     <Content Include="Scripts\CRM\Event\customer_billing_details_event.js" />
@@ -922,6 +930,8 @@
     <Content Include="Scripts\CRM\Event\customer_listing_event.js" />
     <Content Include="Scripts\CRM\Event\customer_shipping_details_event.js" />
     <Content Include="Scripts\CRM\Event\custom_field_event.js" />
+    <Content Include="Scripts\CRM\Method\complaint_method.js" />
+    <Content Include="Scripts\CRM\Method\complaint_search_method.js" />
     <Content Include="Scripts\CRM\Method\contact_listing_method.js" />
     <Content Include="Scripts\CRM\Method\contact_method.js" />
     <Content Include="Scripts\CRM\Method\customer_biling_details_method.js" />
@@ -930,6 +940,7 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
     <Content Include="Scripts\CRM\Validation\customer_billing_details_validation.js" />
     <Content Include="Scripts\CRM\Validation\customer_financial_validation.js" />
@@ -957,20 +968,28 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\Master\Event\attribute_code_event.js" />
     <Content Include="Scripts\Master\Event\attribute_code_search_event.js" />
+    <Content Include="Scripts\Master\Event\ConsumableMaster_Event.js" />
+    <Content Include="Scripts\Master\Event\consumable_supplier_event.js" />
     <Content Include="Scripts\Master\Event\defect_event.js" />
     <Content Include="Scripts\Master\Event\defect_search.event.js" />
     <Content Include="Scripts\Master\Event\defect_type_event.js" />
     <Content Include="Scripts\Master\Event\defect_type_search_event.js" />
+    <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\industrial_search_event.js" />
     <Content Include="Scripts\Master\Event\test_event.js" />
     <Content Include="Scripts\Master\Event\test_search_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_search_event.js" />
     <Content Include="Scripts\Master\Method\attribute_code_method.js" />
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
+    <Content Include="Scripts\Master\Method\consumablemaster_method.js" />
+    <Content Include="Scripts\Master\Method\consumable_supplier_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
     <Content Include="Scripts\Master\Method\defect_type_method.js" />
     <Content Include="Scripts\Master\Method\defect_type_search_method.js" />
+    <Content Include="Scripts\Master\Method\industrial_method.js" />
+    <Content Include="Scripts\Master\Method\industrial_search_method.js" />
     <Content Include="Scripts\Master\Method\test_method.js" />
     <Content Include="Scripts\Master\Method\test_search_method.js" />
     <Content Include="Scripts\Master\Method\test_unit_method.js" />
@@ -986,6 +1005,7 @@
     <Content Include="Scripts\Master\user_search_method.js" />
     <Content Include="Scripts\Master\user_validation.js" />
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
+    <Content Include="Scripts\Master\Validation\consumablemaster_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
@@ -1392,6 +1412,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\CRM\Contact\_CustomFields.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\CRM\Complaint\Index.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Complaint\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\Vendor\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_CentralExciseRegistrationDetails.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_CertificationDetails.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_ProductServicesDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\Industrial\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\Industrial\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Industrial\_IndustrialSupplierMaster.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\ConsumableMaster\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\ConsumableMaster\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\ConsumableMaster\_ConsumableSupplierDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

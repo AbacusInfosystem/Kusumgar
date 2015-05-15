@@ -4,23 +4,18 @@
 
         Filter: {
             
-          AttributeId: $("#hdfAttributeId").val(),
-
-        },
+          Attribute_Id: $("#hdfAttributeId").val(),
+                },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(1),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+               },
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/AttributeCode/GetAttributeCodes", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
+    CallAjax("/AttributeCode/Get_Attribute_Codes", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
 }
 
 function GetAllAttributeCodes() {
@@ -29,22 +24,18 @@ function GetAllAttributeCodes() {
 
         Filter: {
 
-            AttributeId: ""
+            Attribute_Id: ""
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+             },
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/AttributeCode/GetAttributeCodes", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
+    CallAjax("/AttributeCode/Get_Attribute_Codes", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
 }
 
 function BindAttributeCodesInGrid(data, mode) {
@@ -53,13 +44,13 @@ function BindAttributeCodesInGrid(data, mode) {
 
     var htmlText = "";
 
-    for (i = 0; i < data.AttributeCodeGrid.length; i++) {
+    for (i = 0; i < data.Attribute_Code_Grid.length; i++) {
 
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='hidden' id='hdfAttributeCodeId_" + data.AttributeCodeGrid[i].AttributeCodeId + "' value='" + data.AttributeCodeGrid[i].AttributeCodeId + "' />";
+        htmlText += "<input type='hidden' id='hdfAttributeCodeId_" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' value='" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' />";
 
         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -67,23 +58,23 @@ function BindAttributeCodesInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += data.AttributeCodeGrid[i].AttributeCodeName;
+        htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.AttributeCodeGrid[i].AttributeName;
+        htmlText += data.Attribute_Code_Grid[i].Attribute_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.AttributeCodeGrid[i].Code;
+        htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Code;
 
         htmlText += "</td>";
 
-        if (data.AttributeCodeGrid[i].Status == true) {
+        if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == true) {
 
             htmlText += "<td>";
 
@@ -91,7 +82,8 @@ function BindAttributeCodesInGrid(data, mode) {
 
             htmlText += "</td>";
         }
-        if (data.AttributeCodeGrid[i].Status == false) {
+        if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == false) {
+
             htmlText += "<td>";
 
             htmlText += "Inactive";
@@ -107,19 +99,14 @@ function BindAttributeCodesInGrid(data, mode) {
 
     $('#tblSearchAttributeCode tr:first').after(htmlText);
 
-    $('#hdfPageSize').val(data.Pager.PageSize);
-
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-    $('#hdfIsPagingRequired').val(data.Pager.IsPagingRequired);
 
     if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
         $('.pagination').html(data.Pager.PageHtmlString);
     }
 
-
-    $('input').iCheck({
+   $('input').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -128,7 +115,7 @@ function BindAttributeCodesInGrid(data, mode) {
 
         if ($(this).prop('checked')) {
 
-            alert("ID " + $(this).parents('tr').find('input[id^=hdfAttributeCodeId]').val())
+            //alert("Id"+$(this).parents('tr').find('input[id^=hdfAttributeCodeId]').val());
 
             $("#hdfAttributeCodeId").val($(this).parents('tr').find('input[id^=hdfAttributeCodeId]').val());
 
@@ -148,22 +135,18 @@ function PageMore(Id) {
 
         Filter: {
 
-            AttributeId: $("#hdfAttributeId").val()
+            Attribute_Id: $("#hdfAttributeId").val()
         },
 
         Pager: {
 
-            IsPagingRequired: $('#hdfIsPagingRequired').val(),
-
             CurrentPage: $('#hdfCurrentPage').val(),
-
-            PageSize: $('#hdfPageSize').val(),
-        },
+              },
 
     };
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/AttributeCode/GetAttributeCodes", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
+    CallAjax("/AttributeCode/Get_Attribute_Codes", "json", JSON.stringify(aViewModel), "POST", "application/json", false, BindAttributeCodesInGrid, "", null);
 
 }

@@ -13,36 +13,43 @@ namespace Kusumgar.Models
         public TestViewModel()
         {
             Test = new TestInfo();
-            TestGrid = new List<TestInfo>();
-            EditMode = new TestEditMode();
-            Filter = new TestFilter();
-            FabricType = new List<FabricTypeInfo>();
-            Pager = new PaginationInfo();
-            Pager.PageSize = 7;
-            Pager.IsPagingRequired = true;
             
-        }
+            Test_Grid = new List<TestInfo>();
+            
+            Edit_Mode = new Test_Edit_Mode();
+            
+            Filter = new Test_Filter();
+            
+            Fabric_Type = new List<FabricTypeInfo>();
+            
+            Pager = new PaginationInfo();
+            
+            FriendlyMessage = new List<FriendlyMessageInfo>();
+         }
 
         public TestInfo Test { get; set; }
 
-        public List<TestInfo> TestGrid { get; set; }
+        public List<TestInfo> Test_Grid { get; set; }
 
-        public List<FabricTypeInfo> FabricType { get; set; }
+        public List<FabricTypeInfo> Fabric_Type { get; set; }
 
-        public TestEditMode EditMode { get; set; }
-        public TestFilter Filter { get; set; }
+        public Test_Edit_Mode Edit_Mode { get; set; }
+       
+        public Test_Filter Filter { get; set; }
 
         public PaginationInfo Pager { get; set; }
-      
-        public class TestEditMode
+
+        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+    
+        public class Test_Edit_Mode
         {
-            public int TestId { get; set; }
+            public int Test_Id { get; set; }
 
         }
 
-        public class TestFilter
+        public class Test_Filter
         {
-            public int FabricTypeName { get; set; }
+            public int Fabric_Type_Id{ get; set; }
 
         }
 

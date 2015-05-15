@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KusumgarDatabaseEntities;
+using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
   public class DefectInfo
     {
-        public int DefectTypeId { get; set; }
-        public string DefectTypeName { get; set; }
-        public string DefectCode { get; set; }
-        public string DefectName { get; set; }
-        public bool Status { get; set; }
-        public int DefectId { get; set; }
-
+        public DefectInfo()
+        {
+           DefectEntity =new M_Defect();
+        }
+        public M_Defect DefectEntity { get; set; }
+        public string Defect_Type_Name { get; set; }
     }
 }

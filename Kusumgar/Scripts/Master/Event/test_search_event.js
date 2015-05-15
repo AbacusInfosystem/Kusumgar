@@ -8,7 +8,7 @@
 
     $('#btnEdit').click(function () {
 
-        $("#frmTestSearch").attr("action", "/Test/GetTestById");
+        $("#frmTestSearch").attr("action", "/Test/Get_Test_By_Id");
 
         $("#frmTestSearch").attr("method", "post");
 

@@ -1,5 +1,5 @@
-﻿@model Kusumgar.Models.Master.AttributeCodeViewModel
-@using KusumgarBusinessEntities.Master;
+﻿@model Kusumgar.Models.AttributeCodeViewModel
+@using KusumgarBusinessEntities.Common;
 @{
     ViewBag.Title = "AttributeCode";
 }
@@ -41,19 +41,18 @@
                             <div class="row">
                                 <div class="col-md-4">
 
-                                    <input type="hidden" id="hdfPageSize" name="" value="" />
+                                   
                                     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                    <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
-
-                                    <input type="hidden" id="hdfAttributeCodeId" name="AttributeCode.AttributeCodeId" value="@Model.AttributeCode.AttributeCodeId" />
+                                    
+                                    <input type="hidden" id="hdfAttributeCodeId" name="Attribute_Code.AttributeCodeEntity.Attribute_Code_Id" value="@Model.Attribute_Code.AttributeCodeEntity.Attribute_Code_Id" />
 
                                     <div class="form-group">
                                         <label for="drpAttributeCode">Attribute Code</label>
-                                        <select id="drpAttributeCode" class="form-control" name="AttributeCode.AttributeId">
+                                        <select id="drpAttributeCode" class="form-control" name="Attribute_Code.AttributeCodeEntity.Attribute_Id">
                                             <option value="">Select AttributeName</option>
-                                            @foreach (var item in LookUps.GetAttributeNames())
+                                            @foreach (var item in LookupInfo.GetAttributeNames())
                                             {
-                                                if (Model.AttributeCode.AttributeId == item.Key)
+                                                if (Model.Attribute_Code.AttributeCodeEntity.Attribute_Id == item.Key)
                                                 {
                                                     <option value="@item.Key" selected="selected">@item.Value</option>
                                                 }
@@ -66,26 +65,25 @@
 
                                     </div>
 
-
                                     <div class="form-group">
                                         <label for="txtYarnName"> Name</label>
-                                        <input type="text" class="form-control" id="txtYarnName" name="AttributeCode.AttributeCodeName" value="@Model.AttributeCode.AttributeCodeName" placeholder="Enter Yarn Name">
+                                        <input type="text" class="form-control" id="txtYarnName" name="Attribute_Code.AttributeCodeEntity.Attribute_Code_Name" value="@Model.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name" placeholder="Enter Yarn Name">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtYarnCode"> Code</label>
-                                        <input type="text" class="form-control" id="txtYarnCode" name="AttributeCode.Code" value="@Model.AttributeCode.Code" placeholder="Enter Yarn Code">
+                                        <input type="text" class="form-control" id="txtYarnCode" name="Attribute_Code.AttributeCodeEntity.Code" value="@Model.Attribute_Code.AttributeCodeEntity.Code" placeholder="Enter Yarn Code">
                                     </div>
 
                                     <div class="form-group">
                                         <label>
-                                            @if (Model.AttributeCode.Status == true)
+                                            @if (Model.Attribute_Code.AttributeCodeEntity.Status == true)
                                         {
-                                        @:<input type="checkbox" name="AttributeCode.Status" value="false" checked />
+                                        @:<input type="checkbox" name="Attribute_Code.AttributeCodeEntity.Status" value="false" checked />
                                                                                                }
                                         else
                                         {
-                                        @:<input type="checkbox" name="AttributeCode.Status" value="true" />
+                                        @:<input type="checkbox" name="Attribute_Code.AttributeCodeEntity.Status" value="true" />
                                                }
                                             &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 

@@ -28,13 +28,10 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Access_Function> M_Access_Function { get; set; }
         public DbSet<M_Nation> M_Nation { get; set; }
         public DbSet<M_Payment_Terms> M_Payment_Terms { get; set; }
-        public DbSet<M_Product> M_Product { get; set; }
         public DbSet<M_Role> M_Role { get; set; }
         public DbSet<M_Role_Access_Function_Mapping> M_Role_Access_Function_Mapping { get; set; }
         public DbSet<M_State> M_State { get; set; }
-        public DbSet<M_Supplier> M_Supplier { get; set; }
         public DbSet<M_User> M_User { get; set; }
-        public DbSet<M_Product_Supplier_Mapping> M_Product_Supplier_Mapping { get; set; }
         public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
         public DbSet<Bank_Details> Bank_Details { get; set; }
@@ -48,5 +45,15 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Defect_Type> M_Defect_Type { get; set; }
         public DbSet<M_Test_Unit> M_Test_Unit { get; set; }
         public DbSet<M_Fabric_Type> M_Fabric_Type { get; set; }
+        public DbSet<IndustrialCategory> IndustrialCategories { get; set; }
+        public DbSet<IndustrialGroup> IndustrialGroups { get; set; }
+        public DbSet<IndustrialMaster> IndustrialMasters { get; set; }
+        public DbSet<IndustrialSupplierMaster> IndustrialSupplierMasters { get; set; }
+        public DbSet<M_Category> M_Category { get; set; }
+        public DbSet<M_Consumable> M_Consumable { get; set; }
+        public DbSet<M_Consumable_Vendors> M_Consumable_Vendors { get; set; }
+        public DbSet<M_Product_Vendors> M_Product_Vendors { get; set; }
+        public DbSet<M_Vendor> M_Vendor { get; set; }
+        public DbSet<M_SubCategory> M_SubCategory { get; set; }
     }
 }

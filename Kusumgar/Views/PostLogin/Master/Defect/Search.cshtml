@@ -1,8 +1,4 @@
-﻿@{
-    ViewBag.Title = "Customer";
-}
-
-
+﻿@model Kusumgar.Models.DefectViewModel
 
 <style>
     .example-modal .modal {
@@ -27,6 +23,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -58,27 +55,26 @@
 
                                     <div class="form-group">
                                         <label for="txtDefectTypeName">Defect name</label>
-                                        <input type="text" name="Filter.DefectName"  class="form-control" id="txtDefectName" placeholder="Enter defect - type">
+                                        <input type="text" name="Filter.Defect_Name" class="form-control" id="txtDefectName" placeholder="Enter defect - type">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Defect - Type</label>
                                         <select class="form-control" id="drpDefectTypeName">
-                                            <option value="">Select Defect Type </option>
+                                            <option value="">Select Defect-Type</option>
                                             @foreach (var item in Model.DefectType)
                                             {
-                                                if (Model.Defect.DefectTypeId == item.DefectTypeId)
+                                                if (Model.Filter.Defect_Type_Id == item.DefectTypeEntity.Defect_Type_Id)
                                                 {
-                                                    <option value="@item.DefectTypeId" selected="selected">@item.DefectTypeName</option>
+                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id" selected="selected">@item.DefectTypeEntity.Defect_Type_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.DefectTypeId">@item.DefectTypeName</option>
+                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id">@item.DefectTypeEntity.Defect_Type_Name</option>
                                                 }
-
                                             }
                                         </select>
-                                        <input type="hidden" id="hdfDefectTypeId" name="Filter.DefectTypeName" value="@Model.Filter.DefectTypeName" />
+                                        <input type="hidden" id="hdfDefectTypeId" name="Filter.Defect_Type_Id" value="@Model.Filter.Defect_Type_Id" />
                                     </div>
  
                                 </div>
@@ -91,7 +87,7 @@
 
                                         <div class="btn-group pull-left">
                                             <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Defect")" role="button">Create Defect</a>
+                                            <a class="btn btn-primary" href="@Url.Action("Index", "Defect")" role="button">Create Defect</a>
                                         </div>
 
                                     </div>
@@ -99,11 +95,11 @@
 
                                         <div class="btn-group pull-right">
 
-                                            <input type="hidden" id="hdfPageSize" name="" value="" />
+                                          
                                             <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                            <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
+                                            
 
-                                            <input type="hidden" id="hdfDefectId" name="EditMode.DefectId" />
+                                            <input type="hidden" id="hdfDefectId" name="EditMode.Defect_Id" />
                                             <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Defect</button>
                                         </div>
 

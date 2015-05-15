@@ -4,32 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
+using KusumgarBusinessEntities.Common;
 using KusumgarDataAccess;
 
 namespace KusumgarModel
 {
    public class AttributeCodeManager
     {
-
-       public List<AttributeCodeInfo> GetAttributeCodes()
+        public List<AttributeCodeInfo> Get_Attribute_Codes(PaginationInfo pager)
         {
             List<AttributeCodeInfo> attributeCodes = new List<AttributeCodeInfo>();
 
             AttributeCodeRepo dRepo = new AttributeCodeRepo();
 
-            attributeCodes = dRepo.GetAttributeCodes();
+            attributeCodes = dRepo.Get_Attribute_Codes(pager);
 
             return attributeCodes;
 
         }
 
-       public List<AttributeCodeInfo> GetAttributeCodesByAttributeId(int attributeId)
+        public List<AttributeCodeInfo> Get_Attribute_Codes_By_Attribute_Name(int attributeId, PaginationInfo pager)
         {
             List<AttributeCodeInfo> attributeCodes = new List<AttributeCodeInfo>();
 
             AttributeCodeRepo dRepo = new AttributeCodeRepo();
 
-            attributeCodes = dRepo.GetAttributeCodesByAttributeId(attributeId);
+            attributeCodes = dRepo.Get_Attribute_Codes_By_Attribute_Name(attributeId,pager);
 
             return attributeCodes;
         }
@@ -37,16 +37,17 @@ namespace KusumgarModel
         public void Insert(AttributeCodeInfo attributeCode)
         {
             AttributeCodeRepo dRepo = new AttributeCodeRepo();
+            
             dRepo.Insert(attributeCode);
         }
 
-        public AttributeCodeInfo GetAttributeCodeById(int attributeCodeId)
+        public AttributeCodeInfo Get_Attribute_Code_By_Id(int attributeCodeId)
         {
             AttributeCodeInfo attributeCodeInfo = new AttributeCodeInfo();
 
             AttributeCodeRepo dRepo = new AttributeCodeRepo();
 
-            attributeCodeInfo = dRepo.GetAttributeCodeById(attributeCodeId);
+            attributeCodeInfo = dRepo.Get_Attribute_Code_By_Id(attributeCodeId);
 
             return attributeCodeInfo;
         }

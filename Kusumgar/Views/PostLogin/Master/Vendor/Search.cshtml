@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Search Supplier";
+}
+<style>
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    .example-modal .modal {
+        background: transparent !important;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Supplier
+
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Supplier</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtSupplierName">Supplier Name </label>
+                                    <input type="text" class="form-control" id="txtSupplierName" placeholder="Enter Supplier Name ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="btn-group pull-left">
+                                    <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
+                                    <a class="btn btn-primary" href="@Url.Action("Index", "Vendor")" role="button">Create Industrial Supplier</a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-warning">Edit Industrial Supplier</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid" id="divDefecTypeGrid">
+                    <div class="box-body table-responsive no-padding">
+
+                        <table class="table table-striped" id="tblSearchVendor">
+                            <tr>
+                                <th style="width:50px;"></th>
+                                <th>Vendor name</th>
+
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <ul></ul>
+                        </div>
+
+                    </div>
+
+                    <div id="divSearchGridOverlay" class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (left) -->
+        </div>
+
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+
+

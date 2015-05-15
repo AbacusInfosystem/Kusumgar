@@ -34,7 +34,7 @@ namespace Kusumgar.Controllers
 
         public JsonResult Get_Customer_AutoComplete(string Customer_Name)
         {
-            List<AutoCompleteInfo> Customer_List = new List<AutoCompleteInfo>();
+            List<AutocompleteInfo> Customer_List = new List<AutocompleteInfo>();
 
             try
             {

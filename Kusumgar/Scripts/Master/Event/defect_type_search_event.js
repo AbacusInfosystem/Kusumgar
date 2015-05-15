@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    GetAllDefectTypes();
+
     $("#btnSearch").click(function () {
 
         SearchDefectTypes();
@@ -7,7 +9,7 @@
 
     $('#btnEdit').click(function () {
 
-        $("#frmDefectTypeSearch").attr("action", "/DefectType/GetDefectTypeById");
+        $("#frmDefectTypeSearch").attr("action", "/DefectType/Get_Defect_Type_By_Id");
 
         $("#frmDefectTypeSearch").attr("method", "post");
 
@@ -16,11 +18,9 @@
 
     $("#divSearchGridOverlay").hide();
 
-    GetAllDefectTypes();
-
     $('#btnViewDefects').click(function () {
 
-        $("#frmDefectTypeSearch").attr("action", "/DefectType/ViewDefects");
+        $("#frmDefectTypeSearch").attr("action", "/DefectType/View_Defects");
 
         $("#frmDefectTypeSearch").attr("method", "post");
 

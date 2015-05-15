@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities;
-using Kusumgar.Models;
-using System.Configuration;
-using KusumgarHelper.PageHelper;
 using KusumgarBusinessEntities.Common;
+using KusumgarDatabaseEntities;
 
 namespace Kusumgar.Models
 {
@@ -18,15 +16,13 @@ namespace Kusumgar.Models
 
             DefectTypeGrid = new List<DefectTypeInfo>();
            
-            EditMode = new DefectTypeEditMode();
+            EditMode = new Defect_Type_Edit_Mode();
            
-            Filter = new DefectTypeFilter();
-            
+            Filter = new Defect_Type_Filter();
+
             Pager = new PaginationInfo();
 
-            Pager.PageSize = 10;
-
-            Pager.IsPagingRequired = true;
+            FriendlyMessage = new List<FriendlyMessageInfo>();
             
         }
 
@@ -34,25 +30,26 @@ namespace Kusumgar.Models
 
         public List<DefectTypeInfo> DefectTypeGrid { get; set; }
 
-        public List<DefectTypeInfo> DefectTypeByName { get; set; }
-
-        public DefectTypeEditMode EditMode { get; set; }
+        public Defect_Type_Edit_Mode EditMode { get; set; }
        
-        public DefectTypeFilter Filter { get; set; }
+        public Defect_Type_Filter Filter { get; set; }
 
         public PaginationInfo Pager { get; set; }
+
+        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
       
-        public class DefectTypeEditMode
+        public class Defect_Type_Edit_Mode
         {
-            public int DefectTypeId { get; set; }
+            public int Defect_Type_Id { get; set; }
 
         }
 
-        public class DefectTypeFilter
+        public class Defect_Type_Filter
         {
-            public string DefectTypeName { get; set; }
+            public string Defect_Type_Name { get; set; }
   
         }
 
     }
 }
+

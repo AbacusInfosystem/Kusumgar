@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KusumgarDatabaseEntities;
+using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
    public class FabricTypeInfo
     {
-
-       public string FabricTypeName { get; set; }
-       public int FabricTypeId { get; set; }
+       public FabricTypeInfo()
+      {
+            FabricTypeEntity =new M_Fabric_Type();
+       
+       }
+       public M_Fabric_Type FabricTypeEntity { get; set; }
+      
     }
 }

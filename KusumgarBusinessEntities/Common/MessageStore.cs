@@ -79,6 +79,51 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
+                #region DefectType
+
+                FriendlyMessageInfo DT011 = new FriendlyMessageInfo("DT011", MessageType.Success, "DefectType has been added successfully.");
+                hash.Add("DT011", DT011);
+
+                FriendlyMessageInfo DT012 = new FriendlyMessageInfo("DT012", MessageType.Success, "DefectType has been updated successfully.");
+                hash.Add("DT012", DT012);
+                #endregion
+
+                #region Defects
+
+                FriendlyMessageInfo D011 = new FriendlyMessageInfo("D011", MessageType.Success, "Defect has been added successfully.");
+                hash.Add("D011", D011);
+
+                FriendlyMessageInfo D012 = new FriendlyMessageInfo("D012", MessageType.Success, "Defect has been updated successfully.");
+                hash.Add("D012", D012);
+                #endregion
+
+                #region TestUnit
+
+                FriendlyMessageInfo TU011 = new FriendlyMessageInfo("TU011", MessageType.Success, "TestUnit has been added successfully.");
+                hash.Add("TU011", TU011);
+
+                FriendlyMessageInfo TU012 = new FriendlyMessageInfo("TU012", MessageType.Success, "TestUnit has been updated successfully.");
+                hash.Add("TU012", TU012);
+                #endregion
+
+                #region Test
+
+                FriendlyMessageInfo T011 = new FriendlyMessageInfo("T011", MessageType.Success, "Test has been added successfully.");
+                hash.Add("T011", T011);
+
+                FriendlyMessageInfo T012 = new FriendlyMessageInfo("T012", MessageType.Success, "Test has been updated successfully.");
+                hash.Add("T012", T012);
+                #endregion
+
+                #region Attribute Code
+
+                FriendlyMessageInfo AC011 = new FriendlyMessageInfo("AC011", MessageType.Success, "Attribute Code has been added successfully.");
+                hash.Add("AC011", AC011);
+
+                FriendlyMessageInfo AC012 = new FriendlyMessageInfo("AC012", MessageType.Success, "Attribute Code has been updated successfully.");
+                hash.Add("AC012", AC012);
+                #endregion
+
             #endregion
 
             #region CRM
@@ -108,7 +153,7 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
-            #region Contact
+                #region Contact
                 FriendlyMessageInfo CO001 = new FriendlyMessageInfo("CO001", MessageType.Success, "Contact has been added successfully.");
                 hash.Add("CO001", CO001);
 
@@ -124,6 +169,16 @@ namespace KusumgarBusinessEntities.Common
                 FriendlyMessageInfo CO005 = new FriendlyMessageInfo("CO005", MessageType.Success, "Custom Field Deleted successfully.");
                 hash.Add("CO005", CO005); 
             #endregion
+
+                #region Complaint
+
+                FriendlyMessageInfo COM001 = new FriendlyMessageInfo("COM001", MessageType.Success, "Complaint has been added successfully.");
+                hash.Add("COM001", COM001);
+
+                FriendlyMessageInfo COM002 = new FriendlyMessageInfo("COM002", MessageType.Success, "Complaint has been updated successfully.");
+                hash.Add("COM002", COM002);
+
+                #endregion
 
             #endregion
 

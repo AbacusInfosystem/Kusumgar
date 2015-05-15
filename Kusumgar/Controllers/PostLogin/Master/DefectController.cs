@@ -15,10 +15,10 @@ namespace Kusumgar.Controllers.PostLogin
     {
         public ActionResult Index(DefectViewModel dViewModel)
         {
-             DefectManager dMan = new DefectManager();
-             
-            dViewModel.DefectType = dMan.GetDefectTypes();
-            
+            DefectManager dMan = new DefectManager();
+
+            dViewModel.DefectType = dMan.Get_Defect_Types();
+
             return View(dViewModel);
         }
 
@@ -26,44 +26,70 @@ namespace Kusumgar.Controllers.PostLogin
         {
             DefectManager dMan = new DefectManager();
 
-            dViewModel.DefectType = dMan.GetDefectTypes();
-
             if (TempData["DefectTypeId"] != null)
             {
-                dViewModel.Filter.DefectTypeName = Convert.ToInt32(TempData["DefectTypeId"]);
+                dViewModel.Filter.Defect_Type_Id = Convert.ToInt32(TempData["DefectTypeId"]);
             }
+
+            if (TempData["dViewModel"] != null)
+            {
+                dViewModel = (DefectViewModel)TempData["dViewModel"];
+            }
+
+            dViewModel.DefectType = dMan.Get_Defect_Types();
 
             return View("Search", dViewModel);
         }
-    
+
         public ActionResult Insert(DefectViewModel dViewModel)
-        {
-            DefectManager dMan = new DefectManager();
-
-            dMan.Insert(dViewModel.Defect);
-
-            return Search(dViewModel);
-
-        }
-
-        public ActionResult Update(DefectViewModel dViewModel)
-        {
-            DefectManager dMan = new DefectManager();
-
-            dMan.Update(dViewModel.Defect);
-
-            return Search(dViewModel);
-        }
-
-        public ActionResult GetDefectById(DefectViewModel dViewModel)
         {
             try
             {
                 DefectManager dMan = new DefectManager();
-               
-                dViewModel.Defect = dMan.GetDefectById(dViewModel.EditMode.DefectId);
+
+                dMan.Insert(dViewModel.Defect);
+
+                dViewModel.FriendlyMessage.Add(MessageStore.Get("D011"));
+            }
+            catch (Exception ex)
+            {
+                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+            }
+
+            TempData["dViewModel"] = dViewModel;
+
+            return RedirectToAction("Search");
+        }
+
+        public ActionResult Update(DefectViewModel dViewModel)
+        {
+            try
+            {
+                DefectManager dMan = new DefectManager();
+
+                dMan.Update(dViewModel.Defect);
                 
-                dViewModel.DefectType = dMan.GetDefectTypes();
+                dViewModel.FriendlyMessage.Add(MessageStore.Get("D012"));
+            }
+            catch (Exception ex)
+            {
+                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+            }
+           
+            TempData["dViewModel"] = dViewModel;
+            
+            return RedirectToAction("Search");
+        }
+
+        public ActionResult Get_Defect_By_Id(DefectViewModel dViewModel)
+        {
+            try
+            {
+                DefectManager dMan = new DefectManager();
+
+                dViewModel.Defect = dMan.Get_Defect_By_Id(dViewModel.EditMode.Defect_Id);
+
+                dViewModel.DefectType = dMan.Get_Defect_Types();
 
                 return View("Index", dViewModel);
             }
@@ -75,54 +101,40 @@ namespace Kusumgar.Controllers.PostLogin
 
         }
 
-        public JsonResult GetDefects(DefectViewModel dViewModel)
+        public JsonResult Get_Defects(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();
 
-            if (!string.IsNullOrEmpty(dViewModel.Filter.DefectName) && (dViewModel.Filter.DefectTypeName>0))
+            if (!string.IsNullOrEmpty(dViewModel.Filter.Defect_Name) && (dViewModel.Filter.Defect_Type_Id > 0))
             {
-                dViewModel.DefectGrid = dMan.GetDefectByTypeByName(dViewModel.Filter.DefectTypeName, dViewModel.Filter.DefectName);
+                dViewModel.DefectGrid = dMan.Get_Defect_By_Type_By_Name(dViewModel.Filter.Defect_Type_Id, dViewModel.Filter.Defect_Name, dViewModel.Pager);
             }
-            else if (dViewModel.Filter.DefectTypeName>0)
+            else if (dViewModel.Filter.Defect_Type_Id > 0)
             {
-                dViewModel.DefectGrid = dMan.GetDefectByType(dViewModel.Filter.DefectTypeName);
+                dViewModel.DefectGrid = dMan.Get_Defect_By_Type(dViewModel.Filter.Defect_Type_Id, dViewModel.Pager);
             }
 
-            else if (!string.IsNullOrEmpty(dViewModel.Filter.DefectName))
+            else if (!string.IsNullOrEmpty(dViewModel.Filter.Defect_Name))
             {
-                dViewModel.DefectGrid = dMan.GetDefectByName(dViewModel.Filter.DefectName);
+                dViewModel.DefectGrid = dMan.Get_Defect_By_Name(dViewModel.Filter.Defect_Name, dViewModel.Pager);
             }
             else
             {
-                dViewModel.DefectGrid = dMan.GetDefects();
+                dViewModel.DefectGrid = dMan.Get_Defects(dViewModel.Pager);
             }
-       
-            if (dViewModel.DefectGrid != null && dViewModel.DefectGrid.Count() > 0)
-            {
-                dViewModel.Pager.TotalRecords = dViewModel.DefectGrid.Count();
 
-                if (dViewModel.Pager.IsPagingRequired)
-                {
-                    dViewModel.DefectGrid = dViewModel.DefectGrid.Skip(dViewModel.Pager.CurrentPage * dViewModel.Pager.PageSize).Take(dViewModel.Pager.PageSize).ToList<DefectInfo>();
-                }
-
-                int pages = (dViewModel.Pager.TotalRecords + dViewModel.Pager.PageSize - 1) / dViewModel.Pager.PageSize;
-
-                dViewModel.Pager.TotalPages = pages;
-
-                dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
-            }
+            dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
 
             return Json(dViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetGridByDefectType(DefectViewModel dViewModel)
+        public JsonResult Get_Grid_By_Defect_Type(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();
 
-            if (dViewModel.Filter.DefectTypeName > 0)
+            if (dViewModel.Filter.Defect_Type_Id > 0)
             {
-                dViewModel.DefectGrid = dMan.GetDefectByType(dViewModel.Filter.DefectTypeName);
+                dViewModel.DefectGrid = dMan.Get_Defect_By_Type(dViewModel.Filter.Defect_Type_Id, dViewModel.Pager);
             }
 
             return Json(dViewModel, JsonRequestBehavior.AllowGet);

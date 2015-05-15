@@ -20,37 +20,63 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Search(AttributeCodeViewModel aViewModel)
         {
+            if (TempData["aViewModel"] != null)
+            {
+                aViewModel = (AttributeCodeViewModel)TempData["aViewModel"];
+            }
             return View("Search", aViewModel);
         }
 
         public ActionResult Insert(AttributeCodeViewModel aViewModel)
         {
-            AttributeCodeManager aMan = new AttributeCodeManager();
+            try
+            {
+                AttributeCodeManager aMan = new AttributeCodeManager();
 
-            aMan.Insert(aViewModel.AttributeCode);
+                aMan.Insert(aViewModel.Attribute_Code);
 
-            return Search(aViewModel);
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("AC011"));
+            }
+            catch (Exception ex)
+            {
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+            }
 
+            return RedirectToAction("Search");
         }
 
         public ActionResult Update(AttributeCodeViewModel aViewModel)
         {
-            AttributeCodeManager aMan = new AttributeCodeManager();
+           try
+            {
+                AttributeCodeManager aMan = new AttributeCodeManager();
 
-            aMan.Update(aViewModel.AttributeCode);
+                aMan.Update(aViewModel.Attribute_Code);
 
-            //aViewModel.AttributeCode.AttributeNameId = 0;
+                aViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id =0;
 
-            return Search(aViewModel);
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("AC012"));
+               
+            }
+            catch (Exception ex)
+            {
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+            }
+
+            TempData["aViewModel"] = aViewModel;
+
+            return RedirectToAction("Search");
+
+            
         }
 
-        public ActionResult GetAttributeCodeById(AttributeCodeViewModel aViewModel)
+        public ActionResult Get_Attribute_Code_By_Id(AttributeCodeViewModel aViewModel)
         {
             try
             {
                 AttributeCodeManager aMan = new AttributeCodeManager();
 
-                aViewModel.AttributeCode = aMan.GetAttributeCodeById(aViewModel.EditMode.AttributeCodeId);
+                aViewModel.Attribute_Code = aMan.Get_Attribute_Code_By_Id(aViewModel.Edit_Mode.Attribute_Code_Id);
 
                 return View("Index", aViewModel);
             }
@@ -62,46 +88,32 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         }
 
-        public JsonResult GetAttributeCodes(AttributeCodeViewModel aViewModel)
+        public JsonResult Get_Attribute_Codes(AttributeCodeViewModel aViewModel)
         {
             AttributeCodeManager aMan = new AttributeCodeManager();
 
-            if (aViewModel.Filter.AttributeId > 0)
+            if (aViewModel.Filter.Attribute_Id > 0)
             {
-                aViewModel.AttributeCodeGrid = aMan.GetAttributeCodesByAttributeId(aViewModel.Filter.AttributeId);
+                aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes_By_Attribute_Name(aViewModel.Filter.Attribute_Id, aViewModel.Pager);
             }
 
             else
             {
-                aViewModel.AttributeCodeGrid = aMan.GetAttributeCodes();
+                aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes(aViewModel.Pager);
             }
 
-            if (aViewModel.AttributeCodeGrid != null && aViewModel.AttributeCodeGrid.Count() > 0)
-            {
-                aViewModel.Pager.TotalRecords = aViewModel.AttributeCodeGrid.Count();
-
-                if (aViewModel.Pager.IsPagingRequired)
-                {
-                    aViewModel.AttributeCodeGrid = aViewModel.AttributeCodeGrid.Skip(aViewModel.Pager.CurrentPage * aViewModel.Pager.PageSize).Take(aViewModel.Pager.PageSize).ToList<AttributeCodeInfo>();
-                }
-
-                int pages = (aViewModel.Pager.TotalRecords + aViewModel.Pager.PageSize - 1) / aViewModel.Pager.PageSize;
-
-                aViewModel.Pager.TotalPages = pages;
-
-                aViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", aViewModel.Pager.TotalRecords, aViewModel.Pager.CurrentPage + 1, aViewModel.Pager.PageSize, 10, true);
-            }
-
+            aViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", aViewModel.Pager.TotalRecords, aViewModel.Pager.CurrentPage + 1, aViewModel.Pager.PageSize, 10, true);
+           
             return Json(aViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetGridByAttributeName(AttributeCodeViewModel aViewModel)
+        public JsonResult Get_Grid_By_Attribute_Name(AttributeCodeViewModel aViewModel)
         {
             AttributeCodeManager aMan = new AttributeCodeManager();
 
-            if (aViewModel.Filter.AttributeId > 0)
+            if (aViewModel.Filter.Attribute_Id > 0)
             {
-                aViewModel.AttributeCodeGrid = aMan.GetAttributeCodesByAttributeId(aViewModel.Filter.AttributeId);
+                aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes_By_Attribute_Name(aViewModel.Filter.Attribute_Id,aViewModel.Pager);
             }
 
             return Json(aViewModel, JsonRequestBehavior.AllowGet);

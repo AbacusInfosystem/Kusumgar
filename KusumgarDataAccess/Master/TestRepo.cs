@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using KusumgarBusinessEntities;
+using KusumgarBusinessEntities.Common;
+using KusumgarDatabaseEntities;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -12,275 +14,302 @@ namespace KusumgarDataAccess
 {
   public  class TestRepo
     {
-       private string _sqlCon = string.Empty;
+        private string _sqlCon = string.Empty;
+        SQLHelperRepo _sqlRepo;
+        public SQLHelperRepo _sqlHelper { get; set; }
 
-       public TestRepo()
+        public TestRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["ProjectTestDB"].ToString();
+            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
+            _sqlRepo = new SQLHelperRepo();
+            _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<TestInfo> GetTests()
+        public List<TestInfo> Get_Tests(PaginationInfo pager)
         {
             List<TestInfo> retVal = new List<TestInfo>();
 
-            try
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Tests_sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = GetRows(dt, pager);
+
+            foreach (DataRow dr in tupleData.Item1)
             {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
+                TestInfo tests = new TestInfo();
 
-                    using (SqlCommand command = new SqlCommand("GetTests_sp", con))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
+                tests.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
 
-                        SqlDataReader dataReader = command.ExecuteReader();
+                tests.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
 
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-                                TestInfo testItem = new TestInfo();
+                tests.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
 
-                                GetValuesFromDataReader(dataReader, testItem);
+                tests.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-                                retVal.Add(testItem);
-                            }
-                        }
+                tests.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-                        dataReader.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                tests.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+                tests.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+                tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
+
+                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                
+                tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
+                tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
+                tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
+                tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
+                tests.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
+                tests.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
+                tests.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
+                tests.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
+                tests.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
+                tests.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
+                tests.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
+
+                retVal.Add(tests);
             }
 
             return retVal;
         }
 
-        private static void GetValuesFromDataReader(SqlDataReader dataReader, TestInfo test)
+        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
         {
-            test.TestId = Convert.ToInt32(dataReader["TestId"]);
-            test.FabricTypeId = Convert.ToInt32(dataReader["FabricTypeId"]);
-            test.FabricTypeName = Convert.ToString(dataReader["FabricTypeName"]);
-            test.TestName = Convert.ToString(dataReader["TestName"]);
-            test.TestUnit1 = Convert.ToInt32(dataReader["TestUnit1"]);
-            test.TestUnit2 = Convert.ToInt32(dataReader["TestUnit2"]);
-            test.TestUnit3 = Convert.ToInt32(dataReader["TestUnit3"]);
-            test.TestUnit4 = Convert.ToInt32(dataReader["TestUnit4"]);
-            test.TestUnit5 = Convert.ToInt32(dataReader["TestUnit5"]);
-            test.TestUnit6 = Convert.ToInt32(dataReader["TestUnit6"]);
-            test.TestUnit7 = Convert.ToInt32(dataReader["TestUnit7"]);
-            test.TestUnit8= Convert.ToInt32(dataReader["TestUnit8"]);
-            test.TestUnit9 = Convert.ToInt32(dataReader["TestUnit9"]);
-            test.TestUnit10 = Convert.ToInt32(dataReader["TestUnit10"]);
-            test.Status = Convert.ToBoolean(dataReader["Status"]);
-            test.TestUnitName1 = Convert.ToString(dataReader["TestUnitName1"]);
-            test.TestUnitName2 = Convert.ToString(dataReader["TestUnitName2"]);
-            test.TestUnitName3 = Convert.ToString(dataReader["TestUnitName3"]);
-            test.TestUnitName4 = Convert.ToString(dataReader["TestUnitName4"]);
-            test.TestUnitName5 = Convert.ToString(dataReader["TestUnitName5"]);
-            test.TestUnitName6 = Convert.ToString(dataReader["TestUnitName6"]);
-            test.TestUnitName7 = Convert.ToString(dataReader["TestUnitName7"]);
-            test.TestUnitName8 = Convert.ToString(dataReader["TestUnitName8"]);
-            test.TestUnitName9 = Convert.ToString(dataReader["TestUnitName9"]);
-            test.TestUnitName10 = Convert.ToString(dataReader["TestUnitName10"]);
+            List<DataRow> drList = new List<DataRow>();
 
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int count = 0;
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                if (pager.IsPagingRequired)
+                {
+                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
+                }
+
+                pager.TotalRecords = count;
+
+                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
+
+                pager.TotalPages = pages;
+            }
+
+            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
         }
 
         public void Insert(TestInfo test)
         {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Test(test), StoredProcedures.Insert_Test_sp.ToString(), CommandType.StoredProcedure);
 
-                    using (SqlCommand command = new SqlCommand("InsertTest_sp", con))
-                    {
-                        SetValuesInTest(command, test, "Insert");
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        private SqlCommand SetValuesInTest(SqlCommand command, TestInfo test, string mode)
-        {
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.Add(new SqlParameter("@FabricTypeName", test.FabricTypeName));
-
-            command.Parameters.Add(new SqlParameter("@Status", test.Status));
-            command.Parameters.Add(new SqlParameter("@TestName", test.TestName));
-            command.Parameters.Add(new SqlParameter("@TestUnit1", test.TestUnit1));
-            command.Parameters.Add(new SqlParameter("@TestUnit2", test.TestUnit2));
-            command.Parameters.Add(new SqlParameter("@TestUnit3", test.TestUnit3));
-            command.Parameters.Add(new SqlParameter("@TestUnit4", test.TestUnit4));
-            command.Parameters.Add(new SqlParameter("@TestUnit5", test.TestUnit5));
-            command.Parameters.Add(new SqlParameter("@TestUnit6", test.TestUnit6));
-            command.Parameters.Add(new SqlParameter("@TestUnit7", test.TestUnit7));
-            command.Parameters.Add(new SqlParameter("@TestUnit8", test.TestUnit8));
-            command.Parameters.Add(new SqlParameter("@TestUnit9", test.TestUnit9));
-            command.Parameters.Add(new SqlParameter("@TestUnit10", test.TestUnit10));
-
-            if (mode=="Update")
-            {
-                command.Parameters.Add(new SqlParameter("@TestId", test.TestId));
-
-            }
-
-            return command;
-        }
-
-        public TestInfo GetTestById(int testId)
-        {
-            TestInfo retVal = new TestInfo();
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
-
-                    using (SqlCommand command = new SqlCommand("GetTestById_sp", con))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add(new SqlParameter("@TestId", testId));
-
-                        SqlDataReader dataReader = command.ExecuteReader();
-
-
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-                                TestInfo testItem = new TestInfo();
-
-                                GetValuesFromDataReader(dataReader, retVal);
-
-                            }
-                        }
-
-                        dataReader.Close();
-
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-
-                throw ex;
-            }
-
-            return retVal;
         }
 
         public void Update(TestInfo test)
         {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
-                {
-                    con.Open();
-
-                    using (SqlCommand command = new SqlCommand("UpdateTest_sp", con))
-                    {
-                        SetValuesInTest(command, test, "Update");
-
-                        command.ExecuteNonQuery();
-
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Test(test), StoredProcedures.Update_Test_sp.ToString(), CommandType.StoredProcedure);
         }
 
-        public List<FabricTypeInfo> GetFabricTypes()
+        private List<SqlParameter> Set_Values_In_Test(TestInfo testInfo)
         {
-            List<FabricTypeInfo> retVal = new List<FabricTypeInfo>();
-            using (SqlConnection con = new SqlConnection(_sqlCon))
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+
+            sqlParamList.Add(new SqlParameter("@Fabric_Type_Id", testInfo.TestEntity.Fabric_Type_Id));
+            sqlParamList.Add(new SqlParameter("@Status", testInfo.TestEntity.Status));
+            sqlParamList.Add(new SqlParameter("@Test_Name", testInfo.TestEntity.Test_Name));
+            sqlParamList.Add(new SqlParameter("@Test_Unit1", testInfo.TestEntity.Test_Unit1));
+            sqlParamList.Add(new SqlParameter("@Test_Unit2", testInfo.TestEntity.Test_Unit2));
+            sqlParamList.Add(new SqlParameter("@Test_Unit3", testInfo.TestEntity.Test_Unit3));
+            sqlParamList.Add(new SqlParameter("@Test_Unit4", testInfo.TestEntity.Test_Unit4));
+            sqlParamList.Add(new SqlParameter("@Test_Unit5", testInfo.TestEntity.Test_Unit5));
+            sqlParamList.Add(new SqlParameter("@Test_Unit6", testInfo.TestEntity.Test_Unit6));
+            sqlParamList.Add(new SqlParameter("@Test_Unit7", testInfo.TestEntity.Test_Unit7));
+
+            sqlParamList.Add(new SqlParameter("@Test_Unit8", testInfo.TestEntity.Test_Unit8));
+
+            sqlParamList.Add(new SqlParameter("@Test_Unit9", testInfo.TestEntity.Test_Unit9));
+
+            sqlParamList.Add(new SqlParameter("@Test_Unit10", testInfo.TestEntity.Test_Unit10));
+
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", testInfo.TestEntity.UpdatedBy));
+            if (testInfo.TestEntity.Test_Id == 0)
             {
-                con.Open();
+                sqlParamList.Add(new SqlParameter("@CreatedBy", testInfo.TestEntity.CreatedBy));
+            }
+            if (testInfo.TestEntity.Test_Id != 0)
+            {
+                sqlParamList.Add(new SqlParameter("@Test_Id", testInfo.TestEntity.Test_Id));
 
-                using (SqlCommand command = new SqlCommand("GetFabricTypes_sp", con))
+            }
+
+            return sqlParamList;
+        }
+
+        public TestInfo Get_Test_By_Id(int testId)
+        {
+            TestInfo retVal = new TestInfo();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Test_Id", testId));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Id_sp.ToString(), CommandType.StoredProcedure);
+            
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int count = 0;
+
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                foreach (DataRow dr in drList)
                 {
-                    command.CommandType = CommandType.StoredProcedure;
+                    retVal.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
 
-                    SqlDataReader dataReader = command.ExecuteReader();
+                    retVal.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
 
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            FabricTypeInfo fabricType = new FabricTypeInfo();
-                            fabricType.FabricTypeId = Convert.ToInt32(dataReader["FabricTypeId"]);
-                            fabricType.FabricTypeName = Convert.ToString(dataReader["FabricTypeName"]);
-                            retVal.Add(fabricType);
+                    retVal.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
 
-                        }
-                    }
+                    retVal.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-                    dataReader.Close();
+                    retVal.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+                    retVal.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+                    retVal.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+                    retVal.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
+
+                    retVal.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                    retVal.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                    retVal.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                    retVal.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                    retVal.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                    retVal.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                    retVal.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                    retVal.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                    retVal.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                    retVal.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+
+                    retVal.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
+                    retVal.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
+                    retVal.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
+                    retVal.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
+                    retVal.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
+                    retVal.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
+                    retVal.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
+                    retVal.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
+                    retVal.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
+                    retVal.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
+                    retVal.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
+
                 }
+
             }
             return retVal;
         }
 
-        public List<TestInfo> GetTestByFabricType(int fabricType)
+        public List<FabricTypeInfo> Get_Fabric_Types()
+        {
+            List<FabricTypeInfo> retVal = new List<FabricTypeInfo>();
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Fabric_Types_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int count = 0;
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                foreach (DataRow dr in drList)
+                {
+                    FabricTypeInfo fabricTypes = new FabricTypeInfo();
+                    fabricTypes.FabricTypeEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
+                    fabricTypes.FabricTypeEntity.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
+                    retVal.Add(fabricTypes);
+                }
+
+            }
+
+            return retVal;
+        }
+
+        public List<TestInfo> Get_Test_By_Fabric_Type(int fabricTypeId,PaginationInfo Pager)
         {
             List<TestInfo> retVal = new List<TestInfo>();
 
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_sqlCon))
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Fabric_Type_Id",fabricTypeId));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Fabric_Type_sp.ToString(), CommandType.StoredProcedure);
+
+            
+            var tupleData = GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
                 {
-                    con.Open();
 
-                    using (SqlCommand command = new SqlCommand("GetTestByFabricType_sp", con))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
+                TestInfo tests = new TestInfo();
 
-                        command.Parameters.Add(new SqlParameter("@FabricTypeName", fabricType));
+                tests.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
 
-                        SqlDataReader dataReader = command.ExecuteReader();
+                tests.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
 
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-                                TestInfo testItem = new TestInfo();
+                tests.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
 
-                                GetValuesFromDataReader(dataReader, testItem);
+                tests.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-                                retVal.Add(testItem);
-                            }
-                        }
+                tests.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-                        dataReader.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                tests.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            return retVal;
+                tests.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+                tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
+
+                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                
+                tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
+                tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
+                tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
+                tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
+                tests.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
+                tests.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
+                tests.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
+                tests.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
+                tests.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
+                tests.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
+                tests.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
+                retVal.Add(tests);
+           }
+         return retVal;
         }
+
     }
 }

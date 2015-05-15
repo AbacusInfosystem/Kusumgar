@@ -134,6 +134,57 @@ namespace KusumgarBusinessEntities.Common
         Get_Contact_by_Id_sp,
         Delete_Contact_Custom_Fields_By_Id,
 
+        //Defect Type
+        Get_Defect_Types_sp,
+        Get_Defect_Type_By_Id_sp,
+        Get_Defect_Type_By_Name_sp,
+        Insert_Defect_Type_sp,
+        Update_Defect_Type_sp,
+
+        //Defect
+        Get_Defects_sp,
+        List_Defect_Types_sp,
+        Get_Defect_By_Id_sp,
+        Get_Defect_By_Name_By_Type_sp,
+        Get_Defect_By_Name_sp,
+        Get_Defect_By_Type_sp,
+        Insert_Defect_sp,
+        Update_Defect_sp,
+
+        //TestUnit
+        Get_Test_Units_sp,
+        Get_Test_Unit_By_Name_sp,
+        Insert_Test_Unit_sp,
+        Update_Test_Unit_sp,
+        Get_Test_Unit_By_Id_sp,
+
+        //Test
+        Get_Tests_sp,
+        Insert_Test_sp,
+        Update_Test_sp,
+        Get_Test_By_Id_sp,
+        Get_Fabric_Types_sp,
+        Get_Test_By_Fabric_Type_sp,
+        Get_Test_Unit_AutoComplete_sp,
+
+        //AttributeCode
+        Get_Attribute_Codes_sp,
+        Insert_Attribute_Code_sp,
+        Get_Attribute_Code_By_Id_sp,
+        Update_Attribute_Code_sp,
+        Get_Attribute_Code_By_Attribute_Name_sp,
+
+        // Complaint
+        Insert_Complaint_Sp,
+        Update_Complaint_Sp,
+        Get_Complaint_List_Sp,
+        Get_Complaint_By_Id_Sp,
+        Get_Complaint_By_CustName_Sp,
+
+        //ConsumableMaster
+        Get_Consumable_Master_sp,
+        Insert_ConsumableMaster_sp,
+
     }
 
     public enum GenderType

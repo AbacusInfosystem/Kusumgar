@@ -1,4 +1,5 @@
-﻿@using KusumgarBusinessEntities.Master;
+﻿@model Kusumgar.Models.AttributeCodeViewModel
+@using KusumgarBusinessEntities.Common;
 
 @{
     ViewBag.Title = "Search";
@@ -9,6 +10,8 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
+    @{Html.RenderPartial("_ServerMessage");}
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -44,9 +47,9 @@
                                         <label for="drpAttributeName">Attribute Name</label>
                                         <select id="drpAttributeName" class="form-control">
                                             <option value="">Select Attribute Name</option>
-                                            @foreach (var item in LookUps.GetAttributeNames())
+                                            @foreach (var item in LookupInfo.GetAttributeNames())
                                             {
-                                                if (Model.AttributeCode.AttributeId == item.Key)
+                                                if (Model.Attribute_Code.AttributeCodeEntity.Attribute_Id == item.Key)
                                                 {
                                                     <option value="@item.Key" selected="selected">@item.Value</option>
                                                 }
@@ -56,7 +59,7 @@
                                                 }
                                             }
                                         </select>
-                                        <input type="hidden" id="hdfAttributeId" name="Filter.AttributeId" value="@Model.Filter.AttributeId" />
+                                        <input type="hidden" id="hdfAttributeId" name="Filter.Attribute_Id" value="@Model.Filter.Attribute_Id" />
                                     </div>
 
                                 </div>
@@ -77,12 +80,10 @@
 
                                         <div class="btn-group pull-right">
 
-                                            <input type="hidden" id="hdfPageSize" name="" value="" />
                                             <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                            <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
-
-                                            <input type="hidden" id="hdfAttributeCodeId" name="EditMode.AttributeCodeId" />
-                                            <button type="button" id="btnEdit"class="btn btn-warning">Edit Attribute Code</button>
+                                           
+                                            <input type="hidden" id="hdfAttributeCodeId" name="Edit_Mode.Attribute_Code_Id" />
+                                            <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Attribute Code</button>
                                         </div>
 
                                     </div>

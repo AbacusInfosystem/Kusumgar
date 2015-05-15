@@ -5,69 +5,89 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarDataAccess;
+using KusumgarBusinessEntities.Common;
 
 namespace KusumgarModel
 {
  public  class DefectManager
     {
-
-     public List<DefectInfo> GetDefects()
+        public List<DefectInfo> Get_Defects(PaginationInfo Pager)
         {
              List<DefectInfo> defectTypes = new List<DefectInfo>();
+             
              DefectRepo dRepo = new DefectRepo();
-             defectTypes = dRepo.GetDefects();
+             
+             defectTypes = dRepo.Get_Defects(Pager);
+             
              return defectTypes;
          }
 
         public void Insert(DefectInfo defect)
         {
             DefectRepo dRepo = new DefectRepo();
+            
             dRepo.Insert(defect);
         }
 
-        public DefectInfo GetDefectById(int defectId)
+        public DefectInfo Get_Defect_By_Id(int Defect_Id)
         {
-            DefectInfo defect = new DefectInfo();
+            DefectInfo defects = new DefectInfo();
+            
             DefectRepo dRepo = new DefectRepo();
-            defect = dRepo.GetDefectById(defectId);
-            return defect;
+            
+            defects = dRepo.Get_Defects_By_Id(Defect_Id);
+            
+            return defects;
         }
 
         public void Update(DefectInfo defect)
         {
             DefectRepo dRepo = new DefectRepo();
+            
             dRepo.Update(defect);
         }
 
-        public List<DefectTypeInfo> GetDefectTypes()
+        public List<DefectInfo> Get_Defect_By_Name(string Defect_Name, PaginationInfo Pager)
         {
-            List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
+            List<DefectInfo> defectTypes = new List<DefectInfo>();
+            
             DefectRepo dRepo = new DefectRepo();
-            defectTypes = dRepo.GetDefectTypes();
+            
+            defectTypes = dRepo.Get_Defect_By_Name(Defect_Name, Pager);
+            
+            return defectTypes;
+         }
+
+        public List<DefectInfo> Get_Defect_By_Type(int Defect_Type_Id, PaginationInfo Pager)
+        {
+             List<DefectInfo> defectTypes = new List<DefectInfo>();
+             
+             DefectRepo dRepo = new DefectRepo();
+             
+             defectTypes = dRepo.Get_Defect_By_Type(Defect_Type_Id, Pager);
+            
+             return defectTypes;
+         }
+
+        public List<DefectInfo> Get_Defect_By_Type_By_Name(int Defect_Type_Id, string Defect_Name, PaginationInfo Pager)
+        {
+            List<DefectInfo> defectTypes = new List<DefectInfo>();
+            
+            DefectRepo dRepo = new DefectRepo();
+            
+            defectTypes = dRepo.Get_Defect_By_Type_By_Name(Defect_Type_Id, Defect_Name, Pager);
+            
             return defectTypes;
         }
 
-        public List<DefectInfo> GetDefectByName(string defectName)
+        public List<DefectTypeInfo> Get_Defect_Types()
         {
-            List<DefectInfo> defectNames = new List<DefectInfo>();
+            List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
+            
             DefectRepo dRepo = new DefectRepo();
-            defectNames = dRepo.GetDefectByName(defectName);
-            return defectNames;
-         }
-
-        public List<DefectInfo> GetDefectByType(int defectType)
-        {
-             List<DefectInfo> defectTypes = new List<DefectInfo>();
-             DefectRepo dRepo = new DefectRepo();
-             defectTypes = dRepo.GetDefectByType(defectType);
-            return defectTypes;
-         }
-
-        public List<DefectInfo> GetDefectByTypeByName(int defectType, string defectName)
-        {
-            List<DefectInfo> defectTypes = new List<DefectInfo>();
-            DefectRepo dRepo = new DefectRepo();
-            defectTypes = dRepo.GetDefectByTypeByName(defectType, defectName);
+            
+            defectTypes = dRepo.Get_Defect_Type();
+            
             return defectTypes;
         }
 

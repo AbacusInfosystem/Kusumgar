@@ -1,0 +1,32 @@
+﻿
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="txtSupplierName" style="color: #333">Supplier Name</label>
+            <input type="text" class="form-control" name="" id="txtSupplierName" placeholder="Enter Supplier Name" value="">
+        </div>
+        <div class="form-group">
+            <label for="drpPriorityOrder" style="color: #333">Priority Order</label>
+            <select class="form-control" id="drpPriorityOrder">
+                <option value="" selected="selected">--Select--</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>Supplier Name</th>
+                    <th>Priority Order</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="box-footer">
+    <button type="submit" class="btn btn-success">Save Customer Specific Information</button>
+    <a href="@Url.Action("Search", "Industrial")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+</div>

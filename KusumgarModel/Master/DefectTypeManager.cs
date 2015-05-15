@@ -5,31 +5,31 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarDataAccess;
+using KusumgarBusinessEntities.Common;
 
 namespace KusumgarModel
 {
     public class DefectTypeManager
     {
-
-        public List<DefectTypeInfo> GetDefectTypes()
+        public List<DefectTypeInfo> Get_Defect_Types(PaginationInfo Pager)
         {
             List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
            
             DefectTypeRepo dRepo = new DefectTypeRepo();
-            
-            defectTypes = dRepo.GetDefectTypes();
+
+            defectTypes = dRepo.Get_Defect_Types(Pager);
             
             return defectTypes;
 
         }
 
-        public List<DefectTypeInfo> GetDefectTypeByName(string defectType)
+        public List<DefectTypeInfo> Get_Defect_Type_By_Name(string Defect_Type_Name,PaginationInfo Pager)
         {
             List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
            
             DefectTypeRepo dRepo = new DefectTypeRepo();
-           
-            defectTypes = dRepo.GetDefectTypeByName(defectType);
+
+            defectTypes = dRepo.Get_Defect_Type_By_Name(Defect_Type_Name, Pager);
             
             return defectTypes;
         }
@@ -41,13 +41,13 @@ namespace KusumgarModel
             dRepo.Insert(defect);
         }
 
-       public DefectTypeInfo GetDefectTypeById(int defectTypeId)
+       public DefectTypeInfo Get_Defect_Type_By_Id(int Defect_Type_Id)
        {
            DefectTypeInfo defectInfo = new DefectTypeInfo();
 
            DefectTypeRepo dRepo = new DefectTypeRepo();
 
-           defectInfo = dRepo.GetDefectTypeById(defectTypeId);
+           defectInfo = dRepo.Get_Defects_Type_By_Id(Defect_Type_Id);
 
            return defectInfo;
        }

@@ -11,45 +11,43 @@ namespace Kusumgar.Models
     {
          public AttributeCodeViewModel()
             {
-                AttributeCode = new AttributeCodeInfo();
+                Attribute_Code = new AttributeCodeInfo();
 
-                AttributeCodeGrid = new List<AttributeCodeInfo>();
+                Attribute_Code_Grid = new List<AttributeCodeInfo>();
                
-                EditMode = new AttributeCodeEditMode();
+                Edit_Mode = new Attribute_Code_Edit_Mode();
 
-                Filter = new AttributeCodeFilter();
+                Filter = new Attribute_Code_Filter();
 
                 Pager = new PaginationInfo();
-
-                Pager.PageSize = 5;
-
-                Pager.IsPagingRequired = true;
+                
+                FriendlyMessage = new List<FriendlyMessageInfo>();
 
             }
 
-         public AttributeCodeInfo AttributeCode { get; set; }
+         public AttributeCodeInfo Attribute_Code { get; set; }
 
-         public List<AttributeCodeInfo> AttributeCodeGrid { get; set; }
+         public List<AttributeCodeInfo> Attribute_Code_Grid { get; set; }
 
-          
-            public PaginationInfo Pager { get; set; }
+         public PaginationInfo Pager { get; set; }
 
-            public AttributeCodeEditMode EditMode { get; set; }
+         public Attribute_Code_Edit_Mode Edit_Mode { get; set; }
 
-            public AttributeCodeFilter Filter { get; set; }
+         public Attribute_Code_Filter Filter { get; set; }
+            
+         public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
 
-            public class AttributeCodeEditMode
+         public class Attribute_Code_Edit_Mode
             {
-                public int AttributeCodeId { get; set; }
-
+                public int Attribute_Code_Id { get; set; }
+            
             }
 
-            public class AttributeCodeFilter
-            {
-                public int AttributeId{ get; set; }
-               
-
-            }
+         public class Attribute_Code_Filter
+           {
+                public int Attribute_Id{ get; set; }
+             
+           }
 
         }
     }
