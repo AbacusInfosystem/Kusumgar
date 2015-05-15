@@ -128,11 +128,6 @@ namespace Kusumgar.Controllers
                 if (_contactViewModel.Filter_Val.Customer_Id != 0)
                 {
                     _contactViewModel.Contact_List = _contactMgr.Get_Contact_List_By_Name(_contactViewModel.Filter_Val.Customer_Id, _contactViewModel.Pager);
-
-                    if(string.IsNullOrEmpty(_contactViewModel.Filter_Val.Customer_Name))
-                    {
-                        _contactViewModel.Filter_Val.Customer_Name = _contactViewModel.Contact_List.Select(a => a.Customer_Name).FirstOrDefault();
-                    }
                 }
                 else
                 {

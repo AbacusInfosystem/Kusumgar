@@ -52,5 +52,7 @@ namespace Kusumgar.Models
         public string Email { get; set; }
 
         public string Turnover { get; set; }
+
+        public int Nation_Id { get; set; }
     }
 }

@@ -9,7 +9,7 @@
             <!-- Billing Office Details -->
             <input type="hidden" id="hdn_Customer_Address_Id">
             <div class="form-group">
-                <label style="color: #333">Billing Office Address</label>
+                <label style="color: #333">Billing office address</label>
                 <textarea id="txtBillingOfficeAddress" class="form-control input-sm" name="Addresss" rows="2" placeholder="Enter billing office address"></textarea>
             </div>
 
@@ -51,7 +51,7 @@
         <div class="col-md-8 ">
             <table class="table table-hover" id="tblBilling_Details">
                 <tr>
-                    <th>Billing Address</th>
+                    <th>Billing address</th>
                     <th style="min-width: 81px;">&nbsp; </th>
                 </tr>
                 @foreach (var item in Model.Customer.Customer_Address_List)
@@ -80,8 +80,8 @@
     </div>
 
     <div class="box-footer">
-        <button type="button" id="btnSaveBillingAddressDetails" class="btn btn-success">Save Billing</button>
-        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+        <button type="button" id="btnSaveBillingAddressDetails" class="btn btn-success btn-sm">Save billing</button>
+        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
     </div>
 
 </form>

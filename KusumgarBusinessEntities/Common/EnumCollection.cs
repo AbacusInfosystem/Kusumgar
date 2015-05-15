@@ -100,6 +100,11 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Name_Sp,
         Get_Customer_By_Email_Name_Sp,
         Get_Customer_By_Email_Name_Turnover_Sp,
+        Get_Customer_by_Nation_Id_Sp,
+        Get_Customer_by_Nation_Id_Turnover_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
+        Get_Customer_By_Customer_Id_Nation_Id_Sp,
 
         // Customer Address 
         Insert_Customer_Address,

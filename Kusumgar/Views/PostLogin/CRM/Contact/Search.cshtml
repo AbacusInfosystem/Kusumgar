@@ -34,7 +34,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>CRM</li>
-            <li class="active">Contact Search</li>
+            <li class="active">Contact search</li>
         </ol>
     </section>
 
@@ -47,8 +47,8 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Search Customer's Contact</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Search Supplier's Contact</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Search customer's contact</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Search supplier's contact</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">
@@ -62,8 +62,8 @@
                                         <div class="form-group">
                                             <label for="txtCustomerName">Customer name</label>
                                             <div class="auto-complete">
-                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="contact.Customer_Name">
-                                                <input type="hidden" id="hdnCustomer_Id"  value="@Model.Filter_Val.Customer_Id" name="FilterVal.Customer_Id">
+                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="contact.Customer_Name" value="@Model.Filter_Val.Customer_Name">
+                                                <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter_Val.Customer_Id" name="FilterVal.Customer_Id">
                                             </div>
                                         </div>
                                     </div>
@@ -72,16 +72,16 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="btn-group pull-left">
-                                                <button type="button" id="btnSearch" class="btn btn-success">Search</button>
+                                                <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
                                                 @*<button type="button" id="btnAdvanceSearch" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Advance Search</button>*@
-                                                <a class="btn btn-primary" href="@Url.Action("Index","Contact")" role="button">Create Customers Contact</a>
+                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Contact")" role="button">Create</a>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="btn-group pull-right">
-                                                <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Contact</button>
-                                                <button type="button" id="btnViewCompany" style="display:none;" class="btn btn-primary">View Company </button>
-                                                <button type="button" id="btnSellProduct" style="display:none;" class="btn btn-primary">Sells Products</button>
+                                                <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
+                                                <button type="button" id="btnViewCompany" style="display:none;" class="btn btn-primary btn-sm"> company </button>
+                                                <button type="button" id="btnSellProduct" style="display:none;" class="btn btn-primary btn-sm">Sells products</button>
                                             </div>
                                         </div>
                                     </div>
@@ -106,9 +106,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group pull-left">
-                                            <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
-                                            <button type="button" id="btnAdvanceSearch" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Advance Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Contact")" role="button">Create Suppliers Contact</a>
+                                            <button type="submit" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <button type="button" id="btnAdvanceSearch" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Advance search</button>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","Contact")" role="button">Create suppliers contact</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -137,11 +137,11 @@
                         <table class="table table-striped" id="tblcontact">
                             <tr id="subhead">
                                 <th></th>
-                                <th>Customer Name</th>
-                                <th>Contact Name</th>
-                                <th>Email Id</th>
-                                <th>Head Off. Landline 1</th>
-                                <th>Head Off. Landline 1</th>
+                                <th>Customer name</th>
+                                <th>Contact name</th>
+                                <th>Email  </th>
+                                <th>Office landline 1</th>
+                                <th>Office landline 2</th>
                             </tr>
                         </table>
                     </div>
@@ -166,7 +166,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Advance Search</h4>
+                        <h4 class="modal-title" id="myModalLabel">Advance search</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -185,8 +185,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
                     </div>
                 </div>
             </div>

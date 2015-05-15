@@ -577,7 +577,134 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
+        public List<CustomerInfo> Get_Customer_by_Nation_Id_Turnover(string Turnover, int Nation_Id, ref PaginationInfo Pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
 
+            sqlParams.Add(new SqlParameter("@Nation_Id", Nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_by_Nation_Id_Turnover_Sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = CommonMethods.GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customer_by_Nation_Id(int Nation_Id, ref PaginationInfo Pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", Nation_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_by_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = CommonMethods.GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customer_By_Turnover_Customer_Id_Nation_Id(string Turnover, int Nation_Id, int Customer_Id,ref PaginationInfo Pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", Nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", Customer_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = CommonMethods.GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customer_By_Turnover_Customer_Id(string Turnover, int Customer_Id,ref PaginationInfo Pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", Customer_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = CommonMethods.GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customer_By_Customer_Id_Nation_Id(int Nation_Id, int Customer_Id, ref PaginationInfo Pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", Nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", Customer_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Customer_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = CommonMethods.GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Id(int Company_Id, ref PaginationInfo Pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Company_Id", Company_Id));;
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = CommonMethods.GetRows(dt, Pager);
+
+            foreach (DataRow dr in tupleData.Item1)
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
     }
 }

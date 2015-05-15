@@ -26,6 +26,7 @@
     });
 
     $("#btnSearch").click(function () {
+        $('#hdfCurrentPage').val(0);
         SearchContact();
     });
 });

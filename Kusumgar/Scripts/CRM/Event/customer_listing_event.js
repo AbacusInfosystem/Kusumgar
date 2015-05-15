@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    InitializeAutoComplete($('#txtCustomer_Name'));
+
     $('#hdfCurrentPage').val(0);
 
     SearchCustomer();
@@ -14,14 +16,18 @@
     });
 
     $("#btnSearch").click(function () {
+        $('#hdfCurrentPage').val(0);
+
         SearchCustomer();
     });
 
     $("#AdvSearch").click(function () {
         if ($("#frmSearch_customer").valid()) {
-
-
-            AdvanceSearch();
+           // $(".fa-remove").trigger("click");
+            $('#hdfCurrentPage').val(0);
+            //AdvanceSearch();
+            SearchCustomer();
+            $("#myModal").hide();
         }
     });
 

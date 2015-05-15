@@ -1,4 +1,5 @@
-﻿//var InitializeAutoComplete = function (elementObject, callBack) {
+﻿
+//var InitializeAutoComplete = function (elementObject, callBack) {
 var InitializeAutoComplete = function (elementObject) {
 
    
@@ -32,11 +33,9 @@ var InitializeAutoComplete = function (elementObject) {
         select: function (event, ui) {
 
             $(this).val(ui.item.label);
-            $(this).parent().find('input[type=hidden]').addClass('auto-val');
-            $(this).parent().find('input[type=text]').addClass('auto-lbl');
 
-            $(this).parent().find('.auto-lbl').val(ui.item.label);
-            $(this).parent().find('.auto-val').val(ui.item.value);
+            $(this).parent().find('input[type=text]').val("");
+            $(this).parent().find('input[type=hidden]').val(ui.item.value);
 
             if ($(this).parent().find(".todo-list")[0]) {
                 $(this).parent().find('.todo-list').remove();
@@ -54,8 +53,8 @@ var InitializeAutoComplete = function (elementObject) {
 
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
-                $(this).parent().parent().parent().parent().find('.auto-lbl').val("");
-                $(this).parent().parent().parent().parent().find('.auto-val').val("");
+                $(this).parent().parent().parent().parent().find('input[type=text]').val("");
+                $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
                 $(this).parent().parent().parent().parent().find('.todo-list').remove();
             });
             //callBack(ui);
@@ -70,6 +69,30 @@ var InitializeAutoComplete = function (elementObject) {
         close: function (event, ui) {
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
            
+        }
+    });
+
+    $('.auto-complete').each(function () {
+
+        if ($(this).find('input[type=hidden]').val() != 0) {
+            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).find('input[type=text]').val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
+
+            if ($(this).find(".ui-menu")[0]) {
+
+                $(this).find('.text').html(ui.item.label);
+            } else {
+
+                $(this).append(htmlText);
+            }
+
+            $(this).find('input[type=text]').val("");
+
+            $('.fa-remove').click(function (event) {
+                event.preventDefault();
+                $(this).parent().parent().parent().parent().find('input[type=text]').val("");
+                $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
+                $(this).parent().parent().parent().parent().find('.todo-list').remove();
+            });
         }
     });
 }

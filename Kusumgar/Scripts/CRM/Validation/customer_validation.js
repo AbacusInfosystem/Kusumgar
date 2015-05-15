@@ -47,31 +47,31 @@
 
                 "Customer.Customer_Entity.Customer_Name":
                  {
-                     required: "Customer Name is required"
+                     required: "Customer name is required."
                  },
                 "Customer.Customer_Entity.Company_Email":
                     {
-                        required: "Email is required"
+                        required: "Email is required."
                     },
                 "Customer.Customer_Entity.Head_Office_Address":
                     {
-                        required: " Office Address is required"
+                        required: " Office address is required."
                     },
                 "Customer.Customer_Entity.Head_Office_Nation":
                     {
-                        required: "Nation is required"
+                        required: "Nation is required."
                     },
                 "Customer.Customer_Entity.Head_Office_State":
                     {
-                        required: "Office State is required"
+                        required: "Office state is required."
                     },
                 "Customer.Customer_Entity.Head_Office_ZipCode":
                     {
-                        required: "Zip Code is required"
+                        required: "Zip code is required."
                     },
                 "Customer.Customer_Entity.Head_Office_Landline1":
                     {
-                        required: "Office Landline is required"
+                        required: "Office landline is required."
                     }
            
         }

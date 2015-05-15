@@ -428,7 +428,7 @@ namespace KusumgarHelper.PageHelper
                 StringBuilder sb = new StringBuilder();
                 //Kaushik Jehtva Add Below code 11/06/2012
                 sb.Append(startul);
-                sb.Append("<li>" + totalRecords + " records </li>");
+                sb.Append("<li style='padding-left:4px;'><button style='border-color: transparent;background-color: transparent;' disabled='disabled'>" + totalRecords + " records </button></li>");
                 //End Comment 11/06/2012
                 double start = (double)currentPage / pagerLength;
 

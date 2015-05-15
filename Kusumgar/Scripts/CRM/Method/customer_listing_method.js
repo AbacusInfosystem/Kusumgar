@@ -5,7 +5,10 @@ function SearchCustomer()
         {
             Filter_Value:
                 {
-                    Customer_Name: $("#txtCustomerName").val()
+                    Customer_Name: $("#txtCustomer_Name").val(),
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+                    Turnover: $("#txtTurnover").val(),
+                    Nation_Id: $("#drpNation_Id").val()
                 },
 
             Pager: {
@@ -14,32 +17,34 @@ function SearchCustomer()
         }
 
     $("#divSearchGridOverlay").show();
+   
 
     CallAjax("/crm/search-customer", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, BindCustomerGrid, "", null);
 }
 
-function AdvanceSearch()
-{
-    var _customerViewModel =
-            {
-                Filter_Value:
-                    {
-                        Customer_Name: $("#txtCustomer_Name").val(),
-                        Email: $("#txtEmailId").val(),
-                        Turnover: $("#txtTurnover").val()
-                    },
+//function AdvanceSearch()
+//{
+//    var _customerViewModel =
+//            {
+//                Filter_Value:
+//                    {
+//                        Customer_Name: $("#txtCustomer_Name").val(),
+//                        Email: $("#txtEmailId").val(),
+//                        Turnover: $("#txtTurnover").val(),
+//                        Nation_Id: $("#drpNation_Id").val()
+//                    },
 
-                Pager: {
-                    CurrentPage: $('#hdfCurrentPage').val(),
-                },
-            }
+//                Pager: {
+//                    CurrentPage: $('#hdfCurrentPage').val(),
+//                },
+//            }
 
-    $("#divSearchGridOverlay").show();
+//    $("#divSearchGridOverlay").show();
 
-    $("#myModal").toggle();
+//    $("#myModal").hide();
 
-    CallAjax("/crm/search-customer", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, BindCustomerGrid, "", null);
-}
+//    CallAjax("/crm/search-customer", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, BindCustomerGrid, "", null);
+//}
 
 function BindCustomerGrid(data) {
 
@@ -60,7 +65,7 @@ function BindCustomerGrid(data) {
 
             htmlText += "</td>";
 
-            htmlText += "<td>";
+            htmlText += "<td id='Cust_"+ data.Customer_List[i].Customer_Entity.Company_Id +"'>";
 
             htmlText += data.Customer_List[i].Customer_Entity.Customer_Name == null ? "" : data.Customer_List[i].Customer_Entity.Customer_Name;
 
@@ -137,6 +142,7 @@ function BindCustomerGrid(data) {
             if ($(this).prop('checked')) {
                 $("#hdfCompany_Id").val(this.id.replace("r1_", ""));
                 $("#hdfCustomer_Id").val(this.id.replace("r1_", ""));
+                $("#hdfCustomer_Name").val($("#Cust_" + this.id.replace("r1_", "")).text());
                 $("#btnEdit").show();
                 $("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();
@@ -155,5 +161,12 @@ function PageMore(Id) {
 
     $(".selectAll").prop("checked", false);
 
-    SearchCustomer();
+    if ($("#hdnCustomer_Id").val() != 0) {
+
+        SearchCustomer();
+    }
+    else
+    {
+        AdvanceSearch();
+    }
 }

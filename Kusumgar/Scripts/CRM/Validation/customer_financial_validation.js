@@ -52,7 +52,7 @@
             {
                 "Customer.Bank_Details.Bank_Details_Entity.Bank_Account_No":
             {
-                required: "Account No is required."
+                required: "Account no is required."
             },
                 "Customer.Bank_Details.Bank_Details_Entity.Ifsc_Code":
                     {
@@ -68,15 +68,15 @@
                 },
                 "Customer.Bank_Details.Bank_Details_Entity.Bank_Name":
                 {
-                    required: "Bank Name is required."
+                    required: "Bank name is required."
                 },
                 "Customer.Bank_Details.Bank_Details_Entity.Branch_Name":
                 {
-                    required: "Branch name is required"
+                    required: "Branch name is required."
                 },
                 "Customer.Bank_Details.Bank_Details_Entity.Bank_Address":
                 {
-                    required: "Bank Address is required."
+                    required: "Bank address is required."
                 },
                 "Customer.Bank_Details.Bank_Details_Entity.Tax_Excemption_Code":
                 {

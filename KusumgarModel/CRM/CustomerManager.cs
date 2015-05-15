@@ -105,5 +105,34 @@ namespace KusumgarModel
             return _customerRepo.Get_Customer_By_Email_Name_Turnover(Email,Customer_Name,Turnover, ref  Pager);
         }
 
+        public List<CustomerInfo> Get_Customer_by_Nation_Id_Turnover(string Turnover, int Nation_Id, PaginationInfo Pager)
+        {
+            return _customerRepo.Get_Customer_by_Nation_Id_Turnover(Turnover, Nation_Id, ref  Pager);
+        }
+
+        public List<CustomerInfo> Get_Customer_by_Nation_Id(int Nation_Id, PaginationInfo Pager)
+        {
+            return _customerRepo.Get_Customer_by_Nation_Id(Nation_Id, ref  Pager);
+        }
+
+        public List<CustomerInfo> Get_Customer_By_Turnover_Customer_Id(string Turnover, int Customer_Id, PaginationInfo Pager)
+        {
+            return _customerRepo.Get_Customer_By_Turnover_Customer_Id(Turnover,Customer_Id, ref  Pager);
+        }
+
+        public List<CustomerInfo> Get_Customer_By_Customer_Id_Nation_Id(int Nation_Id, int Customer_Id, PaginationInfo Pager)
+        {
+            return _customerRepo.Get_Customer_By_Customer_Id_Nation_Id(Nation_Id,Customer_Id, ref  Pager);
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Id(int Company_Id, PaginationInfo Pager)
+        {
+            return _customerRepo.Get_Customers_By_Id(Company_Id, ref  Pager);
+        }
+
+         public List<CustomerInfo> Get_Customer_By_Turnover_Customer_Id_Nation_Id(string Turnover, int Nation_Id, int Customer_Id, PaginationInfo Pager)
+        {
+            return _customerRepo.Get_Customer_By_Turnover_Customer_Id_Nation_Id(Turnover, Nation_Id, Customer_Id,ref  Pager);
+        }
     }
 }

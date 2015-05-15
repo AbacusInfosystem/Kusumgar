@@ -41,7 +41,7 @@ namespace Kusumgar.Controllers
 
                 _customerViewModel.Nation_List = _nationManager.Get_Nation_List(_customerViewModel.Pager);
 
-                _customerViewModel.State_List = _stateMgr.Get_State_List(Convert.ToInt32(_customerViewModel.Customer.Customer_Entity.Head_Office_Nation), _customerViewModel.Pager);
+                _customerViewModel.State_List = _stateMgr.Get_State_List(_customerViewModel.Customer.Customer_Entity.Head_Office_Nation, _customerViewModel.Pager);
             }
             catch(Exception ex)
             {
@@ -53,6 +53,19 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(CustomerViewModel _customerViewModel)
         {
+            try
+            {
+                _customerViewModel.Pager.IsPagingRequired = false;
+
+                _customerViewModel.Nation_List = _nationManager.Get_Nation_List(_customerViewModel.Pager);
+
+                _customerViewModel.Pager.IsPagingRequired = true;
+            }
+            catch(Exception ex)
+            {
+                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+            }
+
             return View("Search", _customerViewModel);
         }
 
@@ -165,33 +178,67 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) )
+                //if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) )
+                //{
+                //     _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email_Name_Turnover(_customerViewModel.Filter_Value.Email,_customerViewModel.Filter_Value.Customer_Name,_customerViewModel.Filter_Value.Turnover,  _customerViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email))
+                //{
+                //    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email_Name(_customerViewModel.Filter_Value.Email, _customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
+                //{
+                //    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Name(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) )
+                //{
+                //    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Email(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Email, _customerViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name))
+                //{
+                //       _customerViewModel.Customer_List = _customerMgr.Get_Customer_List_By_Name(_customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email))
+                //{
+                //    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email(_customerViewModel.Filter_Value.Email, _customerViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
+                //{
+                //    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Pager);
+                //}
+                //else
+                //{
+                //    _customerViewModel.Customer_List = _customerMgr.Get_Customer_List(_customerViewModel.Pager);
+                //}
+
+                if (!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) && _customerViewModel.Filter_Value.Nation_Id != 0 && _customerViewModel.Filter_Value.Customer_Id != 0)
                 {
-                     _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email_Name_Turnover(_customerViewModel.Filter_Value.Email,_customerViewModel.Filter_Value.Customer_Name,_customerViewModel.Filter_Value.Turnover,  _customerViewModel.Pager);
+                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Customer_Id_Nation_Id(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Nation_Id,_customerViewModel.Filter_Value.Customer_Id, _customerViewModel.Pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email))
+                else if( _customerViewModel.Filter_Value.Nation_Id != 0 && _customerViewModel.Filter_Value.Customer_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email_Name(_customerViewModel.Filter_Value.Email, _customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Customer_Id_Nation_Id( _customerViewModel.Filter_Value.Nation_Id, _customerViewModel.Filter_Value.Customer_Id, _customerViewModel.Pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
+                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) && _customerViewModel.Filter_Value.Customer_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Name(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Customer_Id(_customerViewModel.Filter_Value.Turnover,  _customerViewModel.Filter_Value.Customer_Id, _customerViewModel.Pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) )
+                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) && _customerViewModel.Filter_Value.Nation_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Email(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Email, _customerViewModel.Pager);
+                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_by_Nation_Id_Turnover(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Nation_Id,_customerViewModel.Pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name))
+                else if (_customerViewModel.Filter_Value.Nation_Id != 0)
                 {
-                       _customerViewModel.Customer_List = _customerMgr.Get_Customer_List_By_Name(_customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_by_Nation_Id(_customerViewModel.Filter_Value.Nation_Id,_customerViewModel.Pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email))
-                {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email(_customerViewModel.Filter_Value.Email, _customerViewModel.Pager);
-                }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
+                else if (!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
                 {
                     _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Pager);
+                }
+                else if (_customerViewModel.Filter_Value.Customer_Id != 0)
+                {
+                    _customerViewModel.Customer_List = _customerMgr.Get_Customers_By_Id(_customerViewModel.Filter_Value.Customer_Id, _customerViewModel.Pager);
+
                 }
                 else
                 {

@@ -21,7 +21,7 @@ function SearchContact() {
 
 function BindContactGrid(data) {
 
-    $("#txtCustomer_Name").val(data.Filter_Val.Customer_Name);
+   // $("#txtCustomer_Name").val(data.Filter_Val.Customer_Name);
     $('#tblcontact tr.subhead').html("");
 
     var htmlText = "";
