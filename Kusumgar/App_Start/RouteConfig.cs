@@ -189,6 +189,12 @@ namespace Kusumgar
            defaults: new { controller = "Complaint", action = "Search", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
+
+            routes.MapRoute(
+          name: "menu-30",
+          url: "master/consumable/search",
+          defaults: new { controller = "ConsumableMaster", action = "Search", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #region PostLogin
@@ -739,6 +745,34 @@ namespace Kusumgar
             url: "master/vendor-creation",
             defaults: new { controller = "Vendor", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
+            #region ConsumableMaster
+
+            routes.MapRoute(
+            name: "ConsumableMaster-1",
+            url: "master/ConsumableMaster",
+            defaults: new { controller = "ConsumableMaster", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "ConsumableMaster-2",
+            url: "master/insert-ConsumableMaster",
+            defaults: new { controller = "ConsumableMaster", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "ConsumableMaster-3",
+            url: "master/search-ConsumableMaster",
+            defaults: new { controller = "ConsumableMaster", action = "Get_ConsumableMasters", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+                    name: "ConsumableMaster-4",
+                    url: "master/insert_ConsumableMaster",
+                    defaults: new { controller = "ConsumableMaster", action = "Get_Supplier_Name", id = UrlParameter.Optional },
+                    namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 
