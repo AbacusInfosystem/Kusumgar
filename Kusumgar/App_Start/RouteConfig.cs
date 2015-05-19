@@ -694,6 +694,19 @@ namespace Kusumgar
             defaults: new { controller = "Vendor", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "vendor-2",
+            url: "master/insert-vendor",
+            defaults: new { controller = "Vendor", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "vendor-3",
+           url: "master/update-vendor",
+           defaults: new { controller = "Vendor", action = "Update", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+
             #endregion
 
             #endregion

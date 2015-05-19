@@ -101,10 +101,7 @@
     <Compile Include="M_Payment_Terms.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="M_Product.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="M_Product_Supplier_Mapping.cs">
+    <Compile Include="M_Product_Vendors.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Role.cs">
@@ -114,9 +111,6 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_State.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="M_Supplier.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Test.cs">
@@ -129,6 +123,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_User_Role_Mapping.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Vendor.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

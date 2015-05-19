@@ -62,12 +62,14 @@
     <Compile Include="Master\DefectManager.cs" />
     <Compile Include="Master\DefectTypeManager.cs" />
     <Compile Include="Master\NationManager.cs" />
+    <Compile Include="Master\ProductVendorManager.cs" />
     <Compile Include="Master\RoleAccessManager.cs" />
     <Compile Include="Master\RoleManager.cs" />
     <Compile Include="Master\StateManager.cs" />
     <Compile Include="Master\TestManager.cs" />
     <Compile Include="Master\TestUnitManager.cs" />
     <Compile Include="Master\UserManager.cs" />
+    <Compile Include="Master\VendorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

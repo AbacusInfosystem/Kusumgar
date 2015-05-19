@@ -95,9 +95,9 @@ warning 6002: The table/view 'Kusumgar.dbo.Bank_Details' does not have a primary
         </EntityType>
         <EntityType Name="Customer">
           <Key>
-            <PropertyRef Name="Company_Id" />
+            <PropertyRef Name="Customer_Id" />
           </Key>
-          <Property Name="Company_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Company_Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Head_Office_Address" Type="nvarchar" MaxLength="255" />
@@ -228,38 +228,22 @@ warning 6002: The table/view 'Kusumgar.dbo.Bank_Details' does not have a primary
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="M_Product">
+        <EntityType Name="M_Product_Vendors">
           <Key>
-            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="Product_Vendor_Id" />
           </Key>
-          <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Vendor_Id" Type="int" Nullable="false" />
+          <Property Name="Vendor_Id" Type="int" Nullable="false" />
           <Property Name="Product_Type" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Original_Manufacturer" Type="bit" Nullable="false" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Kusumgar.dbo.M_Product_Supplier_Mapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="M_Product_Supplier_Mapping">
-          <Key>
-            <PropertyRef Name="Supplier_Id" />
-            <PropertyRef Name="Product_Id" />
-            <PropertyRef Name="Original_Manufacturer" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-            <PropertyRef Name="UpdatedBy" />
-          </Key>
-          <Property Name="Supplier_Id" Type="int" Nullable="false" />
-          <Property Name="Product_Id" Type="int" Nullable="false" />
-          <Property Name="Original_Manufacturer" Type="bit" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Inspection Facility" Type="nvarchar" MaxLength="100" />
+          <Property Name="Testing Facility" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="M_Role">
           <Key>
@@ -292,54 +276,6 @@ warning 6002: The table/view 'Kusumgar.dbo.M_Product_Supplier_Mapping' does not 
           <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NationId" Type="int" Nullable="false" />
           <Property Name="StateName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Is_Active" Type="bit" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="M_Supplier">
-          <Key>
-            <PropertyRef Name="Supplier_Id" />
-          </Key>
-          <Property Name="Supplier_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Supplier_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="HeadOfficeAddress" Type="nvarchar" MaxLength="255" />
-          <Property Name="Head_Office_State" Type="int" Nullable="false" />
-          <Property Name="Head_Office_ZipCode" Type="nvarchar" MaxLength="6" />
-          <Property Name="Head_Office_Nation" Type="int" Nullable="false" />
-          <Property Name="Head_Office_Landline1" Type="nvarchar" MaxLength="20" />
-          <Property Name="Head_Office_Landline2" Type="nvarchar" MaxLength="20" />
-          <Property Name="Head_Office_FaxNo" Type="nvarchar" MaxLength="15" />
-          <Property Name="Email" Type="nvarchar" MaxLength="30" />
-          <Property Name="Quality_Certification" Type="nvarchar" MaxLength="255" />
-          <Property Name="Quality_Certification_Year" Type="int" />
-          <Property Name="Quality_Certification_Category" Type="nvarchar" MaxLength="255" />
-          <Property Name="Performance_Certification" Type="nvarchar" MaxLength="255" />
-          <Property Name="Performance_Certification_Year" Type="int" />
-          <Property Name="Performance_Certification_Category" Type="nvarchar" MaxLength="255" />
-          <Property Name="Inspection_facilities_at_factory" Type="nvarchar" MaxLength="255" />
-          <Property Name="Testing_facilities_at_factory" Type="nvarchar" MaxLength="255" />
-          <Property Name="Remark_about_Supplier" Type="nvarchar" MaxLength="255" />
-          <Property Name="Block_Payment" Type="bit" />
-          <Property Name="Shipment_Methods" Type="nvarchar" MaxLength="50" />
-          <Property Name="Flagged_Supplier" Type="nvarchar" MaxLength="50" />
-          <Property Name="Delivary_Term_Code" Type="nvarchar" MaxLength="50" />
-          <Property Name="Is_Approved_By_Director" Type="bit" />
-          <Property Name="CST_No" Type="nvarchar" MaxLength="100" />
-          <Property Name="SST_No" Type="nvarchar" MaxLength="100" />
-          <Property Name="VAT_No" Type="nvarchar" MaxLength="100" />
-          <Property Name="TIN_No" Type="nvarchar" MaxLength="100" />
-          <Property Name="Central_Excise_Registration_Details" Type="nvarchar" MaxLength="255" />
-          <Property Name="Registration_No" Type="nvarchar" MaxLength="100" />
-          <Property Name="Range" Type="nvarchar" MaxLength="100" />
-          <Property Name="Division" Type="nvarchar" MaxLength="100" />
-          <Property Name="PAN" Type="nvarchar" MaxLength="100" />
-          <Property Name="TAN" Type="nvarchar" MaxLength="100" />
-          <Property Name="Tax_Excemption_Code" Type="nvarchar" MaxLength="100" />
-          <Property Name="Currency_Code" Type="int" />
-          <Property Name="VAT_Type" Type="nvarchar" MaxLength="100" />
-          <Property Name="PaymentTerms" Type="int" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -431,6 +367,48 @@ warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a 
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Vendor">
+          <Key>
+            <PropertyRef Name="Vendor_Id" />
+          </Key>
+          <Property Name="Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vendor_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HeadOfficeAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="Head_Office_State" Type="int" Nullable="false" />
+          <Property Name="Head_Office_ZipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Head_Office_Nation" Type="int" Nullable="false" />
+          <Property Name="Head_Office_Landline1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Head_Office_Landline2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Head_Office_FaxNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="Quality_Certification" Type="nvarchar" MaxLength="255" />
+          <Property Name="Quality_Certification_Year" Type="int" />
+          <Property Name="Quality_Certification_Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="Performance_Certification" Type="nvarchar" MaxLength="255" />
+          <Property Name="Performance_Certification_Year" Type="int" />
+          <Property Name="Performance_Certification_Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="Remark_about_Supplier" Type="nvarchar" MaxLength="255" />
+          <Property Name="Block_Payment" Type="bit" />
+          <Property Name="Shipment_Methods" Type="int" Nullable="false" />
+          <Property Name="Flagged_Supplier" Type="nvarchar" MaxLength="50" />
+          <Property Name="Delivary_Term_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Is_Approved_By_Director" Type="bit" />
+          <Property Name="Central_Excise_Registration_Details" Type="nvarchar" MaxLength="255" />
+          <Property Name="Registration_No" Type="nvarchar" MaxLength="100" />
+          <Property Name="Range" Type="nvarchar" MaxLength="100" />
+          <Property Name="Division" Type="nvarchar" MaxLength="100" />
+          <Property Name="PAN" Type="nvarchar" MaxLength="100" />
+          <Property Name="TAN" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tax_Excemption_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="Currency_Code" Type="int" />
+          <Property Name="VAT_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymentTerms" Type="int" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
         <EntityContainer Name="KusumgarModelStoreContainer">
           <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
@@ -444,14 +422,14 @@ warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a 
           <EntitySet Name="M_Fabric_Type" EntityType="Self.M_Fabric_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Nation" EntityType="Self.M_Nation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Product" EntityType="Self.M_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Product_Vendors" EntityType="Self.M_Product_Vendors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_State" EntityType="Self.M_State" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Supplier" EntityType="Self.M_Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Test" EntityType="Self.M_Test" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Test_Unit" EntityType="Self.M_Test_Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_User" EntityType="Self.M_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Vendor" EntityType="Self.M_Vendor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank_Details" EntityType="Self.Bank_Details" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [Bank_Details].[Bank_Details_Id] AS [Bank_Details_Id], 
@@ -476,17 +454,6 @@ warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a 
 [Bank_Details].[Payment_Term_Id] AS [Payment_Term_Id], 
 [Bank_Details].[Tax_Excemption_Code] AS [Tax_Excemption_Code]
 FROM [dbo].[Bank_Details] AS [Bank_Details]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="M_Product_Supplier_Mapping" EntityType="Self.M_Product_Supplier_Mapping" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[M_Product_Supplier_Mapping].[Supplier_Id] AS [Supplier_Id], 
-[M_Product_Supplier_Mapping].[Product_Id] AS [Product_Id], 
-[M_Product_Supplier_Mapping].[Original_Manufacturer] AS [Original_Manufacturer], 
-[M_Product_Supplier_Mapping].[CreatedOn] AS [CreatedOn], 
-[M_Product_Supplier_Mapping].[CreatedBy] AS [CreatedBy], 
-[M_Product_Supplier_Mapping].[UpdatedOn] AS [UpdatedOn], 
-[M_Product_Supplier_Mapping].[UpdatedBy] AS [UpdatedBy]
-FROM [dbo].[M_Product_Supplier_Mapping] AS [M_Product_Supplier_Mapping]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -538,19 +505,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="M_Product">
-          <Key>
-            <PropertyRef Name="Product_Id" />
-          </Key>
-          <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Product_Type" Type="Int32" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="M_Role">
           <Key>
             <PropertyRef Name="Role_Id" />
@@ -582,54 +536,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NationId" Type="Int32" Nullable="false" />
           <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="M_Supplier">
-          <Key>
-            <PropertyRef Name="Supplier_Id" />
-          </Key>
-          <Property Name="Supplier_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Supplier_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HeadOfficeAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_State" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Nation" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Quality_Certification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Quality_Certification_Year" Type="Int32" />
-          <Property Name="Quality_Certification_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Performance_Certification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Performance_Certification_Year" Type="Int32" />
-          <Property Name="Performance_Certification_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Inspection_facilities_at_factory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Testing_facilities_at_factory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Remark_about_Supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Block_Payment" Type="Boolean" />
-          <Property Name="Shipment_Methods" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Flagged_Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Delivary_Term_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Approved_By_Director" Type="Boolean" />
-          <Property Name="CST_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SST_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="VAT_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TIN_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Central_Excise_Registration_Details" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Registration_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Range" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Division" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Tax_Excemption_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Currency_Code" Type="Int32" />
-          <Property Name="VAT_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentTerms" Type="Int32" />
           <Property Name="Is_Active" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
@@ -668,24 +574,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="M_Product_Supplier_Mapping">
-          <Key>
-            <PropertyRef Name="Supplier_Id" />
-            <PropertyRef Name="Product_Id" />
-            <PropertyRef Name="Original_Manufacturer" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-            <PropertyRef Name="UpdatedBy" />
-          </Key>
-          <Property Name="Supplier_Id" Type="Int32" Nullable="false" />
-          <Property Name="Product_Id" Type="Int32" Nullable="false" />
-          <Property Name="Original_Manufacturer" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="M_User_Role_Mapping">
           <Key>
             <PropertyRef Name="Role_Id" />
@@ -706,17 +594,13 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <EntitySet Name="M_Access_Function" EntityType="Self.M_Access_Function" />
           <EntitySet Name="M_Nation" EntityType="Self.M_Nation" />
           <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" />
-          <EntitySet Name="M_Product" EntityType="Self.M_Product" />
           <EntitySet Name="M_Role" EntityType="Self.M_Role" />
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" />
           <EntitySet Name="M_State" EntityType="Self.M_State" />
-          <EntitySet Name="M_Supplier" EntityType="Self.M_Supplier" />
           <EntitySet Name="M_User" EntityType="Self.M_User" />
-          <EntitySet Name="M_Product_Supplier_Mapping" EntityType="Self.M_Product_Supplier_Mapping" />
           <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" />
           <EntitySet Name="Complaints" EntityType="KusumgarModel.Complaint" />
           <EntitySet Name="Bank_Details" EntityType="KusumgarModel.Bank_Details" />
-          <EntitySet Name="Customers" EntityType="KusumgarModel.Customer" />
           <EntitySet Name="Contact_Custom_Fields" EntityType="KusumgarModel.Contact_Custom_Fields" />
           <EntitySet Name="M_Attribute_Code" EntityType="KusumgarModel.M_Attribute_Code" />
           <EntitySet Name="Contacts" EntityType="KusumgarModel.Contact" />
@@ -726,6 +610,9 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <EntitySet Name="M_Defect_Type" EntityType="KusumgarModel.M_Defect_Type" />
           <EntitySet Name="M_Test_Unit" EntityType="KusumgarModel.M_Test_Unit" />
           <EntitySet Name="M_Fabric_Type" EntityType="KusumgarModel.M_Fabric_Type" />
+          <EntitySet Name="M_Product_Vendors" EntityType="KusumgarModel.M_Product_Vendors" />
+          <EntitySet Name="M_Vendor" EntityType="KusumgarModel.M_Vendor" />
+          <EntitySet Name="Customers" EntityType="KusumgarModel.Customer" />
         </EntityContainer>
         <EntityType Name="Complaint">
           <Key>
@@ -772,38 +659,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="Currency_Id" Type="Int32" />
           <Property Name="Payment_Term_Id" Type="Int32" />
           <Property Name="Tax_Excemption_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="Company_Id" />
-          </Key>
-          <Property Name="Company_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Company_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_State" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Nation" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Company_Turnover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Public_Private_Sector" Type="Boolean" Nullable="false" />
-          <Property Name="Organised_UnOrganised_Sector" Type="Boolean" Nullable="false" />
-          <Property Name="Proprietary_Private_Limited" Type="Int32" Nullable="false" />
-          <Property Name="Progressive_Stable_Turmoil" Type="Int32" Nullable="false" />
-          <Property Name="Expiration_Date_Of_Contract" Type="DateTime" Precision="3" />
-          <Property Name="Credit_limit" Type="Int32" Nullable="false" />
-          <Property Name="Auto_Mail_Delivery" Type="Boolean" Nullable="false" />
-          <Property Name="Order_Minimum_Value" Type="Int32" Nullable="false" />
-          <Property Name="Order_Maximum_Value" Type="Int32" Nullable="false" />
-          <Property Name="Is_Approved_By_Director" Type="Boolean" Nullable="false" />
-          <Property Name="Block_Order" Type="Boolean" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Contact_Custom_Fields">
           <Key>
@@ -948,6 +803,97 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Product_Vendors">
+          <Key>
+            <PropertyRef Name="Product_Vendor_Id" />
+          </Key>
+          <Property Name="Product_Vendor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Type" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Original_Manufacturer" Type="Boolean" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Inspection_Facility" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Testing_Facility" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_Vendor">
+          <Key>
+            <PropertyRef Name="Vendor_Id" />
+          </Key>
+          <Property Name="Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vendor_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadOfficeAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_State" Type="Int32" Nullable="false" />
+          <Property Name="Head_Office_ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_Nation" Type="Int32" Nullable="false" />
+          <Property Name="Head_Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Quality_Certification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Quality_Certification_Year" Type="Int32" />
+          <Property Name="Quality_Certification_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Performance_Certification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Performance_Certification_Year" Type="Int32" />
+          <Property Name="Performance_Certification_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Remark_about_Supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Block_Payment" Type="Boolean" />
+          <Property Name="Shipment_Methods" Type="Int32" Nullable="false" />
+          <Property Name="Flagged_Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Delivary_Term_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Approved_By_Director" Type="Boolean" />
+          <Property Name="Central_Excise_Registration_Details" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Registration_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Range" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tax_Excemption_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Currency_Code" Type="Int32" />
+          <Property Name="VAT_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTerms" Type="Int32" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_State" Type="Int32" Nullable="false" />
+          <Property Name="Head_Office_ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_Nation" Type="Int32" Nullable="false" />
+          <Property Name="Head_Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Head_Office_FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Turnover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Public_Private_Sector" Type="Boolean" Nullable="false" />
+          <Property Name="Organised_UnOrganised_Sector" Type="Boolean" Nullable="false" />
+          <Property Name="Proprietary_Private_Limited" Type="Int32" Nullable="false" />
+          <Property Name="Progressive_Stable_Turmoil" Type="Int32" Nullable="false" />
+          <Property Name="Expiration_Date_Of_Contract" Type="DateTime" Precision="3" />
+          <Property Name="Credit_limit" Type="Int32" Nullable="false" />
+          <Property Name="Auto_Mail_Delivery" Type="Boolean" Nullable="false" />
+          <Property Name="Order_Minimum_Value" Type="Int32" Nullable="false" />
+          <Property Name="Order_Maximum_Value" Type="Int32" Nullable="false" />
+          <Property Name="Is_Approved_By_Director" Type="Boolean" Nullable="false" />
+          <Property Name="Block_Order" Type="Boolean" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -984,20 +930,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
               <MappingFragment StoreEntitySet="M_Payment_Terms">
                 <ScalarProperty Name="Payment_Term_Id" ColumnName="Payment_Term_Id" />
                 <ScalarProperty Name="Payment_Term" ColumnName="Payment_Term" />
-                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="M_Product">
-            <EntityTypeMapping TypeName="KusumgarModel.M_Product">
-              <MappingFragment StoreEntitySet="M_Product">
-                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
                 <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -1046,55 +978,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="M_Supplier">
-            <EntityTypeMapping TypeName="KusumgarModel.M_Supplier">
-              <MappingFragment StoreEntitySet="M_Supplier">
-                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
-                <ScalarProperty Name="Supplier_Name" ColumnName="Supplier_Name" />
-                <ScalarProperty Name="HeadOfficeAddress" ColumnName="HeadOfficeAddress" />
-                <ScalarProperty Name="Head_Office_State" ColumnName="Head_Office_State" />
-                <ScalarProperty Name="Head_Office_ZipCode" ColumnName="Head_Office_ZipCode" />
-                <ScalarProperty Name="Head_Office_Nation" ColumnName="Head_Office_Nation" />
-                <ScalarProperty Name="Head_Office_Landline1" ColumnName="Head_Office_Landline1" />
-                <ScalarProperty Name="Head_Office_Landline2" ColumnName="Head_Office_Landline2" />
-                <ScalarProperty Name="Head_Office_FaxNo" ColumnName="Head_Office_FaxNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Quality_Certification" ColumnName="Quality_Certification" />
-                <ScalarProperty Name="Quality_Certification_Year" ColumnName="Quality_Certification_Year" />
-                <ScalarProperty Name="Quality_Certification_Category" ColumnName="Quality_Certification_Category" />
-                <ScalarProperty Name="Performance_Certification" ColumnName="Performance_Certification" />
-                <ScalarProperty Name="Performance_Certification_Year" ColumnName="Performance_Certification_Year" />
-                <ScalarProperty Name="Performance_Certification_Category" ColumnName="Performance_Certification_Category" />
-                <ScalarProperty Name="Inspection_facilities_at_factory" ColumnName="Inspection_facilities_at_factory" />
-                <ScalarProperty Name="Testing_facilities_at_factory" ColumnName="Testing_facilities_at_factory" />
-                <ScalarProperty Name="Remark_about_Supplier" ColumnName="Remark_about_Supplier" />
-                <ScalarProperty Name="Block_Payment" ColumnName="Block_Payment" />
-                <ScalarProperty Name="Shipment_Methods" ColumnName="Shipment_Methods" />
-                <ScalarProperty Name="Flagged_Supplier" ColumnName="Flagged_Supplier" />
-                <ScalarProperty Name="Delivary_Term_Code" ColumnName="Delivary_Term_Code" />
-                <ScalarProperty Name="Is_Approved_By_Director" ColumnName="Is_Approved_By_Director" />
-                <ScalarProperty Name="CST_No" ColumnName="CST_No" />
-                <ScalarProperty Name="SST_No" ColumnName="SST_No" />
-                <ScalarProperty Name="VAT_No" ColumnName="VAT_No" />
-                <ScalarProperty Name="TIN_No" ColumnName="TIN_No" />
-                <ScalarProperty Name="Central_Excise_Registration_Details" ColumnName="Central_Excise_Registration_Details" />
-                <ScalarProperty Name="Registration_No" ColumnName="Registration_No" />
-                <ScalarProperty Name="Range" ColumnName="Range" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="PAN" ColumnName="PAN" />
-                <ScalarProperty Name="TAN" ColumnName="TAN" />
-                <ScalarProperty Name="Tax_Excemption_Code" ColumnName="Tax_Excemption_Code" />
-                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
-                <ScalarProperty Name="VAT_Type" ColumnName="VAT_Type" />
-                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
-                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="M_User">
             <EntityTypeMapping TypeName="KusumgarModel.M_User">
               <MappingFragment StoreEntitySet="M_User">
@@ -1121,19 +1004,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
                 <ScalarProperty Name="User_Name" ColumnName="User_Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="M_Product_Supplier_Mapping">
-            <EntityTypeMapping TypeName="KusumgarModel.M_Product_Supplier_Mapping">
-              <MappingFragment StoreEntitySet="M_Product_Supplier_Mapping">
-                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
-                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
-                <ScalarProperty Name="Original_Manufacturer" ColumnName="Original_Manufacturer" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
@@ -1193,39 +1063,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
                 <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
                 <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
                 <ScalarProperty Name="Bank_Details_Id" ColumnName="Bank_Details_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="KusumgarModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="Block_Order" ColumnName="Block_Order" />
-                <ScalarProperty Name="Is_Approved_By_Director" ColumnName="Is_Approved_By_Director" />
-                <ScalarProperty Name="Order_Maximum_Value" ColumnName="Order_Maximum_Value" />
-                <ScalarProperty Name="Order_Minimum_Value" ColumnName="Order_Minimum_Value" />
-                <ScalarProperty Name="Auto_Mail_Delivery" ColumnName="Auto_Mail_Delivery" />
-                <ScalarProperty Name="Credit_limit" ColumnName="Credit_limit" />
-                <ScalarProperty Name="Expiration_Date_Of_Contract" ColumnName="Expiration_Date_Of_Contract" />
-                <ScalarProperty Name="Progressive_Stable_Turmoil" ColumnName="Progressive_Stable_Turmoil" />
-                <ScalarProperty Name="Proprietary_Private_Limited" ColumnName="Proprietary_Private_Limited" />
-                <ScalarProperty Name="Organised_UnOrganised_Sector" ColumnName="Organised_UnOrganised_Sector" />
-                <ScalarProperty Name="Public_Private_Sector" ColumnName="Public_Private_Sector" />
-                <ScalarProperty Name="Company_Turnover" ColumnName="Company_Turnover" />
-                <ScalarProperty Name="Head_Office_FaxNo" ColumnName="Head_Office_FaxNo" />
-                <ScalarProperty Name="Head_Office_Landline2" ColumnName="Head_Office_Landline2" />
-                <ScalarProperty Name="Head_Office_Landline1" ColumnName="Head_Office_Landline1" />
-                <ScalarProperty Name="Head_Office_Nation" ColumnName="Head_Office_Nation" />
-                <ScalarProperty Name="Head_Office_ZipCode" ColumnName="Head_Office_ZipCode" />
-                <ScalarProperty Name="Head_Office_State" ColumnName="Head_Office_State" />
-                <ScalarProperty Name="Head_Office_Address" ColumnName="Head_Office_Address" />
-                <ScalarProperty Name="Company_Email" ColumnName="Company_Email" />
-                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
-                <ScalarProperty Name="Company_Id" ColumnName="Company_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1378,6 +1215,100 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="Fabric_Type_Name" ColumnName="Fabric_Type_Name" />
                 <ScalarProperty Name="Fabric_Type_Id" ColumnName="Fabric_Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Product_Vendors">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Product_Vendors">
+              <MappingFragment StoreEntitySet="M_Product_Vendors">
+                <ScalarProperty Name="Testing_Facility" ColumnName="Testing Facility" />
+                <ScalarProperty Name="Inspection_Facility" ColumnName="Inspection Facility" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Original_Manufacturer" ColumnName="Original_Manufacturer" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
+                <ScalarProperty Name="Vendor_Id" ColumnName="Vendor_Id" />
+                <ScalarProperty Name="Product_Vendor_Id" ColumnName="Product_Vendor_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Vendor">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Vendor">
+              <MappingFragment StoreEntitySet="M_Vendor">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="VAT_Type" ColumnName="VAT_Type" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Tax_Excemption_Code" ColumnName="Tax_Excemption_Code" />
+                <ScalarProperty Name="TAN" ColumnName="TAN" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="Registration_No" ColumnName="Registration_No" />
+                <ScalarProperty Name="Central_Excise_Registration_Details" ColumnName="Central_Excise_Registration_Details" />
+                <ScalarProperty Name="Is_Approved_By_Director" ColumnName="Is_Approved_By_Director" />
+                <ScalarProperty Name="Delivary_Term_Code" ColumnName="Delivary_Term_Code" />
+                <ScalarProperty Name="Flagged_Supplier" ColumnName="Flagged_Supplier" />
+                <ScalarProperty Name="Shipment_Methods" ColumnName="Shipment_Methods" />
+                <ScalarProperty Name="Block_Payment" ColumnName="Block_Payment" />
+                <ScalarProperty Name="Remark_about_Supplier" ColumnName="Remark_about_Supplier" />
+                <ScalarProperty Name="Performance_Certification_Category" ColumnName="Performance_Certification_Category" />
+                <ScalarProperty Name="Performance_Certification_Year" ColumnName="Performance_Certification_Year" />
+                <ScalarProperty Name="Performance_Certification" ColumnName="Performance_Certification" />
+                <ScalarProperty Name="Quality_Certification_Category" ColumnName="Quality_Certification_Category" />
+                <ScalarProperty Name="Quality_Certification_Year" ColumnName="Quality_Certification_Year" />
+                <ScalarProperty Name="Quality_Certification" ColumnName="Quality_Certification" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Head_Office_FaxNo" ColumnName="Head_Office_FaxNo" />
+                <ScalarProperty Name="Head_Office_Landline2" ColumnName="Head_Office_Landline2" />
+                <ScalarProperty Name="Head_Office_Landline1" ColumnName="Head_Office_Landline1" />
+                <ScalarProperty Name="Head_Office_Nation" ColumnName="Head_Office_Nation" />
+                <ScalarProperty Name="Head_Office_ZipCode" ColumnName="Head_Office_ZipCode" />
+                <ScalarProperty Name="Head_Office_State" ColumnName="Head_Office_State" />
+                <ScalarProperty Name="HeadOfficeAddress" ColumnName="HeadOfficeAddress" />
+                <ScalarProperty Name="Vendor_Name" ColumnName="Vendor_Name" />
+                <ScalarProperty Name="Vendor_Id" ColumnName="Vendor_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="KusumgarModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Block_Order" ColumnName="Block_Order" />
+                <ScalarProperty Name="Is_Approved_By_Director" ColumnName="Is_Approved_By_Director" />
+                <ScalarProperty Name="Order_Maximum_Value" ColumnName="Order_Maximum_Value" />
+                <ScalarProperty Name="Order_Minimum_Value" ColumnName="Order_Minimum_Value" />
+                <ScalarProperty Name="Auto_Mail_Delivery" ColumnName="Auto_Mail_Delivery" />
+                <ScalarProperty Name="Credit_limit" ColumnName="Credit_limit" />
+                <ScalarProperty Name="Expiration_Date_Of_Contract" ColumnName="Expiration_Date_Of_Contract" />
+                <ScalarProperty Name="Progressive_Stable_Turmoil" ColumnName="Progressive_Stable_Turmoil" />
+                <ScalarProperty Name="Proprietary_Private_Limited" ColumnName="Proprietary_Private_Limited" />
+                <ScalarProperty Name="Organised_UnOrganised_Sector" ColumnName="Organised_UnOrganised_Sector" />
+                <ScalarProperty Name="Public_Private_Sector" ColumnName="Public_Private_Sector" />
+                <ScalarProperty Name="Company_Turnover" ColumnName="Company_Turnover" />
+                <ScalarProperty Name="Head_Office_FaxNo" ColumnName="Head_Office_FaxNo" />
+                <ScalarProperty Name="Head_Office_Landline2" ColumnName="Head_Office_Landline2" />
+                <ScalarProperty Name="Head_Office_Landline1" ColumnName="Head_Office_Landline1" />
+                <ScalarProperty Name="Head_Office_Nation" ColumnName="Head_Office_Nation" />
+                <ScalarProperty Name="Head_Office_ZipCode" ColumnName="Head_Office_ZipCode" />
+                <ScalarProperty Name="Head_Office_State" ColumnName="Head_Office_State" />
+                <ScalarProperty Name="Head_Office_Address" ColumnName="Head_Office_Address" />
+                <ScalarProperty Name="Company_Email" ColumnName="Company_Email" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

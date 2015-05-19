@@ -14,7 +14,7 @@ namespace KusumgarDatabaseEntities
     
     public partial class Customer
     {
-        public int Company_Id { get; set; }
+        public int Customer_Id { get; set; }
         public string Customer_Name { get; set; }
         public string Company_Email { get; set; }
         public string Head_Office_Address { get; set; }

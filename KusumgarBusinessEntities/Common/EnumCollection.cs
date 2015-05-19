@@ -167,8 +167,13 @@ namespace KusumgarBusinessEntities.Common
         Insert_Attribute_Code_sp,
         Get_Attribute_Code_By_Id_sp,
         Update_Attribute_Code_sp,
-        Get_Attribute_Code_By_Attribute_Name_sp
+        Get_Attribute_Code_By_Attribute_Name_sp,
 
+
+        //Vendor
+
+        Insert_Vendor_sp,
+        Insert_Product_Vendors_sp
     }
 
     public enum GenderType
@@ -230,4 +235,18 @@ namespace KusumgarBusinessEntities.Common
         option5 = 5,
     }
    
+      public enum ProductVendor
+      {
+          Product_Type=1,
+          Product_Service=2
+      }
+
+    public enum ShipmentMethod
+    {
+        method1=1,
+        method2=2
+
+    }
+
+
 }

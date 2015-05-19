@@ -59,12 +59,14 @@
     <Compile Include="Master\DefectRepo.cs" />
     <Compile Include="Master\DefectTypeRepo.cs" />
     <Compile Include="Master\NationRepo.cs" />
+    <Compile Include="Master\ProductVendorRepo.cs" />
     <Compile Include="Master\RoleAccessRepo.cs" />
     <Compile Include="Master\RoleRepo.cs" />
     <Compile Include="Master\StateRepo.cs" />
     <Compile Include="Master\TestRepo.cs" />
     <Compile Include="Master\TestUnitRepo.cs" />
     <Compile Include="Master\UserRepo.cs" />
+    <Compile Include="Master\VendorRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CommonMethods.cs" />
     <Compile Include="Utilities\Encrypter.cs" />
