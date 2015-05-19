@@ -13,26 +13,26 @@ namespace Kusumgar.Models
     {
         public ContactViewModel()
         {
-            Contact_List = new List<ContactInfo>();
+            Contacts = new List<ContactInfo>();
 
             contact = new ContactInfo();
 
-            FriendlyMessage = new List<FriendlyMessageInfo>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
 
             Pager = new PaginationInfo();
 
-            Filter_Val = new Contact_Filter();
+            Filter = new Contact_Filter();
         }
 
-        public List<ContactInfo> Contact_List { get; set; }
+        public List<ContactInfo> Contacts{ get; set; }
 
         public ContactInfo contact { get; set; }
 
-        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
         public PaginationInfo Pager { get; set; }
 
-        public Contact_Filter Filter_Val { get; set; }
+        public Contact_Filter Filter { get; set; }
     }
 
     public class Contact_Filter

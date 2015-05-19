@@ -2,6 +2,10 @@
 
     InitializeAutoComplete($('#txtCustomer_Name'));
 
+    $("#hdfCustomer_Id").val(0);
+
+    $("#hdCustomer_Id").val(0);
+
     $('#hdfCurrentPage').val(0);
 
     SearchCustomer();

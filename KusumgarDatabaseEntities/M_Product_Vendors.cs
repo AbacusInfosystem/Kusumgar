@@ -24,5 +24,7 @@ namespace KusumgarDatabaseEntities
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
         public int UpdatedBy { get; set; }
+        public string Inspection_Facility { get; set; }
+        public string Testing_Facility { get; set; }
     }
 }

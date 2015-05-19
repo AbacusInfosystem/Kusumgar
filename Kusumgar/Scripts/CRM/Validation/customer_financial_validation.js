@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $("#frm_financial_Details").validate({
+    $("#frmFinancial_Details").validate({
 
         rules: {
 

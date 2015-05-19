@@ -1,7 +1,7 @@
 ﻿
 $(function () {
 
-    $("#frm_Billing").validate({
+    $("#frmBilling").validate({
 
         rules: {
             "Addresss":

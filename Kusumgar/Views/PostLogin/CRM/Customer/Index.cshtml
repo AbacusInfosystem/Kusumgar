@@ -1,8 +1,6 @@
 ﻿@model Kusumgar.Models.CustomerViewModel
 @using KusumgarBusinessEntities.Common
-@*@{
-    ViewBag.Title = "Customer";
-}*@
+
 
 <script src="/Scripts/CRM/Event/customer_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_method.js"></script>
@@ -32,20 +30,20 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
-                        <li><a href="#tab_2" id="Financial_Tab" data-toggle="tab">Financial</a></li>
-                        <li><a href="#tab_3" id="Billing_Tab" data-toggle="tab">Billing</a></li>
-                        <li><a href="#tab_4" id="Shipping_Tab" data-toggle="tab">Shipping</a></li>
-                        <li><a href="#tab_5" id="Other_Tab" data-toggle="tab">Other</a></li>
+                        <li><a href="#tab_2" id="tabFinancial" data-toggle="tab">Financial</a></li>
+                        <li><a href="#tab_3" id="tabBilling" data-toggle="tab">Billing</a></li>
+                        <li><a href="#tab_4" id="tabShipping" data-toggle="tab">Shipping</a></li>
+                        <li><a href="#tab_5" id="tabOther" data-toggle="tab">Other</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <br />
 
-                            <form id="frm_Customer">
+                            <form id="frmCustomer">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <input type="hidden" id="hdnCompany_Id" value="@Model.Customer.Customer_Entity.Company_Id">
+                                        <input type="hidden" id="hdnCustomer_Id" value="@Model.Customer.Customer_Entity.Customer_Id">
                                         <div class="form-group">
                                             <label for="txtCustomer_Name" style="color: #333">Customer name</label>
                                             <input type="text" class="form-control input-sm" id="txtCustomer_Name" name="Customer.Customer_Entity.Customer_Name" placeholder="Enter customer name" value="@Model.Customer.Customer_Entity.Customer_Name">
@@ -72,7 +70,7 @@
                                             <label style="color: #333">Nation</label>
                                             <select class="form-control input-sm" id="drpHead_Office_Nation" name="Customer.Customer_Entity.Head_Office_Nation">
                                                 <option value="">- Select Nation -</option>
-                                                @foreach (var item in Model.Nation_List)
+                                                @foreach (var item in Model.Nations)
                                                 {
                                                     if (Model.Customer.Customer_Entity.Head_Office_Nation == item.Nation_Entity.NationId)
                                                     {
@@ -90,7 +88,7 @@
                                             <label style="color: #333">State</label>
                                             <select class="form-control input-sm" id="drpHead_Office_State" name="Customer.Customer_Entity.Head_Office_State">
                                                 <option value="">- Select State-</option>
-                                                @foreach (var item in Model.State_List)
+                                                @foreach (var item in Model.States)
                                                 {
                                                     if (Model.Customer.Customer_Entity.Head_Office_State == item.State_Entity.StateId)
                                                     {
@@ -173,10 +171,11 @@
                                 <div class="box-footer">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <button type="button" id="btn_Save" class="btn btn-success btn-sm">Save primary</button>&nbsp;
-                                            <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                            <div class="btn-group">
+                                                <button type="button" id="btn_Save" class="btn btn-success btn-sm">Save primary</button>&nbsp;
+                                                <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                            </div>
                                         </div>
-                                       
                                     </div>
                                 </div>
                             </form>
@@ -202,7 +201,7 @@
                         </div><!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_5">
                             <br />
-                            <form id="frm_other">
+                            <form id="frmOthers">
                                 <div class="row">
                                     <div class="col-md-4">
 
@@ -312,11 +311,11 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Public_Private_Sector == true)
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPublic" checked />
+                                                            <input type="radio" name="Public_Private" id="rdbPublic" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPublic" />
+                                                            <input type="radio" name="Public_Private" id="rdbPublic" />
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Public sector
                                                     </label>
@@ -325,11 +324,11 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Public_Private_Sector == false)
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPrivate" checked />
+                                                            <input type="radio" name="Public_Private" id="rdbPrivate" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPrivate" />
+                                                            <input type="radio" name="Public_Private" id="rdbPrivate" />
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Private sector
 
@@ -349,11 +348,11 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == true)
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdOrgnised" checked />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbOrganised" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdOrgnised" />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbOrganised" />
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Organised sector
 
@@ -363,11 +362,11 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == false)
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdUnorganised" checked />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbUnorganised" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdUnorganised" />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbUnorganised" />
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Unorganised sectors
                                                     </label>
@@ -387,7 +386,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Type" id="Chk_Company_type_@item.Key" value="@item.Key" checked />
+                                                                <input type="radio" name="Company_Type" id="ChkCompany_type_@item.Key" value="@item.Key" checked />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -396,7 +395,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Type" id="Chk_Company_type_@item.Key" value="@item.Key" />
+                                                                <input type="radio" name="Company_Type" id="ChkCompany_type_@item.Key" value="@item.Key" />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -414,7 +413,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Status" id="Chk_Company_status_@item.Key" value="@item.Key" checked />
+                                                                <input type="radio" name="Company_Status" id="ChkCompany_status_@item.Key" value="@item.Key" checked />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -423,7 +422,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Status" id="Chk_Company_status_@item.Key" value="@item.Key" />
+                                                                <input type="radio" name="Company_Status" id="ChkCompany_status_@item.Key" value="@item.Key" />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -437,8 +436,10 @@
                                 </div>
 
                                 <div class="box-footer">
-                                    <button type="button" id="btnSaveOther" class="btn btn-success btn-sm">Save other</button>
-                                    <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                    <div class="btn-group">
+                                        <button type="button" id="btnSaveOther" class="btn btn-success btn-sm">Save other</button>
+                                        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                    </div>
                                 </div>
                             </form>
                         </div><!-- /.tab-pane -->

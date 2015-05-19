@@ -16,50 +16,46 @@ namespace KusumgarDataAccess
 {
     public class ContactRepo
     {
-         SQLHelperRepo sqlRepo;
+         SQLHelperRepo _sqlRepo;
 
          public ContactRepo()
         {
-            sqlRepo = new SQLHelperRepo();
+            _sqlRepo = new SQLHelperRepo();
         }
-        
-        public  List<ContactInfo> Get_Contact_List(ref PaginationInfo Pager)
+
+         public List<ContactInfo> Get_Contacts(ref PaginationInfo pager)
          {
-             List<ContactInfo> ContactList = new List<ContactInfo>();
+             List<ContactInfo> contacts = new List<ContactInfo>();
 
-             DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Contact_sp.ToString(), CommandType.StoredProcedure);
+             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Contact_sp.ToString(), CommandType.StoredProcedure);
 
-             var tupleData = CommonMethods.GetRows(dt, Pager);
-
-             foreach (DataRow dr in tupleData.Item1)
+             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
              {
-                 ContactList.Add(Get_Contact_Values(dr));
+                 contacts.Add(Get_Contact_Values(dr));
              }
 
-             return ContactList;
+             return contacts;
          }
 
-        public List<ContactInfo> Get_Contact_List_By_Name(int Customer_Id, ref PaginationInfo Pager)
+         public List<ContactInfo> Get_Contacts_By_Name(int customer_Id, ref PaginationInfo pager)
         {
-            List<ContactInfo> ContactList = new List<ContactInfo>();
+            List<ContactInfo> Contacts = new List<ContactInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Customer_Id", Customer_Id));
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Contact_By_Customer_Name_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Contact_By_Customer_Name_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                ContactList.Add(Get_Contact_Values(dr));
+                Contacts.Add(Get_Contact_Values(dr));
             }
 
-            return ContactList;
+            return Contacts;
         }
 
-        public ContactInfo Get_Contact_Values(DataRow dr)
+         private ContactInfo Get_Contact_Values(DataRow dr)
         {
             ContactInfo contact = new ContactInfo();
 
@@ -97,7 +93,7 @@ namespace KusumgarDataAccess
 
             sqlParams.Add(new SqlParameter("@Contact_Id", Contact_Id));
 
-            DataSet ds = sqlRepo.ExecuteDataSet(sqlParams, StoredProcedures.Get_Contact_by_Id_sp.ToString(), CommandType.StoredProcedure);
+            DataSet ds = _sqlRepo.ExecuteDataSet(sqlParams, StoredProcedures.Get_Contact_by_Id_sp.ToString(), CommandType.StoredProcedure);
 
             DataTable dt = ds.Tables[0];
 
@@ -130,7 +126,7 @@ namespace KusumgarDataAccess
             return contact;
         }
 
-        public ContactCustomFieldsInfo Get_Contact_Custom_Fields_values(DataRow dr)
+        private ContactCustomFieldsInfo Get_Contact_Custom_Fields_values(DataRow dr)
         {
             ContactCustomFieldsInfo customfields = new ContactCustomFieldsInfo();
 
@@ -151,14 +147,14 @@ namespace KusumgarDataAccess
         {
            int Contact_Id = 0;
 
-           Contact_Id = Convert.ToInt32(sqlRepo.ExecuteScalerObj(Set_Values_In_Contact(contact), StoredProcedures.Insert_Contact_sp.ToString(), CommandType.StoredProcedure));
+           Contact_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Contact(contact), StoredProcedures.Insert_Contact_sp.ToString(), CommandType.StoredProcedure));
 
            return Contact_Id;
         }
 
         public void Update_Contact(ContactInfo contact)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Contact(contact), StoredProcedures.Update_Contact_sp.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Contact(contact), StoredProcedures.Update_Contact_sp.ToString(), CommandType.StoredProcedure);
         }
 
         private List<SqlParameter> Set_Values_In_Contact(ContactInfo contact)
@@ -194,44 +190,44 @@ namespace KusumgarDataAccess
             return sqlparam;
         }
 
-        public void Insert_Contact_Custom_Fields(ContactCustomFieldsInfo customfields)
+        public void Insert_Contact_Custom_Fields(ContactCustomFieldsInfo custom_Fields)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Contact_Custom_Fields(customfields), StoredProcedures.Insert_Contact_Custom_Fields_Sp.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Contact_Custom_Fields(custom_Fields), StoredProcedures.Insert_Contact_Custom_Fields_Sp.ToString(), CommandType.StoredProcedure);
         }
 
-        public void Update_Contact_Custom_Fields(ContactCustomFieldsInfo customfields)
+        public void Update_Contact_Custom_Fields(ContactCustomFieldsInfo custom_Fields)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Contact_Custom_Fields(customfields), StoredProcedures.Update_Contact_Custom_Fields_Sp.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Contact_Custom_Fields(custom_Fields), StoredProcedures.Update_Contact_Custom_Fields_Sp.ToString(), CommandType.StoredProcedure);
         }
 
-        private List<SqlParameter> Set_Values_In_Contact_Custom_Fields(ContactCustomFieldsInfo customfields)
+        private List<SqlParameter> Set_Values_In_Contact_Custom_Fields(ContactCustomFieldsInfo custom_Fields)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (customfields.Custom_Fields_Entity.Contact_Custom_Field_Id != 0)
+            if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", customfields.Custom_Fields_Entity.Contact_Custom_Field_Id));
+                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id));
             }
-            sqlparam.Add(new SqlParameter("@Contact_Id", customfields.Custom_Fields_Entity.Contact_Id));
-            sqlparam.Add(new SqlParameter("@Field_Name", customfields.Custom_Fields_Entity.Field_Name));
-            sqlparam.Add(new SqlParameter("@Field_Value", customfields.Custom_Fields_Entity.Field_Value));
-            sqlparam.Add(new SqlParameter("@Is_Active", customfields.Custom_Fields_Entity.Is_Active));
-            if (customfields.Custom_Fields_Entity.Contact_Custom_Field_Id == 0)
+            sqlparam.Add(new SqlParameter("@Contact_Id", custom_Fields.Custom_Fields_Entity.Contact_Id));
+            sqlparam.Add(new SqlParameter("@Field_Name", custom_Fields.Custom_Fields_Entity.Field_Name));
+            sqlparam.Add(new SqlParameter("@Field_Value", custom_Fields.Custom_Fields_Entity.Field_Value));
+            sqlparam.Add(new SqlParameter("@Is_Active", custom_Fields.Custom_Fields_Entity.Is_Active));
+            if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", customfields.Custom_Fields_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedBy", custom_Fields.Custom_Fields_Entity.CreatedBy));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", customfields.Custom_Fields_Entity.UpdatedBy));   
+            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.Custom_Fields_Entity.UpdatedBy));   
 
             return sqlparam;
         }
 
-        public void Delete_Contact_Custom_Fields(int Contact_Custom_Field_Id)
+        public void Delete_Contact_Custom_Fields(int contact_Custom_Field_Id)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", Contact_Custom_Field_Id));
+            sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", contact_Custom_Field_Id));
 
-            sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Contact_Custom_Fields_By_Id.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Contact_Custom_Fields_By_Id.ToString(), CommandType.StoredProcedure);
         }
     }
 }

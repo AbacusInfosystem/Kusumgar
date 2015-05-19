@@ -20,7 +20,7 @@ namespace Kusumgar.Models
 
        public PaginationInfo Pager { get; set; }
 
-       public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+       public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
        public List<RoleInfo> RoleInfoList { get; set; }
         
@@ -34,7 +34,7 @@ namespace Kusumgar.Models
 
             Pager = new PaginationInfo();
 
-            FriendlyMessage = new List<FriendlyMessageInfo>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
 
             RoleInfoList = new List<RoleInfo>();
         }

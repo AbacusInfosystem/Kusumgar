@@ -3,7 +3,7 @@
 <script src="/Scripts/CRM/Event/customer_billing_details_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_biling_details_method.js"></script>
 <script src="/Scripts/CRM/Validation/customer_billing_details_validation.js"></script>
-<form id="frm_Billing">
+<form id="frmBilling">
     <div class="row">
         <div class="col-md-4">
             <!-- Billing Office Details -->
@@ -80,8 +80,10 @@
     </div>
 
     <div class="box-footer">
-        <button type="button" id="btnSaveBillingAddressDetails" class="btn btn-success btn-sm">Save billing</button>
-        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
+        <div class="btn-group">
+            <button type="button" id="btnSaveBillingAddressDetails" class="btn btn-success btn-sm">Save billing</button>
+            <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
+        </div>
     </div>
 
 </form>

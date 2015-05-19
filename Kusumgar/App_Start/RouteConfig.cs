@@ -222,7 +222,7 @@ namespace Kusumgar
             routes.MapRoute(
             name: "customer-2",
             url: "crm/search-customer",
-            defaults: new { controller = "Customer", action = "Get_Customer_List", id = UrlParameter.Optional },
+            defaults: new { controller = "Customer", action = "Get_Customers", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers.PostLogin.CRM" });
 
             routes.MapRoute(

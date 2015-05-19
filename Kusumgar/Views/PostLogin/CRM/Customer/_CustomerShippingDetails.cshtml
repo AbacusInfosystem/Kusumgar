@@ -3,7 +3,7 @@
 <script src="/Scripts/CRM/Event/customer_shipping_details_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_shipping_details_method.js"></script>
 <script src="/Scripts/CRM/Validation/customer_shipping_details_validation.js"></script>
-<form id="frm_Shipping" class="form-validate">
+<form id="frmShipping" class="form-validate">
 
     <div class="row">
         <div class="col-md-4">
@@ -82,8 +82,10 @@
     </div>
 
     <div class="box-footer">
-        <button type="button" id="btnSaveShippingAddressDetails" class="btn btn-success btn-sm">Save shipping</button>
-        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
+        <div class="btn-group">
+            <button type="button" id="btnSaveShippingAddressDetails" class="btn btn-success btn-sm">Save shipping</button>
+            <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
+        </div>
     </div>
 </form>
 

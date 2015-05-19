@@ -1,8 +1,6 @@
 ﻿@model Kusumgar.Models.CustomerViewModel
 @using KusumgarBusinessEntities.Common
-@{
-    ViewBag.Title = "Customer";
-}
+
 <script src="/Scripts/CRM/Event/customer_listing_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_listing_method.js"></script>
 <script src="/Scripts/CRM/Validation/custome_listing_validation.js"></script>
@@ -25,9 +23,9 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-        <input type="hidden" id="hdfCompany_Id" name="Customer.Customer_Entity.Company_Id" />
-        <input type="hidden" id="hdfCustomer_Id" name="Filter_Val.Customer_Id" />
-        <input type="hidden" id="hdfCustomer_Name" name="Filter_Val.Customer_Name" />
+        <input type="hidden" id="hdfCustomer_Id" name="Customer.Customer_Entity.Customer_Id" />
+        <input type="hidden" id="hdCustomer_Id" name="Filter.Customer_Id" />
+        <input type="hidden" id="hdfCustomer_Name" name="Filter.Customer_Name" />
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -56,8 +54,8 @@
                                     <div class="form-group">
                                         <label for="txtCustomerName">Customer name</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="Filter_Value.Customer_Name" value="@Model.Filter_Value.Customer_Name">
-                                            <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter_Value.Customer_Id" name="FilterVal.Customer_Id">
+                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="Filter.Customer_Name" value="@Model.Filter.Customer_Name">
+                                            <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter.Customer_Id" name="Filter.Customer_Id">
                                         </div>
                                     </div>
                                 </div>
@@ -144,11 +142,11 @@
                                 </div>*@
                             <div class="form-group">
                                 <label style="color: #333">Nation</label>
-                                <select class="form-control input-sm" id="drpNation_Id" name="Filter_Value.Nation_Id">
+                                <select class="form-control input-sm" id="drpNation_Id" name="Filter.Nation_Id">
                                     <option value="">- Select Nation -</option>
-                                    @foreach (var item in Model.Nation_List)
+                                    @foreach (var item in Model.Nations)
                                     {
-                                        if (Model.Filter_Value.Nation_Id == item.Nation_Entity.NationId)
+                                        if (Model.Filter.Nation_Id == item.Nation_Entity.NationId)
                                         {
                                             <option value="@item.Nation_Entity.NationId" selected="selected">@item.Nation_Entity.NationName</option>
                                         }
@@ -162,12 +160,14 @@
 
                             <div class="form-group">
                                 <label for="txtTurnover" style="color: #333">Turnover greater than</label>
-                                <input type="text" class="form-control input-sm" name="Turnover" id="txtTurnover" placeholder="Enter Turnover" value="@Model.Filter_Value.Turnover" />
+                                <input type="text" class="form-control input-sm" name="Turnover" id="txtTurnover" placeholder="Enter Turnover" value="@Model.Filter.Turnover" />
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary btn-sm" id="AdvSearch">Search</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-sm" id="AdvSearch">Search</button>
+                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>

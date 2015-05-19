@@ -10,7 +10,7 @@ namespace KusumgarDataAccess
 {
     public static class CommonMethods
     {
-        public static Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
+        public static List<DataRow> GetRows(DataTable dt, ref PaginationInfo pager)
         {
             List<DataRow> drList = new List<DataRow>();
 
@@ -34,7 +34,7 @@ namespace KusumgarDataAccess
                 pager.TotalPages = pages;
             }
 
-            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
+            return drList;
         }
     }
 }

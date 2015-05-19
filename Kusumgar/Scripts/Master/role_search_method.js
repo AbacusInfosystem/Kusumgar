@@ -3,9 +3,9 @@ function SearchRole()
 {
 
 
-    var _roleViewModel =
+    var rViewModel =
         {
-            Role_FilterVal:
+            Filter:
                 {
                     Role_Name: $("#txtRole_Name").val()
                 },
@@ -17,36 +17,36 @@ function SearchRole()
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/master/search-role", "json", JSON.stringify(_roleViewModel), "POST", "application/json", false, BindRoleGrid, "", null);
+    CallAjax("/master/search-role", "json", JSON.stringify(rViewModel), "POST", "application/json", false, Bind_Role_Grid, "", null);
 
 }
 
-function BindRoleGrid(data)
+function Bind_Role_Grid(data)
 {
 
     $('#tblRoleGrid tr.subhead').html("");
   
     var htmlText = "";
 
-    for (i = 0; i < data.RoleList.length; i++) {
+    for (i = 0; i < data.Roles.length; i++) {
 
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.RoleList[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.RoleList[i].RoleEntity.Role_Name;
+        htmlText += data.Roles[i].RoleEntity.Role_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.RoleList[i].RoleEntity.Is_Active.toString();
+        htmlText += data.Roles[i].RoleEntity.Is_Active.toString();
 
         htmlText += "</td>";
 

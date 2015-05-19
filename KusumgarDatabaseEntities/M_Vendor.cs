@@ -49,5 +49,7 @@ namespace KusumgarDatabaseEntities
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<int> Performance_Certification_Year { get; set; }
+        public string Performance_Certification_Category { get; set; }
     }
 }

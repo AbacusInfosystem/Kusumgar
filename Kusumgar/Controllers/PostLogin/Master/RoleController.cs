@@ -9,6 +9,7 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers.PostLogin
 {
@@ -19,127 +20,145 @@ namespace Kusumgar.Controllers.PostLogin
 
         public RoleManager _roleMgr;
 
-        public RoleAccessManager _roleAccessMgr;
+        public RoleAccessManager _roleAccessMan;
 
         public RoleController()
         {
             _roleMgr = new RoleManager();
 
-            _roleAccessMgr = new RoleAccessManager();
+            _roleAccessMan = new RoleAccessManager();
         }
 
-        public ActionResult Index(RoleViewModel _roleViewModel)
+        public ActionResult Index(RoleViewModel rViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             try
             {
-                _roleViewModel.Role_Access_List = _roleAccessMgr.Get_Access_List();
+                rViewModel.Role_Accesses = _roleAccessMan.Get_Access_List();
 
-                _roleViewModel.Selecetd_Role_Access_List = _roleAccessMgr.Get_Role_Access_List_By_Role_Id(_roleViewModel.Role_Id);
+                rViewModel.Selecetd_Role_Accesses = _roleAccessMan.Get_Role_Access_List_By_Role_Id(rViewModel.Role_Id);
             }
             catch (Exception ex)
             {
-                throw ex;
+                rViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Role Controller - Index " + ex.ToString());
             }
 
-            return View("Index", _roleViewModel);
+            return View("Index", rViewModel);
         }
 
-        public ActionResult Search(RoleViewModel _roleViewModel)
+        public ActionResult Search(RoleViewModel rViewModel)
         {
-            if (TempData["_roleViewModel"] != null)
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            if (TempData["rViewModel"] != null)
             {
-                _roleViewModel = (RoleViewModel)TempData["_roleViewModel"];
+                rViewModel = (RoleViewModel)TempData["rViewModel"];
             }
-            return View("Search", _roleViewModel);
+            return View("Search", rViewModel);
         }
 
-        public ActionResult Insert(RoleViewModel _roleViewModel)
+        public ActionResult Insert(RoleViewModel rViewModel)
         {
             try
             {
-                int Role_Id = _roleMgr.Insert_Role(_roleViewModel.Role);
+                int role_Id = _roleMgr.Insert_Role(rViewModel.Role);
 
-                _roleAccessMgr.Insert_Role_Access(Role_Id, _roleViewModel.Selected_Role_Access);
+                _roleAccessMan.Insert_Role_Access(role_Id, rViewModel.Selected_Role_Access);
 
-                _roleViewModel.FriendlyMessage.Add(MessageStore.Get("RO001"));
+                rViewModel.Friendly_Message.Add(MessageStore.Get("RO001"));
             }
             catch (Exception ex)
             {
-                _roleViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                rViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Role Controller - Insert " + ex.ToString());
             }
 
-            TempData["_roleViewModel"] = _roleViewModel;
+            TempData["rViewModel"] = rViewModel;
 
             return RedirectToAction("Search");
         }
 
-        public ActionResult Update(RoleViewModel _roleViewModel)
+        public ActionResult Update(RoleViewModel rViewModel)
         {
             try
             {
-                _roleMgr.Update_Role(_roleViewModel.Role);
+                _roleMgr.Update_Role(rViewModel.Role);
 
-                _roleAccessMgr.Insert_Role_Access(_roleViewModel.Role.RoleEntity.Role_Id, _roleViewModel.Selected_Role_Access);
+                _roleAccessMan.Insert_Role_Access(rViewModel.Role.RoleEntity.Role_Id, rViewModel.Selected_Role_Access);
 
-                _roleViewModel.FriendlyMessage.Add(MessageStore.Get("RO002"));
+                rViewModel.Friendly_Message.Add(MessageStore.Get("RO002"));
             }
             catch (Exception ex)
             {
-                _roleViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                rViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Role Controller - Update " + ex.ToString());
             }
 
-            TempData["_roleViewModel"] = _roleViewModel;
+            TempData["rViewModel"] = rViewModel;
 
             return RedirectToAction("Search");
         }
 
-        public ActionResult Get_Role_By_Id(RoleViewModel _roleViewModel)
+        public ActionResult Get_Role_By_Id(RoleViewModel rViewModel)
         {
             try
             {
-                _roleViewModel.Role = _roleMgr.Get_Roles_By_Id(_roleViewModel.Role_Id);
+                rViewModel.Role = _roleMgr.Get_Role_By_Id(rViewModel.Role_Id);
             }
             catch (Exception ex)
             {
-                _roleViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                rViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Role Controller - Get_Role_By_Id " + ex.ToString());
             }
-            return Index(_roleViewModel);
+            return Index(rViewModel);
         }
 
-        public ActionResult Get_Roles(RoleViewModel _roleViewModel)
+        public JsonResult Get_Roles(RoleViewModel rViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
-                if (!string.IsNullOrEmpty(_roleViewModel.Role_FilterVal.Role_Name))
+                pager = rViewModel.Pager;
+
+                if (!string.IsNullOrEmpty(rViewModel.Filter.Role_Name))
                 {
-                    _roleViewModel.RoleList = _roleMgr.Get_Roles_By_Name(_roleViewModel.Role_FilterVal.Role_Name,_roleViewModel.Pager);
+                    rViewModel.Roles= _roleMgr.Get_Roles_By_Name(rViewModel.Filter.Role_Name, ref pager);
                 }
                 else
                 {
-                    _roleViewModel.RoleList = _roleMgr.Get_Roles(_roleViewModel.Pager);
+                    rViewModel.Roles = _roleMgr.Get_Roles(ref pager);
                 }
 
-                _roleViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", _roleViewModel.Pager.TotalRecords, _roleViewModel.Pager.CurrentPage + 1, _roleViewModel.Pager.PageSize, 10, true);
+                rViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", rViewModel.Pager.TotalRecords, rViewModel.Pager.CurrentPage + 1, rViewModel.Pager.PageSize, 10, true);
             }
             catch (Exception ex)
             {
-                _roleViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                rViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Role Controller - Get_Roles " + ex.ToString());
             }
 
-            return Json(_roleViewModel, JsonRequestBehavior.AllowGet);
+            return Json(rViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Check_Existing_Role(string Role_Name)
+        public JsonResult Check_Existing_Role(string role_Name)
         {
             bool check = false;
 
             try
             {
-                check = _roleMgr.Check_Existing_Role(Role_Name);
+                check = _roleMgr.Check_Existing_Role(role_Name);
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.Error("Role Controller - Check_Existing_Role " + ex.ToString());
             }
 
             return Json(check, JsonRequestBehavior.AllowGet);

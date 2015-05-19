@@ -2,9 +2,9 @@
 function SearchUser()
 {
 
-    var _userViewModel = 
+    var uViewModel =
         {
-            FilterVal:
+            Filter:
                 {
                     FirstName: $("#txtEmployeeName").val()
                 },
@@ -16,11 +16,11 @@ function SearchUser()
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/master/search-employee", "json", JSON.stringify(_userViewModel), "POST", "application/json", false, BindUserGrid, "", null);
+    CallAjax("/master/search-employee", "json", JSON.stringify(uViewModel), "POST", "application/json", false, Bind_User_Grid, "", null);
 
 }
 
-function BindUserGrid(data)
+function Bind_User_Grid(data)
 {
 
     $('#tblUserGrid tr.subhead').html("");

@@ -1,7 +1,7 @@
 ﻿
 $(function () {
 
-    $("#frm_Shipping").validate({
+    $("#frmShipping").validate({
 
         rules: {
             "Addresss":

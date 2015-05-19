@@ -91,7 +91,7 @@ namespace KusumgarDataAccess
 
                     auto.Label = Convert.ToString(dr["Customer_Name"]);
 
-                    auto.Value = Convert.ToInt32(dr["Company_Id"]);
+                    auto.Value = Convert.ToInt32(dr["Customer_Id"]);
 
                     customer_List.Add(auto);
                 }
@@ -115,7 +115,7 @@ namespace KusumgarDataAccess
                 {
                     AutocompleteInfo auto = new AutocompleteInfo();
                     auto.Label = Convert.ToString(dr["Customer_Name"]);
-                    auto.Value = Convert.ToInt32(dr["Company_Id"]);
+                    auto.Value = Convert.ToInt32(dr["Customer_Id"]);
                     autoList.Add(auto);
                 }
             }

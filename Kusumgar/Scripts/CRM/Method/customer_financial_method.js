@@ -2,19 +2,19 @@
 
 
 function Save_bank_Details() {
-    var _customerViewModel = Get_Bank_Details_Values();
+    var cViewModel = Get_Bank_Details_Values();
 
     if ($("#hdnBank_Detail_Id").val() == 0) {
-        CallAjax("/crm/insert-bank-details/", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false,Bank_Details_CallBack, "", null);
+        CallAjax("/crm/insert-bank-details/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bank_Details_CallBack, "", null);
     }
     else {
-        CallAjax("/crm/update-bank-details/", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, Bank_Details_CallBack, "", null);
+        CallAjax("/crm/update-bank-details/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bank_Details_CallBack, "", null);
     }
 }
 
 
 function Get_Bank_Details_Values() {
-    var _customerViewModel =
+    var cViewModel =
         {
             Customer:
                 {
@@ -34,7 +34,7 @@ function Get_Bank_Details_Values() {
 
                                     Branch_Name: $("#txtBranch_Name").val(),
 
-                                    Customer_Id: $("#hdnCompany_Id").val(),
+                                    Customer_Id: $("#hdnCustomer_Id").val(),
 
                                     Ifsc_Code: $("#txtIFSCCode").val(),
 
@@ -56,12 +56,12 @@ function Get_Bank_Details_Values() {
                 }
         }
 
-    return _customerViewModel;
+    return cViewModel;
 
 }
 
 function Bank_Details_CallBack(data)
 {
-    friendly_message(data);
+    Friendly_Message(data);
 
 }

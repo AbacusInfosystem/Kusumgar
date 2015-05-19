@@ -87,7 +87,7 @@ function Bind_Custom_Fields(data)
     $("#txtField_Name").val("");
     $("#txtField_Value").val("");
     $("#hdnContact_Custom_Field_Id").val(0);
-    friendly_message(data);
+    Friendly_Message(data);
 
 }
 
@@ -101,12 +101,12 @@ function EditCustomFields(id)
 function RemoveCustomFields(id) {
     $.ajax({
         url: '/crm/delete-contact-custom-field',
-        data: { Contact_Custom_Field_Id: id },
+        data: { contact_Custom_Field_Id: id },
         method: 'GET',
         async: false,
         success: function (data) {
             $("#cust_tr_" + id).html("");
-            friendly_message(data);
+            Friendly_Message(data);
         }
     });
 }
