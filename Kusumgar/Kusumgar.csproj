@@ -243,7 +243,7 @@
     <Compile Include="Controllers\PostLogin\Master\ArticleProcessWorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\ConsumableMasterController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\ConsumableController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CustomerQualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\GArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
@@ -276,7 +276,7 @@
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
     <Compile Include="Models\Master\AjaxController.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
-    <Compile Include="Models\Master\ConsumableMasterViewModel.cs" />
+    <Compile Include="Models\Master\ConsumableViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
@@ -968,8 +968,8 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\Master\Event\attribute_code_event.js" />
     <Content Include="Scripts\Master\Event\attribute_code_search_event.js" />
-    <Content Include="Scripts\Master\Event\ConsumableMaster_Event.js" />
-    <Content Include="Scripts\Master\Event\consumable_supplier_event.js" />
+    <Content Include="Scripts\Master\Event\consumable_search_event.js" />
+    <Content Include="Scripts\Master\Event\consumable_event.js" />
     <Content Include="Scripts\Master\Event\defect_event.js" />
     <Content Include="Scripts\Master\Event\defect_search.event.js" />
     <Content Include="Scripts\Master\Event\defect_type_event.js" />
@@ -982,8 +982,8 @@
     <Content Include="Scripts\Master\Event\test_unit_search_event.js" />
     <Content Include="Scripts\Master\Method\attribute_code_method.js" />
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
-    <Content Include="Scripts\Master\Method\consumablemaster_method.js" />
-    <Content Include="Scripts\Master\Method\consumable_supplier_method.js" />
+    <Content Include="Scripts\Master\Method\Consumable_Search_method.js" />
+    <Content Include="Scripts\Master\Method\consumable_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
     <Content Include="Scripts\Master\Method\defect_type_method.js" />
@@ -1005,7 +1005,7 @@
     <Content Include="Scripts\Master\user_search_method.js" />
     <Content Include="Scripts\Master\user_validation.js" />
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
-    <Content Include="Scripts\Master\Validation\consumablemaster_validation.js" />
+    <Content Include="Scripts\Master\Validation\consumable_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
@@ -1430,9 +1430,8 @@
     <Content Include="Views\PostLogin\Master\Industrial\_IndustrialSupplierMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\ConsumableMaster\Index.cshtml" />
-    <Content Include="Views\PostLogin\Master\ConsumableMaster\Search.cshtml" />
-    <Content Include="Views\PostLogin\Master\ConsumableMaster\_ConsumableSupplierDetails.cshtml" />
+    <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\Consumable\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

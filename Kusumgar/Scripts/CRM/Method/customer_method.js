@@ -18,7 +18,7 @@ function Save_Customer_Details()
 
 function Customer_CallBack(data)
 {
-
+    
     $("#hdnCompany_Id").val(data.Customer.Customer_Entity.Company_Id);
 
     $("#Financial_Tab").show();
