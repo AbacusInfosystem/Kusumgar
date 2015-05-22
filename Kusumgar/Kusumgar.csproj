@@ -1014,6 +1014,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
+    <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1430,7 +1433,6 @@
     <Content Include="Views\PostLogin\Master\Industrial\_IndustrialSupplierMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\Consumable\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>

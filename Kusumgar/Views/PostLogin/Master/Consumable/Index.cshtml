@@ -1,0 +1,190 @@
+﻿@model Kusumgar.Models.ConsumableViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    ViewBag.Title = "Index.cshtml";
+}
+
+<script src="~/Scripts/Master/Event/consumable_event.js"></script>
+<script src="~/Scripts/Master/Method/consumable_method.js"></script>
+<script src="~/Scripts/Master/Validation/consumable_validation.js"></script>
+
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Create Consumable 
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Consumable </li>
+        </ol>
+    </section>
+
+    <form id="frmConsumableMaster">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
+                            <li><a href="#tab_2" id="Vendor_Tab" data-toggle="tab">Supplier</a></li>
+                            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        <input type="hidden" id="hdfPageSize" name="" value="" />
+                                        <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                                        <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
+
+                                        <input type="hidden" id="hdnConsumable_Id" value="@Model.Consumable.Consumable_Entity.Consumable_Id">
+                                        <div class="form-group">
+                                            <label for="CategoryName">Category Name</label>
+                                            <select id="ddlCategoryName" class="form-control input-sm" name="Consumable.Category_Name">
+                                                <option value="">--Select--</option>
+                                                @foreach (var item in Model.Categories)
+                                                {
+                                                    if (Model.Consumable.Category_Id == item.Category_Id)
+                                                    {
+                                                        <option value="@item.Category_Id" selected="selected">@item.Category_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Category_Id">@item.Category_Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="SubCategoryName">Sub Category Name</label>
+                                            <select id="ddlSubCategoryName" class="form-control input-sm" name="Consumable.SubCategory_Name">
+                                                <option value="">--Select--</option>
+                                                @foreach (var item in Model.SubCategories)
+                                                {
+                                                    if (Model.Consumable.SubCategory_Id == item.SubCategory_Id)
+                                                    {
+                                                        <option value="@item.SubCategory_Id" selected="selected">@item.SubCategory_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.SubCategory_Id">@item.SubCategory_Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtMaterialName">Material Name</label>
+                                            <input type="text" class="form-control" id="txtMaterialName" name="Consumable.Consumable_Entity.Material_Name" value="@Model.Consumable.Consumable_Entity.Material_Name" placeholder="Enter Material Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtMaterialCode">Material Code</label>
+                                            <input type="text" class="form-control" id="txtMaterialCode" name="Consumable.Consumable_Entity.Material_Code" value="@Model.Consumable.Consumable_Entity.Material_Code" placeholder="Enter Material Code">
+                                        </div>
+
+                                        <div class="form-group">
+                                            
+                                            <label style="color: #333">
+                                                <input type="checkbox" name="chkStatus" id="chkStatus" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Consumable.Consumable_Entity.IsActive" value="@Model.Consumable.Consumable_Entity.IsActive.ToString()">
+                                            </label>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" id="btnSave" class="btn btn-success">Save</button>
+                                    <a href="@Url.Action("Search", "Consumable")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab_2">
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                      
+                                        <input type="hidden" id="hdnConsumable_Vendor_Id" class="Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id">
+                                        <div class="form-group">
+                                            <label for="txtSupplierName">Supplier Name</label>
+                                            <div class="auto-complete">
+                                                <input type="text" class="form-control input-sm" id="txtSupplierName" placeholder="Enter Vendor Name" name="Consumable.Consumable_Vendors.Vendor_Entity.Vendor_Name" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Name"  />
+                                                <input type="hidden" id="hdnVendor_Id" name="Consumable.Consumable_Vendors.Vendor_Entity.Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Id" />
+                                            </div>
+                                            </div>
+                                        <div class="form-group">
+                                            <label for="txtPriorityOrder">Priority Order</label>
+                                            <input type="text" class="form-control Priority_Order" id="txtPriorityOrder" placeholder="Enter Priority Order" name="" >
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <table class="table table-hover" id="tblConsumable_Vendor">
+                                            <tr id="subhead">
+                                                <th>Consumable Vendor Id</th>
+                                                <th>Vendor Name</th>
+                                                <th>Consumable Id</th>
+                                                <th>Priority Order</th>
+                                                <th style="min-width: 60px;">&nbsp; </th>
+                                            </tr>
+        
+                                            @foreach (var item in Model.Consumable.Consumable_Vendors)
+                                            {
+
+                                                <tr id="tr_vendor_@item.Consumable_Vendor_Entity.Consumable_Vendor_Id">
+
+                                                <td>@item.Consumable_Vendor_Entity.Consumable_Vendor_Id</td>
+                                                @*<td>@item.Consumable_Vendor_Entity.Vendor_Id</td>*@
+                                                <td>@item.Vendor_Entity.Vendor_Name</td>
+                                                <td>@item.Consumable_Vendor_Entity.Consumable_Id</td>
+                                                <td>@item.Consumable_Vendor_Entity.Priority_Order</td>
+                                                <td>
+                                                    <input type="hidden"  class="hdn_Consumable_Vendor_Id" value="@item.Consumable_Vendor_Entity.Consumable_Vendor_Id">
+
+                                                    <input type="hidden" class="Vendor_Id_By_Name" @*value="@item.Consumable_Vendor_Entity.Vendor_Id"*@ value="@item.Vendor_Entity.Vendor_Name" >
+                                                    <input type="hidden" class="Priority_Order" value="@item.Consumable_Vendor_Entity.Priority_Order">
+
+                                                    <div class="btn-group pull-right">
+                                                        <button type="button" id="btnEditVendor" class="btn btn-info btn-sm" onclick="EditVendors(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-pencil-square-o'></i></button>
+                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveVendor(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="box-footer">
+                                    <button type="button" id="btnSave_Vendor" class="btn btn-success">Save Vendors</button>
+                                    <a href="@Url.Action("Search","Consumable")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+                                </div>
+
+                                <div class="col-md-8 ">
+                                   
+                                </div>
+ 
+
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        </section>
+        <!-- /.content -->
+      </form>
+    
+</div>
