@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="KusumgarModel.M_User_Role_Mapping" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KusumgarModel.Complaint" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="KusumgarModel.Bank_Details" Width="1.5" PointX="15.375" PointY="4.75" />
-        <EntityTypeShape EntityType="KusumgarModel.Customer" Width="1.5" PointX="0.75" PointY="15.75" />
         <EntityTypeShape EntityType="KusumgarModel.Contact_Custom_Fields" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Attribute_Code" Width="1.5" PointX="3.375" PointY="15.75" />
         <EntityTypeShape EntityType="KusumgarModel.Contact" Width="1.5" PointX="15.375" PointY="10.75" />
@@ -35,6 +34,7 @@
         <EntityTypeShape EntityType="KusumgarModel.M_Product_Vendors" Width="1.5" PointX="17.375" PointY="12.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Vendor" Width="1.5" PointX="17.375" PointY="16.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_SubCategory" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="KusumgarModel.Customer" Width="1.5" PointX="0.75" PointY="15.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

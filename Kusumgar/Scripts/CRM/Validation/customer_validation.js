@@ -1,11 +1,11 @@
 ﻿$(function () {
-    $("#frm_Customer").validate({
+    $("#frmCustomer").validate({
       
         rules: {
             "Customer.Customer_Entity.Customer_Name":
                  {
                      required: true,
-                     validate_customer:true
+                     check_customer_exists: true
                  },
             "Customer.Customer_Entity.Company_Email":
                 {
@@ -47,37 +47,37 @@
 
                 "Customer.Customer_Entity.Customer_Name":
                  {
-                     required: "Customer Name is required"
+                     required: "Customer name is required."
                  },
                 "Customer.Customer_Entity.Company_Email":
                     {
-                        required: "Email is required"
+                        required: "Email is required."
                     },
                 "Customer.Customer_Entity.Head_Office_Address":
                     {
-                        required: " Office Address is required"
+                        required: " Office address is required."
                     },
                 "Customer.Customer_Entity.Head_Office_Nation":
                     {
-                        required: "Nation is required"
+                        required: "Nation is required."
                     },
                 "Customer.Customer_Entity.Head_Office_State":
                     {
-                        required: "Office State is required"
+                        required: "Office state is required."
                     },
                 "Customer.Customer_Entity.Head_Office_ZipCode":
                     {
-                        required: "Zip Code is required"
+                        required: "Zip code is required."
                     },
                 "Customer.Customer_Entity.Head_Office_Landline1":
                     {
-                        required: "Office Landline is required"
+                        required: "Office landline is required."
                     }
            
         }
     });
 
-    $("#frm_other").validate({
+    $("#frmOther").validate({
 
         rules: {
             "Customer.Customer_Entity.Company_Turnover":
@@ -104,13 +104,13 @@
     });
 
 
-    jQuery.validator.addMethod("validate_customer", function (value, element) {
+    jQuery.validator.addMethod("check_customer_exists", function (value, element) {
         var result = true;
 
         if ($("#txtCustomer_Name").val() != "" && $("#hdnCustomer_Name").val() != $("#txtCustomer_Name").val()) {
             $.ajax({
                 url: '/crm/check-customer',
-                data: { Customer_Name: $("#txtCustomer_Name").val() },
+                data: { customer_Name: $("#txtCustomer_Name").val() },
                 method: 'GET',
                 async: false,
                 success: function (data) {

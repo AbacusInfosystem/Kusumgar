@@ -1,31 +1,12 @@
-﻿function SearchConsumable() {
-
-    var ConsumableVM =
-        {
-            FilterVal:
-                 {
-                     Category_Id: $("#hdfCategory_Id").val(),
-                     Material_Name: $('#txtMaterial_Name').val(),
-                 },
-
-            Pager: {
-                CurrentPage: $('#hdfCurrentPage').val(),
-            }
-        }
-
-    $("#divSearchGridOverlay").show();
-
-    CallAjax("/master/search-consumable", "json", JSON.stringify(ConsumableVM), "POST", "application/json", false, BindConsumableGrid, "", null);
-
-}
+﻿
 
 function SearchAllConsumable() {
 
     var ConsumableVM =
         {
-           FilterVal:
+            Filter:
                 {
-                    //Category_Id: $("#hdfCategory_Id").val()
+                    
                     Category_Id: $("#ddlCategoryName").val(),
                     Material_Name: $('#txtMaterial_Name').val(),
                 },
@@ -47,53 +28,53 @@ function BindConsumableGrid(data) {
 
     var htmlText = "";
 
-    if (data.ConsumableList.length > 0) {
+    if (data.Consumables.length > 0) {
 
-        for (i = 0; i < data.ConsumableList.length; i++) {
+        for (i = 0; i < data.Consumables.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.ConsumableList[i].Consumable_Entity.Consumable_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Consumables[i].Consumable_Entity.Consumable_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.ConsumableList[i].Consumable_Entity.Consumable_Id;
+            htmlText += data.Consumables[i].Consumable_Entity.Consumable_Id;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.ConsumableList[i].Consumable_Entity.Category_Id;
-            //htmlText += data.ConsumableList[i].Con;
+            //htmlText += data.Consumables[i].Consumable_Entity.Category_Id;
+            htmlText += data.Consumables[i].Category_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.ConsumableList[i].Consumable_Entity.SubCategory_Id;
-            //htmlText += data.ConsumableList[i].Consumable_Entity.;
+            //htmlText += data.Consumables[i].Consumable_Entity.SubCategory_Id;
+            htmlText += data.Consumables[i].SubCategory_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.ConsumableList[i].Consumable_Entity.Material_Name;
+            htmlText += data.Consumables[i].Consumable_Entity.Material_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.ConsumableList[i].Consumable_Entity.Material_Code;
+            htmlText += data.Consumables[i].Consumable_Entity.Material_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.ConsumableList[i].Consumable_Entity.IsActive;
+            htmlText += data.Consumables[i].Consumable_Entity.IsActive;
 
             htmlText += "</td>";
 
@@ -121,7 +102,7 @@ function BindConsumableGrid(data) {
     });
 
 
-    if (data.ConsumableList.length > 0) {
+    if (data.Consumables.length > 0) {
         $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
@@ -133,7 +114,7 @@ function BindConsumableGrid(data) {
         $('.pagination').html("");
     }
 
-    friendly_message(data);
+    Friendly_Message(data);
 
 
     $("#divSearchGridOverlay").hide();

@@ -1,5 +1,11 @@
 ﻿$(function () {
 
+    InitializeAutoComplete($('#txtCustomer_Name'));
+
+    $("#hdfCustomer_Id").val(0);
+
+    $("#hdCustomer_Id").val(0);
+
     $('#hdfCurrentPage').val(0);
 
     SearchCustomer();
@@ -14,15 +20,28 @@
     });
 
     $("#btnSearch").click(function () {
+        $('#hdfCurrentPage').val(0);
+
         SearchCustomer();
     });
 
     $("#AdvSearch").click(function () {
         if ($("#frmSearch_customer").valid()) {
-
-
-            AdvanceSearch();
+           // $(".fa-remove").trigger("click");
+            $('#hdfCurrentPage').val(0);
+            //AdvanceSearch();
+            SearchCustomer();
+            $("#myModal").hide();
         }
+    });
+
+    $("#btnViewContact").click(function () {
+
+        $("#frmSearch_customer").attr("action", "/crm/contact/search");
+
+        $("#frmSearch_customer").attr("method", "POST");
+
+        $("#frmSearch_customer").submit();
     });
 
 

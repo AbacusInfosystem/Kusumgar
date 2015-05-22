@@ -9,6 +9,7 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -17,125 +18,157 @@ namespace Kusumgar.Controllers
         //
         // GET: /User/
 
-        public UserManager _userMgr;
+        public UserManager _userMan;
 
-        public RoleManager _roleMgr;
+        public RoleManager _roleMan;
 
         public UserController ()
         {
-            _userMgr = new UserManager();
+            _userMan = new UserManager();
 
-            _roleMgr = new RoleManager();
+            _roleMan = new RoleManager();
         }
 
-        public ActionResult Index(UserViewModel _userViewModel)
+        public ActionResult Index(UserViewModel uViewModel)
         {
+
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
-                _userViewModel.Pager.IsPagingRequired = false;
+                pager.IsPagingRequired = false;
 
-                _userViewModel.RoleInfoList = _roleMgr.Get_Roles(_userViewModel.Pager);
+                uViewModel.RoleInfoList = _roleMan.Get_Roles(ref pager);
             }
             catch(Exception ex)
             {
-                throw ex;
+                uViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("User Controller - Index " + ex.ToString());
             }
 
-            return View("Index",_userViewModel);
+            return View("Index", uViewModel);
         }
 
-        public ActionResult Search(UserViewModel _userViewModel)
+        public ActionResult Search(UserViewModel uViewModel)
         {
-            if (TempData["_userViewModel"] != null)
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            if (TempData["uViewModel"] != null)
             {
-                _userViewModel = (UserViewModel) TempData["_userViewModel"];
+                uViewModel = (UserViewModel)TempData["uViewModel"];
             }
-            return View("Search",_userViewModel);
+            return View("Search", uViewModel);
         }
 
-        public ActionResult Insert(UserViewModel _userViewModel)
+        public ActionResult Insert(UserViewModel uViewModel)
         {
             try
             {
-                _userMgr.Insert_User(_userViewModel.User);
+                uViewModel.User.UserEntity.CreatedBy = 1;
 
-                _userViewModel.FriendlyMessage.Add(MessageStore.Get("UM002"));
+                uViewModel.User.UserEntity.UpdatedBy = 1;
+
+                _userMan.Insert_User(uViewModel.User);
+
+                uViewModel.Friendly_Message.Add(MessageStore.Get("UM002"));
             }
             catch (Exception ex)
             {
-                _userViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                uViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("User Controller - Insert " + ex.ToString());
             }
 
-            TempData["_userViewModel"] = _userViewModel;
+            TempData["uViewModel"] = uViewModel;
 
             return RedirectToAction("Search");
         }
 
-        public ActionResult Update(UserViewModel _userViewModel)
+        public ActionResult Update(UserViewModel uViewModel)
         {
             try
             {
-                _userMgr.Update_User(_userViewModel.User);
 
-                _userViewModel.FriendlyMessage.Add(MessageStore.Get("UM003"));
+                uViewModel.User.UserEntity.UpdatedBy = 1;
+
+                _userMan.Update_User(uViewModel.User);
+
+                uViewModel.Friendly_Message.Add(MessageStore.Get("UM003"));
             }
             catch (Exception ex)
             {
-                _userViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                uViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("User Controller - Update " + ex.ToString());
             }
 
-            TempData["_userViewModel"] = _userViewModel;
+            TempData["_userViewModel"] = uViewModel;
       
             return RedirectToAction("Search");
         }
 
-        public ActionResult Get_User_By_Id(UserViewModel _userViewModel)
+        public ActionResult Get_User_By_Id(UserViewModel uViewModel)
         {
             try
             {
-                _userViewModel.User = _userMgr.Get_User_By_UserId(_userViewModel.UserId);
+                uViewModel.User = _userMan.Get_User_By_User_Id(uViewModel.UserId);
             }
             catch (Exception ex)
             {
-                _userViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                uViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("User Controller - Get_User_By_Id " + ex.ToString());
             }
-            return Index(_userViewModel);
+            return Index(uViewModel);
         }
 
-        public ActionResult Get_Users(UserViewModel _userViewModel)
+        public JsonResult Get_Users(UserViewModel uViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
-                if (!string.IsNullOrEmpty(_userViewModel.FilterVal.FirstName))
+                pager = uViewModel.Pager;
+
+                if (!string.IsNullOrEmpty(uViewModel.FilterVal.FirstName))
                 {
-                    _userViewModel.UserList = _userMgr.Get_User_List_By_Name(_userViewModel.Pager, _userViewModel.FilterVal.FirstName);
+                    uViewModel.UserList = _userMan.Get_Users_By_Name(ref pager, uViewModel.FilterVal.FirstName);
                 }
                 else
                 {
-                    _userViewModel.UserList = _userMgr.Get_User_List(_userViewModel.Pager);
+                    uViewModel.UserList = _userMan.Get_Users(ref pager);
                 }
 
-                _userViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", _userViewModel.Pager.TotalRecords, _userViewModel.Pager.CurrentPage + 1, _userViewModel.Pager.PageSize, 10, true);
+                uViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", uViewModel.Pager.TotalRecords, uViewModel.Pager.CurrentPage + 1, uViewModel.Pager.PageSize, 10, true);
             }
             catch(Exception ex)
             {
-                _userViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                uViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("User Controller - Get_Users " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
             }
 
-            return Json(_userViewModel, JsonRequestBehavior.AllowGet);
+            return Json(uViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Check_Existing_User( string User_Name)
+        public JsonResult Check_Existing_User(string user_Name)
         {
             bool check = false; 
 
             try
             {
-                check = _userMgr.Check_Existing_User(User_Name);
+                check = _userMan.Check_Existing_User(user_Name);
             }
             catch(Exception ex)
             {
-                throw ex;
+                Logger.Error("User Controller - Check_Existing_User " + ex.ToString());
             }
 
             return Json(check, JsonRequestBehavior.AllowGet);

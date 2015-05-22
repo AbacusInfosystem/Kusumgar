@@ -9,6 +9,7 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -17,15 +18,16 @@ namespace Kusumgar.Controllers
         //
         // GET: /Customer/
 
-        public ContactManager _contactMgr { get; set; }
+        public ContactManager _contactMan;
 
         public ContactController()
         {
-            _contactMgr = new ContactManager();
+            _contactMan = new ContactManager();
         }
 
-        public ActionResult Index(ContactViewModel _contactViewModel)
+        public ActionResult Index(ContactViewModel cViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
 
             try
             {
@@ -33,145 +35,188 @@ namespace Kusumgar.Controllers
             }
             catch(Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Index " + ex.ToString());
             }
 
-            return View("Index", _contactViewModel);
+            return View("Index", cViewModel);
         }
 
-        public ActionResult Search(ContactViewModel _contactViewModel)
+        public ActionResult Search(ContactViewModel cViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             try
             {
                 
             }
             catch (Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Search " + ex.ToString());
             }
 
-            return View(_contactViewModel);
+            return View(cViewModel);
         }
 
-        public ActionResult Insert(ContactViewModel _contactViewModel)
+        public JsonResult Insert(ContactViewModel cViewModel)
         {
             try
             {
-                _contactMgr.Insert_Contact(_contactViewModel.contact);
+                cViewModel.contact.contact_Entity.CreatedBy = 1;
 
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO001"));
+                cViewModel.contact.contact_Entity.UpdatedBy = 1;
+
+                cViewModel.contact.contact_Entity.Contact_Id = _contactMan.Insert_Contact(cViewModel.contact);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
             }
             catch(Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Insert " + ex.ToString());
             }
 
-            return Json(_contactViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Update(ContactViewModel _contactViewModel)
+        public JsonResult Update(ContactViewModel cViewModel)
         {
             try
             {
-                _contactMgr.Update_Contact(_contactViewModel.contact);
+                cViewModel.contact.contact_Entity.UpdatedBy = 1;
 
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO002"));
+                _contactMan.Update_Contact(cViewModel.contact);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CO002"));
             }
             catch (Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Update " + ex.ToString());
             }
 
-            return Json(_contactViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Insert_Contact_Custom_Fields(ContactViewModel _contactViewModel)
+        public JsonResult Insert_Contact_Custom_Fields(ContactViewModel cViewModel)
         {
             try
             {
-                _contactMgr.Insert_Contact_Custom_Fields(_contactViewModel.contact.Custom_Fields);
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.CreatedBy = 1;
 
-                _contactViewModel.contact = _contactMgr.Get_Contact_By_Id(_contactViewModel.contact.contact_Entity.Contact_Id);
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = 1;
 
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO003"));
+                _contactMan.Insert_Contact_Custom_Fields(cViewModel.contact.Custom_Fields);
+
+                cViewModel.contact = _contactMan.Get_Contact_By_Id(cViewModel.contact.Custom_Fields.Custom_Fields_Entity.Contact_Id);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CO003"));
             }
             catch (Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Insert_Contact_Custom_Fields " + ex.ToString());
             }
 
-            return Json(_contactViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Update_Contact_Custom_Fields(ContactViewModel _contactViewModel)
+        public JsonResult Update_Contact_Custom_Fields(ContactViewModel cViewModel)
         {
             try
             {
-                _contactMgr.Update_Contact_Custom_Fields(_contactViewModel.contact.Custom_Fields);
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = 1;
 
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("CO004"));
+                _contactMan.Update_Contact_Custom_Fields(cViewModel.contact.Custom_Fields);
+
+                cViewModel.contact = _contactMan.Get_Contact_By_Id(cViewModel.contact.Custom_Fields.Custom_Fields_Entity.Contact_Id);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CO004"));
             }
             catch (Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Update_Contact_Custom_Fields " + ex.ToString());
             }
 
-            return Json(_contactViewModel);
+            return Json(cViewModel);
         }
 
-         public ActionResult Get_Contact_List(ContactViewModel _contactViewModel)
+        public JsonResult Get_Contact_List(ContactViewModel cViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
-                if (_contactViewModel.FilterVal.Customer_Id != 0)
+                pager = cViewModel.Pager;
+
+                if (cViewModel.Filter.Customer_Id != 0)
                 {
-                    _contactViewModel.Contact_List = _contactMgr.Get_Contact_List_By_Name(_contactViewModel.FilterVal.Customer_Id, _contactViewModel.Pager);
+                    cViewModel.Contacts = _contactMan.Get_Contacts_By_Name(cViewModel.Filter.Customer_Id, ref pager);
                 }
                 else
                 {
-                    _contactViewModel.Contact_List = _contactMgr.Get_Contact_List(_contactViewModel.Pager);
+
+                    cViewModel.Contacts = _contactMan.Get_Contacts(ref pager);
                 }
 
-                _contactViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", _contactViewModel.Pager.TotalRecords, _contactViewModel.Pager.CurrentPage + 1, _contactViewModel.Pager.PageSize, 10, true);
+                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
             }
              catch(Exception ex)
             {
-                _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Get_Contact_List " + ex.ToString());
+            }
+             finally
+            {
+                pager = null;
             }
 
-            return Json(_contactViewModel);
+            return Json(cViewModel);
         }
-
-         public ActionResult Get_Contact_By_Id(ContactViewModel _contactViewModel)
+        //
+         public ActionResult Get_Contact_By_Id(ContactViewModel cViewModel)
          {
              try
              {
-                 _contactViewModel.contact = _contactMgr.Get_Contact_By_Id(_contactViewModel.contact.contact_Entity.Contact_Id);
+                 cViewModel.contact = _contactMan.Get_Contact_By_Id(cViewModel.contact.contact_Entity.Contact_Id);
              }
             catch(Exception ex)
              {
-                 _contactViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                 cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                 Logger.Error("Contact Controller - Get_Contact_By_Id " + ex.ToString());
              }
 
-             return  Index(_contactViewModel);
+             return  Index(cViewModel);
          }
 
-         public ActionResult Delete_Contact_Custom_Fields(int Contact_Custom_Field_Id)
+         public JsonResult Delete_Contact_Custom_Fields(int contact_Custom_Field_Id)
          {
-             List<FriendlyMessageInfo> FriendlyMessage = new List<FriendlyMessageInfo>();
+             List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
 
              try
              {
-                 _contactMgr.Delete_Contact_Custom_Fields(Contact_Custom_Field_Id);
+                 _contactMan.Delete_Contact_Custom_Fields(contact_Custom_Field_Id);
 
-                 FriendlyMessage.Add(MessageStore.Get("CO005"));
+                 Friendly_Message.Add(MessageStore.Get("CO005"));
              }
              catch (Exception ex)
              {
-                 FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                 Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                 Logger.Error("Contact Controller - Delete_Contact_Custom_Fields " + ex.ToString());
              }
 
-             return Json(new { FriendlyMessage }, JsonRequestBehavior.AllowGet);
+             return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
          }
     }
 }

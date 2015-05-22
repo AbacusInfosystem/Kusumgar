@@ -5,7 +5,7 @@ $(function () {
 
     $("#btnSaveShippingAddressDetails").click(function () {
 
-        if ($("#frm_Shipping").valid()) {
+        if ($("#frmShipping").valid()) {
             Save_Customer_shipping_details();
         }
 

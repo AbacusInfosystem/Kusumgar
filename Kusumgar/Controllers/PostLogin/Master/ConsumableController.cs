@@ -9,141 +9,133 @@ using KusumgarBusinessEntities;
 using KusumgarDatabaseEntities;
 using KusumgarHelper.PageHelper;
 using KusumgarBusinessEntities.Common;
+using KusumgarCrossCutting.Logging;
+
 
 namespace Kusumgar.Controllers.PostLogin.Master
 {
     public class ConsumableController : Controller
     {
-
-        public ConsumableManager consumableMgr;
+        public ConsumableManager _consumableMan;
 
         public ConsumableController()
         {
-            consumableMgr = new ConsumableManager();
+            _consumableMan = new ConsumableManager();
         }
 
-        ConsumableViewModel ConsumableVM = new ConsumableViewModel();
-
-        public ActionResult Index(ConsumableViewModel ConsumableVM)
+        public ActionResult Index(ConsumableViewModel cViewModel)
         {
 
-            ConsumableVM.CategoryList = consumableMgr.GetCategoryName();
-            ConsumableVM.SubCategoryList = consumableMgr.GetSubCategoryName();
+            cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
 
-            return View(ConsumableVM);
+            cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
+
+            return View(cViewModel);
         }
 
-        public JsonResult Insert(ConsumableViewModel ConsumableVM)
+        public JsonResult Insert(ConsumableViewModel cViewModel)
         {
             try
             {
-                int consumableId = consumableMgr.Insert_Consumable(ConsumableVM.Consumable);
+                int consumableId = _consumableMan.Insert_Consumable(cViewModel.Consumable);
 
-                ConsumableVM.Consumable.Consumable_Entity.Consumable_Id = consumableId;
+                cViewModel.Consumable.Consumable_Entity.Consumable_Id = consumableId;
 
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("C011"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("C011"));
             }
             catch (Exception ex)
             {
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
-            return Json(ConsumableVM);
+            return Json(cViewModel,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Search(ConsumableViewModel ConsumableVM)
+        public ActionResult Search(ConsumableViewModel cViewModel)
         {
 
-            ConsumableVM.CategoryList = consumableMgr.GetCategoryName();
+            cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
 
-            return View(ConsumableVM);
+            return View(cViewModel);
         }
 
-        //
-        public ActionResult Get_Consumables(ConsumableViewModel ConsumableVM)
+        public ActionResult Get_Consumables(ConsumableViewModel cViewModel)
         {
             try
             {
-                //if (!string.IsNullOrEmpty(ConsumableVM.FilterVal.Material_Name))
-                //{
-                //    ConsumableVM.ConsumableList = consumableMgr.Get_Consumable_By_Name_(ConsumableVM.FilterVal.Material_Name, ConsumableVM.Pager);
-                //}
-                //else
-                //{
-                //ConsumableVM.ConsumableList = consumableMgr.Get_ConsumableMasters(ConsumableVM.Pager);
-                //}
-                if ((ConsumableVM.FilterVal.Category_Id > 0) && !string.IsNullOrEmpty(ConsumableVM.FilterVal.Material_Name) )
+
+                if ((cViewModel.Filter.Category_Id > 0) && !string.IsNullOrEmpty(cViewModel.Filter.Material_Name))
                 {
-                    ConsumableVM.ConsumableList = consumableMgr.Get_Consumable_By_Category_By_Material(ConsumableVM.FilterVal.Category_Id, ConsumableVM.FilterVal.Material_Name, ConsumableVM.Pager);
+                    cViewModel.Consumables = _consumableMan.Get_Consumable_By_Category_Id_By_Material_Name(cViewModel.Filter.Category_Id, cViewModel.Filter.Material_Name, cViewModel.Pager);
                 }
-                else if (ConsumableVM.FilterVal.Category_Id > 0)
+                else if (cViewModel.Filter.Category_Id > 0)
                 {
-                    ConsumableVM.ConsumableList = consumableMgr.Get_Consumable_By_Category_Id(ConsumableVM.FilterVal.Category_Id, ConsumableVM.Pager);
+                    cViewModel.Consumables = _consumableMan.Get_Consumable_By_Category_Id(cViewModel.Filter.Category_Id, cViewModel.Pager);
                 }
 
-                else if (!string.IsNullOrEmpty(ConsumableVM.FilterVal.Material_Name))
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Material_Name))
                 {
-                    ConsumableVM.ConsumableList = consumableMgr.Get_Consumable_By_Material_Name(ConsumableVM.FilterVal.Material_Name, ConsumableVM.Pager);
+                    cViewModel.Consumables = _consumableMan.Get_Consumable_By_Material_Name(cViewModel.Filter.Material_Name, cViewModel.Pager);
                 }
                 else
                 {
-                    ConsumableVM.ConsumableList = consumableMgr.Get_ConsumableMasters(ConsumableVM.Pager);
+                    cViewModel.Consumables = _consumableMan.Get_Consumables(cViewModel.Pager);
                 }
 
-                ConsumableVM.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", ConsumableVM.Pager.TotalRecords, ConsumableVM.Pager.CurrentPage + 1, ConsumableVM.Pager.PageSize, 10, true);
+                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
             }
             catch (Exception ex)
             {
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
-            return Json(ConsumableVM, JsonRequestBehavior.AllowGet);
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        //Method For Autocomplete
-        //Found @ customer listing @ search txtbox
-        public JsonResult Get_Supplier_Name(string SupplierName)
+        //Method For Autocomplete   
+        public JsonResult Get_Vendor_AutoComplete(string vendor_Name)
         {
-           
-            List<ConsumableInfo> retVal = new List<ConsumableInfo>();
+            List<AutocompleteInfo> consumables = new List<AutocompleteInfo>();
 
-            retVal = consumableMgr.Get_Supplier_Name(SupplierName);
-
-            return Json(retVal, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Insert_Consumable_Vendor(ConsumableViewModel ConsumableVM)
-        {
             try
             {
-                int Consumable_Vendor_Id = consumableMgr.Insert_Consumable_Vendor(ConsumableVM.Consumable);
-
-                ConsumableVM.Consumable.Consumable_Vendors.Consumable_Vendor_Entity.Consumable_Vendor_Id = Consumable_Vendor_Id;
-
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("CV011"));
-
-                //int i = ConsumableVM.Consumable.Consumable_Entity.Consumable_Id;
-
-                ConsumableVM.Consumable.Consumable_Vendor_List= consumableMgr.Get_Consumable_Vendor_By_Id(Convert.ToInt32(ConsumableVM.Consumable.Consumable_Entity.Consumable_Id));
-               
+                consumables = _consumableMan.Get_Vendor_AutoComplete(vendor_Name);
             }
             catch (Exception ex)
             {
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                throw ex;
             }
-
-            return Json(ConsumableVM, JsonRequestBehavior.AllowGet);
+            return Json(consumables, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete_Vendor_By_Id(int Consumable_Vendor_Id)
+        public ActionResult Insert_Consumable_Vendor(ConsumableViewModel cViewModel)
         {
-            List<FriendlyMessageInfo> FriendlyMessage = new List<FriendlyMessageInfo>();
+            try
+            {
+                cViewModel.Consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id = _consumableMan.Insert_Consumable_Vendor(cViewModel.Consumable);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CV011"));
+
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Entity.Consumable_Id));
+
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+            }
+
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Delete_Vendor_By_Id(int consumable_Vendor_Id)
+        {
+            List<FriendlyMessageInfo> friendly_Message = new List<FriendlyMessageInfo>();
 
             try
             {
-                consumableMgr.Delete_Vendor_By_Id(Consumable_Vendor_Id);
+                _consumableMan.Delete_Vendor_By_Id(consumable_Vendor_Id);
 
-                FriendlyMessage.Add(MessageStore.Get("CV012"));
+                friendly_Message.Add(MessageStore.Get("CV012"));
 
             }
             catch (Exception ex)
@@ -151,45 +143,59 @@ namespace Kusumgar.Controllers.PostLogin.Master
                 throw ex;
             }
 
-            return Json(new { FriendlyMessage }, JsonRequestBehavior.AllowGet);
+            return Json(new { friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Get_Consumable_By_Id(ConsumableViewModel ConsumableVM)
+        public ActionResult Get_Consumable_By_Id(ConsumableViewModel cViewModel)
         {
             try
             {
-                ConsumableVM.Consumable = consumableMgr.Get_Consumable_By_Id(ConsumableVM.Consumable.Consumable_Entity.Consumable_Id);
-                ConsumableVM.CategoryList = consumableMgr.GetCategoryName();
-                ConsumableVM.SubCategoryList = consumableMgr.GetSubCategoryName();
-                //ConsumableVM.Consumable.Consumable_Vendor_List = consumableMgr.Get_Consumable_Vendor_By_Id(Convert.ToInt32(ConsumableVM.Consumable.Consumable_Entity.Consumable_Id));
+                cViewModel.Consumable = _consumableMan.Get_Consumable_By_Id(cViewModel.Consumable.Consumable_Entity.Consumable_Id);
+                cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
+                cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Entity.Consumable_Id));
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
-            //ConsumableVM.CategoryList = consumableMgr.GetCategoryName();
-            //ConsumableVM.SubCategoryList = consumableMgr.GetSubCategoryName();
-            //ConsumableVM.Consumable.Consumable_Vendor_List = consumableMgr.Get_Consumable_Vendor_By_Id(Convert.ToInt32(ConsumableVM.Consumable.Consumable_Entity.Consumable_Id));
-
-            return View("Index", ConsumableVM);
+            return View("Index", cViewModel);
         }
 
-        public ActionResult Update(ConsumableViewModel ConsumableVM)
+        public ActionResult Update(ConsumableViewModel cViewModel)
         {
             try
             {
-                consumableMgr.Update_Consumable(ConsumableVM.Consumable);
+                _consumableMan.Update_Consumable(cViewModel.Consumable);
 
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("CU013"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU013"));
             }
             catch (Exception ex)
             {
-                ConsumableVM.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
-            return Json(ConsumableVM);
+            return Json(cViewModel);
         }
 
+        public JsonResult Update_Consumable_Vendors(ConsumableViewModel cViewModel)
+        {
+            try
+            {
+                _consumableMan.Update_Consumable_Vendors(cViewModel.Consumable);
+
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(cViewModel.Consumable.Consumable_Entity.Consumable_Id);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CV014"));
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+            }
+
+            return Json(cViewModel);
+        }
     }
 }

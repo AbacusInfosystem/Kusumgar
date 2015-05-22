@@ -129,10 +129,10 @@ namespace KusumgarBusinessEntities.Common
                 FriendlyMessageInfo C011 = new FriendlyMessageInfo("C011", MessageType.Success, "Consumable has been added successfully.");
                 hash.Add("C011", C011);
 
-                FriendlyMessageInfo C012 = new FriendlyMessageInfo("C012", MessageType.Success, "Test has been updated successfully.");
+                FriendlyMessageInfo C012 = new FriendlyMessageInfo("C012", MessageType.Success, "Consumable has been updated successfully.");
                 hash.Add("C012", C012);
 
-                FriendlyMessageInfo CV011 = new FriendlyMessageInfo("CV011", MessageType.Success, "Consumable Vendor has been added successfully.");
+                FriendlyMessageInfo CV011 = new FriendlyMessageInfo("CV011", MessageType.Success, " Vendor has been added successfully.");
                 hash.Add("CV011", CV011);
 
                 FriendlyMessageInfo CV012 = new FriendlyMessageInfo("CV012", MessageType.Success, "Vendor Deleted successfully.");
@@ -140,6 +140,9 @@ namespace KusumgarBusinessEntities.Common
 
                 FriendlyMessageInfo CU013 = new FriendlyMessageInfo("CU013", MessageType.Success, "Consumable has been updated successfully.");
                 hash.Add("CU013", CU013);
+
+                FriendlyMessageInfo CV014 = new FriendlyMessageInfo("CV014", MessageType.Success, " Vendor has been updated successfully.");
+                hash.Add("CV014", CV014);
 
                 #endregion
 

@@ -982,7 +982,7 @@
     <Content Include="Scripts\Master\Event\test_unit_search_event.js" />
     <Content Include="Scripts\Master\Method\attribute_code_method.js" />
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
-    <Content Include="Scripts\Master\Method\Consumable_Search_method.js" />
+    <Content Include="Scripts\Master\Method\consumable_search_method.js" />
     <Content Include="Scripts\Master\Method\consumable_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />

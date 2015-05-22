@@ -2,46 +2,46 @@
 
 function Save_Customer_Details()
 {
-    var _customerViewModel = Get_Customer_values();
+    var cViewModel = Set_Customer();
 
    
-    if($("#hdnCompany_Id").val() == 0)
+    if($("#hdnCustomer_Id").val() == 0)
     {
-        CallAjax("/crm/insert-customer/", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
+        CallAjax("/crm/insert-customer/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
     }
     else
     {
-        CallAjax("/crm/update-customer/", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
+        CallAjax("/crm/update-customer/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
     }
 
 }
 
 function Customer_CallBack(data)
 {
-    
-    $("#hdnCompany_Id").val(data.Customer.Customer_Entity.Company_Id);
 
-    $("#Financial_Tab").show();
-    $("#Billing_Tab").show();
-    $("#Shipping_Tab").show();
-    $("#Other_Tab").show();
+    $("#hdnCustomer_Id").val(data.Customer.Customer_Entity.Customer_Id);
+
+    $("#tabFinancial").show();
+    $("#tabBilling").show();
+    $("#tabShipping").show();
+    $("#tabOther").show();
     $("#hdnCustomer_Name").val($("#txtCustomer_Name").val());
 
-    friendly_message(data);
+    Friendly_Message(data);
 }
 
 
 
 
-function Get_Customer_values()
+function Set_Customer()
 {
-    var _customerViewModel =
+    var cViewModel =
         {
             Customer: 
                 {
                     Customer_Entity:
                         {
-                            Company_Id: $("#hdnCompany_Id").val(),
+                            Customer_Id: $("#hdnCustomer_Id").val(),
 
                             Customer_Name: $("#txtCustomer_Name").val(),
 
@@ -90,11 +90,11 @@ function Get_Customer_values()
                 }
         }
 
-    return _customerViewModel;
+    return cViewModel;
 }
 
 
-function Bind_State_Data(data)
+function Bind_States(data)
 {
     $("#drpHead_Office_State").html("");
 

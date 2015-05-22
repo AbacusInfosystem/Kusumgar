@@ -100,6 +100,11 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Name_Sp,
         Get_Customer_By_Email_Name_Sp,
         Get_Customer_By_Email_Name_Turnover_Sp,
+        Get_Customer_by_Nation_Id_Sp,
+        Get_Customer_by_Nation_Id_Turnover_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
+        Get_Customer_By_Customer_Id_Nation_Id_Sp,
 
         // Customer Address 
         Insert_Customer_Address,
@@ -177,6 +182,8 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaint_By_CustName_Sp,
 
         //ConsumableMaster
+        Get_Category_Name_sp,
+        Get_SubCategory_Name_sp,
         Get_Consumable_sp,
         Insert_Consumable_sp,
         Insert_Consumable_Vendor_sp,
@@ -187,6 +194,8 @@ namespace KusumgarBusinessEntities.Common
         Get_Consumable_By_Category_By_Material_Sp,
         Get_Consumable_By_Category_Id_sp,
         Get_Consumable_By_Material_Name_sp,
+        Get_Vendor_By_Name_Sp,
+        Update_Consumable_Vendors_Sp,
 
     }
 

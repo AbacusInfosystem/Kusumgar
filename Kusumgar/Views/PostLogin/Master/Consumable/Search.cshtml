@@ -7,7 +7,7 @@
 
 
 <script src="~/Scripts/Master/Event/consumable_search_event.js"></script>
-<script src="~/Scripts/Master/Method/Consumable_Search_method.js"></script>
+<script src="~/Scripts/Master/Method/consumable_search_method.js"></script>
 
 <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
 
@@ -45,7 +45,7 @@
                                      
                                         <select id="ddlCategoryName" class="form-control input-sm" name="Consumable.Category_Name" >
                                             <option value="">--Select--</option>
-                                            @foreach (var item in Model.CategoryList)
+                                            @foreach (var item in Model.Categories)
                                             {
                                                 if (Model.Consumable.Category_Id == item.Category_Id)
                                                 {
@@ -87,8 +87,8 @@
                                 <tr id="subhead">
                                     <th style="width:50px;"></th>
                                     <th style="width:200px;">Consumable Id</th>
-                                    <th style="width:200px;">Category Id</th>
-                                    <th style="width:200px;">SubCategory Id</th>
+                                    <th style="width:200px;">Category Name</th>
+                                    <th style="width:200px;">SubCategory Name</th>
                                     <th style="width:200px;">Material Name</th>
                                     <th style="width:200px;">Material Code</th>
                                     <th style="width:200px;">Active</th>

@@ -222,7 +222,7 @@ namespace Kusumgar
             routes.MapRoute(
             name: "customer-2",
             url: "crm/search-customer",
-            defaults: new { controller = "Customer", action = "Get_Customer_List", id = UrlParameter.Optional },
+            defaults: new { controller = "Customer", action = "Get_Customers", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers.PostLogin.CRM" });
 
             routes.MapRoute(
@@ -797,6 +797,18 @@ namespace Kusumgar
             name: "Consumable-8",
             url: "master/update-consumable",
             defaults: new { controller = "Consumable", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-9",
+            url: "master/vendor-list/{vendor_Name}",
+            defaults: new { controller = "Consumable", action = "Get_Vendor_AutoComplete", vendor_Name = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-10",
+            url: "master/update-consumable_vendor",
+            defaults: new { controller = "Consumable", action = "Update_Consumable_Vendors", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

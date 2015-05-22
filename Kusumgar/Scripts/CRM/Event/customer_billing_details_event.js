@@ -4,7 +4,7 @@ $(function () {
     $("#hdn_Customer_Address_Id").val(0);
 
     $("#btnSaveBillingAddressDetails").click(function () {
-        if ($("#frm_Billing").valid()) {
+        if ($("#frmBilling").valid()) {
             Save_Customer_billing_details();
         }
     });
