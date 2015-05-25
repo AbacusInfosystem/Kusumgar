@@ -146,6 +146,22 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
+                #region Industrial
+
+                FriendlyMessageInfo IND001 = new FriendlyMessageInfo("IND001", MessageType.Success, "Industrial Master has been added successfully.");
+                hash.Add("IND001", IND001);
+
+                FriendlyMessageInfo IND002 = new FriendlyMessageInfo("IND002", MessageType.Success, "Industrial Master has been updated successfully.");
+                hash.Add("IND002", IND002);
+
+                FriendlyMessageInfo IND003 = new FriendlyMessageInfo("IND003", MessageType.Success, "Industrial Vendor has been added successfully.");
+                hash.Add("IND003", IND003);
+
+                FriendlyMessageInfo IND004 = new FriendlyMessageInfo("IND004", MessageType.Success, "Industrial Vendor has been deleted successfully.");
+                hash.Add("IND004", IND004);
+
+                #endregion
+
             #endregion
 
             #region CRM

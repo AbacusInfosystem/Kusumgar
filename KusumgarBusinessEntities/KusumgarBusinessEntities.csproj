@@ -62,7 +62,10 @@
     <Compile Include="Master\DefectInfo.cs" />
     <Compile Include="Master\DefectTypeInfo.cs" />
     <Compile Include="Master\FabricTypeInfo.cs" />
+    <Compile Include="Master\IndustrialCategoryInfo.cs" />
+    <Compile Include="Master\IndustrialGroupInfo.cs" />
     <Compile Include="Master\IndustrialInfo.cs" />
+    <Compile Include="Master\IndustrialVendorInfo.cs" />
     <Compile Include="Master\NationInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
