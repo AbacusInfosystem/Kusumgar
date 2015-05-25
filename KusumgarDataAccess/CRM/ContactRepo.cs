@@ -154,27 +154,7 @@ namespace KusumgarDataAccess
            Contact_Id = Convert.ToInt32(sqlRepo.ExecuteScalerObj(Set_Values_In_Contact(contact), StoredProcedures.Insert_Contact_sp.ToString(), CommandType.StoredProcedure));
 
            return Contact_Id;
-        }                #region Consumable
-
-                FriendlyMessageInfo C011 = new FriendlyMessageInfo("C011", MessageType.Success, "Consumable has been added successfully.");
-                hash.Add("C011", C011);
-
-                FriendlyMessageInfo C012 = new FriendlyMessageInfo("C012", MessageType.Success, "Consumable has been updated successfully.");
-                hash.Add("C012", C012);
-
-                FriendlyMessageInfo CV011 = new FriendlyMessageInfo("CV011", MessageType.Success, " Vendor has been added successfully.");
-                hash.Add("CV011", CV011);
-
-                FriendlyMessageInfo CV012 = new FriendlyMessageInfo("CV012", MessageType.Success, "Vendor Deleted successfully.");
-                hash.Add("CV012", CV012);
-
-                FriendlyMessageInfo CU013 = new FriendlyMessageInfo("CU013", MessageType.Success, "Consumable has been updated successfully.");
-                hash.Add("CU013", CU013);
-
-                FriendlyMessageInfo CV014 = new FriendlyMessageInfo("CV014", MessageType.Success, " Vendor has been updated successfully.");
-                hash.Add("CV014", CV014);
-
-                #endregion
+        }              
 
         public void Update_Contact(ContactInfo contact)
         {
@@ -192,27 +172,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Contact_Type",contact.contact_Entity.Contact_Type));
             sqlparam.Add(new SqlParameter("@Customer_Id",contact.contact_Entity.Customer_Id));
             sqlparam.Add(new SqlParameter("@Vendor_Id", contact.contact_Entity.Vendor_Id));
-            sqlparam.Add(new SqlParameter("                #region Consumable
-
-                FriendlyMessageInfo C011 = new FriendlyMessageInfo("C011", MessageType.Success, "Consumable has been added successfully.");
-                hash.Add("C011", C011);
-
-                FriendlyMessageInfo C012 = new FriendlyMessageInfo("C012", MessageType.Success, "Consumable has been updated successfully.");
-                hash.Add("C012", C012);
-
-                FriendlyMessageInfo CV011 = new FriendlyMessageInfo("CV011", MessageType.Success, " Vendor has been added successfully.");
-                hash.Add("CV011", CV011);
-
-                FriendlyMessageInfo CV012 = new FriendlyMessageInfo("CV012", MessageType.Success, "Vendor Deleted successfully.");
-                hash.Add("CV012", CV012);
-
-                FriendlyMessageInfo CU013 = new FriendlyMessageInfo("CU013", MessageType.Success, "Consumable has been updated successfully.");
-                hash.Add("CU013", CU013);
-
-                FriendlyMessageInfo CV014 = new FriendlyMessageInfo("CV014", MessageType.Success, " Vendor has been updated successfully.");
-                hash.Add("CV014", CV014);
-
-                #endregion@Contact_Name",contact.contact_Entity.Contact_Name ));
+            sqlparam.Add(new SqlParameter("@Contact_Name",contact.contact_Entity.Contact_Name ));
             sqlparam.Add(new SqlParameter("@Designation",contact.contact_Entity.Designation ));
             sqlparam.Add(new SqlParameter("@Office_Address",contact.contact_Entity.Office_Address ));
             sqlparam.Add(new SqlParameter("@Office_Landline1",contact.contact_Entity.Office_Landline1));

@@ -57,11 +57,15 @@
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\PaginationInfo.cs" />
     <Compile Include="Master\AttributeCodeInfo.cs" />
-    <Compile Include="Master\ConsumableMasterInfo.cs" />
+    <Compile Include="Master\ConsumableInfo.cs" />
+    <Compile Include="Master\ConsumableVendorInfo.cs" />
     <Compile Include="Master\DefectInfo.cs" />
     <Compile Include="Master\DefectTypeInfo.cs" />
     <Compile Include="Master\FabricTypeInfo.cs" />
+    <Compile Include="Master\IndustrialCategoryInfo.cs" />
+    <Compile Include="Master\IndustrialGroupInfo.cs" />
     <Compile Include="Master\IndustrialInfo.cs" />
+    <Compile Include="Master\IndustrialVendorInfo.cs" />
     <Compile Include="Master\NationInfo.cs" />
     <Compile Include="Master\ProductVendorInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
