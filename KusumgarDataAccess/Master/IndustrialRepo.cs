@@ -63,9 +63,9 @@ namespace KusumgarDataAccess
         {
             List<IndustrialInfo> industrials = new List<IndustrialInfo>();
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Industrial_Master_List_Sp.ToString(), CommandType.StoredProcedure);
-            var tupleData = CommonMethods.GetRows(dt, pager);
+            //var tupleData = CommonMethods.GetRows(dt, ref pager);
 
-            foreach (DataRow dr in tupleData.Item1)            
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))            
             {                
                 industrials.Add(Get_Industrial_Values(dr));
             }
@@ -78,9 +78,9 @@ namespace KusumgarDataAccess
             List<SqlParameter> sqlParams = new List<SqlParameter>();
             sqlParams.Add(new SqlParameter("@Industrial_Category_Id", industrial_Category_Id));
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Masters_By_Category_Name_Sp.ToString(), CommandType.StoredProcedure);
-            var tupleData = CommonMethods.GetRows(dt, pager);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt,ref pager))
             {                
                 industrials.Add(Get_Industrial_Values(dr));
             }
@@ -94,9 +94,9 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Industrial_Category_Id", industrial_Category_Id));
             sqlParams.Add(new SqlParameter("@Industrial_Group_Id", industrial_Group_Id));
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Masters_By_Category_Group_Name_Sp.ToString(), CommandType.StoredProcedure);
-            var tupleData = CommonMethods.GetRows(dt, pager);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt,ref pager))
             {                
                 industrials.Add(Get_Industrial_Values(dr));
             }
@@ -156,8 +156,8 @@ namespace KusumgarDataAccess
         {
             List<IndustrialCategoryInfo> industrial_Categories = new List<IndustrialCategoryInfo>();
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Industrial_Category_Sp.ToString(), CommandType.StoredProcedure);
-            var tupleData = CommonMethods.GetRows(dt, pager);
-            foreach (DataRow dr in tupleData.Item1)
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 industrial_Categories.Add(Get_Industrial_Category_Values(dr));
             }
@@ -182,8 +182,8 @@ namespace KusumgarDataAccess
             List<SqlParameter> sqlParams = new List<SqlParameter>();
             sqlParams.Add(new SqlParameter("@Industrial_Category_Id", industrial_Category_Id));
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Group_By_CategoryId_Sp.ToString(), CommandType.StoredProcedure);
-            var tupleData = CommonMethods.GetRows(dt, pager);
-            foreach (DataRow dr in tupleData.Item1)
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 industrial_Groups.Add(Get_Industrial_Group_Values(dr));
             }
@@ -246,9 +246,9 @@ namespace KusumgarDataAccess
             List<SqlParameter> sqlParams = new List<SqlParameter>();
             sqlParams.Add(new SqlParameter("@Industrial_Master_Id", industrial_Master_Id));
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Vendor_List_By_Id_Sp.ToString(), CommandType.StoredProcedure);
-            var tupleData = CommonMethods.GetRows(dt, pager);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {                                
                 industrial_Vendors.Add(Get_Industrial_Vendor_Values(dr));
             }

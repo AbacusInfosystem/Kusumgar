@@ -86,6 +86,15 @@
     <Compile Include="M_Attribute_Code.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_Category.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Consumable.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Consumable_Vendors.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Defect.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -113,6 +122,9 @@
     <Compile Include="M_Payment_Terms.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_Product_Vendors.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Role.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -120,6 +132,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_State.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SubCategory.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Test.cs">
