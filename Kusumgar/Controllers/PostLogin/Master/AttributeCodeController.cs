@@ -35,11 +35,11 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 aMan.Insert(aViewModel.Attribute_Code);
 
-                aViewModel.Friendly_Message.Add(MessageStore.Get("AC011"));
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("AC011"));
             }
             catch (Exception ex)
             {
-                aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
             }
 
             return RedirectToAction("Search");
@@ -55,12 +55,12 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 aViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id =0;
 
-                aViewModel.Friendly_Message.Add(MessageStore.Get("AC012"));
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("AC012"));
                
             }
             catch (Exception ex)
             {
-                aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                aViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
             }
 
             TempData["aViewModel"] = aViewModel;

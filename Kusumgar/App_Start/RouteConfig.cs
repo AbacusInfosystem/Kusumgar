@@ -566,6 +566,12 @@ namespace Kusumgar
             defaults: new { controller = "YArticle", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "y-article-2",
+            url: "master/partial-y-article",
+            defaults: new { controller = "YArticle", action = "YArticle", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region W Article

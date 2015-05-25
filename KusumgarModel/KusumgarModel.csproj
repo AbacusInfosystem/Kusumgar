@@ -71,6 +71,7 @@
     <Compile Include="Master\TestManager.cs" />
     <Compile Include="Master\TestUnitManager.cs" />
     <Compile Include="Master\UserManager.cs" />
+    <Compile Include="Master\YArticleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

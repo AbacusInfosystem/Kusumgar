@@ -20,8 +20,8 @@ namespace Kusumgar.Models
                 Filter = new Attribute_Code_Filter();
 
                 Pager = new PaginationInfo();
-
-                Friendly_Message = new List<FriendlyMessageInfo>();
+                
+                FriendlyMessage = new List<FriendlyMessageInfo>();
 
             }
 
@@ -34,8 +34,8 @@ namespace Kusumgar.Models
          public Attribute_Code_Edit_Mode Edit_Mode { get; set; }
 
          public Attribute_Code_Filter Filter { get; set; }
-
-         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+            
+         public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
 
          public class Attribute_Code_Edit_Mode
             {

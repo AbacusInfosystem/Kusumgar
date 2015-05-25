@@ -19,7 +19,6 @@ namespace KusumgarDatabaseEntities
         public int Product_Type { get; set; }
         public string Name { get; set; }
         public bool Original_Manufacturer { get; set; }
-        public bool Is_Active { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }

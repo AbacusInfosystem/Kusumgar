@@ -17,7 +17,7 @@ namespace KusumgarDatabaseEntities
         public int Contact_Id { get; set; }
         public int Contact_Type { get; set; }
         public int Customer_Id { get; set; }
-        public int Supplier_Id { get; set; }
+        public int Vendor_Id { get; set; }
         public string Contact_Name { get; set; }
         public string Designation { get; set; }
         public string Office_Address { get; set; }

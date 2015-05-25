@@ -4,13 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Kusumgar.Controllers
+namespace Kusumgar.Controllers.PostLogin.Master
 {
-    public class YArticleController : Controller
+    public class VendorContactController : Controller
     {
-        //
-        // GET: /YArticle/
-
+       
         public ActionResult Index()
         {
             return View();
@@ -19,11 +17,6 @@ namespace Kusumgar.Controllers
         public ActionResult Search()
         {
             return View();
-        }
-
-        public PartialViewResult YArticle()
-        {
-            return PartialView("_YArticle");
         }
 
     }

@@ -345,7 +345,9 @@
 
                     </form>*@
 
-                   @Html.Partial("~/Views/PostLogin/Master/YArticle/_YArticle.cshtml")
+                   @*@Html.Partial("~/Views/PostLogin/Master/YArticle/_YArticle.cshtml")*@
+                    <div id="dvYArticle">
+                        </div>
 
                 </div>
             </div>
@@ -356,3 +358,13 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+    $(function () {
+        $("#dvYArticle").load("/master/partial-y-article", success);
+    });
+    function success()
+    {
+        alert("hi");
+    }
+</script>

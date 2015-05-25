@@ -22,7 +22,7 @@ namespace Kusumgar.Models
 
             Pager = new PaginationInfo();
 
-            Friendly_Message = new List<FriendlyMessageInfo>();
+            FriendlyMessage = new List<FriendlyMessageInfo>();
        }
 
         public TestUnitInfo Test_Unit { get; set; }
@@ -35,7 +35,7 @@ namespace Kusumgar.Models
        
         public PaginationInfo Pager { get; set; }
 
-        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
     
         public class Test_Unit_Edit_Mode
         {
