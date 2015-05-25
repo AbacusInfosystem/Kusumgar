@@ -35,7 +35,6 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
         public DbSet<Bank_Details> Bank_Details { get; set; }
-        public DbSet<Customer> Customers { get; set; }
         public DbSet<Contact_Custom_Fields> Contact_Custom_Fields { get; set; }
         public DbSet<M_Attribute_Code> M_Attribute_Code { get; set; }
         public DbSet<Contact> Contacts { get; set; }
@@ -45,11 +44,11 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Defect_Type> M_Defect_Type { get; set; }
         public DbSet<M_Test_Unit> M_Test_Unit { get; set; }
         public DbSet<M_Fabric_Type> M_Fabric_Type { get; set; }
-        public DbSet<IndustrialCategory> IndustrialCategories { get; set; }
-        public DbSet<IndustrialGroup> IndustrialGroups { get; set; }
-        public DbSet<IndustrialMaster> IndustrialMasters { get; set; }
-        public DbSet<IndustrialSupplierMaster> IndustrialSupplierMasters { get; set; }
-        public DbSet<M_Supplier> M_Supplier { get; set; }
-        public DbSet<M_Product_Supplier_Mapping> M_Product_Supplier_Mapping { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<M_Vendor> M_Vendor { get; set; }
+        public DbSet<M_Industrial> M_Industrial { get; set; }
+        public DbSet<M_Industrial_Category> M_Industrial_Category { get; set; }
+        public DbSet<M_Industrial_Group> M_Industrial_Group { get; set; }
+        public DbSet<M_Industrial_Vendors> M_Industrial_Vendors { get; set; }
     }
 }

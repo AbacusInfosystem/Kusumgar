@@ -110,7 +110,7 @@ namespace KusumgarDataAccess
          {
              CustomerInfo customer = new CustomerInfo();
 
-             customer.Customer_Entity.Company_Id = Convert.ToInt32(dr["Company_Id"]);
+             customer.Customer_Entity.Customer_Id = Convert.ToInt32(dr["Company_Id"]);
 
              customer.Customer_Entity.Customer_Name = Convert.ToString(dr["Customer_Name"]);
 
@@ -318,9 +318,9 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (Customer.Customer_Entity.Company_Id != 0)
+            if (Customer.Customer_Entity.Customer_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Company_Id", Customer.Customer_Entity.Company_Id));
+                sqlparam.Add(new SqlParameter("@Company_Id", Customer.Customer_Entity.Customer_Id));
             }
            sqlparam.Add(new SqlParameter("@Customer_Name", Customer.Customer_Entity.Customer_Name ));
             sqlparam.Add(new SqlParameter("@Company_Email", Customer.Customer_Entity.Company_Email ));
@@ -344,7 +344,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", Customer.Customer_Entity.Is_Approved_By_Director));
             sqlparam.Add(new SqlParameter("@Block_Order", Customer.Customer_Entity.Block_Order));
             sqlparam.Add(new SqlParameter("@Is_Active", Customer.Customer_Entity.Is_Active));
-            if (Customer.Customer_Entity.Company_Id == 0)
+            if (Customer.Customer_Entity.Customer_Id == 0)
             {
                 sqlparam.Add(new SqlParameter("@CreatedBy", Customer.Customer_Entity.CreatedBy));
             }

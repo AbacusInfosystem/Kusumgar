@@ -62,7 +62,7 @@ namespace Kusumgar.Controllers
             {
                 int customerId = _customerMgr.Insert_Customer(_customerViewModel.Customer);
 
-                _customerViewModel.Customer.Customer_Entity.Company_Id = customerId;
+                _customerViewModel.Customer.Customer_Entity.Customer_Id = customerId;
 
                 _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU001"));
             }
@@ -212,7 +212,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                _customerViewModel.Customer = _customerMgr.Get_Customer_By_Id(_customerViewModel.Customer.Customer_Entity.Company_Id);
+                _customerViewModel.Customer = _customerMgr.Get_Customer_By_Id(_customerViewModel.Customer.Customer_Entity.Customer_Id);
             }
             catch(Exception ex)
             {

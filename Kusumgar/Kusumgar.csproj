@@ -1002,6 +1002,7 @@
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
+    <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -1420,7 +1421,6 @@
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Industrial\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\Industrial\Search.cshtml" />
-    <Content Include="Views\PostLogin\Master\Industrial\_IndustrialSupplierMaster.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -37,5 +37,10 @@ namespace KusumgarModel
       {
           return _ajaxRepo.Get_Customer_AutoComplete(Customer_Name);
       }
+
+      public List<AutocompleteInfo> Get_Vendor_Autocomplete(string vendorName)
+      {
+          return _ajaxRepo.Get_Vendor_Autocomplete(vendorName);
+      }
     }
 }

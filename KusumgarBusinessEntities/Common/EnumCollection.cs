@@ -176,6 +176,19 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaint_By_Id_Sp,
         Get_Complaint_By_CustName_Sp,
 
+        //Industrial
+        Insert_Industrial_Master_Sp,
+        Update_Industrial_Master_Sp,
+        Get_Industrial_Master_List_Sp,
+        Get_Industrial_Master_By_Id_Sp,
+        Get_Industrial_Category_Sp,
+        Get_Group_By_CategoryId_Sp,
+        Insert_Industrial_Vendor_Sp,
+        Delete_Industrial_Vendor_By_Id_Sp,
+        Get_Industrial_Vendor_List_By_Id_Sp,
+        Get_Vendor_By_Name_Sp,
+        Get_Industrial_Masters_By_Category_Name_Sp,
+        Get_Industrial_Masters_By_Category_Group_Name_Sp,
     }
 
     public enum GenderType
@@ -237,4 +250,10 @@ namespace KusumgarBusinessEntities.Common
         option5 = 5,
     }
    
+    public enum PriorityOrder
+    {
+        Primary = 1,
+        Secondary = 2,
+        Last_Option = 3,
+    }
 }

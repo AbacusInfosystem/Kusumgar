@@ -12,17 +12,17 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Product_Supplier_Mapping
+    public partial class M_Industrial
     {
-        public int Vendor_Id { get; set; }
-        public string Name { get; set; }
-        public bool Original_Manufacturer { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        public int Industrial_Master_Id { get; set; }
+        public int Industrial_Category_Id { get; set; }
+        public int Industrial_Group_Id { get; set; }
+        public string Industrial_SubGrp_Name { get; set; }
+        public string Size { get; set; }
+        public string COD { get; set; }
         public int CreatedBy { get; set; }
-        public System.DateTime UpdatedOn { get; set; }
+        public System.DateTime CreatedDtm { get; set; }
         public int UpdatedBy { get; set; }
-        public int Product_Type { get; set; }
-        public bool Is_Active { get; set; }
-        public int Product_Vendor_Id { get; set; }
+        public System.DateTime UpdatedDtm { get; set; }
     }
 }

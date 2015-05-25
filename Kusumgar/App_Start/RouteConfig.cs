@@ -369,7 +369,7 @@ namespace Kusumgar
             routes.MapRoute(
             name: "complaint-6",
             url: "crm/get-customer-id-by-customername/{CustomerName}",
-            defaults: new { controller = "Complaint", action = "GetCustomerId", CustomerName = UrlParameter.Optional }
+            defaults: new { controller = "Complaint", action = "GetCustomerId", vendor_Name = UrlParameter.Optional }
             );
 
             #endregion
@@ -739,6 +739,64 @@ namespace Kusumgar
             url: "master/vendor-creation",
             defaults: new { controller = "Vendor", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
+            #region Industrial
+
+            routes.MapRoute(
+            name: "industrial-1",
+            url: "master/industrial",
+            defaults: new { controller = "Industrial", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-2",
+            url: "master/edit-industrial-master",
+            defaults: new { controller = "Industrial", action = "Get_Industrial_Master_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-3",
+            url: "master/insert-industrial-master",
+            defaults: new { controller = "Industrial", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-4",
+            url: "master/update-industrial-master",
+            defaults: new { controller = "Industrial", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-5",
+            url: "master/search-industrial-master",
+            defaults: new { controller = "Industrial", action = "Get_Industrial_Masters", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-6",
+            url: "master/group-by-category-id",
+            defaults: new { controller = "Industrial", action = "Get_Group_By_CategoryId", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-7",
+            url: "master/insert-industrial-vendor",
+            defaults: new { controller = "Industrial", action = "Insert_Industrial_Vendor", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-8",
+            url: "master/delete-industrial-vendor",
+            defaults: new { controller = "Industrial", action = "Delete_Industrial_Vendor_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "industrial-9",
+            url: "master/get-vendor-id-by-vendorname/{vendor_Name}",
+            defaults: new { controller = "Industrial", action = "Get_Vendor_Autocomplete", vendor_Name = UrlParameter.Optional }
+            );            
 
             #endregion
 
