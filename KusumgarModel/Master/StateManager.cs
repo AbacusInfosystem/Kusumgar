@@ -19,9 +19,9 @@ namespace KusumgarModel
             _StateRepo = new StateRepo();
         }
 
-          public List<StateInfo> Get_State_List(int Nation_Id, PaginationInfo Pager)
+        public List<StateInfo> Get_States(int nation_Id, ref PaginationInfo pager)
         {
-            return _StateRepo.Get_State_List(Nation_Id, Pager);
+            return _StateRepo.Get_States(nation_Id, ref pager);
         }
 
     }

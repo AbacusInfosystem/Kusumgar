@@ -45,15 +45,13 @@ namespace KusumgarBusinessEntities.Common
             return attributeNames;
         }
 
-        public static Dictionary<int, string> GetProductServiceTypes()
+        public static Dictionary<int, string> Get_Product_Service_Types()
         {
             Dictionary<int, string> GetProductServiceTypes = new Dictionary<int, string>();
 
-            GetProductServiceTypes.Add(1, ProductVendor.Product_Type.ToString());
+            GetProductServiceTypes.Add(1, ProductVendor.ProductType.ToString());
 
-            GetProductServiceTypes.Add(2, ProductVendor.Product_Service.ToString());
-
-         
+            GetProductServiceTypes.Add(2, ProductVendor.Service.ToString());
 
             return GetProductServiceTypes;
         }
@@ -70,7 +68,6 @@ namespace KusumgarBusinessEntities.Common
 
             return GetShipMentMethod;
         }
-
 
         public static Dictionary<int, string> GetGenderTypes()
         {

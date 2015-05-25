@@ -10,10 +10,11 @@ namespace Kusumgar.Models
 {
     public class VendorViewModel
     {
-
          public VendorViewModel()
         {
             Vendor_Grid = new List<VendorInfo>();
+
+            Product_Vendor_Grid = new List<ProductVendorInfo>();
 
             Vendor = new VendorInfo();
 
@@ -23,14 +24,17 @@ namespace Kusumgar.Models
 
             Pager = new PaginationInfo();
 
-            State_List = new List<StateInfo>();
+            States = new List<StateInfo>();
 
-            Nation_List = new List<NationInfo>();
+            Nations = new List<NationInfo>();
 
             Filter = new Vendor_Filter();
+
         }
 
          public List<VendorInfo> Vendor_Grid { get; set; }
+
+         public List<ProductVendorInfo> Product_Vendor_Grid { get; set; }
 
         public VendorInfo Vendor { get; set; }
 
@@ -40,17 +44,16 @@ namespace Kusumgar.Models
 
         public PaginationInfo Pager { get; set; }
 
-        public List<StateInfo> State_List { get; set; }
+        public List<StateInfo> States { get; set; }
 
-        public List<NationInfo> Nation_List { get; set; }
+        public List<NationInfo> Nations { get; set; }
 
         public Vendor_Filter Filter { get; set; }
-
-  
-
+    
     public class Vendor_Filter
     {
         public string Vendor_Name { get; set; }
+        public int Vendor_Id { get; set; }
   
     }
 

@@ -1,22 +1,14 @@
 ﻿$(document).ready(function () {
   
-    $("#hdnStatus").val(true);
-
-    $("#hdnApprovedByDirector").val(true);
-    alert("M");
-
-   //if ($("#hdnVendorId").val() == 0) {
-   //     $("#tabProductServices").hide();
-   //     $("#tabCertificates").hide();
-   //     $("#tabCentralExciseRegistrationDetails").hide();
-   //     $("#tabOtherDetails").hide();
-   // }
+   if ($("#hdnVendorId").val() == 0) {
+        $("#tabProductServices").hide();
+        $("#tabCertificates").hide();
+        $("#tabCentralExciseRegistrationDetails").hide();
+        $("#tabOtherDetails").hide();
+    }
 
    $("#btnSave").click(function () {
-       alert("q");
-       
         if ($("#frmVendor").valid()) {
-
             Save_Vendors_Details();
      }
  });
@@ -42,7 +34,6 @@
         }
     });
     
-
     $('[name="Vendor.Vendor_Entity.Block_Payment"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnBlockPayment").val(true);
@@ -70,17 +61,16 @@
         }
     });
 
-
     $("#drpHeadOfficeNation").change(function () {
-
+        
         $.ajax({
-            url: '/crm/state-by-nation-id',
+            url: '/master/get-state-by-nation-id',
             data: { Nation_Id: $("#drpHeadOfficeNation").val() },
             method: 'GET',
             async: false,
             success: function (data) {
                 if (data != null) {
-                    Bind_State_Data(data);
+                    Bind_States(data);
                 }
             }
         });

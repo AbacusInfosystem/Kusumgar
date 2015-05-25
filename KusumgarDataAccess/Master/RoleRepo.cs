@@ -24,7 +24,7 @@ namespace KusumgarDataAccess
             sqlRepo = new SQLHelperRepo();
         }   
  
-        public List<RoleInfo> Get_Roles(PaginationInfo Pager)
+        public List<RoleInfo> Get_Roles(ref PaginationInfo Pager)
         {
             List<RoleInfo> RoleInfoList = new List<RoleInfo>();
 
@@ -75,7 +75,7 @@ namespace KusumgarDataAccess
               return RoleInfoList;
         }
 
-        public List<RoleInfo> Get_Roles_By_Name(string Role_Name, PaginationInfo Pager)
+        public List<RoleInfo> Get_Roles_By_Name(string Role_Name,ref PaginationInfo Pager)
         {
             List<RoleInfo> RoleInfoList = new List<RoleInfo>();
 
@@ -130,7 +130,7 @@ namespace KusumgarDataAccess
             return RoleInfoList;
         }
 
-        public RoleInfo Get_Roles_By_Id(int Role_Id)
+        public RoleInfo Get_Role_By_Id(int Role_Id)
         {
             RoleInfo RoleInfo = new RoleInfo();
 

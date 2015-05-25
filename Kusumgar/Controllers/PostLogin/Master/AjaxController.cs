@@ -34,7 +34,7 @@ namespace Kusumgar.Controllers
 
         public JsonResult Get_Customer_AutoComplete(string Customer_Name)
         {
-            List<AutoCompleteInfo> Customer_List = new List<AutoCompleteInfo>();
+            List<AutocompleteInfo> Customer_List = new List<AutocompleteInfo>();
 
             try
             {
@@ -46,5 +46,17 @@ namespace Kusumgar.Controllers
             }
             return Json(Customer_List, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult Get_Vendor_Autocomplete(string Vendor_Name)
+        {
+            AjaxManager aMan = new AjaxManager();
+
+            List<AutocompleteInfo> vendorNames = new List<AutocompleteInfo>();
+
+            vendorNames = aMan.Get_Vendor_AutoComplete(Vendor_Name);
+
+            return Json(vendorNames, JsonRequestBehavior.AllowGet);
+        }
+       
     }
 }

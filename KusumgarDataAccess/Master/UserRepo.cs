@@ -25,7 +25,7 @@ namespace KusumgarDataAccess
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<UserInfo> Get_User_List(ref PaginationInfo Pager)
+        public List<UserInfo> Get_Users(ref PaginationInfo Pager)
         {
             List<UserInfo> UserList = new List<UserInfo>();
 
@@ -116,7 +116,7 @@ namespace KusumgarDataAccess
             return UserList;
         }
 
-        public List<UserInfo> Get_User_List_By_Name(PaginationInfo Pager, string FirstName)
+        public List<UserInfo> Get_Users_By_Name(ref PaginationInfo Pager, string FirstName)
         {
             List<UserInfo> UserList = new List<UserInfo>();
 
@@ -211,7 +211,7 @@ namespace KusumgarDataAccess
             return UserList;
         }
 
-        public UserInfo Get_User_By_UserId(int UserId)
+        public UserInfo Get_User_By_User_Id(int UserId)
         {
             UserInfo user = new UserInfo();
 

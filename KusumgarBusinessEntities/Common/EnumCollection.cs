@@ -100,6 +100,11 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Name_Sp,
         Get_Customer_By_Email_Name_Sp,
         Get_Customer_By_Email_Name_Turnover_Sp,
+        Get_Customer_by_Nation_Id_Sp,
+        Get_Customer_by_Nation_Id_Turnover_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
+        Get_Customer_By_Customer_Id_Nation_Id_Sp,
 
         // Customer Address 
         Insert_Customer_Address,
@@ -169,11 +174,29 @@ namespace KusumgarBusinessEntities.Common
         Update_Attribute_Code_sp,
         Get_Attribute_Code_By_Attribute_Name_sp,
 
+        // Complaint
+        Insert_Complaint_Sp,
+        Update_Complaint_Sp,
+        Get_Complaint_List_Sp,
+        Get_Complaint_By_Id_Sp,
+        Get_Complaint_By_CustName_Sp,
+
+        //ConsumableMaster
+        Get_Consumable_Master_sp,
+        Insert_ConsumableMaster_sp,
 
         //Vendor
 
         Insert_Vendor_sp,
-        Insert_Product_Vendors_sp
+        Insert_Product_Vendors_sp,
+        Get_Vendors_Sp,
+        Update_Product_Vendors_sp,
+        Update_Vendor_sp,
+        Get_Vendor_By_Id_Sp,
+        Get_Vendor_By_Name_Sp,
+        Delete_Product_Service_By_Id,
+        Get_Product_Vendor_By_Id_Sp,
+        Check_Existing_Vendor_Sp
     }
 
     public enum GenderType
@@ -237,8 +260,8 @@ namespace KusumgarBusinessEntities.Common
    
       public enum ProductVendor
       {
-          Product_Type=1,
-          Product_Service=2
+          ProductType=1,
+          Service=2
       }
 
     public enum ShipmentMethod

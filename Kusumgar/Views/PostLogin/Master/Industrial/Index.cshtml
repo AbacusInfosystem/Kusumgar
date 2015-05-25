@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="~/Content/jquery-ui.css">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Industrial
+
+            <small>Master</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Masters</li>
+            <li class="active">Industrial</li>
+        </ol>
+    </section>
+    
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Industrial Master</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Industrial Supplier</a></li>
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="drpIndCatName" style="color: #333">Industrial Category Name</label>
+                                        <select class="form-control" id="drpIndCatName">
+                                            <option value="" selected="selected">--Select--</option>
+                                        </select>                                            
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="drpIndGroupName" style="color: #333">Industrial Group Name</label>
+                                        <select class="form-control" id="drpIndGroupName">
+                                            <option value="" selected="selected">--Select--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtSubGroupName" style="color: #333">Industrial Sub-Group Name</label>
+                                        <input type="text" class="form-control" name="" id="txtSubGroupName" placeholder="Enter Sub-Group Name" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtSize" style="color: #333">Size</label>
+                                        <input type="text" class="form-control" name="" id="txtSize" placeholder="Enter Size" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCOD" style="color: #333">COD</label>
+                                        <input type="text" class="form-control" name="" id="txtCOD" placeholder="Enter COD" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" id="btnSave" class="btn btn-success">Save Industrial</button>
+                                <a href="@Url.Action("Search", "Industrial")" id="btnCancel" class="btn btn-warning" role="button">Cancel and Open Search</a>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab_2">
+                            @Html.Partial("~/Views/PostLogin/Master/Industrial/_IndustrialSupplierMaster.cshtml")
+                        </div>
+                    </div>
+                </div><!-- nav-tabs-custom -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </section>
+</div>
+<!-- /.content-wrapper -->

@@ -19,19 +19,19 @@ namespace KusumgarModel
             _roleRepo = new RoleRepo();
         }
 
-        public List<RoleInfo> Get_Roles(PaginationInfo Pager)
+        public List<RoleInfo> Get_Roles(ref PaginationInfo Pager)
         {
-            return _roleRepo.Get_Roles(Pager);
+            return _roleRepo.Get_Roles(ref Pager);
         }
 
-        public List<RoleInfo> Get_Roles_By_Name(string Role_Name, PaginationInfo Pager)
+        public List<RoleInfo> Get_Roles_By_Name(string Role_Name, ref PaginationInfo Pager)
         {
-            return _roleRepo.Get_Roles_By_Name(Role_Name,Pager);
+            return _roleRepo.Get_Roles_By_Name(Role_Name, ref Pager);
         }
 
-        public RoleInfo Get_Roles_By_Id(int Role_Id)
+        public RoleInfo Get_Role_By_Id(int Role_Id)
         {
-            return _roleRepo.Get_Roles_By_Id(Role_Id);
+            return _roleRepo.Get_Role_By_Id(Role_Id);
         }
 
         public int Insert_Role(RoleInfo RoleInfo)

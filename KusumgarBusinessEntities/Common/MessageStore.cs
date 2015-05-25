@@ -124,9 +124,29 @@ namespace KusumgarBusinessEntities.Common
                 hash.Add("AC012", AC012);
                 #endregion
 
+                #region Vendor
+
+                FriendlyMessageInfo V011 = new FriendlyMessageInfo("V011", MessageType.Success, "Vendor has been added successfully.");
+                hash.Add("V011", V011);
+
+                FriendlyMessageInfo PS011 = new FriendlyMessageInfo("PS011", MessageType.Success, "Product Services has been added successfully.");
+                hash.Add("PS011", PS011);
+
+                FriendlyMessageInfo V012 = new FriendlyMessageInfo("V012", MessageType.Success, "Vendor has been updated successfully.");
+                hash.Add("V012", V012);
+
+                FriendlyMessageInfo PS012 = new FriendlyMessageInfo("PS012", MessageType.Success, "Product Services has been updated successfully.");
+                hash.Add("PS012", PS012);
+
+                FriendlyMessageInfo PS013 = new FriendlyMessageInfo("PS013 ", MessageType.Success, "Product Services has been deleted successfully.");
+                hash.Add("PS013 ", PS013);
+
+
+                #endregion
+
             #endregion
 
-            #region CRM
+                #region CRM
 
                 #region Customer
 
@@ -153,7 +173,7 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
-            #region Contact
+                #region Contact
                 FriendlyMessageInfo CO001 = new FriendlyMessageInfo("CO001", MessageType.Success, "Contact has been added successfully.");
                 hash.Add("CO001", CO001);
 
@@ -169,6 +189,16 @@ namespace KusumgarBusinessEntities.Common
                 FriendlyMessageInfo CO005 = new FriendlyMessageInfo("CO005", MessageType.Success, "Custom Field Deleted successfully.");
                 hash.Add("CO005", CO005); 
             #endregion
+
+                #region Complaint
+
+                FriendlyMessageInfo COM001 = new FriendlyMessageInfo("COM001", MessageType.Success, "Complaint has been added successfully.");
+                hash.Add("COM001", COM001);
+
+                FriendlyMessageInfo COM002 = new FriendlyMessageInfo("COM002", MessageType.Success, "Complaint has been updated successfully.");
+                hash.Add("COM002", COM002);
+
+                #endregion
 
             #endregion
 

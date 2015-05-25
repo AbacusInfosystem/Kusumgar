@@ -13,11 +13,84 @@ namespace KusumgarModel
     {
         public int Insert_Vendor(VendorInfo vendor)
         {
-            VendorRepo dRepo = new VendorRepo();
+            VendorRepo vRepo = new VendorRepo();
 
-            return dRepo.Insert(vendor);
+            return vRepo.Insert_Vendor(vendor);
         }
 
-       
+        public List<VendorInfo> Get_Vendors(ref PaginationInfo pager)
+        {
+            List<VendorInfo> vendors= new List<VendorInfo>();
+            
+            VendorRepo vRepo = new VendorRepo();
+
+            vendors = vRepo.Get_Vendors(ref pager);
+
+            return vendors;
+        }
+
+        public int Insert_Product_Services(ProductVendorInfo productVendors)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            return vRepo.Insert_Product_Services(productVendors);
+         }
+
+        public void Update_Vendor(VendorInfo vendors)
+        {
+            VendorRepo vRepo = new VendorRepo();
+            
+            vRepo.Update_Vendor(vendors);
+        }
+
+        public void Update_Product_Services(ProductVendorInfo productVendors)
+        {
+            VendorRepo vRepo = new VendorRepo();
+            vRepo.Update_Product_Services(productVendors);
+        }
+
+        public VendorInfo Get_Vendor_By_Id(int Vendor_Id)
+        {
+           VendorRepo vRepo = new VendorRepo();
+
+           return vRepo.Get_Vendor_By_Id(Vendor_Id);
+  
+        }
+
+        public List<VendorInfo> Get_Vendors_By_Id(int Vendor_Id, ref PaginationInfo pager)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            return vRepo.Get_Vendors_By_Id(Vendor_Id,ref pager);
+        }
+
+        public void Delete_Product_Service_By_Id(int Product_Vendor_Id)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            vRepo.Delete_Product_Service_By_Id(Product_Vendor_Id);
+        }
+
+        public List<AutocompleteInfo> Get_Vendor_AutoComplete(string Vendor_Name)
+        {
+            VendorRepo vRepo = new VendorRepo();
+            return vRepo.Get_Vendor_AutoComplete(Vendor_Name);
+        }
+
+        public List<ProductVendorInfo> Get_Product_Vendor_By_Id(int productVendorId)
+        {
+            VendorRepo vRepo = new VendorRepo();
+           
+            return vRepo.Get_Product_Vendor_By_Id(productVendorId);
+            
+        }
+
+        public bool Check_Existing_Vendor(string Vendor_Name)
+        {
+            VendorRepo vRepo = new VendorRepo();
+            return vRepo.Check_Existing_Vendor(Vendor_Name);
+        }
     }
 }
+
+    

@@ -16,5 +16,7 @@ namespace KusumgarBusinessEntities
        
        }
         public M_Product_Vendors Product_Vendor_Entity { get; set; }
+        
+       public string Product_Type_Name { get; set; }
     }
 }

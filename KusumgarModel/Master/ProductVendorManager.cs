@@ -12,12 +12,12 @@ namespace KusumgarModel
    public class ProductVendorManager
     {
 
-        public void Insert_Product_Vendor(ProductVendorInfo productVendor)
-        {
-            ProductVendorRepo dRepo = new ProductVendorRepo();
+        //public void Insert_Product_Vendor(ProductVendorInfo productVendor)
+        //{
+        //    ProductVendorRepo dRepo = new ProductVendorRepo();
 
-            dRepo.Insert(productVendor);
-        }
+        //    dRepo.Insert(productVendor);
+        //}
 
     }
 }

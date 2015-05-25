@@ -20,14 +20,14 @@ namespace KusumgarModel
             _customerRepo = new CustomerRepo();
         }
 
-        public List<CustomerInfo> Get_Customer_List(PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers(ref PaginationInfo Pager)
         {
-            return _customerRepo.Get_Customer_List(ref Pager);
+            return _customerRepo.Get_Customers(ref Pager);
         }
 
-        public List<CustomerInfo> Get_Customer_List_By_Name(string Customer_Name, PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Name(string Customer_Name, PaginationInfo Pager)
         {
-            return _customerRepo.Get_Customer_List_By_Name(Customer_Name, ref Pager);
+            return _customerRepo.Get_Customers_By_Name(Customer_Name, ref Pager);
         }
 
         public CustomerInfo Get_Customer_By_Id(int Company_Id)

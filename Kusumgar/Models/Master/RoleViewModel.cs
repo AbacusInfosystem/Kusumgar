@@ -13,19 +13,19 @@ namespace Kusumgar.Models
     {
         public PaginationInfo Pager { get; set; }
 
-        public List<RoleInfo> RoleList { get; set; }
+        public List<RoleInfo> Roles { get; set; }
 
         public RoleInfo Role { get; set; }
 
-        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
-        public Role_Filter Role_FilterVal { get; set; }
+        public Role_Filter Filter { get; set; }
 
         public int Role_Id { get; set; }
 
-        public List<RoleAccessInfo> Role_Access_List { get; set; }
+        public List<RoleAccessInfo> Role_Accesses { get; set; }
 
-        public List<RoleAccessInfo> Selecetd_Role_Access_List { get; set; }
+        public List<RoleAccessInfo> Selecetd_Role_Accesses { get; set; }
 
         public int[] Selected_Role_Access { get; set; }
 
@@ -33,17 +33,17 @@ namespace Kusumgar.Models
         {
             Pager = new PaginationInfo();
 
-            RoleList = new List<RoleInfo>();
+            Roles = new List<RoleInfo>();
 
             Role = new RoleInfo();
 
-            FriendlyMessage = new List<FriendlyMessageInfo>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
 
-            Role_FilterVal = new Role_Filter();
+            Filter = new Role_Filter();
 
-            Role_Access_List = new List<RoleAccessInfo>();
+            Role_Accesses = new List<RoleAccessInfo>();
 
-            Selecetd_Role_Access_List = new List<RoleAccessInfo>();
+            Selecetd_Role_Accesses = new List<RoleAccessInfo>();
 
             Role_Id = 0;
 

@@ -19,9 +19,9 @@ namespace KusumgarModel
             _userRepo = new UserRepo();
         }
 
-        public List<UserInfo> Get_User_List(PaginationInfo Pager)
+        public List<UserInfo> Get_Users(ref PaginationInfo Pager)
         {
-            return _userRepo.Get_User_List(ref Pager);
+            return _userRepo.Get_Users(ref Pager);
         }
         //public List<UserInfo> Get_User_List(PaginationInfo Pager)
         //{
@@ -29,14 +29,14 @@ namespace KusumgarModel
         //    return _userRepo.Get_User_List(new PaginationInfo());
         //}
 
-        public List<UserInfo> Get_User_List_By_Name(PaginationInfo Pager, string FirstName)
+        public List<UserInfo> Get_Users_By_Name(ref PaginationInfo Pager, string FirstName)
         {
-            return _userRepo.Get_User_List_By_Name(Pager, FirstName);
+            return _userRepo.Get_Users_By_Name(ref Pager, FirstName);
         }
 
-        public UserInfo Get_User_By_UserId(int UserId)
+        public UserInfo Get_User_By_User_Id(int UserId)
         {
-            return _userRepo.Get_User_By_UserId(UserId);
+            return _userRepo.Get_User_By_User_Id(UserId);
         }
 
         public void Insert_User(UserInfo userInfo)

@@ -14,6 +14,7 @@ namespace KusumgarDatabaseEntities
     
     public partial class M_User_Role_Mapping
     {
+        public int User_Role_Id { get; set; }
         public int Role_Id { get; set; }
         public int UserId { get; set; }
         public System.DateTime CreatedOn { get; set; }

@@ -19,12 +19,12 @@ namespace KusumgarModel
             _contactRepo = new ContactRepo();
         }
 
-        public List<ContactInfo> Get_Contact_List(PaginationInfo Pager)
+        public List<ContactInfo> Get_Contacts(ref PaginationInfo Pager)
         {
             return _contactRepo.Get_Contact_List(ref Pager);
         }
 
-        public List<ContactInfo> Get_Contact_List_By_Name(int Customer_Id, PaginationInfo Pager)
+        public List<ContactInfo> Get_Contacts_By_Name(int Customer_Id, ref PaginationInfo Pager)
         {
             return _contactRepo.Get_Contact_List_By_Name(Customer_Id, ref Pager);
         }

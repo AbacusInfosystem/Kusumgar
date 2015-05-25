@@ -22,15 +22,15 @@ namespace KusumgarDataAccess
             sqlRepo = new SQLHelperRepo();
         }   
 
-         public List<CustomerInfo> Get_Customer_List( ref PaginationInfo Pager)
+         public List<CustomerInfo> Get_Customers( ref PaginationInfo Pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
               DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Customer_Sp.ToString(), CommandType.StoredProcedure);
 
-              var tupleData = CommonMethods.GetRows(dt, Pager);
+              //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-              foreach (DataRow dr in tupleData.Item1)
+              foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
               {
                   CustomerList.Add(Get_Customer_Values(dr));
               }
@@ -38,7 +38,7 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-         public List<CustomerInfo> Get_Customer_List_By_Name(string Customer_Name, ref PaginationInfo Pager)
+         public List<CustomerInfo> Get_Customers_By_Name(string Customer_Name, ref PaginationInfo Pager)
          {
              List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
@@ -48,9 +48,9 @@ namespace KusumgarDataAccess
 
              DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Name_Sp.ToString(), CommandType.StoredProcedure);
 
-             var tupleData = CommonMethods.GetRows(dt, Pager);
+             //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-              foreach (DataRow dr in tupleData.Item1)
+             foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
               {
                   CustomerList.Add(Get_Customer_Values(dr));
               }
@@ -110,7 +110,7 @@ namespace KusumgarDataAccess
          {
              CustomerInfo customer = new CustomerInfo();
 
-             customer.Customer_Entity.Company_Id = Convert.ToInt32(dr["Company_Id"]);
+             customer.Customer_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
 
              customer.Customer_Entity.Customer_Name = Convert.ToString(dr["Customer_Name"]);
 
@@ -318,9 +318,9 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (Customer.Customer_Entity.Company_Id != 0)
+            if (Customer.Customer_Entity.Customer_Id  != 0)
             {
-                sqlparam.Add(new SqlParameter("@Company_Id", Customer.Customer_Entity.Company_Id));
+                sqlparam.Add(new SqlParameter("@Customer_Id", Customer.Customer_Entity.Customer_Id));
             }
            sqlparam.Add(new SqlParameter("@Customer_Name", Customer.Customer_Entity.Customer_Name ));
             sqlparam.Add(new SqlParameter("@Company_Email", Customer.Customer_Entity.Company_Email ));
@@ -344,7 +344,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", Customer.Customer_Entity.Is_Approved_By_Director));
             sqlparam.Add(new SqlParameter("@Block_Order", Customer.Customer_Entity.Block_Order));
             sqlparam.Add(new SqlParameter("@Is_Active", Customer.Customer_Entity.Is_Active));
-            if (Customer.Customer_Entity.Company_Id == 0)
+            if (Customer.Customer_Entity.Customer_Id == 0)
             {
                 sqlparam.Add(new SqlParameter("@CreatedBy", Customer.Customer_Entity.CreatedBy));
             }
@@ -457,9 +457,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -477,9 +477,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -499,9 +499,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Email_Sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -521,9 +521,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Name_Sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -543,9 +543,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Name_Sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -567,9 +567,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Name_Turnover_Sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }

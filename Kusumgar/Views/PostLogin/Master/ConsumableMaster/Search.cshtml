@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+<script src="~/Scripts/Master/ConsumableMaster_Search_method.js"></script>
+<script src="~/Scripts/Master/consumablemaster_search_event.js"></script>
+
+<input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Consumable Master
+            <small>Search</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Consumable Master</li>
+        </ol>
+    </section>
+
+    <form id="frmSearchConsumableMaster">
+        <input type="hidden" id="hdnConsumable_Id" name="Consumable_Id">
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="box box-primary">
+
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="btn-group pull-left">
+                                        <a class="btn btn-primary" href="@Url.Action("Index","ConsumableMaster")" role="button">Create Consumable Master</a>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+
+                                    <div class="btn-group pull-right">
+                                        <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Consumable Master</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-striped" id="tblConsumableMasterGrid">
+                            <tr id="subhead">
+                                <th style="width:50px;"></th>
+                                <th style="width:200px;">Consumable Master Id</th>
+                                <th style="width:200px;">Category Id</th>
+                                <th style="width:200px;">SubCategory Id</th>
+                                <th style="width:200px;">Material Name</th>
+                                <th style="width:200px;">Material Code</th>
+                                <th style="width:200px;">Active</th>
+                            </tr>
+                            
+                                @*@foreach (var item in Model.ConsumableMasterList)
+                                {
+                                    <tr >
+                                        
+                                        <td style="width:50px;">
+                                            <div >
+                                                <input id="R_@item.Consumable_Id" class="iradio_square-green" type="radio" name="R" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" />
+                                            </div>
+                                        </td>
+                                        <td style="width:200px;">@item.Consumable_Id</td>
+                                        <td style="width:200px;">@item.Category_Id</td>
+                                        <td style="width:200px;">@item.SubCategory_Id</td>
+                                        <td style="width:200px;">@item.Material_Name</td>
+                                        <td style="width:200px;">@item.Material_Code</td>
+                                        <td style="width:200px;">@item.IsActive</td>
+                                    </tr>
+                                }*@
+                        
+                        </table>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <ul></ul>
+                        </div>
+                        <div id="divSearchGridOverlay" class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+        <!-- /.content -->
+    </form>
+</div>

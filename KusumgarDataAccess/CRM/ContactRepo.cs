@@ -29,9 +29,9 @@ namespace KusumgarDataAccess
 
              DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Contact_sp.ToString(), CommandType.StoredProcedure);
 
-             var tupleData = CommonMethods.GetRows(dt, Pager);
+             //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-             foreach (DataRow dr in tupleData.Item1)
+             foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
              {
                  ContactList.Add(Get_Contact_Values(dr));
              }
@@ -49,9 +49,9 @@ namespace KusumgarDataAccess
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Contact_By_Customer_Name_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = CommonMethods.GetRows(dt, Pager);
+            //var tupleData = CommonMethods.GetRows(dt, Pager);
 
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
             {
                 ContactList.Add(Get_Contact_Values(dr));
             }
@@ -66,7 +66,7 @@ namespace KusumgarDataAccess
             contact.contact_Entity.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
             contact.contact_Entity.Contact_Type = Convert.ToInt32(dr["Contact_Type"]);
             contact.contact_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
-            contact.contact_Entity.Supplier_Id = Convert.ToInt32(dr["Supplier_Id"]);
+            contact.contact_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
             contact.contact_Entity.Contact_Name = Convert.ToString(dr["Contact_Name"]);
             contact.contact_Entity.Designation = Convert.ToString(dr["Designation"]);
             contact.contact_Entity.Office_Address = Convert.ToString(dr["Office_Address"]);
@@ -171,7 +171,7 @@ namespace KusumgarDataAccess
             }
             sqlparam.Add(new SqlParameter("@Contact_Type",contact.contact_Entity.Contact_Type));
             sqlparam.Add(new SqlParameter("@Customer_Id",contact.contact_Entity.Customer_Id));
-            sqlparam.Add(new SqlParameter("@Supplier_Id",contact.contact_Entity.Supplier_Id));
+            sqlparam.Add(new SqlParameter("@Supplier_Id",contact.contact_Entity.Vendor_Id));
             sqlparam.Add(new SqlParameter("@Contact_Name",contact.contact_Entity.Contact_Name ));
             sqlparam.Add(new SqlParameter("@Designation",contact.contact_Entity.Designation ));
             sqlparam.Add(new SqlParameter("@Office_Address",contact.contact_Entity.Office_Address ));
