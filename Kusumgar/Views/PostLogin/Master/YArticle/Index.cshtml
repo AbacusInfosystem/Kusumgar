@@ -1,10 +1,12 @@
-﻿@{
+﻿@model Kusumgar.Models.YArticleViewModel
+@using KusumgarBusinessEntities.Common
+@{
     ViewBag.Title = " Y Article";
 }
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+   
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Y Article
@@ -345,7 +347,10 @@
 
                     </form>*@
 
-                   @Html.Partial("~/Views/PostLogin/Master/YArticle/_YArticle.cshtml")
+                   @*@Html.Partial("~/Views/PostLogin/Master/YArticle/_YArticle.cshtml")*@
+                    <div id="dvYArticle">
+                    @{Html.RenderAction("YArticle", "Load_YArticle", Model);}
+                        </div>
 
                 </div>
             </div>
@@ -356,3 +361,13 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+    //$(function () {
+    //    $("#dvYArticle").load("/master/partial-y-article", success);
+    //});
+    //function success()
+    //{
+    //    alert("hi");
+    //}
+</script>

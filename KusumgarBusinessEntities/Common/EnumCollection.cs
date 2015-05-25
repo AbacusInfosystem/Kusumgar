@@ -182,8 +182,41 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaint_By_CustName_Sp,
 
         //ConsumableMaster
-        Get_Consumable_Master_sp,
-        Insert_ConsumableMaster_sp,
+        Get_Category_Name_sp,
+        Get_SubCategory_Name_sp,
+        Get_Consumable_sp,
+        Insert_Consumable_sp,
+        Insert_Consumable_Vendor_sp,
+        Get_Consumable_Vendor_sp,
+        Delete_Vendor_By_Id,
+        Get_Consumable_By_Id_sp,
+        Update_Consumable_Sp,
+        Get_Consumable_By_Category_By_Material_Sp,
+        Get_Consumable_By_Category_Id_sp,
+        Get_Consumable_By_Material_Name_sp,
+        Get_Vendor_By_Name_Sp,
+        Update_Consumable_Vendors_Sp,
+
+        //Industrial
+        Insert_Industrial_Master_Sp,
+        Update_Industrial_Master_Sp,
+        Get_Industrial_Master_List_Sp,
+        Get_Industrial_Master_By_Id_Sp,
+        Get_Industrial_Category_Sp,
+        Get_Group_By_CategoryId_Sp,
+        Insert_Industrial_Vendor_Sp,
+        Delete_Industrial_Vendor_By_Id_Sp,
+        Get_Industrial_Vendor_List_By_Id_Sp,
+        
+        Get_Industrial_Masters_By_Category_Name_Sp,
+        Get_Industrial_Masters_By_Category_Group_Name_Sp,
+        // Y Article 
+        Insert_Y_Article_sp,
+        Update_Y_Article_sp,
+        Get_Y_Articles_sp,
+        Get_Y_Articles_By_Full_Code_sp,
+        Get_Y_Articles_By_Yarn_Type_Id_sp,
+        Get_Y_Article_By_Id_sp,
 
         //Vendor
 
@@ -229,7 +262,12 @@ namespace KusumgarBusinessEntities.Common
     public enum CurrencyType
     {
         Rupees = 1,
-        Dollars = 2,
+        Dollars = 2, public enum PriorityOrder
+    {
+        Primary = 1,
+        Secondary = 2,
+        Last_Option = 3,
+    }
         Euros = 3,
         Pounds = 4,
     }
@@ -264,6 +302,17 @@ namespace KusumgarBusinessEntities.Common
           Service=2
       }
 
+       public enum PriorityOrder
+    {
+        Primary = 1,
+        Secondary = 2,
+        Last_Option = 3, public enum PriorityOrder
+    {
+        Primary = 1,
+        Secondary = 2,
+        Last_Option = 3,
+    }
+    }
     public enum ShipmentMethod
     {
         method1=1,

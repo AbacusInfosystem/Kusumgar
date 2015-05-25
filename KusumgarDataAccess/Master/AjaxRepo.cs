@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 
 namespace KusumgarDataAccess
 {
- public   class AjaxRepo
+ public class AjaxRepo
     {
      
         SQLHelperRepo sqlRepo;
@@ -116,6 +116,28 @@ namespace KusumgarDataAccess
                     AutocompleteInfo auto = new AutocompleteInfo();
                     auto.Label = Convert.ToString(dr["Customer_Name"]);
                     auto.Value = Convert.ToInt32(dr["Customer_Id"]);
+                    autoList.Add(auto);
+                }
+            }
+            return autoList;
+        }
+
+        public List<AutocompleteInfo> Get_Vendor_Autocomplete(string vendorName)
+        {
+            List<AutocompleteInfo> autoList = new List<AutocompleteInfo>();
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+            sqlParam.Add(new SqlParameter("@Vendor_Name", vendorName));
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Vendor_By_Name_Sp.ToString(), CommandType.StoredProcedure);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+                    auto.Label = Convert.ToString(dr["Vendor_Name"]);
+                    auto.Value = Convert.ToInt32(dr["Vendor_Id"]);
                     autoList.Add(auto);
                 }
             }

@@ -167,5 +167,18 @@ namespace KusumgarBusinessEntities.Common
 
             return Get_DMU_Status_Influence;
         }
+
+        public static Dictionary<int, string> Get_Priority_Orders()
+        {
+            Dictionary<int, string> Get_Priority_Orders = new Dictionary<int, string>();
+
+            Get_Priority_Orders.Add(1, PriorityOrder.Primary.ToString());
+
+            Get_Priority_Orders.Add(2, PriorityOrder.Secondary.ToString());
+
+            Get_Priority_Orders.Add(3, PriorityOrder.Last_Option.ToString());
+
+            return Get_Priority_Orders;
+        }
     }
 }

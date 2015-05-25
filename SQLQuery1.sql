@@ -1,17 +1,15 @@
 ﻿/*********************************************
 	Author : Kaustubh 
-   Date : 05052015
-   Purpose : To Get Customer by Nation Id and Turnover
+   Date : 05252015
+   Purpose : To Get Y_Article by full code
 *********************************************/
-Create procedure Get_Customer_by_Nation_Id_Turnover_Sp
+
+create procedure Get_Y_Articles_By_Yarn_Type_Id_sp
 (
-@Nation_Id int,
-@Turnover decimal
+@Yarn_Type_Id int
 )
 as
 begin
-	 select * from Customer  where Head_Office_Nation = @Nation_Id and Company_Turnover > @Turnover
+	
+	Select * from M_Y_Article where Yarn_Type_Id = @Yarn_Type_Id
 end
-
-
-select * from Customer  where Head_Office_Nation = 1

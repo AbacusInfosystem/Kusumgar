@@ -1,8 +1,25 @@
-﻿@{
+﻿@model Kusumgar.Models.IndustrialViewModel
+@using KusumgarBusinessEntities.Common
+@{
     ViewBag.Title = "Search";
 }
+<script src="/Scripts/Master/Event/industrial_search_event.js"></script>
+<script src="/Scripts/Master/Method/industrial_search_method.js"></script>
+<style>
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
 
-<link rel="stylesheet" href="~/Content/jquery-ui.css">
+    .example-modal .modal {
+        background: transparent !important;
+    }
+</style>
 <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -21,8 +38,8 @@
             <li class="active">Industrial Search</li>
         </ol>
     </section>
-    <form id="frmSearch_comp">
-        @*<input type="hidden" id="hdnComplaint_Id" name="ComplaintId">*@
+    <form id="frmSearch_ind">
+        <input type="hidden" id="hdnIndustrial_Id" name="Industrial_Master_Id">
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -30,20 +47,50 @@
                     <div class="box box-primary">
                         <!-- form start -->
                         <div class="box-body">
-                            @*<div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="txtCustName">Customer Name</label>
-                                        <input type="text" class="form-control" id="txtCustName" placeholder="Enter Customer Name" />
+                                        <label for="drpIndCatName">Industrial Category Name</label>
+                                        <select class="form-control" id="drpIndCatName" name="Industrial.Industrial_Entity.Industrial_Category_Name">
+                                            <option value="" selected="selected">--Select--</option>
+                                            @foreach (var item in Model.Industrial_Categories)
+                                            {
+                                                if (Model.Industrial.Industrial_Entity.Industrial_Category_Id == item.Industrial_Category_Entity.Industrial_Category_Id)
+                                                {
+                                                    <option value="@item.Industrial_Category_Entity.Industrial_Category_Id" selected="selected">@item.Industrial_Category_Entity.Industrial_Category_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Industrial_Category_Entity.Industrial_Category_Id">@item.Industrial_Category_Entity.Industrial_Category_Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="drpIndGroupName" style="color: #333">Industrial Group Name</label>
+                                        <select class="form-control" id="drpIndGroupName" name="Industrial.Industrial_Entity.Industrial_Group_Name">
+                                            <option value="" selected="selected">--Select--</option>
+                                            @foreach (var item in Model.Industrial_Groups)
+                                            {
+                                                if (Model.Industrial.Industrial_Entity.Industrial_Group_Id == item.Industrial_Group_Entity.Industrial_Group_Id)
+                                                {
+                                                    <option value="@item.Industrial_Group_Entity.Industrial_Group_Id" selected="selected">@item.Industrial_Group_Entity.Industrial_Group_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Industrial_Group_Entity.Industrial_Group_Id">@item.Industrial_Group_Entity.Industrial_Group_Name</option>
+                                                }
+                                            }
+                                        </select>
                                     </div>
                                 </div>
-                            </div>*@
+                            </div>
 
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group pull-left">
-                                            @*<button type="button" id="btnSearch" class="btn btn-success">Search</button>*@
+                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
                                             <a class="btn btn-primary" href="@Url.Action("Index","Industrial")" role="button">Industrial Master Creation </a>
                                         </div>
                                     </div>
@@ -64,14 +111,14 @@
                 <div class="col-md-12">
                     <div class="box box-solid">
                         <div class="box-body table-responsive no-padding">
-                            <table class="table table-striped" id="tblComGrid">
+                            <table class="table table-striped" id="tblIndGrid">
                                 <tr id="subhead">
                                     <th style="width:50px;"></th>
-                                    <th style="width:300px;">Industrial Category Name</th>
-                                    <th style="width:100px;">Industrial Group Name</th>
-                                    <th style="width:100px;">Industrial Sub-Group Name</th>
+                                    <th style="width:200px;">Industrial Category Name</th>
+                                    <th style="width:200px;">Industrial Group Name</th>
+                                    <th style="width:200px;">Industrial Sub-Group Name</th>
                                     <th style="width:100px;">Size</th>
-                                    <th style="width:300px;">COD</th>
+                                    <th style="width:100px;">COD</th>
                                 </tr>
                             </table>
                         </div>
@@ -79,9 +126,9 @@
                             <div class="pagination pagination-sm no-margin pull-right">
                                 <ul></ul>
                             </div>
-                            @*<div id="divSearchGridOverlay" class="overlay">
+                            <div id="divSearchGridOverlay" class="overlay">
                                     <i class="fa fa-refresh fa-spin"></i>
-                                </div>*@
+                            </div>
                         </div>
                     </div>
                 </div>

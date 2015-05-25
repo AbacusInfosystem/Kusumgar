@@ -60,7 +60,7 @@
     <Compile Include="Master\AjaxManager.cs" />
     <Compile Include="Master\AttributeCodeManager.cs" />
     <Compile Include="CRM\CustomerManager.cs" />
-    <Compile Include="Master\ConsumableMasterManager.cs" />
+    <Compile Include="Master\ConsumableManager.cs" />
     <Compile Include="Master\DefectManager.cs" />
     <Compile Include="Master\DefectTypeManager.cs" />
     <Compile Include="Master\IndustrialManager.cs" />
