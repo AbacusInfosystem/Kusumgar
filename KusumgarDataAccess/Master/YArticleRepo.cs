@@ -55,7 +55,7 @@ namespace KusumgarDataAccess
             return yArticleList;
         }
 
-        public List<YArticleInfo> Get_YArticles_By_Full_Code(int yarn_Type_Id, ref PaginationInfo pager)
+        public List<YArticleInfo> Get_YArticles_By_Yarn_Type_Id(int yarn_Type_Id, ref PaginationInfo pager)
         {
             List<YArticleInfo> yArticleList = new List<YArticleInfo>();
 
@@ -71,6 +71,24 @@ namespace KusumgarDataAccess
             }
 
             return yArticleList;
+        }
+
+        public YArticleInfo Get_YArticle_By_Id(int yArticleId, ref PaginationInfo pager)
+        {
+            YArticleInfo yArticle = new YArticleInfo();
+
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+            sqlparam.Add(new SqlParameter("@yArticleId", yArticleId));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                yArticle = Get_YArticle_Values(dr);
+            }
+
+            return yArticle;
         }
 
         public YArticleInfo Get_YArticle_Values(DataRow dr)
@@ -113,6 +131,11 @@ namespace KusumgarDataAccess
             yArticle_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_YArticle(yArticle), StoredProcedures.Insert_Y_Article_sp.ToString(), CommandType.StoredProcedure));
 
             return yArticle_Id;
+        }
+
+        public void Update_YArticle(YArticleInfo yArticle)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_YArticle(yArticle), StoredProcedures.Update_Y_Article_sp.ToString(), CommandType.StoredProcedure);
         }
 
         public List<SqlParameter> Set_Values_In_YArticle(YArticleInfo yArticle)

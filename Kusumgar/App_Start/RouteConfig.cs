@@ -569,7 +569,7 @@ namespace Kusumgar
             routes.MapRoute(
             name: "y-article-2",
             url: "master/partial-y-article",
-            defaults: new { controller = "YArticle", action = "YArticle", id = UrlParameter.Optional },
+            defaults: new { controller = "YArticle", action = "Load_YArticle", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

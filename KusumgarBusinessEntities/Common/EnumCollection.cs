@@ -216,6 +216,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_sp,
         Get_Y_Articles_By_Full_Code_sp,
         Get_Y_Articles_By_Yarn_Type_Id_sp,
+        Get_Y_Article_By_Id_sp,
 
     }
 
