@@ -11,6 +11,10 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtCustomer_Name') {
                 urlString = "/ajax/customer-list/" + $('#txtCustomer_Name').val();
             }
+
+            if ($(elementObject).attr("id") == 'txtSupplierName') {
+                urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
+            }
          
             $.ajax({
                 url: urlString,
@@ -25,6 +29,7 @@ var InitializeAutoComplete = function (elementObject) {
                 }
             });
         },
+
         minLength: 2,
         focus: function (event, ui) {
             $(this).val(ui.item.label);

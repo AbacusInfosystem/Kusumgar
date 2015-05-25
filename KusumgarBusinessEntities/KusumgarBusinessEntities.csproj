@@ -57,7 +57,8 @@
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\PaginationInfo.cs" />
     <Compile Include="Master\AttributeCodeInfo.cs" />
-    <Compile Include="Master\ConsumableMasterInfo.cs" />
+    <Compile Include="Master\ConsumableInfo.cs" />
+    <Compile Include="Master\ConsumableVendorInfo.cs" />
     <Compile Include="Master\DefectInfo.cs" />
     <Compile Include="Master\DefectTypeInfo.cs" />
     <Compile Include="Master\FabricTypeInfo.cs" />

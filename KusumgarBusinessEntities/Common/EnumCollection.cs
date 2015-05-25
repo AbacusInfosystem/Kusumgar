@@ -182,8 +182,20 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaint_By_CustName_Sp,
 
         //ConsumableMaster
-        Get_Consumable_Master_sp,
-        Insert_ConsumableMaster_sp,
+        Get_Category_Name_sp,
+        Get_SubCategory_Name_sp,
+        Get_Consumable_sp,
+        Insert_Consumable_sp,
+        Insert_Consumable_Vendor_sp,
+        Get_Consumable_Vendor_sp,
+        Delete_Vendor_By_Id,
+        Get_Consumable_By_Id_sp,
+        Update_Consumable_Sp,
+        Get_Consumable_By_Category_By_Material_Sp,
+        Get_Consumable_By_Category_Id_sp,
+        Get_Consumable_By_Material_Name_sp,
+        Get_Vendor_By_Name_Sp,
+        Update_Consumable_Vendors_Sp,
 
     }
 

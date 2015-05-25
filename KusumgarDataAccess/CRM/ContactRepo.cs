@@ -54,7 +54,7 @@ namespace KusumgarDataAccess
 
             return Contacts;
         }
-
+        
          private ContactInfo Get_Contact_Values(DataRow dr)
         {
             ContactInfo contact = new ContactInfo();
@@ -84,7 +84,7 @@ namespace KusumgarDataAccess
 
             return contact;
         }
-        
+       
         public ContactInfo Get_Contact_By_Id(int Contact_Id)
         {
             ContactInfo contact = new ContactInfo();

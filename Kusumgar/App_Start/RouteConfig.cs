@@ -193,7 +193,7 @@ namespace Kusumgar
             routes.MapRoute(
           name: "menu-30",
           url: "master/consumable/search",
-          defaults: new { controller = "ConsumableMaster", action = "Search", id = UrlParameter.Optional },
+          defaults: new { controller = "Consumable", action = "Search", id = UrlParameter.Optional },
           namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
@@ -748,31 +748,68 @@ namespace Kusumgar
 
             #endregion
 
-            #region ConsumableMaster
+            #region Consumable
 
             routes.MapRoute(
-            name: "ConsumableMaster-1",
-            url: "master/ConsumableMaster",
-            defaults: new { controller = "ConsumableMaster", action = "Index", id = UrlParameter.Optional },
+            name: "Consumable-1",
+            url: "master/Consumable",
+            defaults: new { controller = "Consumable", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "ConsumableMaster-2",
-            url: "master/insert-ConsumableMaster",
-            defaults: new { controller = "ConsumableMaster", action = "Insert", id = UrlParameter.Optional },
+            name: "Consumable-2",
+            url: "master/insert-consumable",
+            defaults: new { controller = "Consumable", action = "Insert", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "ConsumableMaster-3",
-            url: "master/search-ConsumableMaster",
-            defaults: new { controller = "ConsumableMaster", action = "Get_ConsumableMasters", id = UrlParameter.Optional },
+            name: "Consumable-3",
+            url: "master/search-consumable",
+            defaults: new { controller = "Consumable", action = "Get_Consumables", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            //For Autocomplete
+            routes.MapRoute(
+            name: "Consumable-4",
+            url: "master/insert_Consumable",
+            defaults: new { controller = "Consumable", action = "Get_Supplier_Name", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-                    name: "ConsumableMaster-4",
-                    url: "master/insert_ConsumableMaster",
-                    defaults: new { controller = "ConsumableMaster", action = "Get_Supplier_Name", id = UrlParameter.Optional },
-                    namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "Consumable-5",
+            url: "master/insert-consumable_vendor",
+            defaults: new { controller = "Consumable", action = "Insert_Consumable_Vendor", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-6",
+            url: "master/delete-vendor",
+            defaults: new { controller = "Consumable", action = "Delete_Vendor_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-7",
+            url: "master/edit-consumable",
+            defaults: new { controller = "Consumable", action = "Get_Consumable_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-8",
+            url: "master/update-consumable",
+            defaults: new { controller = "Consumable", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-9",
+            url: "master/vendor-list/{vendor_Name}",
+            defaults: new { controller = "Consumable", action = "Get_Vendor_AutoComplete", vendor_Name = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "Consumable-10",
+            url: "master/update-consumable_vendor",
+            defaults: new { controller = "Consumable", action = "Update_Consumable_Vendors", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 
