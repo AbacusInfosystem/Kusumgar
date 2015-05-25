@@ -76,6 +76,7 @@
     <Compile Include="Master\UserInfo.cs" />
     <Compile Include="Master\UserRoleInfo.cs" />
     <Compile Include="Master\VendorInfo.cs" />
+    <Compile Include="Master\YArticleInfo.cs" />
     <Compile Include="Master\YearInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
