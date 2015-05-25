@@ -107,11 +107,11 @@ function Consumable_Vendor_CallBack(data) {
         $("#tblConsumable_Vendor").find("tr:gt(0)").remove();
 
         $('#tblConsumable_Vendor tr:first').after(htmlText);
-
+        alert("rrr");
         $("#hdnConsumable_Vendor_Id").val(0);
 
         $("#txtSupplierName").val("");
-        $("#txtPriorityOrder").val();
+        $("#txtPriorityOrder").val(0);
        
         
     }
