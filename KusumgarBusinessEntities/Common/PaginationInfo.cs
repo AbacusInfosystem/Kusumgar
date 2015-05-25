@@ -26,7 +26,7 @@ namespace KusumgarBusinessEntities.Common
         {
             IsPagingRequired = true;
 
-            PageSize =5;
+            PageSize =10;
 
             CurrentPage = 0;
         }

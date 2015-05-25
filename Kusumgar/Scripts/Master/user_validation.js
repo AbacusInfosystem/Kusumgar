@@ -1,23 +1,6 @@
 ﻿$(function () {
     $("#frmUser").validate({
-        ignore: [],
-        errorElement: "span",
-        errorClass: "help-block",
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').addClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({'color':'#A94442','background-color':'#F2DEDE','border-color':'#A94442'});
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').removeClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({  'color':'black','background-color': '#FFF', 'border-color': '#D2D6DE' });
-        },
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length || element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        },
+
 
         rules: {
             "User.UserEntity.First_Name":
@@ -86,16 +69,16 @@
             },
             "User.UserEntity.User_Name":
             {
-                validate_Online_User: true,
-                validate_username : true
+                check_online_user: true,
+                check_user_name_exists: true
             },
             "User.UserEntity.Password":
             {
-                validate_password: true
+                check_password: true
             },
             "User.UserEntity.ConformPassword":
             {
-                validate_password: true
+                check_password: true
             },
             "User.Role_Ids":
             {
@@ -142,7 +125,7 @@
     });
 
 
-    jQuery.validator.addMethod("validate_Online_User", function (value, element) {
+    jQuery.validator.addMethod("check_online_user", function (value, element) {
         var result = true;
 
         if ($("#ChkSystem_User_Flag").is(':checked')) {
@@ -155,7 +138,7 @@
 
     }, "User Name required.");
 
-    jQuery.validator.addMethod("validate_password", function (value, element) {
+    jQuery.validator.addMethod("check_password", function (value, element) {
         var result = true;
 
         if ($("#ChkSystem_User_Flag").is(':checked')) {
@@ -168,13 +151,13 @@
 
     }, "Password not matched.");
 
-    jQuery.validator.addMethod("validate_username", function (value, element) {
+    jQuery.validator.addMethod("check_user_name_exists", function (value, element) {
         var result = true;
 
         if ($("#txtUser_Name").val() != "" && $("#hdnUser_Name").val() != $("#txtUser_Name").val()) {
             $.ajax({
                 url: '/master/check-user',
-                data: { User_Name: $("#txtUser_Name").val() },
+                data: { user_Name: $("#txtUser_Name").val() },
                 method: 'GET',
                 async: false,
                 success: function (data) {

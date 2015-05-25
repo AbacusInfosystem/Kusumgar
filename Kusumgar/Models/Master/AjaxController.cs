@@ -17,17 +17,17 @@ namespace Kusumgar.Models
         //
         // GET: /Ajax/
 
-        public JsonResult Get_State_List_By_Nation_Id(int NationId)
+        public JsonResult Get_State_List_By_Nation_Id(int nationId)
         {
             List<StateInfo> State_List = new List<StateInfo>();
 
-            StateManager _stateMgr = new StateManager();
+            StateManager _stateMan = new StateManager();
             
-            PaginationInfo Pager = new PaginationInfo();
+            PaginationInfo pager = new PaginationInfo();
 
-            Pager.IsPagingRequired = false;
+            pager.IsPagingRequired = false;
 
-            State_List = _stateMgr.Get_State_List(NationId, Pager);
+            State_List = _stateMan.Get_States(nationId,ref pager);
 
             return Json(State_List);
         }

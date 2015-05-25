@@ -7,16 +7,16 @@ $(function () {
 
     $('#dtpExpiration_Date_Of_Contract').datepicker();
 
-    if ($("#hdnCompany_Id").val() == 0) {
-        $("#Financial_Tab").hide();
-        $("#Billing_Tab").hide();
-        $("#Shipping_Tab").hide();
-        $("#Other_Tab").hide();
+    if ($("#hdnCustomer_Id").val() == 0) {
+        $("#tabFinancial").hide();
+        $("#tabBilling").hide();
+        $("#tabShipping").hide();
+        $("#tabOther").hide();
     }
 
     $("#btn_Save").click(function () {
        
-        if ($("#frm_Customer").valid()) {
+        if ($("#frmCustomer").valid()) {
 
             Save_Customer_Details();
         }
@@ -24,7 +24,7 @@ $(function () {
 
     $("#btnSaveOther").click(function () {
 
-        if ($("#frm_other").valid()) {
+        if ($("#frmOthers").valid()) {
             Save_Customer_Details();
         }
     });
@@ -67,7 +67,7 @@ $(function () {
 
     $('[name="Public_Private"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
-            if(this.id == "rdPublic")
+            if (this.id == "rdbPublic")
             {
                 $("#hdnPublic_Private_Sector").val(true);
             }
@@ -81,7 +81,7 @@ $(function () {
 
     $('[name="Organised_Unorganised"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
-            if (this.id == "rdOrgnised") {
+            if (this.id == "rdbOrganised") {
                 $("#hdnOrganised_UnOrganised_Sector").val(true);
             }
             else
@@ -114,12 +114,12 @@ $(function () {
        
         $.ajax({
             url: '/crm/state-by-nation-id',
-            data: { Nation_Id: $("#drpHead_Office_Nation").val() },
+            data: { nation_Id: $("#drpHead_Office_Nation").val() },
             method: 'GET',
             async: false,
             success: function (data) {
                 if (data != null) {
-                    Bind_State_Data(data);
+                    Bind_States(data);
                 }
             }
         });

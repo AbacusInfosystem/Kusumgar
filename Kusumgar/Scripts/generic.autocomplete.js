@@ -1,7 +1,8 @@
-﻿//var InitializeAutoComplete = function (elementObject, callBack) {
+﻿
+//var InitializeAutoComplete = function (elementObject, callBack) {
 var InitializeAutoComplete = function (elementObject) {
 
-
+   
     $(elementObject).autocomplete({
         source: function (request, response) {
 
@@ -13,7 +14,11 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtVendorName') {
                 urlString = "/master/get-vendor-id-by-vendorname/" + $('#txtVendorName').val();
             }
-
+         
+            if ($(elementObject).attr("id") == 'txtSupplierName') {
+                urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
+            }
+         
             $.ajax({
                 url: urlString,
                 dataType: "json",
@@ -27,6 +32,7 @@ var InitializeAutoComplete = function (elementObject) {
                 }
             });
         },
+
         minLength: 2,
         focus: function (event, ui) {
             $(this).val(ui.item.label);
@@ -60,7 +66,7 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parent().parent().parent().parent().find('.todo-list').remove();
             });
             //callBack(ui);
-
+            
             $('.ui-autocomplete').html("");
             return false;
         },
@@ -70,7 +76,7 @@ var InitializeAutoComplete = function (elementObject) {
         },
         close: function (event, ui) {
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-
+           
         }
     });
 
@@ -86,6 +92,30 @@ var InitializeAutoComplete = function (elementObject) {
 
                 $(this).append(htmlText);
             }
+
+            $(this).find('input[type=text]').val("");
+
+            $('.fa-remove').click(function (event) {
+                event.preventDefault();
+                $(this).parent().parent().parent().parent().find('input[type=text]').val("");
+                $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
+                $(this).parent().parent().parent().parent().find('.todo-list').remove();
+            });
+        }
+    });
+
+    $('.auto-complete').each(function () {
+
+        if ($(this).find('input[type=hidden]').val() != 0) {
+            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).find('input[type=text]').val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
+
+            if ($(this).find(".ui-menu")[0]) {
+
+                $(this).find('.text').html(ui.item.label);
+            } else {
+
+                $(this).append(htmlText);
+}
 
             $(this).find('input[type=text]').val("");
 

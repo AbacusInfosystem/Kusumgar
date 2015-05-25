@@ -2,7 +2,7 @@
 
     $("#btnFinancial_Save").click(function () {
 
-        if ($("#frm_financial_Details").valid()) {
+        if ($("#frmFinancial_Details").valid()) {
             Save_bank_Details();
         }
     });

@@ -25,40 +25,22 @@ namespace KusumgarDataAccess
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<NationInfo> Get_Nation_List(PaginationInfo Pager)
+        public List<NationInfo> Get_Nations(ref PaginationInfo pager)
         {
-            List<NationInfo> NationList = new List<NationInfo>();
+            List<NationInfo> Nations = new List<NationInfo>();
 
              DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Nation_Sp.ToString(), CommandType.StoredProcedure);
 
              if (dt != null && dt.Rows.Count > 0)
              {
-                 int count = 0;
-                 List<DataRow> drList = new List<DataRow>();
-
-                 drList = dt.AsEnumerable().ToList();
-
-                 count = drList.Count();
-
-                 if (Pager.IsPagingRequired)
+                 foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                  {
-                     drList = drList.Skip(Pager.CurrentPage * Pager.PageSize).Take(Pager.PageSize).ToList();
-                 }
-
-                 Pager.TotalRecords = count;
-
-                 int pages = (Pager.TotalRecords + Pager.PageSize - 1) / Pager.PageSize;
-
-                 Pager.TotalPages = pages;
-
-                 foreach (DataRow dr in drList)
-                 {
-                    NationList.Add(Get_Nation_Values(dr));
+                     Nations.Add(Get_Nation_Values(dr));
                  }
              }
 
 
-            return NationList;
+             return Nations;
         }
 
         public NationInfo Get_Nation_Values(DataRow dr)

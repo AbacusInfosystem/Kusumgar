@@ -1,17 +1,17 @@
-﻿
-/*********************************************
+﻿/*********************************************
 	Author : Kaustubh 
-   Date : 05112015
-   Purpose : To Delete Delete Contact Custom Fields By Id
+   Date : 05052015
+   Purpose : To Get Customer by Nation Id and Turnover
 *********************************************/
-
-create procedure Delete_Contact_Custom_Fields_By_Id
+Create procedure Get_Customer_by_Nation_Id_Turnover_Sp
 (
-@Contact_Custom_Field_Id int
+@Nation_Id int,
+@Turnover decimal
 )
 as
 begin
-
-	Delete from Contact_Custom_Fields where Contact_Custom_Field_Id = @Contact_Custom_Field_Id
-
+	 select * from Customer  where Head_Office_Nation = @Nation_Id and Company_Turnover > @Turnover
 end
+
+
+select * from Customer  where Head_Office_Nation = 1

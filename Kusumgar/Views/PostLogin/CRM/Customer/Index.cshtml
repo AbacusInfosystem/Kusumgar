@@ -1,8 +1,6 @@
 ﻿@model Kusumgar.Models.CustomerViewModel
 @using KusumgarBusinessEntities.Common
-@*@{
-    ViewBag.Title = "Customer";
-}*@
+
 
 <script src="/Scripts/CRM/Event/customer_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_method.js"></script>
@@ -32,23 +30,20 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
-                        <li><a href="#tab_2" id="Financial_Tab" data-toggle="tab">Financial</a></li>
-                        <li><a href="#tab_3" id="Billing_Tab" data-toggle="tab">Billing</a></li>
-                        <li><a href="#tab_4" id="Shipping_Tab" data-toggle="tab">Shipping</a></li>
-                        <li><a href="#tab_5" id="Other_Tab" data-toggle="tab">Other</a></li>
+                        <li><a href="#tab_2" id="tabFinancial" data-toggle="tab">Financial</a></li>
+                        <li><a href="#tab_3" id="tabBilling" data-toggle="tab">Billing</a></li>
+                        <li><a href="#tab_4" id="tabShipping" data-toggle="tab">Shipping</a></li>
+                        <li><a href="#tab_5" id="tabOther" data-toggle="tab">Other</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <br />
 
-                            <form id="frm_Customer">
-
+                            <form id="frmCustomer">
                                 <div class="row">
                                     <div class="col-md-4">
-
-                                        <input type="hidden" id="hdnCompany_Id" value="@Model.Customer.Customer_Entity.Company_Id">
-
+                                        <input type="hidden" id="hdnCustomer_Id" value="@Model.Customer.Customer_Entity.Customer_Id">
                                         <div class="form-group">
                                             <label for="txtCustomer_Name" style="color: #333">Customer name</label>
                                             <input type="text" class="form-control input-sm" id="txtCustomer_Name" name="Customer.Customer_Entity.Customer_Name" placeholder="Enter customer name" value="@Model.Customer.Customer_Entity.Customer_Name">
@@ -56,53 +51,26 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="txtEmailId" style="color: #333">Email Id</label>
-
+                                            <label for="txtEmailId" style="color: #333">Email </label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                                 <input type="text" class="form-control input-sm" id="txtEmail_Id" name="Customer.Customer_Entity.Company_Email" placeholder="Enter email" value="@Model.Customer.Customer_Entity.Company_Email">
                                             </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>
-                                                <input type="checkbox" name="chkIsApproved" id="chkIsApproved" checked />
-                                                &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
-                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Approved_By_Director" name="Customer.Customer_Entity.Is_Approved_By_Director">
-                                            </label>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>
-                                                <input type="checkbox" name="chkStatus" id="chkStatus" checked />
-                                                &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer.Customer_Entity.Is_Active">
-                                            </label>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <!-- Head Office Details -->
                                         <div class="form-group">
-                                            <label style="color: #333">Head Office Address</label>
+                                            <label style="color: #333">Office address</label>
                                             <textarea class="form-control input-sm" rows="2" id="txtHead_Office_Address" name="Customer.Customer_Entity.Head_Office_Address" placeholder="Enter head office address">@Model.Customer.Customer_Entity.Head_Office_Address</textarea>
                                         </div>
-
-                                        @*<div class="form-group">
-                                                <label for="txtCustomerName">Area</label>
-                                                <input type="text" class="form-control" id="txtHeadOfficeArea" placeholder="Enter area" value="@Model.Customer.Customer_Entity.head">
-                                            </div>*@
-
-                                        @*<div class="form-group">
-                                                <label for="txtCustomerName">City</label>
-                                                <input type="text" class="form-control" id="txtHeadOfficeCity" placeholder="Enter city" value="@Model.Customer.Customer_Entity.Head_Office_State">
-                                            </div>*@
 
                                         <div class="form-group">
                                             <label style="color: #333">Nation</label>
                                             <select class="form-control input-sm" id="drpHead_Office_Nation" name="Customer.Customer_Entity.Head_Office_Nation">
                                                 <option value="">- Select Nation -</option>
-                                                @foreach (var item in Model.Nation_List)
+                                                @foreach (var item in Model.Nations)
                                                 {
                                                     if (Model.Customer.Customer_Entity.Head_Office_Nation == item.Nation_Entity.NationId)
                                                     {
@@ -120,7 +88,7 @@
                                             <label style="color: #333">State</label>
                                             <select class="form-control input-sm" id="drpHead_Office_State" name="Customer.Customer_Entity.Head_Office_State">
                                                 <option value="">- Select State-</option>
-                                                @foreach (var item in Model.State_List)
+                                                @foreach (var item in Model.States)
                                                 {
                                                     if (Model.Customer.Customer_Entity.Head_Office_State == item.State_Entity.StateId)
                                                     {
@@ -142,12 +110,6 @@
                                                 <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Customer_Entity.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Customer_Entity.Head_Office_ZipCode" maxlength="6">
                                             </div>
                                         </div>
-
-                                        @*<div class="form-group">
-                                                <label for="txtHeadOfficeCountry">Country</label>
-                                                <input type="text" class="form-control" id="txtHeadOffice_Country" placeholder="Enter country">
-                                            </div>*@
-                                        <!-- Head Office Details Ends-->
                                     </div>
 
                                     <div class="col-md-4">
@@ -184,12 +146,37 @@
                                             </div>
                                             <!-- /.input group -->
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" name="chkIsApproved" id="chkIsApproved" checked />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Approved status
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Approved_By_Director" name="Customer.Customer_Entity.Is_Approved_By_Director">
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" name="chkStatus" id="chkStatus" checked />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Active status
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer.Customer_Entity.Is_Active">
+                                            </label>
+                                        </div>
+
                                         <!-- Head Office Phone Ends -->
                                     </div>
                                 </div>
+
+                               
                                 <div class="box-footer">
-                                    <button type="button" id="btn_Save" class="btn btn-success">Save Primary</button>
-                                    <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="btn-group">
+                                                <button type="button" id="btn_Save" class="btn btn-success btn-sm">Save primary</button>&nbsp;
+                                                <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
 
@@ -214,61 +201,61 @@
                         </div><!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_5">
                             <br />
-                            <form id="frm_other">
+                            <form id="frmOthers">
                                 <div class="row">
                                     <div class="col-md-4">
 
                                         <div class="form-group">
-                                            <label for="txtCustomerName" style="color: #333">Company Turnover</label>
+                                            <label for="txtCustomerName" style="color: #333">Company turnover</label>
                                             <input type="text" class="form-control input-sm" id="txtCompany_Turnover" placeholder="Enter company turnover" name="Customer.Customer_Entity.Company_Turnover" value="@(Model.Customer.Customer_Entity.Company_Turnover == null ? "" : Model.Customer.Customer_Entity.Company_Turnover)">
                                         </div>
                                         @if (Model.Customer.Customer_Entity.Credit_limit == 0)
                                         {
-                                        <div class="form-group">
-                                            <label for="txtCreditLimit" style="color: #333">Credit Limit</label>
-                                            <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Customer_Entity.Credit_limit">
-                                        </div>
-                                        }
-                                        else
-                                        {
-                                        <div class="form-group">
-                                            <label for="txtCreditLimit" style="color: #333">Credit Limit</label>
-                                            <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Customer_Entity.Credit_limit" value="@Model.Customer.Customer_Entity.Credit_limit">
-                                        </div>
-                                        }
-
-                                        @if(Model.Customer.Customer_Entity.Order_Minimum_Value == 0)
-                                        {
-                                        <div class="form-group">
-                                            <label for="txtCreditLimit" style="color: #333">Order Minimum Value</label>
-                                            <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Customer_Entity.Order_Minimum_Value">
-                                        </div>
-                                        }
-                                        else
-                                        {
-                                        <div class="form-group">
-                                            <label for="txtCreditLimit" style="color: #333">Order Minimum Value</label>
-                                            <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Customer_Entity.Order_Minimum_Value" value="@Model.Customer.Customer_Entity.Order_Minimum_Value">
-                                        </div>
-                                        }
-
-                                        @if (@Model.Customer.Customer_Entity.Order_Maximum_Value ==0)
-                                        { 
-                                        <div class="form-group">
-                                            <label for="txtCreditLimit" style="color: #333">Order Maximum Value</label>
-                                            <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Customer_Entity.Order_Maximum_Value">
-                                        </div>
+                                            <div class="form-group">
+                                                <label for="txtCreditLimit" style="color: #333">Credit limit</label>
+                                                <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Customer_Entity.Credit_limit">
+                                            </div>
                                         }
                                         else
                                         {
                                             <div class="form-group">
-                                            <label for="txtCreditLimit" style="color: #333">Order Maximum Value</label>
+                                                <label for="txtCreditLimit" style="color: #333">Credit limit</label>
+                                                <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Customer_Entity.Credit_limit" value="@Model.Customer.Customer_Entity.Credit_limit">
+                                            </div>
+                                        }
+
+                                        @if (Model.Customer.Customer_Entity.Order_Minimum_Value == 0)
+                                        {
+                                            <div class="form-group">
+                                                <label for="txtCreditLimit" style="color: #333">Order minimum value</label>
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Customer_Entity.Order_Minimum_Value">
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group">
+                                                <label for="txtCreditLimit" style="color: #333">Order minimum value</label>
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Customer_Entity.Order_Minimum_Value" value="@Model.Customer.Customer_Entity.Order_Minimum_Value">
+                                            </div>
+                                        }
+
+                                        @if (@Model.Customer.Customer_Entity.Order_Maximum_Value == 0)
+                                        {
+                                            <div class="form-group">
+                                                <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Customer_Entity.Order_Maximum_Value">
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group">
+                                                <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
                                                 <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Customer_Entity.Order_Maximum_Value" value="@Model.Customer.Customer_Entity.Order_Maximum_Value">
-                                        </div>
+                                            </div>
                                         }
 
                                         <div class="form-group">
-                                            <label style="color: #333">Contract Expiration Date</label>
+                                            <label style="color: #333">Contract expiration date</label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
@@ -311,7 +298,7 @@
                                                         {
                                                             <input type="checkbox" name="chkBlockOrder" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block Order
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order
                                                     </label>
                                                     <input type="hidden" id="hdnBlock_Order" value="@((Model.Customer.Customer_Entity.Block_Order== null ? false :Model.Customer.Customer_Entity.Block_Order).ToString())">
                                                 </div>
@@ -324,26 +311,26 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Public_Private_Sector == true)
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPublic" checked />
+                                                            <input type="radio" name="Public_Private" id="rdbPublic" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPublic" />
+                                                            <input type="radio" name="Public_Private" id="rdbPublic" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Public Sector
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Public sector
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Public_Private_Sector == false)
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPrivate" checked />
+                                                            <input type="radio" name="Public_Private" id="rdbPrivate" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Public_Private" id="rdPrivate" />
+                                                            <input type="radio" name="Public_Private" id="rdbPrivate" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Private Sector
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Private sector
 
                                                     </label>
                                                 </div>
@@ -361,13 +348,13 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == true)
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdOrgnised" checked />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbOrganised" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdOrgnised" />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbOrganised" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Organised Sector
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Organised sector
 
                                                     </label>
                                                 </div>
@@ -375,13 +362,13 @@
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == false)
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdUnorganised" checked />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbUnorganised" checked />
                                                         }
                                                         else
                                                         {
-                                                            <input type="radio" name="Organised_Unorganised" id="rdUnorganised" />
+                                                            <input type="radio" name="Organised_Unorganised" id="rdbUnorganised" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Unorganised Sectors
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Unorganised sectors
                                                     </label>
                                                     <input type="hidden" id="hdnOrganised_UnOrganised_Sector" value="@((Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == null ? false : Model.Customer.Customer_Entity.Organised_UnOrganised_Sector).ToString())">
                                                 </div>
@@ -399,7 +386,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Type" id="Chk_Company_type_@item.Key" value="@item.Key" checked />
+                                                                <input type="radio" name="Company_Type" id="ChkCompany_type_@item.Key" value="@item.Key" checked />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -408,7 +395,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Type" id="Chk_Company_type_@item.Key" value="@item.Key" />
+                                                                <input type="radio" name="Company_Type" id="ChkCompany_type_@item.Key" value="@item.Key" />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -426,7 +413,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Status" id="Chk_Company_status_@item.Key" value="@item.Key" checked />
+                                                                <input type="radio" name="Company_Status" id="ChkCompany_status_@item.Key" value="@item.Key" checked />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -435,7 +422,7 @@
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
-                                                                <input type="radio" name="Company_Status" id="Chk_Company_status_@item.Key" value="@item.Key" />
+                                                                <input type="radio" name="Company_Status" id="ChkCompany_status_@item.Key" value="@item.Key" />
                                                                 &nbsp;&nbsp;&nbsp;&nbsp; @item.Value
                                                             </label>
                                                         </div>
@@ -449,21 +436,19 @@
                                 </div>
 
                                 <div class="box-footer">
-                                    <button type="button" id="btnSaveOther" class="btn btn-success" >Save Other</button>
-                                    <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                    <div class="btn-group">
+                                        <button type="button" id="btnSaveOther" class="btn btn-success btn-sm">Save other</button>
+                                        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                    </div>
                                 </div>
                             </form>
-
                         </div><!-- /.tab-pane -->
-
                     </div><!-- /.tab-content -->
                 </div><!-- nav-tabs-custom -->
             </div><!-- /.col -->
         </div> <!-- /.row -->
     </section>
     <!-- /.content -->
-
 </div>
-
 <!-- /.content-wrapper -->
 

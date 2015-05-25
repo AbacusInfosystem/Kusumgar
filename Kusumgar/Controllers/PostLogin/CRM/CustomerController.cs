@@ -9,6 +9,7 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -17,212 +18,325 @@ namespace Kusumgar.Controllers
         //
         // GET: /Customer/
 
-        public CustomerManager _customerMgr;
+        public CustomerManager _customerMan;
 
-        public NationManager _nationManager;
+        public NationManager _nationMan;
 
-        public StateManager _stateMgr;
+        public StateManager _stateMan;
+
+
 
         public CustomerController()
         {
-            _customerMgr = new CustomerManager();
+            _customerMan = new CustomerManager();
 
-            _nationManager = new NationManager();
+            _nationMan = new NationManager();
 
-            _stateMgr = new StateManager();
+            _stateMan = new StateManager();
         }
 
-        public ActionResult Index(CustomerViewModel _customerViewModel)
+        public ActionResult Index(CustomerViewModel cViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
 
-                _customerViewModel.Pager.IsPagingRequired = false;
+                pager.IsPagingRequired = false;
 
-                _customerViewModel.Nation_List = _nationManager.Get_Nation_List(_customerViewModel.Pager);
+                cViewModel.Nations = _nationMan.Get_Nations(ref pager);
 
-                _customerViewModel.State_List = _stateMgr.Get_State_List(Convert.ToInt32(_customerViewModel.Customer.Customer_Entity.Head_Office_Nation), _customerViewModel.Pager);
+                cViewModel.States = _stateMan.Get_States(cViewModel.Customer.Customer_Entity.Head_Office_Nation, ref pager);
             }
             catch(Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Index " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
             }
 
-            return View("Index", _customerViewModel);
+            return View("Index", cViewModel);
         }
 
-        public ActionResult Search(CustomerViewModel _customerViewModel)
+        public ActionResult Search(CustomerViewModel cViewModel)
         {
-            return View("Search", _customerViewModel);
-        }
+            ViewBag.Title = "KPCL ERP :: Search";
 
-        public ActionResult Insert(CustomerViewModel _customerViewModel)
-        {
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
-                int customerId = _customerMgr.Insert_Customer(_customerViewModel.Customer);
+                pager.IsPagingRequired = false;
 
-                _customerViewModel.Customer.Customer_Entity.Customer_Id = customerId;
+                cViewModel.Nations = _nationMan.Get_Nations(ref pager);
 
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU001"));
+                cViewModel.Pager.IsPagingRequired = true;
             }
             catch(Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Search " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
             }
 
-            return Json(_customerViewModel);
+            return View("Search", cViewModel);
         }
 
-        public ActionResult Update(CustomerViewModel _customerViewModel)
+        public JsonResult Insert(CustomerViewModel cViewModel)
         {
             try
             {
-                _customerMgr.Update_Customer(_customerViewModel.Customer);
+                cViewModel.Customer.Customer_Entity.CreatedBy = 1;
 
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU002"));
+                cViewModel.Customer.Customer_Entity.UpdatedBy = 1;
+
+                int customer_Id = _customerMan.Insert_Customer(cViewModel.Customer);
+
+                cViewModel.Customer.Customer_Entity.Customer_Id = customer_Id;
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU001"));
+            }
+            catch(Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Insert " + ex.ToString());
+            }
+
+            return Json(cViewModel);
+        }
+
+        public JsonResult Update(CustomerViewModel cViewModel)
+        {
+            try
+            {
+                cViewModel.Customer.Customer_Entity.UpdatedBy = 1;
+
+                _customerMan.Update_Customer(cViewModel.Customer);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU002"));
             }
             catch (Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Update " + ex.ToString());
             }
 
-            return Json(_customerViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Insert_Customer_Address(CustomerViewModel _customerViewModel)
+        public JsonResult Insert_Customer_Address(CustomerViewModel cViewModel)
         {
             try
             {
-                _customerMgr.Insert_Customer_Address(_customerViewModel.Customer.Customer_Address);
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedBy = 1;
 
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU003"));
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = 1;
 
-                _customerViewModel.Customer = _customerMgr.Get_Customer_By_Id(Convert.ToInt32(_customerViewModel.Customer.Customer_Address.Customer_Address_Entity.Customer_Id));
+                _customerMan.Insert_Customer_Address(cViewModel.Customer.Customer_Address);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU003"));
+
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Address.Customer_Address_Entity.Customer_Id);
             }
             catch (Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Insert_Customer_Address " + ex.ToString());
             }
 
-            return Json(_customerViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Update_Customer_Address(CustomerViewModel _customerViewModel)
+        public JsonResult Update_Customer_Address(CustomerViewModel cViewModel)
         {
             try
             {
-                _customerMgr.Update_Customer_Address(_customerViewModel.Customer.Customer_Address);
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = 1;
 
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU004"));
+                _customerMan.Update_Customer_Address(cViewModel.Customer.Customer_Address);
 
-                _customerViewModel.Customer = _customerMgr.Get_Customer_By_Id(Convert.ToInt32(_customerViewModel.Customer.Customer_Address.Customer_Address_Entity.Customer_Id));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU004"));
+
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Address.Customer_Address_Entity.Customer_Id);
             }
             catch (Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Update_Customer_Address " + ex.ToString());
             }
 
-            return Json(_customerViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Insert_Bank_Details(CustomerViewModel _customerViewModel)
+        public JsonResult Insert_Bank_Details(CustomerViewModel cViewModel)
         {
             try
             {
-                _customerMgr.Insert_Bank_Details(_customerViewModel.Customer.Bank_Details);
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedBy = 1;
 
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU005"));
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = 1;
+
+                _customerMan.Insert_Bank_Details(cViewModel.Customer.Bank_Details);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU005"));
 
             }
             catch (Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Insert_Bank_Details " + ex.ToString());
             }
 
-            return Json(_customerViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Update_Bank_Details(CustomerViewModel _customerViewModel)
+        public JsonResult Update_Bank_Details(CustomerViewModel cViewModel)
         {
             try
             {
-                _customerMgr.Update_Bank_Details(_customerViewModel.Customer.Bank_Details);
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = 1;
 
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("CU006"));
+                _customerMan.Update_Bank_Details(cViewModel.Customer.Bank_Details);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU006"));
  
             }
             catch (Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Update_Bank_Details " + ex.ToString());
             }
 
 
-            return Json(_customerViewModel);
+            return Json(cViewModel);
         }
 
-        public ActionResult Get_Customer_List(CustomerViewModel _customerViewModel)
+        public JsonResult Get_Customers(CustomerViewModel cViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
+
             try
             {
-                if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) )
+                //if(!string.IsNullOrEmpty(cViewModel.Filter.Customer_Name) && !string.IsNullOrEmpty(cViewModel.Filter.Email) && !string.IsNullOrEmpty(cViewModel.Filter.Turnover) )
+                //{
+                //     cViewModel.Customers = _customerMan.Get_Customer_By_Email_Name_Turnover(cViewModel.Filter.Email,cViewModel.Filter.Customer_Name,cViewModel.Filter.Turnover,  cViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Customer_Name) && !string.IsNullOrEmpty(cViewModel.Filter.Email))
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customer_By_Email_Name(cViewModel.Filter.Email, cViewModel.Filter.Customer_Name, cViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Customer_Name) && !string.IsNullOrEmpty(cViewModel.Filter.Turnover))
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customer_By_Turnover_Name(cViewModel.Filter.Turnover, cViewModel.Filter.Customer_Name, cViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Email) && !string.IsNullOrEmpty(cViewModel.Filter.Turnover) )
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customer_By_Turnover_Email(cViewModel.Filter.Turnover, cViewModel.Filter.Email, cViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Customer_Name))
+                //{
+                //       cViewModel.Customers = _customerMan.Get_Customers_By_Name(cViewModel.Filter.Customer_Name, cViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Email))
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customer_By_Email(cViewModel.Filter.Email, cViewModel.Pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover))
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customer_By_Turnover(cViewModel.Filter.Turnover, cViewModel.Pager);
+                //}
+                //else
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers(cViewModel.Pager);
+                //}
+
+                pager = cViewModel.Pager;
+
+                if (!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
                 {
-                     _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email_Name_Turnover(_customerViewModel.Filter_Value.Email,_customerViewModel.Filter_Value.Customer_Name,_customerViewModel.Filter_Value.Turnover,  _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover_Customer_Id_Nation_Id(cViewModel.Filter.Turnover, cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email))
+                else if( cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email_Name(_customerViewModel.Filter_Value.Email, _customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Customer_Id_Nation_Id(cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
+                else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Customer_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Name(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover_Customer_Id(cViewModel.Filter.Turnover, cViewModel.Filter.Customer_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email) && !string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover) )
+                else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Nation_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover_Email(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Filter_Value.Email, _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id_Turnover(cViewModel.Filter.Turnover, cViewModel.Filter.Nation_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Customer_Name))
+                else if (cViewModel.Filter.Nation_Id != 0)
                 {
-                       _customerViewModel.Customer_List = _customerMgr.Get_Customer_List_By_Name(_customerViewModel.Filter_Value.Customer_Name, _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id(cViewModel.Filter.Nation_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Email))
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Turnover))
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Email(_customerViewModel.Filter_Value.Email, _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover(cViewModel.Filter.Turnover, ref  pager);
                 }
-                else if(!string.IsNullOrEmpty(_customerViewModel.Filter_Value.Turnover))
+                else if (cViewModel.Filter.Customer_Id != 0)
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_By_Turnover(_customerViewModel.Filter_Value.Turnover, _customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Id(cViewModel.Filter.Customer_Id, ref  pager);
+
                 }
                 else
                 {
-                    _customerViewModel.Customer_List = _customerMgr.Get_Customer_List(_customerViewModel.Pager);
+                    cViewModel.Customers = _customerMan.Get_Customers(ref pager);
                 }
 
-                _customerViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", _customerViewModel.Pager.TotalRecords, _customerViewModel.Pager.CurrentPage + 1, _customerViewModel.Pager.PageSize, 10, true);
+                cViewModel.Pager = pager;
+
+                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
             }
             catch(Exception ex)
             {
-                _customerViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
-            }
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-            return Json(_customerViewModel, JsonRequestBehavior.AllowGet);
+                Logger.Error("Customer Controller - Get_Customers " + ex.ToString());
+            }
+            finally
+                {
+                    pager = null;
+                }
+
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Get_Customer_By_Id(CustomerViewModel _customerViewModel)
+        public ActionResult Get_Customer_By_Id(CustomerViewModel cViewModel)
         {
             try
             {
-                _customerViewModel.Customer = _customerMgr.Get_Customer_By_Id(_customerViewModel.Customer.Customer_Entity.Customer_Id);
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Entity.Customer_Id);
             }
             catch(Exception ex)
             {
-                throw ex;
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Get_Customer_By_Id " + ex.ToString());
             }
 
-            return Index(_customerViewModel);
+            return Index(cViewModel);
         }
 
-        public ActionResult Get_State_by_Nation_Id(int Nation_Id)
+        public JsonResult Get_State_by_Nation_Id(int nation_Id)
         {
             List<StateInfo> StateList = new List<StateInfo>();
 
@@ -230,50 +344,50 @@ namespace Kusumgar.Controllers
 
             try
             {
-                PaginationInfo Pager = new PaginationInfo();
+                PaginationInfo pager = new PaginationInfo();
 
-                Pager.IsPagingRequired = false;
+                pager.IsPagingRequired = false;
 
-                StateList = _stateMgr.Get_State_List(Nation_Id, Pager);
+                StateList = _stateMgr.Get_States(nation_Id, ref pager);
             }
             catch(Exception ex)
             {
-
+                Logger.Error("Customer Controller - Get_State_by_Nation_Id " + ex.ToString());
             }
             return Json(StateList, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete_Customer_Address_By_Id(int Customer_Address_Id)
+        public JsonResult Delete_Customer_Address_By_Id(int customer_Address_Id)
         {
-            List<FriendlyMessageInfo> FriendlyMessage = new List<FriendlyMessageInfo>();
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
 
             try
             {
-                
-                _customerMgr.Delete_Customer_Address_By_Id(Customer_Address_Id);
 
-                FriendlyMessage.Add(MessageStore.Get("CU007"));
+                _customerMan.Delete_Customer_Address_By_Id(customer_Address_Id);
+
+                Friendly_Message.Add(MessageStore.Get("CU007"));
 
             }
             catch(Exception ex)
             {
-                throw ex;
+                Logger.Error("Customer Controller - Delete_Customer_Address_By_Id " + ex.ToString());
             }
 
-            return Json(new { FriendlyMessage }, JsonRequestBehavior.AllowGet);
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Check_Existing_Customer(string Customer_Name)
+        public JsonResult Check_Existing_Customer(string customer_Name)
         {
             bool check = false;
 
             try
             {
-                check = _customerMgr.Check_Existing_Customer(Customer_Name);
+                check = _customerMan.Check_Existing_Customer(customer_Name);
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logger.Error("Customer Controller - Check_Existing_Customer " + ex.ToString());
             }
 
             return Json(check, JsonRequestBehavior.AllowGet);

@@ -25,43 +25,25 @@ namespace KusumgarDataAccess
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<StateInfo> Get_State_List(int Nation_Id, PaginationInfo Pager)
+        public List<StateInfo> Get_States(int nation_Id, ref PaginationInfo pager)
         {
-            List<StateInfo> State_List = new List<StateInfo>();
+            List<StateInfo> States = new List<StateInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Nation_Id", Nation_Id));
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_State_By_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                int count = 0;
-                List<DataRow> drList = new List<DataRow>();
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (Pager.IsPagingRequired)
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                 {
-                    drList = drList.Skip(Pager.CurrentPage * Pager.PageSize).Take(Pager.PageSize).ToList();
-                }
-
-                Pager.TotalRecords = count;
-
-                int pages = (Pager.TotalRecords + Pager.PageSize - 1) / Pager.PageSize;
-
-                Pager.TotalPages = pages;
-
-                foreach (DataRow dr in drList)
-                {
-                    State_List.Add(Get_State_Values(dr));
+                    States.Add(Get_State_Values(dr));
                 }
             }
 
-            return State_List;
+            return States;
         }
 
         public StateInfo Get_State_Values(DataRow dr)

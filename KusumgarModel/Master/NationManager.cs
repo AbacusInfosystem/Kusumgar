@@ -13,15 +13,15 @@ namespace KusumgarModel
     public class NationManager
     {
         public NationRepo _nationRepo;
-
+         
         public NationManager()
         {
             _nationRepo = new NationRepo();
         }
 
-          public List<NationInfo> Get_Nation_List(PaginationInfo Pager)
+        public List<NationInfo> Get_Nations(ref PaginationInfo pager)
         {
-            return _nationRepo.Get_Nation_List(Pager);
+            return _nationRepo.Get_Nations(ref pager);
         }
 
     }

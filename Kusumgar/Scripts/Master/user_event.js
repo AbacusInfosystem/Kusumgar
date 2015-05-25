@@ -28,7 +28,7 @@
 
             $("#txtUser_Name").rules("add", {
                 required: true,
-                validate_username : true,
+                check_user_name_exists: true,
                 messages: {
                     required: "User Name is required"
                 }
@@ -36,7 +36,7 @@
 
             $("#txtPassword").rules("add", {
                 required: true,
-                validate_password: true,
+                check_password: true,
                 messages: {
                     required: "Password is required"
                 }
@@ -44,7 +44,7 @@
 
             $("#txtConform_Password").rules("add", {
                 required: true,
-                validate_password: true,
+                check_password: true,
                 messages: {
                     required: "Conform Password is required"
                 }

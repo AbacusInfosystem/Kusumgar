@@ -12,34 +12,34 @@ namespace Kusumgar.Models
     {
         public CustomerViewModel()
         {
-            Customer_List = new List<CustomerInfo>();
+            Customers = new List<CustomerInfo>();
 
             Customer = new CustomerInfo();
 
-            FriendlyMessage = new List<FriendlyMessageInfo>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
 
             Pager = new PaginationInfo();
 
-            State_List = new List<StateInfo>();
+            States = new List<StateInfo>();
 
-            Nation_List = new List<NationInfo>();
+            Nations = new List<NationInfo>();
 
-            Filter_Value = new CustomerFilter();
+            Filter = new CustomerFilter();
         }
 
-        public List<CustomerInfo> Customer_List { get; set; }
+        public List<CustomerInfo> Customers { get; set; }
 
         public CustomerInfo Customer { get; set; }
 
-        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
         public PaginationInfo Pager { get; set; }
 
-        public List<StateInfo> State_List { get; set; }
+        public List<StateInfo> States { get; set; }
 
-        public List<NationInfo> Nation_List { get; set; }
+        public List<NationInfo> Nations { get; set; }
 
-        public CustomerFilter Filter_Value { get; set; }
+        public CustomerFilter Filter { get; set; }
 
     }
 
@@ -47,8 +47,12 @@ namespace Kusumgar.Models
     {
         public string Customer_Name { get; set; }
 
+        public int Customer_Id { get; set; }
+
         public string Email { get; set; }
 
         public string Turnover { get; set; }
+
+        public int Nation_Id { get; set; }
     }
 }

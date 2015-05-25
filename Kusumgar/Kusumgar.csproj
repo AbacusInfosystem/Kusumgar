@@ -243,6 +243,7 @@
     <Compile Include="Controllers\PostLogin\Master\ArticleProcessWorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\ConsumableController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CustomerQualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\GArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
@@ -253,6 +254,7 @@
     <Compile Include="Controllers\PostLogin\Master\TestController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestUnitController.cs" />
     <Compile Include="Controllers\PostLogin\Master\UserController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessRouteCodeController.cs" />
@@ -275,6 +277,7 @@
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
     <Compile Include="Models\Master\AjaxController.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
+    <Compile Include="Models\Master\ConsumableViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
@@ -966,6 +969,8 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\Master\Event\attribute_code_event.js" />
     <Content Include="Scripts\Master\Event\attribute_code_search_event.js" />
+    <Content Include="Scripts\Master\Event\consumable_event.js" />
+    <Content Include="Scripts\Master\Event\consumable_search_event.js" />
     <Content Include="Scripts\Master\Event\defect_event.js" />
     <Content Include="Scripts\Master\Event\defect_search.event.js" />
     <Content Include="Scripts\Master\Event\defect_type_event.js" />
@@ -978,6 +983,8 @@
     <Content Include="Scripts\Master\Event\test_unit_search_event.js" />
     <Content Include="Scripts\Master\Method\attribute_code_method.js" />
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
+    <Content Include="Scripts\Master\Method\consumable_method.js" />
+    <Content Include="Scripts\Master\Method\consumable_search_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
     <Content Include="Scripts\Master\Method\defect_type_method.js" />
@@ -999,6 +1006,7 @@
     <Content Include="Scripts\Master\user_search_method.js" />
     <Content Include="Scripts\Master\user_validation.js" />
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
+    <Content Include="Scripts\Master\Validation\consumable_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
@@ -1008,6 +1016,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
+    <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1421,6 +1432,15 @@
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Industrial\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\Industrial\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\Consumable\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\VendorContact\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\VendorContact\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

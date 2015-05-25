@@ -21,5 +21,6 @@ namespace KusumgarDatabaseEntities
         public System.DateTime CreatedDtm { get; set; }
         public int UpdatedBy { get; set; }
         public System.DateTime UpdatedDtm { get; set; }
+        public int IndustrialCategoryId { get; set; }
     }
 }

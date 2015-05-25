@@ -100,6 +100,11 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Name_Sp,
         Get_Customer_By_Email_Name_Sp,
         Get_Customer_By_Email_Name_Turnover_Sp,
+        Get_Customer_by_Nation_Id_Sp,
+        Get_Customer_by_Nation_Id_Turnover_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Sp,
+        Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
+        Get_Customer_By_Customer_Id_Nation_Id_Sp,
 
         // Customer Address 
         Insert_Customer_Address,
@@ -176,6 +181,22 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaint_By_Id_Sp,
         Get_Complaint_By_CustName_Sp,
 
+        //ConsumableMaster
+        Get_Category_Name_sp,
+        Get_SubCategory_Name_sp,
+        Get_Consumable_sp,
+        Insert_Consumable_sp,
+        Insert_Consumable_Vendor_sp,
+        Get_Consumable_Vendor_sp,
+        Delete_Vendor_By_Id,
+        Get_Consumable_By_Id_sp,
+        Update_Consumable_Sp,
+        Get_Consumable_By_Category_By_Material_Sp,
+        Get_Consumable_By_Category_Id_sp,
+        Get_Consumable_By_Material_Name_sp,
+        Get_Vendor_By_Name_Sp,
+        Update_Consumable_Vendors_Sp,
+
         //Industrial
         Insert_Industrial_Master_Sp,
         Update_Industrial_Master_Sp,
@@ -186,7 +207,7 @@ namespace KusumgarBusinessEntities.Common
         Insert_Industrial_Vendor_Sp,
         Delete_Industrial_Vendor_By_Id_Sp,
         Get_Industrial_Vendor_List_By_Id_Sp,
-        Get_Vendor_By_Name_Sp,
+        
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
     }

@@ -25,7 +25,7 @@ namespace KusumgarDataAccess
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<UserInfo> Get_User_List(ref PaginationInfo Pager)
+        public List<UserInfo> Get_Users(ref PaginationInfo pager)
         {
             List<UserInfo> UserList = new List<UserInfo>();
 
@@ -33,25 +33,7 @@ namespace KusumgarDataAccess
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                int count = 0;
-                List<DataRow> drList = new List<DataRow>();
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (Pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(Pager.CurrentPage * Pager.PageSize).Take(Pager.PageSize).ToList();
-                }
-
-                Pager.TotalRecords = count;
-
-                int pages = (Pager.TotalRecords + Pager.PageSize - 1) / Pager.PageSize;
-
-                Pager.TotalPages = pages;
-
-                foreach (DataRow dr in drList)
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                 {
                     UserInfo user = new UserInfo();
 
@@ -116,37 +98,20 @@ namespace KusumgarDataAccess
             return UserList;
         }
 
-        public List<UserInfo> Get_User_List_By_Name(PaginationInfo Pager, string FirstName)
+        public List<UserInfo> Get_Users_By_Name(PaginationInfo pager, string first_Name)
         {
             List<UserInfo> UserList = new List<UserInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@FirstName", FirstName));
+            sqlParams.Add(new SqlParameter("@FirstName", first_Name));
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Users_By_Name_Sp.ToString(), CommandType.StoredProcedure);
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                int count = 0;
-                List<DataRow> drList = new List<DataRow>();
 
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (Pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(Pager.CurrentPage * Pager.PageSize).Take(Pager.PageSize).ToList();
-                }
-
-                Pager.TotalRecords = count;
-
-                int pages = (Pager.TotalRecords + Pager.PageSize - 1) / Pager.PageSize;
-
-                Pager.TotalPages = pages;
-
-                foreach (DataRow dr in drList)
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                 {
                     UserInfo user = new UserInfo();
 
@@ -211,13 +176,13 @@ namespace KusumgarDataAccess
             return UserList;
         }
 
-        public UserInfo Get_User_By_UserId(int UserId)
+        public UserInfo Get_User_By_User_Id(int user_Id)
         {
             UserInfo user = new UserInfo();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@UserId", UserId));
+            sqlParams.Add(new SqlParameter("@UserId", user_Id));
 
             DataSet ds = sqlRepo.ExecuteDataSet(sqlParams, StoredProcedures.Get_Users_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
@@ -309,21 +274,21 @@ namespace KusumgarDataAccess
             return user;
         }
 
-        public void Insert_User(UserInfo userInfo)
+        public void Insert_User(UserInfo user)
         {
             int UserId = 0;
 
-            UserId = Convert.ToInt32(sqlRepo.ExecuteScalerObj(SetValues_In_User(userInfo), StoredProcedures.Insert_User_Sp.ToString(), CommandType.StoredProcedure));
+            UserId = Convert.ToInt32(sqlRepo.ExecuteScalerObj(SetValues_In_User(user), StoredProcedures.Insert_User_Sp.ToString(), CommandType.StoredProcedure));
 
-            Insert_User_Role_Mapping(userInfo.Role_Ids, UserId);
+            Insert_User_Role_Mapping(user.Role_Ids, UserId);
 
         }
 
-        public void Update_User(UserInfo userInfo)
+        public void Update_User(UserInfo user)
         {
-            sqlRepo.ExecuteNonQuery(SetValues_In_User(userInfo), StoredProcedures.Update_User_Sp.ToString(), CommandType.StoredProcedure);
+            sqlRepo.ExecuteNonQuery(SetValues_In_User(user), StoredProcedures.Update_User_Sp.ToString(), CommandType.StoredProcedure);
 
-            Insert_User_Role_Mapping(userInfo.Role_Ids, userInfo.UserEntity.UserId);
+            Insert_User_Role_Mapping(user.Role_Ids, user.UserEntity.UserId);
         }
 
         private List<SqlParameter> SetValues_In_User(UserInfo user)
@@ -365,13 +330,13 @@ namespace KusumgarDataAccess
             return sqlParamList;
         }
 
-        public bool Check_Existing_User(string User_Name)
+        public bool Check_Existing_User(string user_Name)
         {
             bool check = false;
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@User_Name", User_Name));
+            sqlParams.Add(new SqlParameter("@User_Name", user_Name));
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Check_Existing_User_Sp.ToString(), CommandType.StoredProcedure);
 
@@ -392,22 +357,22 @@ namespace KusumgarDataAccess
             return check;
         }
 
-        public void Insert_User_Role_Mapping(string Role_Ids, int UserId)
+        public void Insert_User_Role_Mapping(string role_Ids, int userId)
         {
             List<SqlParameter> sqlParam = new List<SqlParameter>();
 
-            sqlParam.Add(new SqlParameter("@UserId", UserId));
+            sqlParam.Add(new SqlParameter("@UserId", userId));
 
             sqlRepo.ExecuteNonQuery(sqlParam, StoredProcedures.Delete_User_Role_By_UserId_Sp.ToString(), CommandType.StoredProcedure);
-            
-            foreach (var item in Role_Ids.Split(','))
+
+            foreach (var item in role_Ids.Split(','))
             {
                 List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
                 int CreatedBy = 1;
                 int UpdatedBy = 1;
 
-                sqlParamList.Add(new SqlParameter("@UserId", UserId));
+                sqlParamList.Add(new SqlParameter("@UserId", userId));
                 sqlParamList.Add(new SqlParameter("@RoleId", item));
                 sqlParamList.Add(new SqlParameter("@CreatedBy", CreatedBy));
                 sqlParamList.Add(new SqlParameter("@UpdatedBy", UpdatedBy));
@@ -417,13 +382,13 @@ namespace KusumgarDataAccess
 
         }
 
-        public string Get_User_Role_By_Id(int UserId)
+        public string Get_User_Role_By_Id(int user_Id)
         {
             string Role_Ids ="";
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@UserId", UserId));
+            sqlParams.Add(new SqlParameter("@UserId", user_Id));
 
             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_User_Role_By_UserId_Sp.ToString(), CommandType.StoredProcedure);
 

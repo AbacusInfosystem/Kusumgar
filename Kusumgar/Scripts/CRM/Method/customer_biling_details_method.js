@@ -27,7 +27,7 @@ function Get_Customer_biling_details() {
 
                                     Customer_Address_Id: $("#hdn_Customer_Address_Id").val(),
 
-                                    Customer_Id: $("#hdnCompany_Id").val(),
+                                    Customer_Id: $("#hdnCustomer_Id").val(),
 
                                     FaxNo: $("#txtBillingOfficeFaxNo").val(),
 
@@ -107,7 +107,7 @@ function Bind_Billing_Details(data)
 
     }
 
-    friendly_message(data)
+    Friendly_Message(data)
     
 
 }
@@ -117,18 +117,18 @@ function Bind_Billing_Details(data)
 Delete_Adress_callBack(data)
 {
     
-    friendly_message(data)
+    Friendly_Message(data)
 }
 
 function RemoveBillingAddress(id) {
     $.ajax({
         url: '/crm/delete-customer',
-        data: { Customer_Address_Id: id },
+        data: { customer_Address_Id: id },
         method: 'GET',
         async: false,
         success: function (data) {
             $("#Bill_tr_" + id).html("");
-            friendly_message(data);
+            Friendly_Message(data);
         }
     });
 }
