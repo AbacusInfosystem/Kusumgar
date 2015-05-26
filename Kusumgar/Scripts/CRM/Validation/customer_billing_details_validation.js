@@ -1,7 +1,7 @@
 ﻿
 $(function () {
 
-    $("#frm_Billing").validate({
+    $("#frmBilling").validate({
 
         rules: {
             "Addresss":
@@ -28,11 +28,11 @@ $(function () {
 
             "Addresss":
                {
-                   required: "Address is required"
+                   required: "Address is required."
                },
             "Landline1":
                 {
-                    required: "Landline is required"
+                    required: "Landline is required."
 
                 }
         },

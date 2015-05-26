@@ -12,7 +12,7 @@
 }
 
 function Bind_Vendor_Data_Callback(data) {
-
+    alert("m");
     $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
 
     $("#tabProductServices").show();
@@ -21,7 +21,7 @@ function Bind_Vendor_Data_Callback(data) {
     $("#tabOtherDetails").show();
 
     $("#hdnVendorName").val($("#txtVendorName").val());
-
+   
     Friendly_Message(data);
 }
 

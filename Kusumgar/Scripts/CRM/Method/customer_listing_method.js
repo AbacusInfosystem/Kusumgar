@@ -1,11 +1,14 @@
 ﻿
 function SearchCustomer()
 {
-    var _customerViewModel =
+    var cViewModel =
         {
-            Filter_Value:
+            Filter:
                 {
-                    Customer_Name: $("#txtCustomerName").val()
+                    Customer_Name: $("#txtCustomer_Name").val(),
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+                    Turnover: $("#txtTurnover").val(),
+                    Nation_Id: $("#drpNation_Id").val()
                 },
 
             Pager: {
@@ -14,81 +17,61 @@ function SearchCustomer()
         }
 
     $("#divSearchGridOverlay").show();
+   
 
-    CallAjax("/crm/search-customer", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, BindCustomerGrid, "", null);
+    CallAjax("/crm/search-customer", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
 }
 
-function AdvanceSearch()
-{
-    var _customerViewModel =
-            {
-                Filter_Value:
-                    {
-                        Customer_Name: $("#txtCustomer_Name").val(),
-                        Email: $("#txtEmailId").val(),
-                        Turnover: $("#txtTurnover").val()
-                    },
 
-                Pager: {
-                    CurrentPage: $('#hdfCurrentPage').val(),
-                },
-            }
 
-    $("#divSearchGridOverlay").show();
-
-    $("#myModal").toggle();
-
-    CallAjax("/crm/search-customer", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, BindCustomerGrid, "", null);
-}
-
-function BindCustomerGrid(data) {
+function Bind_Customer_Grid(data) {
 
 
     $('#tblcustomer tr.subhead').html("");
 
     var htmlText = "";
 
-    if (data.Customer_List.length > 0) {
+    if (data.Customers.length > 0) {
 
-        for (i = 0; i < data.Customer_List.length; i++) {
+        for (i = 0; i < data.Customers.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customer_List[i].Customer_Entity.Company_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Entity.Customer_Id + "' class='iradio_square-green'/>";
+
+            htmlText += "</td>";
+
+            htmlText += "<td id='Cust_" + data.Customers[i].Customer_Entity.Customer_Id + "'>";
+
+            htmlText += data.Customers[i].Customer_Entity.Customer_Name == null ? "" : data.Customers[i].Customer_Entity.Customer_Name;
+
+            htmlText += "</td>";
+
+
+
+            htmlText += "<td>";
+
+            htmlText += data.Customers[i].Customer_Entity.Company_Email == null ? "" : data.Customers[i].Customer_Entity.Company_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customer_List[i].Customer_Entity.Customer_Name == null ? "" : data.Customer_List[i].Customer_Entity.Customer_Name;
-
-            htmlText += "</td>";
-
-
-
-            htmlText += "<td>";
-
-            htmlText += data.Customer_List[i].Customer_Entity.Company_Email == null ? "" : data.Customer_List[i].Customer_Entity.Company_Email;
+            htmlText += data.Customers[i].Customer_Entity.Head_Office_Landline1 == null ? "" : data.Customers[i].Customer_Entity.Head_Office_Landline1;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customer_List[i].Customer_Entity.Head_Office_Landline1 == null ? "" : data.Customer_List[i].Customer_Entity.Head_Office_Landline1;
+            htmlText += data.Customers[i].Customer_Entity.Head_Office_Landline2 == null ? "" : data.Customers[i].Customer_Entity.Head_Office_Landline2;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customer_List[i].Customer_Entity.Head_Office_Landline2 == null ? "" : data.Customer_List[i].Customer_Entity.Head_Office_Landline2;
-
-            htmlText += "</td>";
-
-            htmlText += "<td>";
-
-            htmlText += data.Customer_List[i].Customer_Entity.Company_Turnover;
+            htmlText += data.Customers[i].Customer_Entity.Company_Turnover;
 
             htmlText += "</td>";
 
@@ -116,7 +99,7 @@ function BindCustomerGrid(data) {
         });
 
 
-        if (data.Customer_List.length > 0) {
+        if (data.Customers.length > 0) {
             $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
             if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
@@ -128,14 +111,16 @@ function BindCustomerGrid(data) {
             $('.pagination').html("");
         }
 
-        friendly_message(data);
+        Friendly_Message(data);
 
         $("#divSearchGridOverlay").hide();
 
         //$('[id^="r1_"]').on('ifChanged', function (event) {
         $('[name="r1"]').on('ifChanged', function (event) {
             if ($(this).prop('checked')) {
-                $("#hdfCompany_Id").val(this.id.replace("r1_", ""));
+                $("#hdfCustomer_Id").val(this.id.replace("r1_", ""));
+                $("#hdCustomer_Id").val(this.id.replace("r1_", ""));
+                $("#hdfCustomer_Name").val($("#Cust_" + this.id.replace("r1_", "")).text());
                 $("#btnEdit").show();
                 $("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();
@@ -154,5 +139,6 @@ function PageMore(Id) {
 
     $(".selectAll").prop("checked", false);
 
-    SearchCustomer();
+
+        SearchCustomer();
 }

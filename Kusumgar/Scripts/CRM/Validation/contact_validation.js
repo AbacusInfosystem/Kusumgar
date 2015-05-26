@@ -3,12 +3,13 @@
 
         rules: {
 
-            "contact.Customer_Name" :
-            {
-                required: true
-            },
+            //"contact.Customer_Name" :
+            //{
+            //    required: true
+            //},
             "contact.contact_Entity.Customer_Id" :
             {
+                required:true
             },
             "contact.contact_Entity.Contact_Name" :
             {
@@ -51,32 +52,35 @@
             "contact.contact_Entity.Mobile1" :
             {
                 required: true,
-                number: true
+                number: true,
+                minlength: 10
             },
             "contact.contact_Entity.Mobile2" :
             {
-                number: true
+                number: true,
+                minlength: 10
             }
         },
         messages: {
 
-            "contact.Customer_Name":
-           {
-               required: "Customer name is required"
-           },
+           // "contact.Customer_Name":
+           //{
+           //    required: "Customer name is required"
+           //},
             "contact.contact_Entity.Customer_Id":
             {
+                required: "Customer name is required."
             },
             "contact.contact_Entity.Contact_Name":
             {
-                required: "Contact Name is required"
+                required: "Contact name is required."
             },
             "contact.contact_Entity.Designation":
             {
             },
             "contact.contact_Entity.Official_Email":
             {
-                required: "office email is required"
+                required: "Office email is required."
             },
             "contact.contact_Entity.Personal_Email":
             {
@@ -84,19 +88,19 @@
             },
             "contact.contact_Entity.DMU_Status_Role":
             {
-                required: "Please select DMU Status Role"
+                required: "Please select DMU status role."
             },
             "contact.contact_Entity.DMU_Status_Influence":
             {
-                required: "Please select DMU Status Influence"
+                required: "Please select DMU status influence."
             },
             "contact.contact_Entity.Office_Address":
             {
-                required: "Office Address is required."
+                required: "Office address is required."
             },
             "contact.contact_Entity.Office_Landline1":
             {
-                required: "office landline is required."
+                required: "Office landline is required."
             },
             "contact.contact_Entity.Office_Landline2":
             {
@@ -104,7 +108,7 @@
             },
             "contact.contact_Entity.Mobile1":
             {
-                required: "Mobile No. is required"
+                required: "Mobile no. is required."
             },
             "contact.contact_Entity.Mobile2":
             {

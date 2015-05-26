@@ -983,7 +983,7 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "ajax-3",
-            url: "ajax/vendor-list/{Vendor_Name}",
+            url: "ajax/vendor-list/{vendor_Name}",
             defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion

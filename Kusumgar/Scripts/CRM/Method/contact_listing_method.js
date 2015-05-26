@@ -1,10 +1,11 @@
 ﻿
 function SearchContact() {
-    var _contactViewModel =
+    var cViewModel =
         {
-            FilterVal:
+            Filter:
                 {
-                    Customer_Id: $("#hdnCustomer_Id").val()
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+                    Customer_Name: $("#txtCustomer_Name").val()
                 },
 
             Pager: {
@@ -14,56 +15,56 @@ function SearchContact() {
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/crm/contact-search", "json", JSON.stringify(_contactViewModel), "POST", "application/json", false, BindContactGrid, "", null);
+    CallAjax("/crm/contact-search", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Contact_Grid, "", null);
 }
 
 
-function BindContactGrid(data) {
+function Bind_Contact_Grid(data) {
 
-
+   // $("#txtCustomer_Name").val(data.Filter_Val.Customer_Name);
     $('#tblcontact tr.subhead').html("");
 
     var htmlText = "";
 
-    if (data.Contact_List.length > 0) {
+    if (data.Contacts.length > 0) {
 
-        for (i = 0; i < data.Contact_List.length; i++) {
+        for (i = 0; i < data.Contacts.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Contact_List[i].contact_Entity.Contact_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Contacts[i].contact_Entity.Contact_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contact_List[i].Customer_Name == null ? "" : data.Contact_List[i].Customer_Name;
+            htmlText += data.Contacts[i].Customer_Name == null ? "" : data.Contacts[i].Customer_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contact_List[i].contact_Entity.Contact_Name == null ? "" : data.Contact_List[i].contact_Entity.Contact_Name;
+            htmlText += data.Contacts[i].contact_Entity.Contact_Name == null ? "" : data.Contacts[i].contact_Entity.Contact_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contact_List[i].contact_Entity.Official_Email == null ? "" : data.Contact_List[i].contact_Entity.Official_Email;
+            htmlText += data.Contacts[i].contact_Entity.Official_Email == null ? "" : data.Contacts[i].contact_Entity.Official_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contact_List[i].contact_Entity.Office_Landline1 == null ? "" : data.Contact_List[i].contact_Entity.Office_Landline1;
+            htmlText += data.Contacts[i].contact_Entity.Office_Landline1 == null ? "" : data.Contacts[i].contact_Entity.Office_Landline1;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contact_List[i].contact_Entity.Office_Landline2 == null ? "" : data.Contact_List[i].contact_Entity.Office_Landline2;
+            htmlText += data.Contacts[i].contact_Entity.Office_Landline2 == null ? "" : data.Contacts[i].contact_Entity.Office_Landline2;
 
             htmlText += "</td>";
 
@@ -91,7 +92,7 @@ function BindContactGrid(data) {
     });
 
 
-    if (data.Contact_List.length > 0) {
+    if (data.Contacts.length > 0) {
         $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
@@ -103,7 +104,7 @@ function BindContactGrid(data) {
         $('.pagination').html("");
     }
 
-    friendly_message(data);
+    Friendly_Message(data);
 
     $("#divSearchGridOverlay").hide();
 
@@ -132,13 +133,13 @@ function PageMore(Id) {
     SearchContact();
 }
 
-var autoCustomerCallback = function (paramObj) {
+//var autoCustomerCallback = function (paramObj) {
 
-    BindCustomerTags(paramObj.item.label, paramObj.item.value);
-}
+//    BindCustomerTags(paramObj.item.label, paramObj.item.value);
+//}
 
-function BindCustomerTags(label, value) {
-    $('#hdnCustomer_Id').val(value);
+//function BindCustomerTags(label, value) {
+//    $('#hdnCustomer_Id').val(value);
 
-    $('#txtCustomer_Name').val(label);
-}
+//    $('#txtCustomer_Name').val(label);
+//}

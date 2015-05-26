@@ -9,7 +9,6 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
-using Kusumgar.Models;
 using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers.PostLogin.Master
@@ -71,7 +70,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(vViewModel);
         }
 
-        public ActionResult Get_State_by_Nation_Id(int Nation_Id)
+        public ActionResult Get_State_by_Nation_Id(int nation_Id)
         {
             List<StateInfo> States = new List<StateInfo>();
 
@@ -83,7 +82,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 Pager.IsPagingRequired = false;
 
-                States = _stateMgr.Get_States(Nation_Id, ref Pager);
+                States = _stateMgr.Get_States(nation_Id, ref Pager);
             }
             catch (Exception ex)
             {
@@ -205,11 +204,11 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(vViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Delete_Product_Service_By_Id(int Product_Vendor_Id, VendorViewModel vViewModel)
+        public JsonResult Delete_Product_Service_By_Id(int product_Vendor_Id, VendorViewModel vViewModel)
         {
             try
             {
-               _vendorMan.Delete_Product_Service_By_Id(Product_Vendor_Id);
+               _vendorMan.Delete_Product_Service_By_Id(product_Vendor_Id);
 
                vViewModel.Friendly_Message.Add(MessageStore.Get("PS013"));
             }
@@ -223,22 +222,22 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(vViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Vendor_Autocomplete(string Vendor_Name)
+        public JsonResult Get_Vendor_Autocomplete(string vendor_Name)
         {
             List<AutocompleteInfo> vendorNames = new List<AutocompleteInfo>();
 
-            vendorNames = _vendorMan.Get_Vendor_AutoComplete(Vendor_Name);
+            vendorNames = _vendorMan.Get_Vendor_AutoComplete(vendor_Name);
 
             return Json(vendorNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Check_Existing_Vendor(string Vendor_Name)
+        public JsonResult Check_Existing_Vendor(string vendor_Name)
         {
             bool check = false;
 
             try
             {
-                check = _vendorMan.Check_Existing_Vendor(Vendor_Name);
+                check = _vendorMan.Check_Existing_Vendor(vendor_Name);
             }
             catch (Exception ex)
             {

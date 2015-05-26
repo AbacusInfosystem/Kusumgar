@@ -313,7 +313,7 @@
         if ($("#txtVendorName").val() != "" && $("#hdnVendorName").val() != $("#txtVendorName").val()) {
             $.ajax({
                 url: '/master/check-vendor',
-                data: { Vendor_Name: $("#txtVendorName").val() },
+                data: { vendor_Name: $("#txtVendorName").val() },
                 method: 'GET',
                 async: false,
                 success: function (data) {

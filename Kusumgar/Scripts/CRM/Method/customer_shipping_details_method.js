@@ -1,19 +1,19 @@
 ﻿
 function Save_Customer_shipping_details() {
-    var _customerViewModel = Get_Customer_Shipping_details();
+    var cViewModel = set_Customer_Shipping_details();
 
 
     if ($("#hdn_Customer_shipping_Address_Id").val() == 0) {
-        CallAjax("/crm/insert-customer-address/", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, Bind_Shipping_Details, "", null);
+        CallAjax("/crm/insert-customer-address/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Shipping_Details, "", null);
     }
     else {
-        CallAjax("/crm/update-customer-address/", "json", JSON.stringify(_customerViewModel), "POST", "application/json", false, Bind_Shipping_Details, "", null);
+        CallAjax("/crm/update-customer-address/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Shipping_Details, "", null);
     }
 }
 
 
-function Get_Customer_Shipping_details() {
-    var _customerViewModel =
+function set_Customer_Shipping_details() {
+    var cViewModel =
         {
             Customer:
                 {
@@ -27,7 +27,7 @@ function Get_Customer_Shipping_details() {
 
                                     Customer_Address_Id: $("#hdn_Customer_shipping_Address_Id").val(),
 
-                                    Customer_Id: $("#hdnCompany_Id").val(),
+                                    Customer_Id: $("#hdnCustomer_Id").val(),
 
                                     FaxNo: $("#txtShippingOfficeFaxNo").val(),
 
@@ -40,7 +40,7 @@ function Get_Customer_Shipping_details() {
                 }
         }
 
-    return _customerViewModel;
+    return cViewModel;
 }
 
 function Bind_Shipping_Details(data) {
@@ -105,19 +105,19 @@ function Bind_Shipping_Details(data) {
 
 
 
-    friendly_message(data)
+    Friendly_Message(data)
 }
 
 
 function RemoveShippingAddress(id) {
     $.ajax({
         url: '/crm/delete-customer',
-        data: { Customer_Address_Id: id },
+        data: { customer_Address_Id: id },
         method: 'GET',
         async: false,
         success: function (data) {
             $("#Ship_tr_"+id).html("");
-            friendly_message(data);
+            Friendly_Message(data);
         }
     });
 }

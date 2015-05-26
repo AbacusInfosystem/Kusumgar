@@ -3,14 +3,14 @@
 <script src="/Scripts/CRM/Event/customer_shipping_details_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_shipping_details_method.js"></script>
 <script src="/Scripts/CRM/Validation/customer_shipping_details_validation.js"></script>
-<form id="frm_Shipping" class="form-validate">
+<form id="frmShipping" class="form-validate">
 
     <div class="row">
         <div class="col-md-4">
             <!-- Shipping Office Details -->
             <input type="hidden" id="hdn_Customer_shipping_Address_Id">
             <div class="form-group">
-                <label style="color: #333">Shipping Office Address</label>
+                <label style="color: #333">Shipping office address</label>
                 <textarea id="txtShippingOfficeAddress" class="form-control  input-sm" rows="2" name="Addresss" placeholder="Enter shipping office address"></textarea>
             </div>
 
@@ -52,7 +52,7 @@
         <div class="col-md-8 ">
             <table class="table table-hover" id="tblShipping_Details">
                 <tr>
-                    <th>Shipping Address</th>
+                    <th>Shipping address</th>
                     <th style="min-width: 81px;">&nbsp; </th>
                 </tr>
                 @foreach (var item in Model.Customer.Customer_Address_List)
@@ -82,8 +82,10 @@
     </div>
 
     <div class="box-footer">
-        <button type="button" id="btnSaveShippingAddressDetails" class="btn btn-success">Save Shipping</button>
-        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+        <div class="btn-group">
+            <button type="button" id="btnSaveShippingAddressDetails" class="btn btn-success btn-sm">Save shipping</button>
+            <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
+        </div>
     </div>
 </form>
 

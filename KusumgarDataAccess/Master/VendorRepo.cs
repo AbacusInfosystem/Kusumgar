@@ -190,13 +190,13 @@ namespace KusumgarDataAccess
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Product_Vendors(productVendors), StoredProcedures.Update_Product_Vendors_sp.ToString(), CommandType.StoredProcedure);
         }
 
-        public VendorInfo Get_Vendor_By_Id(int Vendor_Id)
+        public VendorInfo Get_Vendor_By_Id(int vendor_Id)
         {
             VendorInfo vendors = new VendorInfo();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Vendor_Id", Vendor_Id));
+            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Vendor_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
@@ -235,13 +235,13 @@ namespace KusumgarDataAccess
 
         }
 
-        public List<VendorInfo> Get_Vendors_By_Id(int Vendor_Id, ref PaginationInfo pager)
+        public List<VendorInfo> Get_Vendors_By_Id(int vendor_Id, ref PaginationInfo pager)
         {
             List<VendorInfo> vendors = new List<VendorInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Vendor_Id", Vendor_Id)); ;
+            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id)); ;
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Vendor_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
@@ -253,22 +253,22 @@ namespace KusumgarDataAccess
             return vendors;
         }
 
-        public void Delete_Product_Service_By_Id(int Product_Vendor_Id)
+        public void Delete_Product_Service_By_Id(int product_Vendor_Id)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            sqlparam.Add(new SqlParameter("@Product_Vendor_Id", Product_Vendor_Id));
+            sqlparam.Add(new SqlParameter("@Product_Vendor_Id", product_Vendor_Id));
 
             _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Product_Service_By_Id.ToString(), CommandType.StoredProcedure);
         }
 
-        public List<AutocompleteInfo> Get_Vendor_AutoComplete(string Vendor_Name)
+        public List<AutocompleteInfo> Get_Vendor_AutoComplete(string vendor_Name)
         {
             List<AutocompleteInfo> VendorNames = new List<AutocompleteInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Vendor_Name", Vendor_Name));
+            sqlParams.Add(new SqlParameter("@Vendor_Name", vendor_Name));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Vendor_By_Name_Sp.ToString(), CommandType.StoredProcedure);
 
@@ -293,13 +293,13 @@ namespace KusumgarDataAccess
             return VendorNames;
         }
 
-        public List<ProductVendorInfo> Get_Product_Vendor_By_Id(int Vendor_Id)
+        public List<ProductVendorInfo> Get_Product_Vendor_By_Id(int vendor_Id)
         {
             List<ProductVendorInfo> productVendors = new List<ProductVendorInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Vendor_Id", Vendor_Id));
+            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Product_Vendor_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
@@ -325,13 +325,13 @@ namespace KusumgarDataAccess
 
         }
 
-        public bool Check_Existing_Vendor(string Vendor_Name)
+        public bool Check_Existing_Vendor(string vendor_Name)
         {
             bool check = false;
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Vendor_Name", Vendor_Name));
+            sqlParams.Add(new SqlParameter("@Vendor_Name", vendor_Name));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Check_Existing_Vendor_Sp.ToString(), CommandType.StoredProcedure);
 

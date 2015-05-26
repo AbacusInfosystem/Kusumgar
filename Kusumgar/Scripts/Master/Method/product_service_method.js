@@ -120,7 +120,7 @@ function Bind_Product_Service_Details(data) {
             }
         });
 
-     
+        alert("method");
       Friendly_Message(data)
 }
 

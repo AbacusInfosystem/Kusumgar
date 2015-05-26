@@ -2,14 +2,14 @@
 
 function Save_Contact()
 {
-    var _contactViewModel = Get_Contact_values();
+    var cViewModel = Set_Contact();
 
 
     if ($("#hdnContact_Id").val() == 0) {
-        CallAjax("/crm/contact-insert/", "json", JSON.stringify(_contactViewModel), "POST", "application/json", false, Contact_CallBack, "", null);
+        CallAjax("/crm/contact-insert/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Contact_CallBack, "", null);
     }
     else {
-        CallAjax("/crm/contact-update/", "json", JSON.stringify(_contactViewModel), "POST", "application/json", false, Contact_CallBack, "", null);
+        CallAjax("/crm/contact-update/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Contact_CallBack, "", null);
     }
 }
 
@@ -17,12 +17,12 @@ function Contact_CallBack(data)
 {
     $("#tabcustom_fields").show();
     $("#hdnContact_Id").val(data.contact.contact_Entity.Contact_Id);
-    friendly_message(data);
+    Friendly_Message(data);
 }
 
-function Get_Contact_values()
+function Set_Contact()
 {
-    var _contactViewModel = 
+    var cViewModel = 
         {
             contact: 
                 {
@@ -66,18 +66,5 @@ function Get_Contact_values()
                 }
         }
 
-    return _contactViewModel;
-}
-
-
-var autoCustomerCallback = function (paramObj) {
-
-    BindCustomerTags(paramObj.item.label, paramObj.item.value);
-}
-
-function BindCustomerTags(label, value)
-{
-    $('#hdnCustomer_Id').val(value);
-
-    $('#txtCustomer_Name').val(label);
+    return cViewModel;
 }

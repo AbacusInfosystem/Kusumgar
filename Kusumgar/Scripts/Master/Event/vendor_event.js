@@ -65,7 +65,7 @@
         
         $.ajax({
             url: '/master/get-state-by-nation-id',
-            data: { Nation_Id: $("#drpHeadOfficeNation").val() },
+            data: { nation_Id: $("#drpHeadOfficeNation").val() },
             method: 'GET',
             async: false,
             success: function (data) {

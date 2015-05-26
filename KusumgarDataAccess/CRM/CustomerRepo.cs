@@ -15,22 +15,20 @@ namespace KusumgarDataAccess
 {
     public class CustomerRepo
     {
-        SQLHelperRepo sqlRepo;
+        SQLHelperRepo _sqlRepo;
 
         public CustomerRepo()
         {
-            sqlRepo = new SQLHelperRepo();
+            _sqlRepo = new SQLHelperRepo();
         }   
 
-         public List<CustomerInfo> Get_Customers( ref PaginationInfo Pager)
+         public List<CustomerInfo> Get_Customers( ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
-              DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Customer_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Customer_Sp.ToString(), CommandType.StoredProcedure);
 
-              //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-              foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+              foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
               {
                   CustomerList.Add(Get_Customer_Values(dr));
               }
@@ -38,19 +36,17 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-         public List<CustomerInfo> Get_Customers_By_Name(string Customer_Name, ref PaginationInfo Pager)
+         public List<CustomerInfo> Get_Customers_By_Name(string customer_Name, ref PaginationInfo pager)
          {
              List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
              List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-             sqlParams.Add(new SqlParameter("@Customer_Name", Customer_Name));
+             sqlParams.Add(new SqlParameter("@Customer_Name", customer_Name));
 
-             DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Name_Sp.ToString(), CommandType.StoredProcedure);
+             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Name_Sp.ToString(), CommandType.StoredProcedure);
 
-             //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-             foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
               {
                   CustomerList.Add(Get_Customer_Values(dr));
               }
@@ -58,15 +54,15 @@ namespace KusumgarDataAccess
              return CustomerList;
          }
 
-         public CustomerInfo Get_Customer_By_Id(int Company_Id)
+         public CustomerInfo Get_Customer_By_Id(int customer_Id)
          {
-             CustomerInfo Customer = new CustomerInfo();
+             CustomerInfo customer = new CustomerInfo();
 
              List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-             sqlParams.Add(new SqlParameter("@Company_Id", Company_Id));
+             sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
 
-             DataSet ds = sqlRepo.ExecuteDataSet(sqlParams, StoredProcedures.Get_Customer_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+             DataSet ds = _sqlRepo.ExecuteDataSet(sqlParams, StoredProcedures.Get_Customer_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
              DataTable dt = ds.Tables[0];
 
@@ -82,7 +78,7 @@ namespace KusumgarDataAccess
 
                  foreach (DataRow dr in drList)
                  {
-                     Customer = Get_Customer_Values(dr); // To bind customer data 
+                     customer = Get_Customer_Values(dr); // To bind customer data 
                  }
              }
 
@@ -94,19 +90,19 @@ namespace KusumgarDataAccess
 
                  foreach (DataRow dr in drList)
                  {
-                     Customer.Bank_Details = Get_Bank_Details_Values(dr); // To bind bank details
+                     customer.Bank_Details = Get_Bank_Details_Values(dr); // To bind bank details
                  }
              }
 
              if (dt2 != null && dt2.Rows.Count > 0)
              {
-                 Customer.Customer_Address_List = Get_Customer_Address_List(dt2);// to bind customer addresses
+                 customer.Customer_Address_List = Get_Customer_Addresses(dt2);// to bind customer addresses
              }
 
-             return Customer;
+             return customer;
          }
 
-         public CustomerInfo Get_Customer_Values(DataRow dr)
+         private CustomerInfo Get_Customer_Values(DataRow dr)
          {
              CustomerInfo customer = new CustomerInfo();
 
@@ -201,7 +197,7 @@ namespace KusumgarDataAccess
              return customer;
          }
 
-        public BankDetailsInfo Get_Bank_Details_Values(DataRow dr)
+         private BankDetailsInfo Get_Bank_Details_Values(DataRow dr)
         {
             BankDetailsInfo bank_details = new BankDetailsInfo();
 
@@ -247,7 +243,7 @@ namespace KusumgarDataAccess
             return bank_details;
         }
 
-        public List<CustomerAddressInfo> Get_Customer_Address_List(DataTable dt2)
+         private List<CustomerAddressInfo> Get_Customer_Addresses(DataTable dt2)
         {
             List<CustomerAddressInfo> customer_Address_List = new List<CustomerAddressInfo>();
 
@@ -278,77 +274,77 @@ namespace KusumgarDataAccess
             return customer_Address_List;
         }
 
-        public int Insert_Customer(CustomerInfo Customer)
+        public int Insert_Customer(CustomerInfo customer)
         {
             int Customer_Id = 0;
 
-            Customer_Id = Convert.ToInt32(sqlRepo.ExecuteScalerObj(Set_Values_In_Customer(Customer), StoredProcedures.Insert_Customer_sp.ToString(), CommandType.StoredProcedure));
+            Customer_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Customer(customer), StoredProcedures.Insert_Customer_sp.ToString(), CommandType.StoredProcedure));
 
             return Customer_Id;
         }
 
-        public void Update_Customer(CustomerInfo Customer)
+        public void Update_Customer(CustomerInfo customer)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Customer(Customer), StoredProcedures.Update_Customer_Sp.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer(customer), StoredProcedures.Update_Customer_Sp.ToString(), CommandType.StoredProcedure);
         }
 
-        public void Insert_Customer_Address(CustomerAddressInfo Customer_Address)
+        public void Insert_Customer_Address(CustomerAddressInfo customer_Address)
         {
 
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Address(Customer_Address), StoredProcedures.Insert_Customer_Address.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Address(customer_Address), StoredProcedures.Insert_Customer_Address.ToString(), CommandType.StoredProcedure);
           
         }
 
-        public void Update_Customer_Address(CustomerAddressInfo Customer_Address)
+        public void Update_Customer_Address(CustomerAddressInfo customer_Address)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Address(Customer_Address), StoredProcedures.Update_Customer_Address.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Address(customer_Address), StoredProcedures.Update_Customer_Address.ToString(), CommandType.StoredProcedure);
         }
 
         public void Insert_Bank_Details(BankDetailsInfo bank_Details)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Bank_Details(bank_Details), StoredProcedures.Insert_Bank_Details_Sp.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Bank_Details(bank_Details), StoredProcedures.Insert_Bank_Details_Sp.ToString(), CommandType.StoredProcedure);
         }
 
         public void Update_Bank_Details(BankDetailsInfo bank_Details)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Bank_Details(bank_Details), StoredProcedures.Update_Bank_Details_Sp.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Bank_Details(bank_Details), StoredProcedures.Update_Bank_Details_Sp.ToString(), CommandType.StoredProcedure);
         }
 
-        private List<SqlParameter> Set_Values_In_Customer(CustomerInfo Customer)
+        private List<SqlParameter> Set_Values_In_Customer(CustomerInfo customer)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (Customer.Customer_Entity.Customer_Id  != 0)
+            if (customer.Customer_Entity.Customer_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Customer_Id", Customer.Customer_Entity.Customer_Id));
+                sqlparam.Add(new SqlParameter("@Customer_Id", customer.Customer_Entity.Customer_Id));
             }
-           sqlparam.Add(new SqlParameter("@Customer_Name", Customer.Customer_Entity.Customer_Name ));
-            sqlparam.Add(new SqlParameter("@Company_Email", Customer.Customer_Entity.Company_Email ));
-            sqlparam.Add(new SqlParameter("@Head_Office_Address", Customer.Customer_Entity.Head_Office_Address ));
-            sqlparam.Add(new SqlParameter("@Head_Office_State", Customer.Customer_Entity.Head_Office_State));
-            sqlparam.Add(new SqlParameter("@Head_Office_ZipCode", Customer.Customer_Entity.Head_Office_ZipCode));
-            sqlparam.Add(new SqlParameter("@Head_Office_Nation", Customer.Customer_Entity.Head_Office_Nation));
-            sqlparam.Add(new SqlParameter("@Head_Office_Landline1", Customer.Customer_Entity.Head_Office_Landline1));
-            sqlparam.Add(new SqlParameter("@Head_Office_Landline2", Customer.Customer_Entity.Head_Office_Landline2));
-            sqlparam.Add(new SqlParameter("@Head_Office_FaxNo", Customer.Customer_Entity.Head_Office_FaxNo));
-            sqlparam.Add(new SqlParameter("@Company_Turnover", Customer.Customer_Entity.Company_Turnover));
-            sqlparam.Add(new SqlParameter("@Public_Private_Sector", Customer.Customer_Entity.Public_Private_Sector));
-            sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", Customer.Customer_Entity.Organised_UnOrganised_Sector));
-            sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", Customer.Customer_Entity.Proprietary_Private_Limited));
-            sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", Customer.Customer_Entity.Progressive_Stable_Turmoil));
-            sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", Customer.Customer_Entity.Expiration_Date_Of_Contract));
-            sqlparam.Add(new SqlParameter("@Credit_limit", Customer.Customer_Entity.Credit_limit));
-            sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", Customer.Customer_Entity.Auto_Mail_Delivery));
-            sqlparam.Add(new SqlParameter("@Order_Minimum_Value", Customer.Customer_Entity.Order_Minimum_Value));
-            sqlparam.Add(new SqlParameter("@Order_Maximum_Value", Customer.Customer_Entity.Order_Maximum_Value));
-            sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", Customer.Customer_Entity.Is_Approved_By_Director));
-            sqlparam.Add(new SqlParameter("@Block_Order", Customer.Customer_Entity.Block_Order));
-            sqlparam.Add(new SqlParameter("@Is_Active", Customer.Customer_Entity.Is_Active));
-            if (Customer.Customer_Entity.Customer_Id == 0)
+           sqlparam.Add(new SqlParameter("@Customer_Name", customer.Customer_Entity.Customer_Name ));
+            sqlparam.Add(new SqlParameter("@Company_Email", customer.Customer_Entity.Company_Email ));
+            sqlparam.Add(new SqlParameter("@Head_Office_Address", customer.Customer_Entity.Head_Office_Address ));
+            sqlparam.Add(new SqlParameter("@Head_Office_State", customer.Customer_Entity.Head_Office_State));
+            sqlparam.Add(new SqlParameter("@Head_Office_ZipCode", customer.Customer_Entity.Head_Office_ZipCode));
+            sqlparam.Add(new SqlParameter("@Head_Office_Nation", customer.Customer_Entity.Head_Office_Nation));
+            sqlparam.Add(new SqlParameter("@Head_Office_Landline1", customer.Customer_Entity.Head_Office_Landline1));
+            sqlparam.Add(new SqlParameter("@Head_Office_Landline2", customer.Customer_Entity.Head_Office_Landline2));
+            sqlparam.Add(new SqlParameter("@Head_Office_FaxNo", customer.Customer_Entity.Head_Office_FaxNo));
+            sqlparam.Add(new SqlParameter("@Company_Turnover", customer.Customer_Entity.Company_Turnover));
+            sqlparam.Add(new SqlParameter("@Public_Private_Sector", customer.Customer_Entity.Public_Private_Sector));
+            sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Customer_Entity.Organised_UnOrganised_Sector));
+            sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Customer_Entity.Proprietary_Private_Limited));
+            sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Customer_Entity.Progressive_Stable_Turmoil));
+            sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Customer_Entity.Expiration_Date_Of_Contract));
+            sqlparam.Add(new SqlParameter("@Credit_limit", customer.Customer_Entity.Credit_limit));
+            sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Customer_Entity.Auto_Mail_Delivery));
+            sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Customer_Entity.Order_Minimum_Value));
+            sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Customer_Entity.Order_Maximum_Value));
+            sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", customer.Customer_Entity.Is_Approved_By_Director));
+            sqlparam.Add(new SqlParameter("@Block_Order", customer.Customer_Entity.Block_Order));
+            sqlparam.Add(new SqlParameter("@Is_Active", customer.Customer_Entity.Is_Active));
+            if (customer.Customer_Entity.Customer_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", Customer.Customer_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedBy", customer.Customer_Entity.CreatedBy));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", Customer.Customer_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", customer.Customer_Entity.UpdatedBy));
 
             return sqlparam;
         }
@@ -411,24 +407,24 @@ namespace KusumgarDataAccess
             return sqlparam;
         }
 
-        public void Delete_Customer_Address_By_Id(int Customer_Address_Id)
+        public void Delete_Customer_Address_By_Id(int customer_Address_Id)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-             sqlparam.Add(new SqlParameter("@Customer_Address_Id", Customer_Address_Id));
+             sqlparam.Add(new SqlParameter("@Customer_Address_Id", customer_Address_Id));
 
-            sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Customer_Address_By_Id.ToString(), CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Customer_Address_By_Id.ToString(), CommandType.StoredProcedure);
         }
 
-        public bool Check_Existing_Customer(string Customer_Name)
+        public bool Check_Existing_Customer(string customer_Name)
         {
             bool check = false;
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Customer_Name", Customer_Name));
+            sqlParams.Add(new SqlParameter("@Customer_Name", customer_Name));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Check_Existing_Customer_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Check_Existing_Customer_Sp.ToString(), CommandType.StoredProcedure);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -447,19 +443,17 @@ namespace KusumgarDataAccess
             return check;
         }
 
-        public List<CustomerInfo> Get_Customer_By_Email(string Email, ref PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Email(string email, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Email", Email));
+            sqlParams.Add(new SqlParameter("@Email", email));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Sp.ToString(), CommandType.StoredProcedure);
 
-            //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -467,19 +461,17 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-        public List<CustomerInfo> Get_Customer_By_Turnover(string Turnover, ref PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Turnover(string turnover, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Sp.ToString(), CommandType.StoredProcedure);
 
-            //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -487,21 +479,19 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-        public List<CustomerInfo> Get_Customer_By_Turnover_Email(string Turnover,string Email, ref PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Turnover_Email(string turnover,string email, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
 
-            sqlParams.Add(new SqlParameter("@Email", Email));
+            sqlParams.Add(new SqlParameter("@Email", email));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Email_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Email_Sp.ToString(), CommandType.StoredProcedure);
 
-            //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -509,21 +499,19 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-        public List<CustomerInfo> Get_Customer_By_Turnover_Name(string Turnover, string Customer_Name, ref PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Turnover_Name(string turnover, string customer_Name, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
 
-            sqlParams.Add(new SqlParameter("@Customer_Name", Customer_Name));
+            sqlParams.Add(new SqlParameter("@Customer_Name", customer_Name));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Name_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Name_Sp.ToString(), CommandType.StoredProcedure);
 
-            //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -531,21 +519,19 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-        public List<CustomerInfo> Get_Customer_By_Email_Name(string Email, string Customer_Name, ref PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Email_Name(string email, string customer_Name, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Email", Email));
+            sqlParams.Add(new SqlParameter("@Email", email));
 
-            sqlParams.Add(new SqlParameter("@Customer_Name", Customer_Name));
+            sqlParams.Add(new SqlParameter("@Customer_Name", customer_Name));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Name_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Name_Sp.ToString(), CommandType.StoredProcedure);
 
-            //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -553,23 +539,21 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
-        public List<CustomerInfo> Get_Customer_By_Email_Name_Turnover(string Email, string Customer_Name,string Turnover, ref PaginationInfo Pager)
+        public List<CustomerInfo> Get_Customers_By_Email_Name_Turnover(string email, string customer_Name,string turnover, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Email", Email));
+            sqlParams.Add(new SqlParameter("@Email", email));
 
-            sqlParams.Add(new SqlParameter("@Customer_Name", Customer_Name));
+            sqlParams.Add(new SqlParameter("@Customer_Name", customer_Name));
 
-            sqlParams.Add(new SqlParameter("@Turnover", Turnover));
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
 
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Name_Turnover_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Email_Name_Turnover_Sp.ToString(), CommandType.StoredProcedure);
 
-            //var tupleData = CommonMethods.GetRows(dt, Pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref Pager))
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 CustomerList.Add(Get_Customer_Values(dr));
             }
@@ -577,7 +561,122 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
+        public List<CustomerInfo> Get_Customers_by_Nation_Id_Turnover(string turnover, int nation_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
 
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
 
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_by_Nation_Id_Turnover_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_by_Nation_Id(int nation_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_by_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Turnover_Customer_Id_Nation_Id(string turnover, int nation_Id, int customer_Id,ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Turnover_Customer_Id(string turnover, int customer_Id,ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Turnover", turnover));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Turnover_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Customer_Id_Nation_Id(int nation_Id, int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Customer_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Id(int Customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", Customer_Id)); ;
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
     }
 }
