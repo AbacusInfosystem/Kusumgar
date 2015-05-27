@@ -572,6 +572,42 @@ namespace Kusumgar
             defaults: new { controller = "YArticle", action = "Load_YArticle", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+           name: "y-article-3",
+           url: "master/y-article/get-by-id",
+           defaults: new { controller = "YArticle", action = "Get_YArticle_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "y-article-4",
+            url: "master/y-article/insert",
+            defaults: new { controller = "YArticle", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "y-article-5",
+            url: "master/y-article/update",
+            defaults: new { controller = "YArticle", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "y-article-6",
+            url: "master/y-articles/search",
+            defaults: new { controller = "YArticle", action = "Get_YArticles", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "y-article-7",
+            url: "master/y-articles-by-full-code/{full_Code}",
+            defaults: new { controller = "YArticle", action = "Get_YArticles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "y-article-8",
+            url: "master/y-articles/get-work-stations/{work_Station_Code}",
+            defaults: new { controller = "YArticle", action = "Get_Work_Stations", work_Station_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region W Article
@@ -690,6 +726,12 @@ namespace Kusumgar
             name: "user-6",
             url: "master/check-user",
             defaults: new { controller = "User", action = "Check_Existing_User", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "user-7",
+            url: "master/search-employee-by-name/{name}",
+            defaults: new { controller = "User", action = "Get_Users_By_Name",  name = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

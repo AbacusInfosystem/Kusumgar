@@ -162,9 +162,19 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
+                #region YArticle
+
+                FriendlyMessageInfo YA001 = new FriendlyMessageInfo("YA001", MessageType.Success, "Y Article has been added successfully.");
+                hash.Add("YA001", YA001);
+
+                FriendlyMessageInfo YA002 = new FriendlyMessageInfo("YA002", MessageType.Success, "Y Article has been updated successfully.");
+                hash.Add("YA002", YA002);
+
+                #endregion
+
             #endregion
 
-            #region CRM
+                #region CRM
 
                 #region Customer
 

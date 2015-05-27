@@ -152,6 +152,9 @@
     <Compile Include="M_Vendor.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_Work_Center.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Y_Article.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>

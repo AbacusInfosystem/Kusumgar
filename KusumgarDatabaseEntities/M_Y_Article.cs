@@ -34,7 +34,7 @@ namespace KusumgarDatabaseEntities
         public int Developed_Under_Id { get; set; }
         public string Lead_Time_To_Purchase { get; set; }
         public string Work_Center_Code { get; set; }
-        public Nullable<bool> Is_Active { get; set; }
+        public bool Is_Active { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int UpdatedBy { get; set; }

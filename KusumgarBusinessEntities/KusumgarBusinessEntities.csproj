@@ -74,6 +74,7 @@
     <Compile Include="Master\TestUnitInfo.cs" />
     <Compile Include="Master\UserInfo.cs" />
     <Compile Include="Master\UserRoleInfo.cs" />
+    <Compile Include="Master\WorkCenterInfo.cs" />
     <Compile Include="Master\YArticleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

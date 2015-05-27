@@ -1,13 +1,16 @@
-﻿@{
-    ViewBag.Title = "Y Article Search";
-}
+﻿@model Kusumgar.Models.YArticleViewModel
+@using KusumgarBusinessEntities.Common
+<script src="/Scripts/Master/Event/yarticle_listing_event.js"></script>
+<script src="/Scripts/Master/Method/yarticle_listing_method.js"></script>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Y Article
+        <h1>
+            Y Article
 
             <small>Search</small>
         </h1>
@@ -19,56 +22,72 @@
         </ol>
     </section>
 
+    <form id="frmSearch_YArticle">
 
-    <!-- Main content -->
-    <section class="content">
+        <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+        <input type="hidden" id="hdfY_Article_Id" name="YArticle.YArticle_Entity.Y_Article_Id" value="@Model.YArticle.YArticle_Entity.Y_Article_Id" />
+        <!-- Main content -->
+        <section class="content">
 
-        <!-- Y Article Search -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <!-- form start -->
-                    <div class="box-body">
-
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label for="txtFullCode">Full Code</label>
-
-                                    <input type="text" class="form-control" id="txtFullCode" placeholder="Enter Full Code" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txtFullCode">Yarn Type</label>
-                                    <select id="drpYarn_type" class="form-control input-sm" >
-                                        <option>Select Yarn type</option>
-                                        <option>Polyster texturised</option>
-                                        <option>Air texturised Nylon</option>
-                                        <option>Viscose Staple</option>
-                                        <option>Polyster Cotton Mix</option>
-                                        <option>Meta aramide</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="box-footer">
+            <!-- Y Article Search -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <div class="box-body">
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 
-                                    <div class="btn-group pull-left">
-                                        <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
-                                        <a class="btn btn-primary" href="@Url.Action("Index", "YArticle")" role="button">Create Y Article</a>
+                                    <div class="form-group">
+                                        <label for="txtFull_Code">Full Code</label>
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtFull_Code" placeholder="Enter Full Code" name="Filter.Full_Code" value="@Model.Filter.Full_Code" />
+                                            <input type="hidden" id="hdnFull_Code" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="drpYarn_Type">Yarn Type</label>
+                                        <select id="drpYarn_Type" class="form-control input-sm" name="Filter.Yarn_Type_Id">
+                                            <option value="">-Select Yarn type- </option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                                {
+                                                    if (Model.YArticle.YArticle_Entity.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
                                     </div>
 
                                 </div>
-                                <div class="col-md-6">
+                            </div>
 
-                                    <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-warning">Edit Y Article</button>
+                            <div class="box-footer">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-left  btn-group-sm">
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary  btn-sm" href="@Url.Action("Index", "YArticle")" role="button">Create</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-right btn-group-sm">
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -78,184 +97,54 @@
                         </div>
 
                     </div>
-
                 </div>
             </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-solid">
-                    <div class="box-body table-responsive no-padding">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-body table-responsive no-padding">
 
-                        <table class="table table-striped">
-                            <tr>
-                                <th style="width: 50px;"></th>
-                                <th style="width: 400px;">Full Code</th>
-                                <th style="width: 200px;">Denier</th>
-                                <th style="width: 200px;">Twist/Mingle</th>
-                                <th style="width: 200px;">Twist type</th>
-                                <th style="width: 200px;">Ply</th>
-                                <th style="width: 200px;">Yarn type</th>
-                                <th style="width: 200px;">Shade</th>
-                                <th style="width: 200px;">Filaments</th>
-                                <th style="width: 200px;">Origin</th>
-                                <th style="width: 200px;">Shrinkage</th>
-                                <th style="width: 200px;">Tenasity</th>
-                                <th style="width: 200px;">Chemical Treatment</th>
-                                <th style="width: 200px;">Colour</th>
-                                <th style="width: 200px;">Supplier</th>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" checked />
-                                </td>
-                                <td>04200200S01NY06BR0048IM </td>
-                                <td>10 Denier</td>
-                                <td>Zero High Intermingled</td>
-                                <td>S twist</td>
-                                <td>2 Ply Yarn</td>
-                                <td>Nylon 6</td>
-                                <td>Bright Yarn</td>
-                                <td>10 Filaments</td>
-                                <td>Imported</td>
-                                <td>High shrinkage</td>
-                                <td>High Tenacity</td>
-                                <td>Sized</td>
-                                <td>Natural</td>
-                                <td>ALOK IND</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>04200200S01NY06BR0048IM </td>
-                                <td>10 Denier</td>
-                                <td>Zero High Intermingled</td>
-                                <td>S twist</td>
-                                <td>2 Ply Yarn</td>
-                                <td>Nylon 6</td>
-                                <td>Bright Yarn</td>
-                                <td>10 Filaments</td>
-                                <td>Imported</td>
-                                <td>High shrinkage</td>
-                                <td>High Tenacity</td>
-                                <td>Sized</td>
-                                <td>Natural</td>
-                                <td>ALOK IND</td>
-                            </tr>
+                            <table class="table table-striped" id="tblYArticle">
+                                <tr>
+                                    <th style="width: 50px;"></th>
+                                    <th style="width: 400px;">Full Code</th>
+                                    <th style="width: 200px;">Denier</th>
+                                    <th style="width: 200px;">Twist/Mingle</th>
+                                    <th style="width: 200px;">Twist type</th>
+                                    <th style="width: 200px;">Ply</th>
+                                    <th style="width: 200px;">Yarn type</th>
+                                    <th style="width: 200px;">Shade</th>
+                                    <th style="width: 200px;">Filaments</th>
+                                    <th style="width: 200px;">Origin</th>
+                                    <th style="width: 200px;">Shrinkage</th>
+                                    <th style="width: 200px;">Tenasity</th>
+                                    <th style="width: 200px;">Chemical Treatment</th>
+                                    <th style="width: 200px;">Colour</th>
+                                    <th style="width: 200px;">Supplier</th>
+                                </tr>
 
 
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>04200200S01NY06BR0048IM </td>
-                                <td>10 Denier</td>
-                                <td>Zero High Intermingled</td>
-                                <td>S twist</td>
-                                <td>2 Ply Yarn</td>
-                                <td>Nylon 6</td>
-                                <td>Bright Yarn</td>
-                                <td>10 Filaments</td>
-                                <td>Imported</td>
-                                <td>High shrinkage</td>
-                                <td>High Tenacity</td>
-                                <td>Sized</td>
-                                <td>Natural</td>
-                                <td>ALOK IND</td>
-                            </tr>
+                            </table>
 
+                        </div>
 
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>04200200S01NY06BR0048IM </td>
-                                <td>10 Denier</td>
-                                <td>Zero High Intermingled</td>
-                                <td>S twist</td>
-                                <td>2 Ply Yarn</td>
-                                <td>Nylon 6</td>
-                                <td>Bright Yarn</td>
-                                <td>10 Filaments</td>
-                                <td>Imported</td>
-                                <td>High shrinkage</td>
-                                <td>High Tenacity</td>
-                                <td>Sized</td>
-                                <td>Natural</td>
-                                <td>ALOK IND</td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>04200200S01NY06BR0048IM </td>
-                                <td>10 Denier</td>
-                                <td>Zero High Intermingled</td>
-                                <td>S twist</td>
-                                <td>2 Ply Yarn</td>
-                                <td>Nylon 6</td>
-                                <td>Bright Yarn</td>
-                                <td>10 Filaments</td>
-                                <td>Imported</td>
-                                <td>High shrinkage</td>
-                                <td>High Tenacity</td>
-                                <td>Sized</td>
-                                <td>Natural</td>
-                                <td>ALOK IND</td>
-                            </tr>
-
-                        </table>
-
+                        <div class="box-footer clearfix">
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                <ul></ul>
+                            </div>
+                            <div id="divSearchGridOverlay" class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
-
-                    <div id="divSearchGridOverlay" class="overlay">
-                        <i class="fa fa-refresh fa-spin"></i>
-                    </div>
-
-
                 </div>
             </div>
-        </div>
 
-    </section>
-    <!-- /.content -->
+        </section>
+        <!-- /.content -->
+    </form>
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-
-        //Date range picker
-        $('#dtpContractExpirationDate').datepicker();
-
-        $("#btnSearch").click(function () {
-            $("#divSearchGridOverlay").show();
-        });
-
-        $("#divSearchGridOverlay").hide();
-    });
-</script>

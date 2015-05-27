@@ -31,6 +31,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Index(YArticleViewModel yViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             PaginationInfo pager = new PaginationInfo();
 
             pager.IsPagingRequired = false; 
@@ -56,6 +58,27 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(YArticleViewModel yViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+            }
+            catch(Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Insert " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
+            }
+
             return View("Search",yViewModel);
         }
 
@@ -76,13 +99,13 @@ namespace Kusumgar.Controllers
 
                 yViewModel.YArticle.YArticle_Entity.Y_Article_Id = yArticle_Id;
 
-                yViewModel.Friendly_Message.Add(MessageStore.Get("CU001"));
+                yViewModel.Friendly_Message.Add(MessageStore.Get("YA001"));
             }
             catch (Exception ex)
             {
                 yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Customer Controller - Insert " + ex.ToString());
+                Logger.Error("YArticle Controller - Insert " + ex.ToString());
             }
 
             return Json(yViewModel);
@@ -96,16 +119,106 @@ namespace Kusumgar.Controllers
 
                 _yArticleMan.Update_YArticle(yViewModel.YArticle);
 
-                yViewModel.Friendly_Message.Add(MessageStore.Get("CU002"));
+                yViewModel.Friendly_Message.Add(MessageStore.Get("YA002"));
             }
             catch (Exception ex)
             {
                 yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Customer Controller - Update " + ex.ToString());
+                Logger.Error("YArticle Controller - Update " + ex.ToString());
             }
 
             return Json(yViewModel);
+        }
+
+        public JsonResult Get_YArticles(YArticleViewModel yViewModel)
+        {
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                pager = yViewModel.Pager;
+
+                if(!string.IsNullOrEmpty(yViewModel.Filter.Full_Code) && yViewModel.Filter.Yarn_Type_Id != 0)
+                {
+                    yViewModel.YArticles = _yArticleMan.Get_Y_Articles_By_Full_Code_Yarn_Type(yViewModel.Filter.Full_Code, yViewModel.Filter.Yarn_Type_Id, ref pager);
+                }
+                else if (!string.IsNullOrEmpty(yViewModel.Filter.Full_Code))
+                {
+                    yViewModel.YArticles = _yArticleMan.Get_YArticles_By_Full_Code(yViewModel.Filter.Full_Code, ref pager);
+                }
+                else if ( yViewModel.Filter.Yarn_Type_Id != 0)
+                {
+                    yViewModel.YArticles = _yArticleMan.Get_YArticles_By_Yarn_Type_Id( yViewModel.Filter.Yarn_Type_Id, ref pager);
+                }
+                else
+                {
+                    yViewModel.YArticles = _yArticleMan.Get_YArticles(ref pager);
+                }
+
+                yViewModel.Pager = pager;
+
+                yViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", yViewModel.Pager.TotalRecords, yViewModel.Pager.CurrentPage + 1, yViewModel.Pager.PageSize, 10, true);
+            }
+            catch(Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Update " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
+            }
+            return Json(yViewModel);
+        }
+
+        public ActionResult Get_YArticle_By_Id(YArticleViewModel yViewModel)
+        {
+            try
+            {
+                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.YArticle_Entity.Y_Article_Id);
+            }
+            catch(Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Update " + ex.ToString());
+            }
+
+            return Index(yViewModel);
+        }
+
+        public JsonResult Get_YArticles_By_Full_Code(string full_Code)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            try
+            {
+                autoCompletes = _yArticleMan.Get_YArticles_By_Full_Code(full_Code);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("YArticle Controller - Get_YArticles_By_Full_Code " + ex.ToString());
+            }
+
+            return Json(autoCompletes, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Work_Stations(string work_Station_Code)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            try
+            {
+                autoCompletes = _yArticleMan.Get_Work_Stations(work_Station_Code);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("YArticle Controller - Get_Work_Stations " + ex.ToString());
+            }
+
+            return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
     }

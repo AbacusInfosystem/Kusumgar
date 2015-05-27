@@ -210,6 +210,7 @@ namespace KusumgarBusinessEntities.Common
         
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
+
         // Y Article 
         Insert_Y_Article_sp,
         Update_Y_Article_sp,
@@ -217,6 +218,10 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_By_Full_Code_sp,
         Get_Y_Articles_By_Yarn_Type_Id_sp,
         Get_Y_Article_By_Id_sp,
+        Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
+
+        // Work Center
+        Get_Work_Stations_Sp,
 
     }
 

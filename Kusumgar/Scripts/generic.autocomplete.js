@@ -18,6 +18,26 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtSupplierName') {
                 urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
             }
+
+            if ($(elementObject).attr("id") == 'txtGiven_By') {
+                urlString = "/master/search-employee-by-name/" + $('#txtGiven_By').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtValidated_By') {
+                urlString = "/master/search-employee-by-name/" + $('#txtValidated_By').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtDeveloped_Under') {
+                urlString = "/master/search-employee-by-name/" + $('#txtDeveloped_Under').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFull_Code') {
+                urlString = "/master/y-articles-by-full-code/" + $('#txtFull_Code').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWork_Center') {
+                urlString = "/master/y-articles/get-work-stations/" + $('#txtWork_Center').val();
+            }
          
             $.ajax({
                 url: urlString,
@@ -42,30 +62,54 @@ var InitializeAutoComplete = function (elementObject) {
 
             $(this).val(ui.item.label);
 
-            $(this).parent().find('input[type=text]').val("");
-            $(this).parent().find('input[type=hidden]').val(ui.item.value);
+            //$(this).parent().find('input[type=text]').val("");
+            //$(this).parent().find('input[type=hidden]').val(ui.item.value);
 
-            if ($(this).parent().find(".todo-list")[0]) {
-                $(this).parent().find('.todo-list').remove();
+            //if ($(this).parent().find(".todo-list")[0]) {
+            //    $(this).parent().find('.todo-list').remove();
+            //}
+
+            //var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + ui.item.label + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
+
+            //if ($(this).parent().find(".ui-menu")[0]) {
+
+            //    $(this).parent().find('.text').html(ui.item.label);
+            //} else {
+
+            //    $(this).parent().append(htmlText);
+            //}
+
+            //$('.fa-remove').click(function (event) {
+            //    event.preventDefault();
+            //    $(this).parent().parent().parent().parent().find('input[type=text]').val("");
+            //    $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
+            //    $(this).parent().parent().parent().parent().find('.todo-list').remove();
+            //});
+            ////callBack(ui);
+
+            $(this).parents('.form-group').find('input[type=text]').val("");
+            $(this).parents('.form-group').find('input[type=hidden]').val(ui.item.value);
+
+            if ($(this).parents('.form-group').find(".todo-list")[0]) {
+                $(this).parents('.form-group').find('.todo-list').remove();
             }
 
             var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + ui.item.label + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
 
-            if ($(this).parent().find(".ui-menu")[0]) {
+            if ($(this).parents('.form-group').find(".ui-menu")[0]) {
 
-                $(this).parent().find('.text').html(ui.item.label);
+                $(this).parents('.form-group').find('.text').html(ui.item.label);
             } else {
 
-                $(this).parent().append(htmlText);
+                $(this).parents('.form-group').append(htmlText);
             }
 
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
-                $(this).parent().parent().parent().parent().find('input[type=text]').val("");
-                $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
-                $(this).parent().parent().parent().parent().find('.todo-list').remove();
+                $(this).parents('.form-group').find('input[type=text]').val("");
+                $(this).parents('.form-group').find('input[type=hidden]').val("");
+                $(this).parents('.form-group').find('.todo-list').remove();
             });
-            //callBack(ui);
             
             $('.ui-autocomplete').html("");
             return false;
@@ -80,50 +124,26 @@ var InitializeAutoComplete = function (elementObject) {
         }
     });
 
-    $('.auto-complete').each(function () {
+    $(elementObject).each(function () {
 
-        if ($(this).find('input[type=hidden]').val() != 0) {
-            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).find('input[type=text]').val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
+        if ($(this).parents('.form-group').find('input[type=hidden]').val() != 0) {
+            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
 
-            if ($(this).find(".ui-menu")[0]) {
+            if ($(this).parents('.form-group').find(".ui-menu")[0]) {
 
-                $(this).find('.text').html(ui.item.label);
+                $(this).parents('.form-group').find('.text').html(ui.item.label);
             } else {
 
-                $(this).append(htmlText);
+                $(this).parents('.form-group').append(htmlText);
             }
 
-            $(this).find('input[type=text]').val("");
+            $(this).parents('.form-group').find('input[type=text]').val("");
 
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
-                $(this).parent().parent().parent().parent().find('input[type=text]').val("");
-                $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
-                $(this).parent().parent().parent().parent().find('.todo-list').remove();
-            });
-        }
-    });
-
-    $('.auto-complete').each(function () {
-
-        if ($(this).find('input[type=hidden]').val() != 0) {
-            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).find('input[type=text]').val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
-
-            if ($(this).find(".ui-menu")[0]) {
-
-                $(this).find('.text').html(ui.item.label);
-            } else {
-
-                $(this).append(htmlText);
-}
-
-            $(this).find('input[type=text]').val("");
-
-            $('.fa-remove').click(function (event) {
-                event.preventDefault();
-                $(this).parent().parent().parent().parent().find('input[type=text]').val("");
-                $(this).parent().parent().parent().parent().find('input[type=hidden]').val("");
-                $(this).parent().parent().parent().parent().find('.todo-list').remove();
+                $(this).parents('.form-group').find('input[type=text]').val("");
+                $(this).parents('.form-group').find('input[type=hidden]').val("");
+                $(this).parents('.form-group').find('.todo-list').remove();
             });
         }
     });
