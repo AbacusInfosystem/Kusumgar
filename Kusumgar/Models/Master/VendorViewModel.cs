@@ -30,7 +30,13 @@ namespace Kusumgar.Models
 
             Filter = new Vendor_Filter();
 
+            Product_Category = new List<ProductCategoryInfo>();
+
+            Is_Primary = false;
+
         }
+
+         public bool Is_Primary { get; set; }
 
          public List<VendorInfo> Vendor_Grid { get; set; }
 
@@ -49,6 +55,8 @@ namespace Kusumgar.Models
         public List<NationInfo> Nations { get; set; }
 
         public Vendor_Filter Filter { get; set; }
+
+        public List<ProductCategoryInfo> Product_Category { get; set; }
     
     public class Vendor_Filter
     {

@@ -36,9 +36,14 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             pager.IsPagingRequired = false;
 
+
+            vViewModel.Product_Category = _vendorMan.Get_Product_Category();
+
             vViewModel.Nations = _nationMan.Get_Nations(ref pager);
 
             vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Vendor_Entity.Head_Office_Nation), ref pager);
+            
+            vViewModel.Is_Primary = true;
 
             return View("Index", vViewModel);
         }
@@ -56,6 +61,10 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
+                vViewModel.Vendor.Vendor_Entity.CreatedBy = 1;
+
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
+
                 vViewModel.Vendor.Vendor_Entity.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
 
                 vViewModel.Friendly_Message.Add(MessageStore.Get("V011"));
@@ -95,6 +104,10 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
+                vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
+
+                vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+
                 vViewModel.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id= _vendorMan.Insert_Product_Services(vViewModel.Product_Vendor);
 
                 vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Product_Vendor.Product_Vendor_Entity.Vendor_Id);
@@ -115,6 +128,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
+                
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 
                 vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
@@ -133,6 +148,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
+                vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+
                 _vendorMan.Update_Product_Services(vViewModel.Product_Vendor);
 
                 vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Product_Vendor.Product_Vendor_Entity.Vendor_Id);
@@ -245,6 +262,11 @@ namespace Kusumgar.Controllers.PostLogin.Master
             }
 
             return Json(check, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult Load_Vendor(VendorViewModel vViewModel)
+        {
+            return PartialView("_Vendor", vViewModel);
         }
     }
 }

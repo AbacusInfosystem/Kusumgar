@@ -51,5 +51,6 @@ namespace KusumgarDatabaseEntities
         public Nullable<int> CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
+        public int Product_Category { get; set; }
     }
 }

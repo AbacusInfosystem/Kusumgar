@@ -36,11 +36,11 @@ namespace Kusumgar.Controllers
 
                 dMan.Insert(dViewModel.DefectType);
 
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("DT011"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("DT011"));
             }
             catch (Exception ex)
             {
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             TempData["dViewModel"] = dViewModel;
 
@@ -56,11 +56,11 @@ namespace Kusumgar.Controllers
 
                 dMan.Update(dViewModel.DefectType);
 
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("DT012"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("DT012"));
             }
             catch (Exception ex)
             {
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             TempData["dViewModel"] = dViewModel;
             
@@ -78,7 +78,7 @@ namespace Kusumgar.Controllers
 
             catch (Exception ex)
             {
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             return View("Index", dViewModel);
         }
@@ -112,7 +112,7 @@ namespace Kusumgar.Controllers
 
             catch (Exception ex)
             {
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
             return RedirectToAction("Search", "Defect");

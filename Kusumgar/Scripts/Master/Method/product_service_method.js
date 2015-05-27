@@ -119,8 +119,7 @@ function Bind_Product_Service_Details(data) {
                 $("#rdNotOriginalManufacturer").parent().addClass("checked");
             }
         });
-
-        alert("method");
+ 
       Friendly_Message(data)
 }
 

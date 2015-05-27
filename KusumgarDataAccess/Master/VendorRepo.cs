@@ -76,6 +76,7 @@ namespace KusumgarDataAccess
            vendor.Vendor_Entity.CreatedBy =  Convert.ToInt32(dr["CreatedBy"]);
            vendor.Vendor_Entity.UpdatedBy =  Convert.ToInt32(dr["UpdatedBy"]);
            vendor.Vendor_Entity.Vendor_Id =  Convert.ToInt32(dr["Vendor_Id"]);
+           vendor.Vendor_Entity.Product_Category = Convert.ToInt32(dr["Product_Category"]);
           
             return vendor ;
         }
@@ -130,6 +131,7 @@ namespace KusumgarDataAccess
             sqlParamList.Add(new SqlParameter("@VAT_Type", vendors.Vendor_Entity.VAT_Type));
             sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.Vendor_Entity.PaymentTerms));
             sqlParamList.Add(new SqlParameter("@Is_Active", vendors.Vendor_Entity.Is_Active));
+            sqlParamList.Add(new SqlParameter("@Product_Category", vendors.Vendor_Entity.Product_Category));
             
             if (vendors.Vendor_Entity.Vendor_Id == 0)
             {
@@ -350,6 +352,38 @@ namespace KusumgarDataAccess
             }
 
             return check;
+        }
+
+        public List<ProductCategoryInfo> Get_Product_Category()
+        {
+            List<ProductCategoryInfo> retVal = new List<ProductCategoryInfo>();
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Product_Categories_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int count = 0;
+                
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                foreach (DataRow dr in drList)
+                {
+                    ProductCategoryInfo productCategoryInfo = new ProductCategoryInfo();
+
+                    productCategoryInfo.Product_Category_Entity.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
+
+                    productCategoryInfo.Product_Category_Entity.Product_Category_Name = Convert.ToString(dr["Product_Category_Name"]);
+
+                    retVal.Add(productCategoryInfo);
+                }
+
+            }
+
+            return retVal;
         }
     }
 }

@@ -54,7 +54,9 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Test_Unit> M_Test_Unit { get; set; }
         public DbSet<M_User> M_User { get; set; }
         public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
-        public DbSet<M_Vendor> M_Vendor { get; set; }
         public DbSet<M_Y_Article> M_Y_Article { get; set; }
+        public DbSet<M_Product_Category> M_Product_Category { get; set; }
+        public DbSet<M_Product_SubCategory> M_Product_SubCategory { get; set; }
+        public DbSet<M_Vendor> M_Vendor { get; set; }
     }
 }

@@ -12,7 +12,7 @@
 }
 
 function Bind_Vendor_Data_Callback(data) {
-    alert("m");
+    
     $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
 
     $("#tabProductServices").show();
@@ -62,16 +62,14 @@ function Set_Vendor() {
                                 Currency_Code: $("#drpCurrencyCode").val(),
                                 VAT_Type: $("#txtVatType").val(),
                                 PaymentTerms: $("#drpPaymentTerm").val(),
-
                                 Remark_about_Supplier: $("#txtRemarkaboutSupplier").val(),
                                 Block_Payment: $("#hdnBlockPayment").val(),
-
                                 Shipment_Methods: $("#drpSupplierMethod").val(),
                                 Flagged_Supplier: $("#txtSupplierName").val(),
                                 Is_Approved_By_Director: $("#hdnApprovedByDirector").val(),
                                 Delivary_Term_Code: $("#txtDelivaryTermCode").val(),
-                                Is_Active: $("#hdnStatus").val()
-                              
+                                Is_Active: $("#hdnStatus").val(),
+                                Product_Category: $("#drpProductCategory").val()
                         }
                 }
         }

@@ -90,6 +90,18 @@ namespace KusumgarModel
             VendorRepo vRepo = new VendorRepo();
             return vRepo.Check_Existing_Vendor(vendor_Name);
         }
+
+
+        public List<ProductCategoryInfo> Get_Product_Category()
+        {
+            List<ProductCategoryInfo> productCategories = new List<ProductCategoryInfo>();
+
+            VendorRepo vRepo = new VendorRepo();
+
+            productCategories = vRepo.Get_Product_Category();
+
+            return productCategories;
+        }
     }
 }
 

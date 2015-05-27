@@ -19,11 +19,47 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
             }
 
-            
-
             if ($(elementObject).attr("id") == 'txtVendorName') {
                 urlString = "/ajax/vendor-list/" + $('#txtVendorName').val();
             }
+
+            if ($(elementObject).attr("id") == 'txtTestUnit1') {
+
+                urlString = "/ajax/test/" + $('#txtTestUnit1').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnit2') {
+                urlString = "/ajax/test/" + $('#txtTestUnit2').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnit3') {
+                urlString = "/ajax/test/" + $('#txtTestUnit3').val();
+            }
+            if ($(elementObject).attr("id") == 'txtTestUnit4') {
+                urlString = "/ajax/test/" + $('#txtTestUnit4').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnit5') {
+                urlString = "/ajax/test/" + $('#txtTestUnit5').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnit6') {
+                urlString = "/ajax/test/" + $('#txtTestUnit6').val();
+            }
+            if ($(elementObject).attr("id") == 'txtTestUnit7') {
+                urlString = "/ajax/test/" + $('#txtTestUnit7').val();
+            }
+            if ($(elementObject).attr("id") == 'txtTestUnit8') {
+
+                urlString = "/ajax/test/" + $('#txtTestUnit8').val();
+            }
+            if ($(elementObject).attr("id") == 'txtTestUnit9') {
+                urlString = "/ajax/test/" + $('#txtTestUnit9').val();
+            }
+            if ($(elementObject).attr("id") == 'txtTestUnit10') {
+                urlString = "/ajax/test/" + $('#txtTestUnit10').val();
+            }
+
 
             $.ajax({
                 url: urlString,

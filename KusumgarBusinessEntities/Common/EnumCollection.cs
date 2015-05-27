@@ -229,7 +229,8 @@ namespace KusumgarBusinessEntities.Common
         //Get_Vendor_By_Name_Sp,
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
-        Check_Existing_Vendor_Sp
+        Check_Existing_Vendor_Sp,
+        Get_Product_Categories_sp
     }
 
     public enum GenderType

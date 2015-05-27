@@ -49,11 +49,11 @@ namespace Kusumgar.Controllers.PostLogin
 
                 dMan.Insert(dViewModel.Defect);
 
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("D011"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("D011"));
             }
             catch (Exception ex)
             {
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
             TempData["dViewModel"] = dViewModel;
@@ -69,11 +69,11 @@ namespace Kusumgar.Controllers.PostLogin
 
                 dMan.Update(dViewModel.Defect);
                 
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("D012"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("D012"));
             }
             catch (Exception ex)
             {
-                dViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
            
             TempData["dViewModel"] = dViewModel;

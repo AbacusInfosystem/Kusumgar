@@ -9,7 +9,6 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
-using Kusumgar.Models;
 
 namespace Kusumgar.Controllers.PostLogin.Master
 {

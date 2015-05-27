@@ -35,12 +35,12 @@ namespace Kusumgar.Controllers
 
                 tMan.Insert(tViewModel.Test_Unit);
 
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("TU011"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("TU011"));
 
             }
             catch (Exception ex)
             {
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
            
             TempData["tViewModel"] = tViewModel;
@@ -56,12 +56,12 @@ namespace Kusumgar.Controllers
                 
                  tMan.Update(tViewModel.Test_Unit);
 
-                 tViewModel.FriendlyMessage.Add(MessageStore.Get("TU012"));
+                 tViewModel.Friendly_Message.Add(MessageStore.Get("TU012"));
              }
             
             catch (Exception ex)
             {
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             TempData["tViewModel"] = tViewModel;
             
@@ -76,12 +76,12 @@ namespace Kusumgar.Controllers
 
                 tViewModel.Test_Unit = tMan.Get_Test_Unit_By_Id(tViewModel.Edit_Mode.Test_Unit_Id);
 
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("DT011"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("DT011"));
             }
             
         catch (Exception ex)
             {
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             
                TempData["tViewModel"] = tViewModel;

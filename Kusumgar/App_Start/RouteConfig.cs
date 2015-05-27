@@ -738,8 +738,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "ajax-1",
-            url: "master/ajax/{testUnitName}",
-            defaults: new { controller = "Ajax", action = "Get_Test_Unit", id = UrlParameter.Optional },
+            url: "ajax/test/{testUnitName}",
+            defaults: new { controller = "Test", action = "Get_Test_AutoComplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
