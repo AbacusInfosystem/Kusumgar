@@ -45,6 +45,30 @@ namespace KusumgarBusinessEntities.Common
             return attributeNames;
         }
 
+        public static Dictionary<int, string> Get_Product_Service_Types()
+        {
+            Dictionary<int, string> GetProductServiceTypes = new Dictionary<int, string>();
+
+            GetProductServiceTypes.Add(1, ProductVendor.ProductType.ToString());
+
+            GetProductServiceTypes.Add(2, ProductVendor.Service.ToString());
+
+            return GetProductServiceTypes;
+        }
+
+        public static Dictionary<int, string> Get_ShipMent_Method()
+        {
+            Dictionary<int, string> GetShipMentMethod = new Dictionary<int, string>();
+
+            GetShipMentMethod.Add(1, ShipmentMethod.method1.ToString());
+
+            GetShipMentMethod.Add(2, ShipmentMethod.method2.ToString());
+
+
+
+            return GetShipMentMethod;
+        }
+
         public static Dictionary<int, string> GetGenderTypes()
         {
             Dictionary<int, string> GetGenderTypes = new Dictionary<int, string>();

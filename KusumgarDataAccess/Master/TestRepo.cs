@@ -311,5 +311,76 @@ namespace KusumgarDataAccess
          return retVal;
         }
 
+        //public List<TestUnitInfo> Get_Test_Unit(string testUnitName)
+        //{
+        //    List<TestUnitInfo> retVal = new List<TestUnitInfo>();
+
+        //    try
+        //    {
+        //        using (SqlConnection con = new SqlConnection(_sqlCon))
+        //        {
+        //            con.Open();
+
+        //            using (SqlCommand command = new SqlCommand("Get_Test_Unit_AutoComplete_sp", con))
+        //            {
+        //                command.CommandType = CommandType.StoredProcedure;
+
+        //                command.Parameters.Add(new SqlParameter("@TestUnitName", testUnitName));
+
+        //                SqlDataReader dataReader = command.ExecuteReader();
+
+        //                if (dataReader.HasRows)
+        //                {
+        //                    while (dataReader.Read())
+        //                    {
+        //                        TestUnitInfo testUnit = new TestUnitInfo();
+        //                        testUnit.Label = Convert.ToString(dataReader["TestUnitName"]);
+        //                        testUnit.Value = Convert.ToInt32(dataReader["TestUnitId"]);
+        //                        retVal.Add(testUnit);
+        //                    }
+        //                }
+
+        //                dataReader.Close();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //    return retVal;
+        //}
+
+        public List<AutocompleteInfo> Get_Test_AutoComplete(string testUnitName)
+        {
+            List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Test_Unit_Name", testUnitName));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_AutoComplete_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Test_Unit_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Test_Unit_Id"]);
+
+                    testUnitNames.Add(auto);
+                }
+            }
+
+            return testUnitNames;
+        }
     }
 }

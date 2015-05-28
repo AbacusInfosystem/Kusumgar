@@ -176,7 +176,7 @@ namespace Kusumgar.Controllers
         {
             AjaxManager ajaxMan = new AjaxManager();
             List<AutocompleteInfo> autoList = new List<AutocompleteInfo>();
-            autoList = ajaxMan.Get_Vendor_Autocomplete(vendor_Name);
+            autoList = ajaxMan.Get_Vendor_AutoComplete(vendor_Name);
             return Json(autoList, JsonRequestBehavior.AllowGet);
         }
     }

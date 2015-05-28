@@ -143,5 +143,37 @@ namespace KusumgarDataAccess
             }
             return autoList;
         }
+
+        public List<AutocompleteInfo> Get_Vendor_AutoComplete(string Vendor_Name)
+        {
+            List<AutocompleteInfo> VendorNames= new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Vendor_Name", Vendor_Name));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Vendor_By_Name_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Vendor_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Vendor_Id"]);
+
+                    VendorNames.Add(auto);
+                }
+            }
+
+            return VendorNames;
+        }
+
     }
 }

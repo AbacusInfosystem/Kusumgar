@@ -47,7 +47,7 @@
                                             <label style="color: #333" for="txtCustomer_Name">Customer name</label>
                                             <div class="auto-complete">
                                                 <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="contact.Customer_Name" value="@Model.contact.Customer_Name">
-                                                <input type="hidden" id="hdnCustomer_Id" value="@Model.contact.contact_Entity.Customer_Id" name="contact.contact_Entity.Customer_Id">
+                                                <input type="hidden" id="hdnCustomer_Id" value="@(Model.contact.contact_Entity.Customer_Id == 0 ? "" : Model.contact.contact_Entity.Customer_Id.ToString())" name="contact.contact_Entity.Customer_Id">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -215,7 +215,7 @@
                                         <label>
                                             <input type="checkbox" name="chkStatus" checked />
                                             &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-
+                                            <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer.Customer_Entity.Is_Active">
                                         </label>
                                     </div>
 
@@ -274,7 +274,7 @@
                                     <!-- Head Office Details Ends-->
                                 </div>
 
-                                <div class="col-md-4">
+                                @*<div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtFreeField1">Free Field 1</label>
                                         <input type="text" class="form-control" id="txtFreeField1" placeholder="Enter <Field Name> : <Field Value>">
@@ -299,7 +299,7 @@
                                         <label for="txtFreeField5">Free Field 5</label>
                                         <input type="text" class="form-control" id="txtFreeField5" placeholder="Enter <Field Name> : <Field Value>">
                                     </div>
-                                </div>
+                                </div>*@
 
                             </div>
                             <div class="box-footer">

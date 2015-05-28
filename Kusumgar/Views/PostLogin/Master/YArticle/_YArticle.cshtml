@@ -1,7 +1,13 @@
-﻿<form>
-
+﻿@model Kusumgar.Models.YArticleViewModel
+@using KusumgarBusinessEntities.Common
+<script src="/Scripts/Master/Event/yarticle_event.js"></script>
+<script src="/Scripts/Master/Method/yarticle_method.js"></script>
+<script src="/Scripts/Master/Validation/yarticle_validation.js"></script>
+<form id="frmYArticle">
     <div class="row">
 
+        <input type="hidden" id="hdnYArticle_Id" value="@Model.YArticle.YArticle_Entity.Y_Article_Id">
+        <input type="hidden" id="hdnIs_Primary" value="@Model.Is_Primary">
         <div class="col-md-8">
 
             <div class="box-header with-border">
@@ -15,124 +21,251 @@
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <label>Attribute</label>
+                                <label style="color: #333">Attribute</label>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>Code</label>
+                                <label style="color: #333">Code</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpDenier" class="form-control input-sm">
-                                    <option>-Select Denier-</option>
-                                    <option>10 Denier</option>
-                                    <option>100 Denier</option>
-                                    <option>1000 Denier</option>
-                                </select>
+                                
+                                    <select id="drpDenier" class="form-control input-sm attribute-name" name="YArticle.YArticle_Entity.Denier_Id">
+                                        <option value="">-Select Denier-</option>
+                                        @if (Model.Attribute_Codes.Count > 0)
+                                        {
+                                            foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Denier.ToString()))
+                                            {
+                                                if (Model.YArticle.YArticle_Entity.Denier_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                {
+                                                    <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                }
+                                            }
+                                        }
+                                        @if(Model.YArticle.YArticle_Entity.Denier_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                        { 
+                                            <option value="0_" selected="selected">none</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0_" >none</option>
+                                        }
+                                    </select>
+                                
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>1011</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <select id="drpTwist_Mingle" class="form-control input-sm">
-                                    @*style="width:200px;">*@
-                                    <option>-Select Twist/Mingle- </option>
-                                    <option>Zero High Intermingled</option>
-                                    <option>Zero Low Intermingled</option>
-                                    <option>60 twist</option>
-                                    <option>200 twist</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>0HIM</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <select id="drpTwist_type" class="form-control input-sm">
-                                    @*style="width:200px;">*@
-                                    <option>-Select Twist type-</option>
-                                    <option>S twist</option>
-                                    <option>Z twist</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>S</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpPly" class="form-control input-sm">
+                                <select id="drpTwist_Mingle" class="form-control input-sm attribute-name" name="YArticle.YArticle_Entity.Twist_Mingle_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Ply-</option>
-                                    <option>2 Ply Yarn</option>
-                                    <option>3 Ply Yarn</option>
-                                    <option>4 Ply Yarn</option>
-                                    <option>5 Ply Yarn</option>
-                                    <option>6 Ply Yarn</option>
+                                    <option  value="">-Select Twist/Mingle- </option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.TwistMingle.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Twist_Mingle_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Twist_Mingle_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>02</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpYarn_type" class="form-control input-sm">
-                                    @*style="width:200px;">*@
-                                    <option>-Select Yarn type-</option>
-                                    <option>Polyster texturised</option>
-                                    <option>Air texturised Nylon</option>
-                                    <option>Viscose Staple</option>
-                                    <option>Polyster Cotton Mix</option>
-                                    <option>Meta aramide</option>
+                                <select id="drpTwist_type" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Twist_Type_Id">
+                                    <option value="">-Select Twist Type- </option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Twist_type.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Twist_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Twist_Type_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>NY06</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpShade" class="form-control input-sm">
-                                    @*style="width:200px;">*@
-                                    <option>-Select Shade-</option>
-                                    <option>Bright Yarn</option>
-                                    <option>Semi Dull</option>
-                                    <option>Full Dull</option>
+                                <select id="drpPly" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Ply_Id">
+                                    <option  value="">-Select Ply- </option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Ply.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Ply_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Ply_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>BR</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpFilaments" class="form-control input-sm">
-                                    @*style="width:200px;">*@
-                                    <option>-Select Filaments-</option>
-                                    <option>10 Filaments</option>
-                                    <option>100 Filaments</option>
-                                    <option>1000 Filaments</option>
+                                <select id="drpYarn_type" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Yarn_Type_Id">
+                                    <option  value="">-Select Yarn type- </option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Yarn_Type_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>0010</label>
+                                <label class="attribute-code">-</label>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-8 col-xs-8">
+                                <select id="drpShade" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Shade_Id">
+                                    <option  value="">-Select Shade-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Shade.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Shade_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Shade_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <label class="attribute-code">-</label>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-8 col-xs-8">
+                                <select id="drpFilaments" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Filaments_Id">
+                                    @*style="width:200px;">*@
+                                    <option  value="">-Select Filaments-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Filaments.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Filaments_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Filaments_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
@@ -152,94 +285,210 @@
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpOrigin" class="form-control input-sm">
+                                <select id="drpOrigin" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Origin_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Origin-</option>
-                                    <option>Imported</option>
-                                    <option>Domestic</option>
+                                    <option  value="">-Select Origin-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Origin.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Origin_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Origin_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>IM</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpShrinkage" class="form-control input-sm">
+                                <select id="drpShrinkage" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Shrinkage_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Shrinkage-</option>
-                                    <option>High shrinkage</option>
-                                    <option>low shrinkage</option>
+                                    <option  value="">-Select Shrinkage-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Shrinkage.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Shrinkage_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Shrinkage_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>HS</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpTenasity" class="form-control input-sm">
+                                <select id="drpTenasity" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Tenasity_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Tenasity-</option>
-                                    <option>High Tenacity</option>
-                                    <option>Super High Tenacity</option>
-                                    <option>Low Tenacity</option>
+                                    <option  value="">-Select Tenasity-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Tenasity.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Tenasity_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Tenasity_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>0HT</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpChemical_Treatment" class="form-control input-sm">
+                                <select id="drpChemical_Treatment" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Chemical_Treatment_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Chemical Treatment-</option>
-                                    <option>High Chemical</option>
-                                    <option>Super High Chemical</option>
-                                    <option>Low Chemical</option>
+                                    <option  value="">-Select Chemical Treatment-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Treatment.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Chemical_Treatment_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Chemical_Treatment_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>HC</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpColour" class="form-control input-sm">
+                                <select id="drpColour" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Colour_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Colour-</option>
-                                    <option>Natural</option>
-                                    <option>White</option>
-                                    <option>Black</option>
+                                    <option  value="">-Select Colour-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Colour.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Colour_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                   @if (Model.YArticle.YArticle_Entity.Colour_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>NRL</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpSupplier" class="form-control input-sm">
+                                <select id="drpSupplier" class="form-control input-sm  attribute-name" name="YArticle.YArticle_Entity.Supplier_Id">
                                     @*style="width:200px;">*@
-                                    <option>-Select Supplier-</option>
-                                    <option>ALOK IND</option>
-                                    <option>C.ENKA</option>
-                                    <option>INVISTA</option>
+                                    <option  value="">-Select Supplier-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Supplier.ToString()))
+                                        {
+                                            if (Model.YArticle.YArticle_Entity.Supplier_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.YArticle.YArticle_Entity.Supplier_Id == 0 && Model.YArticle.YArticle_Entity.Y_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>ALOKI</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
@@ -248,7 +497,14 @@
 
                     <div class="col-md-12">
                         <div class="well text-center">
-                            <label>04200200    S01NY06 BR0048IM     HS0HT 000NRL SUPRF</label>
+                            @if (Model.YArticle.YArticle_Entity.Y_Article_Id == 0)
+                            {
+                                <label class="full-code">- - - -</label>
+                            }
+                            else
+                            {
+                                <label class="full-code">@Model.YArticle.YArticle_Entity.Full_Code</label>
+                            }
                         </div>
                     </div>
                 </div>
@@ -268,40 +524,64 @@
                     <div class="col-md-12">
 
                         <div class="form-group">
-                            <label for="txtGivenBy">Given By</label>
+                            <label style="color: #333" for="txtGiven_By">Given By</label>
 
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control input-sm" id="txtGivenBy" placeholder="Enter given by" />
+                                <div class="auto-complete">
+                                    <input type="text" class="form-control input-sm" id="txtGiven_By" placeholder="Enter given by"  value="@Model.YArticle.Given_By_Name"/>
+                                    <input type="hidden" id="hdnGiven_by" value="@(Model.YArticle.YArticle_Entity.Given_By_Id ==0?"":Model.YArticle.YArticle_Entity.Given_By_Id.ToString())" name="YArticle.YArticle_Entity.Given_By_Id">
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtValidatedBy">Validated By</label>
+                            <label style="color: #333" for="txtValidated_By">Validated By</label>
 
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control input-sm" id="txtValidatedBy" placeholder="Enter validated by" />
+                                <div class="auto-complete">
+                                    <input type="text" class="form-control input-sm" id="txtValidated_By" placeholder="Enter validated by" value="@Model.YArticle.Validated_By_Name" />
+                                    <input type="hidden" id="hdnValidated_by" value="@(Model.YArticle.YArticle_Entity.Validated_By_Id == 0 ? "" : Model.YArticle.YArticle_Entity.Validated_By_Id.ToString())" name="YArticle.YArticle_Entity.Validated_By_Id">
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtDevelopedUnder">Developed Under</label>
+                            <label style="color: #333" for="txtDeveloped_Under">Developed Under</label>
 
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control input-sm" id="txtDevelopedUnder" placeholder="Enter developed under" />
+                                <div class="auto-complete">
+                                    <input type="text" class="form-control input-sm" id="txtDeveloped_Under" placeholder="Enter developed under" value="@Model.YArticle.Developed_Under_Name" />
+                                    <input type="hidden" class="form-control input-sm" id="hdnDeveloped_Under" value="@(Model.YArticle.YArticle_Entity.Developed_Under_Id == 0 ? "" : Model.YArticle.YArticle_Entity.Developed_Under_Id.ToString())" name="YArticle.YArticle_Entity.Developed_Under_Id">
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtLeadTimeToPurchaseRawMaterial">Lead Time to Purchase Raw Material</label>
-                            <input type="text" class="form-control input-sm" id="txtLeadTimeToPurchaseRawMaterial" placeholder="Enter lead time to purchase raw material" />
+                            <label style="color: #333" for="txtLead_Time_To_Purchase">Lead Time to Purchase Raw Material</label>
+                            <input type="text" class="form-control input-sm " id="txtLead_Time_To_Purchase" placeholder="Enter lead time to purchase raw material" name="YArticle.YArticle_Entity.Lead_Time_To_Purchase" value="@Model.YArticle.YArticle_Entity.Lead_Time_To_Purchase" />
+                        </div>
+
+                        <div class="form-group">
+                            <div class="auto-complete">
+                                <label style="color: #333" for="txtWork_Center">Work Center</label>
+                                <input type="text" class="form-control input-sm " id="txtWork_Center" name="YArticle.YArticle_Entity.Work_Center_Code" value="@Model.YArticle.YArticle_Entity.Work_Center_Code" placeholder="Enter work center" />
+                                <input type="hidden" class="form-control input-sm " id="hdnWork_Center" name="YArticle.YArticle_Entity.Work_Center_Code" value="@Model.YArticle.YArticle_Entity.Work_Center_Code" placeholder="Enter work center" />
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" name="chkStatus" checked />
+                                @if (Model.YArticle.YArticle_Entity.Is_Active == true)
+                                {
+                                    <input type="checkbox" id="chkStatus" name="chkStatus" checked="checked" value="@Model.YArticle.YArticle_Entity.Is_Active.ToString()" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="chkStatus" name="chkStatus" value="@Model.YArticle.YArticle_Entity.Is_Active.ToString()" />
+                                }
                                 &nbsp;&nbsp;&nbsp;&nbsp; Active Status
                             </label>
                         </div>
@@ -313,9 +593,15 @@
     </div>
 
     <div class="box-footer">
-        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-        <a href="@Url.Action("Search", "YArticle")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="btn-group">
+                    <button type="button" id="btnSave_YArticle" class="btn btn-success btn-sm">Save</button>
+                    <a href="@Url.Action("Search", "YArticle")" id="btnCancel_YArticle" class="btn btn-warning btn-sm" role="button">Cancle</a>
 
+                </div>
+            </div>
+        </div>
     </div>
 
 </form>

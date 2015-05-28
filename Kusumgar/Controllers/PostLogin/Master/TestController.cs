@@ -43,13 +43,13 @@ namespace Kusumgar.Controllers
                 TestManager tMan = new TestManager();
 
                 tMan.Insert(tViewModel.Test);
-                
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("T011"));
+
+                tViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
             }
 
             catch (Exception ex)
             {
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
             TempData["tViewModel"] = tViewModel;
@@ -65,12 +65,12 @@ namespace Kusumgar.Controllers
                 TestManager tMan = new TestManager();
 
                 tMan.Update(tViewModel.Test);
-                
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("T012"));
+
+                tViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
             }
             catch (Exception ex)
             {
-                tViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
             TempData["tViewModel"] = tViewModel;
@@ -115,6 +115,17 @@ namespace Kusumgar.Controllers
          tViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", tViewModel.Pager.TotalRecords, tViewModel.Pager.CurrentPage + 1, tViewModel.Pager.PageSize, 10, true);
            
          return Json(tViewModel, JsonRequestBehavior.AllowGet);}
+
+        public JsonResult Get_Test_AutoComplete(string testUnitName)
+        {
+            TestManager tMan = new TestManager();
+
+            List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
+
+            testUnitNames = tMan.Get_Test_AutoComplete(testUnitName);
+
+            return Json(testUnitNames, JsonRequestBehavior.AllowGet);
+        }
 
     }
  }

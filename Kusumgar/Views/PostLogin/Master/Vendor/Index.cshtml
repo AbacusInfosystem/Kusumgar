@@ -1,10 +1,21 @@
-﻿@{
+﻿@model Kusumgar.Models.VendorViewModel
+@using KusumgarBusinessEntities.Common;
+@{
     ViewBag.Title = "Create Supplier";
 }
+<script src="~/Scripts/Master/Event/vendor_event.js"></script>
+
+<script src="~/Scripts/Master/Method/vendor_method.js"></script>
+
+<script src="~/Scripts/Master/Event/product_service_event.js"></script>
+
+<script src="~/Scripts/Master/Method/product_service_method.js"></script>
+
+<script src="~/Scripts/Master/Validation/vendor_validation.js"></script>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -25,216 +36,481 @@
             <div class="col-md-12">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Products/Services</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">Certificates</a></li>
-                        <li><a href="#tab_4" data-toggle="tab">Other Details</a></li>
+                        <li class="active"><a href="#tab_1" id="tabPrimary" data-toggle="tab">Primary</a></li>
+                        <li><a href="#tab_2" id="tabProductServices" data-toggle="tab">Products/Services</a></li>
+                        <li><a href="#tab_3" id="tabCertificates" data-toggle="tab">Certificates</a></li>
+                        <li><a href="#tab_4" id="tabCentralExciseRegistrationDetails" data-toggle="tab">Central Excise Registration Details</a></li>
+                        <li><a href="#tab_5" id="tabOtherDetails" data-toggle="tab">Other Details</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <br />
-                            <form id="frmVendor">
 
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="txtSupplierName">Supplier Name :</label>
-                                            <input type="text" id="txtSupplierName" class="form-control input-sm" placeholder="Enter Supplier Name">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeAddress">Head Office Address :</label>
-                                                <textarea id="txtHeadOfficeAddress" class="form-control input-sm" placeholder="Enter Head Office Address"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="drpHeadOfficeState">Head Office State : </label>
-                                            <select id="drpHeadOfficeState" class="form-control input-sm">
-                                                <option>-Select Head Office State-</option>
-                                                <option>Maharashtra</option>
-                                                <option>Gujrat</option>
-                                                <option>Goa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="drpHeadOfficeNation">Head Office Nation : </label>
-                                            <select id="drpHeadOfficeNation" class="form-control input-sm">
-                                                <option>-Select Head Office Nation-</option>
-                                                <option>India</option>
-                                                <option>Uk</option>
-                                                <option>Aus</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    @*<div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeArea">Head Office Area :</label>
-                                                <input type="text" id="txtHeadOfficeArea" class="form-control input-sm" placeholder="Enter Head Office Area">
-                                            </div>
-                                        </div>
-                                    </div>*@
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeZipCode">Head Office ZipCode :</label>
-                                                <input type="text" id="txtHeadOfficeZipCode" class="form-control input-sm" placeholder="Enter Head Office ZipCode">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtEmailId">Email Id :</label>
-                                                <input type="text" id="txtEmailId" class="form-control input-sm" placeholder="Enter Email Id">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeFaxNo">Head Office FaxNo :</label>
-                                                <input type="text" id="txtHeadOfficeFaxNo" class="form-control input-sm" placeholder="Enter Head Office FaxNo">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeLandline1">Head Office Landline1 :</label>
-                                                <input type="text" id="txtHeadOfficeLandline1" class="form-control input-sm" placeholder="Enter Head Office Landline">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeLandline2">Head Office Landline2 :</label>
-                                                <input type="text" id="txtHeadOfficeLandline2" class="form-control input-sm" placeholder="Enter Head Office Landline">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="txtHeadOfficeFaxNo">Head Office FaxNo :</label>
-                                                <input type="text" id="txtHeadOfficeFaxNo" class="form-control input-sm" placeholder="Enter Head Office FaxNo">
-                                            </div>
-                                        </div>
-                                    </div>*@
-
-
-                                </div>
-
-
-                                <div class="box-footer">
-                                    <button type="submit" id="btnSave" class="btn btn-success">Save Primary</button>
-                                    <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-                                </div>
-
-                            </form>
-
+                            <div id="dvVendor">
+                                @{Html.RenderAction("Load_Vendor", "Vendor", Model);}
+                            </div>
                         </div><!-- /.tab-pane -->
 
-                        
+
                         <div class="tab-pane" id="tab_2">
                             <br />
 
-                            @Html.Partial("_ProductServicesDetails")
+                            <form id="frmProductServices">
+                                <div class="row">
+                                    <input type="hidden" id="hdnProductVendorId" value="@Model.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id" name="Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtProductName">Product/Services Name :</label> <br>
+                                            <textarea id="txtProductServicesName" class="form-control input-sm" placeholder="Enter Product/Services Name" name="Product_Vendor.Product_Vendor_Entity.Name">@Model.Product_Vendor.Product_Vendor_Entity.Name</textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="txtTestingFacility">Testing Facility :</label> <br>
+                                            <textarea id="txtTestingFacility" class="form-control input-sm" placeholder="Enter Testing Facility" name="Product_Vendor.Product_Vendor_Entity.Testing_Facility">@Model.Product_Vendor.Product_Vendor_Entity.Testing_Facility</textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="txtInspectionFacility">Inspection Facility :</label> <br>
+                                            <textarea id="txtInspectionFacility" class="form-control input-sm" placeholder="Enter Inspection Facility" name="Product_Vendor.Product_Vendor_Entity.Inspection_Facility">@Model.Product_Vendor.Product_Vendor_Entity.Inspection_Facility</textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="drpProductType">Product Type: </label>
+                                            <select id="drpProductType" class="form-control input-sm" name="Product_Vendor.Product_Vendor_Entity.Product_Type">
+                                                <option>-Select Product Type-</option>
+                                                @foreach (var item in LookupInfo.Get_Product_Service_Types())
+                                                {
+                                                    if (Model.Product_Vendor.Product_Vendor_Entity.Product_Type == item.Key)
+                                                    {
+                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="r1">Original Manufacture :</label> <br>
+                                            <label>
+                                                @if (Model.Product_Vendor.Product_Vendor_Entity.Original_Manufacturer == true)
+                                                {
+
+                                                    @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdOriginalManufacturer" checked />
+                                                                                                                                                                                                                                                                 }
+                                                else
+                                                {
+                                                    @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdOriginalManufacturer" />
+                                                }
+                                                yes&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </label>
+
+                                            <label>
+                                                @if (Model.Product_Vendor.Product_Vendor_Entity.Original_Manufacturer == false)
+                                                {
+                                                    @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdNotOriginalManufacturer" checked />
+                                                                                                                                                                                                                                                                }
+                                                else
+                                                {
+                                                    @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdNotOriginalManufacturer" />
+                                                   }
+                                                No
+                                            </label>
+                                            <input type="hidden" id="hdnOriginalManufacture" value="@(Model.Product_Vendor.Product_Vendor_Entity.Original_Manufacturer.ToString())">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-8">
+                                        <table class="table table-hover" id="tblProductServiceDetails">
+                                            <tr>
+                                                <th>Product/Service Name</th>
+                                                <th>Type</th>
+                                                <th style="min-width: 61px;">&nbsp; </th>
+                                            </tr>
+                                            @foreach (var item in Model.Product_Vendor_Grid)
+                                               {
+
+                                                <tr id="tr_ivendor_@item.Product_Vendor_Entity.Product_Vendor_Id">
+
+                                                    <td>@item.Product_Vendor_Entity.Name</td>
+
+                                                    <td>@item.Product_Type_Name</td>
+
+                                                    <td>
+                                                        <input type="hidden" class="hdn_Product_Vendor_Id" value="@item.Product_Vendor_Entity.Product_Vendor_Id">
+
+                                                        <input type="hidden" class="Product_Service_Name" value="@item.Product_Vendor_Entity.Name">
+                                                        <input type="hidden" class="Product_Type" value="@item.Product_Vendor_Entity.Product_Type">
+                                                        <input type="hidden" class="Testing_Facility" value="@item.Product_Vendor_Entity.Testing_Facility">
+                                                        <input type="hidden" class="Inspection_Facility" value="@item.Product_Vendor_Entity.Inspection_Facility">
+                                                        <input type="hidden" class="Original_Manufacture" value="@item.Product_Vendor_Entity.Original_Manufacturer.ToString()">
+                                                        <div class="btn-group pull-right">
+                                                            <button type="button" id="btnEdit" class="btn btn-info btn-sm btn-product-service"><i class='fa fa-pencil-square-o'></i></button>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveProductService(@item.Product_Vendor_Entity.Product_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                               }
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                                <div class="box-footer">
+                                    <button type="button" id="btnSaveProductServicesDetails" class="btn btn-success">Save ProductServicesDetails</button>
+                                    <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+                                </div>
+                            </form>
 
                         </div><!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_3">
                             <br />
 
-                            @Html.Partial("_CertificationDetails")
+                            <form id="frmCertificationDetails">
+                               
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtPerformanceCertification">Performance Certification :</label>
+                                            <textarea id="txtPerformanceCertification" class="form-control input-sm" placeholder="Enter Performance Certification" name="Vendor.Vendor_Entity.Performance_Certification">@Model.Vendor.Vendor_Entity.Performance_Certification</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="drpPerformanceCertificationYear ">Performance Certification Year :</label>
+
+                                            <div class="editor-field">
+                                                <select id="drpPerformanceCertificationYear" class="form-control input-sm" name="Vendor.Vendor_Entity.Performance_Certification_Year">
+
+                                                    <option>-Select Year-</option>
+
+                                                    @{
+                                                        int performanceyear = 0;
+                                                    }
+
+                                                    @for (performanceyear = 1980; performanceyear <= DateTime.Now.Year; performanceyear++)
+                                                    {
+                                                       if (Model.Vendor.Vendor_Entity.Performance_Certification_Year == performanceyear)
+                                                    {
+                                                        <option value="@performanceyear" selected="selected">
+                                                            @performanceyear
+                                                        </option>
+
+                                                    }
+                                                    else
+                                                       {
+                                                        <option value="@performanceyear">
+                                                            @performanceyear
+                                                        </option>
+
+                                                    }
+
+                                                    }
+
+                                                      </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtPerformanceCertificationCategory">Performance Certification Category :</label>
+                                            <textarea id="txtPerformanceCertificationCategory" class="form-control input-sm" placeholder="Enter Performance Certification Category" name="Vendor.Vendor_Entity.Performance_Certification_Category">@Model.Vendor.Vendor_Entity.Performance_Certification_Category</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtQualityCertification">Quality Certification :</label>
+                                            <textarea id="txtQualityCertification" class="form-control input-sm" placeholder="Enter Quality Certification" name="Vendor.Vendor_Entity.Quality_Certification">@Model.Vendor.Vendor_Entity.Quality_Certification</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="drpQualityCertificationYear ">Quality Certification Year :</label>
+                                            <select id="drpQualityCertificationYear" class="form-control input-sm" name="Vendor.Vendor_Entity.Quality_Certification_Year">
+                                                <option>-Select Year-</option>
+
+                                                @{
+                                                    int qualitycertificationyear = 0;
+                                                }
+
+                                                @for (qualitycertificationyear = 1980; qualitycertificationyear <= DateTime.Now.Year; qualitycertificationyear++)
+                                                {
+                                                    if (Model.Vendor.Vendor_Entity.Quality_Certification_Year == qualitycertificationyear)
+                                                    {
+
+
+                                                    <option value="@qualitycertificationyear" selected="selected">
+                                                        @qualitycertificationyear
+                                                    </option>
+                                                        }
+                                                        else
+                                                    {
+                                                    <option value="@qualitycertificationyear">
+                                                        @qualitycertificationyear
+                                                    </option>
+                                                    }
+                                              }
+
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtQualityCertificationCategory">Quality Certification Category :</label>
+                                            <textarea id="txtQualityCertificationCategory" class="form-control input-sm" placeholder="Enter Supplier Name" name="Vendor.Vendor_Entity.Quality_Certification_Category">@Model.Vendor.Vendor_Entity.Quality_Certification_Category</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" id="btnSaveCertificationDetails" class="btn btn-success">Save CertificationDetails</button>
+                                    <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+                                </div>
+                            </form>
 
                         </div><!-- /.tab-pane -->
 
                         <div class="tab-pane" id="tab_4">
                             <br />
+
+                            <form id="frmCentralRegistrationDetails">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtCentralExciseRegistrationDetails">Central Excise Registration Details</label>
+                                            <input type="text" id="txtCentralExciseRegistrationDetails" class="form-control input-sm" placeholder="Enter Central Excise Registration Details" name="Vendor.Vendor_Entity.Central_Excise_Registration_Details" value="@Model.Vendor.Vendor_Entity.Central_Excise_Registration_Details" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txt">Registration No</label>
+                                            <input type="text" id="txtRegistrationNo" class="form-control input-sm" placeholder="Enter Registration No" name="Vendor.Vendor_Entity.Registration_No" value="@Model.Vendor.Vendor_Entity.Registration_No" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txRanget">Range</label>
+                                            <input type="text" id="txtRange" class="form-control input-sm" placeholder="Enter Range" name="Vendor.Vendor_Entity.Range" value="@Model.Vendor.Vendor_Entity.Range" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtDivision">Division</label>
+                                            <input type="text" id="txtDivision" class="form-control input-sm" placeholder="Enter Division" name="Vendor.Vendor_Entity.Division" value="@Model.Vendor.Vendor_Entity.Division" />
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtPAN">PAN</label>
+                                            <input type="text" id="txtPAN" class="form-control input-sm" placeholder="Enter PAN" name="Vendor.Vendor_Entity.PAN" value="@Model.Vendor.Vendor_Entity.PAN" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtTAN">TAN</label>
+                                            <input type="text" id="txtTAN" class="form-control input-sm" placeholder="Enter TAN" name="Vendor.Vendor_Entity.TAN" value="@Model.Vendor.Vendor_Entity.TAN" />
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtTaxExcemptionCode">Tax Excemption Code</label>
+                                            <input type="text" id="txtTaxExcemptionCode" class="form-control input-sm" placeholder="Enter Tax Excemption Code" name="Vendor.Vendor_Entity.Tax_Excemption_Code" value="@Model.Vendor.Vendor_Entity.Tax_Excemption_Code" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="drpCurrencyCode">Currency Code</label>
+                                            <select id="drpCurrencyCode" class="form-control input-sm" name="Vendor.Vendor_Entity.Currency_Code">
+                                                <option>-Select Currency-</option>
+                                                @foreach (var item in LookupInfo.Get_Currency_Type())
+                                                {
+                                                    if (Model.Vendor.Vendor_Entity.Currency_Code == item.Key)
+                                                    {
+                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtVatType">VAT Type</label>
+                                            <input type="text" id="txtVatType" class="form-control input-sm" placeholder="Enter VAT Type" name="Vendor.Vendor_Entity.VAT" value="@Model.Vendor.Vendor_Entity.VAT_Type" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="drpPaymentTerm">Payment Terms</label>
+                                            <select id="drpPaymentTerm" class="form-control input-sm" name="Vendor.Vendor_Entity.PaymentTerms">
+                                                <option>-Select Payment Terms-</option>
+                                                @foreach (var item in LookupInfo.Get_Payment_Terms())
+                                                {
+                                                    if (Model.Vendor.Vendor_Entity.PaymentTerms == item.Key)
+                                                    {
+                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                            <div class="box-footer">
+                                <button type="button" id="btnCentralRegistrationDetails" class="btn btn-success">Save Central Registration Details</button>
+                                <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                            </div>
+
+                        </div><!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="tab_5">
+                            <br />
                             <form id="frmOtherDetails">
-                                 
-                                @*<div class="row">
+
+                                <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="txtInspectionFacility">Inspection Facility :</label> <br>
-                                            <textarea id="txtInspectionFacility" class="form-control input-sm" placeholder="Enter Inspection Facility"></textarea>
+                                            <label for="txtRemarkaboutSupplier">Remark about Supplier :</label>
+                                            <textarea id="txtRemarkaboutSupplier" class="form-control input-sm" placeholder="Enter Remark about Supplier" name="Vendor.Vendor_Entity.Remark_about_Supplier">@Model.Vendor.Vendor_Entity.Remark_about_Supplier</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="drpSupplierMethod">Supplier Method :</label><br>
+                                            <select id="drpSupplierMethod" class="form-control input-sm" name="Vendor.Vendor_Entity.Shipment_Methods">
+                                                <option>-Select Supplier Method-</option>
+                                                @foreach (var item in LookupInfo.Get_ShipMent_Method())
+                                                    {
+                                                    if (Model.Vendor.Vendor_Entity.Shipment_Methods == item.Key)
+                                                    {
+                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                    }
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="chkPaymentBlock">Payment Block :</label><br>
+
+                                            @if (Model.Vendor.Vendor_Entity.Block_Payment == true)
+                                                {
+                                                @:<input type="checkbox" name="Vendor.Vendor_Entity.Block_Payment" value="false" checked />
+                                                  }
+                                                else
+                                                {
+                                                @:<input type="checkbox" name="Vendor.Vendor_Entity.Block_Payment" value="true" />
+                                                 }
+                                            Block &nbsp;&nbsp;&nbsp;
+
+                                            <input type="hidden" id="hdnBlockPayment" value="@((Model.Vendor.Vendor_Entity.Block_Payment == null ? false : Model.Vendor.Vendor_Entity.Block_Payment).ToString())">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="txtTestingFacility">Testing Facility :</label> <br>
-                                            <textarea id="txtTestingFacility" class="form-control input-sm" placeholder="Enter Testing Facility"></textarea>
+                                            <label for="chkApprovedByDirector">Approved By Director :</label><br>
+
+                                            @if (Model.Vendor.Vendor_Entity.Is_Approved_By_Director == true)
+                                                {
+                                                @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Approved_By_Director" value="false" checked />
+
+                                                }
+                                                else
+                                                {
+                                                @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Approved_By_Director" value="true" />
+
+                                                }
+                                            Approved &nbsp;&nbsp;&nbsp;
+                                            <input type="hidden" id="hdnApprovedByDirector" value="@((Model.Vendor.Vendor_Entity.Is_Approved_By_Director == null ? false : Model.Vendor.Vendor_Entity.Is_Approved_By_Director).ToString())">
+
                                         </div>
                                     </div>
-                                    </div>*@
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="txtRemarkaboutSupplier">Remark about Supplier :</label>
-                                                <textarea id="txtRemarkaboutSupplier" class="form-control input-sm" placeholder="Enter Remark about Supplier"></textarea>
-                                            </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="chkStatus">Status :</label><br>
+                                            @if (Model.Vendor.Vendor_Entity.Is_Active == true)
+                                                {
+                                                @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="false" checked />
+                                                }
+                                                else
+                                                {
+                                                @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="true" />
+                                                }
+
+                                            Active &nbsp;&nbsp;&nbsp;
+                                            <input type="hidden" id="hdnStatus" value="@((Model.Vendor.Vendor_Entity.Is_Active == null ? false : Model.Vendor.Vendor_Entity.Is_Active).ToString())">
+
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="chPaymentBlock">Supplier Method :</label><br>
-                                                <input type="checkbox" name="c1">Method1 &nbsp;&nbsp;&nbsp;
-                                                <input type="checkbox" name="c1">Method2
-                                            </div>
-                                        </div>
-                                        
                                     </div>
-                               
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="rdPaymentBlock">Payment Block :</label><br>
-                                                <input type="checkbox" name="r2" checked>Block &nbsp;&nbsp;&nbsp;
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="rdApprovedByDirector">Approved By Director :</label><br>
-                                                <input type="checkbox" name="r3" checked>Approved &nbsp;&nbsp;&nbsp;
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="rdApprovedByDirector">Status :</label><br>
-                                                <input type="checkbox" name="r3" checked>Active &nbsp;&nbsp;&nbsp;
-                                            </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtSupplierName">Flagged Supplier:</label>
+                                            <input type="text" id="txtSupplierName" class="form-control input-sm" placeholder="Enter Flagged Supplier" name="Vendor.Vendor_Entity.Flagged_Supplier" value="@Model.Vendor.Vendor_Entity.Flagged_Supplier">
                                         </div>
                                     </div>
 
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtDelivaryTermCode">Delivary Term Code :</label>
+                                            <input type="text" id="txtDelivaryTermCode" class="form-control input-sm" placeholder="Enter Delivary Term Code" name="Vendor.Vendor_Entity.Delivary_Term_Code" value="@Model.Vendor.Vendor_Entity.Delivary_Term_Code">
+                                        </div>
+                                    </div>
 
-                                
-                                
+                                </div>
+
                                 <div class="box-footer">
                                     <button type="button" id="btnSaveOtherDetails" class="btn btn-success">Save OtherDetails</button>
                                     <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
                                 </div>
-                                </form>
+                            </form>
                         </div>
-                        </div><!-- /.tab-content -->
-                    </div><!-- nav-tabs-custom -->
+
+                    </div><!-- /.tab-content -->
+                </div><!-- nav-tabs-custom -->
 
             </div>
         </div>
@@ -243,4 +519,3 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-

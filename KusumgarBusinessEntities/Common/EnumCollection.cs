@@ -197,6 +197,15 @@ namespace KusumgarBusinessEntities.Common
         Get_Vendor_By_Name_Sp,
         Update_Consumable_Vendors_Sp,
 
+        //VendorContact
+        //Insert_Contact_sp,
+        //Get_Vendor_By_Name_Sp,
+        Get_Vendor_Contact_sp,
+        Get_Vendor_Contact_By_Id_sp,
+        Get_Vendor_Contacts_By_Vendor_Name_sp,
+        Delete_Vendor_Contact_Custom_Field_By_Id,
+
+
         //Industrial
         Insert_Industrial_Master_Sp,
         Update_Industrial_Master_Sp,
@@ -207,9 +216,35 @@ namespace KusumgarBusinessEntities.Common
         Insert_Industrial_Vendor_Sp,
         Delete_Industrial_Vendor_By_Id_Sp,
         Get_Industrial_Vendor_List_By_Id_Sp,
-        
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
+
+        // Y Article 
+        Insert_Y_Article_sp,
+        Update_Y_Article_sp,
+        Get_Y_Articles_sp,
+        Get_Y_Articles_By_Full_Code_sp,
+        Get_Y_Articles_By_Yarn_Type_Id_sp,
+        Get_Y_Article_By_Id_sp,
+        Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
+
+        // Work Center
+        Get_Work_Stations_Sp,
+
+        //Vendor
+
+        Insert_Vendor_sp,
+        Insert_Product_Vendors_sp,
+        Get_Vendors_Sp,
+        Update_Product_Vendors_sp,
+        Update_Vendor_sp,
+        Get_Vendor_By_Id_Sp,
+        //Get_Vendor_By_Name_Sp,
+        Delete_Product_Service_By_Id,
+        Get_Product_Vendor_By_Id_Sp,
+        Check_Existing_Vendor_Sp,
+        
+        Update_Attribute_Code_Name_sp,
 
         //Product
         Insert_Product_Sp,
@@ -258,6 +293,13 @@ namespace KusumgarBusinessEntities.Common
         Euros = 3,
         Pounds = 4,
     }
+    public enum PriorityOrder
+    {
+        Primary = 1,
+        Secondary = 2,
+        Last_Option = 3,
+    }
+
 
     public enum PaymentTerms
     {
@@ -283,10 +325,19 @@ namespace KusumgarBusinessEntities.Common
         option5 = 5,
     }
    
-    public enum PriorityOrder
+      public enum ProductVendor
+      {
+          ProductType=1,
+          Service=2
+      }
+   
+      
+    public enum ShipmentMethod
     {
-        Primary = 1,
-        Secondary = 2,
-        Last_Option = 3,
+        method1=1,
+        method2=2
+
     }
+
+
 }
