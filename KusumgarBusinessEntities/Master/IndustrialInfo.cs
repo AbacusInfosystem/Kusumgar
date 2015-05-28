@@ -10,12 +10,12 @@ namespace KusumgarBusinessEntities
 {
     public class IndustrialInfo
     {
-        public IndustrialMaster IndustrialEntity { get; set; }
+        public M_Industrial IndustrialEntity { get; set; }
         public string IndustrialCategoryName { get; set; }
         public string IndustrialGroupName { get; set; }
         public IndustrialInfo()
         {
-            IndustrialEntity = new IndustrialMaster();
+            IndustrialEntity = new M_Industrial();
         }
     }
 }

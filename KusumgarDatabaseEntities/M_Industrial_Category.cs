@@ -12,11 +12,10 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class IndustrialSupplierMaster
+    public partial class M_Industrial_Category
     {
-        public int IndustrialMasterId { get; set; }
-        public int SupplierId { get; set; }
-        public int PriorityOrder { get; set; }
+        public int Industrial_Category_Id { get; set; }
+        public string Industrial_Category_Name { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedDtm { get; set; }
         public int UpdatedBy { get; set; }
