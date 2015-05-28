@@ -1,8 +1,7 @@
 ﻿
-//var InitializeAutoComplete = function (elementObject, callBack) {
 var InitializeAutoComplete = function (elementObject) {
 
-   
+
     $(elementObject).autocomplete({
         source: function (request, response) {
 
@@ -14,13 +13,13 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtVendorName') {
                 urlString = "/master/get-vendor-id-by-vendorname/" + $('#txtVendorName').val();
             }
-         
+
             if ($(elementObject).attr("id") == 'txtSupplierName') {
                 urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
             }
-         
-            if ($(elementObject).attr("id") == 'txtVendorName') {
-                urlString = "/ajax/vendor-list/" + $('#txtVendorName').val();
+
+            if ($(elementObject).attr("id") == 'txtVendor_Name') {
+                urlString = "/master/vendors-list/" + $('#txtVendor_Name').val();
             }
 
             if ($(elementObject).attr("id") == 'txtTestUnit1') {
@@ -80,7 +79,11 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtWork_Station') {
                 urlString = "/master/y-articles/get-work-stations-by-code-purpose/" + $('#txtWork_Station').val();
             }
-         
+
+            if ($(elementObject).attr("id") == 'txtProductName') {
+                urlString = "/master/get-product-by-product-name/" + $('#txtProductName').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",
@@ -152,7 +155,7 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').find('input[type=hidden]').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
             });
-            
+
             $('.ui-autocomplete').html("");
             return false;
         },
@@ -162,7 +165,7 @@ var InitializeAutoComplete = function (elementObject) {
         },
         close: function (event, ui) {
             $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-           
+
         }
     });
 
@@ -177,7 +180,7 @@ var InitializeAutoComplete = function (elementObject) {
             } else {
 
                 $(this).parents('.form-group').append(htmlText);
-}
+            }
 
             $(this).parents('.form-group').find('input[type=text]').val("");
 
@@ -186,6 +189,7 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('input[type=hidden]').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
+
             });
         }
     });

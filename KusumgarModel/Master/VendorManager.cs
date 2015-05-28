@@ -91,7 +91,6 @@ namespace KusumgarModel
             return vRepo.Check_Existing_Vendor(vendor_Name);
         }
 
-
         public List<ProductCategoryInfo> Get_Product_Category()
         {
             List<ProductCategoryInfo> productCategories = new List<ProductCategoryInfo>();
@@ -102,7 +101,14 @@ namespace KusumgarModel
 
             return productCategories;
         }
-    }
+
+        public int Insert_Attribute_Code(AttributeCodeInfo attributeCode)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            return vRepo.Insert_Attribute_Code(attributeCode);
+        }
+     }
 }
 
     

@@ -7,7 +7,7 @@
     SearchAllConsumable();
 
     $("#btnSearch").click(function () {
-        //SearchConsumable();
+        $('#hdfCurrentPage').val(0);
         SearchAllConsumable();
     });
 

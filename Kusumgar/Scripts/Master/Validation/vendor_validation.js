@@ -1,24 +1,24 @@
 ﻿$(function () {
     $("#frmVendor").validate({
       
-        ignore: [],
-        errorElement: "span",
-        errorClass: "help-block",
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').addClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({ 'color': '#A94442', 'background-color': '#F2DEDE', 'border-color': '#A94442' });
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').removeClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({ 'color': 'black', 'background-color': '#FFF', 'border-color': '#D2D6DE' });
-        },
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length || element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        },
+        //ignore: [],
+        //errorElement: "span",
+        //errorClass: "help-block",
+        //highlight: function (element, errorClass, validClass) {
+        //    $(element).closest('.form-group').addClass('has-error');
+        //    $(element).closest('.form-group').find('.input-group-addon').css({ 'color': '#A94442', 'background-color': '#F2DEDE', 'border-color': '#A94442' });
+        //},
+        //unhighlight: function (element, errorClass, validClass) {
+        //    $(element).closest('.form-group').removeClass('has-error');
+        //    $(element).closest('.form-group').find('.input-group-addon').css({ 'color': 'black', 'background-color': '#FFF', 'border-color': '#D2D6DE' });
+        //},
+        //errorPlacement: function (error, element) {
+        //    if (element.parent('.input-group').length || element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
+        //        error.insertAfter(element.parent());
+        //    } else {
+        //        error.insertAfter(element);
+        //    }
+        //},
         rules: {
             "Vendor.Vendor_Entity.Vendor_Name":
                  {
@@ -61,7 +61,12 @@
                 {
                     number:true
                 },
-        },
+            "Vendor.Vendor_Entity.Product_Category":
+             {
+                 required: true,
+             },
+              
+  },
         messages: {
 
             "Vendor.Vendor_Entity.Vendor_Name":
@@ -91,8 +96,12 @@
             "Vendor.Vendor_Entity.Head_Office_Landline1":
                 {
                     required: "Office landline is required."
-                }
-           
+                },
+             "Vendor.Vendor_Entity.Product_Category":
+              {
+                    required: "Product_Category is required."
+               }
+
         }
     });
 
@@ -138,9 +147,7 @@
                 {
                     required: "Product Type is required."
                 },
-           
-
-        }
+         }
     });
 
 

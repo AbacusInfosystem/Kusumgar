@@ -8,14 +8,13 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class ProductCategoryInfo
+    public class VendorContactCustomFieldsInfo
     {
-        public M_Product_Category Product_Category_Entity { get; set; }
-
-        public ProductCategoryInfo()
+       public VendorContactCustomFieldsInfo()
         {
-            Product_Category_Entity = new M_Product_Category();
+            Custom_Fields_Entity = new Contact_Custom_Fields();
         }
-public string Product_Category_Name { get; set; }
+
+        public Contact_Custom_Fields Custom_Fields_Entity { get; set; }
     }
 }

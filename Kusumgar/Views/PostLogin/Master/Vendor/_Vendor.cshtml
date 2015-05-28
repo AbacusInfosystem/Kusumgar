@@ -6,13 +6,13 @@
             <input type="hidden" id="hdnVendorId" name="Vendor.Vendor_Entity.Vendor_Id" value="@Model.Vendor.Vendor_Entity.Vendor_Id">
 
             <div class="form-group">
-                <label for="txtVendorName">Vendor Name :</label>
-                <input type="text" id="txtVendorName" class="form-control input-sm" name="Vendor.Vendor_Entity.Vendor_Name" value="@Model.Vendor.Vendor_Entity.Vendor_Name" placeholder="Enter Supplier Name">
+                <label for="txtVendorName" style="color: #333">Vendor Name :</label>
+                <input type="text" id="txtVendorName" class="form-control input-sm" name="Vendor.Vendor_Entity.Vendor_Name" value="@Model.Vendor.Vendor_Entity.Vendor_Name" placeholder="Enter Vendor Name">
                 <input type="hidden" class="form-control input-sm" id="hdnVendorName" value="@Model.Vendor.Vendor_Entity.Vendor_Name">
             </div>
 
             <div class="form-group">
-                <label>Product-Category</label>
+                <label style="color: #333">Product-Category</label>
                 <select class="form-control input-sm" id="drpProductCategory" name="Vendor.Vendor_Entity.Product_Category">
                     <option value="">Select Product-Category</option>
                     @foreach (var item in Model.Product_Category)
@@ -27,31 +27,33 @@
                         }
                     }
                 </select>
-
+               
             </div>
 
+            <div class="form-group">
+                <label for="txtYarnCode" style="color: #333"> Code</label>
+                <input type="text" class="form-control" id="txtYarnCode" name="Vendor.Vendor_Entity.Code" value="@Model.Vendor.Vendor_Entity.Code" placeholder="Enter Yarn Code">
+            </div>
 
             <div class="form-group">
                 <label for="txtEmailId" style="color: #333">Email Id</label>
-
-                <div class="input-group">
+                  <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                     <input type="text" class="form-control input-sm" id="txtEmailId" name="Vendor.Vendor_Entity.Email" value="@Model.Vendor.Vendor_Entity.Email" placeholder="Enter email">
                 </div>
             </div>
 
-
-        </div>
+         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 <div class="form-group">
-                    <label for="txtHeadOfficeAddress">Head Office Address :</label>
+                    <label for="txtHeadOfficeAddress" style="color: #333">Head Office Address :</label>
                     <textarea id="txtHeadOfficeAddress" class="form-control input-sm" name="Vendor.Vendor_Entity.HeadOfficeAddress" placeholder="Enter Head Office Address">@Model.Vendor.Vendor_Entity.HeadOfficeAddress</textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="drpHeadOfficeNation">Head Office Nation : </label>
+                <label for="drpHeadOfficeNation" style="color: #333">Head Office Nation : </label>
                 <select id="drpHeadOfficeNation" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Nation">
                     <option value="">- Select Nation -</option>
                     @foreach (var item in Model.Nations)
@@ -70,7 +72,7 @@
 
 
             <div class="form-group">
-                <label for="drpHeadOfficeState">Head Office State : </label>
+                <label for="drpHeadOfficeState" style="color: #333">Head Office State : </label>
                 <select id="drpHeadOfficeState" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_State">
                     <option value="">- Select State-</option>
                     @foreach (var item in Model.States)
@@ -133,7 +135,6 @@
 
 
     </div>
-
 
     <div class="box-footer">
         <button type="button" id="btnSave" class="btn btn-success">Save Primary</button>

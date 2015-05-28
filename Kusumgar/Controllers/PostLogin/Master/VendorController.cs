@@ -36,7 +36,6 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             pager.IsPagingRequired = false;
 
-
             vViewModel.Product_Category = _vendorMan.Get_Product_Category();
 
             vViewModel.Nations = _nationMan.Get_Nations(ref pager);
@@ -60,14 +59,25 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert_Vendor(VendorViewModel vViewModel)
         {
             try
-            {
+            {   
                 vViewModel.Vendor.Vendor_Entity.CreatedBy = 1;
 
                 vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
 
+                vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
+
                 vViewModel.Vendor.Vendor_Entity.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
 
-                vViewModel.Friendly_Message.Add(MessageStore.Get("V011"));
+                vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
+
+                if (vViewModel.Vendor.Product_Category_Entity.Product_Category_Name == "YarnCategory")
+                {
+                    vViewModel.Attribute_Code.AttributeCodeEntity.Status = true;
+
+                    vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Id = _vendorMan.Insert_Attribute_Code(vViewModel.Attribute_Code);
+                }
+              
+               vViewModel.Friendly_Message.Add(MessageStore.Get("V011"));
             }
             catch (Exception ex)
             {
@@ -104,9 +114,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
+                //vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
 
-                vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+                //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
 
                 vViewModel.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id= _vendorMan.Insert_Product_Services(vViewModel.Product_Vendor);
 
@@ -148,7 +158,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+                //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
 
                 _vendorMan.Update_Product_Services(vViewModel.Product_Vendor);
 
@@ -188,7 +198,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Get_Vendors(VendorViewModel vViewModel)
         {
             PaginationInfo pager = new PaginationInfo();
-
+           
             try
             {
                 pager = vViewModel.Pager;

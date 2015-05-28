@@ -197,6 +197,15 @@ namespace KusumgarBusinessEntities.Common
         Get_Vendor_By_Name_Sp,
         Update_Consumable_Vendors_Sp,
 
+        //VendorContact
+        //Insert_Contact_sp,
+        //Get_Vendor_By_Name_Sp,
+        Get_Vendor_Contact_sp,
+        Get_Vendor_Contact_By_Id_sp,
+        Get_Vendor_Contacts_By_Vendor_Name_sp,
+        Delete_Vendor_Contact_Custom_Field_By_Id,
+
+
         //Industrial
         Insert_Industrial_Master_Sp,
         Update_Industrial_Master_Sp,
@@ -207,7 +216,6 @@ namespace KusumgarBusinessEntities.Common
         Insert_Industrial_Vendor_Sp,
         Delete_Industrial_Vendor_By_Id_Sp,
         Get_Industrial_Vendor_List_By_Id_Sp,
-        
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
 
@@ -235,7 +243,20 @@ namespace KusumgarBusinessEntities.Common
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
         Check_Existing_Vendor_Sp,
-        Get_Product_Categories_sp
+        
+        Update_Attribute_Code_Name_sp,
+
+        //Product
+        Insert_Product_Sp,
+        Update_Product_Sp,
+        Get_Products_Sp,
+        Get_Product_By_Id_Sp,
+        Get_Product_Categories_sp,
+        Get_Product_SubCategory_By_CategoryId_Sp,
+        Get_Products_By_Product_Name_Sp,
+        Insert_Product_Vendor_Sp,
+        Delete_Product_Vendor_By_Id_Sp,
+        Get_Product_Vendors_By_Id_Sp,
     }
 
     public enum GenderType
@@ -268,8 +289,8 @@ namespace KusumgarBusinessEntities.Common
     public enum CurrencyType
     {
         Rupees = 1,
-        Dollars = 2, 
-       Euros = 3,
+        Dollars = 2,
+        Euros = 3,
         Pounds = 4,
     }
     public enum PriorityOrder
@@ -278,7 +299,7 @@ namespace KusumgarBusinessEntities.Common
         Secondary = 2,
         Last_Option = 3,
     }
-     
+
 
     public enum PaymentTerms
     {
@@ -309,7 +330,7 @@ namespace KusumgarBusinessEntities.Common
           ProductType=1,
           Service=2
       }
-
+   
       
     public enum ShipmentMethod
     {

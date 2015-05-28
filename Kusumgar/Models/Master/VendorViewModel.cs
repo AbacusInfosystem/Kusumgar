@@ -34,6 +34,10 @@ namespace Kusumgar.Models
 
             Is_Primary = false;
 
+            Attribute_Code = new AttributeCodeInfo();
+
+            Product_Category_Info = new ProductCategoryInfo();
+
         }
 
          public bool Is_Primary { get; set; }
@@ -57,6 +61,11 @@ namespace Kusumgar.Models
         public Vendor_Filter Filter { get; set; }
 
         public List<ProductCategoryInfo> Product_Category { get; set; }
+
+        public AttributeCodeInfo Attribute_Code { get; set; }
+
+        public ProductCategoryInfo Product_Category_Info { get; set; }
+       
     
     public class Vendor_Filter
     {

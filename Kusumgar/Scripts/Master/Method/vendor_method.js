@@ -1,6 +1,6 @@
 ﻿function Save_Vendors_Details() {
     var vViewModel = Set_Vendor();
-   
+
     if ($("#hdnVendorId").val() == 0) {
       
         CallAjax("/master/insert-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Data_Callback, "", null);
@@ -36,43 +36,58 @@ function Set_Vendor() {
 
                             Vendor_Name : $("#txtVendorName").val(),
 
-                                Email   :  $("#txtEmailId ").val(),
+                            Email   :  $("#txtEmailId ").val(),
                           
-                                HeadOfficeAddress:    $("#txtHeadOfficeAddress").val(),
+                            HeadOfficeAddress:    $("#txtHeadOfficeAddress").val(),
                                  
-                                Head_Office_State: $("#drpHeadOfficeState").val(),
-                                Head_Office_ZipCode: $("#txtHeadOfficeZipCode").val(),
-                                Head_Office_Nation: $("#drpHeadOfficeNation").val(),
-                                Head_Office_Landline1: $("#txtHeadOfficeLandline1").val(),
-                                Head_Office_Landline2: $("#txtHeadOfficeLandline2").val(),
-                                Head_Office_FaxNo: $("#txtHeadOfficeFaxNo").val(),
-                                Performance_Certification: $("#txtPerformanceCertification").val(),
-                                Performance_Certification_Year: $("#drpPerformanceCertificationYear").val(),
-                                Performance_Certification_Category: $("#txtPerformanceCertificationCategory").val(),
-                                Quality_Certification: $("#txtQualityCertification").val(),
-                                Quality_Certification_Year:$("#drpQualityCertificationYear").val(),
-                                Quality_Certification_Category: $("#txtQualityCertificationCategory").val(),
-                                Central_Excise_Registration_Details: $("#txtCentralExciseRegistrationDetails").val(),
-                                Registration_No: $("#txtRegistrationNo").val(),
-                                Range: $("#txtRange").val(),
-                                Division: $("#txtDivision").val(),
-                                PAN: $("#txtPAN").val(),
-                                TAN: $("#txtTAN").val(),
-                                Tax_Excemption_Code: $("#txtTaxExcemptionCode").val(),
-                                Currency_Code: $("#drpCurrencyCode").val(),
-                                VAT_Type: $("#txtVatType").val(),
-                                PaymentTerms: $("#drpPaymentTerm").val(),
-                                Remark_about_Supplier: $("#txtRemarkaboutSupplier").val(),
-                                Block_Payment: $("#hdnBlockPayment").val(),
-                                Shipment_Methods: $("#drpSupplierMethod").val(),
-                                Flagged_Supplier: $("#txtSupplierName").val(),
-                                Is_Approved_By_Director: $("#hdnApprovedByDirector").val(),
-                                Delivary_Term_Code: $("#txtDelivaryTermCode").val(),
-                                Is_Active: $("#hdnStatus").val(),
-                                Product_Category: $("#drpProductCategory").val()
+                            Head_Office_State: $("#drpHeadOfficeState").val(),
+                            Head_Office_ZipCode: $("#txtHeadOfficeZipCode").val(),
+                            Head_Office_Nation: $("#drpHeadOfficeNation").val(),
+                            Head_Office_Landline1: $("#txtHeadOfficeLandline1").val(),
+                            Head_Office_Landline2: $("#txtHeadOfficeLandline2").val(),
+                            Head_Office_FaxNo: $("#txtHeadOfficeFaxNo").val(),
+                            Performance_Certification: $("#txtPerformanceCertification").val(),
+                            Performance_Certification_Year: $("#drpPerformanceCertificationYear").val(),
+                            Performance_Certification_Category: $("#txtPerformanceCertificationCategory").val(),
+                            Quality_Certification: $("#txtQualityCertification").val(),
+                            Quality_Certification_Year:$("#drpQualityCertificationYear").val(),
+                            Quality_Certification_Category: $("#txtQualityCertificationCategory").val(),
+                            Central_Excise_Registration_Details: $("#txtCentralExciseRegistrationDetails").val(),
+                            Registration_No: $("#txtRegistrationNo").val(),
+                            Range: $("#txtRange").val(),
+                            Division: $("#txtDivision").val(),
+                            PAN: $("#txtPAN").val(),
+                            TAN: $("#txtTAN").val(),
+                            Tax_Excemption_Code: $("#txtTaxExcemptionCode").val(),
+                            Currency_Code: $("#drpCurrencyCode").val(),
+                            VAT_Type: $("#txtVatType").val(),
+                            PaymentTerms: $("#drpPaymentTerm").val(),
+                            Remark_about_Supplier: $("#txtRemarkaboutSupplier").val(),
+                            Block_Payment: $("#hdnBlockPayment").val(),
+                            Shipment_Methods: $("#drpSupplierMethod").val(),
+                            Flagged_Supplier: $("#txtSupplierName").val(),
+                            Is_Approved_By_Director: $("#hdnApprovedByDirector").val(),
+                            Delivary_Term_Code: $("#txtDelivaryTermCode").val(),
+                            Is_Active: $("#hdnStatus").val(),
+                            Product_Category: $("#drpProductCategory").val(),
+                            Code: $("#txtYarnCode").val(),
+                           
+                        },
+                   
+                    Product_Category_Entity: {
+                          Product_Category_Name: $("#drpProductCategory option:selected").text()
                         }
-                }
-        }
+                },
+        
+        Attribute_Code:
+            {
+                AttributeCodeEntity:
+                    {
+                        Name: $("#txtVendorName").val(),
+                        Code: $("#txtYarnCode").val()
+                    }
+            }
+    }
 
     return vViewModel;
 }

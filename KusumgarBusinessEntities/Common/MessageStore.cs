@@ -192,6 +192,41 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
+                #region VendorContact
+
+                FriendlyMessageInfo VC001 = new FriendlyMessageInfo("VC001", MessageType.Success, "Vendor Contact has been added successfully.");
+                hash.Add("VC001", VC001);
+
+                FriendlyMessageInfo VC002 = new FriendlyMessageInfo("VC002", MessageType.Success, "Vendor Custom Field has been added successfully.");
+                hash.Add("VC002", VC002);
+
+                FriendlyMessageInfo VC003 = new FriendlyMessageInfo("VC003", MessageType.Success, "Vendor Contact has been updated successfully.");
+                hash.Add("VC003", VC003);
+
+                FriendlyMessageInfo VC004 = new FriendlyMessageInfo("VC004", MessageType.Success, "Vendor Custom Field has been updated successfully.");
+                hash.Add("VC004", VC004);
+
+                FriendlyMessageInfo VC005 = new FriendlyMessageInfo("VC005", MessageType.Success, "Vendor Contact Deleted successfully.");
+                hash.Add("VC005", VC005);
+
+                #endregion
+
+                #region Product
+
+                FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Product has been added successfully.");
+                hash.Add("P001", P001);
+
+                FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Product has been updated successfully.");
+                hash.Add("P002", P002);
+
+                FriendlyMessageInfo P003 = new FriendlyMessageInfo("P003", MessageType.Success, "Product Vendor has been added successfully.");
+                hash.Add("P003", P003);
+
+                FriendlyMessageInfo P004 = new FriendlyMessageInfo("P004", MessageType.Success, "Product Vendor has been deleted successfully.");
+                hash.Add("P004", P004);
+
+                #endregion
+
             #endregion
 
             #region CRM
