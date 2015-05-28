@@ -68,6 +68,7 @@
     <Compile Include="Master\TestRepo.cs" />
     <Compile Include="Master\TestUnitRepo.cs" />
     <Compile Include="Master\UserRepo.cs" />
+    <Compile Include="Master\VendorContactRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CommonMethods.cs" />
     <Compile Include="Utilities\Encrypter.cs" />

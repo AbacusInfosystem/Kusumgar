@@ -813,6 +813,58 @@ namespace Kusumgar
 
             #endregion
 
+            #region VendorContact
+
+            routes.MapRoute(
+            name: "VendorContact-1",
+            url: "master/vendor-contact-insert",
+            defaults: new { controller = "VendorContact", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "VendorContact-2",
+            url: "master/vendors-list/{vendor_Name}",
+            defaults: new { controller = "VendorContact", action = "Get_Vendor_AutoComplete", vendor_Name = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "VendorContact-3",
+            url: "master/vendor-contact-search",
+            defaults: new { controller = "VendorContact", action = "Get_Vendor_Contacts", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "VendorContact-4",
+           url: "master/get-vendor-contact-by-id",
+           defaults: new { controller = "VendorContact", action = "Get_Vendor_Contact_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "VendorContact-5",
+            url: "master/vendor-contact-update",
+            defaults: new { controller = "VendorContact", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "VendorContact-6",
+            url: "master/vendor-contact-custom-field-insert",
+            defaults: new { controller = "VendorContact", action = "Insert_Vendor_Contact_Custom_Field", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "VendorContact-7",
+            url: "master/vendor-contact-custom-field-update",
+            defaults: new { controller = "VendorContact", action = "Update_Vendor_Contact_Custom_Field", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "VendorContact-8",
+            url: "master/delete-vendor-contact-custom-field",
+            defaults: new { controller = "VendorContact", action = "Delete_Vendor_Contact_Custom_Field", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
             #endregion
 
             #region Sales

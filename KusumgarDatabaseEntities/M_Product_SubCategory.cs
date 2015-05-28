@@ -12,18 +12,14 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Product_Vendors
+    public partial class M_Product_SubCategory
     {
-        public int Product_Vendor_Id { get; set; }
-        public int Vendor_Id { get; set; }
-        public int Product_Type { get; set; }
-        public string Name { get; set; }
-        public bool Original_Manufacturer { get; set; }
+        public int Product_SubCategory_Id { get; set; }
+        public string Product_SubCategory_Name { get; set; }
+        public int Product_Category_Id { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
         public int UpdatedBy { get; set; }
-        public string Inspection_Facility { get; set; }
-        public string Testing_Facility { get; set; }
     }
 }

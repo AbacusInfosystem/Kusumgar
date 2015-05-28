@@ -285,6 +285,7 @@
     <Compile Include="Models\Master\TestUnitViewModel.cs" />
     <Compile Include="Models\Master\TestViewModel.cs" />
     <Compile Include="Models\Master\UserViewModel.cs" />
+    <Compile Include="Models\Master\VendorContactViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -981,6 +982,8 @@
     <Content Include="Scripts\Master\Event\test_search_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_search_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_contact_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_contact_listing_event.js" />
     <Content Include="Scripts\Master\Method\attribute_code_method.js" />
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
     <Content Include="Scripts\Master\Method\consumable_method.js" />
@@ -995,6 +998,8 @@
     <Content Include="Scripts\Master\Method\test_search_method.js" />
     <Content Include="Scripts\Master\Method\test_unit_method.js" />
     <Content Include="Scripts\Master\Method\test_unit_search_method.js" />
+    <Content Include="Scripts\Master\Method\vendor_contact_listing_method.js" />
+    <Content Include="Scripts\Master\Method\vendor_contact_method.js" />
     <Content Include="Scripts\Master\role_event.js" />
     <Content Include="Scripts\Master\role_method.js" />
     <Content Include="Scripts\Master\role_search_event.js" />
@@ -1012,6 +1017,7 @@
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
+    <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />

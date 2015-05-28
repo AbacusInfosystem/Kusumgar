@@ -197,6 +197,14 @@ namespace KusumgarBusinessEntities.Common
         Get_Vendor_By_Name_Sp,
         Update_Consumable_Vendors_Sp,
 
+        //VendorContact
+        //Insert_Contact_sp,
+        //Get_Vendor_By_Name_Sp,
+        Get_Vendor_Contact_sp,
+        Get_Vendor_Contact_By_Id_sp,
+        Get_Vendor_Contacts_By_Vendor_Name_sp,
+        Delete_Vendor_Contact_Custom_Field_By_Id,
+
     }
 
     public enum GenderType

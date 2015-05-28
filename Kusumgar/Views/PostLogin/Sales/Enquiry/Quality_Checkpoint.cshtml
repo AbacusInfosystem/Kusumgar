@@ -296,32 +296,32 @@
                         @*@{Html.RenderPartial("_WArticle");}*@
                         @*@{Html.RenderPartial("_GArticle");}*@
                         @*@{Html.RenderPartial("_PArticle");}*@
-                        @{Html.RenderPartial("_CArticle");}
-                    </div>
+                        @*@{Html.RenderPartial("_CArticle");}*@
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        $("#divQualityOperation").hide();
+            $("#divQualityOperation").hide();
 
-        $("#btnApprove").click(function () {
+            $("#btnApprove").click(function () {
 
-            $("#divQualityOperation").slideDown(1000);
+                $("#divQualityOperation").slideDown(1000);
+            });
+
+            $("#btnDisapprove").click(function () {
+
+                $("#divQualityOperation").slideUp(1000);
+            });
+
         });
-
-        $("#btnDisapprove").click(function () {
-
-            $("#divQualityOperation").slideUp(1000);
-        });
-
-    });
-</script>
+    </script>

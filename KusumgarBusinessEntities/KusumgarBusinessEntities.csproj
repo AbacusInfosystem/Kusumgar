@@ -71,6 +71,8 @@
     <Compile Include="Master\TestUnitInfo.cs" />
     <Compile Include="Master\UserInfo.cs" />
     <Compile Include="Master\UserRoleInfo.cs" />
+    <Compile Include="Master\VendorContactCustomFieldsInfo.cs" />
+    <Compile Include="Master\VendorContactInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

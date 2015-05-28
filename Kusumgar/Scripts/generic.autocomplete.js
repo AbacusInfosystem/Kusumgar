@@ -1,5 +1,4 @@
 ﻿
-//var InitializeAutoComplete = function (elementObject, callBack) {
 var InitializeAutoComplete = function (elementObject) {
 
    
@@ -15,7 +14,11 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtSupplierName') {
                 urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
             }
-         
+
+            if ($(elementObject).attr("id") == 'txtVendor_Name') {
+                urlString = "/master/vendors-list/" + $('#txtVendor_Name').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",
