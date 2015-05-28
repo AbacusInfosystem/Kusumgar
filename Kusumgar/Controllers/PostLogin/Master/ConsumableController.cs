@@ -116,7 +116,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CV011"));
 
-                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Entity.Consumable_Id));
+                //cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Entity.Consumable_Id));
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(cViewModel.Consumable.Consumable_Entity.Consumable_Id);
 
             }
             catch (Exception ex)
@@ -129,13 +130,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Delete_Vendor_By_Id(int consumable_Vendor_Id)
         {
-            List<FriendlyMessageInfo> friendly_Message = new List<FriendlyMessageInfo>();
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
 
             try
             {
                 _consumableMan.Delete_Vendor_By_Id(consumable_Vendor_Id);
 
-                friendly_Message.Add(MessageStore.Get("CV012"));
+                Friendly_Message.Add(MessageStore.Get("CV012"));
 
             }
             catch (Exception ex)
@@ -143,7 +144,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
                 throw ex;
             }
 
-            return Json(new { friendly_Message }, JsonRequestBehavior.AllowGet);
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Get_Consumable_By_Id(ConsumableViewModel cViewModel)

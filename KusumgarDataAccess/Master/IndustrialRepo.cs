@@ -17,100 +17,110 @@ namespace KusumgarDataAccess
     public class IndustrialRepo
     {
         private string _sqlCon = string.Empty;
-        SQLHelperRepo sqlRepo;
+        SQLHelperRepo _sqlRepo;
         public SQLHelperRepo _sqlHelper { get; set; }
 
         public IndustrialRepo()
         {
             _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
-            sqlRepo = new SQLHelperRepo();
+            _sqlRepo = new SQLHelperRepo();
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public void Insert_Industrial_Master(IndustrialInfo industrialInfo)
+        public int Insert_Industrial(IndustrialInfo industrialInfo)
         {
-            int IndustrialMasterId = 0;
-            IndustrialMasterId = Convert.ToInt32(sqlRepo.ExecuteScalerObj(Set_Values_In_Industrial(industrialInfo), "", CommandType.StoredProcedure));
+            int industrial_Master_Id = 0;
+            industrial_Master_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Industrial(industrialInfo), StoredProcedures.Insert_Industrial_Master_Sp.ToString(), CommandType.StoredProcedure));
+            return industrial_Master_Id;
         }
 
-        public void Update_Industrial_Master(IndustrialInfo industrialInfo)
+        public void Update_Industrial(IndustrialInfo industrialInfo)
         {
-            sqlRepo.ExecuteNonQuery(Set_Values_In_Industrial(industrialInfo), "", CommandType.StoredProcedure);
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Industrial(industrialInfo), StoredProcedures.Update_Industrial_Master_Sp.ToString(), CommandType.StoredProcedure);
         }
 
         private List<SqlParameter> Set_Values_In_Industrial(IndustrialInfo industrialInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if (industrialInfo.IndustrialEntity.IndustrialMasterId != 0)
+            if (industrialInfo.Industrial_Entity.Industrial_Master_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@IndustrialMasterId", industrialInfo.IndustrialEntity.IndustrialMasterId));
+                sqlParamList.Add(new SqlParameter("@Industrial_Master_Id", industrialInfo.Industrial_Entity.Industrial_Master_Id));
             }
-            sqlParamList.Add(new SqlParameter("@IndustrialCategoryId", industrialInfo.IndustrialEntity.IndustrialCategoryId));
-            sqlParamList.Add(new SqlParameter("@IndustrialGroupId", industrialInfo.IndustrialEntity.IndustrialGroupId));
-            sqlParamList.Add(new SqlParameter("@IndustrialSubGroupName", industrialInfo.IndustrialEntity.IndustrialSubGrpName));
-            sqlParamList.Add(new SqlParameter("@Size", industrialInfo.IndustrialEntity.Size));
-            sqlParamList.Add(new SqlParameter("@COD", industrialInfo.IndustrialEntity.COD));
-            if (industrialInfo.IndustrialEntity.IndustrialMasterId == 0)
+            sqlParamList.Add(new SqlParameter("@Industrial_Category_Id", industrialInfo.Industrial_Entity.Industrial_Category_Id));
+            sqlParamList.Add(new SqlParameter("@Industrial_Group_Id", industrialInfo.Industrial_Entity.Industrial_Group_Id));
+            sqlParamList.Add(new SqlParameter("@Industrial_SubGroup_Name", industrialInfo.Industrial_Entity.Industrial_SubGrp_Name));
+            sqlParamList.Add(new SqlParameter("@Size", industrialInfo.Industrial_Entity.Size));
+            sqlParamList.Add(new SqlParameter("@COD", industrialInfo.Industrial_Entity.COD));
+            if (industrialInfo.Industrial_Entity.Industrial_Master_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialInfo.IndustrialEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialInfo.Industrial_Entity.CreatedBy));
             }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialInfo.IndustrialEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialInfo.Industrial_Entity.UpdatedBy));
             return sqlParamList;
         }
 
-        public List<IndustrialInfo> GetIndustrialMaster(PaginationInfo Pager)
+        public List<IndustrialInfo> Get_Industrials(ref PaginationInfo pager)
         {
-            List<IndustrialInfo> IndustrialMasterList = new List<IndustrialInfo>();
-            DataTable dt = sqlRepo.ExecuteDataTable(null, "", CommandType.StoredProcedure);
-            var tupleData = GetRows(dt, Pager);
+            List<IndustrialInfo> industrials = new List<IndustrialInfo>();
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Industrial_Master_List_Sp.ToString(), CommandType.StoredProcedure);
+            //var tupleData = CommonMethods.GetRows(dt, ref pager);
 
-            foreach (DataRow dr in tupleData.Item1)            
-            {
-                IndustrialInfo industrial = new IndustrialInfo();
-                industrial.IndustrialEntity.IndustrialMasterId =  Convert.ToInt32(dr["IndustrialMasterId"]);
-                industrial.IndustrialCategoryName = Convert.ToString(dr["IndustrialCategoryName"]);
-                industrial.IndustrialGroupName = Convert.ToString(dr["IndustrialGroupName"]);
-                industrial.IndustrialEntity.IndustrialSubGrpName = Convert.ToString(dr["IndustrialSubGrpName"]);
-                industrial.IndustrialEntity.Size = Convert.ToString(dr["Size"]);
-                industrial.IndustrialEntity.COD = Convert.ToString(dr["COD"]);
-                IndustrialMasterList.Add(industrial);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))            
+            {                
+                industrials.Add(Get_Industrial_Values(dr));
             }
-            return IndustrialMasterList;
+            return industrials;
         }
-
-        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
+        
+        public List<IndustrialInfo> Get_Industrials_By_Industrial_Category_Name(int industrial_Category_Id, ref PaginationInfo pager)
         {
-            List<DataRow> drList = new List<DataRow>();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int count = 0;
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-                }
-
-                pager.TotalRecords = count;
-
-                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-                pager.TotalPages = pages;
-            }
-
-            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
-        }
-
-        public IndustrialInfo GetIndustrialMasterById(int IndustrialMasterId)
-        {
-            IndustrialInfo IndustrialInfo = new IndustrialInfo();
+            List<IndustrialInfo> industrials = new List<IndustrialInfo>();
             List<SqlParameter> sqlParams = new List<SqlParameter>();
-            sqlParams.Add(new SqlParameter("@IndustrialMasterId", IndustrialMasterId));
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, "", CommandType.StoredProcedure);
+            sqlParams.Add(new SqlParameter("@Industrial_Category_Id", industrial_Category_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Masters_By_Category_Name_Sp.ToString(), CommandType.StoredProcedure);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt,ref pager))
+            {                
+                industrials.Add(Get_Industrial_Values(dr));
+            }
+            return industrials;
+        }
+
+        public List<IndustrialInfo> Get_Industrials_By_Industrial_Category_Id_Group_Name(int industrial_Category_Id, int industrial_Group_Id, ref PaginationInfo pager)
+        {
+            List<IndustrialInfo> industrials = new List<IndustrialInfo>();
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Industrial_Category_Id", industrial_Category_Id));
+            sqlParams.Add(new SqlParameter("@Industrial_Group_Id", industrial_Group_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Masters_By_Category_Group_Name_Sp.ToString(), CommandType.StoredProcedure);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt,ref pager))
+            {                
+                industrials.Add(Get_Industrial_Values(dr));
+            }
+            return industrials;
+        }
+
+        private IndustrialInfo Get_Industrial_Values(DataRow dr)
+        {
+            IndustrialInfo industrial = new IndustrialInfo();
+            industrial.Industrial_Entity.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
+            industrial.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
+            industrial.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
+            industrial.Industrial_Entity.Industrial_SubGrp_Name = Convert.ToString(dr["Industrial_SubGrp_Name"]);
+            industrial.Industrial_Entity.Size = Convert.ToString(dr["Size"]);
+            industrial.Industrial_Entity.COD = Convert.ToString(dr["COD"]);
+            return industrial;
+        }
+
+        public IndustrialInfo Get_Industrial_Master_By_Id(int industrial_Master_Id)
+        {
+            IndustrialInfo industrial = new IndustrialInfo();
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Industrial_Master_Id", industrial_Master_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Master_By_Id_Sp.ToString(), CommandType.StoredProcedure);
             if (dt != null && dt.Rows.Count > 0)
             {
                 int count = 0;
@@ -122,17 +132,138 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    IndustrialInfo.IndustrialEntity.IndustrialMasterId = Convert.ToInt32(dr["IndustrialMasterId"]);
-                    IndustrialInfo.IndustrialEntity.IndustrialCategoryId = Convert.ToInt32(dr["IndustrialCategoryId"]);
-                    IndustrialInfo.IndustrialEntity.IndustrialGroupId = Convert.ToInt32(dr["IndustrialGroupId"]);
-                    IndustrialInfo.IndustrialCategoryName = Convert.ToString(dr["IndustrialCategoryName"]);
-                    IndustrialInfo.IndustrialGroupName = Convert.ToString(dr["IndustrialGroupName"]);
-                    IndustrialInfo.IndustrialEntity.IndustrialSubGrpName = Convert.ToString(dr["IndustrialSubGrpName"]);
-                    IndustrialInfo.IndustrialEntity.Size = Convert.ToString(dr["Size"]);
-                    IndustrialInfo.IndustrialEntity.COD = Convert.ToString(dr["COD"]);
+                    industrial = Get_Industrial_Values_By_Id(dr);
                 }
             }
-            return IndustrialInfo;
+            return industrial;
+        }
+
+        private IndustrialInfo Get_Industrial_Values_By_Id(DataRow dr)
+        {
+            IndustrialInfo industrial = new IndustrialInfo();
+            industrial.Industrial_Entity.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
+            industrial.Industrial_Entity.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
+            industrial.Industrial_Entity.Industrial_Group_Id = Convert.ToInt32(dr["Industrial_Group_Id"]);
+            industrial.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
+            industrial.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
+            industrial.Industrial_Entity.Industrial_SubGrp_Name = Convert.ToString(dr["Industrial_SubGrp_Name"]);
+            industrial.Industrial_Entity.Size = Convert.ToString(dr["Size"]);
+            industrial.Industrial_Entity.COD = Convert.ToString(dr["COD"]);
+            return industrial;
+        }
+
+        public List<IndustrialCategoryInfo> Get_Industrial_Categories(ref PaginationInfo pager)
+        {
+            List<IndustrialCategoryInfo> industrial_Categories = new List<IndustrialCategoryInfo>();
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Industrial_Category_Sp.ToString(), CommandType.StoredProcedure);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                industrial_Categories.Add(Get_Industrial_Category_Values(dr));
+            }
+            return industrial_Categories;
+        }
+
+        private IndustrialCategoryInfo Get_Industrial_Category_Values(DataRow dr)
+        {
+            IndustrialCategoryInfo industrial_category = new IndustrialCategoryInfo();
+            industrial_category.Industrial_Category_Entity.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
+            industrial_category.Industrial_Category_Entity.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
+            industrial_category.Industrial_Category_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            industrial_category.Industrial_Category_Entity.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
+            industrial_category.Industrial_Category_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            industrial_category.Industrial_Category_Entity.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
+            return industrial_category;
+        }
+
+        public List<IndustrialGroupInfo> Get_Industrial_Groups(int industrial_Category_Id, ref PaginationInfo pager)
+        {
+            List<IndustrialGroupInfo> industrial_Groups = new List<IndustrialGroupInfo>();
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Industrial_Category_Id", industrial_Category_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Group_By_CategoryId_Sp.ToString(), CommandType.StoredProcedure);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                industrial_Groups.Add(Get_Industrial_Group_Values(dr));
+            }
+            return industrial_Groups;
+        }
+
+        private IndustrialGroupInfo Get_Industrial_Group_Values(DataRow dr)
+        {
+            IndustrialGroupInfo industrial_group = new IndustrialGroupInfo();
+            industrial_group.Industrial_Group_Entity.Industrial_Group_Id = Convert.ToInt32(dr["Industrial_Group_Id"]);
+            industrial_group.Industrial_Group_Entity.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
+            industrial_group.Industrial_Group_Entity.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
+            industrial_group.Industrial_Group_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            industrial_group.Industrial_Group_Entity.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
+            industrial_group.Industrial_Group_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            industrial_group.Industrial_Group_Entity.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
+            return industrial_group;
+        }
+
+        public int Insert_Industrial_Vendor(IndustrialVendorInfo industrialVendorInfo)
+        {
+            int industrial_Vendor_Id = 0;
+            industrial_Vendor_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Industrial_Vendor(industrialVendorInfo), StoredProcedures.Insert_Industrial_Vendor_Sp.ToString(), CommandType.StoredProcedure));
+            return industrial_Vendor_Id;
+        }
+
+        public void Update_Industrial_Vendor(IndustrialVendorInfo industrialVendorInfo)
+        {
+
+        }
+
+        public void Delete_Industrial_Vendor_By_Id(int industrial_Vendor_Id)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Industrial_Vendor_Id", industrial_Vendor_Id));
+            _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Industrial_Vendor_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        private List<SqlParameter> Set_Values_In_Industrial_Vendor(IndustrialVendorInfo industrialVendorInfo)
+        {
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+            if(industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Vendor_Id != 0)
+            {
+                sqlParamList.Add(new SqlParameter("@Industrial_Vendor_Id", industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Vendor_Id));
+            }
+            sqlParamList.Add(new SqlParameter("@Industrial_Master_Id", industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Master_Id));
+            sqlParamList.Add(new SqlParameter("@Vendor_Id", industrialVendorInfo.Industrial_Vendor_Entity.Vendor_Id));
+            sqlParamList.Add(new SqlParameter("@Priority_Order", industrialVendorInfo.Industrial_Vendor_Entity.Priority_Order));
+            if (industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Vendor_Id == 0)
+            {
+                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialVendorInfo.Industrial_Vendor_Entity.CreatedBy));
+            }
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialVendorInfo.Industrial_Vendor_Entity.UpdatedBy));
+            return sqlParamList;
+        }
+
+        public List<IndustrialVendorInfo> Get_Industrial_Vendors_By_Id(int industrial_Master_Id, ref PaginationInfo pager)
+        {
+            List<IndustrialVendorInfo> industrial_Vendors = new List<IndustrialVendorInfo>();            
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Industrial_Master_Id", industrial_Master_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Industrial_Vendor_List_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+            //var tupleData = CommonMethods.GetRows(dt, pager);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {                                
+                industrial_Vendors.Add(Get_Industrial_Vendor_Values(dr));
+            }
+            return industrial_Vendors;
+        }
+
+        private IndustrialVendorInfo Get_Industrial_Vendor_Values(DataRow dr)
+        {
+            IndustrialVendorInfo industrial_vendor = new IndustrialVendorInfo();
+            industrial_vendor.Industrial_Vendor_Entity.Industrial_Vendor_Id = Convert.ToInt32(dr["Industrial_Vendor_Id"]);
+            industrial_vendor.Industrial_Vendor_Entity.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
+            industrial_vendor.Industrial_Vendor_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+            industrial_vendor.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
+            industrial_vendor.Industrial_Vendor_Entity.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
+            return industrial_vendor;
         }
     }
 }

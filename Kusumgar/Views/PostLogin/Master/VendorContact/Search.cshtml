@@ -1,0 +1,99 @@
+﻿@model Kusumgar.Models.VendorContactViewModel
+@using KusumgarBusinessEntities.Common
+
+
+<script src="~/Scripts/Master/Event/vendor_contact_listing_event.js"></script>
+<script src="~/Scripts/Master/Method/vendor_contact_listing_method.js"></script>
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Vendor Contact
+            <small>Search</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">VendorContact search</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <!-- Customer Search -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+              
+                    <div class="tab-content">
+                        <form id="frmSearch_Contact">
+                                <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                                <input type="hidden" id="hdfContact_Id" name="Vendor_Contact.Contact_Entity.Contact_Id">
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="txtCustomerName">Vendor name</label>
+                                            <div class="auto-complete">
+                                                <input type="text" class="form-control input-sm" id="txtVendor_Name" placeholder="Enter vendor name" name="Filter.Vendor_Name" value="@Model.Filter.Vendor_Name">
+                                                <input type="hidden" id="hdnVendor_Id" value="@Model.Filter.Vendor_Id" name="Filter.Vendor_Id">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="btn-group pull-left">
+                                                <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>                                      
+                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","VendorContact")" role="button">Create</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="btn-group pull-right">
+                                                <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+            </div>
+        </div>
+        <!-- Customer Search Ends -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-striped" id="tblcontact">
+                            <tr id="subhead">
+                                <th></th>
+                                <th>Vendor name</th>
+                                <th>Contact name</th>
+                                <th>Email  </th>
+                                <th>Office landline 1</th>
+                                <th>Office landline 2</th>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <ul></ul>
+                        </div>
+                        <div id="divSearchGridOverlay" class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (left) -->
+        </div>
+
+    </section>
+
+
+</div>

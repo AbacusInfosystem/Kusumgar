@@ -1,0 +1,145 @@
+﻿<form id="frmVendor">
+
+    <div class="row">
+        <div class="col-md-4">
+
+            <input type="hidden" id="hdnVendorId" name="Vendor.Vendor_Entity.Vendor_Id" value="@Model.Vendor.Vendor_Entity.Vendor_Id">
+
+            <div class="form-group">
+                <label for="txtVendorName">Vendor Name :</label>
+                <input type="text" id="txtVendorName" class="form-control input-sm" name="Vendor.Vendor_Entity.Vendor_Name" value="@Model.Vendor.Vendor_Entity.Vendor_Name" placeholder="Enter Supplier Name">
+                <input type="hidden" class="form-control input-sm" id="hdnVendorName" value="@Model.Vendor.Vendor_Entity.Vendor_Name">
+            </div>
+
+            <div class="form-group">
+                <label>Product-Category</label>
+                <select class="form-control input-sm" id="drpProductCategory" name="Vendor.Vendor_Entity.Product_Category">
+                    <option value="">Select Product-Category</option>
+                    @foreach (var item in Model.Product_Category)
+                    {
+                        if (Model.Vendor.Vendor_Entity.Product_Category == item.Product_Category_Entity.Product_Category_Id)
+                        {
+                            <option value="@item.Product_Category_Entity.Product_Category_Id" selected="selected">@item.Product_Category_Entity.Product_Category_Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Product_Category_Entity.Product_Category_Id">@item.Product_Category_Entity.Product_Category_Name</option>
+                        }
+                    }
+                </select>
+               
+            </div>
+
+            <div class="form-group">
+                <label for="txtYarnCode"> Code</label>
+                <input type="text" class="form-control" id="txtYarnCode" name="Vendor.Vendor_Entity.Code" value="@Model.Vendor.Vendor_Entity.Code" placeholder="Enter Yarn Code">
+            </div>
+
+            <div class="form-group">
+                <label for="txtEmailId" style="color: #333">Email Id</label>
+
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control input-sm" id="txtEmailId" name="Vendor.Vendor_Entity.Email" value="@Model.Vendor.Vendor_Entity.Email" placeholder="Enter email">
+                </div>
+            </div>
+
+         </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="txtHeadOfficeAddress">Head Office Address :</label>
+                    <textarea id="txtHeadOfficeAddress" class="form-control input-sm" name="Vendor.Vendor_Entity.HeadOfficeAddress" placeholder="Enter Head Office Address">@Model.Vendor.Vendor_Entity.HeadOfficeAddress</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="drpHeadOfficeNation">Head Office Nation : </label>
+                <select id="drpHeadOfficeNation" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Nation">
+                    <option value="">- Select Nation -</option>
+                    @foreach (var item in Model.Nations)
+                    {
+                        if (Model.Vendor.Vendor_Entity.Head_Office_Nation == item.Nation_Entity.NationId)
+                        {
+                            <option value="@item.Nation_Entity.NationId" selected="selected">@item.Nation_Entity.NationName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Nation_Entity.NationId">@item.Nation_Entity.NationName</option>
+                        }
+                    }
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="drpHeadOfficeState">Head Office State : </label>
+                <select id="drpHeadOfficeState" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_State">
+                    <option value="">- Select State-</option>
+                    @foreach (var item in Model.States)
+                    {
+                        if (Model.Vendor.Vendor_Entity.Head_Office_State == item.State_Entity.StateId)
+                        {
+                            <option value="@item.State_Entity.StateId" selected="selected">@item.State_Entity.StateName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.State_Entity.StateId">@item.State_Entity.StateName</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtHeadOfficeZipCode" style="color: #333">Zipcode</label>
+
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
+                    <input type="text" class="form-control input-sm" id="txtHeadOfficeZipCode" name="Vendor.Vendor_Entity.Head_Office_ZipCode" value="@Model.Vendor.Vendor_Entity.Head_Office_ZipCode" placeholder="Enter zipcode" maxlength="6">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="color: #333">Landline 1:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" id="txtHeadOfficeLandline1" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Vendor_Entity.Head_Office_Landline1" />
+                </div>
+                <!-- /.input group -->
+            </div>
+            <div class="form-group">
+                <label style="color: #333">Landline 2:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" id="txtHeadOfficeLandline2" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Vendor_Entity.Head_Office_Landline2" />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+                <label style="color: #333">Fax no:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-fax"></i>
+                    </div>
+                    <input type="text" id="txtHeadOfficeFaxNo" class="form-control" name="Vendor.Vendor_Entity.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Vendor_Entity.Head_Office_FaxNo" />
+                </div>
+                <!-- /.input group -->
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="box-footer">
+        <button type="button" id="btnSave" class="btn btn-success">Save Primary</button>
+        <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+    </div>
+
+</form>

@@ -174,5 +174,22 @@ namespace Kusumgar.Controllers
             return Json(check, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Get_Users_By_Name(string name)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            try
+            {
+                autoCompletes = _userMan.Get_Users_By_Name(name);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("User Controller - Check_Existing_User " + ex.ToString());
+            }
+
+
+            return Json(autoCompletes, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

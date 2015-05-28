@@ -1,0 +1,218 @@
+﻿@model Kusumgar.Models.VendorContactViewModel
+@using KusumgarBusinessEntities.Common
+
+
+<script src="~/Scripts/Master/Event/vendor_contact_event.js"></script>
+<script src="~/Scripts/Master/Method/vendor_contact_method.js"></script>
+<script src="~/Scripts/Master/Validation/vendor_contact_validation.js"></script>
+
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <section class="content-header">
+        <h1>
+            Vendor Contact
+            <small>Search</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">VendorContact search</li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+
+                        <li><a href="#tab_1" data-toggle="tab">Vendor's contact</a></li>
+                        <li><a href="#tab_2" data-toggle="tab" id="tabcustom_fields">Custom fields</a></li>
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+                    </ul>
+                    @* hidden Fields *@
+                    <input type="hidden" id="hdnContact_Id" name="Vendor_Contact.Contact_Entity.Contact_Id" value="@Model.Vendor_Contact.Contact_Entity.Contact_Id">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <br />
+                            <form id="frmVendor_Contact">
+
+                                <div class="tab-pane" id="tab_1">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label for="txtVendor_Name">Vendor name</label>
+                                                <div class="auto-complete">
+                                                    <input type="text" class="form-control" id="txtVendor_Name" placeholder="Enter vendor name" name="Vendor_Contact.Vendor_Name" value="@Model.Vendor_Contact.Vendor_Name">
+                                                    <input type="hidden" id="hdnVendor_Id" value="@Model.Vendor_Contact.Contact_Entity.Vendor_Id" name="Vendor_Contact.contact_Entity.Vendor_Id">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="txtContact_Name">Contact name</label>
+                                                <input type="text" class="form-control" id="txtContact_Name" placeholder="Enter contact name" name="Vendor_Contact.Contact_Entity.Contact_Name" value="@Model.Vendor_Contact.Contact_Entity.Contact_Name">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="txtDesignation">Designation</label>
+                                                <input type="text" class="form-control" id="txtDesignation" placeholder="Enter designation" name="Vendor_Contact.Contact_Entity.Designation" value="@Model.Vendor_Contact.Contact_Entity.Designation">
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="txtEmail_Id">Office Email </label>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    <input type="text" class="form-control" id="txtEmail_Id" placeholder="Enter email" name="Vendor_Contact.Contact_Entity.Official_Email" value="@Model.Vendor_Contact.Contact_Entity.Official_Email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="txtPersonal_Email_Id">Personal Email </label>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    <input type="text" class="form-control" id="txtPersonal_Email_Id" placeholder="Enter email" name="Vendor_Contact.Contact_Entity.Personal_Email" value="@Model.Vendor_Contact.Contact_Entity.Personal_Email">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>
+                                                    <input type="checkbox" name="chkStatus" checked />
+                                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                                    <input type="hidden" id="hdnIs_Active" name="Vendor_Contact.Contact_Entity.Is_Active" value="@Model.Vendor_Contact.Contact_Entity.Is_Active.ToString()">
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <!-- Head Office Details -->
+                                            <div class="form-group">
+                                                <label>Office Address</label>
+                                                <textarea class="form-control" rows="2" id="txtOffice_Address" placeholder="Enter office address" name="Vendor_Contact.Contact_Entity.Office_Address">@Model.Vendor_Contact.Contact_Entity.Office_Address</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Landline 1:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    <input type="text" id="txtOffice_Landline1" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask name="Vendor_Contact.Contact_Entity.Office_Landline1" value="@Model.Vendor_Contact.Contact_Entity.Office_Landline1" />
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Landline 2:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    <input type="text" id="txtOffice_Landline2" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask name="Vendor_Contact.Contact_Entity.Office_Landline2" value="@Model.Vendor_Contact.Contact_Entity.Office_Landline2" />
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Mobile 1:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-mobile"></i>
+                                                    </div>
+                                                    <input type="text" id="txtMobile1" class="form-control" data-inputmask='"mask": "(99) 9999999999"' data-mask name="Vendor_Contact.Contact_Entity.Mobile1" value="@Model.Vendor_Contact.Contact_Entity.Mobile1" />
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Mobile 2:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-mobile"></i>
+                                                    </div>
+                                                    <input type="text" id="txtMobile2" class="form-control" data-inputmask='"mask": "(99) 9999999999"' data-mask name="Vendor_Contact.Contact_Entity.Mobile2" value="@Model.Vendor_Contact.Contact_Entity.Mobile2" />
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+                                            <!-- Head Office Details Ends-->
+                                        </div>
+
+                                    </div>
+                                    <div class="box-footer">
+                                        <button type="button" class="btn btn-success btn-sm" id="btnSave_Vendor_Contact">Save Vendor's Contact</button>
+                                        <a href="@Url.Action("Search","VendorContact")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel and Open Search</a>
+                                    </div>
+                                </div><!-- /.tab-pane -->
+                            </form>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+
+                            <form id="frmCustom_Fields">
+
+                                <input type="hidden" id="hdnVendor_Contact_Custom_Field_Id">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                       
+                                        <div class="form-group">
+                                            <label style="color: #333">Field name :</label>
+                                            <input type="text" id="txtField_Name" class="form-control input-sm" name="Field_Name" placeholder="Enter field Name" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label style="color: #333">Field value :</label>
+                                            <input type="text" id="txtField_Value" class="form-control input-sm" name="Field_Value" placeholder="Enter field value" />
+                                            <!-- /.input group -->
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-8 ">
+                                        <table class="table table-hover" id="tblCustom_Fields">
+                                            <tr>
+                                                <th>Field name</th>
+                                                <th>Field value</th>
+                                                <th style="min-width: 81px;">&nbsp; </th>
+                                            </tr>
+                                            @foreach (var item in Model.Vendor_Contact.Vendor_Custom_Fields)
+                                            {
+                                                <tr id="cust_tr_@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+
+                                               <td>@item.Custom_Fields_Entity.Field_Name</td>
+                                               <td>@item.Custom_Fields_Entity.Field_Value</td>
+                                               <td>
+                                                    <input type="hidden" class="hdn_Contact_Custom_Field_Id" value="@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+
+                                                    <input type="hidden" class="Field_Name" value="@item.Custom_Fields_Entity.Field_Name">
+                                                    <input type="hidden" class="Field_Value" value="@item.Custom_Fields_Entity.Field_Value">
+
+                                                   <div class="btn-group pull-right">
+                                                        <button type="button" id="btnEdit" class="btn btn-info btn-sm" onclick="Edit_Custom_Fields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-pencil-square-o'></i></button>
+                                                       <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="Remove_Custom_Fields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
+                                                   </div>
+                                               </td>
+                                            </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-success btn-sm" id="btnSave_Custom_Field">Save custom field</button>
+                                    <a href="@Url.Action("Search","VendorContact")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div><!-- /.tab-content -->
+                </div><!-- nav-tabs-custom -->
+            </div><!-- /.col -->
+        </div> <!-- /.row -->
+        <!-- /.row -->
+    </section>
+  </div>
