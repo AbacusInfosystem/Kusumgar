@@ -8,14 +8,13 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class ProductCategoryInfo
+    public class ProductSubCategoryInfo
     {
-        public M_Product_Category Product_Category_Entity { get; set; }
+        public M_Product_SubCategory Product_SubCategory_Entity;
 
-        public ProductCategoryInfo()
+        public ProductSubCategoryInfo()
         {
-            Product_Category_Entity = new M_Product_Category();
+            Product_SubCategory_Entity = new M_Product_SubCategory();
         }
-public string Product_Category_Name { get; set; }
     }
 }

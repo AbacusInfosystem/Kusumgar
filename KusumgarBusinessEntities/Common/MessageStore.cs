@@ -211,9 +211,25 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
+                #region Product
+
+                FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Product has been added successfully.");
+                hash.Add("P001", P001);
+
+                FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Product has been updated successfully.");
+                hash.Add("P002", P002);
+
+                FriendlyMessageInfo P003 = new FriendlyMessageInfo("P003", MessageType.Success, "Product Vendor has been added successfully.");
+                hash.Add("P003", P003);
+
+                FriendlyMessageInfo P004 = new FriendlyMessageInfo("P004", MessageType.Success, "Product Vendor has been deleted successfully.");
+                hash.Add("P004", P004);
+
+                #endregion
+
             #endregion
 
-                #region CRM
+            #region CRM
 
                 #region Customer
 

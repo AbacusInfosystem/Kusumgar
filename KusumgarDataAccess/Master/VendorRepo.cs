@@ -162,18 +162,18 @@ namespace KusumgarDataAccess
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
            
             sqlParamList.Add(new SqlParameter("@Vendor_Id", productVendorInfo.Product_Vendor_Entity.Vendor_Id));
-            sqlParamList.Add(new SqlParameter("@Product_Type", productVendorInfo.Product_Vendor_Entity.Product_Type));
-            sqlParamList.Add(new SqlParameter("@Name", productVendorInfo.Product_Vendor_Entity.Name));
-            sqlParamList.Add(new SqlParameter("@Original_Manufacturer", productVendorInfo.Product_Vendor_Entity.Original_Manufacturer));
+            //sqlParamList.Add(new SqlParameter("@Product_Type", productVendorInfo.Product_Vendor_Entity.Product_Type));
+            //sqlParamList.Add(new SqlParameter("@Name", productVendorInfo.Product_Vendor_Entity.Name));
+            //sqlParamList.Add(new SqlParameter("@Original_Manufacturer", productVendorInfo.Product_Vendor_Entity.Original_Manufacturer));
            
-            sqlParamList.Add(new SqlParameter("@Inspection_Facility", productVendorInfo.Product_Vendor_Entity.Inspection_Facility));
-            sqlParamList.Add(new SqlParameter("@Testing_Facility", productVendorInfo.Product_Vendor_Entity.Testing_Facility));
+            //sqlParamList.Add(new SqlParameter("@Inspection_Facility", productVendorInfo.Product_Vendor_Entity.Inspection_Facility));
+            //sqlParamList.Add(new SqlParameter("@Testing_Facility", productVendorInfo.Product_Vendor_Entity.Testing_Facility));
 
-            if (productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id == 0)
-            {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", productVendorInfo.Product_Vendor_Entity.CreatedBy));
-            }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", productVendorInfo.Product_Vendor_Entity.UpdatedBy));
+            //if (productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id == 0)
+            //{
+            //    sqlParamList.Add(new SqlParameter("@CreatedBy", productVendorInfo.Product_Vendor_Entity.CreatedBy));
+            //}
+            //sqlParamList.Add(new SqlParameter("@UpdatedBy", productVendorInfo.Product_Vendor_Entity.UpdatedBy));
 
             if (productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id != 0)
             {
@@ -228,12 +228,12 @@ namespace KusumgarDataAccess
             
             productVendors.Product_Vendor_Entity.Product_Vendor_Id = Convert.ToInt32(dr["Product_Vendor_Id"]);
 
-            productVendors.Product_Vendor_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
-            productVendors.Product_Vendor_Entity.Name = Convert.ToString(dr["Name"]);
-            productVendors.Product_Vendor_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
-            productVendors.Product_Vendor_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
-            productVendors.Product_Vendor_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
-            productVendors.Product_Type_Name = LookupInfo.Get_Product_Service_Types()[productVendors.Product_Vendor_Entity.Product_Type];
+            //productVendors.Product_Vendor_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
+            //productVendors.Product_Vendor_Entity.Name = Convert.ToString(dr["Name"]);
+            //productVendors.Product_Vendor_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
+            //productVendors.Product_Vendor_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
+            //productVendors.Product_Vendor_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
+            //productVendors.Product_Type_Name = LookupInfo.Get_Product_Service_Types()[productVendors.Product_Vendor_Entity.Product_Type];
             return productVendors;
 
         }

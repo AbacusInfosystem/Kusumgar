@@ -114,9 +114,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
+                //vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
 
-                vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+                //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
 
                 vViewModel.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id= _vendorMan.Insert_Product_Services(vViewModel.Product_Vendor);
 
@@ -158,7 +158,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+                //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
 
                 _vendorMan.Update_Product_Services(vViewModel.Product_Vendor);
 

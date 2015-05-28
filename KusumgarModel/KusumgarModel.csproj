@@ -66,6 +66,7 @@
     <Compile Include="Master\IndustrialManager.cs" />
     <Compile Include="Master\NationManager.cs" />
     <Compile Include="Master\ProductVendorManager.cs" />
+    <Compile Include="Master\ProductManager.cs" />
     <Compile Include="Master\RoleAccessManager.cs" />
     <Compile Include="Master\RoleManager.cs" />
     <Compile Include="Master\StateManager.cs" />
