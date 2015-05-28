@@ -53,5 +53,11 @@ namespace KusumgarModel
          {
             return _userRepo.Check_Existing_User( User_Name);
          }
+
+         public List<AutocompleteInfo> Get_Users_By_Name(string first_Name)
+         {
+             return _userRepo.Get_Users_By_Name(first_Name);
+         }
+
     }
 }

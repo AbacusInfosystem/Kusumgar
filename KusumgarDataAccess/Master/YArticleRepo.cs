@@ -25,16 +25,16 @@ namespace KusumgarDataAccess
 
         public List<YArticleInfo> Get_YArticles(ref PaginationInfo pager)
         {
-            List<YArticleInfo> yArticleList = new List<YArticleInfo>();
+            List<YArticleInfo> yArticles = new List<YArticleInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Y_Articles_sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticleList.Add(Get_YArticle_Values(dr));
+                yArticles.Add(Get_YArticle_Values(dr,0));
             }
 
-            return yArticleList;
+            return yArticles;
         }
 
         public List<YArticleInfo> Get_YArticles_By_Full_Code(string full_Code, ref PaginationInfo pager)
@@ -45,11 +45,11 @@ namespace KusumgarDataAccess
 
             sqlparam.Add(new SqlParameter("@full_Code", full_Code));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_Full_Code_sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticleList.Add(Get_YArticle_Values(dr));
+                yArticleList.Add(Get_YArticle_Values(dr,0));
             }
 
             return yArticleList;
@@ -63,41 +63,67 @@ namespace KusumgarDataAccess
 
             sqlparam.Add(new SqlParameter("@yarn_Type_Id", yarn_Type_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_Yarn_Type_Id_sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticleList.Add(Get_YArticle_Values(dr));
+                yArticleList.Add(Get_YArticle_Values(dr,0));
             }
 
             return yArticleList;
         }
 
-        public YArticleInfo Get_YArticle_By_Id(int yArticleId, ref PaginationInfo pager)
+        public List<YArticleInfo> Get_Y_Articles_By_Full_Code_Yarn_Type(string full_Code, int yarn_Type_Id, ref PaginationInfo pager)
+        {
+            List<YArticleInfo> yArticleList = new List<YArticleInfo>();
+
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+            sqlparam.Add(new SqlParameter("@yarn_Type_Id", yarn_Type_Id));
+
+            sqlparam.Add(new SqlParameter("@full_Code", full_Code));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_Full_Code_Yarn_Type_sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                yArticleList.Add(Get_YArticle_Values(dr, 0));
+            }
+
+            return yArticleList;
+        }
+
+        public YArticleInfo Get_YArticle_By_Id(int yArticle_Id)
         {
             YArticleInfo yArticle = new YArticleInfo();
 
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            sqlparam.Add(new SqlParameter("@yArticleId", yArticleId));
+            sqlparam.Add(new SqlParameter("@yArticle_Id", yArticle_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Article_By_Id_sp.ToString(), CommandType.StoredProcedure);
 
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
             {
-                yArticle = Get_YArticle_Values(dr);
+                yArticle = Get_YArticle_Values(dr, yArticle_Id);
             }
 
             return yArticle;
         }
 
-        public YArticleInfo Get_YArticle_Values(DataRow dr)
+        public YArticleInfo Get_YArticle_Values(DataRow dr, int yArticleId)
         {
             YArticleInfo yArticle = new YArticleInfo();
 
+            AttributeCodeRepo  aRepo = new AttributeCodeRepo();
+
             yArticle.YArticle_Entity.Y_Article_Id = Convert.ToInt32(dr["Y_Article_Id"]);
-            yArticle.YArticle_Entity.Denier_Id = Convert.ToInt32(dr["Denier_Id"]);
-            yArticle.YArticle_Entity.Twist_Mingle_Id = Convert.ToInt32(dr["Twist_Mingle_Id"]);
+            yArticle.YArticle_Entity.Denier_Id = Convert.ToInt32(dr["Denier_Id"]); 
+            yArticle.YArticle_Entity.Twist_Mingle_Id = Convert.ToInt32(dr["Twist_Mingle_Id"]);   
             yArticle.YArticle_Entity.Twist_Type_Id = Convert.ToInt32(dr["Twist_Type_Id"]);
             yArticle.YArticle_Entity.Ply_Id = Convert.ToInt32(dr["Ply_Id"]);
             yArticle.YArticle_Entity.Yarn_Type_Id = Convert.ToInt32(dr["Yarn_Type_Id"]);
@@ -120,6 +146,29 @@ namespace KusumgarDataAccess
             yArticle.YArticle_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             yArticle.YArticle_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             yArticle.YArticle_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            if (yArticleId == 0)
+            {
+                yArticle.Denier_Name = Convert.ToString(dr["Denier_Name"]);
+                yArticle.Twist_Mingle_Name = Convert.ToString(dr["Twist_Mingle_Name"]);
+                yArticle.Twist_Type_Name = Convert.ToString(dr["Twist_Type_Name"]);
+                yArticle.Ply_Name = Convert.ToString(dr["Ply_Name"]);
+                yArticle.Yarn_Type_Name = Convert.ToString(dr["Yarn_Type_Name"]);
+                yArticle.Shade_Name = Convert.ToString(dr["Shade_Name"]);
+                yArticle.Filaments_Name = Convert.ToString(dr["Filaments_Name"]);
+                yArticle.Shrinkage_Name = Convert.ToString(dr["Shrinkage_Name"]);
+                yArticle.Tenasity_Name = Convert.ToString(dr["Tenasity_Name"]);
+                yArticle.Chemical_Treatment_Name = Convert.ToString(dr["Chemical_Treatment_Name"]);
+                yArticle.Colour_Name = Convert.ToString(dr["Colour_Name"]);
+                yArticle.Supplier_Name = Convert.ToString(dr["Supplier_Name"]);
+                yArticle.Origin_Name = Convert.ToString(dr["Origin_Name"]);
+            }
+            else
+            {
+                yArticle.Developed_Under_Name = Convert.ToString(dr["Developed_Under_Name"]);
+                yArticle.Validated_By_Name = Convert.ToString(dr["Validated_By_Name"]);
+                yArticle.Given_By_Name = Convert.ToString(dr["Given_By_Name"]);
+            }
 
             return yArticle;
         }
@@ -173,6 +222,62 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@UpdatedBy", yArticle.YArticle_Entity.UpdatedBy));
 
             return sqlparam;
+        }
+
+        public List<AutocompleteInfo> Get_YArticles_By_Full_Code(string full_Code)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+            sqlparam.Add(new SqlParameter("@full_Code", full_Code));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_Full_Code_sp.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                AutocompleteInfo auto = new AutocompleteInfo();
+
+                auto.Value = Convert.ToInt32(dr["Y_Article_Id"]);
+
+                auto.Label = Convert.ToString(dr["Full_Code"]);
+
+                autoCompletes.Add(auto);
+            }
+
+            return autoCompletes;
+        }
+
+        public List<AutocompleteInfo> Get_Work_Stations(string work_Station_Code)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+            sqlparam.Add(new SqlParameter("@work_Station_Code", work_Station_Code));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Work_Stations_Sp.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                AutocompleteInfo auto = new AutocompleteInfo();
+
+                auto.Value = 0;
+
+                auto.Label = Convert.ToString(dr["Work_Station_Code"]);
+
+                autoCompletes.Add(auto);
+            }
+
+            return autoCompletes;
         }
     }
 }

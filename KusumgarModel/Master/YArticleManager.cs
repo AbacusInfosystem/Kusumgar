@@ -34,9 +34,14 @@ namespace KusumgarModel
              return yArticleRepo.Get_YArticles_By_Yarn_Type_Id(yarn_Type_Id, ref pager);
          }
 
-         public YArticleInfo Get_YArticle_By_Id(int yArticleId, ref PaginationInfo pager)
+         public List<YArticleInfo> Get_Y_Articles_By_Full_Code_Yarn_Type(string full_Code, int yarn_Type_Id, ref PaginationInfo pager)
          {
-             return yArticleRepo.Get_YArticle_By_Id(yArticleId, ref pager);
+             return yArticleRepo.Get_Y_Articles_By_Full_Code_Yarn_Type(full_Code,yarn_Type_Id, ref pager);
+         }
+
+         public YArticleInfo Get_YArticle_By_Id(int yArticleId)
+         {
+             return yArticleRepo.Get_YArticle_By_Id(yArticleId);
          }
 
         public int Insert_YArticle(YArticleInfo yArticle)
@@ -48,6 +53,16 @@ namespace KusumgarModel
         {
              yArticleRepo.Update_YArticle(yArticle);
         }
+
+         public List<AutocompleteInfo> Get_YArticles_By_Full_Code(string full_Code)
+         {
+             return yArticleRepo.Get_YArticles_By_Full_Code(full_Code);
+         }
+
+         public List<AutocompleteInfo> Get_Work_Stations(string work_Station_Code)
+         {
+             return yArticleRepo.Get_Work_Stations(work_Station_Code);
+         }
 
     }
 }

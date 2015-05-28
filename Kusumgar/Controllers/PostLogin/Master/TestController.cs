@@ -43,7 +43,7 @@ namespace Kusumgar.Controllers
                 TestManager tMan = new TestManager();
 
                 tMan.Insert(tViewModel.Test);
-                
+
                 tViewModel.Friendly_Message.Add(MessageStore.Get("T011"));
             }
 
@@ -65,7 +65,7 @@ namespace Kusumgar.Controllers
                 TestManager tMan = new TestManager();
 
                 tMan.Update(tViewModel.Test);
-                
+
                 tViewModel.Friendly_Message.Add(MessageStore.Get("T012"));
             }
             catch (Exception ex)

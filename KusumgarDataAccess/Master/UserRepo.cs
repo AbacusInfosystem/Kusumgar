@@ -445,5 +445,40 @@ namespace KusumgarDataAccess
 
             return Role_Ids;
         }
+
+        public List<AutocompleteInfo> Get_Users_By_Name(string first_Name)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@FirstName", first_Name));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Users_By_Name_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+
+                    drList = dt.AsEnumerable().ToList();
+
+                    foreach (DataRow dr in drList)
+                    {
+                        AutocompleteInfo autoComplete = new AutocompleteInfo();
+
+                        autoComplete.Value = Convert.ToInt32(dr["UserId"]);
+
+                        autoComplete.Label = Convert.ToString(dr["First_Name"]);
+
+                        autoCompletes.Add(autoComplete);
+                    }
+                }
+            }
+
+            return autoCompletes;
+        }
     }
 }
