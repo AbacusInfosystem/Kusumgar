@@ -522,6 +522,7 @@
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="Product_Category" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="M_Y_Article">
           <Key>
@@ -1174,6 +1175,7 @@
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="Product_Category" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1721,6 +1723,7 @@
           <EntitySetMapping Name="M_Vendor">
             <EntityTypeMapping TypeName="KusumgarModel.M_Vendor">
               <MappingFragment StoreEntitySet="M_Vendor">
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Product_Category" ColumnName="Product_Category" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />

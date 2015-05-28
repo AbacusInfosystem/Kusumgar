@@ -16,5 +16,7 @@ namespace KusumgarBusinessEntities
         {
             Product_Category_Entity = new M_Product_Category();
         }
+
+        public string Product_Category_Name { get; set; }
     }
 }

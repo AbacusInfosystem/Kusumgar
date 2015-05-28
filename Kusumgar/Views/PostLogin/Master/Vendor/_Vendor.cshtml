@@ -27,9 +27,13 @@
                         }
                     }
                 </select>
-
+               
             </div>
 
+            <div class="form-group">
+                <label for="txtYarnCode"> Code</label>
+                <input type="text" class="form-control" id="txtYarnCode" name="Vendor.Vendor_Entity.Code" value="@Model.Vendor.Vendor_Entity.Code" placeholder="Enter Yarn Code">
+            </div>
 
             <div class="form-group">
                 <label for="txtEmailId" style="color: #333">Email Id</label>
@@ -40,8 +44,7 @@
                 </div>
             </div>
 
-
-        </div>
+         </div>
 
         <div class="col-md-4">
             <div class="form-group">
@@ -133,7 +136,6 @@
 
 
     </div>
-
 
     <div class="box-footer">
         <button type="button" id="btnSave" class="btn btn-success">Save Primary</button>

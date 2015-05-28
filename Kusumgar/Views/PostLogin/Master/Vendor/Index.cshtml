@@ -46,9 +46,9 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <br />
-                          
+
                             <div id="dvVendor">
-                                @{Html.RenderAction("Load_Vendor", "Vendor",Model);}
+                                @{Html.RenderAction("Load_Vendor", "Vendor", Model);}
                             </div>
                         </div><!-- /.tab-pane -->
 
@@ -65,14 +65,10 @@
                                             <textarea id="txtProductServicesName" class="form-control input-sm" placeholder="Enter Product/Services Name" name="Product_Vendor.Product_Vendor_Entity.Name">@Model.Product_Vendor.Product_Vendor_Entity.Name</textarea>
                                         </div>
 
-
-
                                         <div class="form-group">
                                             <label for="txtTestingFacility">Testing Facility :</label> <br>
                                             <textarea id="txtTestingFacility" class="form-control input-sm" placeholder="Enter Testing Facility" name="Product_Vendor.Product_Vendor_Entity.Testing_Facility">@Model.Product_Vendor.Product_Vendor_Entity.Testing_Facility</textarea>
                                         </div>
-
-
 
                                         <div class="form-group">
                                             <label for="txtInspectionFacility">Inspection Facility :</label> <br>
@@ -97,9 +93,6 @@
                                             </select>
                                         </div>
 
-
-
-
                                         <div class="form-group">
                                             <label for="r1">Original Manufacture :</label> <br>
                                             <label>
@@ -107,7 +100,7 @@
                                                 {
 
                                                     @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdOriginalManufacturer" checked />
-                                                                                                                                                         }
+                                                                                                                                                                                                                                                                 }
                                                 else
                                                 {
                                                     @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdOriginalManufacturer" />
@@ -119,7 +112,7 @@
                                                 @if (Model.Product_Vendor.Product_Vendor_Entity.Original_Manufacturer == false)
                                                 {
                                                     @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdNotOriginalManufacturer" checked />
-                                                                                                                                                        }
+                                                                                                                                                                                                                                                                }
                                                 else
                                                 {
                                                     @:<input type="radio" name="Product_Vendor.Product_Vendor_Entity.Original_Manufacturer" id="rdNotOriginalManufacturer" />
@@ -128,7 +121,6 @@
                                             </label>
                                             <input type="hidden" id="hdnOriginalManufacture" value="@(Model.Product_Vendor.Product_Vendor_Entity.Original_Manufacturer.ToString())">
                                         </div>
-
 
                                     </div>
 
@@ -141,7 +133,7 @@
                                                 <th style="min-width: 61px;">&nbsp; </th>
                                             </tr>
                                             @foreach (var item in Model.Product_Vendor_Grid)
-                   {
+                                               {
 
                                                 <tr id="tr_ivendor_@item.Product_Vendor_Entity.Product_Vendor_Id">
 
@@ -163,13 +155,11 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-}
+                                               }
                                         </table>
                                     </div>
 
                                 </div>
-
-
 
                                 <div class="box-footer">
                                     <button type="button" id="btnSaveProductServicesDetails" class="btn btn-success">Save ProductServicesDetails</button>
@@ -182,7 +172,7 @@
                             <br />
 
                             <form id="frmCertificationDetails">
-                                @*<h4 class="page-header">Certification</h4>*@
+                               
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -213,17 +203,16 @@
 
                                                     }
                                                     else
-                                                       { 
-                                                           <option value="@performanceyear">
-                                                        @performanceyear
-                                                    </option>
-                                                           
-                                                    }
-                                                    
+                                                       {
+                                                        <option value="@performanceyear">
+                                                            @performanceyear
+                                                        </option>
+
                                                     }
 
+                                                    }
 
-                                                </select>
+                                                      </select>
                                             </div>
 
                                         </div>
@@ -268,10 +257,7 @@
                                                         @qualitycertificationyear
                                                     </option>
                                                     }
-
-
-
-                                                }
+                                              }
 
 
                                             </select>
@@ -369,9 +355,6 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="txtVatType">VAT Type</label>
@@ -402,7 +385,6 @@
                                         </div>
                                     </div>
 
-
                                 </div>
 
                             </form>
@@ -410,7 +392,6 @@
                                 <button type="button" id="btnCentralRegistrationDetails" class="btn btn-success">Save Central Registration Details</button>
                                 <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
                             </div>
-
 
                         </div><!-- /.tab-pane -->
 
@@ -447,8 +428,6 @@
 
                                 </div>
 
-
-
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -457,20 +436,16 @@
                                             @if (Model.Vendor.Vendor_Entity.Block_Payment == true)
                                                 {
                                                 @:<input type="checkbox" name="Vendor.Vendor_Entity.Block_Payment" value="false" checked />
-
-                                                }
+                                                  }
                                                 else
                                                 {
                                                 @:<input type="checkbox" name="Vendor.Vendor_Entity.Block_Payment" value="true" />
-
-
-                                                }
+                                                 }
                                             Block &nbsp;&nbsp;&nbsp;
 
                                             <input type="hidden" id="hdnBlockPayment" value="@((Model.Vendor.Vendor_Entity.Block_Payment == null ? false : Model.Vendor.Vendor_Entity.Block_Payment).ToString())">
                                         </div>
                                     </div>
-
 
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -480,12 +455,10 @@
                                                 {
                                                 @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Approved_By_Director" value="false" checked />
 
-
                                                 }
                                                 else
                                                 {
                                                 @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Approved_By_Director" value="true" />
-
 
                                                 }
                                             Approved &nbsp;&nbsp;&nbsp;
@@ -499,12 +472,10 @@
                                             @if (Model.Vendor.Vendor_Entity.Is_Active == true)
                                                 {
                                                 @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="false" checked />
-
-                                                                                                }
+                                                }
                                                 else
                                                 {
                                                 @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="true" />
-
                                                 }
 
                                             Active &nbsp;&nbsp;&nbsp;
@@ -531,15 +502,12 @@
 
                                 </div>
 
-
-
                                 <div class="box-footer">
                                     <button type="button" id="btnSaveOtherDetails" class="btn btn-success">Save OtherDetails</button>
                                     <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
                                 </div>
                             </form>
                         </div>
-
 
                     </div><!-- /.tab-content -->
                 </div><!-- nav-tabs-custom -->

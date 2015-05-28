@@ -77,7 +77,7 @@ namespace KusumgarDataAccess
            vendor.Vendor_Entity.UpdatedBy =  Convert.ToInt32(dr["UpdatedBy"]);
            vendor.Vendor_Entity.Vendor_Id =  Convert.ToInt32(dr["Vendor_Id"]);
            vendor.Vendor_Entity.Product_Category = Convert.ToInt32(dr["Product_Category"]);
-          
+           vendor.Vendor_Entity.Code = Convert.ToString(dr["Code"]);
             return vendor ;
         }
 
@@ -88,7 +88,7 @@ namespace KusumgarDataAccess
             Vendor_Id=Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Vendor(vendors), StoredProcedures.Insert_Vendor_sp.ToString(), CommandType.StoredProcedure));
             
             return Vendor_Id;
-        
+           
         }
 
         private List<SqlParameter> Set_Values_In_Vendor(VendorInfo vendors)
@@ -132,8 +132,9 @@ namespace KusumgarDataAccess
             sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.Vendor_Entity.PaymentTerms));
             sqlParamList.Add(new SqlParameter("@Is_Active", vendors.Vendor_Entity.Is_Active));
             sqlParamList.Add(new SqlParameter("@Product_Category", vendors.Vendor_Entity.Product_Category));
-            
-            if (vendors.Vendor_Entity.Vendor_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Code", vendors.Vendor_Entity.Code));
+
+           if (vendors.Vendor_Entity.Vendor_Id == 0)
             {
                 sqlParamList.Add(new SqlParameter("@CreatedBy", vendors.Vendor_Entity.CreatedBy));
             }
@@ -385,6 +386,48 @@ namespace KusumgarDataAccess
 
             return retVal;
         }
-    }
+
+        public int Insert_Attribute_Code(AttributeCodeInfo attributeCode)
+        {
+            int Attribute_Code_Id = 0;
+           
+            Attribute_Code_Id =Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Attribute_Code(attributeCode), StoredProcedures.Insert_Attribute_Code_sp.ToString(), CommandType.StoredProcedure));
+
+            return Attribute_Code_Id;
+        }
+
+        private List<SqlParameter> Set_Values_In_Attribute_Code(AttributeCodeInfo attributeCodes)
+        {
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+
+           sqlParamList.Add(new SqlParameter("@Status", attributeCodes.AttributeCodeEntity.Status));
+
+            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.AttributeCodeEntity.Attribute_Id));
+
+            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.AttributeCodeEntity.Attribute_Code_Name));
+
+            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.AttributeCodeEntity.Code));
+
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.AttributeCodeEntity.UpdatedBy));
+
+            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id == 0)
+            {
+                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.AttributeCodeEntity.CreatedBy));
+            }
+            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id != 0)
+            {
+                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.AttributeCodeEntity.Attribute_Code_Id));
+            }
+
+            return sqlParamList;
+        }
+
+        //public void Update_Attribute_Code(AttributeCodeInfo attributeCode)
+        //{
+        //    _sqlRepo.ExecuteNonQuery(Set_Values_In_Attribute_Code(attributeCode), StoredProcedures.Update_Attribute_Code_Name_sp.ToString(), CommandType.StoredProcedure);
+         
+        //}
+   
+ }
 }
   

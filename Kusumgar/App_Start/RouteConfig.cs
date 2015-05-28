@@ -795,6 +795,13 @@ namespace Kusumgar
             defaults: new { controller = "Vendor", action = "Check_Existing_Vendor", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+          routes.MapRoute(
+         name: "vendor-9",
+         url: "master/partial-vendor",
+         defaults: new { controller = "Vendor", action = "Load_Vendor", id = UrlParameter.Optional },
+         namespaces: new string[] { "Kusumgar.Controllers" });
+
+
             #endregion
 
             #region Industrial
