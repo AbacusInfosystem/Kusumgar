@@ -210,6 +210,18 @@ namespace KusumgarBusinessEntities.Common
         
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
+
+        //Product
+        Insert_Product_Sp,
+        Update_Product_Sp,
+        Get_Products_Sp,
+        Get_Product_By_Id_Sp,
+        Get_Product_Categories_sp,
+        Get_Product_SubCategory_By_CategoryId_Sp,
+        Get_Products_By_Product_Name_Sp,
+        Insert_Product_Vendor_Sp,
+        Delete_Product_Vendor_By_Id_Sp,
+        Get_Product_Vendors_By_Id_Sp,
     }
 
     public enum GenderType

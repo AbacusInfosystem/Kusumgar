@@ -871,6 +871,70 @@ namespace Kusumgar
 
             #endregion
 
+            #region Product
+
+            routes.MapRoute(
+            name: "product-1",
+            url: "master/product",
+            defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-2",
+            url: "master/edit-product",
+            defaults: new { controller = "Product", action = "Get_Product_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-3",
+            url: "master/insert-product",
+            defaults: new { controller = "Product", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-4",
+            url: "master/update-product",
+            defaults: new { controller = "Product", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-5",
+            url: "master/search-product",
+            defaults: new { controller = "Product", action = "Get_Products", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-6",
+            url: "master/product-subcategory-by-category-id",
+            defaults: new { controller = "Product", action = "Get_Product_SubCategory_By_Category_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-7",
+            url: "master/get-product-by-product-name/{product_Name}",
+            defaults: new { controller = "Product", action = "Get_Products_By_Name_Autocomplete", product_Name = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            name: "product-8",
+            url: "master/get-vendor-id-by-vendorname/{vendor_Name}",
+            defaults: new { controller = "Product", action = "Get_Vendor_Autocomplete", vendor_Name = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            name: "product-9",
+            url: "master/insert-product-vendor",
+            defaults: new { controller = "Product", action = "Insert_Product_Vendor", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "product-10",
+            url: "master/delete-product-vendor",
+            defaults: new { controller = "Product", action = "Delete_Product_Vendor_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
             #endregion
 
             #region Sales

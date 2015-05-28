@@ -12,11 +12,19 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_User_Role_Mapping
+    public partial class M_Product
     {
-        public int User_Role_Id { get; set; }
-        public int Role_Id { get; set; }
-        public int UserId { get; set; }
+        public int Product_Id { get; set; }
+        public string Product_Code { get; set; }
+        public int Product_Category_Id { get; set; }
+        public int Product_SubCategory_Id { get; set; }
+        public string Product_Name { get; set; }
+        public string Size { get; set; }
+        public string COD { get; set; }
+        public string Product_Type { get; set; }
+        public bool Original_Manufacturer { get; set; }
+        public string Inspection_Facility { get; set; }
+        public string Testing_Facility { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }

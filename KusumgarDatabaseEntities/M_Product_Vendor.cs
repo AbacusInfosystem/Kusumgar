@@ -12,14 +12,13 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_User_Role_Mapping
+    public partial class M_Product_Vendor
     {
-        public int User_Role_Id { get; set; }
-        public int Role_Id { get; set; }
-        public int UserId { get; set; }
+        public int Product_Vendor_Id { get; set; }
+        public int Product_Id { get; set; }
+        public int Vendor_Id { get; set; }
+        public int Priority_Order { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
-        public System.DateTime UpdatedOn { get; set; }
-        public int UpdatedBy { get; set; }
     }
 }

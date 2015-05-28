@@ -32,9 +32,7 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Role_Access_Function_Mapping> M_Role_Access_Function_Mapping { get; set; }
         public DbSet<M_State> M_State { get; set; }
         public DbSet<M_User> M_User { get; set; }
-        public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
-        public DbSet<Bank_Details> Bank_Details { get; set; }
         public DbSet<Contact_Custom_Fields> Contact_Custom_Fields { get; set; }
         public DbSet<M_Attribute_Code> M_Attribute_Code { get; set; }
         public DbSet<M_Test> M_Test { get; set; }
@@ -55,5 +53,11 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Product_Vendors> M_Product_Vendors { get; set; }
         public DbSet<M_SubCategory> M_SubCategory { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Bank_Details> Bank_Details { get; set; }
+        public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
+        public DbSet<M_Product> M_Product { get; set; }
+        public DbSet<M_Product_Category> M_Product_Category { get; set; }
+        public DbSet<M_Product_SubCategory> M_Product_SubCategory { get; set; }
+        public DbSet<M_Product_Vendor> M_Product_Vendor { get; set; }
     }
 }

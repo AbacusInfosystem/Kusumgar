@@ -5,16 +5,9 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KusumgarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Kusumgar.dbo.Bank_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Bank_Details">
           <Key>
             <PropertyRef Name="Bank_Details_Id" />
-            <PropertyRef Name="Is_Active" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-            <PropertyRef Name="UpdatedBy" />
           </Key>
           <Property Name="Bank_Details_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Supplier_Id" Type="int" />
@@ -319,6 +312,60 @@ warning 6002: The table/view 'Kusumgar.dbo.Bank_Details' does not have a primary
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Category_Id" Type="int" Nullable="false" />
+          <Property Name="Product_SubCategory_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Original_Manufacturer" Type="bit" Nullable="false" />
+          <Property Name="Inspection_Facility" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Testing_Facility" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product_Category">
+          <Key>
+            <PropertyRef Name="Product_Category_Id" />
+          </Key>
+          <Property Name="Product_Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Category_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product_SubCategory">
+          <Key>
+            <PropertyRef Name="Product_SubCategory_Id" />
+          </Key>
+          <Property Name="Product_SubCategory_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_SubCategory_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Category_Id" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product_Vendor">
+          <Key>
+            <PropertyRef Name="Product_Vendor_Id" />
+          </Key>
+          <Property Name="Product_Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+          <Property Name="Vendor_Id" Type="int" Nullable="false" />
+          <Property Name="Priority_Order" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Product_Vendors">
           <Key>
             <PropertyRef Name="Product_Vendor_Id" />
@@ -452,17 +499,11 @@ warning 6002: The table/view 'Kusumgar.dbo.Bank_Details' does not have a primary
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="M_User_Role_Mapping">
           <Key>
-            <PropertyRef Name="Role_Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-            <PropertyRef Name="UpdatedBy" />
+            <PropertyRef Name="User_Role_Id" />
           </Key>
+          <Property Name="User_Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role_Id" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -511,8 +552,11 @@ warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a 
           <Property Name="CreatedBy" Type="int" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Product_Category" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityContainer Name="KusumgarModelStoreContainer">
+          <EntitySet Name="Bank_Details" EntityType="Self.Bank_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact_Custom_Fields" EntityType="Self.Contact_Custom_Fields" Schema="dbo" store:Type="Tables" />
@@ -532,6 +576,10 @@ warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a 
           <EntitySet Name="M_Industrial_Vendors" EntityType="Self.M_Industrial_Vendors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Nation" EntityType="Self.M_Nation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Product" EntityType="Self.M_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Product_Category" EntityType="Self.M_Product_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Product_SubCategory" EntityType="Self.M_Product_SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Product_Vendor" EntityType="Self.M_Product_Vendor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Product_Vendors" EntityType="Self.M_Product_Vendors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" Schema="dbo" store:Type="Tables" />
@@ -540,42 +588,8 @@ warning 6002: The table/view 'Kusumgar.dbo.M_User_Role_Mapping' does not have a 
           <EntitySet Name="M_Test" EntityType="Self.M_Test" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Test_Unit" EntityType="Self.M_Test_Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_User" EntityType="Self.M_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Vendor" EntityType="Self.M_Vendor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Bank_Details" EntityType="Self.Bank_Details" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Bank_Details].[Bank_Details_Id] AS [Bank_Details_Id], 
-[Bank_Details].[Supplier_Id] AS [Supplier_Id], 
-[Bank_Details].[Customer_Id] AS [Customer_Id], 
-[Bank_Details].[Bank_Name] AS [Bank_Name], 
-[Bank_Details].[Bank_Account_No] AS [Bank_Account_No], 
-[Bank_Details].[Branch_Name] AS [Branch_Name], 
-[Bank_Details].[Ifsc_Code] AS [Ifsc_Code], 
-[Bank_Details].[Swift_Code] AS [Swift_Code], 
-[Bank_Details].[Rtgs_No] AS [Rtgs_No], 
-[Bank_Details].[Bank_Address] AS [Bank_Address], 
-[Bank_Details].[Bank_Code] AS [Bank_Code], 
-[Bank_Details].[Account_Code] AS [Account_Code], 
-[Bank_Details].[Is_Active] AS [Is_Active], 
-[Bank_Details].[CreatedOn] AS [CreatedOn], 
-[Bank_Details].[CreatedBy] AS [CreatedBy], 
-[Bank_Details].[UpdatedOn] AS [UpdatedOn], 
-[Bank_Details].[UpdatedBy] AS [UpdatedBy], 
-[Bank_Details].[Vat] AS [Vat], 
-[Bank_Details].[Currency_Id] AS [Currency_Id], 
-[Bank_Details].[Payment_Term_Id] AS [Payment_Term_Id], 
-[Bank_Details].[Tax_Excemption_Code] AS [Tax_Excemption_Code]
-FROM [dbo].[Bank_Details] AS [Bank_Details]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[M_User_Role_Mapping].[Role_Id] AS [Role_Id], 
-[M_User_Role_Mapping].[UserId] AS [UserId], 
-[M_User_Role_Mapping].[CreatedOn] AS [CreatedOn], 
-[M_User_Role_Mapping].[CreatedBy] AS [CreatedBy], 
-[M_User_Role_Mapping].[UpdatedOn] AS [UpdatedOn], 
-[M_User_Role_Mapping].[UpdatedBy] AS [UpdatedBy]
-FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -685,22 +699,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="M_User_Role_Mapping">
-          <Key>
-            <PropertyRef Name="Role_Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-            <PropertyRef Name="UpdatedBy" />
-          </Key>
-          <Property Name="Role_Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="KusumgarEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="M_Access_Function" EntityType="Self.M_Access_Function" />
           <EntitySet Name="M_Nation" EntityType="Self.M_Nation" />
@@ -709,9 +707,7 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" />
           <EntitySet Name="M_State" EntityType="Self.M_State" />
           <EntitySet Name="M_User" EntityType="Self.M_User" />
-          <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" />
           <EntitySet Name="Complaints" EntityType="KusumgarModel.Complaint" />
-          <EntitySet Name="Bank_Details" EntityType="KusumgarModel.Bank_Details" />
           <EntitySet Name="Contact_Custom_Fields" EntityType="KusumgarModel.Contact_Custom_Fields" />
           <EntitySet Name="M_Attribute_Code" EntityType="KusumgarModel.M_Attribute_Code" />
           <EntitySet Name="M_Test" EntityType="KusumgarModel.M_Test" />
@@ -732,6 +728,12 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <EntitySet Name="M_Product_Vendors" EntityType="KusumgarModel.M_Product_Vendors" />
           <EntitySet Name="M_SubCategory" EntityType="KusumgarModel.M_SubCategory" />
           <EntitySet Name="Contacts" EntityType="KusumgarModel.Contact" />
+          <EntitySet Name="Bank_Details" EntityType="KusumgarModel.Bank_Details" />
+          <EntitySet Name="M_User_Role_Mapping" EntityType="KusumgarModel.M_User_Role_Mapping" />
+          <EntitySet Name="M_Product" EntityType="KusumgarModel.M_Product" />
+          <EntitySet Name="M_Product_Category" EntityType="KusumgarModel.M_Product_Category" />
+          <EntitySet Name="M_Product_SubCategory" EntityType="KusumgarModel.M_Product_SubCategory" />
+          <EntitySet Name="M_Product_Vendor" EntityType="KusumgarModel.M_Product_Vendor" />
         </EntityContainer>
         <EntityType Name="Complaint">
           <Key>
@@ -747,37 +749,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Bank_Details">
-          <Key>
-            <PropertyRef Name="Bank_Details_Id" />
-            <PropertyRef Name="Is_Active" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-            <PropertyRef Name="UpdatedBy" />
-          </Key>
-          <Property Name="Bank_Details_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Supplier_Id" Type="Int32" />
-          <Property Name="Customer_Id" Type="Int32" />
-          <Property Name="Bank_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Bank_Account_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Branch_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ifsc_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Swift_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Rtgs_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Bank_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Bank_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Account_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="Vat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Currency_Id" Type="Int32" />
-          <Property Name="Payment_Term_Id" Type="Int32" />
-          <Property Name="Tax_Excemption_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact_Custom_Fields">
           <Key>
@@ -969,6 +940,8 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Product_Category" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="M_Industrial">
           <Key>
@@ -1116,6 +1089,98 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Bank_Details">
+          <Key>
+            <PropertyRef Name="Bank_Details_Id" />
+          </Key>
+          <Property Name="Bank_Details_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_Id" Type="Int32" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="Bank_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Account_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ifsc_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Swift_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rtgs_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Vat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Currency_Id" Type="Int32" />
+          <Property Name="Payment_Term_Id" Type="Int32" />
+          <Property Name="Tax_Excemption_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_User_Role_Mapping">
+          <Key>
+            <PropertyRef Name="User_Role_Id" />
+          </Key>
+          <Property Name="User_Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Category_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_SubCategory_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Original_Manufacturer" Type="Boolean" Nullable="false" />
+          <Property Name="Inspection_Facility" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Testing_Facility" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product_Category">
+          <Key>
+            <PropertyRef Name="Product_Category_Id" />
+          </Key>
+          <Property Name="Product_Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Category_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product_SubCategory">
+          <Key>
+            <PropertyRef Name="Product_SubCategory_Id" />
+          </Key>
+          <Property Name="Product_SubCategory_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_SubCategory_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Category_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Product_Vendor">
+          <Key>
+            <PropertyRef Name="Product_Vendor_Id" />
+          </Key>
+          <Property Name="Product_Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Priority_Order" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1233,18 +1298,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="M_User_Role_Mapping">
-            <EntityTypeMapping TypeName="KusumgarModel.M_User_Role_Mapping">
-              <MappingFragment StoreEntitySet="M_User_Role_Mapping">
-                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Complaints">
             <EntityTypeMapping TypeName="KusumgarModel.Complaint">
               <MappingFragment StoreEntitySet="Complaint">
@@ -1258,33 +1311,6 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Bank_Details">
-            <EntityTypeMapping TypeName="KusumgarModel.Bank_Details">
-              <MappingFragment StoreEntitySet="Bank_Details">
-                <ScalarProperty Name="Tax_Excemption_Code" ColumnName="Tax_Excemption_Code" />
-                <ScalarProperty Name="Payment_Term_Id" ColumnName="Payment_Term_Id" />
-                <ScalarProperty Name="Currency_Id" ColumnName="Currency_Id" />
-                <ScalarProperty Name="Vat" ColumnName="Vat" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="Account_Code" ColumnName="Account_Code" />
-                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
-                <ScalarProperty Name="Bank_Address" ColumnName="Bank_Address" />
-                <ScalarProperty Name="Rtgs_No" ColumnName="Rtgs_No" />
-                <ScalarProperty Name="Swift_Code" ColumnName="Swift_Code" />
-                <ScalarProperty Name="Ifsc_Code" ColumnName="Ifsc_Code" />
-                <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
-                <ScalarProperty Name="Bank_Account_No" ColumnName="Bank_Account_No" />
-                <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
-                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
-                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
-                <ScalarProperty Name="Bank_Details_Id" ColumnName="Bank_Details_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1449,6 +1475,8 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
           <EntitySetMapping Name="M_Vendor">
             <EntityTypeMapping TypeName="KusumgarModel.M_Vendor">
               <MappingFragment StoreEntitySet="M_Vendor">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Product_Category" ColumnName="Product_Category" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -1642,6 +1670,104 @@ FROM [dbo].[M_User_Role_Mapping] AS [M_User_Role_Mapping]</DefiningQuery>
                 <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
                 <ScalarProperty Name="Contact_Type" ColumnName="Contact_Type" />
                 <ScalarProperty Name="Contact_Id" ColumnName="Contact_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bank_Details">
+            <EntityTypeMapping TypeName="KusumgarModel.Bank_Details">
+              <MappingFragment StoreEntitySet="Bank_Details">
+                <ScalarProperty Name="Tax_Excemption_Code" ColumnName="Tax_Excemption_Code" />
+                <ScalarProperty Name="Payment_Term_Id" ColumnName="Payment_Term_Id" />
+                <ScalarProperty Name="Currency_Id" ColumnName="Currency_Id" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Account_Code" ColumnName="Account_Code" />
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Bank_Address" ColumnName="Bank_Address" />
+                <ScalarProperty Name="Rtgs_No" ColumnName="Rtgs_No" />
+                <ScalarProperty Name="Swift_Code" ColumnName="Swift_Code" />
+                <ScalarProperty Name="Ifsc_Code" ColumnName="Ifsc_Code" />
+                <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+                <ScalarProperty Name="Bank_Account_No" ColumnName="Bank_Account_No" />
+                <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="Bank_Details_Id" ColumnName="Bank_Details_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_User_Role_Mapping">
+            <EntityTypeMapping TypeName="KusumgarModel.M_User_Role_Mapping">
+              <MappingFragment StoreEntitySet="M_User_Role_Mapping">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Product">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Product">
+              <MappingFragment StoreEntitySet="M_Product">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Testing_Facility" ColumnName="Testing_Facility" />
+                <ScalarProperty Name="Inspection_Facility" ColumnName="Inspection_Facility" />
+                <ScalarProperty Name="Original_Manufacturer" ColumnName="Original_Manufacturer" />
+                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_SubCategory_Id" ColumnName="Product_SubCategory_Id" />
+                <ScalarProperty Name="Product_Category_Id" ColumnName="Product_Category_Id" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Product_Category">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Product_Category">
+              <MappingFragment StoreEntitySet="M_Product_Category">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Product_Category_Name" ColumnName="Product_Category_Name" />
+                <ScalarProperty Name="Product_Category_Id" ColumnName="Product_Category_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Product_SubCategory">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Product_SubCategory">
+              <MappingFragment StoreEntitySet="M_Product_SubCategory">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Product_Category_Id" ColumnName="Product_Category_Id" />
+                <ScalarProperty Name="Product_SubCategory_Name" ColumnName="Product_SubCategory_Name" />
+                <ScalarProperty Name="Product_SubCategory_Id" ColumnName="Product_SubCategory_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Product_Vendor">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Product_Vendor">
+              <MappingFragment StoreEntitySet="M_Product_Vendor">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Priority_Order" ColumnName="Priority_Order" />
+                <ScalarProperty Name="Vendor_Id" ColumnName="Vendor_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Product_Vendor_Id" ColumnName="Product_Vendor_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

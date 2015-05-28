@@ -12,11 +12,10 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_User_Role_Mapping
+    public partial class M_Product_Category
     {
-        public int User_Role_Id { get; set; }
-        public int Role_Id { get; set; }
-        public int UserId { get; set; }
+        public int Product_Category_Id { get; set; }
+        public string Product_Category_Name { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
