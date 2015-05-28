@@ -28,7 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>Scripts\Master\Method\yarticle_method.js
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="KusumgarDatabaseEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -48,7 +48,7 @@
     <Compile Include="CRM\ComplaintInfo.cs" />
     <Compile Include="CRM\ContactCustomFieldsInfo.cs" />
     <Compile Include="CRM\ContactInfo.cs" />
-    <Compile Include="CRM\CustomerAddressInfo.cs" />Scripts\Master\Method\yarticle_method.js
+    <Compile Include="CRM\CustomerAddressInfo.cs" />
     <Compile Include="CRM\CustomerInfo.cs" />
     <Compile Include="Common\EnumCollection.cs" />
     <Compile Include="CRM\EmployeeInfo.cs" />
@@ -85,9 +85,9 @@
     <Folder Include="Planning\" />
     <Folder Include="Sales\" />
     <Folder Include="SystemConfig\" />
-  </ItemGroup><Content Include="Scripts\Master\Method\yarticle_method.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside on<Content Include="Scripts\Master\Method\yarticle_method.js" />e of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
