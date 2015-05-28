@@ -36,6 +36,8 @@ function Bind_Contact_Grid(data) {
 
             htmlText += "<input type='radio' name='r1' id='r1_" + data.Contacts[i].contact_Entity.Contact_Id + "' class='iradio_square-green'/>";
 
+            htmlText += "<input type='hidden'  id='hdnCust_" + data.Contacts[i].contact_Entity.Contact_Id + "' value='" + data.Contacts[i].contact_Entity.Customer_Id + "' />";
+
             htmlText += "</td>";
 
             htmlText += "<td>";
@@ -115,6 +117,7 @@ function Bind_Contact_Grid(data) {
             $("#btnEdit").show();
             $("#btnViewCompany").show();
             $("#btnSellProduct").show();
+            $("#hdCustomer_Id").val($("#hdnCust_"+ $("#hdfContact_Id").val()).val());
         }
     });
 

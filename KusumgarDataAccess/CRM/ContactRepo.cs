@@ -183,9 +183,11 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Is_Active",contact.contact_Entity.Is_Active ));   
             if(contact.contact_Entity.Contact_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy",contact.contact_Entity.CreatedBy ));     
+                sqlparam.Add(new SqlParameter("@CreatedBy",contact.contact_Entity.CreatedBy ));
+                sqlparam.Add(new SqlParameter("@CreatedOn", contact.contact_Entity.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy",contact.contact_Entity.UpdatedBy ));       
+            sqlparam.Add(new SqlParameter("@UpdatedBy",contact.contact_Entity.UpdatedBy ));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", contact.contact_Entity.UpdatedOn));
 
             return sqlparam;
         }
@@ -215,8 +217,10 @@ namespace KusumgarDataAccess
             if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id == 0)
             {
                 sqlparam.Add(new SqlParameter("@CreatedBy", custom_Fields.Custom_Fields_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", custom_Fields.Custom_Fields_Entity.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.Custom_Fields_Entity.UpdatedBy));   
+            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.Custom_Fields_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", custom_Fields.Custom_Fields_Entity.UpdatedOn));
 
             return sqlparam;
         }

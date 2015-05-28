@@ -15,18 +15,17 @@ namespace KusumgarDatabaseEntities
     public partial class M_Work_Center
     {
         public int Work_Center_Id { get; set; }
-        public Nullable<int> Purpose { get; set; }
-        public string Work_Station_Code { get; set; }
-        public string Factory_Code { get; set; }
+        public int Purpose { get; set; }
+        public int Work_Station_Id { get; set; }
         public string Work_Center_Code { get; set; }
         public string Machine_Name { get; set; }
         public string Machine_Properties { get; set; }
-        public Nullable<int> TPM_Speed { get; set; }
-        public Nullable<decimal> Average_Order_Length { get; set; }
+        public int TPM_Speed { get; set; }
+        public decimal Average_Order_Length { get; set; }
         public string Capacity { get; set; }
-        public Nullable<int> Wastage { get; set; }
-        public Nullable<int> Target_Efficiency { get; set; }
-        public Nullable<bool> Under_Maintainance { get; set; }
+        public int Wastage { get; set; }
+        public int Target_Efficiency { get; set; }
+        public bool Under_Maintainance { get; set; }
         public bool Is_Active { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }

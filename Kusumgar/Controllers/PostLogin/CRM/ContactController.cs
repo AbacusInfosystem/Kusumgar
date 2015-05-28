@@ -65,9 +65,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.contact.contact_Entity.CreatedBy = 1;
+                cViewModel.contact.contact_Entity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
 
-                cViewModel.contact.contact_Entity.UpdatedBy = 1;
+                cViewModel.contact.contact_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+
+                cViewModel.contact.contact_Entity.CreatedOn = DateTime.Now;
+
+                cViewModel.contact.contact_Entity.UpdatedOn = DateTime.Now;
 
                 cViewModel.contact.contact_Entity.Contact_Id = _contactMan.Insert_Contact(cViewModel.contact);
 
@@ -87,7 +91,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.contact.contact_Entity.UpdatedBy = 1;
+                cViewModel.contact.contact_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+
+                cViewModel.contact.contact_Entity.UpdatedOn = DateTime.Now;
 
                 _contactMan.Update_Contact(cViewModel.contact);
 
@@ -107,9 +113,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.CreatedBy = 1;
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
 
-                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = 1;
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.CreatedOn = DateTime.Now;
+
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
 
                 _contactMan.Insert_Contact_Custom_Fields(cViewModel.contact.Custom_Fields);
 
@@ -131,7 +141,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = 1;
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+
+                cViewModel.contact.Custom_Fields.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
 
                 _contactMan.Update_Contact_Custom_Fields(cViewModel.contact.Custom_Fields);
 

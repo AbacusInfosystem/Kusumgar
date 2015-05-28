@@ -604,8 +604,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "y-article-8",
-            url: "master/y-articles/get-work-stations/{work_Station_Code}",
-            defaults: new { controller = "YArticle", action = "Get_Work_Stations", work_Station_Code = UrlParameter.Optional },
+            url: "master/y-articles/get-work-stations-by-code-purpose/{work_Station_Code}",
+            defaults: new { controller = "YArticle", action = "Get_Work_Stations_By_Code_Purpose", work_Station_Code = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

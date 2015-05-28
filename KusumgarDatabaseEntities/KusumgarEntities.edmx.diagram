@@ -33,10 +33,12 @@
         <EntityTypeShape EntityType="KusumgarModel.M_Test_Unit" Width="1.5" PointX="14.75" PointY="10.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_User" Width="1.5" PointX="14.75" PointY="14.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Vendor" Width="1.5" PointX="2.75" PointY="15.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Work_Center" Width="1.5" PointX="11.375" PointY="16.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_User_Role_Mapping" Width="1.5" PointX="5.375" PointY="16.75" />
         <EntityTypeShape EntityType="KusumgarModel.Bank_Details" Width="1.5" PointX="17.375" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Center" Width="1.5" PointX="9.375" PointY="15.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Station" Width="1.5" PointX="11.375" PointY="16.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product_Category" Width="1.5" PointX="17.375" PointY="13.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="17.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
