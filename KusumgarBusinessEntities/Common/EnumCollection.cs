@@ -205,9 +205,17 @@ namespace KusumgarBusinessEntities.Common
         Get_Vendor_Contacts_By_Vendor_Name_sp,
         Delete_Vendor_Contact_Custom_Field_By_Id,
 
+
+        //Industrial
+        Insert_Industrial_Master_Sp,
+        Update_Industrial_Master_Sp,
+        Get_Industrial_Master_List_Sp,
+        Get_Industrial_Master_By_Id_Sp,
+        Get_Industrial_Category_Sp,
+        Get_Group_By_CategoryId_Sp,
+        Insert_Industrial_Vendor_Sp,
         Delete_Industrial_Vendor_By_Id_Sp,
         Get_Industrial_Vendor_List_By_Id_Sp,
-        
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
 
