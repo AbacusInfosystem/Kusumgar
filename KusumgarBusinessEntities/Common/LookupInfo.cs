@@ -45,6 +45,30 @@ namespace KusumgarBusinessEntities.Common
             return attributeNames;
         }
 
+        public static Dictionary<int, string> Get_Product_Service_Types()
+        {
+            Dictionary<int, string> GetProductServiceTypes = new Dictionary<int, string>();
+
+            GetProductServiceTypes.Add(1, ProductVendor.ProductType.ToString());
+
+            GetProductServiceTypes.Add(2, ProductVendor.Service.ToString());
+
+            return GetProductServiceTypes;
+        }
+
+        public static Dictionary<int, string> Get_ShipMent_Method()
+        {
+            Dictionary<int, string> GetShipMentMethod = new Dictionary<int, string>();
+
+            GetShipMentMethod.Add(1, ShipmentMethod.method1.ToString());
+
+            GetShipMentMethod.Add(2, ShipmentMethod.method2.ToString());
+
+
+
+            return GetShipMentMethod;
+        }
+
         public static Dictionary<int, string> GetGenderTypes()
         {
             Dictionary<int, string> GetGenderTypes = new Dictionary<int, string>();
@@ -142,6 +166,19 @@ namespace KusumgarBusinessEntities.Common
             Get_DMU_Status_Influence.Add(5, DMUStatusInfluence.option5.ToString());
 
             return Get_DMU_Status_Influence;
+        }
+
+        public static Dictionary<int, string> Get_Priority_Orders()
+        {
+            Dictionary<int, string> Get_Priority_Orders = new Dictionary<int, string>();
+
+            Get_Priority_Orders.Add(1, PriorityOrder.Primary.ToString());
+
+            Get_Priority_Orders.Add(2, PriorityOrder.Secondary.ToString());
+
+            Get_Priority_Orders.Add(3, PriorityOrder.Last_Option.ToString());
+
+            return Get_Priority_Orders;
         }
     }
 }

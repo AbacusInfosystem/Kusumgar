@@ -124,6 +124,26 @@ namespace KusumgarBusinessEntities.Common
                 hash.Add("AC012", AC012);
                 #endregion
 
+                #region Vendor
+
+                FriendlyMessageInfo V011 = new FriendlyMessageInfo("V011", MessageType.Success, "Vendor has been added successfully.");
+                hash.Add("V011", V011);
+
+                FriendlyMessageInfo PS011 = new FriendlyMessageInfo("PS011", MessageType.Success, "Product Services has been added successfully.");
+                hash.Add("PS011", PS011);
+
+                FriendlyMessageInfo V012 = new FriendlyMessageInfo("V012", MessageType.Success, "Vendor has been updated successfully.");
+                hash.Add("V012", V012);
+
+                FriendlyMessageInfo PS012 = new FriendlyMessageInfo("PS012", MessageType.Success, "Product Services has been updated successfully.");
+                hash.Add("PS012", PS012);
+
+                FriendlyMessageInfo PS013 = new FriendlyMessageInfo("PS013 ", MessageType.Success, "Product Services has been deleted successfully.");
+                hash.Add("PS013 ", PS013);
+
+
+                #endregion
+
                 #region Consumable
 
                 FriendlyMessageInfo C011 = new FriendlyMessageInfo("C011", MessageType.Success, "Consumable has been added successfully.");
@@ -143,6 +163,32 @@ namespace KusumgarBusinessEntities.Common
 
                 FriendlyMessageInfo CV014 = new FriendlyMessageInfo("CV014", MessageType.Success, " Vendor has been updated successfully.");
                 hash.Add("CV014", CV014);
+
+                #endregion
+
+                #region Industrial
+
+                FriendlyMessageInfo IND001 = new FriendlyMessageInfo("IND001", MessageType.Success, "Industrial Master has been added successfully.");
+                hash.Add("IND001", IND001);
+
+                FriendlyMessageInfo IND002 = new FriendlyMessageInfo("IND002", MessageType.Success, "Industrial Master has been updated successfully.");
+                hash.Add("IND002", IND002);
+
+                FriendlyMessageInfo IND003 = new FriendlyMessageInfo("IND003", MessageType.Success, "Industrial Vendor has been added successfully.");
+                hash.Add("IND003", IND003);
+
+                FriendlyMessageInfo IND004 = new FriendlyMessageInfo("IND004", MessageType.Success, "Industrial Vendor has been deleted successfully.");
+                hash.Add("IND004", IND004);
+
+                #endregion
+
+                #region YArticle
+
+                FriendlyMessageInfo YA001 = new FriendlyMessageInfo("YA001", MessageType.Success, "Y Article has been added successfully.");
+                hash.Add("YA001", YA001);
+
+                FriendlyMessageInfo YA002 = new FriendlyMessageInfo("YA002", MessageType.Success, "Y Article has been updated successfully.");
+                hash.Add("YA002", YA002);
 
                 #endregion
 

@@ -167,7 +167,7 @@ namespace KusumgarDataAccess
             }
             sqlparam.Add(new SqlParameter("@Contact_Type",contact.contact_Entity.Contact_Type));
             sqlparam.Add(new SqlParameter("@Customer_Id",contact.contact_Entity.Customer_Id));
-            sqlparam.Add(new SqlParameter("@Supplier_Id",contact.contact_Entity.Vendor_Id));
+            sqlparam.Add(new SqlParameter("@Vendor_Id", contact.contact_Entity.Vendor_Id));
             sqlparam.Add(new SqlParameter("@Contact_Name",contact.contact_Entity.Contact_Name ));
             sqlparam.Add(new SqlParameter("@Designation",contact.contact_Entity.Designation ));
             sqlparam.Add(new SqlParameter("@Office_Address",contact.contact_Entity.Office_Address ));

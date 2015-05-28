@@ -28,7 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+  </PropertyGroup>Scripts\Master\Method\yarticle_method.js
   <ItemGroup>
     <Reference Include="KusumgarDatabaseEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -48,7 +48,7 @@
     <Compile Include="CRM\ComplaintInfo.cs" />
     <Compile Include="CRM\ContactCustomFieldsInfo.cs" />
     <Compile Include="CRM\ContactInfo.cs" />
-    <Compile Include="CRM\CustomerAddressInfo.cs" />
+    <Compile Include="CRM\CustomerAddressInfo.cs" />Scripts\Master\Method\yarticle_method.js
     <Compile Include="CRM\CustomerInfo.cs" />
     <Compile Include="Common\EnumCollection.cs" />
     <Compile Include="CRM\EmployeeInfo.cs" />
@@ -62,7 +62,10 @@
     <Compile Include="Master\DefectInfo.cs" />
     <Compile Include="Master\DefectTypeInfo.cs" />
     <Compile Include="Master\FabricTypeInfo.cs" />
+    <Compile Include="Master\IndustrialCategoryInfo.cs" />
+    <Compile Include="Master\IndustrialGroupInfo.cs" />
     <Compile Include="Master\IndustrialInfo.cs" />
+    <Compile Include="Master\IndustrialVendorInfo.cs" />
     <Compile Include="Master\NationInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
@@ -73,6 +76,8 @@
     <Compile Include="Master\UserRoleInfo.cs" />
     <Compile Include="Master\VendorContactCustomFieldsInfo.cs" />
     <Compile Include="Master\VendorContactInfo.cs" />
+    <Compile Include="Master\WorkCenterInfo.cs" />
+    <Compile Include="Master\YArticleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +85,9 @@
     <Folder Include="Planning\" />
     <Folder Include="Sales\" />
     <Folder Include="SystemConfig\" />
-  </ItemGroup>
+  </ItemGroup><Content Include="Scripts\Master\Method\yarticle_method.js" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside on<Content Include="Scripts\Master\Method\yarticle_method.js" />e of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

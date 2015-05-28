@@ -9,7 +9,6 @@ using KusumgarDatabaseEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
-using KusumgarModel;
 
 namespace Kusumgar.Controllers
 {

@@ -116,6 +116,17 @@ namespace Kusumgar.Controllers
            
          return Json(tViewModel, JsonRequestBehavior.AllowGet);}
 
+        public JsonResult Get_Test_AutoComplete(string testUnitName)
+        {
+            TestManager tMan = new TestManager();
+
+            List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
+
+            testUnitNames = tMan.Get_Test_AutoComplete(testUnitName);
+
+            return Json(testUnitNames, JsonRequestBehavior.AllowGet);
+        }
+
     }
  }
 

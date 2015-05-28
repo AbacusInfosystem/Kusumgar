@@ -19,35 +19,36 @@ namespace KusumgarModel
             _roleRepo = new RoleRepo();
         }
 
-        public List<RoleInfo> Get_Roles(ref PaginationInfo pager)
+        public List<RoleInfo> Get_Roles(ref PaginationInfo Pager)
         {
-            return _roleRepo.Get_Roles(ref pager);
+            return _roleRepo.Get_Roles(ref Pager);
         }
 
-        public List<RoleInfo> Get_Roles_By_Name(string role_Name, ref PaginationInfo pager)
+        public List<RoleInfo> Get_Roles_By_Name(string Role_Name, ref PaginationInfo Pager)
         {
-            return _roleRepo.Get_Roles_By_Name(role_Name, ref pager);
+            return _roleRepo.Get_Roles_By_Name(Role_Name, ref Pager);
         }
 
-        public RoleInfo Get_Role_By_Id(int role_Id)
+        public RoleInfo Get_Role_By_Id(int Role_Id)
         {
-            return _roleRepo.Get_Role_By_Id(role_Id);
+            return _roleRepo.Get_Role_By_Id(Role_Id);
         }
 
-        public int Insert_Role(RoleInfo role)
+        public int Insert_Role(RoleInfo RoleInfo)
         {
-            return _roleRepo.Insert_Role(role);
+          return _roleRepo.Insert_Role(RoleInfo);
         }
 
-        public void Update_Role(RoleInfo role)
+        public void Update_Role(RoleInfo RoleInfo)
         {
-            _roleRepo.Update_Role(role);
+            _roleRepo.Update_Role(RoleInfo);
         }
 
-        public bool Check_Existing_Role (string role_Name)
+        public bool Check_Existing_Role (string Role_Name)
         {
-            return _roleRepo.Check_Existing_Role(role_Name);
+          return  _roleRepo.Check_Existing_Role(Role_Name);
         }
 
+        
     }
 }

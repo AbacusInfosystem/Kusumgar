@@ -1,46 +1,35 @@
-﻿/*********************************************
-	Author : Kaustubh 
-   Date : 05052015
-   Purpose : To Update Financial Details
-*********************************************/
+﻿select * from syscolumns where id=object_id('M_Y_Article')
 
-create procedure Update_Bank_Detials
-(
-@Bank_Details_Id INT,
-@Supplier_Id INT,            
-@Customer_Id INT,            
-@Bank_Name NVARCHAR (50),  
-@Bank_Account_No NVARCHAR (50),  
-@Branch_Name NVARCHAR (50), 
-@Ifsc_Code NVARCHAR (50),  
-@Swift_Code NVARCHAR (50),  
-@Rtgs_No NVARCHAR (50),  
-@Bank_Address NVARCHAR (255),
-@Bank_Code NVARCHAR (50),
-@Account_Code NVARCHAR (50),
-@Is_Active BIT,
-@UpdatedBy INT
-)
-as
-begin
+select * from sysobjects where type = 'u'
 
-	Update Bank_Details set
+SELECT 
+    c.name 'Column Name',
+    t.Name 'Data type'--,
+    --c.max_length 'Max Length',
+    --c.precision ,
+    --c.scale ,
+    --c.is_nullable,
+    --ISNULL(i.is_primary_key, 0) 'Primary Key'
+FROM    
+    sys.columns c
+INNER JOIN 
+    sys.types t ON c.user_type_id = t.user_type_id
+LEFT OUTER JOIN 
+    sys.index_columns ic ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+LEFT OUTER JOIN 
+    sys.indexes i ON ic.object_id = i.object_id AND ic.index_id = i.index_id
+WHERE
+    c.object_id = OBJECT_ID('M_Y_Article')
 
-	Supplier_Id  = @Supplier_Id, 
-	Customer_Id  = @Customer_Id, 
-	Bank_Name  = @Bank_Name, 
-	Bank_Account_No  = @Bank_Account_No,
-	Branch_Name  = @Branch_Name,
-	Ifsc_Code  = @Ifsc_Code,
-	Swift_Code  = @Swift_Code,
-	Rtgs_No  = @Rtgs_No,
-	Bank_Address  = @Bank_Address,
-	Bank_Code  = @Bank_Code,
-	Account_Code  = @Account_Code,
-	Is_Active  = @Is_Active,
-	UpdatedBy  = @UpdatedBy
-
-	where Bank_Details_Id = @Bank_Details_Id
-
-end
-
+	SELECT 
+   *
+FROM    
+    sys.columns c
+INNER JOIN 
+    sys.types t ON c.user_type_id = t.user_type_id
+LEFT OUTER JOIN 
+    sys.index_columns ic ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+LEFT OUTER JOIN 
+    sys.indexes i ON ic.object_id = i.object_id AND ic.index_id = i.index_id
+WHERE
+    c.object_id = OBJECT_ID('M_Y_Article')
