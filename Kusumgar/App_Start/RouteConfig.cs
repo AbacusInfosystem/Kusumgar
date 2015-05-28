@@ -780,8 +780,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "ajax-1",
-            url: "master/ajax/{testUnitName}",
-            defaults: new { controller = "Ajax", action = "Get_Test_Unit", id = UrlParameter.Optional },
+            url: "ajax/test/{testUnitName}",
+            defaults: new { controller = "Test", action = "Get_Test_AutoComplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -792,6 +792,49 @@ namespace Kusumgar
             name: "vendor-1",
             url: "master/vendor-creation",
             defaults: new { controller = "Vendor", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "vendor-2",
+            url: "master/insert-vendor",
+            defaults: new { controller = "Vendor", action = "Insert_Vendor", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "vendor-3",
+           url: "master/update-vendor",
+           defaults: new { controller = "Vendor", action = "Update_Vendor", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           
+           routes.MapRoute(
+           name: "vendor-4",
+           url: "master/get-state-by-nation-id",
+           defaults: new { controller = "Vendor", action = "Get_State_by_Nation_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "vendor-5",
+           url: "master/insert-product-service",
+           defaults: new { controller = "Vendor", action = "Insert_Product_Service", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "vendor-6",
+           url: "master/update-product-service",
+           defaults: new { controller = "Vendor", action = "Update_Product_Service", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+          routes.MapRoute(
+          name: "vendor-7",
+          url: "master/delete-product-service",
+          defaults: new { controller = "Vendor", action = "Delete_Product_Service_By_Id", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+          routes.MapRoute(
+            name: "vendor-8",
+            url: "master/check-vendor",
+            defaults: new { controller = "Vendor", action = "Check_Existing_Vendor", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -979,6 +1022,12 @@ namespace Kusumgar
             defaults: new { controller = "Ajax", action = "Get_Customer_AutoComplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+
+            routes.MapRoute(
+            name: "ajax-3",
+            url: "ajax/vendor-list/{vendor_Name}",
+            defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #endregion

@@ -249,12 +249,13 @@
     <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PegPlanController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\ProductVendorController.cs" />
     <Compile Include="Controllers\PostLogin\Master\QualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\RoleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestUnitController.cs" />
     <Compile Include="Controllers\PostLogin\Master\UserController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\VendorController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessRouteCodeController.cs" />
@@ -281,10 +282,12 @@
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
+    <Compile Include="Models\Master\ProductVendorViewModel.cs" />
     <Compile Include="Models\Master\RoleViewModel.cs" />
     <Compile Include="Models\Master\TestUnitViewModel.cs" />
     <Compile Include="Models\Master\TestViewModel.cs" />
     <Compile Include="Models\Master\UserViewModel.cs" />
+    <Compile Include="Models\Master\VendorViewModel.cs" />
     <Compile Include="Models\Master\YArticleViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
@@ -942,6 +945,7 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
     <Content Include="Scripts\CRM\Validation\customer_billing_details_validation.js" />
@@ -977,12 +981,14 @@
     <Content Include="Scripts\Master\Event\defect_search.event.js" />
     <Content Include="Scripts\Master\Event\defect_type_event.js" />
     <Content Include="Scripts\Master\Event\defect_type_search_event.js" />
-    <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\product_service_event.js" />
     <Content Include="Scripts\Master\Event\industrial_search_event.js" />
     <Content Include="Scripts\Master\Event\test_event.js" />
     <Content Include="Scripts\Master\Event\test_search_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_search_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Event\yarticle_event.js" />
     <Content Include="Scripts\Master\Method\attribute_code_method.js" />
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
@@ -993,12 +999,14 @@
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
     <Content Include="Scripts\Master\Method\defect_type_method.js" />
     <Content Include="Scripts\Master\Method\defect_type_search_method.js" />
+    <Content Include="Scripts\Master\Method\product_service_method.js" />
     <Content Include="Scripts\Master\Method\industrial_method.js" />
     <Content Include="Scripts\Master\Method\industrial_search_method.js" />
     <Content Include="Scripts\Master\Method\test_method.js" />
     <Content Include="Scripts\Master\Method\test_search_method.js" />
     <Content Include="Scripts\Master\Method\test_unit_method.js" />
     <Content Include="Scripts\Master\Method\test_unit_search_method.js" />
+    <Content Include="Scripts\Master\Method\vendor_method.js" />
     <Content Include="Scripts\Master\Method\yarticle_method.js" />
     <Content Include="Scripts\Master\role_event.js" />
     <Content Include="Scripts\Master\role_method.js" />
@@ -1018,6 +1026,7 @@
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
+    <Content Include="Scripts\Master\Validation\vendor_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
@@ -1431,9 +1440,6 @@
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Vendor\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\Vendor\Search.cshtml" />
-    <Content Include="Views\PostLogin\Master\Vendor\_CentralExciseRegistrationDetails.cshtml" />
-    <Content Include="Views\PostLogin\Master\Vendor\_CertificationDetails.cshtml" />
-    <Content Include="Views\PostLogin\Master\Vendor\_ProductServicesDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Industrial\Index.cshtml" />
@@ -1447,6 +1453,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\VendorContact\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

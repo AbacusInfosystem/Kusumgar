@@ -19,34 +19,39 @@ namespace KusumgarModel
             _userRepo = new UserRepo();
         }
 
-        public List<UserInfo> Get_Users(ref PaginationInfo pager)
+        public List<UserInfo> Get_Users(ref PaginationInfo Pager)
         {
-            return _userRepo.Get_Users(ref pager);
+            return _userRepo.Get_Users(ref Pager);
+        }
+        //public List<UserInfo> Get_User_List(PaginationInfo Pager)
+        //{
+        //    //return _userRepo.Get_User_List(Pager);
+        //    return _userRepo.Get_User_List(new PaginationInfo());
+        //}
+
+        public List<UserInfo> Get_Users_By_Name(ref PaginationInfo Pager, string FirstName)
+        {
+            return _userRepo.Get_Users_By_Name(ref Pager, FirstName);
         }
 
-        public List<UserInfo> Get_Users_By_Name(ref PaginationInfo pager, string first_Name)
+        public UserInfo Get_User_By_User_Id(int UserId)
         {
-            return _userRepo.Get_Users_By_Name(pager, first_Name);
+            return _userRepo.Get_User_By_User_Id(UserId);
         }
 
-        public UserInfo Get_User_By_User_Id(int user_Id)
+        public void Insert_User(UserInfo userInfo)
         {
-            return _userRepo.Get_User_By_User_Id(user_Id);
+            _userRepo.Insert_User(userInfo);
         }
 
-        public void Insert_User(UserInfo user)
+        public void Update_User(UserInfo userInfo)
         {
-            _userRepo.Insert_User(user);
+            _userRepo.Update_User(userInfo);
         }
 
-        public void Update_User(UserInfo user)
-        {
-            _userRepo.Update_User(user);
-        }
-
-         public bool Check_Existing_User( string user_Name)
+         public bool Check_Existing_User( string User_Name)
          {
-             return _userRepo.Check_Existing_User(user_Name);
+            return _userRepo.Check_Existing_User( User_Name);
          }
 
          public List<AutocompleteInfo> Get_Users_By_Name(string first_Name)

@@ -223,6 +223,19 @@ namespace KusumgarBusinessEntities.Common
         // Work Center
         Get_Work_Stations_Sp,
 
+        //Vendor
+
+        Insert_Vendor_sp,
+        Insert_Product_Vendors_sp,
+        Get_Vendors_Sp,
+        Update_Product_Vendors_sp,
+        Update_Vendor_sp,
+        Get_Vendor_By_Id_Sp,
+        //Get_Vendor_By_Name_Sp,
+        Delete_Product_Service_By_Id,
+        Get_Product_Vendor_By_Id_Sp,
+        Check_Existing_Vendor_Sp,
+        Get_Product_Categories_sp
     }
 
     public enum GenderType
@@ -255,10 +268,17 @@ namespace KusumgarBusinessEntities.Common
     public enum CurrencyType
     {
         Rupees = 1,
-        Dollars = 2,
-        Euros = 3,
+        Dollars = 2, 
+       Euros = 3,
         Pounds = 4,
     }
+    public enum PriorityOrder
+    {
+        Primary = 1,
+        Secondary = 2,
+        Last_Option = 3,
+    }
+     
 
     public enum PaymentTerms
     {
@@ -284,10 +304,19 @@ namespace KusumgarBusinessEntities.Common
         option5 = 5,
     }
    
-    public enum PriorityOrder
+      public enum ProductVendor
+      {
+          ProductType=1,
+          Service=2
+      }
+
+      
+    public enum ShipmentMethod
     {
-        Primary = 1,
-        Secondary = 2,
-        Last_Option = 3,
+        method1=1,
+        method2=2
+
     }
+
+
 }

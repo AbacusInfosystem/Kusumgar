@@ -14,6 +14,7 @@ namespace Kusumgar.Models
             Defect = new DefectInfo();
 
             DefectGrid = new List<DefectInfo>();
+            
             EditMode = new DefectEditMode();
            
             Filter = new DefectFilter();
@@ -22,7 +23,7 @@ namespace Kusumgar.Models
             
             Pager = new PaginationInfo();
 
-            FriendlyMessage = new List<FriendlyMessageInfo>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
         }
 
         public DefectInfo Defect { get; set; }
@@ -37,7 +38,7 @@ namespace Kusumgar.Models
 
         public DefectFilter Filter { get; set; }
 
-        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
         public class DefectEditMode
         {

@@ -1,15 +1,15 @@
 ﻿$(document).ready(function () {
    
-    InitializeAutoComplete($('#txtTestUnit1'), autoTestUnit1Callback);
-    InitializeAutoComplete($('#txtTestUnit2'), autoTestUnit2Callback);
-    InitializeAutoComplete($('#txtTestUnit3'), autoTestUnit3Callback);
-    InitializeAutoComplete($('#txtTestUnit4'), autoTestUnit4Callback);
-    InitializeAutoComplete($('#txtTestUnit5'), autoTestUnit5Callback);
-    InitializeAutoComplete($('#txtTestUnit6'), autoTestUnit6Callback);
-    InitializeAutoComplete($('#txtTestUnit7'), autoTestUnit7Callback);
-    InitializeAutoComplete($('#txtTestUnit8'), autoTestUnit8Callback);
-    InitializeAutoComplete($('#txtTestUnit9'), autoTestUnit9Callback);
-    InitializeAutoComplete($('#txtTestUnit10'), autoTestUnit10Callback);
+    InitializeAutoComplete($('#txtTestUnit1'));
+    InitializeAutoComplete($('#txtTestUnit2'));
+    InitializeAutoComplete($('#txtTestUnit3'));
+    InitializeAutoComplete($('#txtTestUnit4'));
+    InitializeAutoComplete($('#txtTestUnit5'));
+    InitializeAutoComplete($('#txtTestUnit6'));
+    InitializeAutoComplete($('#txtTestUnit7'));
+    InitializeAutoComplete($('#txtTestUnit8'));
+    InitializeAutoComplete($('#txtTestUnit9'));
+    InitializeAutoComplete($('#txtTestUnit10'));
 
     $('#btnSave').click(function () {
 

@@ -124,6 +124,26 @@ namespace KusumgarBusinessEntities.Common
                 hash.Add("AC012", AC012);
                 #endregion
 
+                #region Vendor
+
+                FriendlyMessageInfo V011 = new FriendlyMessageInfo("V011", MessageType.Success, "Vendor has been added successfully.");
+                hash.Add("V011", V011);
+
+                FriendlyMessageInfo PS011 = new FriendlyMessageInfo("PS011", MessageType.Success, "Product Services has been added successfully.");
+                hash.Add("PS011", PS011);
+
+                FriendlyMessageInfo V012 = new FriendlyMessageInfo("V012", MessageType.Success, "Vendor has been updated successfully.");
+                hash.Add("V012", V012);
+
+                FriendlyMessageInfo PS012 = new FriendlyMessageInfo("PS012", MessageType.Success, "Product Services has been updated successfully.");
+                hash.Add("PS012", PS012);
+
+                FriendlyMessageInfo PS013 = new FriendlyMessageInfo("PS013 ", MessageType.Success, "Product Services has been deleted successfully.");
+                hash.Add("PS013 ", PS013);
+
+
+                #endregion
+
                 #region Consumable
 
                 FriendlyMessageInfo C011 = new FriendlyMessageInfo("C011", MessageType.Success, "Consumable has been added successfully.");
@@ -174,7 +194,7 @@ namespace KusumgarBusinessEntities.Common
 
             #endregion
 
-                #region CRM
+            #region CRM
 
                 #region Customer
 
