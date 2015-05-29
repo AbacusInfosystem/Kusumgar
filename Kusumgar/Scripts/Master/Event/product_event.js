@@ -4,7 +4,7 @@
         $("#tabProductVendor").hide();
     }
 
-    $("#btnSave").click(function () {
+    $("#btnProductSave").click(function () {
 
         if ($("#frmProduct").valid()) {
 

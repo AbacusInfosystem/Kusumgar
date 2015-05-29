@@ -13,12 +13,16 @@
      }
  });
 
+   alert("hi");
+
     $("#btnSaveOtherDetails").click(function () {
 
         if ($("#frmOtherDetails").valid()) {
             Save_Vendors_Details();
         }
     });
+
+    alert("hello");
 
     $("#btnSaveCertificationDetails").click(function () {
 

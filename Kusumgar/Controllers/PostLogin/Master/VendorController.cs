@@ -36,11 +36,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             pager.IsPagingRequired = false;
 
-            vViewModel.Product_Category = _vendorMan.Get_Product_Category();
-
-            vViewModel.Nations = _nationMan.Get_Nations(ref pager);
-
-            vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Vendor_Entity.Head_Office_Nation), ref pager);
+            
             
             vViewModel.Is_Primary = true;
 
@@ -276,6 +272,16 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public PartialViewResult Load_Vendor(VendorViewModel vViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+            
+            vViewModel.Product_Category = _vendorMan.Get_Product_Category();
+
+            vViewModel.Nations = _nationMan.Get_Nations(ref pager);
+
+            vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Vendor_Entity.Head_Office_Nation), ref pager);
+
             return PartialView("_Vendor", vViewModel);
         }
     }
