@@ -98,7 +98,7 @@ namespace KusumgarDataAccess
             product.Product_Entity.Product_Name = Convert.ToString(dr["Product_Name"]);
             product.Product_Entity.Size = Convert.ToString(dr["Size"]);
             product.Product_Entity.COD = Convert.ToString(dr["COD"]);
-            product.Product_Entity.Product_Type = Convert.ToString(dr["Product_Type"]);
+            product.Product_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
             product.Product_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
             product.Product_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             product.Product_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
@@ -162,7 +162,7 @@ namespace KusumgarDataAccess
             product.Product_Entity.Product_Name = Convert.ToString(dr["Product_Name"]);
             product.Product_Entity.Size = Convert.ToString(dr["Size"]);
             product.Product_Entity.COD = Convert.ToString(dr["COD"]);
-            product.Product_Entity.Product_Type = Convert.ToString(dr["Product_Type"]);
+            product.Product_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
             product.Product_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
             product.Product_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             product.Product_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
