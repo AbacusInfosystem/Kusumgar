@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using KusumgarBusinessEntities.CMS;
+using KusumgarBusinessEntities;
 using Kusumgar.Common;
 
 namespace Kusumgar.Models.PreLogin

@@ -25,7 +25,7 @@
     <form id="frmSearch_YArticle">
 
         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-        <input type="hidden" id="hdfY_Article_Id" name="YArticle.YArticle_Entity.Y_Article_Id" value="@Model.YArticle.YArticle_Entity.Y_Article_Id" />
+        <input type="hidden" id="hdfY_Article_Id" name="YArticle.Y_Article_Id" value="@Model.YArticle.Y_Article_Id" />
         <!-- Main content -->
         <section class="content">
 
@@ -55,7 +55,7 @@
                                             {
                                                 foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
                                                 {
-                                                    if (Model.YArticle.YArticle_Entity.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    if (Model.YArticle.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
                                                     {
                                                         <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
                                                     }

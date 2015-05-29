@@ -110,29 +110,29 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(States, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Insert_Product_Service(VendorViewModel vViewModel)
-        {
-            try
-            {
-                //vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
+        //public ActionResult Insert_Product_Service(VendorViewModel vViewModel)
+        //{
+        //    try
+        //    {
+        //        //vViewModel.Product_Vendor.Product_Vendor_Entity.CreatedBy = 1;
 
-                //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+        //        //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
 
-                vViewModel.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id= _vendorMan.Insert_Product_Services(vViewModel.Product_Vendor);
+        //        vViewModel.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id= _vendorMan.Insert_Product_Services(vViewModel.Product_Vendor);
 
-                vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Product_Vendor.Product_Vendor_Entity.Vendor_Id);
+        //        vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Product_Vendor.Product_Vendor_Entity.Vendor_Id);
 
-                vViewModel.Friendly_Message.Add(MessageStore.Get("PS011"));
-            } 
-            catch (Exception ex)
-            {
-                 vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //        vViewModel.Friendly_Message.Add(MessageStore.Get("PS011"));
+        //    } 
+        //    catch (Exception ex)
+        //    {
+        //         vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                 Logger.Error("Vendor Controller - Insert_Product_Vendor_Details " + ex.ToString());
-            }
+        //         Logger.Error("Vendor Controller - Insert_Product_Vendor_Details " + ex.ToString());
+        //    }
 
-            return Json(vViewModel);
-        }
+        //    return Json(vViewModel);
+        //}
 
         public ActionResult Update_Vendor(VendorViewModel vViewModel)
         {
@@ -154,28 +154,28 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(vViewModel);
         }
 
-        public ActionResult Update_Product_Service(VendorViewModel vViewModel)
-        {
-            try
-            {
-                //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
+        //public ActionResult Update_Product_Service(VendorViewModel vViewModel)
+        //{
+        //    try
+        //    {
+        //        //vViewModel.Product_Vendor.Product_Vendor_Entity.UpdatedBy = 1;
 
-                _vendorMan.Update_Product_Services(vViewModel.Product_Vendor);
+        //        _vendorMan.Update_Product_Services(vViewModel.Product_Vendor);
 
-                vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Product_Vendor.Product_Vendor_Entity.Vendor_Id);
+        //        vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Product_Vendor.Product_Vendor_Entity.Vendor_Id);
 
-                vViewModel.Friendly_Message.Add(MessageStore.Get("PS012"));
+        //        vViewModel.Friendly_Message.Add(MessageStore.Get("PS012"));
 
-            }
-            catch (Exception ex)
-            {
-                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Vendor Controller - Update_Product_Vendor_Details " + ex.ToString());
-            }
+        //        Logger.Error("Vendor Controller - Update_Product_Vendor_Details " + ex.ToString());
+        //    }
 
-            return Json(vViewModel);
-        }
+        //    return Json(vViewModel);
+        //}
 
         public ActionResult Get_Vendor_By_Id(VendorViewModel vViewModel)
         {
@@ -183,7 +183,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
                 
-                vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
+                //vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
             }
             catch(Exception ex)
             {
@@ -231,23 +231,23 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(vViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Delete_Product_Service_By_Id(int product_Vendor_Id, VendorViewModel vViewModel)
-        {
-            try
-            {
-               _vendorMan.Delete_Product_Service_By_Id(product_Vendor_Id);
+        //public JsonResult Delete_Product_Service_By_Id(int product_Vendor_Id, VendorViewModel vViewModel)
+        //{
+        //    try
+        //    {
+        //       _vendorMan.Delete_Product_Service_By_Id(product_Vendor_Id);
 
-               vViewModel.Friendly_Message.Add(MessageStore.Get("PS013"));
-            }
-            catch (Exception ex)
-            {
-                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //       vViewModel.Friendly_Message.Add(MessageStore.Get("PS013"));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Vendor Controller - Delete_Product_Service_By_Id" + ex.ToString());
+        //        Logger.Error("Vendor Controller - Delete_Product_Service_By_Id" + ex.ToString());
 
-            }
-            return Json(vViewModel, JsonRequestBehavior.AllowGet);
-        }
+        //    }
+        //    return Json(vViewModel, JsonRequestBehavior.AllowGet);
+        //}
 
         public JsonResult Get_Vendor_Autocomplete(string vendor_Name)
         {

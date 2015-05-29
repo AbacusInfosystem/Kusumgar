@@ -8,14 +8,14 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class YArticleInfo
+    public class YArticleInfo:M_Y_Article
     {
         public YArticleInfo()
         {
-            YArticle_Entity = new M_Y_Article();
+            //YArticle_Entity = new M_Y_Article();
         }
 
-        public M_Y_Article YArticle_Entity { get; set; }
+        //public M_Y_Article YArticle_Entity { get; set; }
 
         public string Denier_Name { get; set; }
 
@@ -48,6 +48,8 @@ namespace KusumgarBusinessEntities
         public string Given_By_Name { get; set; }
 
         public string Validated_By_Name { get; set; }
+
+        public string Work_Station_Code { get; set; }
 
     }
 }

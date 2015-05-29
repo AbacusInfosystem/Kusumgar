@@ -91,13 +91,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.YArticle_Entity.CreatedBy = 1;
+                yViewModel.YArticle.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
 
-                yViewModel.YArticle.YArticle_Entity.UpdatedBy = 1;
+                yViewModel.YArticle.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId; 
 
                 int yArticle_Id = _yArticleMan.Insert_YArticle(yViewModel.YArticle);
 
-                yViewModel.YArticle.YArticle_Entity.Y_Article_Id = yArticle_Id;
+                yViewModel.YArticle.Y_Article_Id = yArticle_Id;
 
                 yViewModel.Friendly_Message.Add(MessageStore.Get("YA001"));
             }
@@ -115,7 +115,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.YArticle_Entity.UpdatedBy = 1;
+                yViewModel.YArticle.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
 
                 _yArticleMan.Update_YArticle(yViewModel.YArticle);
 
@@ -177,7 +177,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.YArticle_Entity.Y_Article_Id);
+                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.Y_Article_Id);
             }
             catch(Exception ex)
             {
@@ -205,13 +205,13 @@ namespace Kusumgar.Controllers
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Work_Stations(string work_Station_Code)
+        public JsonResult Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
             try
             {
-                autoCompletes = _yArticleMan.Get_Work_Stations(work_Station_Code);
+                autoCompletes = _yArticleMan.Get_Work_Stations_By_Code_Purpose(work_Station_Code);
             }
             catch (Exception ex)
             {

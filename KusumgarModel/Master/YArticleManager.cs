@@ -59,9 +59,9 @@ namespace KusumgarModel
              return yArticleRepo.Get_YArticles_By_Full_Code(full_Code);
          }
 
-         public List<AutocompleteInfo> Get_Work_Stations(string work_Station_Code)
+         public List<AutocompleteInfo> Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
          {
-             return yArticleRepo.Get_Work_Stations(work_Station_Code);
+             return yArticleRepo.Get_Work_Stations_By_Code_Purpose(work_Station_Code);
          }
 
     }
