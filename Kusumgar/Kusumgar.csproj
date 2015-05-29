@@ -231,10 +231,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\AuthorizeUser.cs" />
     <Compile Include="Common\CustomRazorViewEngine.cs" />
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\System\SystemController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\CustomerController.cs" />
@@ -1065,7 +1067,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\PostLogin\Planning\" />
-    <Folder Include="Controllers\PostLogin\SystemConfig\" />
     <Folder Include="Models\CMS\" />
     <Folder Include="Models\Planning\" />
     <Folder Include="Models\SystemConfig\" />
@@ -1076,7 +1077,6 @@
     <Folder Include="Scripts\SystemConfig\" />
     <Folder Include="uploads\" />
     <Folder Include="Views\PostLogin\Planning\" />
-    <Folder Include="Views\PostLogin\SystemConfig\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1476,6 +1476,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PostLogin\System\UnAuthorize.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,9 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+using KusumgarBusinessEntities;
+using KusumgarModel;
 using Kusumgar.Models.PreLogin;
 using Kusumgar.Common;
-
 
 namespace Kusumgar.Controllers.PreLogin
 {
@@ -19,20 +20,20 @@ namespace Kusumgar.Controllers.PreLogin
         {
             try
             {
-                //LoginManager lMan = new LoginManager();
+                LoginManager lMan = new LoginManager();
 
-                //UserInfo user = lMan.AuthenticateUser(loginViewModel.Login.Username, loginViewModel.Login.Password);
+                UserInfo user = lMan.AuthenticateUser(loginViewModel.User.UserEntity.User_Name, loginViewModel.User.UserEntity.Password);
 
-                //if (user.UserId != 0 && user.IsActive == true)
+                if (user.UserEntity.UserId != 0 && user.UserEntity.Is_Active == true)
 
-                if (loginViewModel.Employee.UserName == "admin" && loginViewModel.Employee.Password == "admin")
+                //if (loginViewModel.User.UserEntity.User_Name == "admin" && loginViewModel.User.UserEntity.Password == "admin")
                 {
 
-                    FormsAuthentication.SetAuthCookie(loginViewModel.Employee.UserName, false);
+                    FormsAuthentication.SetAuthCookie(loginViewModel.User.UserEntity.User_Name, false);
 
                     //set values in Users Session object.
 
-                    SetUsersSession(loginViewModel.Employee.UserName, loginViewModel.Employee.Password);
+                    SetUsersSession(loginViewModel.User.UserEntity.User_Name, loginViewModel.User.UserEntity.Password);
 
                     if (Session["returnURL"] != null && !string.IsNullOrEmpty(Session["returnURL"].ToString()))
                     {
@@ -47,7 +48,7 @@ namespace Kusumgar.Controllers.PreLogin
                 }
                 else
                 {
-                    if (loginViewModel.Employee.EmployeeId != 0 && loginViewModel.Employee.IsActive == false)
+                    if (loginViewModel.User.UserEntity.UserId != 0 && loginViewModel.User.UserEntity.Is_Active == false)
                     {
                         TempData["FriendlyMessage"] = MessageStore.Get("SYS06");
                     }
@@ -63,7 +64,7 @@ namespace Kusumgar.Controllers.PreLogin
             {
                 HttpContext.Session.Clear();
 
-                loginViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                loginViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 return RedirectToAction("Index", "Home", loginViewModel);
             }
@@ -91,27 +92,27 @@ namespace Kusumgar.Controllers.PreLogin
 
             try
             {
-                //LoginManager lMan = new LoginManager();
+                LoginManager lMan = new LoginManager();
 
-                //userViewModel.User = lMan.SetSession(username, password);
+                loginViewModel.User = lMan.SetSession(username, password);
 
-                loginViewModel.Employee.EmployeeId = 1;
+                //loginViewModel.User.UserEntity.UserId = 1;
 
-                loginViewModel.Employee.EmployeeName = "Shakti";
+                //loginViewModel.Employee.EmployeeName = "Shakti";
 
-                loginViewModel.Employee.UserName = "admin";
+                //loginViewModel.Employee.UserName = "admin";
 
-                // you should not keep password in session object.
+                //// you should not keep password in session object.
 
-                loginViewModel.Employee.IsActive = true;
+                //loginViewModel.Employee.IsActive = true;
 
                 if (HttpContext.Session["User"] == null)
                 {
-                    HttpContext.Session.Add("User", loginViewModel.Employee);
+                    HttpContext.Session.Add("User", loginViewModel.User);
                 }
                 else
                 {
-                    HttpContext.Session["User"] = loginViewModel.Employee;
+                    HttpContext.Session["User"] = loginViewModel.User;
                 }
             }
             catch (Exception ex)

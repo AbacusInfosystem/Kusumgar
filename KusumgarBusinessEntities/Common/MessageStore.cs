@@ -20,7 +20,7 @@ namespace KusumgarBusinessEntities.Common
             FriendlyMessageInfo SYS02 = new FriendlyMessageInfo("SYS02", MessageType.Info, "Your session has expired. Please login again.");
             hash.Add("SYS02", SYS02);
 
-            FriendlyMessageInfo SYS03 = new FriendlyMessageInfo("SYS03", MessageType.Danger, "Please login with valid Username Password to view this page.");
+            FriendlyMessageInfo SYS03 = new FriendlyMessageInfo("SYS03", MessageType.Danger, "Invalid login credentials. Please login with valid username & password.");
             hash.Add("SYS03", SYS03);
 
             FriendlyMessageInfo SYS04 = new FriendlyMessageInfo("SYS04", MessageType.Info, "No records found.");

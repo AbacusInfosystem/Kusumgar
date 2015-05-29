@@ -21,7 +21,8 @@ namespace KusumgarBusinessEntities.Common
         EmployeeUpdate,
         RoleSearch,
         RoleInsert,
-        RoleUpdate
+        RoleUpdate,
+        NewAppFunction,
     }
 
     public enum UserRoles
@@ -60,6 +61,10 @@ namespace KusumgarBusinessEntities.Common
 
     public enum StoredProcedures
     {
+        //Login
+        Authenticate_User_sp,
+        Get_Session_Data_sp,
+
         // Employee 
         Update_User_Sp,
         Get_Users_By_Id_Sp,

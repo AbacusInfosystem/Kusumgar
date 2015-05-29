@@ -199,6 +199,16 @@ namespace Kusumgar
 
             #region PostLogin
 
+            #region System
+
+            routes.MapRoute(
+            name: "system-1",
+            url: "system/unauthorize-access/{returnURL}",
+            defaults: new { controller = "System", action = "UnAuthorize", returnURL = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
             #region Dashboard
 
             routes.MapRoute(

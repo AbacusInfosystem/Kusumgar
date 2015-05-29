@@ -11,13 +11,15 @@ namespace Kusumgar.Models.PreLogin
     {
         public LoginViewModel()
         {
-            Employee = new EmployeeInfo();
+            User = new UserInfo();
 
-            FriendlyMessage = new List<FriendlyMessage>();
+            Friendly_Message = new List<FriendlyMessage>();
         }
 
-        public EmployeeInfo Employee { get; set; }
+        public UserInfo User { get; set; }
 
-        public List<FriendlyMessage> FriendlyMessage { get; set; }
+        public List<FriendlyMessage> Friendly_Message { get; set; }
+        
+
     }
 }

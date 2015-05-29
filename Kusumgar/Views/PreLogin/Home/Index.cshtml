@@ -30,19 +30,20 @@
     <![endif]-->
 </head>
      <body class="login-page">
+          @{Html.RenderPartial("_ServerMessage");}
     <div class="login-box">
       <div class="login-logo">
-        <a href="#"><b>Kusumgar Corporates</b> Private Limited {E R P}</a>
+        <a href="#"><b>K P C L :</b>: E R P</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <form id="frmLogin" action="@Url.Action("Authenticate", "Authentication")" method="post">
           <div class="form-group has-feedback">
-            <input type="text"  id="txtUserName" name="Employee.UserName" class="form-control" placeholder="Username"/>
+            <input type="text"  id="txtUserName" name="User.UserEntity.User_Name" class="form-control" placeholder="Username"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" id="txtPassword" name="Employee.Password" class="form-control" placeholder="Password"/>
+            <input type="password" id="txtPassword" name="User.UserEntity.Password" class="form-control" placeholder="Password"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -94,15 +95,15 @@
 
                 rules: {
 
-                    "Employee.UserName": { required: true },
+                    "User.UserEntity.User_Name": { required: true },
 
-                    "Employee.Password": { required: true }
+                    "User.UserEntity.Password": { required: true }
                 },
                 messages: {
 
-                    "Employee.Username": { required: "Username is required field." },
+                    "User.UserEntity.User_Name": { required: "Username is required field." },
 
-                    "Employee.Password": { required: "Password is required field." }
+                    "User.UserEntity.Password": { required: "Password is required field." }
                 }
             });
         });
