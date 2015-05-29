@@ -8,7 +8,7 @@
     else {
         CallAjax("/master/update-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Data_Callback, "", null);
     }
-
+   
 }
 
 function Bind_Vendor_Data_Callback(data) {

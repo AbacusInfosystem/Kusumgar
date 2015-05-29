@@ -1,6 +1,14 @@
-﻿<form id="frmVendor">
+﻿@model Kusumgar.Models.VendorViewModel
 
-    <div class="row">
+<script src="~/Scripts/Master/Event/vendor_event.js"></script>
+
+<script src="~/Scripts/Master/Method/vendor_method.js"></script>
+
+<script src="~/Scripts/Master/Validation/vendor_validation.js"></script>
+
+<form id="frmVendor">
+   
+     <div class="row">
         <div class="col-md-4">
 
             <input type="hidden" id="hdnVendorId" name="Vendor.Vendor_Entity.Vendor_Id" value="@Model.Vendor.Vendor_Entity.Vendor_Id">
@@ -96,6 +104,8 @@
                     <input type="text" class="form-control input-sm" id="txtHeadOfficeZipCode" name="Vendor.Vendor_Entity.Head_Office_ZipCode" value="@Model.Vendor.Vendor_Entity.Head_Office_ZipCode" placeholder="Enter zipcode" maxlength="6">
                 </div>
             </div>
+
+
         </div>
 
         <div class="col-md-4">
@@ -130,15 +140,35 @@
                 </div>
                 <!-- /.input group -->
             </div>
+             
 
+    <div class="form-group">
+        <label for="chkStatus">Status :</label><br>
+        @if (Model.Vendor.Vendor_Entity.Is_Active == true)
+                                                {
+            @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="false" checked />
+                                                }
+                                                else
+                                                {
+            @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="true" />
+                                                }
+
+        Active &nbsp;&nbsp;&nbsp;
+        <input type="hidden" id="hdnStatus" value="@((Model.Vendor.Vendor_Entity.Is_Active == null ? false : Model.Vendor.Vendor_Entity.Is_Active).ToString())">
+
+    
+              </div>
         </div>
 
 
     </div>
 
     <div class="box-footer">
-        <button type="button" id="btnSave" class="btn btn-success">Save Primary</button>
-        <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-    </div>
-
+        <div class="btn-group">
+            <button type="button" id="btnSave" class="btn btn-success btn-sm">Save Primary</button>
+            <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+        </div>
+        </div>
 </form>
+
+

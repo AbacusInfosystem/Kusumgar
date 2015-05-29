@@ -948,6 +948,9 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -1075,6 +1078,7 @@
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\SystemConfig\" />
     <Folder Include="uploads\" />
+    <Folder Include="Views\PostLogin\Master\ConsumableMaster\" />
     <Folder Include="Views\PostLogin\Planning\" />
     <Folder Include="Views\PostLogin\SystemConfig\" />
   </ItemGroup>
