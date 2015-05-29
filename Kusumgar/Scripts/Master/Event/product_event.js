@@ -1,6 +1,4 @@
-﻿$(document).ready(function () {
-
-    $("#hdnIs_OrigMan").val(true);
+﻿$(document).ready(function () {    
 
     if ($("#hdnProduct_Id").val() == 0) {
         $("#tabProductVendor").hide();

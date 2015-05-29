@@ -254,6 +254,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Product_Categories_sp,
         Get_Product_SubCategory_By_CategoryId_Sp,
         Get_Products_By_Product_Name_Sp,
+        Get_Products_By_Product_Id_Sp,
         Insert_Product_Vendor_Sp,
         Delete_Product_Vendor_By_Id_Sp,
         Get_Product_Vendors_By_Id_Sp,
@@ -339,5 +340,10 @@ namespace KusumgarBusinessEntities.Common
 
     }
 
+    public enum ProductType
+    {
+        Product = 1,
+        Service = 2
+    }
 
 }

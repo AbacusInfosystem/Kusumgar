@@ -75,12 +75,12 @@ namespace KusumgarDataAccess
             return products;
         }
 
-        public List<ProductInfo> Get_Products_By_Name(string product_Name, ref PaginationInfo pager)
+        public List<ProductInfo> Get_Products_By_Id(int product_Id, ref PaginationInfo pager)
         {
             List<ProductInfo> products = new List<ProductInfo>();
             List<SqlParameter> sqlParams = new List<SqlParameter>();
-            sqlParams.Add(new SqlParameter("@Product_Name", product_Name));
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Products_By_Product_Name_Sp.ToString(), CommandType.StoredProcedure);
+            sqlParams.Add(new SqlParameter("@Product_Id", product_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Products_By_Product_Id_Sp.ToString(), CommandType.StoredProcedure);
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 products.Add(Get_Product_Values(dr));
@@ -98,7 +98,7 @@ namespace KusumgarDataAccess
             product.Product_Entity.Product_Name = Convert.ToString(dr["Product_Name"]);
             product.Product_Entity.Size = Convert.ToString(dr["Size"]);
             product.Product_Entity.COD = Convert.ToString(dr["COD"]);
-            product.Product_Entity.Product_Type = Convert.ToString(dr["Product_Type"]);
+            product.Product_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
             product.Product_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
             product.Product_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             product.Product_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
@@ -162,7 +162,7 @@ namespace KusumgarDataAccess
             product.Product_Entity.Product_Name = Convert.ToString(dr["Product_Name"]);
             product.Product_Entity.Size = Convert.ToString(dr["Size"]);
             product.Product_Entity.COD = Convert.ToString(dr["COD"]);
-            product.Product_Entity.Product_Type = Convert.ToString(dr["Product_Type"]);
+            product.Product_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
             product.Product_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
             product.Product_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             product.Product_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);

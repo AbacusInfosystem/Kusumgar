@@ -140,7 +140,7 @@ namespace KusumgarDataAccess
             yArticle.YArticle_Entity.Validated_By_Id = Convert.ToInt32(dr["Validated_By_Id"]);
             yArticle.YArticle_Entity.Developed_Under_Id = Convert.ToInt32(dr["Developed_Under_Id"]);
             yArticle.YArticle_Entity.Lead_Time_To_Purchase = Convert.ToString(dr["Lead_Time_To_Purchase"]);
-            yArticle.YArticle_Entity.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
+            yArticle.YArticle_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
             yArticle.YArticle_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
             yArticle.YArticle_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
             yArticle.YArticle_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
@@ -213,7 +213,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Validated_By_Id", yArticle.YArticle_Entity.Validated_By_Id));
             sqlparam.Add(new SqlParameter("@Developed_Under_Id", yArticle.YArticle_Entity.Developed_Under_Id));
             sqlparam.Add(new SqlParameter("@Lead_Time_To_Purchase", yArticle.YArticle_Entity.Lead_Time_To_Purchase));
-            sqlparam.Add(new SqlParameter("@Work_Center_Code", yArticle.YArticle_Entity.Work_Center_Code));
+            sqlparam.Add(new SqlParameter("@Work_Station_Id", yArticle.YArticle_Entity.Work_Station_Id));
             sqlparam.Add(new SqlParameter("@Is_Active", yArticle.YArticle_Entity.Is_Active));
             if (yArticle.YArticle_Entity.Y_Article_Id == 0)
             {

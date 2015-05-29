@@ -24,9 +24,9 @@ namespace KusumgarModel
             return _productRepo.Get_Products(ref pager);
         }
 
-        public List<ProductInfo> Get_Products_By_Name(string product_Name, ref PaginationInfo pager)
+        public List<ProductInfo> Get_Products_By_Product_Id(int product_Id, ref PaginationInfo pager)
         {
-            return _productRepo.Get_Products_By_Name(product_Name, ref pager);
+            return _productRepo.Get_Products_By_Id(product_Id, ref pager);
         }
 
         public List<AutocompleteInfo> Get_Products_By_Name_Autocomplete(string product_Name)
