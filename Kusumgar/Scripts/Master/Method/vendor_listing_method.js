@@ -147,3 +147,5 @@ function PageMore(Id) {
     CallAjax("/Vendor/Get_Vendors", "json", JSON.stringify(vViewModel), "POST", "application/json", false, BindVendorInGrid, "", null);
 
 }
+
+

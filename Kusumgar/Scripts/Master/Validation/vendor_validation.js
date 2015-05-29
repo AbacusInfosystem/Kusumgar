@@ -65,6 +65,10 @@
              {
                  required: true,
              },
+            "Vendor.Vendor_Entity.Head_Office_ZipCode":
+               {
+                   required: true,
+               },
               
   },
         messages: {
@@ -99,56 +103,61 @@
                 },
              "Vendor.Vendor_Entity.Product_Category":
               {
-                    required: "Product_Category is required."
-               }
+                    required: "Product Category is required."
+              },
+
+                  "Vendor.Vendor_Entity.Head_Office_ZipCode":
+             {
+                   required:"Enter Zip Code"
+               },
 
         }
     });
 
-    $("#frmProductServices").validate({
+    //$("#frmProductServices").validate({
 
-        rules: {
-            "Product_Vendor.Product_Vendor_Entity.Name":
-                 {
-                     required: true,
+    //    rules: {
+    //        "Product_Vendor.Product_Vendor_Entity.Name":
+    //             {
+    //                 required: true,
 
-                 },
+    //             },
            
-            "Product_Vendor.Product_Vendor_Entity.Testing_Facility":
-                {
-                    required: true
-                },
-            "Product_Vendor.Product_Vendor_Entity.Inspection_Facility":
-                {
-                    required: true
-                },
-            "Product_Vendor.Product_Vendor_Entity.Product_Type":
-                {
-                    required: true
-                },
+    //        "Product_Vendor.Product_Vendor_Entity.Testing_Facility":
+    //            {
+    //                required: true
+    //            },
+    //        "Product_Vendor.Product_Vendor_Entity.Inspection_Facility":
+    //            {
+    //                required: true
+    //            },
+    //        "Product_Vendor.Product_Vendor_Entity.Product_Type":
+    //            {
+    //                required: true
+    //            },
            
-        },
-        messages: {
+    //    },
+    //    messages: {
 
-            "Product_Vendor.Product_Vendor_Entity.Name":
-             {
-                 required: "product service name is required."
-             },
+    //        "Product_Vendor.Product_Vendor_Entity.Name":
+    //         {
+    //             required: "product service name is required."
+    //         },
             
-            "Product_Vendor.Product_Vendor_Entity.Testing_Facility":
-                {
-                    required: " Testing Facility is required."
-                },
-            "Product_Vendor.Product_Vendor_Entity.Inspection_Facility":
-                {
-                    required: "Inspection Facility is required."
-                },
-            "Product_Vendor.Product_Vendor_Entity.Product_Type":
-                {
-                    required: "Product Type is required."
-                },
-         }
-    });
+    //        "Product_Vendor.Product_Vendor_Entity.Testing_Facility":
+    //            {
+    //                required: " Testing Facility is required."
+    //            },
+    //        "Product_Vendor.Product_Vendor_Entity.Inspection_Facility":
+    //            {
+    //                required: "Inspection Facility is required."
+    //            },
+    //        "Product_Vendor.Product_Vendor_Entity.Product_Type":
+    //            {
+    //                required: "Product Type is required."
+    //            },
+    //     }
+    //});
 
 
     $("#frmCertificationDetails").validate({
@@ -233,7 +242,8 @@
             },
             "Vendor.Vendor_Entity.PAN":
             {
-                required: true
+                required: true,
+                validate_PAN: true
             },
             "Vendor.Vendor_Entity.TAN":
             {
@@ -260,10 +270,9 @@
             "Vendor.Vendor_Entity.PaymentTerms":
          {
              required: true
-         },
+         }
 
-
-        },
+  },
 
         messages: {
 
@@ -279,7 +288,7 @@
             {
                 required: "Registration No is required"
             },
-            "Vendor.Vendor_Entity.PAN":
+            "PAN":
             {
                 required: "PAN is required"
             },
@@ -333,4 +342,13 @@
         return result;
 
     }, "Vendor is already exists.");
+
+    jQuery.validator.addMethod("validate_PAN", function (value, element) {
+        return this.optional(element) || /^[A-Z]{5}\d{4}[A-Z]{1}$/.test(value);
+    }, "Invalid Pan Number");
+ 
+
 });
+
+
+
