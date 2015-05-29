@@ -25,7 +25,6 @@ namespace KusumgarDatabaseEntities
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Bank_Details> Bank_Details { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Contact_Custom_Fields> Contact_Custom_Fields { get; set; }
@@ -45,10 +44,6 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Industrial_Vendors> M_Industrial_Vendors { get; set; }
         public DbSet<M_Nation> M_Nation { get; set; }
         public DbSet<M_Payment_Terms> M_Payment_Terms { get; set; }
-        public DbSet<M_Product> M_Product { get; set; }
-        public DbSet<M_Product_Category> M_Product_Category { get; set; }
-        public DbSet<M_Product_SubCategory> M_Product_SubCategory { get; set; }
-        public DbSet<M_Product_Vendor> M_Product_Vendor { get; set; }
         public DbSet<M_Product_Vendors> M_Product_Vendors { get; set; }
         public DbSet<M_Role> M_Role { get; set; }
         public DbSet<M_Role_Access_Function_Mapping> M_Role_Access_Function_Mapping { get; set; }
@@ -57,9 +52,12 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Test> M_Test { get; set; }
         public DbSet<M_Test_Unit> M_Test_Unit { get; set; }
         public DbSet<M_User> M_User { get; set; }
-        public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
         public DbSet<M_Vendor> M_Vendor { get; set; }
+        public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
+        public DbSet<Bank_Details> Bank_Details { get; set; }
         public DbSet<M_Work_Center> M_Work_Center { get; set; }
+        public DbSet<M_Work_Station> M_Work_Station { get; set; }
+        public DbSet<M_Product_Category> M_Product_Category { get; set; }
         public DbSet<M_Y_Article> M_Y_Article { get; set; }
     }
 }

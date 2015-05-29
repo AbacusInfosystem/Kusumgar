@@ -229,7 +229,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
 
         // Work Center
-        Get_Work_Stations_Sp,
+        Get_Work_Stations_By_Code_Purpose_Sp,
 
         //Vendor
 
@@ -336,7 +336,15 @@ namespace KusumgarBusinessEntities.Common
     {
         method1=1,
         method2=2
+    }
 
+    public enum ArticleType
+    {
+        YArticle = 1,
+        WArticle = 2,
+        GArticle = 3,
+        PArticle = 4,
+        CArticle = 5
     }
 
 

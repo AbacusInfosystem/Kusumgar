@@ -73,6 +73,8 @@
     <Compile Include="Master\ProductInfo.cs" />
     <Compile Include="Master\ProductSubCategoryInfo.cs" />
    
+    
+    
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
     <Compile Include="Master\StateInfo.cs" />

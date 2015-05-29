@@ -41,8 +41,7 @@ function Set_YArticle()
         {
             YArticle:
                 {
-                    YArticle_Entity:
-                        {
+                    
 
                             Chemical_Treatment_Id: $("#drpChemical_Treatment").val().split('_')[0],
 
@@ -80,12 +79,12 @@ function Set_YArticle()
 
                             Validated_By_Id: $("#hdnValidated_by").val(),
 
-                            Work_Center_Code: $("#txtWork_Center").parents('.form-group').find('.text').html(),
+                            Work_Station_Id: $("#hdnWork_Station_Id").val(),
 
                             Y_Article_Id: $("#hdnYArticle_Id").val(),
 
                             Yarn_Type_Id: $("#drpYarn_type").val().split('_')[0],
-                        }
+                        
                 }
         }
    
@@ -95,7 +94,7 @@ function Set_YArticle()
 function YArticle_CallBack(data)
 {
   
-    $("#hdnYArticle_Id").val(data.YArticle.YArticle_Entity.Y_Article_Id);
+    $("#hdnYArticle_Id").val(data.YArticle.Y_Article_Id);
     Friendly_Message(data);
 }
 

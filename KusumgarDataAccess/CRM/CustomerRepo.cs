@@ -343,8 +343,10 @@ namespace KusumgarDataAccess
             if (customer.Customer_Entity.Customer_Id == 0)
             {
                 sqlparam.Add(new SqlParameter("@CreatedBy", customer.Customer_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", customer.Customer_Entity.CreatedOn));
             }
             sqlparam.Add(new SqlParameter("@UpdatedBy", customer.Customer_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", customer.Customer_Entity.UpdatedOn));
 
             return sqlparam;
         }
@@ -372,7 +374,9 @@ namespace KusumgarDataAccess
             if (bank_Details.Bank_Details_Entity.Bank_Details_Id == 0)
             {
                 sqlparam.Add(new SqlParameter("@CreatedBy", bank_Details.Bank_Details_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", bank_Details.Bank_Details_Entity.CreatedOn));
             }
+            sqlparam.Add(new SqlParameter("@UpdatedOn", bank_Details.Bank_Details_Entity.UpdatedOn));
 
             sqlparam.Add(new SqlParameter("@Vat", bank_Details.Bank_Details_Entity.Vat));
             sqlparam.Add(new SqlParameter("@Currency_Id", bank_Details.Bank_Details_Entity.Currency_Id));
@@ -401,8 +405,10 @@ namespace KusumgarDataAccess
             if (customerAddress.Customer_Address_Entity.Customer_Address_Id == 0)
             {
                 sqlparam.Add(new SqlParameter("@CreatedBy", customerAddress.Customer_Address_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", customerAddress.Customer_Address_Entity.CreatedOn));
             }
             sqlparam.Add(new SqlParameter("@UpdatedBy", customerAddress.Customer_Address_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", customerAddress.Customer_Address_Entity.UpdatedOn));
 
             return sqlparam;
         }

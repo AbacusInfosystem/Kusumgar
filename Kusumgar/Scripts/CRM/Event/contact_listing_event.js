@@ -18,7 +18,7 @@
 
     $("#btnViewCompany").click(function () {
 
-        $("#frmSearch_contact").attr("action", "/crm/get-contact-by-id");
+        $("#frmSearch_contact").attr("action", "/crm/edit-customer");
 
         $("#frmSearch_contact").attr("method", "POST");
 
