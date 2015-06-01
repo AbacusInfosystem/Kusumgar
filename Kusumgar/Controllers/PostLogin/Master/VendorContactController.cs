@@ -116,11 +116,11 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vcViewModel.Vendor_Contact.Contact_Entity.CreatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vcViewModel.Vendor_Contact.Contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 vcViewModel.Vendor_Contact.Contact_Entity.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 vcViewModel.Vendor_Contact.Contact_Entity.Contact_Id = _vendorcontactMan.Insert_Vendor_Contact(vcViewModel.Vendor_Contact);
 
@@ -142,7 +142,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vcViewModel.Vendor_Contact.Contact_Entity.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _vendorcontactMan.Update_Vendor_Contact(vcViewModel.Vendor_Contact);
 
@@ -180,11 +180,11 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _vendorcontactMan.Insert_Vendor_Contact_Custom_Field(vcViewModel.Vendor_Contact.Vendor_Custom_Field);
 
@@ -208,7 +208,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _vendorcontactMan.Update_Vendor_Contact_Custom_Field(vcViewModel.Vendor_Contact.Vendor_Custom_Field);
 

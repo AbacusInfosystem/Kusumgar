@@ -67,9 +67,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                uViewModel.User.UserEntity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                uViewModel.User.UserEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                uViewModel.User.UserEntity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                uViewModel.User.UserEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _userMan.Insert_User(uViewModel.User);
 
