@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities;
-using Kusumgar.Common;
+
 
 namespace Kusumgar.Models.PreLogin
 {
@@ -13,12 +13,12 @@ namespace Kusumgar.Models.PreLogin
         {
             User = new UserInfo();
 
-            Friendly_Message = new List<FriendlyMessage>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
         }
 
         public UserInfo User { get; set; }
 
-        public List<FriendlyMessage> Friendly_Message { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
         
 
     }

@@ -236,6 +236,7 @@
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
     <Compile Include="Controllers\PostLogin\System\SystemController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />

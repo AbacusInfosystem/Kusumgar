@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using Kusumgar.Models.PreLogin;
-using Kusumgar.Common;
+
 using KusumgarCrossCutting.Logging;
 using System.Threading.Tasks;
 using System.IO;
@@ -37,7 +37,7 @@ namespace Kusumgar.Controllers.PreLogin
                 {
                     if (TempData["FriendlyMessage"] != null)
                     {
-                        loginViewModel.Friendly_Message.Add((FriendlyMessage)TempData["FriendlyMessage"]);
+                        loginViewModel.Friendly_Message.Add((FriendlyMessageInfo)TempData["FriendlyMessage"]);
                     }
 
                     return View("Index", loginViewModel);

@@ -18,14 +18,17 @@ namespace Kusumgar.Controllers
         // GET: /Complaint/
 
         public ComplaintManager _cMgr;
+
         public AjaxManager aMan;
 
         public ComplaintController()
         {
             _cMgr = new ComplaintManager();
+
             aMan = new AjaxManager();
         }
 
+        [AuthorizeUser(AppFunction.Dashboard)]
         public ActionResult Index(ComplaintViewModel _complaintViewModel)
         {
             try

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using KusumgarBusinessEntities.Common;
 using KusumgarBusinessEntities;
 using System.Net;
-namespace Kusumgar.Common
+namespace Kusumgar
 {
     public class AuthorizeUserAttribute: AuthorizeAttribute, IAuthorizationFilter
     {

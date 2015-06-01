@@ -52,9 +52,7 @@
     <Compile Include="CRM\CustomerInfo.cs" />
     <Compile Include="Common\EnumCollection.cs" />
     <Compile Include="CRM\EmployeeInfo.cs" />
-    <Compile Include="Common\FriendlyMessageInfo.cs" />
     <Compile Include="Common\LookupInfo.cs" />
-    <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\PaginationInfo.cs" />
     <Compile Include="Master\AttributeCodeInfo.cs" />
     <Compile Include="Master\ConsumableInfo.cs" />
@@ -67,14 +65,10 @@
     <Compile Include="Master\IndustrialInfo.cs" />
     <Compile Include="Master\IndustrialVendorInfo.cs" />
     <Compile Include="Master\NationInfo.cs" />
- 
     <Compile Include="Master\ProductVendorInfo.cs" />
     <Compile Include="Master\ProductCategoryInfo.cs" />
     <Compile Include="Master\ProductInfo.cs" />
     <Compile Include="Master\ProductSubCategoryInfo.cs" />
-   
-    
-    
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
     <Compile Include="Master\StateInfo.cs" />
