@@ -28,25 +28,25 @@ function BindRoleGrid(data)
   
     var htmlText = "";
 
-    for (i = 0; i < data.RoleList.length; i++) {
+    for (i = 0; i < data.Roles.length; i++) {
 
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.RoleList[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.RoleList[i].RoleEntity.Role_Name;
+        htmlText += data.Roles[i].RoleEntity.Role_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.RoleList[i].RoleEntity.Is_Active.toString();
+        htmlText += data.Roles[i].RoleEntity.Is_Active.toString();
 
         htmlText += "</td>";
 
