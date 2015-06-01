@@ -6,7 +6,7 @@
 
     $("#btnEdit").click(function () {
 
-        $("#frmSearch_Prod").attr("action", "/master/edit-product");
+        $("#frmSearch_Prod").attr("action", "/master/edit-material");
 
         $("#frmSearch_Prod").attr("method", "POST");
 

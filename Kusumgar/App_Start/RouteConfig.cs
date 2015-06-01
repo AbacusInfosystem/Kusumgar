@@ -195,6 +195,12 @@ namespace Kusumgar
           url: "master/consumable/search",
           defaults: new { controller = "Consumable", action = "Search", id = UrlParameter.Optional },
           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+         name: "menu-31",
+         url: "master/material/search",
+         defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+         namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #region PostLogin
@@ -969,22 +975,22 @@ namespace Kusumgar
 
             #endregion
 
-            #region Product
+            #region material
 
             routes.MapRoute(
-            name: "product-1",
-            url: "master/product",
+            name: "material-1",
+            url: "master/material",
             defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "product-2",
-            url: "master/edit-product",
+            name: "material-2",
+            url: "master/edit-material",
             defaults: new { controller = "Product", action = "Get_Product_By_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "product-3",
+            name: "material-3",
             url: "master/insert-product",
             defaults: new { controller = "Product", action = "Insert", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
