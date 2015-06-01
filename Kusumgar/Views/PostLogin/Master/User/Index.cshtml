@@ -17,7 +17,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>CRM</li>
-            <li class="active">Customer</li>
+            <li class="active">Employee</li>
         </ol>
     </section>
 
@@ -335,9 +335,11 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                            <a href="@Url.Action("Search", "User")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                            <div class="btn-group">
+                                <button type="button" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                <a href="@Url.Action("Search", "User")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
 
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@
                 required: true,
                 validate_username : true,
                 messages: {
-                    required: "User Name is required"
+                    required: "User name is required"
                 }
             });
 
@@ -46,7 +46,7 @@
                 required: true,
                 validate_password: true,
                 messages: {
-                    required: "Conform Password is required"
+                    required: "Conform password is required"
                 }
             });
         }

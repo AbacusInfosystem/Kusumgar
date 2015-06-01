@@ -28,6 +28,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Index(ComplaintViewModel _complaintViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             try
             {
                 _complaintViewModel.Pager.IsPagingRequired = false;
@@ -42,6 +44,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(ComplaintViewModel _complaintViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["_complaintViewModel"] != null)
             {
                 _complaintViewModel = (ComplaintViewModel)TempData["_complaintViewModel"];

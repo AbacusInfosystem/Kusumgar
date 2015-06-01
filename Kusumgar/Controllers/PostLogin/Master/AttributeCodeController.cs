@@ -15,11 +15,15 @@ namespace Kusumgar.Controllers.PostLogin.Master
     { 
         public ActionResult Index(AttributeCodeViewModel aViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             return View(aViewModel);
         }
 
         public ActionResult Search(AttributeCodeViewModel aViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["aViewModel"] != null)
             {
                 aViewModel = (AttributeCodeViewModel)TempData["aViewModel"];

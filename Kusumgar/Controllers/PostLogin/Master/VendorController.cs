@@ -32,6 +32,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Index(VendorViewModel vViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             PaginationInfo pager = new PaginationInfo();
 
             pager.IsPagingRequired = false;
@@ -45,6 +47,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Search(VendorViewModel vViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["vViewModel"] != null)
             {
                 vViewModel = (VendorViewModel)TempData["vViewModel"];

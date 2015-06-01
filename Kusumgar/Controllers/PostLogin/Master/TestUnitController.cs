@@ -15,11 +15,15 @@ namespace Kusumgar.Controllers
     {
         public ActionResult Index(TestUnitViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             return View("Index", tViewModel);
         }
 
         public ActionResult Search(TestUnitViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["tViewModel"] != null)
             {
                 tViewModel = (TestUnitViewModel)TempData["tViewModel"];

@@ -1,23 +1,6 @@
 ﻿$(function () {
     $("#frmUser").validate({
-        ignore: [],
-        errorElement: "span",
-        errorClass: "help-block",
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').addClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({'color':'#A94442','background-color':'#F2DEDE','border-color':'#A94442'});
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').removeClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({  'color':'black','background-color': '#FFF', 'border-color': '#D2D6DE' });
-        },
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length || element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        },
+
 
         rules: {
             "User.UserEntity.First_Name":
@@ -107,11 +90,11 @@
 
             "User.UserEntity.First_Name":
             {
-                required: "User Name is required."
+                required: "User name is required."
             },
             "User.UserEntity.Birth_Date":
             {
-                required: "Birth Date is required."
+                required: "Birth date is required."
             },
             "User.UserEntity.Gender":
             {
@@ -119,19 +102,19 @@
             },
             "User.UserEntity.Date_Of_Joining":
             {
-                required: "Date Of Joining is required."
+                required: "Date of joining is required."
             },
             "User.UserEntity.Personal_Email":
             {
-                required: "Personal Email is required."
+                required: "Personal email is required."
             },
             "User.UserEntity.Mobile_No1":
             {
-                required: "Mobile No1 is required."
+                required: "Mobile no1 is required."
             },
             "User.UserEntity.Last_Name":
             {
-                required: "Last Name is required."
+                required: "Last name is required."
             },
             "User.Role_Ids":
             {

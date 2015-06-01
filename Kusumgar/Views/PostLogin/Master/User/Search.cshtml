@@ -1,7 +1,5 @@
 ﻿@model Kusumgar.Models.UserViewModel
-@{
-    ViewBag.Title = "Search";
-}
+
 <script src="~/Scripts/Master/user_search_event.js"></script>
 <script src="~/Scripts/Master/user_search_method.js"></script>
 
@@ -36,7 +34,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtEmployeeName">Employee Name</label>
-                                    <input type="text" class="form-control" id="txtEmployeeName" placeholder="Enter Employee Name" />
+                                    <input type="text" class="form-control input-sm" id="txtEmployeeName" placeholder="Enter Employee Name" />
                                 </div>
                             </div>
                         </div>
@@ -46,15 +44,15 @@
                                 <div class="col-md-6">
 
                                     <div class="btn-group pull-left">
-                                        <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                        <a class="btn btn-primary" href="@Url.Action("Index","User")" role="button">Create Employee</a>
+                                        <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("Index","User")" role="button">Create </a>
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
 
                                     <div class="btn-group pull-right">
-                                        <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Employee</button>
+                                        <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
                                     </div>
 
                                 </div>
