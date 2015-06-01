@@ -14,6 +14,10 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/get-vendor-id-by-vendorname/" + $('#txtVendorName').val();
             }
 
+            if ($(elementObject).attr("id") == 'txt_auto_Vendor_Name') {
+                urlString = "/master/get-vendor-id-by-vendorname/" + $('#txt_auto_Vendor_Name').val();
+            }
+
             if ($(elementObject).attr("id") == 'txtSupplierName') {
                 urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
             }
@@ -171,7 +175,7 @@ var InitializeAutoComplete = function (elementObject) {
 
     $(elementObject).each(function () {
 
-        if ($(this).parents('.form-group').find('input[type=hidden]').val() != 0) {
+        if ($(this).parents('.form-group').find('input[type=hidden]').val() != 0 ) {
             var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
 
             if ($(this).parents('.form-group').find(".ui-menu")[0]) {
@@ -191,6 +195,10 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').find('.todo-list').remove();
 
             });
+        }
+        else
+        {
+            $(this).parents('.form-group').find('.todo-list').remove();
         }
     });
 }

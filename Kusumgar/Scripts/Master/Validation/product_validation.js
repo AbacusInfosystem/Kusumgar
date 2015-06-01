@@ -1,23 +1,6 @@
 ﻿$(function () {
     $("#frmProduct").validate({
-        ignore: [],
-        errorElement: "span",
-        errorClass: "help-block",
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').addClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({ 'color': '#A94442', 'background-color': '#F2DEDE', 'border-color': '#A94442' });
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').removeClass('has-error');
-            $(element).closest('.form-group').find('.input-group-addon').css({ 'color': 'black', 'background-color': '#FFF', 'border-color': '#D2D6DE' });
-        },
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length || element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        },
+
 
         rules: {
             "Product.Product_Entity.Product_Code":
@@ -69,19 +52,19 @@
 
             "Product.Product_Entity.Product_Code":
             {
-                required: "Product Code is required."
+                required: "Product code is required."
             },
             "Product.Product_Entity.Product_Category_Id":
             {
-                required: "Product Category Name is required."
+                required: "Product category name is required."
             },
             "Product.Product_Entity.Product_SubCategory_Id":
             {
-                required: "Product Sub-Category Name is required."
+                required: "Product sub-category name is required."
             },
             "Product.Product_Entity.Product_Name":
             {
-                required: "Product Name is required."
+                required: "Product name is required."
             },
             "Product.Product_Entity.Size":
             {
@@ -93,23 +76,23 @@
             },
             "Product.Product_Entity.Product_Type":
             {
-                required: "Product Type is required."
+                required: "Product type is required."
             },            
             "Product.Product_Entity.Inspection_Facility":
             {
-                required: "Inspection Facility is required."
+                required: "Inspection facility is required."
             },
             "Product.Product_Entity.Testing_Facility":
             {
-                required: "Testing Facility is required.",
+                required: "Testing facility is required.",
             },
             "Product_Vendor.Vendor_Name":
             {
-                required: "Vendor Name is required."
+                required: "Vendor name is required."
             },
             "Product_Vendor.Product_Vendor_Entity.Priority_Order":
             {
-                required: "Priority Order is required."
+                required: "Priority order is required."
             },
         }
     });

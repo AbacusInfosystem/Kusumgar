@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Product
+            Material
 
             <small>Search</small>
         </h1>
@@ -22,7 +22,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>Masters</li>
-            <li class="active">Product Search</li>
+            <li class="active">Material Search</li>
         </ol>
     </section>
     <form id="frmSearch_Prod">
@@ -37,9 +37,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="txtProductName">Product Name</label>
+                                        <label for="txtProductName">Material Name</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtProductName" placeholder="Enter Product Name" name="Filter.Product_Name" value="@Model.Filter.Product_Name">
+                                            <input type="text" class="form-control input-sm" id="txtProductName" placeholder="Enter material name" name="Filter.Product_Name" value="@Model.Filter.Product_Name">
                                             <input type="hidden" id="hdfProduct_Id" value="@Model.Filter.Product_Id" name="Filter.Product_Id">
                                         </div>
                                     </div>                                    
@@ -52,13 +52,13 @@
                                         <div class="form-group">
                                             <div class="btn-group pull-left btn-group-sm">
                                                 <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
-                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Product")" role="button">Product Creation </a>
+                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Product")" role="button">Create </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="btn-group pull-right btn-group-sm">
-                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit Product</button>
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
                                         </div>
                                     </div>
                                 </div>
@@ -76,10 +76,10 @@
                             <table class="table table-striped" id="tblProdGrid">
                                 <tr id="subhead">
                                     <th></th>
-                                    <th>Product Code</th>
-                                    <th>Product Category Name</th>                                    
-                                    <th>Product Name</th>                                    
-                                    <th>Product Type</th>                                    
+                                    <th>Material Code</th>
+                                    <th>Material Category Name</th>                                    
+                                    <th>Material Name</th>                                    
+                                    <th>Material Type</th>                                    
                                 </tr>
                             </table>
                         </div>

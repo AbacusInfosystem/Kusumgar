@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
-<script src="~/Scripts/CRM/complaint_event.js"></script>
-<script src="~/Scripts/CRM/complaint_method.js"></script>
-<script src="~/Scripts/CRM/complaint_validation.js"></script>
+<script src="~/Scripts/CRM/Event/complaint_event.js"></script>
+<script src="~/Scripts/CRM/Method/complaint_method.js"></script>
+<script src="~/Scripts/CRM/Validation/complaint_validation.js"></script>
 <link rel="stylesheet" href="~/Content/jquery-ui.css">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    
@@ -42,9 +42,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="txtCustName" style="color: #333">Customer Name</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.CustomerName" id="txtCustName" placeholder="Enter Customer Name" value="@Model.Complaint.CustomerName">
-                                                <input type="hidden" id="hdnCustId" value="@Model.Complaint.ComplaintEntity.CustomerId" name="Complaint.ComplaintEntity.CustomerId" />                                                
+                                                <label for="txtCustomer_Name" style="color: #333">Customer Name</label>
+                                                <div class="auto-complete">
+                                                    <input type="text" class="form-control input-sm" name="Complaint.CustomerName" id="txtCustomer_Name" placeholder="Enter Customer Name" value="@Model.Complaint.CustomerName">
+                                                    <input type="hidden" id="hdnCustId" value="@(Model.Complaint.ComplaintEntity.CustomerId == 0 ? "" : Model.Complaint.ComplaintEntity.CustomerId.ToString())" name="Complaint.ComplaintEntity.CustomerId" />
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtOrdId" style="color: #333">Order Id</label>
@@ -69,8 +71,10 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" id="btnSave" class="btn btn-success">Save</button>
-                            <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning" role="button">Cancel and Open Search</a>
+                            <div class="btn-group">
+                                <button type="button" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                            </div>
                         </div>
                     </div>
                 </div>

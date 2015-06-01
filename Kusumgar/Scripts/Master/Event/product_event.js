@@ -38,7 +38,7 @@
         });
     });
 
-    InitializeAutoComplete($('#txtVendorName'));
+    InitializeAutoComplete($('#txt_auto_Vendor_Name'));
 
     $("#btnSavePV").click(function () {
 

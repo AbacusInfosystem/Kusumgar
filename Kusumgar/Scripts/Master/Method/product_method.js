@@ -103,7 +103,7 @@ function Bind_Product_Vendor_Data_Callback(data)
 
         htmlText += "<div class='btn-group pull-right'>";
 
-        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm' onclick='RemoveVendor(" + data.Product_Vendors[i].Product_Vendor_Entity.Product_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
+        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Product_Vendors[i].Product_Vendor_Entity.Product_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
 
         htmlText += "</td>";
 
@@ -126,6 +126,12 @@ function Bind_Product_Vendor_Data_Callback(data)
 
     $("#txtVendorName").val("");
     $("#drpPriorityOrder").val("");
+
+    $("#txt_auto_Vendor_Name").val("");
+
+    $("#hdnVendor_Id").val(0);
+
+    InitializeAutoComplete($('#txt_auto_Vendor_Name'));
 
     Friendly_Message(data);
 }

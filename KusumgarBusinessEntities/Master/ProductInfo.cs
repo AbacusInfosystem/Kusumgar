@@ -18,5 +18,24 @@ namespace KusumgarBusinessEntities
         {
             Product_Entity = new M_Product();
         }
+
+        public string Product_Type_Str
+        {
+            get
+            {
+                if(Product_Entity.Product_Type != 0)
+                {
+                    return ((ProductType)Product_Entity.Product_Type).ToString().Replace('_',' ');
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            set
+            {
+                Product_Type_Str = value;
+            }
+        }
     }
 }

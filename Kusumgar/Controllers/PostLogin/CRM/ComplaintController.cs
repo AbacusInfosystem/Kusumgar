@@ -34,7 +34,7 @@ namespace Kusumgar.Controllers
             }
             catch (Exception ex)
             {
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
             return View("Index", _complaintViewModel);
@@ -54,11 +54,11 @@ namespace Kusumgar.Controllers
             try
             {
                 _cMgr.Insert_Complaint(_complaintViewModel.Complaint);
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("CO001"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
             }
             catch (Exception ex)
             {
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             TempData["_complaintViewModel"] = _complaintViewModel;
             return RedirectToAction("Search");
@@ -69,11 +69,11 @@ namespace Kusumgar.Controllers
             try
             {
                 _cMgr.Update_Complaint(_complaintViewModel.Complaint);
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("CO002"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("CO002"));
             }
             catch (Exception ex)
             {
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             TempData["_complaintViewModel"] = _complaintViewModel;
             return RedirectToAction("Search");
@@ -95,7 +95,7 @@ namespace Kusumgar.Controllers
             }
             catch (Exception ex)
             {
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             return Json(_complaintViewModel, JsonRequestBehavior.AllowGet);
         }
@@ -108,7 +108,7 @@ namespace Kusumgar.Controllers
             }
             catch (Exception ex)
             {
-                _complaintViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
             return Index(_complaintViewModel);
         }

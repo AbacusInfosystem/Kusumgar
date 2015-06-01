@@ -28,7 +28,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Product
+            Material
 
             <small>Master</small>
         </h1>
@@ -36,7 +36,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>Masters</li>
-            <li class="active">Product</li>
+            <li class="active">Material</li>
         </ol>
     </section>
 
@@ -47,8 +47,8 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" id="tabProductCreation" data-toggle="tab">Product Creation</a></li>
-                        <li><a href="#tab_2" id="tabProductVendor" data-toggle="tab">Product Vendor</a></li>
+                        <li class="active"><a href="#tab_1" id="tabProductCreation" data-toggle="tab">Material Creation</a></li>
+                        <li><a href="#tab_2" id="tabProductVendor" data-toggle="tab">Material Vendor</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">
@@ -61,11 +61,11 @@
                                         <input type="hidden" id="hdnProduct_Id" value="@Model.Product.Product_Entity.Product_Id">
 
                                         <div class="form-group">
-                                            <label for="txtProductCode" style="color: #333">Product Code</label>
+                                            <label for="txtProductCode" style="color: #333">Material Code</label>
                                             <input type="text" class="form-control input-sm" name="Product.Product_Entity.Product_Code" id="txtProductCode" placeholder="Enter Product Code" value="@Model.Product.Product_Entity.Product_Code">
                                         </div>
                                         <div class="form-group">
-                                            <label for="drpProdCatName" style="color: #333">Product Category Name</label>
+                                            <label for="drpProdCatName" style="color: #333">Material Category Name</label>
                                             <select class="form-control input-sm" id="drpProdCatName" name="Product.Product_Entity.Product_Category_Id">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Product_Categories)
@@ -82,7 +82,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="drpSubCatName" style="color: #333">Product Sub Category Name</label>
+                                            <label for="drpSubCatName" style="color: #333">Material Sub Category Name</label>
                                             <select class="form-control input-sm" id="drpSubCatName" name="Product.Product_Entity.Product_SubCategory_Id">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Product_SubCategories)
@@ -99,7 +99,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="txtProductName" style="color: #333">Product Name</label>
+                                            <label for="txtProductName" style="color: #333">Material Name</label>
                                             <input type="text" class="form-control input-sm" name="Product.Product_Entity.Product_Name" id="txtProductName" placeholder="Enter Product Name" value="@Model.Product.Product_Entity.Product_Name">
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@
                                             <input type="text" class="form-control input-sm" name="Product.Product_Entity.COD" id="txtCOD" placeholder="Enter COD" value="@Model.Product.Product_Entity.COD">
                                         </div>
                                         <div class="form-group">
-                                            <label for="drpProdType" style="color: #333">Product Type</label>
+                                            <label for="drpProdType" style="color: #333">Material Type</label>
                                             <select class="form-control input-sm" id="drpProdType" name="Product.Product_Entity.Product_Type">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in LookupInfo.Get_Product_Types())
@@ -159,8 +159,8 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="btn-group">
-                                                <button type="button" id="btnProductSave" class="btn btn-success btn-sm">Save Product</button>
-                                                <a href="@Url.Action("Search", "Product")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel and Open Search</a>
+                                                <button type="button" id="btnProductSave" class="btn btn-success btn-sm">Save </button>
+                                                <a href="@Url.Action("Search", "Product")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
@@ -174,10 +174,10 @@
                                 <div class="col-md-4">
                                     <input type="hidden" id="hdnProduct_Vendor_Id" value="@Model.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id">
                                     <div class="form-group">
-                                        <label for="txtVendorName" style="color: #333">Vendor Name</label>
+                                        <label for="txt_auto_Vendor_Name" style="color: #333">Vendor Name</label>
                                         <div class="auto-complete">
                                             <div class="input-group-btn form-inline">
-                                                <input type="text" class="form-control input-sm" name="Product_Vendor.Vendor_Name" id="txtVendorName" placeholder="Enter Vendor Name" value="@Model.Product_Vendor.Vendor_Name">
+                                                <input type="text" class="form-control input-sm" name="Product_Vendor.Vendor_Name" id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name" value="@Model.Product_Vendor.Vendor_Name">
                                                 <button type="button" id="btnNew" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">New Vendor</button>
                                             </div>
                                             <input type="hidden" id="hdnVendor_Id" value="@Model.Product_Vendor.Product_Vendor_Entity.Vendor_Id">
@@ -219,7 +219,7 @@
                                                     <td>@item.Product_Vendor_Entity.Priority_Order</td>
                                                     <td>
                                                         <div class="btn-group pull-right">
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm" onclick="RemoveVendor(@item.Product_Vendor_Entity.Product_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs" onclick="RemoveVendor(@item.Product_Vendor_Entity.Product_Vendor_Id)"><i class='fa fa-times'></i></button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -233,8 +233,8 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="btn-group">
-                                            <button type="button" id="btnSavePV" class="btn btn-success btn-sm">Save Product Vendor</button>
-                                            <a href="@Url.Action("Search", "Product")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel and Open Search</a>
+                                            <button type="button" id="btnSavePV" class="btn btn-success btn-sm">Save Material Vendor</button>
+                                            <a href="@Url.Action("Search", "Product")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
                                         </div>
                                     </div>
                                 </div>

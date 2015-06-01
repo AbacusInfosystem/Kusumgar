@@ -32,7 +32,7 @@
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
-                            <li><a href="#tab_2" id="Vendor_Tab" data-toggle="tab">Supplier</a></li>
+                            <li><a href="#tab_2" id="Vendor_Tab" data-toggle="tab">Vendor</a></li>
                             <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                         </ul>
                         <div class="tab-content">
@@ -47,7 +47,7 @@
 
                                         <input type="hidden" id="hdnConsumable_Id" value="@Model.Consumable.Consumable_Entity.Consumable_Id">
                                         <div class="form-group">
-                                            <label for="CategoryName">Category Name</label>
+                                            <label for="CategoryName" style="color: #333">Category Name</label>
                                             <select id="ddlCategoryName" class="form-control input-sm" name="Consumable.Category_Name">
                                                 <option value="">--Select--</option>
                                                 @foreach (var item in Model.Categories)
@@ -64,7 +64,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="SubCategoryName">Sub Category Name</label>
+                                            <label for="SubCategoryName" style="color: #333">Sub Category Name</label>
                                             <select id="ddlSubCategoryName" class="form-control input-sm" name="Consumable.SubCategory_Name">
                                                 <option value="">--Select--</option>
                                                 @foreach (var item in Model.SubCategories)
@@ -81,12 +81,12 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="txtMaterialName">Material Name</label>
-                                            <input type="text" class="form-control" id="txtMaterialName" name="Consumable.Consumable_Entity.Material_Name" value="@Model.Consumable.Consumable_Entity.Material_Name" placeholder="Enter Material Name">
+                                            <label for="txtMaterialName" style="color: #333">Material Name</label>
+                                            <input type="text" class="form-control input-sm" id="txtMaterialName" name="Consumable.Consumable_Entity.Material_Name" value="@Model.Consumable.Consumable_Entity.Material_Name" placeholder="Enter Material Name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="txtMaterialCode">Material Code</label>
-                                            <input type="text" class="form-control" id="txtMaterialCode" name="Consumable.Consumable_Entity.Material_Code" value="@Model.Consumable.Consumable_Entity.Material_Code" placeholder="Enter Material Code">
+                                            <label for="txtMaterialCode" style="color: #333">Material Code</label>
+                                            <input type="text" class="form-control input-sm" id="txtMaterialCode" name="Consumable.Consumable_Entity.Material_Code" value="@Model.Consumable.Consumable_Entity.Material_Code" placeholder="Enter Material Code">
                                         </div>
 
                                         <div class="form-group">
@@ -102,9 +102,11 @@
 
                                 </div>
                                 <div class="box-footer">
-                                    <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                                    <a href="@Url.Action("Search", "Consumable")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                    <div class="btn-group">
+                                        <button type="button" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                        <a href="@Url.Action("Search", "Consumable")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
 
+                                    </div>
                                 </div>
                             </div>
 
@@ -116,15 +118,15 @@
                                       
                                         <input type="hidden" id="hdnConsumable_Vendor_Id" class="Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id">
                                         <div class="form-group">
-                                            <label for="txtSupplierName">Supplier Name</label>
+                                            <label for="txtSupplierName" style="color: #333">Vendor Name</label>
                                             <div class="auto-complete">
                                                 <input type="text" class="form-control input-sm" id="txtSupplierName" placeholder="Enter Vendor Name" name="Consumable.Consumable_Vendors.Vendor_Entity.Vendor_Name" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Name"  />
                                                 <input type="hidden" id="hdnVendor_Id" name="Consumable.Consumable_Vendors.Vendor_Entity.Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Id" />
                                             </div>
                                             </div>
                                         <div class="form-group">
-                                            <label for="txtPriorityOrder">Priority Order</label>
-                                            <input type="text" class="form-control Priority_Order" id="txtPriorityOrder" placeholder="Enter Priority Order" name="Consumable.Consumable_Vendors.Vendor_Entity.Priority_Order">
+                                            <label for="txtPriorityOrder" style="color: #333">Priority Order</label>
+                                            <input type="text" class="form-control input-sm Priority_Order" id="txtPriorityOrder" placeholder="Enter Priority Order" name="Consumable.Consumable_Vendors.Vendor_Entity.Priority_Order">
 
                                         </div>
                                     </div>
@@ -132,9 +134,9 @@
                                     <div class="col-md-6">
                                         <table class="table table-hover" id="tblConsumable_Vendor">
                                             <tr id="subhead">
-                                                <th>Consumable Vendor Id</th>
+                                                @*<th>Consumable Vendor Id</th>*@
                                                 <th>Vendor Name</th>
-                                                <th>Consumable Id</th>
+                                                @*<th>Consumable Id</th>*@
                                                 <th>Priority Order</th>
                                                 <th style="min-width: 60px;">&nbsp; </th>
                                             </tr>
@@ -144,10 +146,10 @@
 
                                                 <tr id="tr_vendor_@item.Consumable_Vendor_Entity.Consumable_Vendor_Id">
 
-                                                <td>@item.Consumable_Vendor_Entity.Consumable_Vendor_Id</td>
+                                                @*<td>@item.Consumable_Vendor_Entity.Consumable_Vendor_Id</td>*@
                                                 @*<td>@item.Consumable_Vendor_Entity.Vendor_Id</td>*@
                                                 <td>@item.Vendor_Entity.Vendor_Name</td>
-                                                <td>@item.Consumable_Vendor_Entity.Consumable_Id</td>
+                                                @*<td>@item.Consumable_Vendor_Entity.Consumable_Id</td>*@
                                                 <td>@item.Consumable_Vendor_Entity.Priority_Order</td>
                                                 <td>
                                                     <input type="hidden"  class="hdn_Consumable_Vendor_Id" value="@item.Consumable_Vendor_Entity.Consumable_Vendor_Id">
@@ -156,8 +158,8 @@
                                                     <input type="hidden" class="Priority_Order" value="@item.Consumable_Vendor_Entity.Priority_Order">
 
                                                     <div class="btn-group pull-right">
-                                                        <button type="button" id="btnEditVendor" class="btn btn-info btn-sm" onclick="EditVendors(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-pencil-square-o'></i></button>
-                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveVendor(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                        <button type="button" id="btnEditVendor" class="btn btn-info btn-xs" onclick="EditVendors(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-pencil-square-o'></i></button>
+                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-xs " onclick="RemoveVendor(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-times'></i></button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -168,8 +170,10 @@
                                 </div>
 
                                 <div class="box-footer">
-                                    <button type="button" id="btnSave_Vendor" class="btn btn-success">Save Vendors</button>
-                                    <a href="@Url.Action("Search","Consumable")" id="btnCancel" class="btn btn-warning">Cancle and Open Search</a>
+                                    <div class="btn-group">
+                                        <button type="button" id="btnSave_Vendor" class="btn btn-success btn-sm">Save Vendor</button>
+                                        <a href="@Url.Action("Search","Consumable")" id="btnCancel" class="btn btn-warning btn-sm">Cancle</a>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-8 ">

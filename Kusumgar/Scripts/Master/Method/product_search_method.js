@@ -51,7 +51,7 @@ function Bind_Product_Grid(data) {
         
         htmlText += "<td>";
         
-        htmlText += data.Products[i].Product_Entity.Product_Type;
+        htmlText += data.Products[i].Product_Type_Str;
 
         htmlText += "</td>";        
         

@@ -350,8 +350,9 @@ namespace KusumgarBusinessEntities.Common
 
     public enum ProductType
     {
-        Product = 1,
-        Service = 2
+        Finish_Product = 1,
+        Raw_Material =2,
+        Service = 3
     }
 
 }

@@ -13,7 +13,7 @@ namespace Kusumgar.Models
         public ComplaintInfo Complaint { get; set; }
         public List<ComplaintInfo> ComplaintList { get; set; }
         public PaginationInfo Pager { get; set; }
-        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
         public Complaint_Filter Complaint_Filter { get; set; }
         public int ComplaintId { get; set; }        
 
@@ -22,7 +22,7 @@ namespace Kusumgar.Models
             Complaint = new ComplaintInfo();
             ComplaintList = new List<ComplaintInfo>();
             Pager = new PaginationInfo();
-            FriendlyMessage = new List<FriendlyMessageInfo>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
             Complaint_Filter = new Complaint_Filter();
         }
         
