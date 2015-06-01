@@ -80,7 +80,6 @@ namespace Kusumgar.Controllers
 
                 tViewModel.Test_Unit = tMan.Get_Test_Unit_By_Id(tViewModel.Edit_Mode.Test_Unit_Id);
 
-                tViewModel.Friendly_Message.Add(MessageStore.Get("DT011"));
             }
             
         catch (Exception ex)
