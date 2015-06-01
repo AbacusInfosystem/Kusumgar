@@ -1,12 +1,10 @@
-﻿$(document).ready(function () {
-
-    $("#hdnIs_OrigMan").val(true);
+﻿$(document).ready(function () {    
 
     if ($("#hdnProduct_Id").val() == 0) {
         $("#tabProductVendor").hide();
     }
 
-    $("#btnSave").click(function () {
+    $("#btnProductSave").click(function () {
 
         if ($("#frmProduct").valid()) {
 

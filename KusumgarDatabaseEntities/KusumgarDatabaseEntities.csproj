@@ -173,6 +173,9 @@
     <Compile Include="M_Work_Center.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_Work_Center_Process.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Work_Station.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>

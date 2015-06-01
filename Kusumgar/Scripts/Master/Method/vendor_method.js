@@ -1,31 +1,27 @@
-﻿function Save_Vendors_Details() {
-    var vViewModel = Set_Vendor();
-
+﻿function Save_Vendors_Other_Details() {
+    var vViewModel = Set_Vendor_Other_Details();
+    
     if ($("#hdnVendorId").val() == 0) {
       
-        CallAjax("/master/insert-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Data_Callback, "", null);
+        CallAjax("/master/insert-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
     }
     else {
-        CallAjax("/master/update-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Data_Callback, "", null);
+        CallAjax("/master/update-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
     }
    
 }
 
-function Bind_Vendor_Data_Callback(data) {
+function Bind_Vendor_Other_Details_Data_Callback(data) {
     
     $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
-
-    $("#tabProductServices").show();
-    $("#tabCertificates").show();
-    $("#tabCentralExciseRegistrationDetails").show();
-    $("#tabOtherDetails").show();
 
     $("#hdnVendorName").val($("#txtVendorName").val());
    
     Friendly_Message(data);
 }
 
-function Set_Vendor() {                      
+function Set_Vendor_Other_Details() {
+  
     var vViewModel =
         {
             Vendor:
@@ -33,19 +29,18 @@ function Set_Vendor() {
                     Vendor_Entity:
                         {
                             Vendor_Id: $("#hdnVendorId").val(),
-
-                            Vendor_Name : $("#txtVendorName").val(),
-
-                            Email   :  $("#txtEmailId ").val(),
-                          
-                            HeadOfficeAddress:    $("#txtHeadOfficeAddress").val(),
-                                 
+                            Vendor_Name: $("#txtVendorName").val(),
+                            Email: $("#txtEmailId ").val(),
+                            HeadOfficeAddress: $("#txtHeadOfficeAddress").val(),
                             Head_Office_State: $("#drpHeadOfficeState").val(),
                             Head_Office_ZipCode: $("#txtHeadOfficeZipCode").val(),
                             Head_Office_Nation: $("#drpHeadOfficeNation").val(),
                             Head_Office_Landline1: $("#txtHeadOfficeLandline1").val(),
                             Head_Office_Landline2: $("#txtHeadOfficeLandline2").val(),
                             Head_Office_FaxNo: $("#txtHeadOfficeFaxNo").val(),
+                            Is_Active: $("#hdnStatus").val(),
+                            Product_Category: $("#drpProductCategory").val(),
+                            Code: $("#txtYarnCode").val(),
                             Performance_Certification: $("#txtPerformanceCertification").val(),
                             Performance_Certification_Year: $("#drpPerformanceCertificationYear").val(),
                             Performance_Certification_Category: $("#txtPerformanceCertificationCategory").val(),
@@ -68,26 +63,9 @@ function Set_Vendor() {
                             Flagged_Supplier: $("#txtSupplierName").val(),
                             Is_Approved_By_Director: $("#hdnApprovedByDirector").val(),
                             Delivary_Term_Code: $("#txtDelivaryTermCode").val(),
-                            Is_Active: $("#hdnStatus").val(),
-                            Product_Category: $("#drpProductCategory").val(),
-                            Code: $("#txtYarnCode").val(),
-                           
-                        },
-                   
-                    Product_Category_Entity: {
-                          Product_Category_Name: $("#drpProductCategory option:selected").text()
-                        }
-                },
-        
-        Attribute_Code:
-            {
-                AttributeCodeEntity:
-                    {
-                        Name: $("#txtVendorName").val(),
-                        Code: $("#txtYarnCode").val()
-                    }
-            }
-    }
+                       }
+              }
+     }
 
     return vViewModel;
 }

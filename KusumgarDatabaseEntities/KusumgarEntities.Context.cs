@@ -62,6 +62,7 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
         public DbSet<M_Vendor> M_Vendor { get; set; }
         public DbSet<M_Work_Center> M_Work_Center { get; set; }
+        public DbSet<M_Work_Center_Process> M_Work_Center_Process { get; set; }
         public DbSet<M_Work_Station> M_Work_Station { get; set; }
         public DbSet<M_Y_Article> M_Y_Article { get; set; }
     }

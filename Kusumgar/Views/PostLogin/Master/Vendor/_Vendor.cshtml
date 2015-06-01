@@ -1,18 +1,18 @@
 ﻿@model Kusumgar.Models.VendorViewModel
 
-<script src="~/Scripts/Master/Event/vendor_event.js"></script>
+<script src="~/Scripts/Master/Event/vendor_partial_event.js"></script>
 
-<script src="~/Scripts/Master/Method/vendor_method.js"></script>
+<script src="~/Scripts/Master/Method/vendor_partial_method.js"></script>
 
-<script src="~/Scripts/Master/Validation/vendor_validation.js"></script>
+<script src="~/Scripts/Master/Validation/vendor_partial_validation.js"></script>
 
 <form id="frmVendor">
-   
-     <div class="row">
+
+    <div class="row">
         <div class="col-md-4">
 
             <input type="hidden" id="hdnVendorId" name="Vendor.Vendor_Entity.Vendor_Id" value="@Model.Vendor.Vendor_Entity.Vendor_Id">
-
+            <input type="hidden" id="hdnIs_Primary" value="@Model.Is_Primary">
             <div class="form-group">
                 <label for="txtVendorName" style="color: #333">Vendor Name :</label>
                 <input type="text" id="txtVendorName" class="form-control input-sm" name="Vendor.Vendor_Entity.Vendor_Name" value="@Model.Vendor.Vendor_Entity.Vendor_Name" placeholder="Enter Vendor Name">
@@ -35,7 +35,7 @@
                         }
                     }
                 </select>
-               
+
             </div>
 
             <div class="form-group">
@@ -45,13 +45,13 @@
 
             <div class="form-group">
                 <label for="txtEmailId" style="color: #333">Email Id</label>
-                  <div class="input-group">
+                <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                     <input type="text" class="form-control input-sm" id="txtEmailId" name="Vendor.Vendor_Entity.Email" value="@Model.Vendor.Vendor_Entity.Email" placeholder="Enter email">
                 </div>
             </div>
 
-         </div>
+        </div>
 
         <div class="col-md-4">
             <div class="form-group">
@@ -140,24 +140,24 @@
                 </div>
                 <!-- /.input group -->
             </div>
-             
 
-    <div class="form-group">
-        <label for="chkStatus">Status :</label><br>
-        @if (Model.Vendor.Vendor_Entity.Is_Active == true)
-                                                {
+
+            <div class="form-group">
+                <label for="chkStatus">Status :</label><br>
+                @if (Model.Vendor.Vendor_Entity.Is_Active)
+                    {
             @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="false" checked />
                                                 }
-                                                else
-                                                {
+                    else
+                    {
             @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="true" />
                                                 }
 
-        Active &nbsp;&nbsp;&nbsp;
-        <input type="hidden" id="hdnStatus" value="@((Model.Vendor.Vendor_Entity.Is_Active == null ? false : Model.Vendor.Vendor_Entity.Is_Active).ToString())">
+                Active &nbsp;&nbsp;&nbsp;
+                <input type="hidden" id="hdnStatus" value="@((Model.Vendor.Vendor_Entity.Is_Active == null ? false : Model.Vendor.Vendor_Entity.Is_Active).ToString())">
 
-    
-              </div>
+
+            </div>
         </div>
 
 
@@ -168,7 +168,7 @@
             <button type="button" id="btnSave" class="btn btn-success btn-sm">Save Primary</button>
             <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
         </div>
-        </div>
+    </div>
 </form>
 
 

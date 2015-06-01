@@ -42,8 +42,9 @@
         <EntityTypeShape EntityType="KusumgarModel.M_User_Role_Mapping" Width="1.5" PointX="16.75" PointY="13.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Vendor" Width="1.5" PointX="10.75" PointY="17.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Work_Center" Width="1.5" PointX="16.75" PointY="17.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Work_Station" Width="1.5" PointX="18.75" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="18.75" PointY="4.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Center_Process" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Station" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="18.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

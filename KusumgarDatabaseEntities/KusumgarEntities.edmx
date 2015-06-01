@@ -602,6 +602,16 @@
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Work_Center_Process">
+          <Key>
+            <PropertyRef Name="Work_Center_Process_Id" />
+          </Key>
+          <Property Name="Work_Center_Process_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Work_Center_Id" Type="int" Nullable="false" />
+          <Property Name="Process_Id" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Work_Station">
           <Key>
             <PropertyRef Name="Work_Station_Id" />
@@ -684,6 +694,7 @@
           <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Vendor" EntityType="Self.M_Vendor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Center" EntityType="Self.M_Work_Center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Work_Center_Process" EntityType="Self.M_Work_Center_Process" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Station" EntityType="Self.M_Work_Station" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Y_Article" EntityType="Self.M_Y_Article" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -729,6 +740,7 @@
           <EntitySet Name="M_User_Role_Mapping" EntityType="KusumgarModel.M_User_Role_Mapping" />
           <EntitySet Name="M_Vendor" EntityType="KusumgarModel.M_Vendor" />
           <EntitySet Name="M_Work_Center" EntityType="KusumgarModel.M_Work_Center" />
+          <EntitySet Name="M_Work_Center_Process" EntityType="KusumgarModel.M_Work_Center_Process" />
           <EntitySet Name="M_Work_Station" EntityType="KusumgarModel.M_Work_Station" />
           <EntitySet Name="M_Y_Article" EntityType="KusumgarModel.M_Y_Article" />
         </EntityContainer>
@@ -1328,6 +1340,16 @@
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Work_Center_Process">
+          <Key>
+            <PropertyRef Name="Work_Center_Process_Id" />
+          </Key>
+          <Property Name="Work_Center_Process_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Work_Center_Id" Type="Int32" Nullable="false" />
+          <Property Name="Process_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Work_Station">
           <Key>
@@ -2010,6 +2032,17 @@
                 <ScalarProperty Name="Work_Station_Id" ColumnName="Work_Station_Id" />
                 <ScalarProperty Name="Purpose" ColumnName="Purpose" />
                 <ScalarProperty Name="Work_Center_Id" ColumnName="Work_Center_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Work_Center_Process">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Work_Center_Process">
+              <MappingFragment StoreEntitySet="M_Work_Center_Process">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Process_Id" ColumnName="Process_Id" />
+                <ScalarProperty Name="Work_Center_Id" ColumnName="Work_Center_Id" />
+                <ScalarProperty Name="Work_Center_Process_Id" ColumnName="Work_Center_Process_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
