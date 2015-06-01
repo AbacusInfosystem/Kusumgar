@@ -8,8 +8,15 @@
     }
 
     $("#btnSave").click(function () {
-    if ($("#frmVendor").valid()) {
-        Save_Vendors_Details();
+        if ($("#frmVendor").valid()) {
+            if ($("#hdnIs_Primary").val() == true) {
+                Save_Vendors_Details();
+            }
+            else
+            {
+                Save_Vendors_Details();
+                $("#myModal").modal('toggle');
+            }
     }
 });
 
