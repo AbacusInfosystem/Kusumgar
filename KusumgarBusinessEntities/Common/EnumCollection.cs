@@ -16,6 +16,9 @@ namespace KusumgarBusinessEntities.Common
 
     public enum AppFunction
     {
+        // Dashboard
+        Dashboard,
+
         // Employee
         Employee_Search,
         Employee_Create,
