@@ -4,12 +4,54 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="KusumgarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KusumgarModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="KusumgarModelStoreContainer">
+          <EntitySet Name="Bank_Details" EntityType="KusumgarModel.Store.Bank_Details" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Complaint" EntityType="KusumgarModel.Store.Complaint" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contact" EntityType="KusumgarModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contact_Custom_Fields" EntityType="KusumgarModel.Store.Contact_Custom_Fields" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="KusumgarModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_Addresss" EntityType="KusumgarModel.Store.Customer_Addresss" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Access_Function" EntityType="KusumgarModel.Store.M_Access_Function" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Attribute_Code" EntityType="KusumgarModel.Store.M_Attribute_Code" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Category" EntityType="KusumgarModel.Store.M_Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Consumable" EntityType="KusumgarModel.Store.M_Consumable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Consumable_Vendors" EntityType="KusumgarModel.Store.M_Consumable_Vendors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Defect" EntityType="KusumgarModel.Store.M_Defect" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Defect_Type" EntityType="KusumgarModel.Store.M_Defect_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Fabric_Type" EntityType="KusumgarModel.Store.M_Fabric_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Factory" EntityType="KusumgarModel.Store.M_Factory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Industrial" EntityType="KusumgarModel.Store.M_Industrial" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Industrial_Category" EntityType="KusumgarModel.Store.M_Industrial_Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Industrial_Group" EntityType="KusumgarModel.Store.M_Industrial_Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Industrial_Vendors" EntityType="KusumgarModel.Store.M_Industrial_Vendors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Nation" EntityType="KusumgarModel.Store.M_Nation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Payment_Terms" EntityType="KusumgarModel.Store.M_Payment_Terms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Process" EntityType="KusumgarModel.Store.M_Process" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Product" EntityType="KusumgarModel.Store.M_Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Product_Category" EntityType="KusumgarModel.Store.M_Product_Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Product_SubCategory" EntityType="KusumgarModel.Store.M_Product_SubCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Product_Vendor" EntityType="KusumgarModel.Store.M_Product_Vendor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Product_Vendors" EntityType="KusumgarModel.Store.M_Product_Vendors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Role" EntityType="KusumgarModel.Store.M_Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="KusumgarModel.Store.M_Role_Access_Function_Mapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_State" EntityType="KusumgarModel.Store.M_State" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_SubCategory" EntityType="KusumgarModel.Store.M_SubCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Test" EntityType="KusumgarModel.Store.M_Test" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Test_Unit" EntityType="KusumgarModel.Store.M_Test_Unit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_User" EntityType="KusumgarModel.Store.M_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_User_Role_Mapping" EntityType="KusumgarModel.Store.M_User_Role_Mapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Vendor" EntityType="KusumgarModel.Store.M_Vendor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Work_Center" EntityType="KusumgarModel.Store.M_Work_Center" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Work_Center_Process" EntityType="KusumgarModel.Store.M_Work_Center_Process" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Work_Station" EntityType="KusumgarModel.Store.M_Work_Station" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="M_Y_Article" EntityType="KusumgarModel.Store.M_Y_Article" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
         <EntityType Name="Bank_Details">
           <Key>
             <PropertyRef Name="Bank_Details_Id" />
           </Key>
-          <Property Name="Bank_Details_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bank_Details_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Supplier_Id" Type="int" />
           <Property Name="Customer_Id" Type="int" />
           <Property Name="Bank_Name" Type="nvarchar" MaxLength="50" />
@@ -35,12 +77,12 @@
           <Key>
             <PropertyRef Name="ComplaintId" />
           </Key>
-          <Property Name="ComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="OrderId" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="OrderItemId" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ChallanNo" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CDescription" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="OrderId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="OrderItemId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ChallanNo" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CDescription" Type="nvarchar" Nullable="false" MaxLength="1000" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
@@ -50,11 +92,11 @@
           <Key>
             <PropertyRef Name="Contact_Id" />
           </Key>
-          <Property Name="Contact_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contact_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Contact_Type" Type="int" Nullable="false" />
           <Property Name="Customer_Id" Type="int" Nullable="false" />
           <Property Name="Vendor_Id" Type="int" Nullable="false" />
-          <Property Name="Contact_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contact_Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="Designation" Type="nvarchar" MaxLength="50" />
           <Property Name="Office_Address" Type="nvarchar" MaxLength="255" />
           <Property Name="Office_Landline1" Type="nvarchar" MaxLength="20" />
@@ -76,7 +118,7 @@
           <Key>
             <PropertyRef Name="Contact_Custom_Field_Id" />
           </Key>
-          <Property Name="Contact_Custom_Field_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contact_Custom_Field_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Contact_Id" Type="int" Nullable="false" />
           <Property Name="Field_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Field_Value" Type="nvarchar" MaxLength="100" />
@@ -90,8 +132,8 @@
           <Key>
             <PropertyRef Name="Customer_Id" />
           </Key>
-          <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Company_Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Head_Office_Address" Type="nvarchar" MaxLength="255" />
           <Property Name="Head_Office_State" Type="int" Nullable="false" />
@@ -122,10 +164,10 @@
           <Key>
             <PropertyRef Name="Customer_Address_Id" />
           </Key>
-          <Property Name="Customer_Address_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Address_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Customer_Id" Type="int" Nullable="false" />
           <Property Name="Address_Type" Type="int" Nullable="false" />
-          <Property Name="Addresss" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Addresss" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="Landline1" Type="nvarchar" MaxLength="20" />
           <Property Name="landline2" Type="nvarchar" MaxLength="20" />
           <Property Name="FaxNo" Type="nvarchar" MaxLength="15" />
@@ -139,8 +181,8 @@
           <Key>
             <PropertyRef Name="Access_Fuction_Id" />
           </Key>
-          <Property Name="Access_Fuction_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Access_Function_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Access_Fuction_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Access_Function_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
@@ -150,7 +192,7 @@
           <Key>
             <PropertyRef Name="Attribute_Code_Id" />
           </Key>
-          <Property Name="Attribute_Code_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Attribute_Code_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Attribute_Id" Type="int" Nullable="false" />
           <Property Name="Attribute_Code_Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Code" Type="nvarchar" MaxLength="10" />
@@ -164,8 +206,8 @@
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
@@ -176,11 +218,11 @@
           <Key>
             <PropertyRef Name="Consumable_Id" />
           </Key>
-          <Property Name="Consumable_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Consumable_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Category_Id" Type="int" Nullable="false" />
           <Property Name="SubCategory_Id" Type="int" Nullable="false" />
-          <Property Name="Material_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Material_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Material_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Material_Code" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDtm" Type="datetime" Nullable="false" />
@@ -191,7 +233,7 @@
           <Key>
             <PropertyRef Name="Consumable_Vendor_Id" />
           </Key>
-          <Property Name="Consumable_Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Consumable_Vendor_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Vendor_Id" Type="int" Nullable="false" />
           <Property Name="Consumable_Id" Type="int" Nullable="false" />
           <Property Name="Priority_Order" Type="int" Nullable="false" />
@@ -204,7 +246,7 @@
           <Key>
             <PropertyRef Name="Defect_Id" />
           </Key>
-          <Property Name="Defect_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Defect_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Defect_Type_Id" Type="int" Nullable="false" />
           <Property Name="Defect_Code" Type="nvarchar" MaxLength="50" />
           <Property Name="Defect_Name" Type="nvarchar" MaxLength="50" />
@@ -218,7 +260,7 @@
           <Key>
             <PropertyRef Name="Defect_Type_Id" />
           </Key>
-          <Property Name="Defect_Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Defect_Type_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Defect_Type_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -230,7 +272,7 @@
           <Key>
             <PropertyRef Name="Fabric_Type_Id" />
           </Key>
-          <Property Name="Fabric_Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fabric_Type_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Fabric_Type_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -241,9 +283,9 @@
           <Key>
             <PropertyRef Name="Factory_Id" />
           </Key>
-          <Property Name="Factory_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Factory_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Factory_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Factory_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Factory_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Factory_Code" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -254,12 +296,12 @@
           <Key>
             <PropertyRef Name="Industrial_Master_Id" />
           </Key>
-          <Property Name="Industrial_Master_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Industrial_Master_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Industrial_Category_Id" Type="int" Nullable="false" />
           <Property Name="Industrial_Group_Id" Type="int" Nullable="false" />
-          <Property Name="Industrial_SubGrp_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="COD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Industrial_SubGrp_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Size" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="COD" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDtm" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
@@ -269,8 +311,8 @@
           <Key>
             <PropertyRef Name="Industrial_Category_Id" />
           </Key>
-          <Property Name="Industrial_Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Industrial_Category_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Industrial_Category_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Industrial_Category_Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDtm" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
@@ -280,8 +322,8 @@
           <Key>
             <PropertyRef Name="Industrial_Group_Id" />
           </Key>
-          <Property Name="Industrial_Group_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Industrial_Group_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Industrial_Group_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Industrial_Group_Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="Industrial_Category_Id" Type="int" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDtm" Type="datetime" Nullable="false" />
@@ -292,7 +334,7 @@
           <Key>
             <PropertyRef Name="Industrial_Vendor_Id" />
           </Key>
-          <Property Name="Industrial_Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Industrial_Vendor_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Industrial_Master_Id" Type="int" Nullable="false" />
           <Property Name="Vendor_Id" Type="int" Nullable="false" />
           <Property Name="Priority_Order" Type="int" Nullable="false" />
@@ -305,7 +347,7 @@
           <Key>
             <PropertyRef Name="NationId" />
           </Key>
-          <Property Name="NationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NationName" Type="nvarchar" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -317,8 +359,8 @@
           <Key>
             <PropertyRef Name="Payment_Term_Id" />
           </Key>
-          <Property Name="Payment_Term_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Payment_Term" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Payment_Term_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Term" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -329,8 +371,8 @@
           <Key>
             <PropertyRef Name="Process_Id" />
           </Key>
-          <Property Name="Process_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Process_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Process_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Process_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -341,17 +383,17 @@
           <Key>
             <PropertyRef Name="Product_Id" />
           </Key>
-          <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Code" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Product_Category_Id" Type="int" Nullable="false" />
           <Property Name="Product_SubCategory_Id" Type="int" Nullable="false" />
-          <Property Name="Product_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="COD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Size" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="COD" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Product_Type" Type="int" Nullable="false" />
           <Property Name="Original_Manufacturer" Type="bit" Nullable="false" />
-          <Property Name="Inspection_Facility" Type="nvarchar" MaxLength="1000" Nullable="false" />
-          <Property Name="Testing_Facility" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Inspection_Facility" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Testing_Facility" Type="nvarchar" Nullable="false" MaxLength="1000" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
@@ -361,8 +403,8 @@
           <Key>
             <PropertyRef Name="Product_Category_Id" />
           </Key>
-          <Property Name="Product_Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_Category_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Category_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Category_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
@@ -372,8 +414,8 @@
           <Key>
             <PropertyRef Name="Product_SubCategory_Id" />
           </Key>
-          <Property Name="Product_SubCategory_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_SubCategory_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_SubCategory_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Product_SubCategory_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Product_Category_Id" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -384,7 +426,7 @@
           <Key>
             <PropertyRef Name="Product_Vendor_Id" />
           </Key>
-          <Property Name="Product_Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Vendor_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Product_Id" Type="int" Nullable="false" />
           <Property Name="Vendor_Id" Type="int" Nullable="false" />
           <Property Name="Priority_Order" Type="int" Nullable="false" />
@@ -395,24 +437,24 @@
           <Key>
             <PropertyRef Name="Product_Vendor_Id" />
           </Key>
-          <Property Name="Product_Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Vendor_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Vendor_Id" Type="int" Nullable="false" />
           <Property Name="Product_Type" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Original_Manufacturer" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="Inspection_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Testing_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Inspection_Facility" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Testing_Facility" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="M_Role">
           <Key>
             <PropertyRef Name="Role_Id" />
           </Key>
-          <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Role_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -423,7 +465,7 @@
           <Key>
             <PropertyRef Name="Role_Access_Function_Id" />
           </Key>
-          <Property Name="Role_Access_Function_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Access_Function_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Role_Id" Type="int" Nullable="false" />
           <Property Name="Access_Function_Id" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -435,7 +477,7 @@
           <Key>
             <PropertyRef Name="StateId" />
           </Key>
-          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NationId" Type="int" Nullable="false" />
           <Property Name="StateName" Type="nvarchar" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
@@ -448,9 +490,9 @@
           <Key>
             <PropertyRef Name="SubCategoryId" />
           </Key>
-          <Property Name="SubCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
-          <Property Name="SubCategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SubCategoryName" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
@@ -461,7 +503,7 @@
           <Key>
             <PropertyRef Name="Test_Id" />
           </Key>
-          <Property Name="Test_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Test_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Fabric_Type_Id" Type="int" Nullable="false" />
           <Property Name="Test_Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Test_Unit1" Type="int" />
@@ -484,7 +526,7 @@
           <Key>
             <PropertyRef Name="Test_Unit_Id" />
           </Key>
-          <Property Name="Test_Unit_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Test_Unit_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Test_Unit_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -496,11 +538,11 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Mobile_No1" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mobile_No1" Type="nvarchar" Nullable="false" MaxLength="12" />
           <Property Name="Mobile_No2" Type="nvarchar" MaxLength="12" />
           <Property Name="Residence_Landline" Type="nvarchar" MaxLength="20" />
           <Property Name="Office_Landline" Type="nvarchar" MaxLength="20" />
@@ -528,7 +570,7 @@
           <Key>
             <PropertyRef Name="User_Role_Id" />
           </Key>
-          <Property Name="User_Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Role_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Role_Id" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -540,8 +582,8 @@
           <Key>
             <PropertyRef Name="Vendor_Id" />
           </Key>
-          <Property Name="Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Vendor_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vendor_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Vendor_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="HeadOfficeAddress" Type="nvarchar" MaxLength="255" />
           <Property Name="Head_Office_State" Type="int" Nullable="false" />
           <Property Name="Head_Office_ZipCode" Type="nvarchar" MaxLength="10" />
@@ -584,14 +626,14 @@
           <Key>
             <PropertyRef Name="Work_Center_Id" />
           </Key>
-          <Property Name="Work_Center_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Work_Center_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Purpose" Type="int" Nullable="false" />
           <Property Name="Work_Station_Id" Type="int" Nullable="false" />
-          <Property Name="Work_Center_Code" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Machine_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Machine_Properties" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Work_Center_Code" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Machine_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Machine_Properties" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="TPM_Speed" Type="int" Nullable="false" />
-          <Property Name="Average_Order_Length" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Average_Order_Length" Type="decimal" Nullable="false" />
           <Property Name="Capacity" Type="nvarchar" MaxLength="100" />
           <Property Name="Wastage" Type="int" Nullable="false" />
           <Property Name="Target_Efficiency" Type="int" Nullable="false" />
@@ -606,7 +648,7 @@
           <Key>
             <PropertyRef Name="Work_Center_Process_Id" />
           </Key>
-          <Property Name="Work_Center_Process_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Work_Center_Process_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Work_Center_Id" Type="int" Nullable="false" />
           <Property Name="Process_Id" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -616,10 +658,10 @@
           <Key>
             <PropertyRef Name="Work_Station_Id" />
           </Key>
-          <Property Name="Work_Station_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Work_Station_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Factory_Id" Type="int" Nullable="false" />
-          <Property Name="Work_Station_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Work_Station_Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Work_Station_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Work_Station_Code" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -630,7 +672,7 @@
           <Key>
             <PropertyRef Name="Y_Article_Id" />
           </Key>
-          <Property Name="Y_Article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Y_Article_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Denier_Id" Type="int" Nullable="false" />
           <Property Name="Twist_Mingle_Id" Type="int" Nullable="false" />
           <Property Name="Twist_Type_Id" Type="int" Nullable="false" />
@@ -656,48 +698,6 @@
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="KusumgarModelStoreContainer">
-          <EntitySet Name="Bank_Details" EntityType="Self.Bank_Details" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Contact_Custom_Fields" EntityType="Self.Contact_Custom_Fields" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customer_Addresss" EntityType="Self.Customer_Addresss" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Access_Function" EntityType="Self.M_Access_Function" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Attribute_Code" EntityType="Self.M_Attribute_Code" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Category" EntityType="Self.M_Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Consumable" EntityType="Self.M_Consumable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Consumable_Vendors" EntityType="Self.M_Consumable_Vendors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Defect" EntityType="Self.M_Defect" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Defect_Type" EntityType="Self.M_Defect_Type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Fabric_Type" EntityType="Self.M_Fabric_Type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Factory" EntityType="Self.M_Factory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Industrial" EntityType="Self.M_Industrial" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Industrial_Category" EntityType="Self.M_Industrial_Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Industrial_Group" EntityType="Self.M_Industrial_Group" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Industrial_Vendors" EntityType="Self.M_Industrial_Vendors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Nation" EntityType="Self.M_Nation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Process" EntityType="Self.M_Process" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Product" EntityType="Self.M_Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Product_Category" EntityType="Self.M_Product_Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Product_SubCategory" EntityType="Self.M_Product_SubCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Product_Vendor" EntityType="Self.M_Product_Vendor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Product_Vendors" EntityType="Self.M_Product_Vendors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_State" EntityType="Self.M_State" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_SubCategory" EntityType="Self.M_SubCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Test" EntityType="Self.M_Test" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Test_Unit" EntityType="Self.M_Test_Unit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_User" EntityType="Self.M_User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Vendor" EntityType="Self.M_Vendor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Work_Center" EntityType="Self.M_Work_Center" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Work_Center_Process" EntityType="Self.M_Work_Center_Process" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Work_Station" EntityType="Self.M_Work_Station" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Y_Article" EntityType="Self.M_Y_Article" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -748,652 +748,652 @@
           <Key>
             <PropertyRef Name="Bank_Details_Id" />
           </Key>
-          <Property Name="Bank_Details_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Supplier_Id" Type="Int32" />
-          <Property Name="Customer_Id" Type="Int32" />
-          <Property Name="Bank_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Bank_Account_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Branch_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ifsc_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Swift_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Rtgs_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Bank_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Bank_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Account_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="Vat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Currency_Id" Type="Int32" />
-          <Property Name="Payment_Term_Id" Type="Int32" />
-          <Property Name="Tax_Excemption_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Bank_Details_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Supplier_Id" />
+          <Property Type="Int32" Name="Customer_Id" />
+          <Property Type="String" Name="Bank_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bank_Account_No" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Branch_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Ifsc_Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Swift_Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Rtgs_No" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bank_Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bank_Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Account_Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="String" Name="Vat" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Currency_Id" />
+          <Property Type="Int32" Name="Payment_Term_Id" />
+          <Property Type="String" Name="Tax_Excemption_Code" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Complaint">
           <Key>
             <PropertyRef Name="ComplaintId" />
           </Key>
-          <Property Name="ComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="OrderId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="OrderItemId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ChallanNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CDescription" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="ComplaintId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <Property Type="String" Name="OrderId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OrderItemId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChallanNo" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CDescription" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="Contact_Id" />
           </Key>
-          <Property Name="Contact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Contact_Type" Type="Int32" Nullable="false" />
-          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
-          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Contact_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile1" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Official_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Personal_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Billing_Contact" Type="Boolean" Nullable="false" />
-          <Property Name="DMU_Status_Role" Type="Int32" Nullable="false" />
-          <Property Name="DMU_Status_Influence" Type="Int32" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Contact_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Contact_Type" Nullable="false" />
+          <Property Type="Int32" Name="Customer_Id" Nullable="false" />
+          <Property Type="Int32" Name="Vendor_Id" Nullable="false" />
+          <Property Type="String" Name="Contact_Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_Landline1" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_Landline2" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile1" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile2" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Official_Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Personal_Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Billing_Contact" Nullable="false" />
+          <Property Type="Int32" Name="DMU_Status_Role" Nullable="false" />
+          <Property Type="Int32" Name="DMU_Status_Influence" Nullable="false" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="Contact_Custom_Fields">
           <Key>
             <PropertyRef Name="Contact_Custom_Field_Id" />
           </Key>
-          <Property Name="Contact_Custom_Field_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Contact_Id" Type="Int32" Nullable="false" />
-          <Property Name="Field_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Field_Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Contact_Custom_Field_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Contact_Id" Nullable="false" />
+          <Property Type="String" Name="Field_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field_Value" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Customer_Id" />
           </Key>
-          <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Company_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_State" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Nation" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Company_Turnover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Public_Private_Sector" Type="Boolean" Nullable="false" />
-          <Property Name="Organised_UnOrganised_Sector" Type="Boolean" Nullable="false" />
-          <Property Name="Proprietary_Private_Limited" Type="Int32" Nullable="false" />
-          <Property Name="Progressive_Stable_Turmoil" Type="Int32" Nullable="false" />
-          <Property Name="Expiration_Date_Of_Contract" Type="DateTime" Precision="3" />
-          <Property Name="Credit_limit" Type="Int32" Nullable="false" />
-          <Property Name="Auto_Mail_Delivery" Type="Boolean" Nullable="false" />
-          <Property Name="Order_Minimum_Value" Type="Int32" Nullable="false" />
-          <Property Name="Order_Maximum_Value" Type="Int32" Nullable="false" />
-          <Property Name="Is_Approved_By_Director" Type="Boolean" Nullable="false" />
-          <Property Name="Block_Order" Type="Boolean" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Customer_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Customer_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Company_Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Head_Office_Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Head_Office_State" Nullable="false" />
+          <Property Type="String" Name="Head_Office_ZipCode" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Head_Office_Nation" Nullable="false" />
+          <Property Type="String" Name="Head_Office_Landline1" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Head_Office_Landline2" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Head_Office_FaxNo" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Company_Turnover" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Public_Private_Sector" Nullable="false" />
+          <Property Type="Boolean" Name="Organised_UnOrganised_Sector" Nullable="false" />
+          <Property Type="Int32" Name="Proprietary_Private_Limited" Nullable="false" />
+          <Property Type="Int32" Name="Progressive_Stable_Turmoil" Nullable="false" />
+          <Property Type="DateTime" Name="Expiration_Date_Of_Contract" Precision="3" />
+          <Property Type="Int32" Name="Credit_limit" Nullable="false" />
+          <Property Type="Boolean" Name="Auto_Mail_Delivery" Nullable="false" />
+          <Property Type="Int32" Name="Order_Minimum_Value" Nullable="false" />
+          <Property Type="Int32" Name="Order_Maximum_Value" Nullable="false" />
+          <Property Type="Boolean" Name="Is_Approved_By_Director" Nullable="false" />
+          <Property Type="Boolean" Name="Block_Order" Nullable="false" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer_Addresss">
           <Key>
             <PropertyRef Name="Customer_Address_Id" />
           </Key>
-          <Property Name="Customer_Address_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
-          <Property Name="Address_Type" Type="Int32" Nullable="false" />
-          <Property Name="Addresss" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Customer_Address_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Customer_Id" Nullable="false" />
+          <Property Type="Int32" Name="Address_Type" Nullable="false" />
+          <Property Type="String" Name="Addresss" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Landline1" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="landline2" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FaxNo" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Access_Function">
           <Key>
             <PropertyRef Name="Access_Fuction_Id" />
           </Key>
-          <Property Name="Access_Fuction_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Access_Function_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Access_Fuction_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Access_Function_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Attribute_Code">
           <Key>
             <PropertyRef Name="Attribute_Code_Id" />
           </Key>
-          <Property Name="Attribute_Code_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Attribute_Id" Type="Int32" Nullable="false" />
-          <Property Name="Attribute_Code_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Attribute_Code_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Attribute_Id" Nullable="false" />
+          <Property Type="String" Name="Attribute_Code_Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Category">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Consumable">
           <Key>
             <PropertyRef Name="Consumable_Id" />
           </Key>
-          <Property Name="Consumable_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Category_Id" Type="Int32" Nullable="false" />
-          <Property Name="SubCategory_Id" Type="Int32" Nullable="false" />
-          <Property Name="Material_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Material_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDtm" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDtm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Consumable_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Category_Id" Nullable="false" />
+          <Property Type="Int32" Name="SubCategory_Id" Nullable="false" />
+          <Property Type="String" Name="Material_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Material_Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDtm" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDtm" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Consumable_Vendors">
           <Key>
             <PropertyRef Name="Consumable_Vendor_Id" />
           </Key>
-          <Property Name="Consumable_Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Consumable_Id" Type="Int32" Nullable="false" />
-          <Property Name="Priority_Order" Type="Int32" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDtm" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDtm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Consumable_Vendor_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Vendor_Id" Nullable="false" />
+          <Property Type="Int32" Name="Consumable_Id" Nullable="false" />
+          <Property Type="Int32" Name="Priority_Order" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDtm" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDtm" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Defect">
           <Key>
             <PropertyRef Name="Defect_Id" />
           </Key>
-          <Property Name="Defect_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Defect_Type_Id" Type="Int32" Nullable="false" />
-          <Property Name="Defect_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Defect_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Defect_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Defect_Type_Id" Nullable="false" />
+          <Property Type="String" Name="Defect_Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Defect_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Defect_Type">
           <Key>
             <PropertyRef Name="Defect_Type_Id" />
           </Key>
-          <Property Name="Defect_Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Defect_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Defect_Type_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Defect_Type_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Fabric_Type">
           <Key>
             <PropertyRef Name="Fabric_Type_Id" />
           </Key>
-          <Property Name="Fabric_Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fabric_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Fabric_Type_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Fabric_Type_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Factory">
           <Key>
             <PropertyRef Name="Factory_Id" />
           </Key>
-          <Property Name="Factory_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Factory_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Factory_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Factory_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Factory_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Factory_Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Industrial">
           <Key>
             <PropertyRef Name="Industrial_Master_Id" />
           </Key>
-          <Property Name="Industrial_Master_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Industrial_Category_Id" Type="Int32" Nullable="false" />
-          <Property Name="Industrial_Group_Id" Type="Int32" Nullable="false" />
-          <Property Name="Industrial_SubGrp_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDtm" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDtm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Industrial_Master_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Industrial_Category_Id" Nullable="false" />
+          <Property Type="Int32" Name="Industrial_Group_Id" Nullable="false" />
+          <Property Type="String" Name="Industrial_SubGrp_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Size" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COD" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDtm" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDtm" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Industrial_Category">
           <Key>
             <PropertyRef Name="Industrial_Category_Id" />
           </Key>
-          <Property Name="Industrial_Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Industrial_Category_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDtm" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDtm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Industrial_Category_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Industrial_Category_Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDtm" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDtm" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Industrial_Group">
           <Key>
             <PropertyRef Name="Industrial_Group_Id" />
           </Key>
-          <Property Name="Industrial_Group_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Industrial_Group_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Industrial_Category_Id" Type="Int32" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDtm" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDtm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Industrial_Group_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Industrial_Group_Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Industrial_Category_Id" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDtm" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDtm" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Industrial_Vendors">
           <Key>
             <PropertyRef Name="Industrial_Vendor_Id" />
           </Key>
-          <Property Name="Industrial_Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Industrial_Master_Id" Type="Int32" Nullable="false" />
-          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Priority_Order" Type="Int32" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDtm" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDtm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Industrial_Vendor_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Industrial_Master_Id" Nullable="false" />
+          <Property Type="Int32" Name="Vendor_Id" Nullable="false" />
+          <Property Type="Int32" Name="Priority_Order" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDtm" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDtm" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Nation">
           <Key>
             <PropertyRef Name="NationId" />
           </Key>
-          <Property Name="NationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="NationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NationName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Payment_Terms">
           <Key>
             <PropertyRef Name="Payment_Term_Id" />
           </Key>
-          <Property Name="Payment_Term_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Payment_Term" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Payment_Term_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Payment_Term" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Process">
           <Key>
             <PropertyRef Name="Process_Id" />
           </Key>
-          <Property Name="Process_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Process_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Process_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Process_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Product">
           <Key>
             <PropertyRef Name="Product_Id" />
           </Key>
-          <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Product_Category_Id" Type="Int32" Nullable="false" />
-          <Property Name="Product_SubCategory_Id" Type="Int32" Nullable="false" />
-          <Property Name="Product_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Product_Type" Type="Int32" Nullable="false" />
-          <Property Name="Original_Manufacturer" Type="Boolean" Nullable="false" />
-          <Property Name="Inspection_Facility" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Testing_Facility" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Product_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Product_Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Product_Category_Id" Nullable="false" />
+          <Property Type="Int32" Name="Product_SubCategory_Id" Nullable="false" />
+          <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Size" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COD" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Product_Type" Nullable="false" />
+          <Property Type="Boolean" Name="Original_Manufacturer" Nullable="false" />
+          <Property Type="String" Name="Inspection_Facility" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Testing_Facility" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Product_Category">
           <Key>
             <PropertyRef Name="Product_Category_Id" />
           </Key>
-          <Property Name="Product_Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_Category_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Product_Category_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Product_Category_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Product_SubCategory">
           <Key>
             <PropertyRef Name="Product_SubCategory_Id" />
           </Key>
-          <Property Name="Product_SubCategory_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_SubCategory_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Product_Category_Id" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Product_SubCategory_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Product_SubCategory_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Product_Category_Id" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Product_Vendor">
           <Key>
             <PropertyRef Name="Product_Vendor_Id" />
           </Key>
-          <Property Name="Product_Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_Id" Type="Int32" Nullable="false" />
-          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Priority_Order" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Product_Vendor_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Product_Id" Nullable="false" />
+          <Property Type="Int32" Name="Vendor_Id" Nullable="false" />
+          <Property Type="Int32" Name="Priority_Order" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Product_Vendors">
           <Key>
             <PropertyRef Name="Product_Vendor_Id" />
           </Key>
-          <Property Name="Product_Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vendor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Product_Type" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Original_Manufacturer" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="Inspection_Facility" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Testing_Facility" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Product_Vendor_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Vendor_Id" Nullable="false" />
+          <Property Type="Int32" Name="Product_Type" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Original_Manufacturer" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="String" Name="Inspection_Facility" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Testing_Facility" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="M_Role">
           <Key>
             <PropertyRef Name="Role_Id" />
           </Key>
-          <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Role_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Role_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Role_Access_Function_Mapping">
           <Key>
             <PropertyRef Name="Role_Access_Function_Id" />
           </Key>
-          <Property Name="Role_Access_Function_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role_Id" Type="Int32" Nullable="false" />
-          <Property Name="Access_Function_Id" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Role_Access_Function_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Role_Id" Nullable="false" />
+          <Property Type="Int32" Name="Access_Function_Id" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_State">
           <Key>
             <PropertyRef Name="StateId" />
           </Key>
-          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NationId" Type="Int32" Nullable="false" />
-          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="StateId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="NationId" Nullable="false" />
+          <Property Type="String" Name="StateName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_SubCategory">
           <Key>
             <PropertyRef Name="SubCategoryId" />
           </Key>
-          <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="SubCategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="SubCategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="SubCategoryName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="M_Test">
           <Key>
             <PropertyRef Name="Test_Id" />
           </Key>
-          <Property Name="Test_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fabric_Type_Id" Type="Int32" Nullable="false" />
-          <Property Name="Test_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Test_Unit1" Type="Int32" />
-          <Property Name="Test_Unit2" Type="Int32" />
-          <Property Name="Test_Unit3" Type="Int32" />
-          <Property Name="Test_Unit4" Type="Int32" />
-          <Property Name="Test_Unit5" Type="Int32" />
-          <Property Name="Test_Unit6" Type="Int32" />
-          <Property Name="Test_Unit7" Type="Int32" />
-          <Property Name="Test_Unit8" Type="Int32" />
-          <Property Name="Test_Unit9" Type="Int32" />
-          <Property Name="Test_Unit10" Type="Int32" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Test_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Fabric_Type_Id" Nullable="false" />
+          <Property Type="String" Name="Test_Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Test_Unit1" />
+          <Property Type="Int32" Name="Test_Unit2" />
+          <Property Type="Int32" Name="Test_Unit3" />
+          <Property Type="Int32" Name="Test_Unit4" />
+          <Property Type="Int32" Name="Test_Unit5" />
+          <Property Type="Int32" Name="Test_Unit6" />
+          <Property Type="Int32" Name="Test_Unit7" />
+          <Property Type="Int32" Name="Test_Unit8" />
+          <Property Type="Int32" Name="Test_Unit9" />
+          <Property Type="Int32" Name="Test_Unit10" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Test_Unit">
           <Key>
             <PropertyRef Name="Test_Unit_Id" />
           </Key>
-          <Property Name="Test_Unit_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Test_Unit_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Test_Unit_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Test_Unit_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile_No1" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile_No2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Residence_Landline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Landline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Residence_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Office_PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Residence_PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Designtation" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Birth_Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Fax_No" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Date_Of_Joining" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Personal_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Int32" Nullable="false" />
-          <Property Name="System_User_Flag" Type="Boolean" />
-          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="First_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Middle_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Last_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile_No1" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile_No2" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Residence_Landline" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_Landline" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Residence_Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_PinCode" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Residence_PinCode" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Designtation" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birth_Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Fax_No" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date_Of_Joining" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Personal_Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Office_Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Gender" Nullable="false" />
+          <Property Type="Boolean" Name="System_User_Flag" />
+          <Property Type="String" Name="User_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_User_Role_Mapping">
           <Key>
             <PropertyRef Name="User_Role_Id" />
           </Key>
-          <Property Name="User_Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role_Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="User_Role_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Role_Id" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Vendor">
           <Key>
             <PropertyRef Name="Vendor_Id" />
           </Key>
-          <Property Name="Vendor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vendor_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HeadOfficeAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_State" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Nation" Type="Int32" Nullable="false" />
-          <Property Name="Head_Office_Landline1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_Landline2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Head_Office_FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Quality_Certification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Quality_Certification_Year" Type="Int32" />
-          <Property Name="Quality_Certification_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Performance_Certification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Performance_Certification_Year" Type="Int32" />
-          <Property Name="Performance_Certification_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Remark_about_Supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Block_Payment" Type="Boolean" Nullable="false" />
-          <Property Name="Shipment_Methods" Type="Int32" />
-          <Property Name="Flagged_Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Delivary_Term_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Approved_By_Director" Type="Boolean" Nullable="false" />
-          <Property Name="Central_Excise_Registration_Details" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Registration_No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Range" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Division" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Tax_Excemption_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Currency_Code" Type="Int32" />
-          <Property Name="VAT_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentTerms" Type="Int32" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="Product_Category" Type="Int32" Nullable="false" />
-          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Vendor_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Vendor_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HeadOfficeAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Head_Office_State" Nullable="false" />
+          <Property Type="String" Name="Head_Office_ZipCode" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Head_Office_Nation" Nullable="false" />
+          <Property Type="String" Name="Head_Office_Landline1" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Head_Office_Landline2" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Head_Office_FaxNo" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Quality_Certification" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Quality_Certification_Year" />
+          <Property Type="String" Name="Quality_Certification_Category" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Performance_Certification" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Performance_Certification_Year" />
+          <Property Type="String" Name="Performance_Certification_Category" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark_about_Supplier" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Block_Payment" Nullable="false" />
+          <Property Type="Int32" Name="Shipment_Methods" />
+          <Property Type="String" Name="Flagged_Supplier" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Delivary_Term_Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Approved_By_Director" Nullable="false" />
+          <Property Type="String" Name="Central_Excise_Registration_Details" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Registration_No" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Range" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Division" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PAN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TAN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Tax_Excemption_Code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Currency_Code" />
+          <Property Type="String" Name="VAT_Type" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PaymentTerms" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <Property Type="Int32" Name="Product_Category" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="M_Work_Center">
           <Key>
             <PropertyRef Name="Work_Center_Id" />
           </Key>
-          <Property Name="Work_Center_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Purpose" Type="Int32" Nullable="false" />
-          <Property Name="Work_Station_Id" Type="Int32" Nullable="false" />
-          <Property Name="Work_Center_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Machine_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Machine_Properties" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TPM_Speed" Type="Int32" Nullable="false" />
-          <Property Name="Average_Order_Length" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Capacity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Wastage" Type="Int32" Nullable="false" />
-          <Property Name="Target_Efficiency" Type="Int32" Nullable="false" />
-          <Property Name="Under_Maintainance" Type="Boolean" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Work_Center_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Purpose" Nullable="false" />
+          <Property Type="Int32" Name="Work_Station_Id" Nullable="false" />
+          <Property Type="String" Name="Work_Center_Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Machine_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Machine_Properties" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TPM_Speed" Nullable="false" />
+          <Property Type="Decimal" Name="Average_Order_Length" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Capacity" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Wastage" Nullable="false" />
+          <Property Type="Int32" Name="Target_Efficiency" Nullable="false" />
+          <Property Type="Boolean" Name="Under_Maintainance" Nullable="false" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Work_Center_Process">
           <Key>
             <PropertyRef Name="Work_Center_Process_Id" />
           </Key>
-          <Property Name="Work_Center_Process_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Work_Center_Id" Type="Int32" Nullable="false" />
-          <Property Name="Process_Id" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Work_Center_Process_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Work_Center_Id" Nullable="false" />
+          <Property Type="Int32" Name="Process_Id" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Work_Station">
           <Key>
             <PropertyRef Name="Work_Station_Id" />
           </Key>
-          <Property Name="Work_Station_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Factory_Id" Type="Int32" Nullable="false" />
-          <Property Name="Work_Station_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Work_Station_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Work_Station_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Factory_Id" Nullable="false" />
+          <Property Type="String" Name="Work_Station_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Work_Station_Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Y_Article">
           <Key>
             <PropertyRef Name="Y_Article_Id" />
           </Key>
-          <Property Name="Y_Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Denier_Id" Type="Int32" Nullable="false" />
-          <Property Name="Twist_Mingle_Id" Type="Int32" Nullable="false" />
-          <Property Name="Twist_Type_Id" Type="Int32" Nullable="false" />
-          <Property Name="Ply_Id" Type="Int32" Nullable="false" />
-          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
-          <Property Name="Shade_Id" Type="Int32" Nullable="false" />
-          <Property Name="Filaments_Id" Type="Int32" Nullable="false" />
-          <Property Name="Origin_Id" Type="Int32" Nullable="false" />
-          <Property Name="Shrinkage_Id" Type="Int32" Nullable="false" />
-          <Property Name="Tenasity_Id" Type="Int32" Nullable="false" />
-          <Property Name="Chemical_Treatment_Id" Type="Int32" Nullable="false" />
-          <Property Name="Colour_Id" Type="Int32" Nullable="false" />
-          <Property Name="Supplier_Id" Type="Int32" Nullable="false" />
-          <Property Name="Full_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Given_By_Id" Type="Int32" Nullable="false" />
-          <Property Name="Validated_By_Id" Type="Int32" Nullable="false" />
-          <Property Name="Developed_Under_Id" Type="Int32" Nullable="false" />
-          <Property Name="Lead_Time_To_Purchase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Work_Station_Id" Type="Int32" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Y_Article_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Denier_Id" Nullable="false" />
+          <Property Type="Int32" Name="Twist_Mingle_Id" Nullable="false" />
+          <Property Type="Int32" Name="Twist_Type_Id" Nullable="false" />
+          <Property Type="Int32" Name="Ply_Id" Nullable="false" />
+          <Property Type="Int32" Name="Yarn_Type_Id" Nullable="false" />
+          <Property Type="Int32" Name="Shade_Id" Nullable="false" />
+          <Property Type="Int32" Name="Filaments_Id" Nullable="false" />
+          <Property Type="Int32" Name="Origin_Id" Nullable="false" />
+          <Property Type="Int32" Name="Shrinkage_Id" Nullable="false" />
+          <Property Type="Int32" Name="Tenasity_Id" Nullable="false" />
+          <Property Type="Int32" Name="Chemical_Treatment_Id" Nullable="false" />
+          <Property Type="Int32" Name="Colour_Id" Nullable="false" />
+          <Property Type="Int32" Name="Supplier_Id" Nullable="false" />
+          <Property Type="String" Name="Full_Code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Given_By_Id" Nullable="false" />
+          <Property Type="Int32" Name="Validated_By_Id" Nullable="false" />
+          <Property Type="Int32" Name="Developed_Under_Id" Nullable="false" />
+          <Property Type="String" Name="Lead_Time_To_Purchase" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Work_Station_Id" Nullable="false" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>

@@ -31,19 +31,19 @@ function BindRoleGrid(data)
     if (data.Roles.length > 0) {
         for (i = 0; i < data.Roles.length; i++) {
 
-            htmlText += "<tr>";
+        htmlText += "<tr>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Roles[i].RoleEntity.Role_Name;
+        htmlText += data.Roles[i].RoleEntity.Role_Name;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
             if (data.Roles[i].RoleEntity.Is_Active == true) {
 
@@ -55,7 +55,7 @@ function BindRoleGrid(data)
             }
             else
             {
-                htmlText += "<td>";
+        htmlText += "<td>";
 
                 htmlText += "Inactive";
 
@@ -88,12 +88,12 @@ function BindRoleGrid(data)
 
    
     if (data.Roles.length > 0) {
-        $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
-            $('.pagination').html(data.Pager.PageHtmlString);
-        }
+        $('.pagination').html(data.Pager.PageHtmlString);
+    }
     }
     else
     {

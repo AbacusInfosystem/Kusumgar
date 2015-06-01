@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using Kusumgar.Models.PreLogin;
-using Kusumgar.Common;
+
 using KusumgarCrossCutting.Logging;
 using System.Threading.Tasks;
 using System.IO;
@@ -29,60 +29,27 @@ namespace Kusumgar.Controllers.PreLogin
         {
             try
             {
-                if (Session["MessageViewModel"] == null)
+                if (User.Identity.IsAuthenticated && Session["User"] != null)
                 {
-                    if (User.Identity.IsAuthenticated && Session["User"] != null)
-                    {
-                        return RedirectToAction("Index", "Dashboard");
-                    }
-                    else
-                    {
-                        if (TempData["FriendlyMessage"] != null)
-                        {
-                            loginViewModel.FriendlyMessage.Add((FriendlyMessage)TempData["FriendlyMessage"]);
-                        }
-
-                        return View("Index", loginViewModel);
-                    }
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
-                    //clear the session after using it once.
-                    Session["MessageViewModel"] = null;
+                    if (TempData["FriendlyMessage"] != null)
+                    {
+                        loginViewModel.Friendly_Message.Add((FriendlyMessageInfo)TempData["FriendlyMessage"]);
+                    }
 
-                    return View("UnAuthorizeAccess");
+                    return View("Index", loginViewModel);
                 }
             }
             catch (Exception ex)
             {
-                loginViewModel.FriendlyMessage.Add(MessageStore.Get("SYS01"));
+                loginViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 return View("Index", loginViewModel);
             }
         }
-
-        public ActionResult UnAuthorizedAccess(string returnURL)
-        {
-            try
-            {
-                Session["MessageViewModel"] = MessageStore.Get("SYS03");
-
-                Session["ReturnURL"] = returnURL;
-            }
-            catch (Exception ex)
-            {
-                // clear session.
-
-                HttpContext.Session.Clear();
-
-                // add exception information messages to UserViewModel message property.
-
-                return View("Index", new LoginViewModel { FriendlyMessage = new List<FriendlyMessage>() { MessageStore.Get("SYS01") } });
-            }
-
-            return RedirectToAction("Index");
-        }
-
 
         #region SaveFileOnServer
 
