@@ -25,8 +25,6 @@ namespace Kusumgar.Controllers
 
         public StateManager _stateMan;
 
-
-
         public CustomerController()
         {
             _customerMan = new CustomerManager();
@@ -35,6 +33,8 @@ namespace Kusumgar.Controllers
 
             _stateMan = new StateManager();
         }
+
+        [AuthorizeUser(AppFunction.Customer_Create)]
 
         public ActionResult Index(CustomerViewModel cViewModel)
         {
@@ -65,6 +65,8 @@ namespace Kusumgar.Controllers
             return View("Index", cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Search)]
+
         public ActionResult Search(CustomerViewModel cViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Search";
@@ -92,6 +94,8 @@ namespace Kusumgar.Controllers
 
             return View("Search", cViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Create)]
 
         public JsonResult Insert(CustomerViewModel cViewModel)
         {
@@ -121,6 +125,8 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public JsonResult Update(CustomerViewModel cViewModel)
         {
             try
@@ -142,6 +148,8 @@ namespace Kusumgar.Controllers
 
             return Json(cViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Create)]
 
         public JsonResult Insert_Customer_Address(CustomerViewModel cViewModel)
         {
@@ -171,6 +179,8 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public JsonResult Update_Customer_Address(CustomerViewModel cViewModel)
         {
             try
@@ -194,6 +204,8 @@ namespace Kusumgar.Controllers
 
             return Json(cViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Create)]
 
         public JsonResult Insert_Bank_Details(CustomerViewModel cViewModel)
         {
@@ -222,6 +234,8 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public JsonResult Update_Bank_Details(CustomerViewModel cViewModel)
         {
             try
@@ -245,6 +259,8 @@ namespace Kusumgar.Controllers
 
             return Json(cViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Search)]
 
         public JsonResult Get_Customers(CustomerViewModel cViewModel)
         {
@@ -339,6 +355,8 @@ namespace Kusumgar.Controllers
             return Json(cViewModel, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public ActionResult Get_Customer_By_Id(CustomerViewModel cViewModel)
         {
             try
@@ -375,6 +393,8 @@ namespace Kusumgar.Controllers
             }
             return Json(StateList, JsonRequestBehavior.AllowGet);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Edit)]
 
         public JsonResult Delete_Customer_Address_By_Id(int customer_Address_Id)
         {

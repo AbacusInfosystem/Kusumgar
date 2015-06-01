@@ -28,7 +28,8 @@ namespace Kusumgar.Controllers
             aMan = new AjaxManager();
         }
 
-        [AuthorizeUser(AppFunction.Dashboard)]
+        [AuthorizeUser(AppFunction.Complaint_Create)]
+
         public ActionResult Index(ComplaintViewModel _complaintViewModel)
         {
             try
@@ -43,6 +44,8 @@ namespace Kusumgar.Controllers
             return View("Index", _complaintViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Complaint_Search)]
+
         public ActionResult Search(ComplaintViewModel _complaintViewModel)
         {
             if (TempData["_complaintViewModel"] != null)
@@ -51,6 +54,8 @@ namespace Kusumgar.Controllers
             }
             return View("Search", _complaintViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Complaint_Create)]
 
         public ActionResult Insert(ComplaintViewModel _complaintViewModel)
         {
@@ -67,6 +72,8 @@ namespace Kusumgar.Controllers
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Complaint_Edit)]
+
         public ActionResult Update(ComplaintViewModel _complaintViewModel)
         {
             try
@@ -81,6 +88,8 @@ namespace Kusumgar.Controllers
             TempData["_complaintViewModel"] = _complaintViewModel;
             return RedirectToAction("Search");
         }
+
+        [AuthorizeUser(AppFunction.Complaint_Search)]
 
         public ActionResult GetComplaintList(ComplaintViewModel _complaintViewModel)
         {
@@ -103,6 +112,8 @@ namespace Kusumgar.Controllers
             return Json(_complaintViewModel, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(AppFunction.Complaint_Edit)]
+
         public ActionResult GetComplaintById(ComplaintViewModel _complaintViewModel)
         {
             try
@@ -115,6 +126,8 @@ namespace Kusumgar.Controllers
             }
             return Index(_complaintViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Complaint_Edit)]
 
         public JsonResult GetCustomerId(string CustomerName)
         {
