@@ -55,8 +55,8 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <label for="txtDefectTypeName">Defect - Type name</label>
-                                        <input type="text" name="Filter.Defect_Type_Name" class="form-control" id="txtDefectTypeName" placeholder="Enter defect - type">
+                                        <label for="txtDefectTypeName">Defect - Type </label>
+                                        <input type="text" name="Filter.Defect_Type_Name" class="form-control input-sm" id="txtDefectTypeName" placeholder="Enter defect - type">
                                     </div>
 
                                 </div>
@@ -68,21 +68,19 @@
                                     <div class="col-md-6">
 
                                         <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","DefectType")" role="button">Create Defect - Type</a>
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","DefectType")" role="button">Create</a>
                                         </div>
 
                                     </div>
                                          <div class="col-md-6">
+                                             <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
 
+                                             <input type="hidden" id="hdfDefectTypeId" name="EditMode.Defect_Type_Id" />
                                          <div class="btn-group pull-right">
-
-                                         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                          
-                                         <input type="hidden" id="hdfDefectTypeId" name="EditMode.Defect_Type_Id" />
                                            
-                                          <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Defect - Type</button>
-                                          <button type="button" id="btnViewDefects" class="btn btn-primary">View Defects</button>
+                                          <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit </button>
+                                          <button type="button" id="btnViewDefects" class="btn btn-primary btn-sm">View Defects</button>
                                        </div>
 
                                     </div>

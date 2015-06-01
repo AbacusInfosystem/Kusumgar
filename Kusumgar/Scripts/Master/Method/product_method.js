@@ -38,7 +38,7 @@ function Set_Product() {
 
                             COD: $("#txtCOD").val(),
 
-                            Product_Type: $("#txtProdType").val(),
+                            Product_Type: $("#drpProdType").val(),
 
                             Original_Manufacturer: $("#hdnIs_OrigMan").val(),
 

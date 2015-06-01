@@ -86,9 +86,9 @@ namespace Kusumgar.Controllers
             pager = pViewModel.Pager;
             try
             {
-                if (!string.IsNullOrEmpty(pViewModel.Filter.Product_Name))
+                if (pViewModel.Filter.Product_Id != 0)
                 {
-                    pViewModel.Products = _productMan.Get_Products_By_Name(pViewModel.Filter.Product_Name, ref pager);
+                    pViewModel.Products = _productMan.Get_Products_By_Product_Id(pViewModel.Filter.Product_Id, ref pager);
                 }
                 else
                 {

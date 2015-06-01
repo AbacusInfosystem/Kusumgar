@@ -951,6 +951,10 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
+    <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -1002,6 +1006,7 @@
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
     <Content Include="Scripts\Master\Method\consumable_method.js" />
     <Content Include="Scripts\Master\Method\consumable_search_method.js" />
+    <Content Include="Scripts\Master\Method\vendor_partial_method.js" />
     <Content Include="Scripts\Master\Method\yarticle_listing_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
@@ -1040,12 +1045,16 @@
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
+    <Content Include="Scripts\Master\Validation\vendor_partial_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
     <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Web.config">
@@ -1077,6 +1086,7 @@
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\SystemConfig\" />
     <Folder Include="uploads\" />
+    <Folder Include="Views\PostLogin\Master\ConsumableMaster\" />
     <Folder Include="Views\PostLogin\Planning\" />
   </ItemGroup>
   <ItemGroup>
@@ -1465,9 +1475,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\VendorContact\Search.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Product\Search.cshtml" />

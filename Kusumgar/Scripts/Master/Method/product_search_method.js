@@ -3,7 +3,8 @@
     var pViewModel =
         {
             Filter: {
-                Product_Name: $('#txtProductName').val()
+                Product_Name: $('#txtProductName').val(),
+                Product_Id: $('#hdfProduct_Id').val()
             },
             Pager: {
                 CurrentPage: $('#hdfCurrentPage').val(),

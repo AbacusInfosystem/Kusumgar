@@ -38,5 +38,6 @@ namespace Kusumgar.Models
     public class ProductFilter
     {
         public string Product_Name { get; set; }
+        public int Product_Id { get; set; }
     }
 }

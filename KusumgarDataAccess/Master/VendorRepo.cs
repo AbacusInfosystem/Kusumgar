@@ -148,20 +148,20 @@ namespace KusumgarDataAccess
             return sqlParamList;
         }
 
-        public int Insert_Product_Services(ProductVendorInfo productVendors)
-        {
-            int Product_Vendor_Id = 0;
+        //public int Insert_Product_Services(ProductVendorInfo productVendors)
+        //{
+        //    int Product_Vendor_Id = 0;
 
-            Product_Vendor_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Product_Vendors(productVendors), StoredProcedures.Insert_Product_Vendors_sp.ToString(), CommandType.StoredProcedure));
+        //    Product_Vendor_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Product_Vendors(productVendors), StoredProcedures.Insert_Product_Vendors_sp.ToString(), CommandType.StoredProcedure));
             
-            return Product_Vendor_Id;
-        }
+        //    return Product_Vendor_Id;
+        //}
 
-        private List<SqlParameter> Set_Values_In_Product_Vendors(ProductVendorInfo productVendorInfo)
-        {
-            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+        //private List<SqlParameter> Set_Values_In_Product_Vendors(ProductVendorInfo productVendorInfo)
+        //{
+        //    List<SqlParameter> sqlParamList = new List<SqlParameter>();
            
-            sqlParamList.Add(new SqlParameter("@Vendor_Id", productVendorInfo.Product_Vendor_Entity.Vendor_Id));
+            //sqlParamList.Add(new SqlParameter("@Vendor_Id", productVendorInfo.Product_Vendor_Entity.Vendor_Id));
             //sqlParamList.Add(new SqlParameter("@Product_Type", productVendorInfo.Product_Vendor_Entity.Product_Type));
             //sqlParamList.Add(new SqlParameter("@Name", productVendorInfo.Product_Vendor_Entity.Name));
             //sqlParamList.Add(new SqlParameter("@Original_Manufacturer", productVendorInfo.Product_Vendor_Entity.Original_Manufacturer));
@@ -175,23 +175,23 @@ namespace KusumgarDataAccess
             //}
             //sqlParamList.Add(new SqlParameter("@UpdatedBy", productVendorInfo.Product_Vendor_Entity.UpdatedBy));
 
-            if (productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id != 0)
-            {
-                sqlParamList.Add(new SqlParameter("@Product_Vendor_Id", productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id));
-            }
+        //    if (productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id != 0)
+        //    {
+        //        sqlParamList.Add(new SqlParameter("@Product_Vendor_Id", productVendorInfo.Product_Vendor_Entity.Product_Vendor_Id));
+        //    }
 
-            return sqlParamList;
-        }
+        //    return sqlParamList;
+        //}
 
         public void Update_Vendor(VendorInfo vendors)
         {
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Vendor(vendors), StoredProcedures.Update_Vendor_sp.ToString(), CommandType.StoredProcedure);
         }
 
-        public void Update_Product_Services(ProductVendorInfo productVendors)
-        {
-            _sqlRepo.ExecuteNonQuery(Set_Values_In_Product_Vendors(productVendors), StoredProcedures.Update_Product_Vendors_sp.ToString(), CommandType.StoredProcedure);
-        }
+        //public void Update_Product_Services(ProductVendorInfo productVendors)
+        //{
+        //    _sqlRepo.ExecuteNonQuery(Set_Values_In_Product_Vendors(productVendors), StoredProcedures.Update_Product_Vendors_sp.ToString(), CommandType.StoredProcedure);
+        //}
 
         public VendorInfo Get_Vendor_By_Id(int vendor_Id)
         {
@@ -222,11 +222,11 @@ namespace KusumgarDataAccess
             return vendors;
         }
 
-        private ProductVendorInfo Get_Product_Vendor_Values(DataRow dr)
-        {
-            ProductVendorInfo productVendors = new ProductVendorInfo();
+        //private ProductVendorInfo Get_Product_Vendor_Values(DataRow dr)
+        //{
+        //    ProductVendorInfo productVendors = new ProductVendorInfo();
             
-            productVendors.Product_Vendor_Entity.Product_Vendor_Id = Convert.ToInt32(dr["Product_Vendor_Id"]);
+        //    productVendors.Product_Vendor_Entity.Product_Vendor_Id = Convert.ToInt32(dr["Product_Vendor_Id"]);
 
             //productVendors.Product_Vendor_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
             //productVendors.Product_Vendor_Entity.Name = Convert.ToString(dr["Name"]);
@@ -234,9 +234,9 @@ namespace KusumgarDataAccess
             //productVendors.Product_Vendor_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             //productVendors.Product_Vendor_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
             //productVendors.Product_Type_Name = LookupInfo.Get_Product_Service_Types()[productVendors.Product_Vendor_Entity.Product_Type];
-            return productVendors;
+        //    return productVendors;
 
-        }
+        //}
 
         public List<VendorInfo> Get_Vendors_By_Id(int vendor_Id, ref PaginationInfo pager)
         {
@@ -256,14 +256,14 @@ namespace KusumgarDataAccess
             return vendors;
         }
 
-        public void Delete_Product_Service_By_Id(int product_Vendor_Id)
-        {
-            List<SqlParameter> sqlparam = new List<SqlParameter>();
+        //public void Delete_Product_Service_By_Id(int product_Vendor_Id)
+        //{
+        //    List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            sqlparam.Add(new SqlParameter("@Product_Vendor_Id", product_Vendor_Id));
+        //    sqlparam.Add(new SqlParameter("@Product_Vendor_Id", product_Vendor_Id));
 
-            _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Product_Service_By_Id.ToString(), CommandType.StoredProcedure);
-        }
+        //    _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Delete_Product_Service_By_Id.ToString(), CommandType.StoredProcedure);
+        //}
 
         public List<AutocompleteInfo> Get_Vendor_AutoComplete(string vendor_Name)
         {
@@ -296,37 +296,37 @@ namespace KusumgarDataAccess
             return VendorNames;
         }
 
-        public List<ProductVendorInfo> Get_Product_Vendor_By_Id(int vendor_Id)
-        {
-            List<ProductVendorInfo> productVendors = new List<ProductVendorInfo>();
+        //public List<ProductVendorInfo> Get_Product_Vendor_By_Id(int vendor_Id)
+        //{
+        //    List<ProductVendorInfo> productVendors = new List<ProductVendorInfo>();
 
-            List<SqlParameter> sqlParams = new List<SqlParameter>();
+        //    List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id));
+        //    sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Product_Vendor_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+        //    DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Product_Vendor_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
 
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int count = 0;
+        //    if (dt != null && dt.Rows.Count > 0)
+        //    {
+        //        int count = 0;
 
-                List<DataRow> drList = new List<DataRow>();
+        //        List<DataRow> drList = new List<DataRow>();
 
-                drList = dt.AsEnumerable().ToList();
+        //        drList = dt.AsEnumerable().ToList();
 
-                count = drList.Count();
+        //        count = drList.Count();
 
-                foreach (DataRow dr in drList)
-                {
-                    productVendors.Add(Get_Product_Vendor_Values(dr));
+        //        foreach (DataRow dr in drList)
+        //        {
+        //            productVendors.Add(Get_Product_Vendor_Values(dr));
                 
-                }
-            }
+        //        }
+        //    }
 
-            return productVendors;
+        //    return productVendors;
 
-        }
+        //}
 
         public bool Check_Existing_Vendor(string vendor_Name)
         {
