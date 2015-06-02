@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+    
+    InitializeAutoComplete($('#txtTestUnitName'));
 
     GetAllTestUnits();
 

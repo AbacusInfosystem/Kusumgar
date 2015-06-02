@@ -10,7 +10,7 @@ using KusumgarModel;
 using KusumgarHelper.PageHelper;
 using KusumgarBusinessEntities.Common;
 using KusumgarCrossCutting.Logging;
-using KusumgarBusinessEntities.CMS;
+using KusumgarBusinessEntities;
 
 
 namespace Kusumgar.Controllers.PostLogin.Master

@@ -140,6 +140,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_Type_By_Name_sp,
         Insert_Defect_Type_sp,
         Update_Defect_Type_sp,
+        Get_Defect_AutoComplete_Sp,
 
         //Defect
         Get_Defects_sp,
@@ -150,6 +151,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
         Get_Test_Units_sp,

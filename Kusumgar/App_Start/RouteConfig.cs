@@ -1151,6 +1151,24 @@ namespace Kusumgar
             url: "ajax/vendor-list/{vendor_Name}",
             defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "ajax-4",
+            url: "ajax/defect-type-list/{defect_Type_Name}",
+            defaults: new { controller = "DefectType", action = "Get_Defect_Type_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "ajax-5",
+           url: "ajax/defect-list/{defect_Name}",
+           defaults: new { controller = "Defect", action = "Get_Defect_AutoComplete", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+         routes.MapRoute(
+         name: "ajax-6",
+         url: "ajax/test-unit-list/{test_Unit_Name}",
+         defaults: new { controller = "TestUnit", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
+         namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #endregion

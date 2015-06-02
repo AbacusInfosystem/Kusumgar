@@ -84,6 +84,19 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/get-product-by-product-name/" + $('#txtProductName').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtDefectTypeName') {
+                urlString = "/ajax/defect-type-list/" + $('#txtDefectTypeName').val();
+            }
+
+
+            if ($(elementObject).attr("id") == 'txtDefectName') {
+                urlString = "/ajax/defect-list/" + $('#txtDefectName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnitName') {
+                urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",

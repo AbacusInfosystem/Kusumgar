@@ -8,6 +8,7 @@ using KusumgarModel;
 using Kusumgar.Models;
 using KusumgarHelper.PageHelper;
 using KusumgarBusinessEntities.Common;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -41,7 +42,9 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
-            }
+
+                Logger.Error("Test Unit Controller - Insert_Test_Units " + ex.ToString());
+           }
            
             TempData["tViewModel"] = tViewModel;
                 
@@ -62,6 +65,8 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Unit Controller - Update_Test_Units " + ex.ToString());
             }
             TempData["tViewModel"] = tViewModel;
             
@@ -82,6 +87,8 @@ namespace Kusumgar.Controllers
         catch (Exception ex)
             {
                 tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Unit Controller - Get_Test_Unit_By_Id" + ex.ToString());
             }
             
                TempData["tViewModel"] = tViewModel;
@@ -93,18 +100,46 @@ namespace Kusumgar.Controllers
         {
             TestUnitManager tMan = new TestUnitManager();
 
-            if (!string.IsNullOrEmpty(tViewModel.Filter.Test_Unit_Name))
+            PaginationInfo pager = new PaginationInfo();
+
+            try
             {
-                tViewModel.Test_Unit_Grid = tMan.Get_Test_Unit_By_Name(tViewModel.Filter.Test_Unit_Name, tViewModel.Pager);
-            }
-            else
-            {
-                tViewModel.Test_Unit_Grid = tMan.Get_Test_Units(tViewModel.Pager);
+                pager = tViewModel.Pager;
+                
+                if (tViewModel.Filter.Test_Unit_Id!=0)
+                {
+                    tViewModel.Test_Unit_Grid = tMan.Get_Test_Units_By_Id(tViewModel.Filter.Test_Unit_Id, tViewModel.Pager);
+                }
+                else
+                {
+                    tViewModel.Test_Unit_Grid = tMan.Get_Test_Units(tViewModel.Pager);
+                }
+
+                tViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", tViewModel.Pager.TotalRecords, tViewModel.Pager.CurrentPage + 1, tViewModel.Pager.PageSize, 10, true);
             }
 
-           tViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", tViewModel.Pager.TotalRecords, tViewModel.Pager.CurrentPage + 1, tViewModel.Pager.PageSize, 10, true);
-            
+            catch (Exception ex)
+            {
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Unit Controller - Get_Test_Units " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
+            }
            return Json(tViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Test_Unit_AutoComplete(string test_Unit_Name)
+        {
+            TestUnitManager tMan = new TestUnitManager();
+
+            List<AutocompleteInfo> testUnitName = new List<AutocompleteInfo>();
+
+            testUnitName = tMan.Get_Test_Unit_AutoComplete(test_Unit_Name);
+
+            return Json(testUnitName, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ViewTests(TestUnitViewModel tViewModel)

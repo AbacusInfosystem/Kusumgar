@@ -4,7 +4,7 @@
 
         Filter: {
 
-             Defect_Name: $('#txtDefectName').val(),
+             Defect_Id: $('#hdnDefectId').val(),
 
              Defect_Type_Id: $("#hdfDefectTypeId").val(),
    
@@ -137,7 +137,9 @@ function PageMore(Id) {
 
         Filter: {
 
-            Defect_Name: $('#txtDefectName').val(),
+            //Defect_Name: $('#txtDefectName').val(),
+
+            Defect_Id: $('#hdnDefectId').val(),
 
             Defect_Type_Id: $("#hdfDefectTypeId").val(),
 

@@ -3,7 +3,7 @@
     var dViewModel = {
 
         Filter: {
-
+            Defect_Type_Id: $('#hdnDefectTypeId').val(),
            Defect_Type_Name: $('#txtDefectTypeName').val()
         },
 
@@ -24,6 +24,7 @@ function GetAllDefectTypes() {
 
         Filter: {
 
+                Defect_Type_Id:"",
                  Defect_Type_Name: ""
                 },
 
@@ -119,6 +120,7 @@ function PageMore(Id) {
 
         Filter: {
 
+            Defect_Type_Id: $('#hdnDefectTypeId').val(),
             Defect_Type_Name: $('#txtDefectTypeName').val()
         },
 

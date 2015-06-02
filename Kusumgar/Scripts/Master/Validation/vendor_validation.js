@@ -230,6 +230,7 @@
 
     });
 
+
     jQuery.validator.addMethod("validate_PAN", function (value, element) {
         return this.optional(element) || /^[A-Z]{5}\d{4}[A-Z]{1}$/.test(value);
     }, "Invalid Pan Number");
