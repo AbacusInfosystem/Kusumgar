@@ -32,6 +32,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Index(VendorViewModel vViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             PaginationInfo pager = new PaginationInfo();
 
             pager.IsPagingRequired = false;
@@ -45,6 +47,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Search(VendorViewModel vViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["vViewModel"] != null)
             {
                 vViewModel = (VendorViewModel)TempData["vViewModel"];
@@ -66,7 +70,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
 
-                if (vViewModel.Vendor.Product_Category_Entity.Product_Category_Name == "YarnCategory")
+                if (vViewModel.Vendor.Material_Category_Entity.Material_Category_Name == "YarnCategory")
                 {
                     vViewModel.Attribute_Code.AttributeCodeEntity.Status = true;
 
@@ -276,7 +280,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             pager.IsPagingRequired = false;
             
-            vViewModel.Product_Category = _vendorMan.Get_Product_Category();
+            vViewModel.Material_Category = _vendorMan.Get_Material_Category();
 
             vViewModel.Nations = _nationMan.Get_Nations(ref pager);
 

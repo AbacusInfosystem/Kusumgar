@@ -119,7 +119,7 @@ namespace Kusumgar.Controllers
         }
 
         public JsonResult Get_Customer_Id(string customer_Name)
-        {            
+        {
             List<AutocompleteInfo> auto_List = new List<AutocompleteInfo>();
             auto_List = _complaintMan.Get_Customer_Id(customer_Name);
             return Json(auto_List, JsonRequestBehavior.AllowGet);

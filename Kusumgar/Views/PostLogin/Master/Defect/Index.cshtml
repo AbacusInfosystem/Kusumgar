@@ -1,7 +1,5 @@
 ﻿@model Kusumgar.Models.DefectViewModel
-@{
-    ViewBag.Title = "Customer";
-}
+
 
 <script src="~/Scripts/Master/Event/defect_event.js"></script>
 <script src="~/Scripts/Master/Method/defect_method.js"></script>
@@ -46,8 +44,8 @@
                                      <input type="hidden" id="hdfDefectId" name="Defect.DefectEntity.Defect_Id" value="@Model.Defect.DefectEntity.Defect_Id" />
                                     
                                     <div class="form-group">
-                                        <label>Defect - Type</label>
-                                        <select class="form-control" id="drpDefectTypeName" name="Defect.DefectEntity.Defect_Type_Id">
+                                        <label style="color: #333">Defect - Type</label>
+                                        <select class="form-control input-sm" id="drpDefectTypeName" name="Defect.DefectEntity.Defect_Type_Id">
                                             <option value="">Select Defect-Type</option>
                                             @foreach (var item in Model.DefectType)
                                             {
@@ -65,14 +63,14 @@
                                     </div>
                                  
                                     <div class="form-group">
-                                        <label for="txtDefectCode">Defect Code</label>
-                                        <input type="text" class="form-control" id="txtDefectCode" name="Defect.DefectEntity.Defect_Code" value="@Model.Defect.DefectEntity.Defect_Code" placeholder="Enter defect code">
+                                        <label for="txtDefectCode" style="color: #333">Defect Code</label>
+                                        <input type="text" class="form-control  input-sm" id="txtDefectCode" name="Defect.DefectEntity.Defect_Code" value="@Model.Defect.DefectEntity.Defect_Code" placeholder="Enter defect code">
                                         
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtDefectName">Defect Name</label>
-                                        <input type="text" class="form-control" id="txtDefectName" name="Defect.DefectEntity.Defect_Name" value="@Model.Defect.DefectEntity.Defect_Name" placeholder="Enter defect name">
+                                        <label for="txtDefectName" style="color: #333">Defect Name</label>
+                                        <input type="text" class="form-control  input-sm" id="txtDefectName" name="Defect.DefectEntity.Defect_Name" value="@Model.Defect.DefectEntity.Defect_Name" placeholder="Enter defect name">
                                         
                                     </div>
 
@@ -94,24 +92,25 @@
                                 </div>
 
                                 <div class="col-md-8">
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-striped" id="tblSearchDefect" style="display:none;">
+                                            <tr>
 
-                                    <table class="table table-striped" id="tblSearchDefect" style="display:none;">
-                                        <tr>
-
-                                            <th>Defect Type</th>
-                                            <th>DefectCode</th>
-                                            <th>DefectName</th>
-                                            <th style="width:100px;">Status</th>
-                                        </tr>
-                                    </table>
-  
-                                </div>
+                                                <th>Defect Type</th>
+                                                <th>DefectCode</th>
+                                                <th>DefectName</th>
+                                                <th style="width:100px;">Status</th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    </div>
                             </div>
 
                             <div class="box-footer">
-                                <button type="submit" id="btnSave" class="btn btn-success">Save</button>
-                                <a href="@Url.Action("Search","Defect")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-
+                                <div class="btn-group">
+                                    <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                    <a href="@Url.Action("Search","Defect")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                </div>
                             </div>
 
                         </div>

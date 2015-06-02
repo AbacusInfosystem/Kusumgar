@@ -65,6 +65,19 @@ function BindCompGrid(data) {
 
         htmlText += "</tr>";
     }
+    }
+    else
+    {
+        htmlText += "<tr>";
+
+        htmlText += "<td colspan='5'>";
+
+        htmlText +="No record found.";
+
+        htmlText += "</td>";
+
+        htmlText += "<tr>";
+    }
     $("#tblComGrid").find("tr:gt(0)").remove();
 
     $('#tblComGrid tr:first').after(htmlText);
@@ -74,13 +87,18 @@ function BindCompGrid(data) {
         increaseArea: '20%' // optional
     });
 
-
+    if (data.ComplaintList.length > 0) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
     if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
         $('.pagination').html(data.Pager.PageHtmlString);
+    }
+    }
+    else
+    {
+        $('.pagination').html("");
     }
 
     $("#divSearchGridOverlay").hide();

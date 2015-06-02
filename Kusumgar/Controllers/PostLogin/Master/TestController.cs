@@ -15,6 +15,8 @@ namespace Kusumgar.Controllers
     {
         public ActionResult Index(TestViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             TestManager tMan = new TestManager();
            
             tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
@@ -24,6 +26,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(TestViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             TestManager tMan = new TestManager();
             
             if (TempData["tViewModel"] != null)

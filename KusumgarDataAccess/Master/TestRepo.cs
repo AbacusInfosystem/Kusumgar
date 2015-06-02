@@ -53,18 +53,102 @@ namespace KusumgarDataAccess
 
                 tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
 
-                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
-                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
-                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
-                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
-                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
-                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
-                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
-                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
-                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
-                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
-                
-                tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
+                if (dr["Test_Unit1"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit1 = 0;
+                }
+
+
+                if (dr["Test_Unit2"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit2 = 0;
+                }
+
+                if (dr["Test_Unit3"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit3 = 0;
+                }
+
+
+                if (dr["Test_Unit4"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit4 = 0;
+                }
+
+                if (dr["Test_Unit5"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit5 = 0;
+                }
+
+
+                if (dr["Test_Unit6"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit6 = 0;
+                }
+
+                if (dr["Test_Unit7"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit7 = 0;
+                }
+
+                if (dr["Test_Unit8"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit8 = 0;
+                }
+
+
+                if (dr["Test_Unit9"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit9 = 0;
+                }
+
+
+                if (dr["Test_Unit10"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit10 = 0;
+                }
+
+                tests.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
                 tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
                 tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
                 tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
@@ -164,7 +248,7 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Test_Id", testId));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Id_sp.ToString(), CommandType.StoredProcedure);
-            
+
             if (dt != null && dt.Rows.Count > 0)
             {
                 int count = 0;
@@ -193,16 +277,101 @@ namespace KusumgarDataAccess
 
                     retVal.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
 
-                    retVal.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
-                    retVal.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
-                    retVal.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
-                    retVal.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
-                    retVal.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
-                    retVal.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
-                    retVal.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
-                    retVal.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
-                    retVal.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
-                    retVal.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+
+                    if (dr["Test_Unit1"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit1 = 0;
+                    }
+
+
+                    if (dr["Test_Unit2"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit2 = 0;
+                    }
+
+                    if (dr["Test_Unit3"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit3 = 0;
+                    }
+
+
+                    if (dr["Test_Unit4"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit4 = 0;
+                    }
+
+                    if (dr["Test_Unit5"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit5 = 0;
+                    }
+
+
+                    if (dr["Test_Unit6"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit6 = 0;
+                    }
+
+                    if (dr["Test_Unit7"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit7 = 0;
+                    }
+
+                    if (dr["Test_Unit8"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit8 = 0;
+                    }
+
+
+                    if (dr["Test_Unit9"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit9 = 0;
+                    }
+
+
+                    if (dr["Test_Unit10"] != DBNull.Value)
+                    {
+                        retVal.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                    }
+                    else
+                    {
+                        retVal.TestEntity.Test_Unit10 = 0;
+                    }
 
                     retVal.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
                     retVal.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
@@ -221,6 +390,7 @@ namespace KusumgarDataAccess
             }
             return retVal;
         }
+
 
         public List<FabricTypeInfo> Get_Fabric_Types()
         {
@@ -284,16 +454,101 @@ namespace KusumgarDataAccess
 
                 tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
 
-                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
-                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
-                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
-                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
-                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
-                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
-                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
-                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
-                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
-                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                if (dr["Test_Unit1"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit1 = 0;
+                }
+
+
+                if (dr["Test_Unit2"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit2 = 0;
+                }
+
+                if (dr["Test_Unit3"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit3 = 0;
+                }
+
+
+                if (dr["Test_Unit4"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit4 = 0;
+                }
+
+                if (dr["Test_Unit5"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit5 = 0;
+                }
+
+
+                if (dr["Test_Unit6"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit6 = 0;
+                }
+
+                if (dr["Test_Unit7"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit7 = 0;
+                }
+
+                if (dr["Test_Unit8"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit8 = 0;
+                }
+
+
+                if (dr["Test_Unit9"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit9 = 0;
+                }
+
+
+                if (dr["Test_Unit10"] != DBNull.Value)
+                {
+                    tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                }
+                else
+                {
+                    tests.TestEntity.Test_Unit10 = 0;
+                }
+
                 
                 tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
                 tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);

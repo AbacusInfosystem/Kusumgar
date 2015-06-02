@@ -16,12 +16,89 @@ namespace KusumgarBusinessEntities.Common
 
     public enum AppFunction
     {
-        EmployeeSearch,
-        EmployeeInsert,
-        EmployeeUpdate,
-        RoleSearch,
-        RoleInsert,
-        RoleUpdate
+        // Dashboard
+        Dashboard,
+
+        // Employee
+        Employee_Search,
+        Employee_Create,
+        Employee_Edit,
+
+        // Role
+        Role_Search,
+        Role_Create,
+        Role_Edit,
+
+        // Customer
+        Customer_Search,
+        Customer_Create,
+        Customer_Edit,
+
+        // Customer Contact
+        Customer_Contact_Search,
+        Customer_Contact_Create,
+        Customer_Contact_Edit,
+
+        // Vendor
+        Vendor_Search,
+        Vendor_Create,
+        Vendor_Edit,
+
+        // Vendor Contact
+        Vendor_Contact_Search,
+        Vendor_Contact_Create,
+        Vendor_Contact_Edit,
+
+        // Material
+        Material_Search,
+        Material_Create,
+        Material_Edit,
+
+        // Workcenter
+        Workcenter_Search,
+        Workcenter_Create,
+        Workcenter_Edit,
+
+        // Defect
+        Defect_Search,
+        Defect_Create,
+        Defect_Edit,
+
+        // Defect Type
+        Defect_Type_Search,
+        Defect_Type_Create,
+        Defect_Type_Edit,
+
+        // Test
+        Test_Search,
+        Test_Create,
+        Test_Edit,
+
+        // Test Unit
+        Test_Unit_Search,
+        Test_Unit_Create,
+        Test_Unit_Edit,
+
+        // Attribute Code
+        Attribute_Code_Search,
+        Attribute_Code_Create,
+        Attribute_Code_Edit,
+
+        // Complaint
+        Complaint_Search,
+        Complaint_Create,
+        Complaint_Edit,
+
+        // YArticle
+        YArticle_Search,
+        YArticle_Create,
+        YArticle_Edit,
+
+        
+
+
+
+
     }
 
     public enum UserRoles
@@ -60,6 +137,10 @@ namespace KusumgarBusinessEntities.Common
 
     public enum StoredProcedures
     {
+        //Login
+        Authenticate_User_sp,
+        Get_Session_Data_sp,
+
         // Employee 
         Update_User_Sp,
         Get_Users_By_Id_Sp,
@@ -258,6 +339,19 @@ namespace KusumgarBusinessEntities.Common
         Insert_Product_Vendor_Sp,
         Delete_Product_Vendor_By_Id_Sp,
         Get_Product_Vendors_By_Id_Sp,
+
+        // Material
+        Insert_Material_Sp,
+        Update_Material_Sp,
+        Get_Materials_Sp,
+        Get_Materials_By_Material_Id_Sp,
+        Get_Materials_By_Material_Name_Sp,
+        Get_Material_By_Id_Sp,
+        Delete_Material_Vendor_By_Id_Sp,
+        Get_Material_Vendors_By_Id_Sp,
+        Insert_Material_Vendor_Sp,
+        Get_Material_Categories_sp,
+Get_Material_SubCategory_By_CategoryId_Sp,
     }
 
     public enum GenderType
@@ -350,8 +444,9 @@ namespace KusumgarBusinessEntities.Common
 
     public enum ProductType
     {
-        Product = 1,
-        Service = 2
+        Finish_Product = 1,
+        Raw_Material =2,
+        Service = 3
     }
 
 }

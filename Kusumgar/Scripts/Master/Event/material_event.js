@@ -1,16 +1,22 @@
 ﻿$(document).ready(function () {    
 
-    if ($("#hdnProduct_Id").val() == 0) {
-        $("#tabProductVendor").hide();
+    if ($("#hdnMaterial_Id").val() == 0) {
+        $("#tabMaterialVendor").hide();
     }
 
-    $("#btnProductSave").click(function () {
+    $("#btnMaterialSave").click(function () {
 
-        if ($("#frmProduct").valid()) {
+        if ($("#frmMaterial").valid()) {
 
-            Save_Product_Details();
+            Save_Material_Details();
 
         }
+    });
+
+    $("#btnNew").click(function () {
+
+        $("#myModal").find(".modal-body").load("/master/partial-vendor", null);
+
     });
 
     $('[name="chkIsOrigMan"]').on('ifChanged', function (event) {
@@ -25,8 +31,8 @@
     $("#drpProdCatName").change(function () {
 
         $.ajax({
-            url: '/master/product-subcategory-by-category-id',
-            data: { product_Category_Id: $("#drpProdCatName").val() },
+            url: '/master/material-subcategory-by-category-id',
+            data: { Material_Category_Id: $("#drpProdCatName").val() },
             method: 'GET',
             async: false,
             success: function (data) {
@@ -38,13 +44,13 @@
         });
     });
 
-    InitializeAutoComplete($('#txtVendorName'));
+    InitializeAutoComplete($('#txt_auto_Vendor_Name'));
 
     $("#btnSavePV").click(function () {
 
-        if ($("#frmProduct").valid()) {
+        if ($("#frmMaterial_Vendors").valid()) {
 
-            Save_Product_Vendor();
+            Save_Material_Vendor();
         }
     });
 });

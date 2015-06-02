@@ -49,6 +49,10 @@ namespace KusumgarModel
           return  _roleRepo.Check_Existing_Role(Role_Name);
         }
 
+        public List<AutocompleteInfo> Get_Roles_By_Name(string role_Name)
+        {
+            return _roleRepo.Get_Roles_By_Name(role_Name);
+        }
         
     }
 }

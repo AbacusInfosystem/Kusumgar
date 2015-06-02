@@ -67,18 +67,18 @@ function Consumable_Vendor_CallBack(data) {
 
             htmlText += " <tr id='tr_vendor_" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + "'>";
 
-            htmlText += "<td>";
-            htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id;
-            htmlText += "</td>";
+            //htmlText += "<td>";
+            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id;
+            //htmlText += "</td>";
 
             htmlText += "<td>";
             //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Vendor_Id;
             htmlText += data.Consumable.Consumable_Vendors[i].Vendor_Entity.Vendor_Name;
             htmlText += "</td>";
 
-            htmlText += "<td>";
-            htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Id;
-            htmlText += "</td>";
+            //htmlText += "<td>";
+            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Id;
+            //htmlText += "</td>";
 
             htmlText += "<td>";
             htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Priority_Order;
@@ -93,8 +93,8 @@ function Consumable_Vendor_CallBack(data) {
 
             htmlText += "<div class='btn-group pull-right'>";
 
-            htmlText += "<button type='button' id='btnEditVendor' class='btn btn-info btn-sm btn-Vendor' onclick='EditVendors(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + ")'><i class='fa fa-pencil-square-o'></i></button>";
-            htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm' onclick='RemoveVendor(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
+            htmlText += "<button type='button' id='btnEditVendor' class='btn btn-info btn-xs btn-Vendor' onclick='EditVendors(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + ")'><i class='fa fa-pencil-square-o'></i></button>";
+            htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
 
             htmlText += "</div>";
 

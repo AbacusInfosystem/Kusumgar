@@ -17,6 +17,10 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/get-vendor-id-by-vendorname/" + $('#txtVendorName').val();
             }
 
+            if ($(elementObject).attr("id") == 'txt_auto_Vendor_Name') {
+                urlString = "/master/get-vendor-id-by-vendorname/" + $('#txt_auto_Vendor_Name').val();
+            }
+
             if ($(elementObject).attr("id") == 'txtSupplierName') {
                 urlString = "/master/vendor-list/" + $('#txtSupplierName').val();
             }
@@ -75,6 +79,14 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/search-employee-by-name/" + $('#txtDeveloped_Under').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtEmployeeName') {
+                urlString = "/master/search-employee-by-name/" + $('#txtEmployeeName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtRole_Name') {
+                urlString = "/master/search-role-by-name//" + $('#txtRole_Name').val();
+            }
+
             if ($(elementObject).attr("id") == 'txtFull_Code') {
                 urlString = "/master/y-articles-by-full-code/" + $('#txtFull_Code').val();
             }
@@ -83,8 +95,8 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/y-articles/get-work-stations-by-code-purpose/" + $('#txtWork_Station').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtProductName') {
-                urlString = "/master/get-product-by-product-name/" + $('#txtProductName').val();
+            if ($(elementObject).attr("id") == 'txtMaterialName') {
+                urlString = "/master/get-material-by-material-name/" + $('#txtMaterialName').val();
             }
 
             $.ajax({
@@ -136,7 +148,8 @@ var InitializeAutoComplete = function (elementObject) {
             ////callBack(ui);
 
             $(this).parents('.form-group').find('input[type=text]').val("");
-            $(this).parents('.form-group').find('input[type=hidden]').val(ui.item.value);
+            $(this).parents('.form-group').find('.auto-complete-value').val(ui.item.value);
+            $(this).parents('.form-group').find('.auto-complete-label').val(ui.item.label);
 
             if ($(this).parents('.form-group').find(".todo-list")[0]) {
                 $(this).parents('.form-group').find('.todo-list').remove();
@@ -155,7 +168,8 @@ var InitializeAutoComplete = function (elementObject) {
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
-                $(this).parents('.form-group').find('input[type=hidden]').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').val("");
+                $(this).parents('.form-group').find('.auto-complete-label').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
             });
 
@@ -173,9 +187,37 @@ var InitializeAutoComplete = function (elementObject) {
     });
 
     $(elementObject).each(function () {
+       
+        //if ($(this).parents('.form-group').find('input[type=hidden]').val() != 0) {
+        //    var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text' value='" + $(this).val() + "' name=''>" + $(this).val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
+        //    //var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + ui.item.label + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
 
-        if ($(this).parents('.form-group').find('input[type=hidden]').val() != 0) {
-            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
+        //    if ($(this).parents('.form-group').find(".ui-menu")[0]) {
+
+        //        $(this).parents('.form-group').find('.text').html(ui.item.label);
+        //    } else {
+
+        //        $(this).parents('.form-group').append(htmlText);
+        //    }
+
+        //    $(this).parents('.form-group').find('input[type=text]').val("");
+
+        //    $('.fa-remove').click(function (event) {
+        //        event.preventDefault();
+        //        $(this).parents('.form-group').find('input[type=text]').val("");
+        //        $(this).parents('.form-group').find('input[type=hidden]').val("");
+        //        $(this).parents('.form-group').find('.todo-list').remove();
+
+        //    });
+        //}
+        //else
+        //{
+        //    $(this).parents('.form-group').find('.todo-list').remove();
+        //}
+
+        if ($(this).parents('.form-group').find('.auto-complete-value').val() != 0) {
+
+            var htmlText = "<ul class='todo-list ui-sortable'><li ><span class='text'>" + $(this).parents('.form-group').find('.auto-complete-label').val() + "</span><div class='tools'><i class='fa fa-remove'></i></div></li></ul>";
 
             if ($(this).parents('.form-group').find(".ui-menu")[0]) {
 
@@ -190,10 +232,14 @@ var InitializeAutoComplete = function (elementObject) {
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
-                $(this).parents('.form-group').find('input[type=hidden]').val("");
+                $(this).parents('.form-group').find('auto-complete-value').val("");
+                $(this).parents('.form-group').find('.auto-complete-label').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
 
             });
+        }
+        else {
+            $(this).parents('.form-group').find('.todo-list').remove();
         }
     });
 }

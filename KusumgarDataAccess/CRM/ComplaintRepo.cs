@@ -63,14 +63,14 @@ namespace KusumgarDataAccess
             List<ComplaintInfo> complaints = new List<ComplaintInfo>();
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Complaints_Sp.ToString(), CommandType.StoredProcedure);
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
-            {                
+            {
                 complaints.Add(Get_Complaint_Values(dr));
             }
             return complaints;
         }
-
+                
         private ComplaintInfo Get_Complaint_Values(DataRow dr)
-        {
+                {
             ComplaintInfo complaint = new ComplaintInfo();
             complaint.Complaint_Entity.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
             complaint.Customer_Name = Convert.ToString(dr["Customer_Name"]);
@@ -79,10 +79,10 @@ namespace KusumgarDataAccess
             complaint.Complaint_Entity.Challan_No = Convert.ToString(dr["Challan_No"]);
             complaint.Complaint_Entity.CDescription = Convert.ToString(dr["CDescription"]);
             return complaint;
-        }
+                }
 
         public List<ComplaintInfo> Get_Complaints_By_Cust_Id(int customer_Id, ref PaginationInfo pager)
-        {
+                {
             List<ComplaintInfo> complaints = new List<ComplaintInfo>();
             List<SqlParameter> sqlParams = new List<SqlParameter>();
             sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
@@ -90,7 +90,7 @@ namespace KusumgarDataAccess
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {                    
                 complaints.Add(Get_All_Complaint_Values(dr));
-            }        
+            }
             return complaints;
         }
 
@@ -115,11 +115,11 @@ namespace KusumgarDataAccess
                 }
             }
             return complaint;
-        }
+                }
 
         private ComplaintInfo Get_All_Complaint_Values(DataRow dr)
-        {
-            ComplaintInfo complaint = new ComplaintInfo();
+                {
+                    ComplaintInfo complaint = new ComplaintInfo();
             complaint.Complaint_Entity.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
             complaint.Complaint_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             complaint.Customer_Name = Convert.ToString(dr["Customer_Name"]);

@@ -15,9 +15,14 @@ namespace KusumgarBusinessEntities
             UserEntity = new M_User();
 
             UserRoleList = new List<UserRoleInfo>();
+
+            AccessFunctions = new List<M_Access_Function>();
+            
         }
 
         public M_User UserEntity { get; set; }
+
+        public List<M_Access_Function> AccessFunctions { get; set; }
 
         public string Gender 
         {

@@ -1,9 +1,6 @@
 ﻿@model Kusumgar.Models.AttributeCodeViewModel
 @using KusumgarBusinessEntities.Common;
 
-@{
-    ViewBag.Title = "Search";
-}
 
 <script src="~/Scripts/Master/Event/attribute_code_search_event.js"></script>
 <script src="~/Scripts/Master/Method/attribute_code_search_method.js"></script>
@@ -45,7 +42,7 @@
 
                                     <div class="form-group">
                                         <label for="drpAttributeName">Attribute Name</label>
-                                        <select id="drpAttributeName" class="form-control">
+                                        <select id="drpAttributeName" class="form-control input-sm">
                                             <option value="">Select Attribute Name</option>
                                             @foreach (var item in LookupInfo.GetAttributeNames())
                                             {
@@ -71,8 +68,8 @@
                                     <div class="col-md-6">
 
                                         <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","AttributeCode")" role="button">Create Attribute Code</a>
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","AttributeCode")" role="button">Create</a>
                                         </div>
 
                                     </div>
@@ -83,7 +80,7 @@
                                             <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
                                            
                                             <input type="hidden" id="hdfAttributeCodeId" name="Edit_Mode.Attribute_Code_Id" />
-                                            <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Attribute Code</button>
+                                            <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit</button>
                                         </div>
 
                                     </div>

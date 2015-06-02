@@ -355,11 +355,11 @@ namespace KusumgarDataAccess
             return check;
         }
 
-        public List<ProductCategoryInfo> Get_Product_Category()
+        public List<MaterialCategoryInfo> Get_Material_Category()
         {
-            List<ProductCategoryInfo> retVal = new List<ProductCategoryInfo>();
+            List<MaterialCategoryInfo> retVal = new List<MaterialCategoryInfo>();
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Product_Categories_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Material_Categories_sp.ToString(), CommandType.StoredProcedure);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -373,13 +373,13 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    ProductCategoryInfo productCategoryInfo = new ProductCategoryInfo();
+                    MaterialCategoryInfo MaterialCategoryInfo = new MaterialCategoryInfo();
 
-                    productCategoryInfo.Product_Category_Entity.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
+                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
 
-                    productCategoryInfo.Product_Category_Entity.Product_Category_Name = Convert.ToString(dr["Product_Category_Name"]);
+                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
 
-                    retVal.Add(productCategoryInfo);
+                    retVal.Add(MaterialCategoryInfo);
                 }
 
             }

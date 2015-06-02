@@ -2,88 +2,293 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
 using KusumgarBusinessEntities.Common;
-namespace Kusumgar.Common
+namespace Kusumgar
 {
     public class MessageStore
     {
-        public static FixedSizeGenericHashTable<string, FriendlyMessage> hash = new FixedSizeGenericHashTable<string, FriendlyMessage>(400);
+        public static FixedSizeGenericHashTable<string, FriendlyMessageInfo> hash = new FixedSizeGenericHashTable<string, FriendlyMessageInfo>(400);
 
         static MessageStore()
         {
             #region System
 
-            FriendlyMessage SYS01 = new FriendlyMessage("SYS01", MessageType.Danger, "We are currently unable to process your request, Please try again later or contact system administrator.");
+            FriendlyMessageInfo SYS01 = new FriendlyMessageInfo("SYS01", MessageType.Danger, "We are currently unable to process your request, Please try again later or contact system administrator.");
             hash.Add("SYS01", SYS01);
 
-            FriendlyMessage SYS02 = new FriendlyMessage("SYS02", MessageType.Info, "Your session has expired. Please login again.");
+            FriendlyMessageInfo SYS02 = new FriendlyMessageInfo("SYS02", MessageType.Info, "Your session has expired. Please login again.");
             hash.Add("SYS02", SYS02);
 
-            FriendlyMessage SYS03 = new FriendlyMessage("SYS03", MessageType.Danger, "Please login with valid Username Password to view this page.");
+            FriendlyMessageInfo SYS03 = new FriendlyMessageInfo("SYS03", MessageType.Danger, "Invalid login credentials. Please login with valid username & password.");
             hash.Add("SYS03", SYS03);
 
-            FriendlyMessage SYS04 = new FriendlyMessage("SYS04", MessageType.Info, "No records found.");
+            FriendlyMessageInfo SYS04 = new FriendlyMessageInfo("SYS04", MessageType.Info, "No records found.");
             hash.Add("SYS04", SYS04);
 
-            FriendlyMessage SYS05 = new FriendlyMessage("SYS05", MessageType.Info, "Password has been changed successfully.");
+            FriendlyMessageInfo SYS05 = new FriendlyMessageInfo("SYS05", MessageType.Info, "Password has been changed successfully.");
             hash.Add("SYS05", SYS05);
 
-            FriendlyMessage SYS06 = new FriendlyMessage("SYS06", MessageType.Danger, "You dont have online access. Please contact administrator.");
+            FriendlyMessageInfo SYS06 = new FriendlyMessageInfo("SYS06", MessageType.Danger, "You dont have online access. Please contact administrator.");
             hash.Add("SYS06", SYS06);
 
             #endregion
 
+            #region Master
+
             #region User
 
-            FriendlyMessage UM001 = new FriendlyMessage("UM001", MessageType.Danger, "Username and password does not match. Please Login again.");
+            FriendlyMessageInfo UM001 = new FriendlyMessageInfo("UM001", MessageType.Danger, "Username and password does not match. Please Login again.");
             hash.Add("UM001", UM001);
 
-            FriendlyMessage UM002 = new FriendlyMessage("UM002", MessageType.Info, "User has been added successfully.");
+            FriendlyMessageInfo UM002 = new FriendlyMessageInfo("UM002", MessageType.Success, "Employee has been added successfully.");
             hash.Add("UM002", UM002);
 
-            FriendlyMessage UM003 = new FriendlyMessage("UM003", MessageType.Info, "User has been updated successfully.");
+            FriendlyMessageInfo UM003 = new FriendlyMessageInfo("UM003", MessageType.Success, "Employee has been updated successfully.");
             hash.Add("UM003", UM003);
 
-            FriendlyMessage UM004 = new FriendlyMessage("UM004", MessageType.Info, "Please check your email for you Registration credentials.");
+            FriendlyMessageInfo UM004 = new FriendlyMessageInfo("UM004", MessageType.Info, "Please check your email for you Registration credentials.");
             hash.Add("UM004", UM004);
 
-            FriendlyMessage UM005 = new FriendlyMessage("UM005", MessageType.Info, "Password link sent to your email address.");
+            FriendlyMessageInfo UM005 = new FriendlyMessageInfo("UM005", MessageType.Info, "Password link sent to your email address.");
             hash.Add("UM005", UM005);
 
-            FriendlyMessage UM006 = new FriendlyMessage("UM006", MessageType.Info, "Your password has been changed successfully.");
+            FriendlyMessageInfo UM006 = new FriendlyMessageInfo("UM006", MessageType.Info, "Your password has been changed successfully.");
             hash.Add("UM006", UM006);
 
-            FriendlyMessage UM007 = new FriendlyMessage("UM007", MessageType.Info, "Username link sent to your email address.");
+            FriendlyMessageInfo UM007 = new FriendlyMessageInfo("UM007", MessageType.Info, "Username link sent to your email address.");
             hash.Add("UM007", UM007);
 
-            FriendlyMessage UM008 = new FriendlyMessage("UM008", MessageType.Info, "User not found.");
+            FriendlyMessageInfo UM008 = new FriendlyMessageInfo("UM008", MessageType.Info, "User not found.");
             hash.Add("UM008", UM008);
 
-            FriendlyMessage UM009 = new FriendlyMessage("UM009", MessageType.Info, "No user account is registered with this email id.");
-            hash.Add("UM009", UM009);
+            #endregion
 
-            FriendlyMessage UM010 = new FriendlyMessage("UM010", MessageType.Info, "Password reset link is not valid or has been expired.");
-            hash.Add("UM010", UM010);
+            #region Role
 
-            FriendlyMessage UM011 = new FriendlyMessage("UM011", MessageType.Info, "Please select Clinic and ClinicBranch to view Users Listing.");
-            hash.Add("UM011", UM011);
+            FriendlyMessageInfo RO001 = new FriendlyMessageInfo("RO001", MessageType.Success, "Role has been added successfully.");
+            hash.Add("RO001", RO001);
 
-            FriendlyMessage UM012 = new FriendlyMessage("UM012", MessageType.Danger, "Sorry, your Clinic dont have Web Access. Please login from Windows Client");
-            hash.Add("UM012", UM012);
+            FriendlyMessageInfo RO002 = new FriendlyMessageInfo("RO002", MessageType.Success, "Role has been updated successfully.");
+            hash.Add("RO002", RO002);
+            #endregion
 
-            //Added by:Pooja Date:03182014
-            FriendlyMessage UM013 = new FriendlyMessage("UM013", MessageType.Info, "Password varification link has been sent to your registred email id.");
-            hash.Add("UM013", UM013);
-            //Addition ends Date:03182014
+            #region RoleAccess
+            FriendlyMessageInfo R0001 = new FriendlyMessageInfo("R0001", MessageType.Info, "Role access mapping updated successfully.");
+            hash.Add("R0001", R0001);
+
+            #endregion
+
+            #region DefectType
+
+            FriendlyMessageInfo DT011 = new FriendlyMessageInfo("DT011", MessageType.Success, "DefectType has been added successfully.");
+            hash.Add("DT011", DT011);
+
+            FriendlyMessageInfo DT012 = new FriendlyMessageInfo("DT012", MessageType.Success, "DefectType has been updated successfully.");
+            hash.Add("DT012", DT012);
+            #endregion
+
+            #region Defects
+
+            FriendlyMessageInfo D011 = new FriendlyMessageInfo("D011", MessageType.Success, "Defect has been added successfully.");
+            hash.Add("D011", D011);
+
+            FriendlyMessageInfo D012 = new FriendlyMessageInfo("D012", MessageType.Success, "Defect has been updated successfully.");
+            hash.Add("D012", D012);
+            #endregion
+
+            #region TestUnit
+
+            FriendlyMessageInfo TU011 = new FriendlyMessageInfo("TU011", MessageType.Success, "TestUnit has been added successfully.");
+            hash.Add("TU011", TU011);
+
+            FriendlyMessageInfo TU012 = new FriendlyMessageInfo("TU012", MessageType.Success, "TestUnit has been updated successfully.");
+            hash.Add("TU012", TU012);
+            #endregion
+
+            #region Test
+
+            FriendlyMessageInfo T011 = new FriendlyMessageInfo("T011", MessageType.Success, "Test has been added successfully.");
+            hash.Add("T011", T011);
+
+            FriendlyMessageInfo T012 = new FriendlyMessageInfo("T012", MessageType.Success, "Test has been updated successfully.");
+            hash.Add("T012", T012);
+            #endregion
+
+            #region Attribute Code
+
+            FriendlyMessageInfo AC011 = new FriendlyMessageInfo("AC011", MessageType.Success, "Attribute Code has been added successfully.");
+            hash.Add("AC011", AC011);
+
+            FriendlyMessageInfo AC012 = new FriendlyMessageInfo("AC012", MessageType.Success, "Attribute Code has been updated successfully.");
+            hash.Add("AC012", AC012);
+            #endregion
+
+            #region Vendor
+
+            FriendlyMessageInfo V011 = new FriendlyMessageInfo("V011", MessageType.Success, "Vendor has been added successfully.");
+            hash.Add("V011", V011);
+
+            FriendlyMessageInfo PS011 = new FriendlyMessageInfo("PS011", MessageType.Success, "Product Services has been added successfully.");
+            hash.Add("PS011", PS011);
+
+            FriendlyMessageInfo V012 = new FriendlyMessageInfo("V012", MessageType.Success, "Vendor has been updated successfully.");
+            hash.Add("V012", V012);
+
+            FriendlyMessageInfo PS012 = new FriendlyMessageInfo("PS012", MessageType.Success, "Product Services has been updated successfully.");
+            hash.Add("PS012", PS012);
+
+            FriendlyMessageInfo PS013 = new FriendlyMessageInfo("PS013 ", MessageType.Success, "Product Services has been deleted successfully.");
+            hash.Add("PS013 ", PS013);
 
 
             #endregion
+
+            #region Consumable
+
+            FriendlyMessageInfo C011 = new FriendlyMessageInfo("C011", MessageType.Success, "Consumable has been added successfully.");
+            hash.Add("C011", C011);
+
+            FriendlyMessageInfo C012 = new FriendlyMessageInfo("C012", MessageType.Success, "Consumable has been updated successfully.");
+            hash.Add("C012", C012);
+
+            FriendlyMessageInfo CV011 = new FriendlyMessageInfo("CV011", MessageType.Success, " Vendor has been added successfully.");
+            hash.Add("CV011", CV011);
+
+            FriendlyMessageInfo CV012 = new FriendlyMessageInfo("CV012", MessageType.Success, "Vendor Deleted successfully.");
+            hash.Add("CV012", CV012);
+
+            FriendlyMessageInfo CU013 = new FriendlyMessageInfo("CU013", MessageType.Success, "Consumable has been updated successfully.");
+            hash.Add("CU013", CU013);
+
+            FriendlyMessageInfo CV014 = new FriendlyMessageInfo("CV014", MessageType.Success, " Vendor has been updated successfully.");
+            hash.Add("CV014", CV014);
+
+            #endregion
+
+            #region Industrial
+
+            FriendlyMessageInfo IND001 = new FriendlyMessageInfo("IND001", MessageType.Success, "Industrial Master has been added successfully.");
+            hash.Add("IND001", IND001);
+
+            FriendlyMessageInfo IND002 = new FriendlyMessageInfo("IND002", MessageType.Success, "Industrial Master has been updated successfully.");
+            hash.Add("IND002", IND002);
+
+            FriendlyMessageInfo IND003 = new FriendlyMessageInfo("IND003", MessageType.Success, "Industrial Vendor has been added successfully.");
+            hash.Add("IND003", IND003);
+
+            FriendlyMessageInfo IND004 = new FriendlyMessageInfo("IND004", MessageType.Success, "Industrial Vendor has been deleted successfully.");
+            hash.Add("IND004", IND004);
+
+            #endregion
+
+            #region YArticle
+
+            FriendlyMessageInfo YA001 = new FriendlyMessageInfo("YA001", MessageType.Success, "Y Article has been added successfully.");
+            hash.Add("YA001", YA001);
+
+            FriendlyMessageInfo YA002 = new FriendlyMessageInfo("YA002", MessageType.Success, "Y Article has been updated successfully.");
+            hash.Add("YA002", YA002);
+
+            #endregion
+
+            #region VendorContact
+
+            FriendlyMessageInfo VC001 = new FriendlyMessageInfo("VC001", MessageType.Success, "Vendor Contact has been added successfully.");
+            hash.Add("VC001", VC001);
+
+            FriendlyMessageInfo VC002 = new FriendlyMessageInfo("VC002", MessageType.Success, "Vendor Custom Field has been added successfully.");
+            hash.Add("VC002", VC002);
+
+            FriendlyMessageInfo VC003 = new FriendlyMessageInfo("VC003", MessageType.Success, "Vendor Contact has been updated successfully.");
+            hash.Add("VC003", VC003);
+
+            FriendlyMessageInfo VC004 = new FriendlyMessageInfo("VC004", MessageType.Success, "Vendor Custom Field has been updated successfully.");
+            hash.Add("VC004", VC004);
+
+            FriendlyMessageInfo VC005 = new FriendlyMessageInfo("VC005", MessageType.Success, "Vendor Contact Deleted successfully.");
+            hash.Add("VC005", VC005);
+
+            #endregion
+
+            #region Material
+
+            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Material has been added successfully.");
+            hash.Add("P001", P001);
+
+            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Material has been updated successfully.");
+            hash.Add("P002", P002);
+
+            FriendlyMessageInfo P003 = new FriendlyMessageInfo("P003", MessageType.Success, "Material Vendor has been added successfully.");
+            hash.Add("P003", P003);
+
+            FriendlyMessageInfo P004 = new FriendlyMessageInfo("P004", MessageType.Success, "Material Vendor has been deleted successfully.");
+            hash.Add("P004", P004);
+
+            #endregion
+
+            #endregion
+
+            #region CRM
+
+            #region Customer
+
+            FriendlyMessageInfo CU001 = new FriendlyMessageInfo("CU001", MessageType.Success, "Customer has been added successfully.");
+            hash.Add("CU001", CU001);
+
+            FriendlyMessageInfo CU002 = new FriendlyMessageInfo("CU002", MessageType.Success, "Customer has been updated successfully.");
+            hash.Add("CU002", CU002);
+
+            FriendlyMessageInfo CU003 = new FriendlyMessageInfo("CU003", MessageType.Success, "Customer Address has been added successfully.");
+            hash.Add("CU003", CU003);
+
+            FriendlyMessageInfo CU004 = new FriendlyMessageInfo("CU004", MessageType.Success, "Customer Address has been updated successfully.");
+            hash.Add("CU004", CU004);
+
+            FriendlyMessageInfo CU005 = new FriendlyMessageInfo("CU005", MessageType.Success, "Bank Details has been added successfully.");
+            hash.Add("CU005", CU005);
+
+            FriendlyMessageInfo CU006 = new FriendlyMessageInfo("CU006", MessageType.Success, "Bank Details has been updated successfully.");
+            hash.Add("CU006", CU006);
+
+            FriendlyMessageInfo CU007 = new FriendlyMessageInfo("CU007", MessageType.Success, "Customer Address Deleted successfully.");
+            hash.Add("CU007", CU007);
+
+            #endregion
+
+            #region Contact
+            FriendlyMessageInfo CO001 = new FriendlyMessageInfo("CO001", MessageType.Success, "Contact has been added successfully.");
+            hash.Add("CO001", CO001);
+
+            FriendlyMessageInfo CO002 = new FriendlyMessageInfo("CO002", MessageType.Success, "Contact has been updated successfully.");
+            hash.Add("CO002", CO002);
+
+            FriendlyMessageInfo CO003 = new FriendlyMessageInfo("CO003", MessageType.Success, "Custom Field has been added successfully.");
+            hash.Add("CO003", CO003);
+
+            FriendlyMessageInfo CO004 = new FriendlyMessageInfo("CO004", MessageType.Success, "Custom Field has been updated successfully.");
+            hash.Add("CO004", CO004);
+
+            FriendlyMessageInfo CO005 = new FriendlyMessageInfo("CO005", MessageType.Success, "Custom Field Deleted successfully.");
+            hash.Add("CO005", CO005);
+            #endregion
+
+            #region Complaint
+
+            FriendlyMessageInfo COM001 = new FriendlyMessageInfo("COM001", MessageType.Success, "Complaint has been added successfully.");
+            hash.Add("COM001", COM001);
+
+            FriendlyMessageInfo COM002 = new FriendlyMessageInfo("COM002", MessageType.Success, "Complaint has been updated successfully.");
+            hash.Add("COM002", COM002);
+
+            #endregion
+
+            #endregion
+
         }
 
-        public static FriendlyMessage Get(string code)
+        public static FriendlyMessageInfo Get(string code)
         {
-            FriendlyMessage message = hash.Find(code);
+            FriendlyMessageInfo message = hash.Find(code);
 
             return message;
         }

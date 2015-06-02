@@ -1,9 +1,6 @@
 ﻿@model Kusumgar.Models.ConsumableViewModel
 @using KusumgarBusinessEntities.Common
 
-@{
-    ViewBag.Title = "Search";
-}
 
 
 <script src="~/Scripts/Master/Event/consumable_search_event.js"></script>
@@ -39,7 +36,7 @@
                         <div class="box-body">
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="CategoryName">Category Name</label>
                                      
@@ -64,15 +61,12 @@
                                     </div>
 
                                     <div class="btn-group pull-left">
-                                        <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                        <a class="btn btn-primary" href="@Url.Action("Index","Consumable")" role="button">Create Consumable </a>
+                                        <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Consumable")" role="button">Create  </a>
                                     </div>
-                                </div>
-                               
-                                <div class="col-md-12">
-
+                            
                                     <div class="btn-group pull-right">
-                                        <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Consumable </button>
+                                        <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit  </button>
                                     </div>
 
                                 </div>
@@ -86,7 +80,7 @@
                             <table class="table table-striped" id="tblConsumableMasterGrid">
                                 <tr id="subhead">
                                     <th style="width:50px;"></th>
-                                    <th style="width:200px;">Consumable Id</th>
+                                    @*<th style="width:200px;">Consumable Id</th>*@
                                     <th style="width:200px;">Category Name</th>
                                     <th style="width:200px;">SubCategory Name</th>
                                     <th style="width:200px;">Material Name</th>
