@@ -13,11 +13,13 @@ namespace Kusumgar.Controllers
 {
     public class DefectTypeController : Controller
     {
+        [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Index(DefectTypeViewModel dViewModel)
         {
             return View("Index", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public ActionResult Search(DefectTypeViewModel dViewModel)
         {
 
@@ -28,6 +30,7 @@ namespace Kusumgar.Controllers
             return View("Search", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Insert(DefectTypeViewModel dViewModel)
         {
             try
@@ -48,6 +51,7 @@ namespace Kusumgar.Controllers
 
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Update(DefectTypeViewModel dViewModel)
         {
             try
@@ -67,6 +71,7 @@ namespace Kusumgar.Controllers
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Get_Defect_Type_By_Id(DefectTypeViewModel dViewModel)
         {
             try
@@ -83,6 +88,7 @@ namespace Kusumgar.Controllers
             return View("Index", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public JsonResult Get_Defect_Types(DefectTypeViewModel dViewModel)
         {
             DefectTypeManager dMan = new DefectTypeManager();

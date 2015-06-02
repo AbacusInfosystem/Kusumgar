@@ -13,6 +13,7 @@ namespace Kusumgar.Controllers.PostLogin
 {
     public class DefectController : Controller
     {
+        [AuthorizeUser(AppFunction.Defect_Create)]
         public ActionResult Index(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();
@@ -22,6 +23,7 @@ namespace Kusumgar.Controllers.PostLogin
             return View(dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Search)]
         public ActionResult Search(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();
@@ -41,6 +43,7 @@ namespace Kusumgar.Controllers.PostLogin
             return View("Search", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Create)]
         public ActionResult Insert(DefectViewModel dViewModel)
         {
             try
@@ -61,6 +64,7 @@ namespace Kusumgar.Controllers.PostLogin
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Edit)]
         public ActionResult Update(DefectViewModel dViewModel)
         {
             try
@@ -81,6 +85,7 @@ namespace Kusumgar.Controllers.PostLogin
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Edit)]
         public ActionResult Get_Defect_By_Id(DefectViewModel dViewModel)
         {
             try
@@ -101,6 +106,7 @@ namespace Kusumgar.Controllers.PostLogin
 
         }
 
+        [AuthorizeUser(AppFunction.Defect_Search)]
         public JsonResult Get_Defects(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();
