@@ -339,6 +339,17 @@ namespace KusumgarBusinessEntities.Common
         Insert_Product_Vendor_Sp,
         Delete_Product_Vendor_By_Id_Sp,
         Get_Product_Vendors_By_Id_Sp,
+
+        // Material
+        Insert_Material_Sp,
+        Update_Material_Sp,
+        Get_Materials_Sp,
+        Get_Materials_By_Material_Id_Sp,
+        Get_Materials_By_Material_Name_Sp,
+        Get_Material_By_Id_Sp,
+        Delete_Material_Vendor_By_Id_Sp,
+        Get_Material_Vendors_By_Id_Sp,
+        Insert_Material_Vendor_Sp,
     }
 
     public enum GenderType

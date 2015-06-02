@@ -1,10 +1,10 @@
-﻿function SearchProduct() {
+﻿function SearchMaterial() {
 
-    var pViewModel =
+    var mViewModel =
         {
             Filter: {
-                Product_Name: $('#txtProductName').val(),
-                Product_Id: $('#hdfProduct_Id').val()
+                Material_Name: $('#txtMaterialName').val(),
+                Material_Id: $('#hdfMaterial_Id').val()
             },
             Pager: {
                 CurrentPage: $('#hdfCurrentPage').val(),
@@ -12,46 +12,46 @@
         }
 
     $("#divSearchGridOverlay").show();
-    CallAjax("/master/search-product", "json", JSON.stringify(pViewModel), "POST", "application/json", false, Bind_Product_Grid, "", null);
+    CallAjax("/master/search-material", "json", JSON.stringify(mViewModel), "POST", "application/json", false, Bind_Material_Grid, "", null);
 }
 
-function Bind_Product_Grid(data) {
+function Bind_Material_Grid(data) {
     
     $('#tblProdGrid tr.subhead').html("");
 
     var htmlText = "";
 
-    for (i = 0; i < data.Products.length; i++) {
+    for (i = 0; i < data.Materials.length; i++) {
         
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Products[i].Product_Entity.Product_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Entity.Material_Id + "' class='iradio_square-green'/>";
         
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Products[i].Product_Entity.Product_Code;
+        htmlText += data.Materials[i].Material_Entity.Material_Code;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Products[i].Product_Category_Name;
+        htmlText += data.Materials[i].Product_Category_Name;
 
         htmlText += "</td>";        
 
         htmlText += "<td>";
         
-        htmlText += data.Products[i].Product_Entity.Product_Name;
+        htmlText += data.Materials[i].Material_Entity.Material_Name;
 
         htmlText += "</td>";
         
         htmlText += "<td>";
         
-        htmlText += data.Products[i].Product_Type_Str;
+        htmlText += data.Materials[i].Product_Type_Str;
 
         htmlText += "</td>";        
         
@@ -82,7 +82,7 @@ function Bind_Product_Grid(data) {
     //$('[id^="r1_"]').on('ifChanged', function (event) {
     $('[name="r1"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
-            $("#hdnProduct_Id").val(this.id.replace("r1_", ""));
+            $("#hdnMaterial_Id").val(this.id.replace("r1_", ""));
             $("#btnEdit").show();
         }
     });
@@ -95,7 +95,7 @@ function PageMore(Id) {
 
     $(".selectAll").prop("checked", false);
 
-    SearchProduct();
+    SearchMaterial();
 
 }
 

@@ -119,6 +119,12 @@
     <Compile Include="M_Industrial_Vendors.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_Material.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Material_Vendor.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Nation.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -128,16 +134,10 @@
     <Compile Include="M_Process.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="M_Product.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="M_Product_Category.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Product_SubCategory.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="M_Product_Vendor.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Product_Vendors.cs">

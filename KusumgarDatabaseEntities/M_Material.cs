@@ -12,13 +12,13 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Product
+    public partial class M_Material
     {
-        public int Product_Id { get; set; }
-        public string Product_Code { get; set; }
+        public int Material_Id { get; set; }
+        public string Material_Code { get; set; }
         public int Product_Category_Id { get; set; }
         public int Product_SubCategory_Id { get; set; }
-        public string Product_Name { get; set; }
+        public string Material_Name { get; set; }
         public string Size { get; set; }
         public string COD { get; set; }
         public int Product_Type { get; set; }

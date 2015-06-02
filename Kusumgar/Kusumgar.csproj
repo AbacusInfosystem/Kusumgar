@@ -236,6 +236,9 @@
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\Master\MaterialController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
     <Compile Include="Controllers\PostLogin\System\SystemController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
@@ -253,7 +256,6 @@
     <Compile Include="Controllers\PostLogin\Master\PArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PegPlanController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProductVendorController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\ProductController.cs" />
     <Compile Include="Controllers\PostLogin\Master\QualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\RoleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestController.cs" />
@@ -286,8 +288,8 @@
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
-    <Compile Include="Models\Master\ProductVendorViewModel.cs" />
-    <Compile Include="Models\Master\ProductViewModel.cs" />
+    <Compile Include="Models\Master\MaterialVendorViewModel.cs" />
+    <Compile Include="Models\Master\MaterialViewModel.cs" />
     <Compile Include="Models\Master\RoleViewModel.cs" />
     <Compile Include="Models\Master\TestUnitViewModel.cs" />
     <Compile Include="Models\Master\TestViewModel.cs" />
@@ -993,8 +995,8 @@
     <Content Include="Scripts\Master\Event\defect_type_search_event.js" />
     <Content Include="Scripts\Master\Event\product_service_event.js" />
     <Content Include="Scripts\Master\Event\industrial_search_event.js" />
-    <Content Include="Scripts\Master\Event\product_event.js" />
-    <Content Include="Scripts\Master\Event\product_search_event.js" />
+    <Content Include="Scripts\Master\Event\material_event.js" />
+    <Content Include="Scripts\Master\Event\material_search_event.js" />
     <Content Include="Scripts\Master\Event\test_event.js" />
     <Content Include="Scripts\Master\Event\test_search_event.js" />
     <Content Include="Scripts\Master\Event\test_unit_event.js" />
@@ -1015,8 +1017,8 @@
     <Content Include="Scripts\Master\Method\product_service_method.js" />
     <Content Include="Scripts\Master\Method\industrial_method.js" />
     <Content Include="Scripts\Master\Method\industrial_search_method.js" />
-    <Content Include="Scripts\Master\Method\product_method.js" />
-    <Content Include="Scripts\Master\Method\product_search_method.js" />
+    <Content Include="Scripts\Master\Method\material_method.js" />
+    <Content Include="Scripts\Master\Method\material_search_method.js" />
     <Content Include="Scripts\Master\Method\test_method.js" />
     <Content Include="Scripts\Master\Method\test_search_method.js" />
     <Content Include="Scripts\Master\Method\test_unit_method.js" />
@@ -1041,7 +1043,7 @@
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
-    <Content Include="Scripts\Master\Validation\product_validation.js" />
+    <Content Include="Scripts\Master\Validation\material_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
@@ -1477,10 +1479,10 @@
     <Content Include="Views\PostLogin\Master\VendorContact\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Product\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Material\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Product\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\Material\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml" />

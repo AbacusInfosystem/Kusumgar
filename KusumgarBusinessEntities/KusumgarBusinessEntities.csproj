@@ -65,9 +65,9 @@
     <Compile Include="Master\IndustrialInfo.cs" />
     <Compile Include="Master\IndustrialVendorInfo.cs" />
     <Compile Include="Master\NationInfo.cs" />
-    <Compile Include="Master\ProductVendorInfo.cs" />
+    <Compile Include="Master\MaterialVendorInfo.cs" />
     <Compile Include="Master\ProductCategoryInfo.cs" />
-    <Compile Include="Master\ProductInfo.cs" />
+    <Compile Include="Master\MaterialInfo.cs" />
     <Compile Include="Master\ProductSubCategoryInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />

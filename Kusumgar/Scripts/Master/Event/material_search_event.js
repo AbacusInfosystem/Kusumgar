@@ -2,7 +2,7 @@
 
     $('#hdfCurrentPage').val(0);
 
-    SearchProduct();
+    SearchMaterial();
 
     $("#btnEdit").click(function () {
 
@@ -13,7 +13,7 @@
         $("#frmSearch_Prod").submit();
     });
 
-    InitializeAutoComplete($('#txtProductName'));
+    InitializeAutoComplete($('#txtMaterialName'));
 
     //$("#drpProdCatName").change(function () {
 
@@ -34,7 +34,7 @@
     $("#btnSearch").click(function () {
 
         $('#hdfCurrentPage').val(0);
-        SearchProduct();
+        SearchMaterial();
 
     });
 

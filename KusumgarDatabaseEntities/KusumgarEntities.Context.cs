@@ -44,13 +44,13 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Industrial_Category> M_Industrial_Category { get; set; }
         public DbSet<M_Industrial_Group> M_Industrial_Group { get; set; }
         public DbSet<M_Industrial_Vendors> M_Industrial_Vendors { get; set; }
+        public DbSet<M_Material> M_Material { get; set; }
+        public DbSet<M_Material_Vendor> M_Material_Vendor { get; set; }
         public DbSet<M_Nation> M_Nation { get; set; }
         public DbSet<M_Payment_Terms> M_Payment_Terms { get; set; }
         public DbSet<M_Process> M_Process { get; set; }
-        public DbSet<M_Product> M_Product { get; set; }
         public DbSet<M_Product_Category> M_Product_Category { get; set; }
         public DbSet<M_Product_SubCategory> M_Product_SubCategory { get; set; }
-        public DbSet<M_Product_Vendor> M_Product_Vendor { get; set; }
         public DbSet<M_Product_Vendors> M_Product_Vendors { get; set; }
         public DbSet<M_Role> M_Role { get; set; }
         public DbSet<M_Role_Access_Function_Mapping> M_Role_Access_Function_Mapping { get; set; }

@@ -84,8 +84,8 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/y-articles/get-work-stations-by-code-purpose/" + $('#txtWork_Station').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtProductName') {
-                urlString = "/master/get-product-by-product-name/" + $('#txtProductName').val();
+            if ($(elementObject).attr("id") == 'txtMaterialName') {
+                urlString = "/master/get-material-by-material-name/" + $('#txtMaterialName').val();
             }
 
             $.ajax({

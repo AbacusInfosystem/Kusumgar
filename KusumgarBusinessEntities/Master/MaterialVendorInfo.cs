@@ -7,16 +7,16 @@ using KusumgarDatabaseEntities;
 
 namespace KusumgarBusinessEntities
 {
-    public class ProductVendorInfo
+    public class MaterialVendorInfo
     {
 
-        public ProductVendorInfo()
+        public MaterialVendorInfo()
         {
-            Product_Vendor_Entity = new M_Product_Vendor();
+            Material_Vendor_Entity = new M_Material_Vendor();
 
         }
 
-        public M_Product_Vendor Product_Vendor_Entity { get; set; }
+        public M_Material_Vendor Material_Vendor_Entity { get; set; }
 
         public string Vendor_Name { get; set; }
 

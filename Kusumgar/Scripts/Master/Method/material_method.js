@@ -1,38 +1,38 @@
-﻿function Save_Product_Details() {
-    var pViewModel = Set_Product();
+﻿function Save_Material_Details() {
+    var mViewModel = Set_Material();
 
-    if ($("#hdnProduct_Id").val() == 0) {
-        CallAjax("/master/insert-product/", "json", JSON.stringify(pViewModel), "POST", "application/json", false, Bind_Product_Data_Callback, "", null);
+    if ($("#hdnMaterial_Id").val() == 0) {
+        CallAjax("/master/insert-material/", "json", JSON.stringify(mViewModel), "POST", "application/json", false, Bind_Material_Data_Callback, "", null);
     }
     else {
-        CallAjax("/master/update-product/", "json", JSON.stringify(pViewModel), "POST", "application/json", false, Bind_Product_Data_Callback, "", null);
+        CallAjax("/master/update-material/", "json", JSON.stringify(mViewModel), "POST", "application/json", false, Bind_Material_Data_Callback, "", null);
     }
 }
 
-function Bind_Product_Data_Callback(data) {
-    $("#hdnProduct_Id").val(data.Product.Product_Entity.Product_Id);
+function Bind_Material_Data_Callback(data) {
+    $("#hdnMaterial_Id").val(data.Material.Material_Entity.Material_Id);
 
-    $("#tabProductVendor").show();
+    $("#tabMaterialVendor").show();
 
     Friendly_Message(data);
 }
 
-function Set_Product() {
-    var pViewModel =
+function Set_Material() {
+    var mViewModel =
         {
-            Product:
+            Material:
                 {
-                    Product_Entity:
+                    Material_Entity:
                         {
-                            Product_Id: $("#hdnProduct_Id").val(),
+                            Material_Id: $("#hdnMaterial_Id").val(),
 
-                            Product_Code: $("#txtProductCode").val(),
+                            Material_Code: $("#txtMaterialCode").val(),
 
                             Product_Category_Id: $("#drpProdCatName").val(),
 
                             Product_SubCategory_Id: $("#drpSubCatName").val(),
 
-                            Product_Name: $("#txtProductName").val(),
+                            Material_Name: $("#txtMaterialName").val(),
 
                             Size: $("#txtSize").val(),
 
@@ -48,7 +48,7 @@ function Set_Product() {
                         }
                 }
         }
-    return pViewModel;
+    return mViewModel;
 }
 
 function Bind_SubCategories(data) {
@@ -66,36 +66,36 @@ function Bind_SubCategories(data) {
     $("#drpSubCatName").html(htmltext);
 }
 
-function Save_Product_Vendor()
+function Save_Material_Vendor()
 {
-    var pViewModel = Set_Product_Vendor();
+    var mViewModel = Set_Material_Vendor();
 
-    if ($("#hdnProduct_Vendor_Id").val() == 0) {
-        CallAjax("/master/insert-product-vendor/", "json", JSON.stringify(pViewModel), "POST", "application/json", false, Bind_Product_Vendor_Data_Callback, "", null);
+    if ($("#hdnMaterial_Vendor_Id").val() == 0) {
+        CallAjax("/master/insert-material-vendor/", "json", JSON.stringify(mViewModel), "POST", "application/json", false, Bind_Material_Vendor_Data_Callback, "", null);
     }
     //else {
     //    CallAjax("/master/update-industrial-master/", "json", JSON.stringify(iViewModel), "POST", "application/json", false, Bind_Industrial_Data_Callback, "", null);
     //}
 }
 
-function Bind_Product_Vendor_Data_Callback(data)
+function Bind_Material_Vendor_Data_Callback(data)
 {
-    //$("#hdnProduct_Vendor_Id").val(data.Product_Vendor.Product_Vendor_Entity.Product_Vendor_Id);    
+    //$("#hdnMaterial_Vendor_Id").val(data.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id);    
     var htmlText = "";
     
-    for (i = 0; i < data.Product_Vendors.length; i++) {
+    for (i = 0; i < data.Material_Vendors.length; i++) {
         
-        htmlText += "<tr id='tr_pvendor_" + data.Product_Vendors[i].Product_Vendor_Entity.Product_Vendor_Id + "'>";
+        htmlText += "<tr id='tr_pvendor_" + data.Material_Vendors[i].Material_Vendor_Entity.Material_Vendor_Id + "'>";
         
         htmlText += "<td>";
 
-        htmlText += data.Product_Vendors[i].Vendor_Name;
+        htmlText += data.Material_Vendors[i].Vendor_Name;
         
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Product_Vendors[i].Product_Vendor_Entity.Priority_Order;
+        htmlText += data.Material_Vendors[i].Material_Vendor_Entity.Priority_Order;
         
         htmlText += "</td>";        
 
@@ -103,7 +103,7 @@ function Bind_Product_Vendor_Data_Callback(data)
 
         htmlText += "<div class='btn-group pull-right'>";
 
-        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Product_Vendors[i].Product_Vendor_Entity.Product_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
+        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Material_Vendors[i].Material_Vendor_Entity.Material_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
 
         htmlText += "</td>";
 
@@ -122,7 +122,7 @@ function Bind_Product_Vendor_Data_Callback(data)
 
     $("#divSearchGridOverlay").hide();
 
-    $("#hdnProduct_Vendor_Id").val(0);
+    $("#hdnMaterial_Vendor_Id").val(0);
 
     $("#txtVendorName").val("");
     $("#drpPriorityOrder").val("");
@@ -136,17 +136,17 @@ function Bind_Product_Vendor_Data_Callback(data)
     Friendly_Message(data);
 }
 
-function Set_Product_Vendor()
+function Set_Material_Vendor()
 {
-    var pViewModel =
+    var mViewModel =
         {
-            Product_Vendor:
+            Material_Vendor:
                 {
-                    Product_Vendor_Entity:
+                    Material_Vendor_Entity:
                         {
-                            Product_Vendor_Id: $("#hdnProduct_Vendor_Id").val(),
+                            Material_Vendor_Id: $("#hdnMaterial_Vendor_Id").val(),
 
-                            Product_Id: $("#hdnProduct_Id").val(),
+                            Material_Id: $("#hdnMaterial_Id").val(),
 
                             Vendor_Id: $("#hdnVendor_Id").val(),
 
@@ -155,14 +155,14 @@ function Set_Product_Vendor()
                         }
                 }
         }
-    return pViewModel;
+    return mViewModel;
 }
 
 function RemoveVendor(id) {
     
     $.ajax({
-        url: '/master/delete-product-vendor',
-        data: { product_Vendor_Id: id },
+        url: '/master/delete-material-vendor',
+        data: { Material_Vendor_Id: id },
         method: 'GET',
         async: false,
         success: function (data) {

@@ -1,14 +1,14 @@
 ﻿$(document).ready(function () {    
 
-    if ($("#hdnProduct_Id").val() == 0) {
-        $("#tabProductVendor").hide();
+    if ($("#hdnMaterial_Id").val() == 0) {
+        $("#tabMaterialVendor").hide();
     }
 
-    $("#btnProductSave").click(function () {
+    $("#btnMaterialSave").click(function () {
 
-        if ($("#frmProduct").valid()) {
+        if ($("#frmMaterial").valid()) {
 
-            Save_Product_Details();
+            Save_Material_Details();
 
         }
     });
@@ -42,9 +42,9 @@
 
     $("#btnSavePV").click(function () {
 
-        if ($("#frmProduct").valid()) {
+        if ($("#frmMaterial").valid()) {
 
-            Save_Product_Vendor();
+            Save_Material_Vendor();
         }
     });
 });

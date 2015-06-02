@@ -8,24 +8,24 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class ProductInfo
+    public class MaterialInfo
     {
-        public M_Product Product_Entity { get; set; }
+        public M_Material Material_Entity { get; set; }
         public string Product_Category_Name { get; set; }
         public string Product_SubCategory_Name { get; set; }
 
-        public ProductInfo()
+        public MaterialInfo()
         {
-            Product_Entity = new M_Product();
+            Material_Entity = new M_Material();
         }
 
         public string Product_Type_Str
         {
             get
             {
-                if(Product_Entity.Product_Type != 0)
+                if (Material_Entity.Product_Type != 0)
                 {
-                    return ((ProductType)Product_Entity.Product_Type).ToString().Replace('_',' ');
+                    return ((ProductType)Material_Entity.Product_Type).ToString().Replace('_', ' ');
                 }
                 else
                 {

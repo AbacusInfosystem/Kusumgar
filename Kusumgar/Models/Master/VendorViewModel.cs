@@ -15,11 +15,11 @@ namespace Kusumgar.Models
         {
             Vendor_Grid = new List<VendorInfo>();
 
-            Product_Vendor_Grid = new List<ProductVendorInfo>();
+            Material_Vendor_Grid = new List<MaterialVendorInfo>();
 
             Vendor = new VendorInfo();
 
-            Product_Vendor = new ProductVendorInfo();
+            Material_Vendor = new MaterialVendorInfo();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
 
@@ -45,11 +45,11 @@ namespace Kusumgar.Models
 
          public List<VendorInfo> Vendor_Grid { get; set; }
 
-         public List<ProductVendorInfo> Product_Vendor_Grid { get; set; }
+         public List<MaterialVendorInfo> Material_Vendor_Grid { get; set; }
 
         public VendorInfo Vendor { get; set; }
 
-        public ProductVendorInfo Product_Vendor { get; set; }
+        public MaterialVendorInfo Material_Vendor { get; set; }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
