@@ -351,7 +351,7 @@ namespace Kusumgar
             routes.MapRoute(
             name: "complaint-2",
             url: "crm/edit-complaint",
-            defaults: new { controller = "Complaint", action = "GetComplaintById", id = UrlParameter.Optional },
+            defaults: new { controller = "Complaint", action = "Get_Complaint_By_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -369,13 +369,13 @@ namespace Kusumgar
             routes.MapRoute(
             name: "complaint-5",
             url: "crm/search-complaint",
-            defaults: new { controller = "Complaint", action = "GetComplaintList", id = UrlParameter.Optional },
+            defaults: new { controller = "Complaint", action = "Get_Complaints", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "complaint-6",
-            url: "crm/get-customer-id-by-customername/{CustomerName}",
-            defaults: new { controller = "Complaint", action = "GetCustomerId", vendor_Name = UrlParameter.Optional }
+            url: "crm/get-customer-id-by-customername/{customer_Name}",
+            defaults: new { controller = "Complaint", action = "Get_Customer_Id", customer_Name = UrlParameter.Optional }
             );
 
             #endregion

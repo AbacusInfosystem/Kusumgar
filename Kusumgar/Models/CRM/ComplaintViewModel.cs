@@ -11,25 +11,26 @@ namespace Kusumgar.Models
     public class ComplaintViewModel
     {
         public ComplaintInfo Complaint { get; set; }
-        public List<ComplaintInfo> ComplaintList { get; set; }
+        public List<ComplaintInfo> Complaints { get; set; }
         public PaginationInfo Pager { get; set; }
-        public List<FriendlyMessageInfo> FriendlyMessage { get; set; }
-        public Complaint_Filter Complaint_Filter { get; set; }
-        public int ComplaintId { get; set; }        
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+        public Complaint_Filter Filter { get; set; }
+        public int Complaint_Id { get; set; }        
 
         public ComplaintViewModel()
         {
             Complaint = new ComplaintInfo();
-            ComplaintList = new List<ComplaintInfo>();
+            Complaints = new List<ComplaintInfo>();
             Pager = new PaginationInfo();
-            FriendlyMessage = new List<FriendlyMessageInfo>();
-            Complaint_Filter = new Complaint_Filter();
+            Friendly_Message = new List<FriendlyMessageInfo>();
+            Filter = new Complaint_Filter();
         }
         
     }
     
     public class Complaint_Filter
     {
-        public string CustomerName { get; set; }
+        public string Customer_Name { get; set; }
+        public int Customer_Id { get; set; }
     }
 }

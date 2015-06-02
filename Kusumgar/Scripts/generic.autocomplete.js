@@ -10,6 +10,9 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtCustomer_Name') {
                 urlString = "/ajax/customer-list/" + $('#txtCustomer_Name').val();
             }
+            if ($(elementObject).attr("id") == 'txtCustName') {
+                urlString = "/crm/get-customer-id-by-customername/" + $('#txtCustName').val();
+            }
             if ($(elementObject).attr("id") == 'txtVendorName') {
                 urlString = "/master/get-vendor-id-by-vendorname/" + $('#txtVendorName').val();
             }

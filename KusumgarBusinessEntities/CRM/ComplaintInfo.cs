@@ -10,11 +10,11 @@ namespace KusumgarBusinessEntities
 {
     public class ComplaintInfo
     {
-        public Complaint ComplaintEntity { get; set; }
-        public string CustomerName { get; set; }
+        public Complaint Complaint_Entity { get; set; }
+        public string Customer_Name { get; set; }
         public ComplaintInfo()
         {
-            ComplaintEntity = new Complaint();
+            Complaint_Entity = new Complaint();
         }
     }
 }

@@ -177,9 +177,9 @@ namespace KusumgarBusinessEntities.Common
         // Complaint
         Insert_Complaint_Sp,
         Update_Complaint_Sp,
-        Get_Complaint_List_Sp,
+        Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
-        Get_Complaint_By_CustName_Sp,
+        Get_Complaint_By_Cust_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,
