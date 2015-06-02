@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    alert("hii");
+
     InitializeAutoComplete($('#txtCustomer_Name'));
 
     $("#hdfCustomer_Id").val(0);

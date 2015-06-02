@@ -14,11 +14,11 @@ namespace KusumgarDatabaseEntities
     
     public partial class Complaint
     {
-        public int ComplaintId { get; set; }
-        public int CustomerId { get; set; }
-        public string OrderId { get; set; }
-        public string OrderItemId { get; set; }
-        public string ChallanNo { get; set; }
+        public int Complaint_Id { get; set; }
+        public int Customer_Id { get; set; }
+        public string Order_Id { get; set; }
+        public string Order_Item_Id { get; set; }
+        public string Challan_No { get; set; }
         public string CDescription { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }

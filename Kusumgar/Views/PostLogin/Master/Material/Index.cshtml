@@ -1,0 +1,266 @@
+﻿@model Kusumgar.Models.MaterialViewModel
+@using KusumgarBusinessEntities.Common
+
+<script src="/Scripts/Master/Event/material_event.js"></script>
+<script src="/Scripts/Master/Method/material_method.js"></script>
+<script src="/Scripts/Master/Validation/material_validation.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-ui.css">
+<style>
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    .example-modal .modal {
+        background: transparent !important;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Material
+
+            <small>Master</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Masters</li>
+            <li class="active">Material</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" id="tabMaterialCreation" data-toggle="tab">Material Creation</a></li>
+                        <li><a href="#tab_2" id="tabMaterialVendor" data-toggle="tab">Material Vendor</a></li>
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <br />
+                            <form id="frmMaterial">
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        <input type="hidden" id="hdnMaterial_Id" value="@Model.Material.Material_Entity.Material_Id">
+
+                                        <div class="form-group">
+                                            <label for="txtMaterialCode" style="color: #333">Material Code</label>
+                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.Material_Code" id="txtMaterialCode" placeholder="Enter Material Code" value="@Model.Material.Material_Entity.Material_Code">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="drpProdCatName" style="color: #333">Material Category Name</label>
+                                            <select class="form-control input-sm" id="drpProdCatName" name="Material.Material_Entity.Material_Category_Id">
+                                                <option value="" selected="selected">--Select--</option>
+                                                @foreach (var item in Model.Material_Categories)
+                                                {
+                                                    if (Model.Material.Material_Entity.Material_Category_Id == item.Material_Category_Entity.Material_Category_Id)
+                                                    {
+                                                        <option value="@item.Material_Category_Entity.Material_Category_Id" selected="selected">@item.Material_Category_Entity.Material_Category_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Material_Category_Entity.Material_Category_Id">@item.Material_Category_Entity.Material_Category_Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="drpSubCatName" style="color: #333">Material Sub Category Name</label>
+                                            <select class="form-control input-sm" id="drpSubCatName" name="Material.Material_Entity.Material_SubCategory_Id">
+                                                <option value="" selected="selected">--Select--</option>
+                                                @foreach (var item in Model.Material_SubCategories)
+                                                {
+                                                    if (Model.Material.Material_Entity.Material_SubCategory_Id == item.Material_SubCategory_Entity.Material_SubCategory_Id)
+                                                    {
+                                                        <option value="@item.Material_SubCategory_Entity.Material_SubCategory_Id" selected="selected">@item.Material_SubCategory_Entity.Material_SubCategory_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Material_SubCategory_Entity.Material_SubCategory_Id">@item.Material_SubCategory_Entity.Material_SubCategory_Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtMaterialName" style="color: #333">Material Name</label>
+                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.Material_Name" id="txtMaterialName" placeholder="Enter Material Name" value="@Model.Material.Material_Entity.Material_Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtSize" style="color: #333">Size</label>
+                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.Size" id="txtSize" placeholder="Enter Size" value="@Model.Material.Material_Entity.Size">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtCOD" style="color: #333">COD</label>
+                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.COD" id="txtCOD" placeholder="Enter COD" value="@Model.Material.Material_Entity.COD">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="drpProdType" style="color: #333">Material Type</label>
+                                            <select class="form-control input-sm" id="drpProdType" name="Material.Material_Entity.Material_Type">
+                                                <option value="" selected="selected">--Select--</option>
+                                                @foreach (var item in LookupInfo.Get_Product_Types())
+                                                {
+                                                    if (Model.Material.Material_Entity.Material_Type == item.Key)
+                                                    {
+                                                        <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                @if (Model.Material.Material_Entity.Original_Manufacturer == true)
+                                                { 
+                                                    <input type="checkbox" name="chkIsOrigMan" id="chkIsOrigMan" value="false" checked />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" name="chkIsOrigMan" id="chkIsOrigMan" value="true" />
+                                                }
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Original Manufacturer
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_OrigMan" name="Material.Material_Entity.Original_Manufacturer" value="@Model.Material.Material_Entity.Original_Manufacturer.ToString()">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtInspFacility" style="color: #333">Inspection Facility</label>
+                                            <textarea class="form-control input-sm" id="txtInspFacility" placeholder="Enter Inspection Facility" name="Material.Material_Entity.Inspection_Facility">@Model.Material.Material_Entity.Inspection_Facility</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtTestFacility" style="color: #333">Testing Facility</label>
+                                            <textarea class="form-control input-sm" id="txtTestFacility" placeholder="Enter Testing Facility" name="Material.Material_Entity.Testing_Facility">@Model.Material.Material_Entity.Testing_Facility</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="btn-group">
+                                                <button type="button" id="btnMaterialSave" class="btn btn-success btn-sm">Save </button>
+                                                <a href="@Url.Action("Search", "Material")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="tab_2">
+                            <br />
+                            <form id="frmMaterial_Vendors">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="hidden" id="hdnMaterial_Vendor_Id" value="@Model.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id">
+                                        <div class="form-group">
+                                            <label for="txt_auto_Vendor_Name" style="color: #333">Vendor Name</label>
+                                            <div class="auto-complete">
+                                                <div class="input-group-btn form-inline">
+                                                    <input type="text" class="form-control input-sm" name="Material_Vendor.Vendor_Name" id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name" value="@Model.Material_Vendor.Vendor_Name">
+                                                    <button type="button" id="btnNew" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">New Vendor</button>
+                                                </div>
+                                                <input type="hidden" id="hdnVendor_Id"  name="Material_Vendor.Material_Vendor_Entity.Vendor_Id">
+                                            </div>
+                                            <br />
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="drpPriorityOrder" style="color: #333">Priority Order</label>
+                                            <select class="form-control input-sm" id="drpPriorityOrder" name="Material_Vendor.Material_Vendor_Entity.Priority_Order">
+                                                <option value="" selected="selected">--Select--</option>
+                                                @foreach (var item in LookupInfo.Get_Priority_Orders())
+                                            {
+                                                if (Model.Material_Vendor.Material_Vendor_Entity.Priority_Order == item.Key)
+                                                {
+                                            <option value="@item.Key" selected="selected">@item.Value</option>
+                                                }
+                                                else
+                                                {
+                                            <option value="@item.Key">@item.Value</option>
+                                                }
+                                            }
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-striped" id="tblProdVenGrid">
+                                                <tr>
+                                                    <th>Vendor Name</th>
+                                                    <th>Priority Order</th>
+                                                    <th></th>
+                                                </tr>
+                                                @foreach (var item in Model.Material_Vendors)
+                                            {
+                                            <tr id="tr_pvendor_@item.Material_Vendor_Entity.Material_Vendor_Id">
+                                                <td>@item.Vendor_Name</td>
+                                                <td>@item.Material_Vendor_Entity.Priority_Order</td>
+                                                <td>
+                                                    <div class="btn-group pull-right">
+                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-xs" onclick="RemoveVendor(@item.Material_Vendor_Entity.Material_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            }
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="btn-group">
+                                                <button type="button" id="btnSavePV" class="btn btn-success btn-sm">Save Material Vendor</button>
+                                                <a href="@Url.Action("Search", "Material")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+</div>
+                    </div>
+                </div><!-- nav-tabs-custom -->                
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">                        
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- /.content-wrapper -->
+

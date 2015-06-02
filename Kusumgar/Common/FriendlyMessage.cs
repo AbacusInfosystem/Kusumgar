@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities.Common;
-namespace Kusumgar.Common
+
+namespace Kusumgar
 {
-    public class FriendlyMessage
+    public class FriendlyMessageInfo
     {
-        public FriendlyMessage()
+        public FriendlyMessageInfo()
         {
 
         }
 
-        public FriendlyMessage(string code, MessageType type, string text)
+        public FriendlyMessageInfo(string code, MessageType type, string text)
         {
             this.Code = code;
 

@@ -3,11 +3,12 @@ function SearchRole()
 {
 
 
-    var _roleViewModel =
+    var rViewModel =
         {
-            Role_FilterVal:
+            Filter:
                 {
-                    Role_Name: $("#txtRole_Name").val()
+                    Role_Name: $("#txtRole_Name").val(),
+                    Role_Id: $("#hdRole_Id").val()
                 },
 
             Pager: {
@@ -17,36 +18,61 @@ function SearchRole()
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/master/search-role", "json", JSON.stringify(_roleViewModel), "POST", "application/json", false, BindRoleGrid, "", null);
+    CallAjax("/master/search-role", "json", JSON.stringify(rViewModel), "POST", "application/json", false, BindRoleGrid, "", null);
 
 }
 
 function BindRoleGrid(data)
 {
 
-    $('#tblRoleGrid tr.subhead').html("");
+  //  $('#tblRoleGrid tr.subhead').html("");
   
     var htmlText = "";
 
-    for (i = 0; i < data.RoleList.length; i++) {
+    if (data.Roles.length > 0) {
+        for (i = 0; i < data.Roles.length; i++) {
 
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.RoleList[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.RoleList[i].RoleEntity.Role_Name;
+        htmlText += data.Roles[i].RoleEntity.Role_Name;
 
         htmlText += "</td>";
 
+            if (data.Roles[i].RoleEntity.Is_Active == true) {
+
+                htmlText += "<td>";
+
+                htmlText +="Active";
+
+                htmlText += "</td>";
+            }
+            else
+            {
         htmlText += "<td>";
 
-        htmlText += data.RoleList[i].RoleEntity.Is_Active.toString();
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
+
+            htmlText += "</tr>";
+        }
+    }
+    else
+    {
+        htmlText += "<tr>";
+
+        htmlText += "<td colspan='5'>";
+
+        htmlText += "No record found.";
 
         htmlText += "</td>";
 
@@ -62,12 +88,17 @@ function BindRoleGrid(data)
     });
 
    
-
+    if (data.Roles.length > 0) {
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
     if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
         $('.pagination').html(data.Pager.PageHtmlString);
+    }
+    }
+    else
+    {
+        $('.pagination').html("");
     }
 
     $("#divSearchGridOverlay").hide();

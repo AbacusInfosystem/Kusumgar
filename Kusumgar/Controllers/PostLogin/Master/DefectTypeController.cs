@@ -16,11 +16,14 @@ namespace Kusumgar.Controllers
     {
         public ActionResult Index(DefectTypeViewModel dViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             return View("Index", dViewModel);
         }
 
         public ActionResult Search(DefectTypeViewModel dViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
 
             if (TempData["dViewModel"] != null)
             {

@@ -91,15 +91,15 @@ namespace KusumgarModel
             return vRepo.Check_Existing_Vendor(vendor_Name);
         }
 
-        public List<ProductCategoryInfo> Get_Product_Category()
+        public List<MaterialCategoryInfo> Get_Material_Category()
         {
-            List<ProductCategoryInfo> productCategories = new List<ProductCategoryInfo>();
+            List<MaterialCategoryInfo> materialCategories = new List<MaterialCategoryInfo>();
 
             VendorRepo vRepo = new VendorRepo();
 
-            productCategories = vRepo.Get_Product_Category();
+            materialCategories = vRepo.Get_Material_Category();
 
-            return productCategories;
+            return materialCategories;
         }
 
         public int Insert_Attribute_Code(AttributeCodeInfo attributeCode)

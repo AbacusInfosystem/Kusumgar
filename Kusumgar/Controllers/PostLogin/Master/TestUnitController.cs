@@ -16,11 +16,15 @@ namespace Kusumgar.Controllers
     {
         public ActionResult Index(TestUnitViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             return View("Index", tViewModel);
         }
 
         public ActionResult Search(TestUnitViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["tViewModel"] != null)
             {
                 tViewModel = (TestUnitViewModel)TempData["tViewModel"];
@@ -81,7 +85,6 @@ namespace Kusumgar.Controllers
 
                 tViewModel.Test_Unit = tMan.Get_Test_Unit_By_Id(tViewModel.Edit_Mode.Test_Unit_Id);
 
-                tViewModel.Friendly_Message.Add(MessageStore.Get("DT011"));
             }
             
         catch (Exception ex)

@@ -44,44 +44,55 @@ function BindDefectTypeInGrid(data, mode) {
  $('#tblSearchDefectType tr.subhead').html("");
 
  var htmlText = "";
+ if (data.DefectTypeGrid.length > 0) {
+     for (i = 0; i < data.DefectTypeGrid.length; i++) {
 
-    for (i = 0; i < data.DefectTypeGrid.length; i++) {
+         htmlText += "<tr>";
 
-        htmlText += "<tr>";
+         htmlText += "<td>";
 
-        htmlText += "<td>";
+         htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' />";
 
-        htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' />";
+         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
-        htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+         htmlText += "</td>";
 
-        htmlText += "</td>";
+         htmlText += "<td>";
 
-        htmlText += "<td>";
+         htmlText += data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Name;
 
-        htmlText += data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Name;
+         htmlText += "</td>";
 
-        htmlText += "</td>";
+         if (data.DefectTypeGrid[i].DefectTypeEntity.Status == true) {
 
-        if (data.DefectTypeGrid[i].DefectTypeEntity.Status == true) {
+             htmlText += "<td>";
 
-            htmlText += "<td>";
+             htmlText += "Active";
 
-            htmlText += "Active";
+             htmlText += "</td>";
+         }
+         if (data.DefectTypeGrid[i].DefectTypeEntity.Status == false) {
+             htmlText += "<td>";
 
-            htmlText += "</td>";
-        }
-        if (data.DefectTypeGrid[i].DefectTypeEntity.Status == false)
-        {
-            htmlText += "<td>";
+             htmlText += "Inactive";
 
-            htmlText += "Inactive";
+             htmlText += "</td>";
+         }
 
-            htmlText += "</td>";
-        }
+         htmlText += "</tr>";
+     }
+ }
+ else {
+     htmlText += "<tr>";
 
-        htmlText += "</tr>";
-    }
+     htmlText += "<td colspan=3>";
+
+     htmlText += "No record found.";
+
+     htmlText += "</td>";
+
+     htmlText += "</tr>";
+ }
 
     $("#tblSearchDefectType").find("tr:gt(0)").remove();
 
@@ -89,10 +100,18 @@ function BindDefectTypeInGrid(data, mode) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+    
 
-        $('.pagination').html(data.Pager.PageHtmlString);
-}
+    if (data.DefectTypeGrid.length > 0) {
+        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+
+            $('.pagination').html(data.Pager.PageHtmlString);
+        }
+    }
+    else
+    {
+        $('.pagination').html("");
+    }
 
  $('input').iCheck({
         radioClass: 'iradio_square-green',

@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    InitializeAutoComplete($('#txtEmployeeName'));
+
     $('#hdfCurrentPage').val(0);
 
     SearchUser();

@@ -185,15 +185,15 @@
 
             "Vendor.Vendor_Entity.Registration_No":
             {
-                required: "Registration No is required" ,
+                required: "Registration No is required." ,
             },
             "Vendor.Vendor_Entity.Range":
                 {
-                    required: "Division is required"
+                    required: "Division is required."
                 },
             "Vendor.Vendor_Entity.Division":
             {
-                required: "Registration No is required"
+                required: "Registration No is required."
             },
             "PAN":
             {
@@ -201,29 +201,29 @@
             },
             "Vendor.Vendor_Entity.TAN":
             {
-                required: "TAN is required"
+                required: "TAN is required."
             },
 
 
             "Vendor.Vendor_Entity.Tax_Excemption_Code":
            {
-               required: "Tax Excemption Code is required"
+               required: "Tax Excemption Code is required."
            },
 
 
             "Vendor.Vendor_Entity.Currency_Code":
            {
-               required: "Currency Code is required"
+               required: "Currency Code is required."
            },
 
 
             "Vendor.Vendor_Entity.VAT":
          {
-             required: "VAT is required"
+             required: "VAT is required."
          },
             "Vendor.Vendor_Entity.PaymentTerms":
          {
-             required: "PaymentTerms is required"
+             required: "PaymentTerms is required."
          },
 
         }

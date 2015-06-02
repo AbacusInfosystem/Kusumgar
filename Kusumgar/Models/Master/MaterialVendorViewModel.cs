@@ -5,15 +5,17 @@ using System.Web;
 using KusumgarBusinessEntities;
 using KusumgarDatabaseEntities;
 using KusumgarBusinessEntities.Common;
+
+
 namespace Kusumgar.Models
 {
-    public class ProductVendorViewModel
+    public class MaterialVendorViewModel
     {
-        public ProductVendorViewModel()
+        public MaterialVendorViewModel()
         {
-            Product_Vendor_Grid = new List<ProductVendorInfo>();
+            Material_Vendor_Grid = new List<MaterialVendorInfo>();
 
-            Product_Vendor = new ProductVendorInfo();
+            Material_Vendor = new MaterialVendorInfo();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
 
@@ -21,9 +23,9 @@ namespace Kusumgar.Models
 
         }
 
-        public List<ProductVendorInfo> Product_Vendor_Grid { get; set; }
+        public List<MaterialVendorInfo> Material_Vendor_Grid { get; set; }
 
-        public ProductVendorInfo Product_Vendor { get; set; }
+        public MaterialVendorInfo Material_Vendor { get; set; }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 

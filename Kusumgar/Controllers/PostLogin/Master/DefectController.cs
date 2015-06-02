@@ -16,6 +16,8 @@ namespace Kusumgar.Controllers.PostLogin
     {
         public ActionResult Index(DefectViewModel dViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             DefectManager dMan = new DefectManager();
 
             dViewModel.DefectType = dMan.Get_Defect_Types();
@@ -25,6 +27,8 @@ namespace Kusumgar.Controllers.PostLogin
 
         public ActionResult Search(DefectViewModel dViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             DefectManager dMan = new DefectManager();
 
             if (TempData["DefectTypeId"] != null)

@@ -157,8 +157,8 @@ namespace KusumgarDataAccess
                 //tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
                 //tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
                 //tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
-                
-                tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
+
+                tests.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
                 tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
                 tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
                 tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
@@ -258,7 +258,7 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Test_Id", testId));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Id_sp.ToString(), CommandType.StoredProcedure);
-            
+
             if (dt != null && dt.Rows.Count > 0)
             {
                 int count = 0;
@@ -410,6 +410,7 @@ namespace KusumgarDataAccess
             }
             return retVal;
         }
+
 
         public List<FabricTypeInfo> Get_Fabric_Types()
         {

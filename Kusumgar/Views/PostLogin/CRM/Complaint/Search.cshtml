@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Search";
 }
-<script src="~/Scripts/CRM/complaint_search_event.js"></script>
-<script src="~/Scripts/CRM/complaint_search_method.js"></script>
+<script src="/Scripts/CRM/Event/complaint_search_event.js"></script>
+<script src="/Scripts/CRM/Method/complaint_search_method.js"></script>
 <link rel="stylesheet" href="~/Content/jquery-ui.css">
 <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
 <!-- Content Wrapper. Contains page content -->
@@ -24,7 +24,7 @@
         </ol>
     </section>
     <form id="frmSearch_comp">
-        <input type="hidden" id="hdnComplaint_Id" name="ComplaintId">        
+        <input type="hidden" id="hdnComplaint_Id" name="Complaint_Id">        
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -36,7 +36,10 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txtCustName">Customer Name</label>
-                                        <input type="text" class="form-control" id="txtCustName" placeholder="Enter Customer Name" />
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtCustName" placeholder="Enter Customer Name" name="Filter.Customer_Name" value="@Model.Filter.Customer_Name" />
+                                            <input type="hidden" id="hdfCustomer_Id" value="@Model.Filter.Customer_Id" name="Filter.Customer_Id">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -44,14 +47,14 @@
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Complaint")" role="button">Create Complaint</a>
+                                        <div class="btn-group pull-left btn-group-sm">
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Complaint")" role="button">Create Complaint</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="btn-group pull-right">
-                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Complaint</button>
+                                        <div class="btn-group pull-right btn-group-sm">
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit Complaint</button>
                                         </div>
                                     </div>                                    
                                 </div>

@@ -62,8 +62,8 @@
 
                                     <div class="form-group">
                                         <label>Defect - Type</label>
-                                        <select class="form-control" id="drpDefectTypeName">
-                                            <option value="">Select Defect-Type</option>
+                                        <select class="form-control input-sm" id="drpDefectTypeName">
+                                            <option value="">Select defect-type</option>
                                             @foreach (var item in Model.DefectType)
                                             {
                                                 if (Model.Filter.Defect_Type_Id == item.DefectTypeEntity.Defect_Type_Id)
@@ -87,9 +87,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
 
-                                        <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index", "Defect")" role="button">Create Defect</a>
+                                        <div class="btn-group pull-left ">
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index", "Defect")" role="button">Create</a>
                                         </div>
 
                                     </div>
@@ -102,7 +102,7 @@
                                             
 
                                             <input type="hidden" id="hdfDefectId" name="EditMode.Defect_Id" />
-                                            <button type="button" id="btnEdit" class="btn btn-warning" style="display:none;">Edit Defect</button>
+                                            <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit</button>
                                         </div>
 
                                     </div>
