@@ -16,12 +16,89 @@ namespace KusumgarBusinessEntities.Common
 
     public enum AppFunction
     {
-        EmployeeSearch,
-        EmployeeInsert,
-        EmployeeUpdate,
-        RoleSearch,
-        RoleInsert,
-        RoleUpdate
+        // Dashboard
+        Dashboard,
+
+        // Employee
+        Employee_Search,
+        Employee_Create,
+        Employee_Edit,
+
+        // Role
+        Role_Search,
+        Role_Create,
+        Role_Edit,
+
+        // Customer
+        Customer_Search,
+        Customer_Create,
+        Customer_Edit,
+
+        // Customer Contact
+        Customer_Contact_Search,
+        Customer_Contact_Create,
+        Customer_Contact_Edit,
+
+        // Vendor
+        Vendor_Search,
+        Vendor_Create,
+        Vendor_Edit,
+
+        // Vendor Contact
+        Vendor_Contact_Search,
+        Vendor_Contact_Create,
+        Vendor_Contact_Edit,
+
+        // Material
+        Material_Search,
+        Material_Create,
+        Material_Edit,
+
+        // Workcenter
+        Workcenter_Search,
+        Workcenter_Create,
+        Workcenter_Edit,
+
+        // Defect
+        Defect_Search,
+        Defect_Create,
+        Defect_Edit,
+
+        // Defect Type
+        Defect_Type_Search,
+        Defect_Type_Create,
+        Defect_Type_Edit,
+
+        // Test
+        Test_Search,
+        Test_Create,
+        Test_Edit,
+
+        // Test Unit
+        Test_Unit_Search,
+        Test_Unit_Create,
+        Test_Unit_Edit,
+
+        // Attribute Code
+        Attribute_Code_Search,
+        Attribute_Code_Create,
+        Attribute_Code_Edit,
+
+        // Complaint
+        Complaint_Search,
+        Complaint_Create,
+        Complaint_Edit,
+
+        // YArticle
+        YArticle_Search,
+        YArticle_Create,
+        YArticle_Edit,
+
+        
+
+
+
+
     }
 
     public enum UserRoles
@@ -60,6 +137,10 @@ namespace KusumgarBusinessEntities.Common
 
     public enum StoredProcedures
     {
+        //Login
+        Authenticate_User_sp,
+        Get_Session_Data_sp,
+
         // Employee 
         Update_User_Sp,
         Get_Users_By_Id_Sp,
@@ -140,6 +221,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_Type_By_Name_sp,
         Insert_Defect_Type_sp,
         Update_Defect_Type_sp,
+        Get_Defect_AutoComplete_Sp,
 
         //Defect
         Get_Defects_sp,
@@ -150,6 +232,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
         Get_Test_Units_sp,
@@ -177,9 +260,9 @@ namespace KusumgarBusinessEntities.Common
         // Complaint
         Insert_Complaint_Sp,
         Update_Complaint_Sp,
-        Get_Complaint_List_Sp,
+        Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
-        Get_Complaint_By_CustName_Sp,
+        Get_Complaint_By_Cust_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,
@@ -229,26 +312,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
 
         // Work Center
-        
-        Get_Factories_Sp,
-        Get_Processes_Sp,
-        Get_Work_Stations_Sp,
-        Get_Work_Stations_By_Factory_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_Sp,
-        Get_Work_Centers_By_Work_Station_Id_Sp,
-        Get_Work_Centers_By_Process_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Process_Id_Sp,
-        Get_Work_Centers_By_Work_Station_Id_By_Process_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_By_Process_Id_Sp,
-        Insert_Work_Center_sp,
-        Update_Work_Center_sp,
-        Get_Work_Centers_Sp,
-        Get_Work_Centers_By_Work_Center_Id_Sp,
-        Insert_Work_Center_Process_sp,
-        Delete_Work_Center_Process_By_Work_Center_Id_Sp,
-
-
+        Get_Work_Stations_By_Code_Purpose_Sp,
 
         //Vendor
 
@@ -262,7 +326,34 @@ namespace KusumgarBusinessEntities.Common
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
         Check_Existing_Vendor_Sp,
-        Get_Product_Categories_sp
+        
+        Update_Attribute_Code_Name_sp,
+
+        //Product
+        Insert_Product_Sp,
+        Update_Product_Sp,
+        Get_Products_Sp,
+        Get_Product_By_Id_Sp,
+        Get_Product_Categories_sp,
+        Get_Product_SubCategory_By_CategoryId_Sp,
+        Get_Products_By_Product_Name_Sp,
+        Get_Products_By_Product_Id_Sp,
+        Insert_Product_Vendor_Sp,
+        Delete_Product_Vendor_By_Id_Sp,
+        Get_Product_Vendors_By_Id_Sp,
+
+        // Material
+        Insert_Material_Sp,
+        Update_Material_Sp,
+        Get_Materials_Sp,
+        Get_Materials_By_Material_Id_Sp,
+        Get_Materials_By_Material_Name_Sp,
+        Get_Material_By_Id_Sp,
+        Delete_Material_Vendor_By_Id_Sp,
+        Get_Material_Vendors_By_Id_Sp,
+        Insert_Material_Vendor_Sp,
+        Get_Material_Categories_sp,
+Get_Material_SubCategory_By_CategoryId_Sp,
     }
 
     public enum GenderType
@@ -295,8 +386,8 @@ namespace KusumgarBusinessEntities.Common
     public enum CurrencyType
     {
         Rupees = 1,
-        Dollars = 2, 
-       Euros = 3,
+        Dollars = 2,
+        Euros = 3,
         Pounds = 4,
     }
     public enum PriorityOrder
@@ -305,7 +396,7 @@ namespace KusumgarBusinessEntities.Common
         Secondary = 2,
         Last_Option = 3,
     }
-     
+
 
     public enum PaymentTerms
     {
@@ -336,14 +427,28 @@ namespace KusumgarBusinessEntities.Common
           ProductType=1,
           Service=2
       }
-
+   
       
     public enum ShipmentMethod
     {
         method1=1,
         method2=2
-
     }
 
+    public enum ArticleType
+    {
+        YArticle = 1,
+        WArticle = 2,
+        GArticle = 3,
+        PArticle = 4,
+        CArticle = 5
+    }
+
+    public enum ProductType
+    {
+        Finish_Product = 1,
+        Raw_Material =2,
+        Service = 3
+    }
 
 }

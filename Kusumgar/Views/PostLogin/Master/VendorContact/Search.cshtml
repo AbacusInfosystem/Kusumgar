@@ -27,36 +27,40 @@
               
                     <div class="tab-content">
                         <form id="frmSearch_Contact">
-                                <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                <input type="hidden" id="hdfContact_Id" name="Vendor_Contact.Contact_Entity.Contact_Id">
-                                <br />
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="txtCustomerName">Vendor name</label>
-                                            <div class="auto-complete">
-                                                <input type="text" class="form-control input-sm" id="txtVendor_Name" placeholder="Enter vendor name" name="Filter.Vendor_Name" value="@Model.Filter.Vendor_Name">
-                                                <input type="hidden" id="hdnVendor_Id" value="@Model.Filter.Vendor_Id" name="Filter.Vendor_Id">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-footer">
+                            <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                            <input type="hidden" id="hdfContact_Id" name="Vendor_Contact.Contact_Entity.Contact_Id">
+                            <br />
+                            <div class="box box-primary">
+                                <div class="box-body">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="btn-group pull-left">
-                                                <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>                                      
-                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","VendorContact")" role="button">Create</a>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="txtCustomerName">Vendor name</label>
+                                                <div class="auto-complete">
+                                                    <input type="text" class="form-control input-sm" id="txtVendor_Name" placeholder="Enter vendor name" name="Filter.Vendor_Name" value="@Model.Filter.Vendor_Name">
+                                                    <input type="hidden" id="hdnVendor_Id" value="@Model.Filter.Vendor_Id" name="Filter.Vendor_Id">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
+                                    </div>
+                                    <div class="box-footer">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="btn-group pull-left">
+                                                    <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Index","VendorContact")" role="button">Create</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                        </form>
                     </div>
             </div>
         </div>

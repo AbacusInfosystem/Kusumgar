@@ -26,6 +26,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Index(IndustrialViewModel iViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             PaginationInfo pager = new PaginationInfo();
 
             try
@@ -43,6 +45,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(IndustrialViewModel iViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             PaginationInfo pager = new PaginationInfo();
             if(TempData["iViewModel"] != null)
             {

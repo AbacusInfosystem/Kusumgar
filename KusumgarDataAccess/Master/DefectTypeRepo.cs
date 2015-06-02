@@ -191,6 +191,75 @@ namespace KusumgarDataAccess
             }
              return sqlParamList;
         }
+
+        public List<AutocompleteInfo> Get_Defect_Type_AutoComplete(string defect_Type_Name)
+        {
+            List<AutocompleteInfo> defectTypeName = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Defect_Type_Name", defect_Type_Name));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Defect_Type_AutoComplete_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Defect_Type_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Defect_Type_Id"]);
+
+                    defectTypeName.Add(auto);
+                }
+            }
+
+            return defectTypeName;
+        }
+
+        public List<DefectTypeInfo> Get_Defect_Types_By_Id(int Defect_Type_Id, PaginationInfo Pager)
+        {
+            List<DefectTypeInfo> retVal = new List<DefectTypeInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Defect_Type_Id", Defect_Type_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Defect_Type_By_Id_sp.ToString(), CommandType.StoredProcedure);
+
+            var tupleData = GetRows(dt, Pager);
+
+                foreach (DataRow dr in tupleData.Item1)
+                {
+                    DefectTypeInfo defectTypes = new DefectTypeInfo();
+
+                    defectTypes.DefectTypeEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
+
+                    defectTypes.DefectTypeEntity.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
+
+                    defectTypes.DefectTypeEntity.Status = Convert.ToBoolean(dr["Status"]);
+
+                    defectTypes.DefectTypeEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+
+                    defectTypes.DefectTypeEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+                    defectTypes.DefectTypeEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+                    defectTypes.DefectTypeEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+                    retVal.Add(defectTypes);
+                }
+                return retVal;
+            }
+          
+        }
+
     }
-}
+
 

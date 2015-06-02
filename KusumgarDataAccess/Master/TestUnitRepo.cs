@@ -86,15 +86,15 @@ namespace KusumgarDataAccess
             return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
         }
       
-        public List<TestUnitInfo> Get_Test_Unit_By_Name(string testUnit,PaginationInfo pager)
+        public List<TestUnitInfo> Get_Test_Units_By_Id(int test_Unit_Id,PaginationInfo pager)
         {
             List<TestUnitInfo> retVal = new List<TestUnitInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Test_Unit_Name",testUnit));
+            sqlParams.Add(new SqlParameter("@Test_Unit_Id",test_Unit_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_By_Name_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_By_Id_sp.ToString(), CommandType.StoredProcedure);
 
             var tupleData = GetRows(dt, pager);
 
@@ -194,6 +194,37 @@ namespace KusumgarDataAccess
             }
 
             return sqlParamList;
+        }
+
+        public List<AutocompleteInfo> Get_Test_Unit_AutoComplete(string test_Unit_Name)
+        {
+            List<AutocompleteInfo> testUnitName = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Test_Unit_Name", test_Unit_Name));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_AutoComplete_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Test_Unit_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Test_Unit_Id"]);
+
+                    testUnitName.Add(auto);
+                }
+            }
+
+            return testUnitName;
         }
     }
 }

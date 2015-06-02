@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Kusumgar.Common
+namespace Kusumgar
 {
     public class CustomRazorViewEngine : RazorViewEngine
     {
@@ -38,7 +38,11 @@ namespace Kusumgar.Common
 
                 //This would search for view in
                 //Views/PostLogin/Sales/<calling controllers name>/<view name>.cshtml
-                "~/Views/PostLogin/Sales/{1}/{0}.cshtml", 
+                "~/Views/PostLogin/Sales/{1}/{0}.cshtml",
+ 
+                //This would search for view in
+                //Views/PostLogin/Sales/<calling controllers name>/<view name>.cshtml
+                "~/Views/PostLogin/Common/{1}/{0}.cshtml",
 
                 //This would search for view in
                 //Views/PreLogin/<calling controllers name>/<view name>.cshtml

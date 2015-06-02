@@ -54,5 +54,7 @@ namespace Kusumgar.Models
     public class Role_Filter
     {
         public string Role_Name { get; set; }
+
+        public int Role_Id { get; set; }
     }
 }

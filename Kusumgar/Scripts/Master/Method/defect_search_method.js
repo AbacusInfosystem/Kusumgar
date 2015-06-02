@@ -4,7 +4,7 @@
 
         Filter: {
 
-             Defect_Name: $('#txtDefectName').val(),
+             Defect_Id: $('#hdnDefectId').val(),
 
              Defect_Type_Id: $("#hdfDefectTypeId").val(),
    
@@ -46,53 +46,65 @@ function BindDefectInGrid(data, mode) {
     $('#tblSearchDefect tr.subhead').html("");
 
     var htmlText = "";
+    if (data.DefectGrid.length > 0) {
+        for (i = 0; i < data.DefectGrid.length; i++) {
 
-    for (i = 0; i < data.DefectGrid.length; i++) {
+            htmlText += "<tr>";
 
+            htmlText += "<td>";
+
+            htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].DefectEntity.Defect_Id + "' value='" + data.DefectGrid[i].DefectEntity.Defect_Id + "' />";
+
+            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.DefectGrid[i].Defect_Type_Name;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
+
+            htmlText += "</td>";
+
+            if (data.DefectGrid[i].DefectEntity.Status == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            if (data.DefectGrid[i].DefectEntity.Status == false) {
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
+
+            htmlText += "</tr>";
+        }
+    }
+    else
+    {
         htmlText += "<tr>";
 
-        htmlText += "<td>";
+        htmlText += "<td colspan=5>";
 
-        htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].DefectEntity.Defect_Id + "' value='" + data.DefectGrid[i].DefectEntity.Defect_Id + "' />";
-
-        htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+        htmlText += "No record found.";
 
         htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.DefectGrid[i].Defect_Type_Name;
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
-
-        htmlText += "</td>";
-
-        if (data.DefectGrid[i].DefectEntity.Status == true) {
-
-            htmlText += "<td>";
-
-            htmlText += "Active";
-
-            htmlText += "</td>";
-        }
-        if (data.DefectGrid[i].DefectEntity.Status == false)
-        {
-            htmlText += "<td>";
-
-            htmlText += "Inactive";
-
-            htmlText += "</td>";
-        }
 
         htmlText += "</tr>";
     }
@@ -104,10 +116,17 @@ function BindDefectInGrid(data, mode) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-  if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
-         $('.pagination').html(data.Pager.PageHtmlString);
-}
+    if (data.DefectGrid.length > 0) {
+        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+
+            $('.pagination').html(data.Pager.PageHtmlString);
+        }
+    }
+    else
+    {
+        $('.pagination').html("");
+    }
 
 
     $('input').iCheck({
@@ -137,7 +156,9 @@ function PageMore(Id) {
 
         Filter: {
 
-            Defect_Name: $('#txtDefectName').val(),
+            //Defect_Name: $('#txtDefectName').val(),
+
+            Defect_Id: $('#hdnDefectId').val(),
 
             Defect_Type_Id: $("#hdfDefectTypeId").val(),
 

@@ -1,5 +1,6 @@
-﻿@model Kusumgar.Models.WorkCenterViewModel
-@using KusumgarBusinessEntities.Common
+﻿@{
+    ViewBag.Title = "Workcenter";
+}
 
 <style>
     .example-modal .modal {
@@ -17,12 +18,9 @@
     }
 </style>
 
-<script src="~/Scripts/Master/Event/work_center_listing_event.js"></script>
-<script src="~/Scripts/Master/Method/work_center_listing_method.js"></script>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    @{Html.RenderPartial("_ServerMessage");}
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Workcenter
@@ -36,148 +34,185 @@
         </ol>
     </section>
 
-    <form id="frmSearch_Work_Center">
-        <!-- Main content -->
-        <section class="content">
-            <!-- Customer Search -->
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <div class="box box-primary">
-                        <!-- form start -->
-                        <div class="box-body">
-                            <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                            <input type="hidden" id="hdnWork_Center_Id" name="Work_Center.Work_Center_Entity.Work_Center_Id">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Customer Search -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label>Workcenter</label>
+                                    <select class="form-control" id="drpWorkcenter">
+                                        <option>Jigger</option>
+                                        <option>Jet</option>
+                                        <option>Stenter</option>
+                                        <option>Calandar</option>
+                                        <option>Printing Machine</option>
+                                        <option>Ager Machine</option>
+                                        <option>Inspection Machine</option>
+                                        <option>Lab Testing Machine</option>
+                                        <option>Lab Dyeing Machine</option>
+                                        <option>Utility Machines</option>
+                                        <option>Material Handling Equipments</option>
+                                        <option>Batch (A-Frame)</option>
+                                        <option>Box Trollies</option>
+                                        <option>Stitching Machine</option>
+                                        <option>Colour Kitchen</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="box-footer">
                             <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="form-group">
-                                        <label>Factory</label>
-                                        <select class="form-control" id="drpFactory" name="Work_Center.Factory.Factory_Entity.Factory_Id">
-                                            <option value="">-Select factory-</option>
-                                            @foreach (var item in Model.Work_Center.Factories)
-                                            {
-                                                if (Model.Work_Center.Factory.Factory_Entity.Factory_Id == item.Factory_Entity.Factory_Id)
-                                                {
-                                                    <option value="@item.Factory_Entity.Factory_Id" selected="selected">@item.Factory_Entity.Factory_Name</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@item.Factory_Entity.Factory_Id">@item.Factory_Entity.Factory_Name</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Work Station</label>
-                                        <select class="form-control " id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Name">
-                                            <option value="">-Select work station-</option>
-                                            @foreach (var item in Model.Work_Center.Work_Stations)
-                                            {
-                                                if (Model.Work_Center.Work_Center_Entity.Work_Station_Id == item.Work_Station_Entity.Work_Station_Id)
-                                                {
-                                                    <option value="@item.Work_Station_Entity.Work_Station_Id" selected="selected">@item.Work_Station_Entity.Work_Station_Name</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@item.Work_Station_Entity.Work_Station_Id">@item.Work_Station_Entity.Work_Station_Name</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Process</label>
-                                        <select class="form-control " id="drpProcess" name="Work_Center.Process.Process_Entity.Process_Name">
-                                            <option value="">-Select process-</option>
-                                            @foreach (var item in Model.Work_Center.Processes)
-                                            {
-                                                if (Model.Work_Center.Process.Process_Entity.Process_Id == item.Process_Entity.Process_Id)
-                                                {
-                                                    <option value="@item.Process_Entity.Process_Id" selected="selected">@item.Process_Entity.Process_Name</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@item.Process_Entity.Process_Id">@item.Process_Entity.Process_Name</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="box-footer">
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Workcenter")" role="button">Create Workcenter</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="btn-group pull-right">
-                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit Workcenter</button>
-                                        </div>
+                                <div class="col-md-6">
+                                
+                                    <div class="btn-group pull-left">
+                                        <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
+                                        <a class="btn btn-primary" href="@Url.Action("Index","Workcenter")" role="button">Create Workcenter</a>
                                     </div>
 
                                 </div>
+                                <div class="col-md-6">
+
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-warning">Edit Workcenter</button>
+                                </div>
+
                             </div>
-
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </div>
-            </div>
-            <!-- Customer Search Ends -->
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box box-solid">
-                        <div class="box-body table-responsive no-padding">
-
-                            <table class="table table-striped" id="tblWork_Center">
-                                <tr id="subhead">
-                                    <th style="width:50px;"></th>
-                                    <th >Work Station Id</th>
-                                    <th>Work Center Code</th>
-                                    <th>Machine Name</th>
-                                    <th>Machine Properties</th>
-                                    <th >TPM Speed</th>
-                                    <th>Average Order Length</th>
-                                    <th>Capacity</th>
-                                    <th>Wastage</th>
-                                    <th>Target Efficiency</th>
-                                    <th>Under Maintainance</th>
-                                    <th>Is Active</th>
-                                </tr>
-
-                            </table>
-
-                        </div>
-                        <!-- /.box-body -->
-
-                        
-                        <div class="box-footer clearfix">
-                            <div class="pagination pagination-sm no-margin pull-right">
-                                <ul></ul>
-                            </div>
-                            <div id="divSearchGridOverlay" class="overlay">
-                                <i class="fa fa-refresh fa-spin"></i>
                             </div>
                         </div>
 
                     </div>
-                    <!-- /.box -->
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.col (left) -->
             </div>
+        </div>
+        <!-- Customer Search Ends -->
 
-        </section>
-        <!-- /.content -->
-    </form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body table-responsive no-padding">
+
+                        <table class="table table-striped">
+                            <tr>
+                                <th style="width:50px;"></th>
+                                <th style="width:150px;">Machine Code</th>
+                                <th>Machine Name</th>
+                                <th>Capacity</th>
+                                <th>Make</th>
+                                <th style="width:100px;">Status</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="radio" name="r1" checked /></td>
+                                <td>JIG001</td>
+                                <td>Jigger Machine 1</td>
+                                <td>1000</td>
+                                <td>ABC Machine Manufacturers</td>
+                                 <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="radio" name="r1" /></td>
+                                <td>JIG002</td>
+                                <td>Jigger Machine 2</td>
+                                <td>1000</td>
+                                <td>ABC Machine Manufacturers</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="radio" name="r1" /></td>
+                                <td>JIG003</td>
+                                <td>Jigger Machine 3</td>
+                                <td>1000</td>
+                                <td>ABC Machine Manufacturers</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="radio" name="r1" /></td>
+                                <td>JIG004</td>
+                                <td>Jigger Machine 4</td>
+                                <td>1000</td>
+                                <td>ABC Machine Manufacturers</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="radio" name="r1" /></td>
+                                <td>JIG005</td>
+                                <td>Jigger Machine 5</td>
+                                <td>1000</td>
+                                <td>ABC Machine Manufacturers</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="radio" name="r1" /></td>
+                                <td>JIG006</td>
+                                <td>Jigger Machine 6</td>
+                                <td>1000</td>
+                                <td>ABC Machine Manufacturers</td>
+                                <td>Active</td>
+                            </tr>
+                           
+                        </table>
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            <li><a href="#">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="divSearchGridOverlay" class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+          
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (left) -->
+        </div>
+
+       
+    </section>
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
+<script type="text/javascript">
 
+    $(document).ready(function () {
+
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+
+        $("#btnSearch").click(function () {
+            $("#divSearchGridOverlay").show();
+        });
+
+        $("#divSearchGridOverlay").hide();
+    });
+</script>

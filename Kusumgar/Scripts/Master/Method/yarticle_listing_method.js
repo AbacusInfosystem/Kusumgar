@@ -43,13 +43,13 @@ function Bind_YArticle_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.YArticles[i].YArticle_Entity.Y_Article_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.YArticles[i].Y_Article_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.YArticles[i].YArticle_Entity.Full_Code;
+            htmlText += data.YArticles[i].Full_Code;
 
             htmlText += "</td>";
 

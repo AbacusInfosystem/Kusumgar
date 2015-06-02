@@ -12,7 +12,7 @@ namespace KusumgarModel
 {
     public class VendorContactManager
     {
-        public VendorContactRepo _vendorcontactRepo;
+        VendorContactRepo _vendorcontactRepo;
 
         public VendorContactManager()
         {

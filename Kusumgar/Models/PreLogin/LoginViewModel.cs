@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using KusumgarBusinessEntities.CMS;
-using Kusumgar.Common;
+using KusumgarBusinessEntities;
+
 
 namespace Kusumgar.Models.PreLogin
 {
@@ -11,13 +11,15 @@ namespace Kusumgar.Models.PreLogin
     {
         public LoginViewModel()
         {
-            Employee = new EmployeeInfo();
+            User = new UserInfo();
 
-            FriendlyMessage = new List<FriendlyMessage>();
+            Friendly_Message = new List<FriendlyMessageInfo>();
         }
 
-        public EmployeeInfo Employee { get; set; }
+        public UserInfo User { get; set; }
 
-        public List<FriendlyMessage> FriendlyMessage { get; set; }
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+        
+
     }
 }

@@ -1,7 +1,5 @@
 ﻿@model Kusumgar.Models.RoleViewModel
-@{
-    ViewBag.Title = "Search";
-}
+
 <script src="~/Scripts/Master/role_search_event.js"></script>
 <script src="~/Scripts/Master/role_search_method.js"></script>
 
@@ -25,7 +23,7 @@
     </section>
     <form id="frmSearch_role">
         <input type="hidden" id="hdnRole_Id" name="Role_Id">
-        <!-- Main content -->
+        <!-- Main content -->   
         <section class="content">
             <div class="row">
                 <div class="col-md-12">
@@ -35,8 +33,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="txtRole_ame">Role Name</label>
-                                        <input type="text" class="form-control" id="txtRole_Name" placeholder="Enter Role Name" />
+                                        <div class="auto-complete">
+                                            <label for="txtRole_ame">Role Name</label>
+                                            <input type="text" class="form-control input-sm" id="txtRole_Name" placeholder="Enter Role Name" value="@Model.Filter.Role_Name" />
+                                            <input type="hidden" id="hdRole_Id" value="@Model.Filter.Role_Id" />
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -46,15 +48,15 @@
                                     <div class="col-md-6">
 
                                         <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Role")" role="button">Create Role</a>
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Role")" role="button">Create </a>
                                         </div>
 
                                     </div>
                                     <div class="col-md-6">
 
                                         <div class="btn-group pull-right">
-                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit Role</button>
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
                                         </div>
 
                                     </div>

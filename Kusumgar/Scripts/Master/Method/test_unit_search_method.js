@@ -3,7 +3,7 @@
     var tViewModel = {
 
         Filter: {
-
+            Test_Unit_Id: $('#hdnTestUnitId').val(),
             Test_Unit_Name: $('#txtTestUnitName').val()
         },
 
@@ -24,7 +24,7 @@ function GetAllTestUnits() {
     var tViewModel = {
 
         Filter: {
-
+            Test_Unit_Id:"",
             Test_Unit_Name: ""
         },
 
@@ -45,40 +45,55 @@ function BindTestUnitInGrid(data, mode) {
 
     var htmlText = "";
 
-    for (i = 0; i < data.Test_Unit_Grid.length; i++) {
-       
+    if (data.Test_Unit_Grid.length > 0) {
+
+        for (i = 0; i < data.Test_Unit_Grid.length; i++) {
+
+            htmlText += "<tr>";
+
+            htmlText += "<td>";
+
+            htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' />";
+
+            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Name;
+
+            htmlText += "</td>";
+
+            if (data.Test_Unit_Grid[i].TestUnitEntity.Status == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            if (data.Test_Unit_Grid[i].TestUnitEntity.Status == false) {
+
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
+
+            htmlText += "</tr>";
+        }
+    }
+    else
+    {
         htmlText += "<tr>";
 
-        htmlText += "<td>";
+        htmlText += "<td colspan='5'>";
 
-        htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' />";
-
-        htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+        htmlText += "No record found.";
 
         htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Name;
-
-        htmlText += "</td>";
-
-        if (data.Test_Unit_Grid[i].TestUnitEntity.Status == true) {
-
-            htmlText += "<td>";
-
-            htmlText += "Active";
-
-            htmlText += "</td>";
-        }
-        if (data.Test_Unit_Grid[i].TestUnitEntity.Status == false) {
-
-            htmlText += "<td>";
-
-            htmlText += "Inactive";
-
-            htmlText += "</td>";
-        }
 
         htmlText += "</tr>";
     }
@@ -86,12 +101,19 @@ function BindTestUnitInGrid(data, mode) {
 
     $('#tblSearchTestUnit tr:first').after(htmlText);
 
-    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+    if (data.Test_Unit_Grid.length > 0) {
 
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+        $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-        $('.pagination').html(data.Pager.PageHtmlString);
+        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
+            $('.pagination').html(data.Pager.PageHtmlString);
+
+        }
+    }
+    else
+    {
+        $('.pagination').html("");
     }
 
     $('input').iCheck({
@@ -119,7 +141,7 @@ function PageMore(Id) {
     var tViewModel = {
 
         Filter: {
-
+            Test_Unit_Id: $('#hdnTestUnitId').val(),
             Test_Unit_Name: $('#txtTestUnitName').val()
         },
 

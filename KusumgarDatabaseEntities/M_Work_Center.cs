@@ -15,7 +15,7 @@ namespace KusumgarDatabaseEntities
     public partial class M_Work_Center
     {
         public int Work_Center_Id { get; set; }
-        public int Purpose { get; set; }
+        public Nullable<int> Purpose { get; set; }
         public int Work_Station_Id { get; set; }
         public string Work_Center_Code { get; set; }
         public string Machine_Name { get; set; }

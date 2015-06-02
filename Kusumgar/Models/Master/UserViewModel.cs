@@ -16,7 +16,7 @@ namespace Kusumgar.Models
 
        public int UserId { get; set; }
 
-       public Filter FilterVal { get; set; }
+       public User_Filter Filter { get; set; }
 
        public PaginationInfo Pager { get; set; }
 
@@ -30,7 +30,7 @@ namespace Kusumgar.Models
 
             User = new UserInfo();
 
-            FilterVal = new Filter();
+            Filter = new User_Filter();
 
             Pager = new PaginationInfo();
 
@@ -41,8 +41,10 @@ namespace Kusumgar.Models
 
     }
 
-    public class Filter
+    public class User_Filter
     {
        public string FirstName { get; set; }
+
+       public int User_Id { get; set; }
     }
 }

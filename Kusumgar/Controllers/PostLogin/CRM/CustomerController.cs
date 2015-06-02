@@ -11,6 +11,7 @@ using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
 using KusumgarCrossCutting.Logging;
 
+
 namespace Kusumgar.Controllers
 {
     public class CustomerController : Controller
@@ -24,8 +25,6 @@ namespace Kusumgar.Controllers
 
         public StateManager _stateMan;
 
-
-
         public CustomerController()
         {
             _customerMan = new CustomerManager();
@@ -34,6 +33,8 @@ namespace Kusumgar.Controllers
 
             _stateMan = new StateManager();
         }
+
+        [AuthorizeUser(AppFunction.Customer_Create)]
 
         public ActionResult Index(CustomerViewModel cViewModel)
         {
@@ -64,6 +65,8 @@ namespace Kusumgar.Controllers
             return View("Index", cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Search)]
+
         public ActionResult Search(CustomerViewModel cViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Search";
@@ -92,13 +95,19 @@ namespace Kusumgar.Controllers
             return View("Search", cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Create)]
+
         public JsonResult Insert(CustomerViewModel cViewModel)
         {
             try
             {
-                cViewModel.Customer.Customer_Entity.CreatedBy = 1;
+                cViewModel.Customer.Customer_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                cViewModel.Customer.Customer_Entity.UpdatedBy = 1;
+                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                cViewModel.Customer.Customer_Entity.CreatedOn = DateTime.Now;
+
+                cViewModel.Customer.Customer_Entity.UpdatedOn = DateTime.Now;
 
                 int customer_Id = _customerMan.Insert_Customer(cViewModel.Customer);
 
@@ -116,11 +125,15 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public JsonResult Update(CustomerViewModel cViewModel)
         {
             try
             {
-                cViewModel.Customer.Customer_Entity.UpdatedBy = 1;
+                cViewModel.Customer.Customer_Entity.UpdatedOn = DateTime.Now;
+
+                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _customerMan.Update_Customer(cViewModel.Customer);
 
@@ -136,13 +149,19 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Create)]
+
         public JsonResult Insert_Customer_Address(CustomerViewModel cViewModel)
         {
             try
             {
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedBy = 1;
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = 1;
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedOn = DateTime.Now;
+
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedOn = DateTime.Now;
 
                 _customerMan.Insert_Customer_Address(cViewModel.Customer.Customer_Address);
 
@@ -160,11 +179,15 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public JsonResult Update_Customer_Address(CustomerViewModel cViewModel)
         {
             try
             {
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = 1;
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedOn = DateTime.Now;
+
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _customerMan.Update_Customer_Address(cViewModel.Customer.Customer_Address);
 
@@ -182,13 +205,19 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Create)]
+
         public JsonResult Insert_Bank_Details(CustomerViewModel cViewModel)
         {
             try
             {
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedBy = 1;
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = 1;
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedOn = DateTime.Now;
+
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedOn = DateTime.Now;
 
                 _customerMan.Insert_Bank_Details(cViewModel.Customer.Bank_Details);
 
@@ -205,11 +234,15 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public JsonResult Update_Bank_Details(CustomerViewModel cViewModel)
         {
             try
             {
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = 1;
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedOn = DateTime.Now;
 
                 _customerMan.Update_Bank_Details(cViewModel.Customer.Bank_Details);
 
@@ -226,6 +259,8 @@ namespace Kusumgar.Controllers
 
             return Json(cViewModel);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Search)]
 
         public JsonResult Get_Customers(CustomerViewModel cViewModel)
         {
@@ -320,6 +355,8 @@ namespace Kusumgar.Controllers
             return Json(cViewModel, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(AppFunction.Customer_Edit)]
+
         public ActionResult Get_Customer_By_Id(CustomerViewModel cViewModel)
         {
             try
@@ -356,6 +393,8 @@ namespace Kusumgar.Controllers
             }
             return Json(StateList, JsonRequestBehavior.AllowGet);
         }
+
+        [AuthorizeUser(AppFunction.Customer_Edit)]
 
         public JsonResult Delete_Customer_Address_By_Id(int customer_Address_Id)
         {

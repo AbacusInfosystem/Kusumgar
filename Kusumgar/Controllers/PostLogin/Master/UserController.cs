@@ -67,9 +67,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                uViewModel.User.UserEntity.CreatedBy = 1;
+                uViewModel.User.UserEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                uViewModel.User.UserEntity.UpdatedBy = 1;
+                uViewModel.User.UserEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _userMan.Insert_User(uViewModel.User);
 
@@ -133,9 +133,13 @@ namespace Kusumgar.Controllers
             {
                 pager = uViewModel.Pager;
 
-                if (!string.IsNullOrEmpty(uViewModel.FilterVal.FirstName))
+                if (uViewModel.Filter.User_Id != 0)
                 {
-                    uViewModel.UserList = _userMan.Get_Users_By_Name(ref pager, uViewModel.FilterVal.FirstName);
+                    uViewModel.UserList.Add(_userMan.Get_User_By_User_Id(uViewModel.Filter.User_Id));
+
+                    pager.TotalPages = 1;
+
+                    pager.TotalRecords = 1;
                 }
                 else
                 {
@@ -174,7 +178,7 @@ namespace Kusumgar.Controllers
             return Json(check, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Users_By_Name(string name)
+        public JsonResult Get_Roles_By_Name(string name)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
@@ -190,6 +194,7 @@ namespace Kusumgar.Controllers
 
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
+
 
     }
 }

@@ -1,10 +1,11 @@
-﻿$(document).ready(function () {
-    
-    InitializeAutoComplete($('#txtCustName'), autoComplaintSCallback);
+﻿    
+    InitializeAutoComplete($('#txtCustName'));
 
-});
 
 $(function () {
+
+    //InitializeAutoComplete($('#txtCustName'));
+    InitializeAutoComplete($("#txtCustomer_Name"));
 
     $('#hdfCurrentPage').val(0);
 

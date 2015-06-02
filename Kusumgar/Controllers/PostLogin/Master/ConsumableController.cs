@@ -25,6 +25,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Index(ConsumableViewModel cViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
 
             cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
 
@@ -35,6 +36,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public JsonResult Insert(ConsumableViewModel cViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             try
             {
                 int consumableId = _consumableMan.Insert_Consumable(cViewModel.Consumable);

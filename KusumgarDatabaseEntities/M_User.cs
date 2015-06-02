@@ -33,7 +33,7 @@ namespace KusumgarDatabaseEntities
         public string Personal_Email { get; set; }
         public string Office_Email { get; set; }
         public int Gender { get; set; }
-        public Nullable<bool> System_User_Flag { get; set; }
+        public bool System_User_Flag { get; set; }
         public string User_Name { get; set; }
         public string Password { get; set; }
         public bool Is_Active { get; set; }

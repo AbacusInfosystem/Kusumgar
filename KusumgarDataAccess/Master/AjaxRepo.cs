@@ -98,29 +98,7 @@ namespace KusumgarDataAccess
             }
 
             return customer_List;
-        }
-
-        public List<AutocompleteInfo> Get_Customer_Id(string CustomerName)
-        {
-            List<AutocompleteInfo> autoList = new List<AutocompleteInfo>();
-            List<SqlParameter> sqlParam = new List<SqlParameter>();
-            sqlParam.Add(new SqlParameter("@Customer_Name", CustomerName));
-            DataTable dt = sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Customer_By_Name_Sp.ToString(), CommandType.StoredProcedure);
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                List<DataRow> drList = new List<DataRow>();
-                drList = dt.AsEnumerable().ToList();
-
-                foreach (DataRow dr in drList)
-                {
-                    AutocompleteInfo auto = new AutocompleteInfo();
-                    auto.Label = Convert.ToString(dr["Customer_Name"]);
-                    auto.Value = Convert.ToInt32(dr["Customer_Id"]);
-                    autoList.Add(auto);
-                }
-            }
-            return autoList;
-        }
+        }        
 
         public List<AutocompleteInfo> Get_Vendor_Autocomplete(string vendorName)
         {

@@ -22,60 +22,27 @@ namespace KusumgarDataAccess
         public RoleRepo()
         {
             sqlRepo = new SQLHelperRepo();
-        }   
- 
-        public List<RoleInfo> Get_Roles(ref PaginationInfo Pager)
+        }
+
+        public List<RoleInfo> Get_Roles(ref PaginationInfo pager)
         {
             List<RoleInfo> RoleInfoList = new List<RoleInfo>();
 
-              DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Role_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Role_Sp.ToString(), CommandType.StoredProcedure);
 
-              if (dt != null && dt.Rows.Count > 0)
-              {
-                  int count = 0;
-                  List<DataRow> drList = new List<DataRow>();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+                {
+                    RoleInfoList.Add(Get_Role_Values(dr));
+                }
+            }
 
-                  drList = dt.AsEnumerable().ToList();
 
-                  count = drList.Count();
-
-                  if (Pager.IsPagingRequired)
-                  {
-                      drList = drList.Skip(Pager.CurrentPage * Pager.PageSize).Take(Pager.PageSize).ToList();
-                  }
-
-                  Pager.TotalRecords = count;
-
-                  int pages = (Pager.TotalRecords + Pager.PageSize - 1) / Pager.PageSize;
-
-                  Pager.TotalPages = pages;
-
-                  foreach (DataRow dr in drList)
-                  {
-                      RoleInfo role = new RoleInfo();
-
-                      role.RoleEntity.Role_Id = Convert.ToInt32(dr["Role_Id"]);
-
-                      role.RoleEntity.Role_Name = Convert.ToString(dr["Role_Name"]);
-
-                      role.RoleEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                      role.RoleEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                      role.RoleEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                      role.RoleEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                      role.RoleEntity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-
-                      RoleInfoList.Add(role);
-                  }
-              }
-
-              return RoleInfoList;
+            return RoleInfoList;
         }
 
-        public List<RoleInfo> Get_Roles_By_Name(string Role_Name,ref PaginationInfo Pager)
+        public List<RoleInfo> Get_Roles_By_Name(string Role_Name, ref PaginationInfo pager)
         {
             List<RoleInfo> RoleInfoList = new List<RoleInfo>();
 
@@ -87,47 +54,34 @@ namespace KusumgarDataAccess
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                int count = 0;
-                List<DataRow> drList = new List<DataRow>();
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (Pager.IsPagingRequired)
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                 {
-                    drList = drList.Skip(Pager.CurrentPage * Pager.PageSize).Take(Pager.PageSize).ToList();
-                }
-
-                Pager.TotalRecords = count;
-
-                int pages = (Pager.TotalRecords + Pager.PageSize - 1) / Pager.PageSize;
-
-                Pager.TotalPages = pages;
-
-                foreach (DataRow dr in drList)
-                {
-                    RoleInfo role = new RoleInfo();
-
-                    role.RoleEntity.Role_Id = Convert.ToInt32(dr["Role_Id"]);
-
-                    role.RoleEntity.Role_Name = Convert.ToString(dr["Role_Name"]);
-
-                    role.RoleEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                    role.RoleEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                    role.RoleEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                    role.RoleEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                    role.RoleEntity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-
-                    RoleInfoList.Add(role);
+                    RoleInfoList.Add(Get_Role_Values(dr));
                 }
             }
 
             return RoleInfoList;
+        }
+
+        public RoleInfo Get_Role_Values(DataRow dr)
+        {
+            RoleInfo role = new RoleInfo();
+
+            role.RoleEntity.Role_Id = Convert.ToInt32(dr["Role_Id"]);
+
+            role.RoleEntity.Role_Name = Convert.ToString(dr["Role_Name"]);
+
+            role.RoleEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+
+            role.RoleEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+            role.RoleEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+            role.RoleEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            role.RoleEntity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+
+            return role;
         }
 
         public RoleInfo Get_Role_By_Id(int Role_Id)
@@ -151,19 +105,7 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    RoleInfo.RoleEntity.Role_Id = Convert.ToInt32(dr["Role_Id"]);
-
-                    RoleInfo.RoleEntity.Role_Name = Convert.ToString(dr["Role_Name"]);
-
-                    RoleInfo.RoleEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                    RoleInfo.RoleEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                    RoleInfo.RoleEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                    RoleInfo.RoleEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                    RoleInfo.RoleEntity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+                    RoleInfo = Get_Role_Values(dr);
                 }
             }
 
@@ -230,6 +172,39 @@ namespace KusumgarDataAccess
         }
 
 
+        public List<AutocompleteInfo> Get_Roles_By_Name(string role_Name)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Role_Name", role_Name));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Role_By_Name_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+
+                    drList = dt.AsEnumerable().ToList();
+
+                    foreach (DataRow dr in drList)
+                    {
+                        AutocompleteInfo autoComplete = new AutocompleteInfo();
+
+                        autoComplete.Value = Convert.ToInt32(dr["Role_Id"]);
+
+                        autoComplete.Label = Convert.ToString(dr["Role_Name"]);
+
+                        autoCompletes.Add(autoComplete);
+                    }
+                }
+            }
+
+            return autoCompletes;
+        }
     }
 }

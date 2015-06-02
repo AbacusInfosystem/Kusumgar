@@ -6,6 +6,7 @@ using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
 
+
 namespace Kusumgar.Models
 {
     public class TestUnitViewModel
@@ -46,6 +47,8 @@ namespace Kusumgar.Models
         public class Test_Unit_Filter
         {
             public string Test_Unit_Name { get; set; }
+
+            public int Test_Unit_Id { get; set; }
 
         }
     }

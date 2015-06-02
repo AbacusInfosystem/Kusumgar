@@ -4,7 +4,7 @@
 
         Filter: {
 
-            Vendor_Id: $('#hdnVendorId').val(),
+             Vendor_Id: $('#hdnVendorId').val(),
              Vendor_Name : $('#txtVendorName').val()
 
                },
@@ -147,3 +147,5 @@ function PageMore(Id) {
     CallAjax("/Vendor/Get_Vendors", "json", JSON.stringify(vViewModel), "POST", "application/json", false, BindVendorInGrid, "", null);
 
 }
+
+
