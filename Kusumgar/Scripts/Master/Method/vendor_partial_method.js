@@ -59,8 +59,8 @@ function Set_Vendor() {
 
                         },
 
-                    Product_Category_Entity: {
-                        Product_Category_Name: $("#drpProductCategory option:selected").text()
+                    Material_Category_Entity: {
+                        Material_Category_Name: $("#drpProductCategory option:selected").text()
                     }
                 },
 

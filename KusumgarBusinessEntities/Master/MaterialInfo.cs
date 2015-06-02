@@ -11,21 +11,21 @@ namespace KusumgarBusinessEntities
     public class MaterialInfo
     {
         public M_Material Material_Entity { get; set; }
-        public string Product_Category_Name { get; set; }
-        public string Product_SubCategory_Name { get; set; }
+        public string Material_Category_Name { get; set; }
+        public string Material_SubCategory_Name { get; set; }
 
         public MaterialInfo()
         {
             Material_Entity = new M_Material();
         }
 
-        public string Product_Type_Str
+        public string Material_Type_Str
         {
             get
             {
-                if (Material_Entity.Product_Type != 0)
+                if (Material_Entity.Material_Type != 0)
                 {
-                    return ((ProductType)Material_Entity.Product_Type).ToString().Replace('_', ' ');
+                    return ((ProductType)Material_Entity.Material_Type).ToString().Replace('_', ' ');
                 }
                 else
                 {
@@ -34,7 +34,7 @@ namespace KusumgarBusinessEntities
             }
             set
             {
-                Product_Type_Str = value;
+                Material_Type_Str = value;
             }
         }
     }

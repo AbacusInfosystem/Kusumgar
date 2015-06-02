@@ -16,12 +16,12 @@ namespace KusumgarDatabaseEntities
     {
         public int Material_Id { get; set; }
         public string Material_Code { get; set; }
-        public int Product_Category_Id { get; set; }
-        public int Product_SubCategory_Id { get; set; }
+        public int Material_Category_Id { get; set; }
+        public int Material_SubCategory_Id { get; set; }
         public string Material_Name { get; set; }
         public string Size { get; set; }
         public string COD { get; set; }
-        public int Product_Type { get; set; }
+        public int Material_Type { get; set; }
         public bool Original_Manufacturer { get; set; }
         public string Inspection_Facility { get; set; }
         public string Testing_Facility { get; set; }

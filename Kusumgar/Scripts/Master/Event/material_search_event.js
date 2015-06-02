@@ -18,8 +18,8 @@
     //$("#drpProdCatName").change(function () {
 
     //    $.ajax({
-    //        url: '/master/product-subcategory-by-category-id',
-    //        data: { product_Category_Id: $("#drpProdCatName").val() },
+    //        url: '/master/Material-subcategory-by-category-id',
+    //        data: { Material_Category_Id: $("#drpProdCatName").val() },
     //        method: 'GET',
     //        async: false,
     //        success: function (data) {

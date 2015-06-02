@@ -49,14 +49,14 @@ namespace KusumgarModel
             _materialRepo.Update_Material(MaterialInfo);
         }
 
-        public List<ProductCategoryInfo> Get_Product_Categories(ref PaginationInfo pager)
+        public List<MaterialCategoryInfo> Get_Material_Categories(ref PaginationInfo pager)
         {
-            return _materialRepo.Get_Product_Categories(ref pager);
+            return _materialRepo.Get_Material_Categories(ref pager);
         }
 
-        public List<ProductSubCategoryInfo> Get_Product_SubCategories(int product_Category_Id, ref PaginationInfo pager)
+        public List<MaterialSubCategoryInfo> Get_Material_SubCategories(int Material_Category_Id, ref PaginationInfo pager)
         {
-            return _materialRepo.Get_Product_SubCategories(product_Category_Id, ref pager);
+            return _materialRepo.Get_Material_SubCategories(Material_Category_Id, ref pager);
         }
 
         public List<MaterialVendorInfo> Get_Material_Vendors_By_Id(int Material_Id, ref PaginationInfo pager)

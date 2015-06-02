@@ -12,11 +12,11 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Product_SubCategory
+    public partial class M_Material_SubCategory
     {
-        public int Product_SubCategory_Id { get; set; }
-        public string Product_SubCategory_Name { get; set; }
-        public int Product_Category_Id { get; set; }
+        public int Material_SubCategory_Id { get; set; }
+        public string Material_SubCategory_Name { get; set; }
+        public int Material_Category_Id { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }

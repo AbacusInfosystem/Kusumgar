@@ -15,8 +15,8 @@ namespace Kusumgar.Models
         public List<MaterialInfo> Materials { get; set; }
         public List<MaterialVendorInfo> Material_Vendors { get; set; }
         public PaginationInfo Pager { get; set; }
-        public List<ProductCategoryInfo> Product_Categories { get; set; }
-        public List<ProductSubCategoryInfo> Product_SubCategories { get; set; }
+        public List<MaterialCategoryInfo> Material_Categories { get; set; }
+        public List<MaterialSubCategoryInfo> Material_SubCategories { get; set; }
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
         public MaterialFilter Filter { get; set; }
         public int Material_Id { get; set; }
@@ -28,8 +28,8 @@ namespace Kusumgar.Models
             Materials = new List<MaterialInfo>();
             Material_Vendors = new List<MaterialVendorInfo>();
             Pager = new PaginationInfo();
-            Product_Categories = new List<ProductCategoryInfo>();
-            Product_SubCategories = new List<ProductSubCategoryInfo>();
+            Material_Categories = new List<MaterialCategoryInfo>();
+            Material_SubCategories = new List<MaterialSubCategoryInfo>();
             Friendly_Message = new List<FriendlyMessageInfo>();
             Filter = new MaterialFilter();
         }

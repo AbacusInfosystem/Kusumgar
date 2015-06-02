@@ -33,8 +33,8 @@ namespace Kusumgar.Controllers
             try
             {
                 pager.IsPagingRequired = false;
-                mViewModel.Product_Categories = _materialMan.Get_Product_Categories(ref pager);
-                mViewModel.Product_SubCategories = _materialMan.Get_Product_SubCategories(mViewModel.Material.Material_Entity.Product_Category_Id, ref pager);
+                mViewModel.Material_Categories = _materialMan.Get_Material_Categories(ref pager);
+                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Entity.Material_Category_Id, ref pager);
             }
             catch (Exception ex)
             {
@@ -123,20 +123,20 @@ namespace Kusumgar.Controllers
             return Index(mViewModel);
         }
 
-        public JsonResult Get_Product_SubCategory_By_Category_Id(int product_Category_Id)
+        public JsonResult Get_Material_SubCategory_By_Category_Id(int Material_Category_Id)
         {
-            List<ProductSubCategoryInfo> product_SubCategories = new List<ProductSubCategoryInfo>();
+            List<MaterialSubCategoryInfo> Material_SubCategories = new List<MaterialSubCategoryInfo>();
             try
             {
                 PaginationInfo pager = new PaginationInfo();
                 pager.IsPagingRequired = false;
-                product_SubCategories = _materialMan.Get_Product_SubCategories(product_Category_Id, ref pager);
+                Material_SubCategories = _materialMan.Get_Material_SubCategories(Material_Category_Id, ref pager);
             }
             catch (Exception ex)
             {
 
             }
-            return Json(product_SubCategories, JsonRequestBehavior.AllowGet);
+            return Json(Material_SubCategories, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Get_Materials_By_Name_Autocomplete(string Material_Name)

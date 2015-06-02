@@ -28,9 +28,9 @@ function Set_Material() {
 
                             Material_Code: $("#txtMaterialCode").val(),
 
-                            Product_Category_Id: $("#drpProdCatName").val(),
+                            Material_Category_Id: $("#drpProdCatName").val(),
 
-                            Product_SubCategory_Id: $("#drpSubCatName").val(),
+                            Material_SubCategory_Id: $("#drpSubCatName").val(),
 
                             Material_Name: $("#txtMaterialName").val(),
 
@@ -38,7 +38,7 @@ function Set_Material() {
 
                             COD: $("#txtCOD").val(),
 
-                            Product_Type: $("#drpProdType").val(),
+                            Material_Type: $("#drpProdType").val(),
 
                             Original_Manufacturer: $("#hdnIs_OrigMan").val(),
 
@@ -60,7 +60,7 @@ function Bind_SubCategories(data) {
 
     if (data.length > 0) {
         for (var i = 0; i < data.length ; i++) {
-            htmltext += "<option value='" + data[i].Product_SubCategory_Entity.Product_SubCategory_Id + "'>" + data[i].Product_SubCategory_Entity.Product_SubCategory_Name + "</option>";
+            htmltext += "<option value='" + data[i].Material_SubCategory_Entity.Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Entity.Material_SubCategory_Name + "</option>";
         }
     }
     $("#drpSubCatName").html(htmltext);

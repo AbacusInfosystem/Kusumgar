@@ -39,7 +39,7 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += data.Materials[i].Product_Category_Name;
+        htmlText += data.Materials[i].Material_Category_Name;
 
         htmlText += "</td>";        
 
@@ -51,7 +51,7 @@ function Bind_Material_Grid(data) {
         
         htmlText += "<td>";
         
-        htmlText += data.Materials[i].Product_Type_Str;
+        htmlText += data.Materials[i].Material_Type_Str;
 
         htmlText += "</td>";        
         
@@ -108,7 +108,7 @@ function PageMore(Id) {
 
 //    if (data.length > 0) {
 //        for (var i = 0; i < data.length ; i++) {
-//            htmltext += "<option value='" + data[i].Product_SubCategory_Entity.Product_SubCategory_Id + "'>" + data[i].Product_SubCategory_Entity.Product_SubCategory_Name + "</option>";
+//            htmltext += "<option value='" + data[i].Material_SubCategory_Entity.Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Entity.Material_SubCategory_Name + "</option>";
 //        }
 //    }
 //    $("#drpSubCatName").html(htmltext);

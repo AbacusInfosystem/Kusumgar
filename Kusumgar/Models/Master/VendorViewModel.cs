@@ -31,13 +31,13 @@ namespace Kusumgar.Models
 
             Filter = new Vendor_Filter();
 
-            Product_Category = new List<ProductCategoryInfo>();
+            Material_Category = new List<MaterialCategoryInfo>();
 
             Is_Primary = false;
 
             Attribute_Code = new AttributeCodeInfo();
 
-            Product_Category_Info = new ProductCategoryInfo();
+            Material_Category_Info = new MaterialCategoryInfo();
 
         }
 
@@ -61,11 +61,11 @@ namespace Kusumgar.Models
 
         public Vendor_Filter Filter { get; set; }
 
-        public List<ProductCategoryInfo> Product_Category { get; set; }
+        public List<MaterialCategoryInfo> Material_Category { get; set; }
 
         public AttributeCodeInfo Attribute_Code { get; set; }
 
-        public ProductCategoryInfo Product_Category_Info { get; set; }
+        public MaterialCategoryInfo Material_Category_Info { get; set; }
        
     
     public class Vendor_Filter

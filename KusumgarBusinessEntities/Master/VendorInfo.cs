@@ -24,7 +24,7 @@ namespace KusumgarBusinessEntities
 
         MaterialVendorInfo Material_Vendor_Details { get; set; }
 
-        public M_Product_Category Product_Category_Entity { get; set; }
+        public M_Material_Category Material_Category_Entity { get; set; }
        
         public string PreviousCategoryName {get;set;}
     }

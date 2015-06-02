@@ -1019,8 +1019,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "material-6",
-            url: "master/product-subcategory-by-category-id",
-            defaults: new { controller = "Material", action = "Get_Product_SubCategory_By_Category_Id", id = UrlParameter.Optional },
+            url: "master/material-subcategory-by-category-id",
+            defaults: new { controller = "Material", action = "Get_Material_SubCategory_By_Category_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(

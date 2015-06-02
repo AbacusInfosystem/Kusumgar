@@ -41,16 +41,16 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Complaint(ComplaintInfo complaintInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if (complaintInfo.ComplaintEntity.ComplaintId != 0)
+            if (complaintInfo.ComplaintEntity.Complaint_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@ComplaintId", complaintInfo.ComplaintEntity.ComplaintId));
+                sqlParamList.Add(new SqlParameter("@ComplaintId", complaintInfo.ComplaintEntity.Complaint_Id));
             }
-            sqlParamList.Add(new SqlParameter("@CustomerId", complaintInfo.ComplaintEntity.CustomerId));
-            sqlParamList.Add(new SqlParameter("@OrderId", complaintInfo.ComplaintEntity.OrderId));
-            sqlParamList.Add(new SqlParameter("@OrderItemId", complaintInfo.ComplaintEntity.OrderItemId));
-            sqlParamList.Add(new SqlParameter("@ChallanNo", complaintInfo.ComplaintEntity.ChallanNo));
+            sqlParamList.Add(new SqlParameter("@CustomerId", complaintInfo.ComplaintEntity.Customer_Id));
+            sqlParamList.Add(new SqlParameter("@OrderId", complaintInfo.ComplaintEntity.Order_Id));
+            sqlParamList.Add(new SqlParameter("@OrderItemId", complaintInfo.ComplaintEntity.Order_Item_Id));
+            sqlParamList.Add(new SqlParameter("@ChallanNo", complaintInfo.ComplaintEntity.Challan_No));
             sqlParamList.Add(new SqlParameter("@Description", complaintInfo.ComplaintEntity.CDescription));
-            if (complaintInfo.ComplaintEntity.ComplaintId == 0)
+            if (complaintInfo.ComplaintEntity.Complaint_Id == 0)
             {
                 sqlParamList.Add(new SqlParameter("@CreatedBy", complaintInfo.ComplaintEntity.CreatedBy));
             }
@@ -81,11 +81,11 @@ namespace KusumgarDataAccess
                 foreach (DataRow dr in drList)
                 {
                     ComplaintInfo complaint = new ComplaintInfo();
-                    complaint.ComplaintEntity.ComplaintId = Convert.ToInt32(dr["ComplaintId"]);
+                    complaint.ComplaintEntity.Complaint_Id = Convert.ToInt32(dr["ComplaintId"]);
                     complaint.CustomerName = Convert.ToString(dr["Customer_Name"]);
-                    complaint.ComplaintEntity.OrderId = Convert.ToString(dr["OrderId"]);
-                    complaint.ComplaintEntity.OrderItemId = Convert.ToString(dr["OrderItemId"]);
-                    complaint.ComplaintEntity.ChallanNo = Convert.ToString(dr["ChallanNo"]);
+                    complaint.ComplaintEntity.Order_Id = Convert.ToString(dr["OrderId"]);
+                    complaint.ComplaintEntity.Order_Item_Id = Convert.ToString(dr["OrderItemId"]);
+                    complaint.ComplaintEntity.Challan_No = Convert.ToString(dr["ChallanNo"]);
                     complaint.ComplaintEntity.CDescription = Convert.ToString(dr["CDescription"]);
                     ComplaintList.Add(complaint);
                 }
@@ -122,12 +122,12 @@ namespace KusumgarDataAccess
                 foreach (DataRow dr in drList)
                 {
                     ComplaintInfo complaint = new ComplaintInfo();
-                    complaint.ComplaintEntity.ComplaintId = Convert.ToInt32(dr["ComplaintId"]);
-                    complaint.ComplaintEntity.CustomerId = Convert.ToInt32(dr["CustomerId"]);
+                    complaint.ComplaintEntity.Complaint_Id = Convert.ToInt32(dr["ComplaintId"]);
+                    complaint.ComplaintEntity.Customer_Id = Convert.ToInt32(dr["CustomerId"]);
                     complaint.CustomerName = Convert.ToString(dr["Customer_Name"]);
-                    complaint.ComplaintEntity.OrderId = Convert.ToString(dr["OrderId"]);
-                    complaint.ComplaintEntity.OrderItemId = Convert.ToString(dr["OrderItemId"]);
-                    complaint.ComplaintEntity.ChallanNo = Convert.ToString(dr["ChallanNo"]);
+                    complaint.ComplaintEntity.Order_Id = Convert.ToString(dr["OrderId"]);
+                    complaint.ComplaintEntity.Order_Item_Id = Convert.ToString(dr["OrderItemId"]);
+                    complaint.ComplaintEntity.Challan_No = Convert.ToString(dr["ChallanNo"]);
                     complaint.ComplaintEntity.CDescription = Convert.ToString(dr["CDescription"]);
                     ComplaintInfoList.Add(complaint);
                 }
@@ -152,12 +152,12 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    ComplaintInfo.ComplaintEntity.ComplaintId = Convert.ToInt32(dr["ComplaintId"]);
-                    ComplaintInfo.ComplaintEntity.CustomerId = Convert.ToInt32(dr["CustomerId"]);
+                    ComplaintInfo.ComplaintEntity.Complaint_Id = Convert.ToInt32(dr["ComplaintId"]);
+                    ComplaintInfo.ComplaintEntity.Customer_Id = Convert.ToInt32(dr["CustomerId"]);
                     ComplaintInfo.CustomerName = Convert.ToString(dr["Customer_Name"]);
-                    ComplaintInfo.ComplaintEntity.OrderId = Convert.ToString(dr["OrderId"]);
-                    ComplaintInfo.ComplaintEntity.OrderItemId = Convert.ToString(dr["OrderItemId"]);
-                    ComplaintInfo.ComplaintEntity.ChallanNo = Convert.ToString(dr["ChallanNo"]);
+                    ComplaintInfo.ComplaintEntity.Order_Id = Convert.ToString(dr["OrderId"]);
+                    ComplaintInfo.ComplaintEntity.Order_Item_Id = Convert.ToString(dr["OrderItemId"]);
+                    ComplaintInfo.ComplaintEntity.Challan_No = Convert.ToString(dr["ChallanNo"]);
                     ComplaintInfo.ComplaintEntity.CDescription = Convert.ToString(dr["CDescription"]);
                 }
             }

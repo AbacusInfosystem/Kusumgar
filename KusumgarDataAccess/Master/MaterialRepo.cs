@@ -47,12 +47,12 @@ namespace KusumgarDataAccess
                 sqlParamList.Add(new SqlParameter("@Material_Id", MaterialInfo.Material_Entity.Material_Id));
             }
             sqlParamList.Add(new SqlParameter("@Material_Code", MaterialInfo.Material_Entity.Material_Code));
-            sqlParamList.Add(new SqlParameter("@Product_Category_Id", MaterialInfo.Material_Entity.Product_Category_Id));
-            sqlParamList.Add(new SqlParameter("@Product_SubCategory_Id", MaterialInfo.Material_Entity.Product_SubCategory_Id));
+            sqlParamList.Add(new SqlParameter("@Material_Category_Id", MaterialInfo.Material_Entity.Material_Category_Id));
+            sqlParamList.Add(new SqlParameter("@Material_SubCategory_Id", MaterialInfo.Material_Entity.Material_SubCategory_Id));
             sqlParamList.Add(new SqlParameter("@Material_Name", MaterialInfo.Material_Entity.Material_Name));
             sqlParamList.Add(new SqlParameter("@Size", MaterialInfo.Material_Entity.Size));
             sqlParamList.Add(new SqlParameter("@COD", MaterialInfo.Material_Entity.COD));
-            sqlParamList.Add(new SqlParameter("@Product_Type", MaterialInfo.Material_Entity.Product_Type));
+            sqlParamList.Add(new SqlParameter("@Material_Type", MaterialInfo.Material_Entity.Material_Type));
             sqlParamList.Add(new SqlParameter("@Original_Manufacturer", MaterialInfo.Material_Entity.Original_Manufacturer));
             sqlParamList.Add(new SqlParameter("@Inspection_Facility", MaterialInfo.Material_Entity.Inspection_Facility));
             sqlParamList.Add(new SqlParameter("@Testing_Facility", MaterialInfo.Material_Entity.Testing_Facility));
@@ -93,12 +93,12 @@ namespace KusumgarDataAccess
             MaterialInfo Material = new MaterialInfo();
             Material.Material_Entity.Material_Id = Convert.ToInt32(dr["Material_Id"]);
             Material.Material_Entity.Material_Code = Convert.ToString(dr["Material_Code"]);
-            Material.Product_Category_Name = Convert.ToString(dr["Product_Category_Name"]);
-            Material.Product_SubCategory_Name = Convert.ToString(dr["Product_SubCategory_Name"]);
+            Material.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
+            Material.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
             Material.Material_Entity.Material_Name = Convert.ToString(dr["Material_Name"]);
             Material.Material_Entity.Size = Convert.ToString(dr["Size"]);
             Material.Material_Entity.COD = Convert.ToString(dr["COD"]);
-            Material.Material_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
+            Material.Material_Entity.Material_Type = Convert.ToInt32(dr["Material_Type"]);
             Material.Material_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
             Material.Material_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             Material.Material_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
@@ -155,63 +155,63 @@ namespace KusumgarDataAccess
             MaterialInfo Material = new MaterialInfo();
             Material.Material_Entity.Material_Id = Convert.ToInt32(dr["Material_Id"]);
             Material.Material_Entity.Material_Code = Convert.ToString(dr["Material_Code"]);
-            Material.Material_Entity.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
-            Material.Material_Entity.Product_SubCategory_Id = Convert.ToInt32(dr["Product_SubCategory_Id"]);
-            Material.Product_Category_Name = Convert.ToString(dr["Product_Category_Name"]);
-            Material.Product_SubCategory_Name = Convert.ToString(dr["Product_SubCategory_Name"]);
+            Material.Material_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+            Material.Material_Entity.Material_SubCategory_Id = Convert.ToInt32(dr["Material_SubCategory_Id"]);
+            Material.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
+            Material.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
             Material.Material_Entity.Material_Name = Convert.ToString(dr["Material_Name"]);
             Material.Material_Entity.Size = Convert.ToString(dr["Size"]);
             Material.Material_Entity.COD = Convert.ToString(dr["COD"]);
-            Material.Material_Entity.Product_Type = Convert.ToInt32(dr["Product_Type"]);
+            Material.Material_Entity.Material_Type = Convert.ToInt32(dr["Material_Type"]);
             Material.Material_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
             Material.Material_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
             Material.Material_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
             return Material;
         }
 
-        public List<ProductCategoryInfo> Get_Product_Categories(ref PaginationInfo pager)
+        public List<MaterialCategoryInfo> Get_Material_Categories(ref PaginationInfo pager)
         {
-            List<ProductCategoryInfo> product_Categories = new List<ProductCategoryInfo>();
-            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Product_Categories_sp.ToString(), CommandType.StoredProcedure);
+            List<MaterialCategoryInfo> Material_Categories = new List<MaterialCategoryInfo>();
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Material_Categories_sp.ToString(), CommandType.StoredProcedure);
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                product_Categories.Add(Get_Product_Category_Values(dr));
+                Material_Categories.Add(Get_Material_Category_Values(dr));
             }
-            return product_Categories;
+            return Material_Categories;
         }
 
-        private ProductCategoryInfo Get_Product_Category_Values(DataRow dr)
+        private MaterialCategoryInfo Get_Material_Category_Values(DataRow dr)
         {
-            ProductCategoryInfo product_Category = new ProductCategoryInfo();
-            product_Category.Product_Category_Entity.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
-            product_Category.Product_Category_Entity.Product_Category_Name = Convert.ToString(dr["Product_Category_Name"]);
-            return product_Category;
+            MaterialCategoryInfo Material_Category = new MaterialCategoryInfo();
+            Material_Category.Material_Category_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+            Material_Category.Material_Category_Entity.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
+            return Material_Category;
         }
 
-        public List<ProductSubCategoryInfo> Get_Product_SubCategories(int product_Category_Id, ref PaginationInfo pager)
+        public List<MaterialSubCategoryInfo> Get_Material_SubCategories(int Material_Category_Id, ref PaginationInfo pager)
         {
-            List<ProductSubCategoryInfo> product_SubCategories = new List<ProductSubCategoryInfo>();
+            List<MaterialSubCategoryInfo> Material_SubCategories = new List<MaterialSubCategoryInfo>();
             List<SqlParameter> sqlParams = new List<SqlParameter>();
-            sqlParams.Add(new SqlParameter("@Product_Category_Id", product_Category_Id));
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Product_SubCategory_By_CategoryId_Sp.ToString(), CommandType.StoredProcedure);
+            sqlParams.Add(new SqlParameter("@Material_Category_Id", Material_Category_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Material_SubCategory_By_CategoryId_Sp.ToString(), CommandType.StoredProcedure);
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                product_SubCategories.Add(Get_Product_SubCategory_Values(dr));
+                Material_SubCategories.Add(Get_Material_SubCategory_Values(dr));
             }
-            return product_SubCategories;
+            return Material_SubCategories;
         }
 
-        private ProductSubCategoryInfo Get_Product_SubCategory_Values(DataRow dr)
+        private MaterialSubCategoryInfo Get_Material_SubCategory_Values(DataRow dr)
         {
-            ProductSubCategoryInfo product_SubCategory = new ProductSubCategoryInfo();
-            product_SubCategory.Product_SubCategory_Entity.Product_SubCategory_Id = Convert.ToInt32(dr["Product_SubCategory_Id"]);
-            product_SubCategory.Product_SubCategory_Entity.Product_SubCategory_Name = Convert.ToString(dr["Product_SubCategory_Name"]);
-            product_SubCategory.Product_SubCategory_Entity.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
-            product_SubCategory.Product_SubCategory_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            product_SubCategory.Product_SubCategory_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            product_SubCategory.Product_SubCategory_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            product_SubCategory.Product_SubCategory_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-            return product_SubCategory;
+            MaterialSubCategoryInfo Material_SubCategory = new MaterialSubCategoryInfo();
+            Material_SubCategory.Material_SubCategory_Entity.Material_SubCategory_Id = Convert.ToInt32(dr["Material_SubCategory_Id"]);
+            Material_SubCategory.Material_SubCategory_Entity.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
+            Material_SubCategory.Material_SubCategory_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+            Material_SubCategory.Material_SubCategory_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            Material_SubCategory.Material_SubCategory_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            Material_SubCategory.Material_SubCategory_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            Material_SubCategory.Material_SubCategory_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            return Material_SubCategory;
         }
 
         public int Insert_Material_Vendor(MaterialVendorInfo MaterialVendorInfo)
