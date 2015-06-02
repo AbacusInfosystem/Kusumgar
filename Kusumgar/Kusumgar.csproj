@@ -255,9 +255,10 @@
     <Compile Include="Controllers\PostLogin\Master\TestController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestUnitController.cs" />
     <Compile Include="Controllers\PostLogin\Master\UserController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
     <Compile Include="Controllers\PostLogin\Master\VendorController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WArticleController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\WorkcenterController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\WorkCenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessRouteCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessController.cs" />
     <Compile Include="Controllers\PostLogin\Master\DefectController.cs" />
@@ -289,6 +290,7 @@
     <Compile Include="Models\Master\UserViewModel.cs" />
     <Compile Include="Models\Master\VendorContactViewModel.cs" />
     <Compile Include="Models\Master\VendorViewModel.cs" />
+    <Compile Include="Models\Master\WorkCenterViewModel.cs" />
     <Compile Include="Models\Master\YArticleViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
@@ -946,6 +948,8 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\Master\Event\work_center_event.js" />
+    <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -995,6 +999,8 @@
     <Content Include="Scripts\Master\Method\attribute_code_search_method.js" />
     <Content Include="Scripts\Master\Method\consumable_method.js" />
     <Content Include="Scripts\Master\Method\consumable_search_method.js" />
+    <Content Include="Scripts\Master\Method\work_center_listing_method.js" />
+    <Content Include="Scripts\Master\Method\work_center_method.js" />
     <Content Include="Scripts\Master\Method\yarticle_listing_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
@@ -1031,6 +1037,7 @@
     <Content Include="Scripts\Master\Validation\test_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_validation.js" />
+    <Content Include="Scripts\Master\Validation\work_center_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />

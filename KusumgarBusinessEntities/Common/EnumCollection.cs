@@ -229,7 +229,26 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
 
         // Work Center
+        
+        Get_Factories_Sp,
+        Get_Processes_Sp,
         Get_Work_Stations_Sp,
+        Get_Work_Stations_By_Factory_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_Sp,
+        Get_Work_Centers_By_Work_Station_Id_Sp,
+        Get_Work_Centers_By_Process_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_By_Process_Id_Sp,
+        Get_Work_Centers_By_Work_Station_Id_By_Process_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_By_Process_Id_Sp,
+        Insert_Work_Center_sp,
+        Update_Work_Center_sp,
+        Get_Work_Centers_Sp,
+        Get_Work_Centers_By_Work_Center_Id_Sp,
+        Insert_Work_Center_Process_sp,
+        Delete_Work_Center_Process_By_Work_Center_Id_Sp,
+
+
 
         //Vendor
 

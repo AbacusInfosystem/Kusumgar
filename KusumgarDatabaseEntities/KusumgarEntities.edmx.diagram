@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="83916aa3226344bf8e42d473fd82098a" Name="Diagram1" ZoomLevel="73">
+      <Diagram DiagramId="83916aa3226344bf8e42d473fd82098a" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="KusumgarModel.Bank_Details" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.Complaint" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.Contact" Width="1.5" PointX="4.75" PointY="0.75" />
@@ -19,28 +19,32 @@
         <EntityTypeShape EntityType="KusumgarModel.M_Defect" Width="1.5" PointX="8.75" PointY="8.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Defect_Type" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Fabric_Type" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Industrial" Width="1.5" PointX="10.75" PointY="7.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Industrial_Category" Width="1.5" PointX="2.75" PointY="11.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Industrial_Group" Width="1.5" PointX="4.75" PointY="11.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Industrial_Vendors" Width="1.5" PointX="10.75" PointY="11.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Nation" Width="1.5" PointX="12.75" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Payment_Terms" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Product" Width="1.5" PointX="6.75" PointY="12.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Product_Category" Width="1.5" PointX="12.75" PointY="8.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Product_SubCategory" Width="1.5" PointX="12.75" PointY="11.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Product_Vendor" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Product_Vendors" Width="1.5" PointX="0.75" PointY="14.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Role" Width="1.5" PointX="14.75" PointY="3.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Role_Access_Function_Mapping" Width="1.5" PointX="14.75" PointY="7.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_State" Width="1.5" PointX="14.75" PointY="11.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_SubCategory" Width="1.5" PointX="2.75" PointY="15.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Test" Width="1.5" PointX="8.75" PointY="15.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Test_Unit" Width="1.5" PointX="10.75" PointY="15.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_User" Width="1.5" PointX="12.75" PointY="15.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_User_Role_Mapping" Width="1.5" PointX="14.75" PointY="15.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Vendor" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Work_Center" Width="1.5" PointX="16.75" PointY="10.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Factory" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Industrial" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Industrial_Category" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Industrial_Group" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Industrial_Vendors" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Nation" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Payment_Terms" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Process" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product_Category" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product_SubCategory" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product_Vendor" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Product_Vendors" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Role" Width="1.5" PointX="14.75" PointY="14.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Role_Access_Function_Mapping" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_State" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_SubCategory" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Test" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Test_Unit" Width="1.5" PointX="4.75" PointY="16.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_User" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_User_Role_Mapping" Width="1.5" PointX="16.75" PointY="13.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Vendor" Width="1.5" PointX="10.75" PointY="17.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Center" Width="1.5" PointX="16.75" PointY="17.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Center_Process" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Work_Station" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="18.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

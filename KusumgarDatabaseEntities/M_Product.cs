@@ -21,7 +21,7 @@ namespace KusumgarDatabaseEntities
         public string Product_Name { get; set; }
         public string Size { get; set; }
         public string COD { get; set; }
-        public string Product_Type { get; set; }
+        public int Product_Type { get; set; }
         public bool Original_Manufacturer { get; set; }
         public string Inspection_Facility { get; set; }
         public string Testing_Facility { get; set; }

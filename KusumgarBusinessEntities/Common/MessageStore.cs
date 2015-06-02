@@ -211,6 +211,16 @@ namespace KusumgarBusinessEntities.Common
 
                 #endregion
 
+                #region WorkCenter
+
+                FriendlyMessageInfo WC001 = new FriendlyMessageInfo("WC001", MessageType.Success, "Work Center has been added successfully.");
+                hash.Add("WC001", WC001);
+
+                FriendlyMessageInfo WC002 = new FriendlyMessageInfo("WC002", MessageType.Success, "Work Center has been updated successfully.");
+                hash.Add("WC002", WC002);
+
+                #endregion
+
             #endregion
 
                 #region CRM

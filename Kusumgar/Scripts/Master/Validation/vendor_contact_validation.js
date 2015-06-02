@@ -20,7 +20,10 @@
         },
 
         rules: {
-            
+            "Vendor_Contact.Contact_Entity.Vendor_Id":
+                {
+                    required:true
+                },
             "Vendor_Contact.Contact_Entity.Contact_Name":
                 {
                     required: true
@@ -65,6 +68,10 @@
         },
         messages: {
 
+            "Vendor_Contact.Contact_Entity.Vendor_Id":
+            {
+                required: "Vendor name is required."
+            },
             "Vendor_Contact.Contact_Entity.Contact_Name":
                 {
                     required: "Contact name is required"
