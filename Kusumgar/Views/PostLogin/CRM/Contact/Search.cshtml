@@ -60,8 +60,9 @@
                                         <div class="form-group">
                                             <label for="txtCustomerName">Customer name</label>
                                             <div class="auto-complete">
-                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="Filter.Customer_Name" value="@Model.Filter.Customer_Name">
-                                                <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter.Customer_Id"  name="Filter.Customer_Id">
+                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="">
+                                                <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter.Customer_Id"  name="Filter.Customer_Id" class="auto-complete-value">
+                                                <input type="hidden" id="hdnCustomer_Name" value="@Model.Filter.Customer_Name" name="Filter.Customer_Name" class="auto-complete-label">
                                             </div>
                                         </div>
                                     </div>

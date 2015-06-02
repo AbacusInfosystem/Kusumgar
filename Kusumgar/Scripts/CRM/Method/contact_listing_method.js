@@ -5,7 +5,7 @@ function SearchContact() {
             Filter:
                 {
                     Customer_Id: $("#hdnCustomer_Id").val(),
-                    Customer_Name: $("#txtCustomer_Name").val()
+                    Customer_Name: $(".text").text()
                 },
 
             Pager: {

@@ -4,9 +4,10 @@ function SearchUser()
 
     var _userViewModel = 
         {
-            FilterVal:
+            Filter:
                 {
-                    FirstName: $("#txtEmployeeName").val()
+                    FirstName: $("#txtEmployeeName").val(),
+                    User_Id: $("#txtUser_Id").val()
                 },
 
             Pager: {

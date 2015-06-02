@@ -515,7 +515,7 @@
           <Property Name="Personal_Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Office_Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Gender" Type="int" Nullable="false" />
-          <Property Name="System_User_Flag" Type="bit" />
+          <Property Name="System_User_Flag" Type="bit" Nullable="false" />
           <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
@@ -736,13 +736,13 @@
           <EntitySet Name="M_SubCategory" EntityType="KusumgarModel.M_SubCategory" />
           <EntitySet Name="M_Test" EntityType="KusumgarModel.M_Test" />
           <EntitySet Name="M_Test_Unit" EntityType="KusumgarModel.M_Test_Unit" />
-          <EntitySet Name="M_User" EntityType="KusumgarModel.M_User" />
           <EntitySet Name="M_User_Role_Mapping" EntityType="KusumgarModel.M_User_Role_Mapping" />
           <EntitySet Name="M_Vendor" EntityType="KusumgarModel.M_Vendor" />
           <EntitySet Name="M_Work_Center" EntityType="KusumgarModel.M_Work_Center" />
           <EntitySet Name="M_Work_Center_Process" EntityType="KusumgarModel.M_Work_Center_Process" />
           <EntitySet Name="M_Work_Station" EntityType="KusumgarModel.M_Work_Station" />
           <EntitySet Name="M_Y_Article" EntityType="KusumgarModel.M_Y_Article" />
+          <EntitySet Name="M_User" EntityType="KusumgarModel.M_User" />
         </EntityContainer>
         <EntityType Name="Bank_Details">
           <Key>
@@ -1231,38 +1231,6 @@
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="M_User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile_No1" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile_No2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Residence_Landline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Landline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Residence_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Office_PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Residence_PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Designtation" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Birth_Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Fax_No" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Date_Of_Joining" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Personal_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Office_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Int32" Nullable="false" />
-          <Property Name="System_User_Flag" Type="Boolean" />
-          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="M_User_Role_Mapping">
           <Key>
             <PropertyRef Name="User_Role_Id" />
@@ -1394,6 +1362,38 @@
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_No1" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_No2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Residence_Landline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Office_Landline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Office_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Residence_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Office_PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Residence_PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Designtation" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Birth_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fax_No" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Joining" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Personal_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Office_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="System_User_Flag" Type="Boolean" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1921,39 +1921,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="M_User">
-            <EntityTypeMapping TypeName="KusumgarModel.M_User">
-              <MappingFragment StoreEntitySet="M_User">
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
-                <ScalarProperty Name="System_User_Flag" ColumnName="System_User_Flag" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Office_Email" ColumnName="Office_Email" />
-                <ScalarProperty Name="Personal_Email" ColumnName="Personal_Email" />
-                <ScalarProperty Name="Date_Of_Joining" ColumnName="Date_Of_Joining" />
-                <ScalarProperty Name="Fax_No" ColumnName="Fax_No" />
-                <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
-                <ScalarProperty Name="Designtation" ColumnName="Designtation" />
-                <ScalarProperty Name="Residence_PinCode" ColumnName="Residence_PinCode" />
-                <ScalarProperty Name="Office_PinCode" ColumnName="Office_PinCode" />
-                <ScalarProperty Name="Residence_Address" ColumnName="Residence_Address" />
-                <ScalarProperty Name="Office_Address" ColumnName="Office_Address" />
-                <ScalarProperty Name="Office_Landline" ColumnName="Office_Landline" />
-                <ScalarProperty Name="Residence_Landline" ColumnName="Residence_Landline" />
-                <ScalarProperty Name="Mobile_No2" ColumnName="Mobile_No2" />
-                <ScalarProperty Name="Mobile_No1" ColumnName="Mobile_No1" />
-                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
-                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
-                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="M_User_Role_Mapping">
             <EntityTypeMapping TypeName="KusumgarModel.M_User_Role_Mapping">
               <MappingFragment StoreEntitySet="M_User_Role_Mapping">
@@ -2089,6 +2056,39 @@
                 <ScalarProperty Name="Twist_Mingle_Id" ColumnName="Twist_Mingle_Id" />
                 <ScalarProperty Name="Denier_Id" ColumnName="Denier_Id" />
                 <ScalarProperty Name="Y_Article_Id" ColumnName="Y_Article_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_User">
+            <EntityTypeMapping TypeName="KusumgarModel.M_User">
+              <MappingFragment StoreEntitySet="M_User">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="System_User_Flag" ColumnName="System_User_Flag" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Office_Email" ColumnName="Office_Email" />
+                <ScalarProperty Name="Personal_Email" ColumnName="Personal_Email" />
+                <ScalarProperty Name="Date_Of_Joining" ColumnName="Date_Of_Joining" />
+                <ScalarProperty Name="Fax_No" ColumnName="Fax_No" />
+                <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+                <ScalarProperty Name="Designtation" ColumnName="Designtation" />
+                <ScalarProperty Name="Residence_PinCode" ColumnName="Residence_PinCode" />
+                <ScalarProperty Name="Office_PinCode" ColumnName="Office_PinCode" />
+                <ScalarProperty Name="Residence_Address" ColumnName="Residence_Address" />
+                <ScalarProperty Name="Office_Address" ColumnName="Office_Address" />
+                <ScalarProperty Name="Office_Landline" ColumnName="Office_Landline" />
+                <ScalarProperty Name="Residence_Landline" ColumnName="Residence_Landline" />
+                <ScalarProperty Name="Mobile_No2" ColumnName="Mobile_No2" />
+                <ScalarProperty Name="Mobile_No1" ColumnName="Mobile_No1" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

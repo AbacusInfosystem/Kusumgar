@@ -7,7 +7,8 @@ function SearchRole()
         {
             Filter:
                 {
-                    Role_Name: $("#txtRole_Name").val()
+                    Role_Name: $("#txtRole_Name").val(),
+                    Role_Id: $("#hdRole_Id").val()
                 },
 
             Pager: {

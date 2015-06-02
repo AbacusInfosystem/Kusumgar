@@ -4,8 +4,6 @@
 
     $('#txtBirthDate').datepicker();
 
-    $("#hdnActive").val(true);
-
     $('#ChkSystem_User_Flag').on('ifChanged', function (event) {
 
         if ($("#ChkSystem_User_Flag").prop('checked')) {

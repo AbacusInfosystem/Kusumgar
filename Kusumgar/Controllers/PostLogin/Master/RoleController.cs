@@ -127,9 +127,13 @@ namespace Kusumgar.Controllers.PostLogin
             {
                 pager = rViewModel.Pager;
 
-                if (!string.IsNullOrEmpty(rViewModel.Filter.Role_Name))
+                if (rViewModel.Filter.Role_Id != 0)
                 {
-                    rViewModel.Roles= _roleMgr.Get_Roles_By_Name(rViewModel.Filter.Role_Name, ref pager);
+                    rViewModel.Roles.Add(_roleMgr.Get_Role_By_Id(rViewModel.Filter.Role_Id));
+
+                    pager.TotalPages = 1;
+
+                    pager.TotalRecords = 1;
                 }
                 else
                 {
@@ -162,6 +166,23 @@ namespace Kusumgar.Controllers.PostLogin
             }
 
             return Json(check, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Roles_By_Name(string name)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            try
+            {
+                autoCompletes = _roleMgr.Get_Roles_By_Name(name);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Role Controller - Get_Roles_By_Name " + ex.ToString());
+            }
+
+
+            return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
     }

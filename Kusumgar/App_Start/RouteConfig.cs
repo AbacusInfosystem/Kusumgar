@@ -790,6 +790,12 @@ namespace Kusumgar
             defaults: new { controller = "Role", action = "Check_Existing_Role", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+           name: "role-7",
+           url: "master/search-role-by-name/{name}",
+           defaults: new { controller = "Role", action = "Get_Roles_By_Name", name = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Ajax

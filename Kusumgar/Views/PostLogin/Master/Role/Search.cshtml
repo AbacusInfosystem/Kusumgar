@@ -33,8 +33,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="txtRole_ame">Role Name</label>
-                                        <input type="text" class="form-control input-sm" id="txtRole_Name" placeholder="Enter Role Name" />
+                                        <div class="auto-complete">
+                                            <label for="txtRole_ame">Role Name</label>
+                                            <input type="text" class="form-control input-sm" id="txtRole_Name" placeholder="Enter Role Name" value="@Model.Filter.Role_Name" />
+                                            <input type="hidden" id="hdRole_Id" value="@Model.Filter.Role_Id" />
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
