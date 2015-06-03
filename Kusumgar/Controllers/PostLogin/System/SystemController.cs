@@ -25,5 +25,12 @@ namespace Kusumgar.Controllers.PostLogin.Common
 
             return View();
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Error(string message)
+        {
+            return View();
+        }
+       
     }
 }

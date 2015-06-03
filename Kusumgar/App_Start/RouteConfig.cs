@@ -213,7 +213,15 @@ namespace Kusumgar
             defaults: new { controller = "System", action = "UnAuthorize", returnURL = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "system-2",
+            url: "system/error",
+            defaults: new { controller = "System", action = "Error", returnURL = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
+
+
 
             #region Dashboard
 

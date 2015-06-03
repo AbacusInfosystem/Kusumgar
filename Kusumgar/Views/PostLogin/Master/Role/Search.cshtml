@@ -35,9 +35,9 @@
                                     <div class="form-group">
                                         <div class="auto-complete">
                                             <label for="txtRole_ame">Role Name</label>
-                                            <input type="text" class="form-control input-sm" id="txtRole_Name" placeholder="Enter Role Name" value="@Model.Filter.Role_Name" />
-                                            <input type="hidden" id="hdRole_Id" value="@Model.Filter.Role_Id" />
-
+                                            <input type="text" class="form-control input-sm" id="txtRole_Name" placeholder="Enter Role Name"  />
+                                            <input type="hidden" id="hdRole_Id" value="@Model.Filter.Role_Id" name="Filter.Role_Id" class="auto-complete-value" />
+                                            <input type="hidden" id="hdRole_Name" value="@Model.Filter.Role_Name" name="Filter.Role_Name" class="auto-complete-label" />
                                         </div>
                                     </div>
                                 </div>

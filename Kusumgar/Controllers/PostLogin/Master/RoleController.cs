@@ -64,6 +64,10 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
+                rViewModel.Role.RoleEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 int role_Id = _roleMgr.Insert_Role(rViewModel.Role);
 
                 _roleAccessMan.Insert_Role_Access(role_Id, rViewModel.Selected_Role_Access);
@@ -86,6 +90,8 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
+                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 _roleMgr.Update_Role(rViewModel.Role);
 
                 _roleAccessMan.Insert_Role_Access(rViewModel.Role.RoleEntity.Role_Id, rViewModel.Selected_Role_Access);
@@ -129,11 +135,7 @@ namespace Kusumgar.Controllers.PostLogin
 
                 if (rViewModel.Filter.Role_Id != 0)
                 {
-                    rViewModel.Roles.Add(_roleMgr.Get_Role_By_Id(rViewModel.Filter.Role_Id));
-
-                    pager.TotalPages = 1;
-
-                    pager.TotalRecords = 1;
+                    rViewModel.Roles = _roleMgr.Get_Roles_By_Id(rViewModel.Filter.Role_Id,ref pager);
                 }
                 else
                 {
