@@ -40,7 +40,7 @@ namespace Kusumgar.Controllers
             {
                 pager.IsPagingRequired = false;
 
-                uViewModel.RoleInfoList = _roleMan.Get_Roles(ref pager);
+                uViewModel.Roles = _roleMan.Get_Roles(ref pager);
             }
             catch(Exception ex)
             {
@@ -92,7 +92,7 @@ namespace Kusumgar.Controllers
             try
             {
 
-                uViewModel.User.UserEntity.UpdatedBy = 1;
+                uViewModel.User.UserEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId; 
 
                 _userMan.Update_User(uViewModel.User);
 
@@ -105,7 +105,7 @@ namespace Kusumgar.Controllers
                 Logger.Error("User Controller - Update " + ex.ToString());
             }
 
-            TempData["_userViewModel"] = uViewModel;
+            TempData["uViewModel"] = uViewModel;
       
             return RedirectToAction("Search");
         }
@@ -135,15 +135,11 @@ namespace Kusumgar.Controllers
 
                 if (uViewModel.Filter.User_Id != 0)
                 {
-                    uViewModel.UserList.Add(_userMan.Get_User_By_User_Id(uViewModel.Filter.User_Id));
-
-                    pager.TotalPages = 1;
-
-                    pager.TotalRecords = 1;
+                    uViewModel.Users = _userMan.Get_Users_By_User_Id(uViewModel.Filter.User_Id,ref pager);
                 }
                 else
                 {
-                    uViewModel.UserList = _userMan.Get_Users(ref pager);
+                    uViewModel.Users= _userMan.Get_Users(ref pager);
                 }
 
                 uViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", uViewModel.Pager.TotalRecords, uViewModel.Pager.CurrentPage + 1, uViewModel.Pager.PageSize, 10, true);

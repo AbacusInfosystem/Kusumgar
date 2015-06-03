@@ -10,7 +10,7 @@ namespace Kusumgar.Models
 {
     public class UserViewModel
     {
-       public  List<UserInfo> UserList { get; set; }
+        public List<UserInfo> Users { get; set; }
 
        public UserInfo User { get; set; }
 
@@ -22,11 +22,11 @@ namespace Kusumgar.Models
 
        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 
-       public List<RoleInfo> RoleInfoList { get; set; }
+       public List<RoleInfo> Roles { get; set; }
         
         public UserViewModel()
         {
-            UserList = new List<UserInfo>();
+            Users = new List<UserInfo>();
 
             User = new UserInfo();
 
@@ -36,7 +36,7 @@ namespace Kusumgar.Models
 
             Friendly_Message = new List<FriendlyMessageInfo>();
 
-            RoleInfoList = new List<RoleInfo>();
+            Roles = new List<RoleInfo>();
         }
 
     }

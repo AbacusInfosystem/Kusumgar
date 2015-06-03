@@ -35,4 +35,12 @@ $(function () {
         }
     });
 
+    //$('form input[type="text"]').each(function () {
+    //    var val = $(this).val();
+
+    //    $(this).parent().append("<label>" + val + "</label>");
+
+    //    $(this).remove();
+    //});
+
 });

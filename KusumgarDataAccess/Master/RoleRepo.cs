@@ -112,6 +112,28 @@ namespace KusumgarDataAccess
             return RoleInfo;
         }
 
+        public List<RoleInfo> Get_Roles_By_Id(int Role_Id, ref PaginationInfo pager)
+        {
+            List<RoleInfo> Roles = new List<RoleInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Role_Id", Role_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Role_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+                {
+                    Roles.Add( Get_Role_Values(dr));
+                }
+            }
+
+            return Roles;
+        }
+
         public int Insert_Role(RoleInfo RoleInfo)
         {
              int Role_Id = Convert.ToInt32(sqlRepo.ExecuteScalerObj(SetValues_In_Role(RoleInfo), StoredProcedures.Insert_Role_Sp.ToString(), CommandType.StoredProcedure));
