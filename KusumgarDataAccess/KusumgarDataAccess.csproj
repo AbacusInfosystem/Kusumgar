@@ -73,6 +73,7 @@
     <Compile Include="Master\UserRepo.cs" />
     <Compile Include="Master\VendorContactRepo.cs" />
     <Compile Include="Master\VendorRepo.cs" />
+    <Compile Include="Master\WorkCenterRepo.cs" />
     <Compile Include="Master\YArticleRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CommonMethods.cs" />

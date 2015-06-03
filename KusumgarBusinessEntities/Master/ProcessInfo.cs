@@ -16,6 +16,6 @@ namespace KusumgarBusinessEntities
         }
         public M_Process Process_Entity { get; set; }
 
-        public String Process_Ids { get; set; }
+        //public String Process_Ids { get; set; }
     }
 }

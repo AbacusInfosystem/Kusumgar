@@ -5,7 +5,7 @@ function Bind_Work_Stations(data) {
 
     var htmltext = "";
 
-    htmltext += "<option>-Select State-</option>";
+    htmltext += "<option>-Select Work Station-</option>";
    
     if (data.Work_Center.Work_Stations.length > 0) {
         for (var i = 0; i < data.Work_Center.Work_Stations.length ; i++) {
@@ -32,8 +32,22 @@ function Save_Work_Center() {
 
 
 function Work_Center_CallBack(data) {
-    alert(data.Work_Center.Work_Center_Entity.Work_Center_Id);
-    $("#hdnWork_Center_Id").val(data.Work_Center.Work_Center_Entity.Work_Center_Id);
+   
+    //$("#hdnWork_Center_Id").val(data.Work_Center.Work_Center_Entity.Work_Center_Id);
+    $("#hdnWork_Center_Id").val(0);
+
+    $("#drpFactory").val("");
+    $("#drpWork_Station").val("");
+    $("#txtWork_Center_Code").val("");
+    $("#txtMachine_Name").val("");
+    $("#txtMachine_Properties").val("");
+    $("#txtTPM_Speed").val("");
+    $("#txtAverage_Order_Length").val("");
+    $("#txtCapacity").val("");
+    $("#txtWastage").val("");
+    $("#txtTarget_Efficiency").val("");
+   
+
 
     Friendly_Message(data);
 }
