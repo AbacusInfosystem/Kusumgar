@@ -3,7 +3,7 @@
     var tViewModel = {
 
         Filter: {
-            Test_Unit_Id: $('#hdnTestUnitId').val(),
+           
             Test_Unit_Name: $('#txtTestUnitName').val()
         },
 
@@ -24,7 +24,7 @@ function GetAllTestUnits() {
     var tViewModel = {
 
         Filter: {
-            Test_Unit_Id:"",
+           
             Test_Unit_Name: ""
         },
 
@@ -141,7 +141,6 @@ function PageMore(Id) {
     var tViewModel = {
 
         Filter: {
-            Test_Unit_Id: $('#hdnTestUnitId').val(),
             Test_Unit_Name: $('#txtTestUnitName').val()
         },
 

@@ -39,7 +39,7 @@ namespace Kusumgar.Controllers
 
             try
             {
-                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
 
                 yViewModel.Is_Primary = true;
             }
@@ -66,7 +66,7 @@ namespace Kusumgar.Controllers
 
             try
             {
-                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
             }
             catch(Exception ex)
             {

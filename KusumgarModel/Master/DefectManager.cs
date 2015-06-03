@@ -53,7 +53,7 @@ namespace KusumgarModel
             
             DefectRepo dRepo = new DefectRepo();
 
-            defectTypes = dRepo.Get_Defects_By_Id(Defect_Id, ref pager);
+            defectTypes = dRepo.Get_Defects_By_Name(Defect_Id, ref pager);
             
             return defectTypes;
          }

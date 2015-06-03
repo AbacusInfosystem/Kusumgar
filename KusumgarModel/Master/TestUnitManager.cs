@@ -11,27 +11,16 @@ namespace KusumgarModel
 {
    public class TestUnitManager
     {
-      public List<TestUnitInfo> Get_Test_Units(PaginationInfo pager)
+       public List<TestUnitInfo> Get_Test_Units(ref PaginationInfo pager)
         {
             List<TestUnitInfo> testUnit = new List<TestUnitInfo>();
 
             TestUnitRepo tRepo = new TestUnitRepo();
 
-            testUnit = tRepo.Get_Test_Units(pager);
+            testUnit = tRepo.Get_Test_Units(ref pager);
 
             return testUnit;
         }
-
-      public List<TestUnitInfo> Get_Test_Units_By_Id(int test_Unit_Id, PaginationInfo pager)
-        {
-            List<TestUnitInfo> testUnits = new List<TestUnitInfo>();
-
-            TestUnitRepo tRepo = new TestUnitRepo();
-
-            testUnits = tRepo.Get_Test_Units_By_Id(test_Unit_Id, pager);
-
-            return testUnits;
-       }
 
        public void Insert(TestUnitInfo testUnit)
         {
@@ -64,6 +53,17 @@ namespace KusumgarModel
 
              return tRepo.Get_Test_Unit_AutoComplete(test_Unit_Name);
             
+        }
+
+        public List<TestUnitInfo> Get_Test_Unit_By_Name(string testUnitName, ref PaginationInfo pager)
+        {
+            List<TestUnitInfo> testUnits = new List<TestUnitInfo>();
+
+            TestUnitRepo tRepo = new TestUnitRepo();
+
+            testUnits = tRepo.Get_Test_Unit_By_Name(testUnitName, ref pager);
+
+            return testUnits;
         }
     }
 }

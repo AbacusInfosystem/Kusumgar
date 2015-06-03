@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
     
-    InitializeAutoComplete($('#txtTestUnitName'));
-
     GetAllTestUnits();
 
     $("#btnSearch").click(function () {

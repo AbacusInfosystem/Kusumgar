@@ -108,10 +108,6 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/ajax/defect-list/" + $('#txtDefectName').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtTestUnitName') {
-                urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
-            }
-
             $.ajax({
                 url: urlString,
                 dataType: "json",
@@ -245,7 +241,7 @@ var InitializeAutoComplete = function (elementObject) {
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
-                $(this).parents('.form-group').find('auto-complete-value').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
 

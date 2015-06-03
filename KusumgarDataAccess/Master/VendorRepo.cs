@@ -25,16 +25,16 @@ namespace KusumgarDataAccess
 
         public List<VendorInfo> Get_Vendors(ref PaginationInfo pager)
         {
-            List<VendorInfo> Vendors = new List<VendorInfo>();
+            List<VendorInfo> vendors = new List<VendorInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Vendors_Sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                Vendors.Add(Get_Vendor_Values(dr));
+                vendors.Add(Get_Vendor_Values(dr));
             }
 
-            return Vendors;
+            return vendors;
         }
 
         private VendorInfo Get_Vendor_Values(DataRow dr)

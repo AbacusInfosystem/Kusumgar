@@ -50,6 +50,14 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
+                dViewModel.Defect.DefectEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                dViewModel.Defect.DefectEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                dViewModel.Defect.DefectEntity.CreatedOn = DateTime.Now;
+
+                dViewModel.Defect.DefectEntity.UpdatedOn = DateTime.Now;
+
                 DefectManager dMan = new DefectManager();
 
                 dMan.Insert(dViewModel.Defect);
@@ -72,6 +80,10 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
+                dViewModel.Defect.DefectEntity.UpdatedOn = DateTime.Now;
+
+                dViewModel.Defect.DefectEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 DefectManager dMan = new DefectManager();
 
                 dMan.Update(dViewModel.Defect);
@@ -135,6 +147,8 @@ namespace Kusumgar.Controllers.PostLogin
                 {
                     dViewModel.DefectGrid = dMan.Get_Defects(ref pager);
                 }
+
+                dViewModel.Pager = pager;
 
                 dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
             }
