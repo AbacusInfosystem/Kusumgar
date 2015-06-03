@@ -229,7 +229,7 @@ var InitializeAutoComplete = function (elementObject) {
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
-                $(this).parents('.form-group').find('auto-complete-value').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
 

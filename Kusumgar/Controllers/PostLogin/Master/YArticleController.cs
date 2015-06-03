@@ -139,13 +139,13 @@ namespace Kusumgar.Controllers
             {
                 pager = yViewModel.Pager;
 
-                if(!string.IsNullOrEmpty(yViewModel.Filter.Full_Code) && yViewModel.Filter.Yarn_Type_Id != 0)
+                if(yViewModel.Filter.YArticle_Id != 0 && yViewModel.Filter.Yarn_Type_Id != 0)
                 {
-                    yViewModel.YArticles = _yArticleMan.Get_Y_Articles_By_Full_Code_Yarn_Type(yViewModel.Filter.Full_Code, yViewModel.Filter.Yarn_Type_Id, ref pager);
+                    yViewModel.YArticles = _yArticleMan.Get_Y_Articles_By_YArticle_Id_Yarn_Type(yViewModel.Filter.YArticle_Id, yViewModel.Filter.Yarn_Type_Id, ref pager);
                 }
-                else if (!string.IsNullOrEmpty(yViewModel.Filter.Full_Code))
+                else if (yViewModel.Filter.YArticle_Id != 0)
                 {
-                    yViewModel.YArticles = _yArticleMan.Get_YArticles_By_Full_Code(yViewModel.Filter.Full_Code, ref pager);
+                    yViewModel.YArticles = _yArticleMan.Get_YArticles_By_Id(yViewModel.Filter.YArticle_Id, ref pager);
                 }
                 else if ( yViewModel.Filter.Yarn_Type_Id != 0)
                 {

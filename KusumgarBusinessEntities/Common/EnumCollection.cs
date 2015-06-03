@@ -308,6 +308,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_By_Yarn_Type_Id_sp,
         Get_Y_Article_By_Id_sp,
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
+        Get_Y_Articles_By_YArticle_Id_Yarn_Type_sp,
 
         // Work Center
         Get_Work_Stations_By_Code_Purpose_Sp,

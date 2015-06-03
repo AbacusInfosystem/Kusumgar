@@ -17,7 +17,8 @@ function SearchYArticle() {
             Filter:
                 {
                     Full_Code: $("#txtFull_Code").parents('.form-group').find('.text').html(),
-                    Yarn_Type_Id: Yarn_Type_Id
+                    Yarn_Type_Id: Yarn_Type_Id,
+                    YArticle_Id: $("#hdnYArticle_Id").val()
                 },
 
             Pager: {
