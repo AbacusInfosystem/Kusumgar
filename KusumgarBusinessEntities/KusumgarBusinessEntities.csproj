@@ -60,6 +60,7 @@
     <Compile Include="Master\DefectInfo.cs" />
     <Compile Include="Master\DefectTypeInfo.cs" />
     <Compile Include="Master\FabricTypeInfo.cs" />
+    <Compile Include="Master\FactoryInfo.cs" />
     <Compile Include="Master\IndustrialCategoryInfo.cs" />
     <Compile Include="Master\IndustrialGroupInfo.cs" />
     <Compile Include="Master\IndustrialInfo.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Master\MaterialCategoryInfo.cs" />
     <Compile Include="Master\MaterialInfo.cs" />
     <Compile Include="Master\MaterialSubCategoryInfo.cs" />
+    <Compile Include="Master\ProcessInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
     <Compile Include="Master\StateInfo.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Master\VendorContactInfo.cs" />
     <Compile Include="Master\VendorInfo.cs" />
     <Compile Include="Master\WorkCenterInfo.cs" />
+    <Compile Include="Master\WorkCenterProcessInfo.cs" />
+    <Compile Include="Master\WorkStationInfo.cs" />
     <Compile Include="Master\YArticleInfo.cs" />
     <Compile Include="Master\YearInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

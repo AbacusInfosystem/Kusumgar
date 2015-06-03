@@ -529,8 +529,9 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <div class="auto-complete">
-                                    <input type="text" class="form-control input-sm" id="txtGiven_By" placeholder="Enter given by"  value="@Model.YArticle.Given_By_Name"/>
-                                    <input type="hidden" id="hdnGiven_by" value="@(Model.YArticle.Given_By_Id ==0?"":Model.YArticle.Given_By_Id.ToString())" name="YArticle.Given_By_Id">
+                                    <input type="text" class="form-control input-sm" id="txtGiven_By" placeholder="Enter given by"  />
+                                    <input type="hidden" id="hdnGiven_by" value="@(Model.YArticle.Given_By_Id ==0?"":Model.YArticle.Given_By_Id.ToString())" name="YArticle.Given_By_Id" class="auto-complete-value">
+                                    <input type="hidden" id="hdnGiven_By_Name" value="@Model.YArticle.Given_By_Name" name="YArticle.Given_By_Name" class="auto-complete-label">
                                 </div>
                             </div>
                         </div>
@@ -541,8 +542,9 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <div class="auto-complete">
-                                    <input type="text" class="form-control input-sm" id="txtValidated_By" placeholder="Enter validated by" value="@Model.YArticle.Validated_By_Name" />
-                                    <input type="hidden" id="hdnValidated_by" value="@(Model.YArticle.Validated_By_Id == 0 ? "" : Model.YArticle.Validated_By_Id.ToString())" name="YArticle.Validated_By_Id">
+                                    <input type="text" class="form-control input-sm" id="txtValidated_By" placeholder="Enter validated by"  />
+                                    <input type="hidden" id="hdnValidated_by" value="@(Model.YArticle.Validated_By_Id == 0 ? "" : Model.YArticle.Validated_By_Id.ToString())" name="YArticle.Validated_By_Id" class="auto-complete-value">
+                                    <input type="hidden" id="hdnValidated_By_Name" value="@Model.YArticle.Validated_By_Name" name="YArticle.Validated_By_Name" class="auto-complete-label">
                                 </div>
                             </div>
                         </div>
@@ -553,8 +555,9 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <div class="auto-complete">
-                                    <input type="text" class="form-control input-sm" id="txtDeveloped_Under" placeholder="Enter developed under" value="@Model.YArticle.Developed_Under_Name" />
-                                    <input type="hidden" class="form-control input-sm" id="hdnDeveloped_Under" value="@(Model.YArticle.Developed_Under_Id == 0 ? "" : Model.YArticle.Developed_Under_Id.ToString())" name="YArticle.Developed_Under_Id">
+                                    <input type="text" class="form-control input-sm" id="txtDeveloped_Under" placeholder="Enter developed under"  />
+                                    <input type="hidden" class="auto-complete-value" id="hdnDeveloped_Under" value="@(Model.YArticle.Developed_Under_Id == 0 ? "" : Model.YArticle.Developed_Under_Id.ToString())" name="YArticle.Developed_Under_Id">
+                                    <input type="hidden" id="hdnValidated_By_Name" value="@Model.YArticle.Developed_Under_Name" name="YArticle.Developed_Under_Name" class="auto-complete-label">
                                 </div>
                             </div>
                         </div>
@@ -567,8 +570,9 @@
                         <div class="form-group">
                             <div class="auto-complete">
                                 <label style="color: #333" for="txtWork_Center">Work Center</label>
-                                <input type="text" class="form-control input-sm " id="txtWork_Station"  value="@Model.YArticle.Work_Station_Code" placeholder="Enter work center" />
-                                <input type="hidden" class="form-control input-sm " id="hdnWork_Station_Id" name="YArticle.Work_Station_Id" value="@Model.YArticle.Work_Station_Id" placeholder="Enter work center" />
+                                <input type="text" class="form-control input-sm " id="txtWork_Station"   placeholder="Enter work center" />
+                                <input type="hidden" class="auto-complete-value" id="hdnWork_Station_Id" name="YArticle.Work_Station_Id" value="@Model.YArticle.Work_Station_Id" placeholder="Enter work center" />
+                                <input type="hidden" id="hdnWork_Station_Code" value="@Model.YArticle.Work_Station_Code" name="YArticle.Work_Station_Code" class="auto-complete-label">
                             </div>
                         </div>
 

@@ -31,25 +31,25 @@ namespace KusumgarDataAccess
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticles.Add(Get_YArticle_Values(dr,0));
+                yArticles.Add(Get_YArticle_Values(dr));
             }
 
             return yArticles;
         }
 
-        public List<YArticleInfo> Get_YArticles_By_Full_Code(string full_Code, ref PaginationInfo pager)
+        public List<YArticleInfo> Get_YArticles_By_Id(int yArticle_Id, ref PaginationInfo pager)
         {
             List<YArticleInfo> yArticleList = new List<YArticleInfo>();
 
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            sqlparam.Add(new SqlParameter("@full_Code", full_Code));
+            sqlparam.Add(new SqlParameter("@yArticle_Id", yArticle_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_Full_Code_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Article_By_Id_sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticleList.Add(Get_YArticle_Values(dr,0));
+                yArticleList.Add(Get_YArticle_Values(dr));
             }
 
             return yArticleList;
@@ -67,13 +67,13 @@ namespace KusumgarDataAccess
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticleList.Add(Get_YArticle_Values(dr,0));
+                yArticleList.Add(Get_YArticle_Values(dr));
             }
 
             return yArticleList;
         }
 
-        public List<YArticleInfo> Get_Y_Articles_By_Full_Code_Yarn_Type(string full_Code, int yarn_Type_Id, ref PaginationInfo pager)
+        public List<YArticleInfo> Get_Y_Articles_By_YArticle_Id_Yarn_Type(int yArticle_Id, int yarn_Type_Id, ref PaginationInfo pager)
         {
             List<YArticleInfo> yArticleList = new List<YArticleInfo>();
 
@@ -81,13 +81,13 @@ namespace KusumgarDataAccess
 
             sqlparam.Add(new SqlParameter("@yarn_Type_Id", yarn_Type_Id));
 
-            sqlparam.Add(new SqlParameter("@full_Code", full_Code));
+            sqlparam.Add(new SqlParameter("@yArticle_Id", yArticle_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_Full_Code_Yarn_Type_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Y_Articles_By_YArticle_Id_Yarn_Type_sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                yArticleList.Add(Get_YArticle_Values(dr, 0));
+                yArticleList.Add(Get_YArticle_Values(dr));
             }
 
             return yArticleList;
@@ -109,13 +109,13 @@ namespace KusumgarDataAccess
 
             foreach (DataRow dr in drList)
             {
-                yArticle = Get_YArticle_Values(dr, yArticle_Id);
+                yArticle = Get_YArticle_Values(dr);
             }
 
             return yArticle;
         }
 
-        public YArticleInfo Get_YArticle_Values(DataRow dr, int yArticleId)
+        public YArticleInfo Get_YArticle_Values(DataRow dr)
         {
             YArticleInfo yArticle = new YArticleInfo();
 
@@ -145,8 +145,7 @@ namespace KusumgarDataAccess
             yArticle.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             yArticle.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
-            if (yArticleId == 0)
-            {
+            
                 yArticle.Denier_Name = Convert.ToString(dr["Denier_Name"]);
                 yArticle.Twist_Mingle_Name = Convert.ToString(dr["Twist_Mingle_Name"]);
                 yArticle.Twist_Type_Name = Convert.ToString(dr["Twist_Type_Name"]);
@@ -161,14 +160,12 @@ namespace KusumgarDataAccess
                 yArticle.Supplier_Name = Convert.ToString(dr["Supplier_Name"]);
                 yArticle.Origin_Name = Convert.ToString(dr["Origin_Name"]);
                
-            }
-            else
-            {
+           
                 yArticle.Developed_Under_Name = Convert.ToString(dr["Developed_Under_Name"]);
                 yArticle.Validated_By_Name = Convert.ToString(dr["Validated_By_Name"]);
                 yArticle.Given_By_Name = Convert.ToString(dr["Given_By_Name"]);
                 yArticle.Work_Station_Code = Convert.ToString(dr["Work_Station_Code"]);
-            }
+            
 
             return yArticle;
         }

@@ -170,6 +170,27 @@ namespace KusumgarDataAccess
             return user;
         }
 
+        public List<UserInfo> Get_Users_By_User_Id(int UserId, ref PaginationInfo pager)
+        {
+            List<UserInfo> Users = new List<UserInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@UserId", UserId));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Users_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+                {
+                    Users.Add(Get_User_Values(dr));
+                }
+            }
+
+            return Users;
+        }
+
         public void Insert_User(UserInfo userInfo)
         {
             int UserId = 0;

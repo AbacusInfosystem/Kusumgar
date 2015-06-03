@@ -213,7 +213,15 @@ namespace Kusumgar
             defaults: new { controller = "System", action = "UnAuthorize", returnURL = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "system-2",
+            url: "system/error",
+            defaults: new { controller = "System", action = "Error", returnURL = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
+
+
 
             #region Dashboard
 
@@ -474,16 +482,6 @@ namespace Kusumgar
             name: "process-route-code-1",
             url: "master/process-route-code",
             defaults: new { controller = "ProcessRouteCode", action = "Index", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
-
-            #endregion
-
-            #region Workcenter
-
-            routes.MapRoute(
-            name: "workcenter-1",
-            url: "master/workcenter",
-            defaults: new { controller = "Workcenter", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -1103,6 +1101,40 @@ namespace Kusumgar
             name: "VendorContact-8",
             url: "master/delete-vendor-contact-custom-field",
             defaults: new { controller = "VendorContact", action = "Delete_Vendor_Contact_Custom_Field", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
+            #region WorkCenter
+
+            routes.MapRoute(
+            name: "workcenter-1",
+            url: "master/work-station-by-factory-id",
+            defaults: new { controller = "WorkCenter", action = "Get_Work_Stations_By_Factory_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "workcenter-2",
+            url: "master/insert-work-center",
+            defaults: new { controller = "WorkCenter", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "workcenter-3",
+            url: "master/work-center-search",
+            defaults: new { controller = "WorkCenter", action = "Get_Work_Centers", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "workcenter-4",
+            url: "master/get-work-center-by-id",
+            defaults: new { controller = "WorkCenter", action = "Get_Work_Centers_By_Work_Center_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "workcenter-5",
+            url: "master/update-work-center",
+            defaults: new { controller = "WorkCenter", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
