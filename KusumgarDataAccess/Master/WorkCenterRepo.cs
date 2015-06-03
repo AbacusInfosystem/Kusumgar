@@ -127,7 +127,10 @@ namespace KusumgarDataAccess
 
             work_Center_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Work_Center(work_Center), StoredProcedures.Insert_Work_Center_sp.ToString(), CommandType.StoredProcedure));
 
-            Insert_Work_Center_Process(work_Center.Process.Process_Ids, work_Center_Id);
+            if (!string.IsNullOrEmpty(work_Center.Process_Ids))
+            { 
+                Insert_Work_Center_Process(work_Center.Process_Ids, work_Center_Id);
+            }
 
             return work_Center_Id;
         }
@@ -136,8 +139,36 @@ namespace KusumgarDataAccess
         {
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Work_Center(work_Center), StoredProcedures.Update_Work_Center_sp.ToString(), CommandType.StoredProcedure);
 
-            Insert_Work_Center_Process(work_Center.Process.Process_Ids, work_Center.Work_Center_Entity.Work_Center_Id);
+            if (!string.IsNullOrEmpty(work_Center.Process_Ids))
+            {
+                Insert_Work_Center_Process(work_Center.Process_Ids, work_Center.Work_Center_Entity.Work_Center_Id);
+            }
            
+        }
+
+        public void Insert_Work_Center_Process(string Process_Ids, int work_Center_Id)
+        {
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+
+            sqlParam.Add(new SqlParameter("@Work_Center_Id", work_Center_Id));
+
+            _sqlRepo.ExecuteNonQuery(sqlParam, StoredProcedures.Delete_Work_Center_Process_By_Work_Center_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (var item in Process_Ids.Split(','))
+            {
+                List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+                DateTime CreatedOn = DateTime.Now;
+                int CreatedBy = 1;
+
+                sqlparam.Add(new SqlParameter("@Work_Center_Id", work_Center_Id));
+                sqlparam.Add(new SqlParameter("@Process_Id", item));
+                sqlparam.Add(new SqlParameter("@CreatedOn", CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", CreatedBy));
+
+                _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Insert_Work_Center_Process_sp.ToString(), CommandType.StoredProcedure);
+            }
+
         }
 
         private List<SqlParameter> Set_Values_In_Work_Center(WorkCenterInfo work_Center)
@@ -148,7 +179,8 @@ namespace KusumgarDataAccess
             {
                 sqlparam.Add(new SqlParameter("@Work_Center_Id", work_Center.Work_Center_Entity.Work_Center_Id));
             }
-            sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station.Work_Station_Entity.Work_Station_Id));
+            //sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station.Work_Station_Entity.Work_Station_Id));
+            sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Center_Entity.Work_Station_Id));
             sqlparam.Add(new SqlParameter("@Work_Center_Code", work_Center.Work_Center_Entity.Work_Center_Code));
             sqlparam.Add(new SqlParameter("@Machine_Name", work_Center.Work_Center_Entity.Machine_Name));
             sqlparam.Add(new SqlParameter("@Machine_Properties", work_Center.Work_Center_Entity.Machine_Properties));
@@ -347,6 +379,7 @@ namespace KusumgarDataAccess
             work_Center.Work_Center_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             work_Center.Work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
             work_Center.Factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+            //work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
 
             return work_Center;
         }
@@ -363,7 +396,7 @@ namespace KusumgarDataAccess
 
             DataTable dt = ds.Tables[0];
 
-            DataTable dt1 = ds.Tables[1];
+            //DataTable dt1 = ds.Tables[1];
  
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -373,51 +406,57 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    work_Center = Get_Work_Center_Values(dr);
+                    work_Center = Get_Work_Center_Values_By_Id(dr);
 
-                    foreach (DataRow dr1 in dt1.Rows)
-                    {
-                        WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
+                    //foreach (DataRow dr1 in dt1.Rows)
+                    //{
+                    //    WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
 
-                        work_Center_Process.Process_Name = Convert.ToString(dr1["Process_Name"]);
+                    //    work_Center_Process.Process_Name = Convert.ToString(dr1["Process_Name"]);
 
-                        work_Center_Process.Work_Center_Process_Entity.Process_Id = Convert.ToInt32(dr1["Process_Id"]);
+                    //    work_Center_Process.Work_Center_Process_Entity.Process_Id = Convert.ToInt32(dr1["Process_Id"]);
 
-                        work_Center_Process.Work_Center_Process_Entity.Work_Center_Id = Convert.ToInt32(dr1["Work_Center_Id"]);
+                    //    work_Center_Process.Work_Center_Process_Entity.Work_Center_Id = Convert.ToInt32(dr1["Work_Center_Id"]);
 
-                        work_Center.Work_Center_Processes.Add(work_Center_Process);
-                    }
+                    //    work_Center.Work_Center_Processes.Add(work_Center_Process);
+                    //}
                 }
             }
 
             return work_Center;
         }
 
-        public void Insert_Work_Center_Process(string Process_Ids, int work_Center_Id)
+        private WorkCenterInfo Get_Work_Center_Values_By_Id(DataRow dr)
         {
-            List<SqlParameter> sqlParam = new List<SqlParameter>();
+            WorkCenterInfo work_Center = new WorkCenterInfo();
 
-            sqlParam.Add(new SqlParameter("@Work_Center_Id", work_Center_Id));
+            work_Center.Work_Center_Entity.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
+            work_Center.Work_Center_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+            work_Center.Work_Center_Entity.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
+            work_Center.Work_Center_Entity.Machine_Name = Convert.ToString(dr["Machine_Name"]);
+            work_Center.Work_Center_Entity.Machine_Properties = Convert.ToString(dr["Machine_Properties"]);
+            work_Center.Work_Center_Entity.TPM_Speed = Convert.ToInt32(dr["TPM_Speed"]);
+            work_Center.Work_Center_Entity.Average_Order_Length = Convert.ToDecimal(dr["Average_Order_Length"]);
+            work_Center.Work_Center_Entity.Capacity = Convert.ToString(dr["Capacity"]);
+            work_Center.Work_Center_Entity.Wastage = Convert.ToInt32(dr["Wastage"]);
+            work_Center.Work_Center_Entity.Target_Efficiency = Convert.ToInt32(dr["Target_Efficiency"]);
+            work_Center.Work_Center_Entity.Under_Maintainance = Convert.ToBoolean(dr["Under_Maintainance"]);
+            work_Center.Work_Center_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            work_Center.Work_Center_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            work_Center.Work_Center_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            work_Center.Work_Center_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            work_Center.Work_Center_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            _sqlRepo.ExecuteNonQuery(sqlParam, StoredProcedures.Delete_Work_Center_Process_By_Work_Center_Id_Sp.ToString(), CommandType.StoredProcedure);
+            work_Center.Work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
+            work_Center.Work_Station.Work_Station_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
 
-            foreach (var item in Process_Ids.Split(','))
-            {
-                List<SqlParameter> sqlparam = new List<SqlParameter>();
-
-                DateTime CreatedOn = DateTime.Now;
-                int CreatedBy = 1;
-
-                sqlparam.Add(new SqlParameter("@Work_Center_Id", work_Center_Id));
-                sqlparam.Add(new SqlParameter("@Process_Id", item));
-
-                sqlparam.Add(new SqlParameter("@CreatedOn", CreatedOn));
-                sqlparam.Add(new SqlParameter("@CreatedBy", CreatedBy));
-
-                _sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Insert_Work_Center_Process_sp.ToString(), CommandType.StoredProcedure);
-            }
-
+            work_Center.Factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+            work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+          
+            return work_Center;
         }
+
+      
 
 
     }

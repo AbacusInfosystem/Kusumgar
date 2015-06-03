@@ -5,7 +5,7 @@ function Bind_Work_Stations(data) {
 
     var htmltext = "";
 
-    htmltext += "<option>-Select State-</option>";
+    htmltext += "<option>-Select work center-</option>";
 
     if (data.Work_Center.Work_Stations.length > 0) {
         for (var i = 0; i < data.Work_Center.Work_Stations.length ; i++) {
@@ -160,7 +160,7 @@ function Bind_Work_Center_Grid(data) {
         $('.pagination').html("");
     }
 
-    Friendly_Message(data);
+    //Friendly_Message(data);
 
     $("#divSearchGridOverlay").hide();
 

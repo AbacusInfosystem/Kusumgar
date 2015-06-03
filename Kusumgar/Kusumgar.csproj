@@ -294,6 +294,7 @@
     <Compile Include="Models\Master\UserViewModel.cs" />
     <Compile Include="Models\Master\VendorContactViewModel.cs" />
     <Compile Include="Models\Master\VendorViewModel.cs" />
+    <Compile Include="Models\Master\WorkCenterViewModel.cs" />
     <Compile Include="Models\Master\YArticleViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
