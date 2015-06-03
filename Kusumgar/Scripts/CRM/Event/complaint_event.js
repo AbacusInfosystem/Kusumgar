@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     
-    InitializeAutoComplete($('#txtCustomer_Name'));
+    InitializeAutoComplete($('#txtCustName'));
 
     $("#btnSave").click(function () {
 

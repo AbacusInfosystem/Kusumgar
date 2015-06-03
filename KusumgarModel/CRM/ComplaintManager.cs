@@ -19,19 +19,19 @@ namespace KusumgarModel
             _cRepo = new ComplaintRepo();
         }
 
-        public List<ComplaintInfo> Get_Complaint_List(PaginationInfo Pager)
+        public List<ComplaintInfo> Get_Complaints(ref PaginationInfo pager)
         {
-            return _cRepo.Get_Complaint_List(Pager);
+            return _cRepo.Get_Complaints(ref pager);
         }
 
-        public List<ComplaintInfo> Get_Complaints_By_CustName(string CustomerName, PaginationInfo Pager)
+        public List<ComplaintInfo> Get_Complaints_By_Cust_Id(int customer_Id, ref PaginationInfo pager)
         {
-            return _cRepo.Get_Complaints_By_CustName(CustomerName, Pager);
+            return _cRepo.Get_Complaints_By_Cust_Id(customer_Id, ref pager);
         }
 
-        public ComplaintInfo Get_Complaint_By_Id(int ComplaintId)
+        public ComplaintInfo Get_Complaint_By_Id(int complaint_Id)
         {
-            return _cRepo.Get_Complaint_By_Id(ComplaintId);
+            return _cRepo.Get_Complaint_By_Id(complaint_Id);
         }
         
         public void Insert_Complaint(ComplaintInfo complaintInfo)
@@ -44,5 +44,11 @@ namespace KusumgarModel
             _cRepo.Update_Complaint(complaintInfo);
         }
 
+        public List<AutocompleteInfo> Get_Customer_Id(string customer_Name)
+        {
+            List<AutocompleteInfo> auto_List = new List<AutocompleteInfo>();            
+            auto_List = _cRepo.Get_Customer_Id(customer_Name);
+            return auto_List;
+        }
     }
 }

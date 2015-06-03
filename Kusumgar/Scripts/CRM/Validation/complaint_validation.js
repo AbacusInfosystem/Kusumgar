@@ -2,53 +2,65 @@
     $("#frmComp").validate({
 
         rules: {
-            "Complaint.ComplaintEntity.CustomerId":
+            "Complaint.Complaint_Entity.Customer_Id":
             {
-                required: true,                
+                customer_required: true,                
             },
-            "Complaint.ComplaintEntity.OrderId":
+            "Complaint.Complaint_Entity.Order_Id":
             {
                 required: true,
             },
-            "Complaint.ComplaintEntity.OrderItemId":
+            "Complaint.Complaint_Entity.Order_Item_Id":
             {
                 required: true,
             },
-            "Complaint.ComplaintEntity.ChallanNo":
+            "Complaint.Complaint_Entity.Challan_No":
             {
                 required: true,
             },
-            "Complaint.ComplaintEntity.CDescription":
+            "Complaint.Complaint_Entity.CDescription":
             {
-                required: true,
-                maxlength: 1000
+                required: true                
             }
 
         },
         messages: {
 
-            "Complaint.ComplaintEntity.CustomerId":
+            "Complaint.Complaint_Entity.Customer_Id":
             {
-                required: "Customer Name is required."
+                
             },
-            "Complaint.ComplaintEntity.OrderId":
+            "Complaint.Complaint_Entity.Order_Id":
             {
                 required: "Order Id is required."
             },
-            "Complaint.ComplaintEntity.OrderItemId":
+            "Complaint.Complaint_Entity.Order_Item_Id":
             {
                 required: "Order Item Id is required."
             },
-            "Complaint.ComplaintEntity.ChallanNo":
+            "Complaint.Complaint_Entity.Challan_No":
             {
                 required: "Challan No is required."
             },
-            "Complaint.ComplaintEntity.CDescription":
+            "Complaint.Complaint_Entity.CDescription":
             {
-                required: "Complaint Description is required.",
-                maxlength: "No more than 1000 characters."
+                required: "Complaint Description is required."                
             }
 
         }
     });
+
+    jQuery.validator.addMethod("customer_required", function (value, element) {
+        if ($(element).parents('.form-group').find('.text').length) {
+            if ($(element).parents('.form-group').find('.text').html() != "") {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }, "Customer Name is required.");
 });

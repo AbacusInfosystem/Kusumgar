@@ -8,13 +8,15 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class ComplaintInfo
+    public class WorkStationInfo
     {
-        public Complaint Complaint_Entity { get; set; }
-        public string Customer_Name { get; set; }
-        public ComplaintInfo()
+        
+        public WorkStationInfo()
         {
-            Complaint_Entity = new Complaint();
+
+            Work_Station_Entity = new M_Work_Station();
         }
+
+        public M_Work_Station Work_Station_Entity { get; set; }
     }
 }

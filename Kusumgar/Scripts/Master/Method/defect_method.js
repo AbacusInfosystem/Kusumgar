@@ -6,8 +6,14 @@
 
             Defect_Type_Id: $('#drpDefectTypeName').val(),
 
-                },
-          };
+        },
+
+        Pager: {
+
+            CurrentPage: $('#hdfCurrentPage').val(1),
+        },
+
+    };
 
     $("#divSearchGridOverlay").show();
 
@@ -21,6 +27,7 @@ function BindDefectInGrid(data, mode) {
     var htmlText = "";
 
     if (data.DefectGrid.length > 0) {
+
         for (i = 0; i < data.DefectGrid.length; i++) {
 
             htmlText += "<tr>";
@@ -77,4 +84,6 @@ function BindDefectInGrid(data, mode) {
 
     $('#tblSearchDefect tr:first').after(htmlText);
 
+  
 }
+

@@ -8,6 +8,7 @@ using KusumgarBusinessEntities.Common;
 using Kusumgar.Models;
 using KusumgarModel;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers.PostLogin
 {
@@ -58,6 +59,8 @@ namespace Kusumgar.Controllers.PostLogin
             catch (Exception ex)
             {
                 dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Controller - Insert " + ex.ToString());
             }
 
             TempData["dViewModel"] = dViewModel;
@@ -78,6 +81,8 @@ namespace Kusumgar.Controllers.PostLogin
             catch (Exception ex)
             {
                 dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Controller - Update" + ex.ToString());
             }
            
             TempData["dViewModel"] = dViewModel;
@@ -94,14 +99,13 @@ namespace Kusumgar.Controllers.PostLogin
                 dViewModel.Defect = dMan.Get_Defect_By_Id(dViewModel.EditMode.Defect_Id);
 
                 dViewModel.DefectType = dMan.Get_Defect_Types();
-
-                return View("Index", dViewModel);
-            }
+             }
 
             catch (Exception ex)
             {
-                throw ex;
-            }
+                Logger.Error("Defect Controller - Get_Defect_By_Id " + ex.ToString());
+             }
+            return View("Index", dViewModel);
 
         }
 
@@ -109,26 +113,42 @@ namespace Kusumgar.Controllers.PostLogin
         {
             DefectManager dMan = new DefectManager();
 
-            if (!string.IsNullOrEmpty(dViewModel.Filter.Defect_Name) && (dViewModel.Filter.Defect_Type_Id > 0))
+            PaginationInfo pager = new PaginationInfo();
+            try
             {
-                dViewModel.DefectGrid = dMan.Get_Defect_By_Type_By_Name(dViewModel.Filter.Defect_Type_Id, dViewModel.Filter.Defect_Name, dViewModel.Pager);
+                pager = dViewModel.Pager;
+
+                if ((dViewModel.Filter.Defect_Id != 0) && (dViewModel.Filter.Defect_Type_Id > 0))
+                {
+                    dViewModel.DefectGrid = dMan.Get_Defect_By_Type_By_Name(dViewModel.Filter.Defect_Type_Id, dViewModel.Filter.Defect_Id, ref pager);
+                }
+                else if (dViewModel.Filter.Defect_Type_Id > 0)
+                {
+                    dViewModel.DefectGrid = dMan.Get_Defect_By_Type(dViewModel.Filter.Defect_Type_Id, ref pager);
+                }
+
+                else if (dViewModel.Filter.Defect_Id != 0)
+                {
+                    dViewModel.DefectGrid = dMan.Get_Defect_By_Name(dViewModel.Filter.Defect_Id, ref pager);
+                }
+                else
+                {
+                    dViewModel.DefectGrid = dMan.Get_Defects(ref pager);
+                }
+
+                dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
             }
-            else if (dViewModel.Filter.Defect_Type_Id > 0)
+            catch (Exception ex)
             {
-                dViewModel.DefectGrid = dMan.Get_Defect_By_Type(dViewModel.Filter.Defect_Type_Id, dViewModel.Pager);
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Controller - Get_Defects " + ex.ToString());
             }
 
-            else if (!string.IsNullOrEmpty(dViewModel.Filter.Defect_Name))
+            finally
             {
-                dViewModel.DefectGrid = dMan.Get_Defect_By_Name(dViewModel.Filter.Defect_Name, dViewModel.Pager);
+                pager = null;
             }
-            else
-            {
-                dViewModel.DefectGrid = dMan.Get_Defects(dViewModel.Pager);
-            }
-
-            dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
-
             return Json(dViewModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -136,13 +156,30 @@ namespace Kusumgar.Controllers.PostLogin
         {
             DefectManager dMan = new DefectManager();
 
+            PaginationInfo Pager = new PaginationInfo();
+
+            Pager.IsPagingRequired = false;
+
             if (dViewModel.Filter.Defect_Type_Id > 0)
             {
-                dViewModel.DefectGrid = dMan.Get_Defect_By_Type(dViewModel.Filter.Defect_Type_Id, dViewModel.Pager);
+                dViewModel.DefectGrid = dMan.Get_Grid_By_Defect_Type(dViewModel.Filter.Defect_Type_Id);
             }
-
+           
             return Json(dViewModel, JsonRequestBehavior.AllowGet);
         }
 
-    }
+        public JsonResult Get_Defect_AutoComplete(string defect_Name)
+        {
+            DefectManager dMan = new DefectManager();
+
+            List<AutocompleteInfo> defectNames = new List<AutocompleteInfo>();
+
+            defectNames = dMan.Get_Defect_AutoComplete(defect_Name);
+
+            return Json(defectNames, JsonRequestBehavior.AllowGet);
+
+           
+        }
+   }
 }
+ 

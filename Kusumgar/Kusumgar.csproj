@@ -1088,6 +1088,7 @@
     <Folder Include="uploads\" />
     <Folder Include="Views\PostLogin\Master\ConsumableMaster\" />
     <Folder Include="Views\PostLogin\Planning\" />
+    <Folder Include="Views\PostLogin\SystemConfig\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

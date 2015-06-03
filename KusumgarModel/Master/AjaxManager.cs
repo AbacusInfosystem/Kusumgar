@@ -20,14 +20,6 @@ namespace KusumgarModel
           _ajaxRepo = new AjaxRepo();
       }
 
-      public List<AutocompleteInfo> Get_Customer_Id(string CustomerName)
-      {
-          List<AutocompleteInfo> autoList = new List<AutocompleteInfo>();
-          AjaxRepo aRepo = new AjaxRepo();
-          autoList = aRepo.Get_Customer_Id(CustomerName);
-          return autoList;
-      }
-
       public List<TestUnitInfo> GetTestUnit(string testUnitName)
         {
             return _ajaxRepo.GetTestUnit(testUnitName);

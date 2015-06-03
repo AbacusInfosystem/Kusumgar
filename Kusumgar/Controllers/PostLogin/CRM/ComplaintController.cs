@@ -17,128 +17,112 @@ namespace Kusumgar.Controllers
         //
         // GET: /Complaint/
 
-        public ComplaintManager _cMgr;
-
-        public AjaxManager aMan;
+        public ComplaintManager _complaintMan;        
 
         public ComplaintController()
         {
-            _cMgr = new ComplaintManager();
-
-            aMan = new AjaxManager();
+            _complaintMan = new ComplaintManager();            
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Create)]
-
-        public ActionResult Index(ComplaintViewModel _complaintViewModel)
+        public ActionResult Index(ComplaintViewModel cViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Create, Update";
+            PaginationInfo pager = new PaginationInfo();
 
             try
             {
-                _complaintViewModel.Pager.IsPagingRequired = false;
+                pager.IsPagingRequired = false;
             }
             catch (Exception ex)
             {
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
 
-            return View("Index", _complaintViewModel);
+            return View("Index", cViewModel);
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Search)]
-
-        public ActionResult Search(ComplaintViewModel _complaintViewModel)
+        public ActionResult Search(ComplaintViewModel cViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Search";
-
+            PaginationInfo pager = new PaginationInfo();
             if (TempData["_complaintViewModel"] != null)
             {
-                _complaintViewModel = (ComplaintViewModel)TempData["_complaintViewModel"];
+                cViewModel = (ComplaintViewModel)TempData["_complaintViewModel"];
             }
-            return View("Search", _complaintViewModel);
+            pager = cViewModel.Pager;
+            return View("Search", cViewModel);
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Create)]
-
-        public ActionResult Insert(ComplaintViewModel _complaintViewModel)
+        public ActionResult Insert(ComplaintViewModel cViewModel)
         {
             try
             {
-                _cMgr.Insert_Complaint(_complaintViewModel.Complaint);
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
+                _complaintMan.Insert_Complaint(cViewModel.Complaint);
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
             }
             catch (Exception ex)
             {
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
-            TempData["_complaintViewModel"] = _complaintViewModel;
+            TempData["_complaintViewModel"] = cViewModel;
             return RedirectToAction("Search");
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Edit)]
-
-        public ActionResult Update(ComplaintViewModel _complaintViewModel)
+        public ActionResult Update(ComplaintViewModel cViewModel)
         {
             try
             {
-                _cMgr.Update_Complaint(_complaintViewModel.Complaint);
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("CO002"));
+                _complaintMan.Update_Complaint(cViewModel.Complaint);
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CO002"));
             }
             catch (Exception ex)
             {
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
-            TempData["_complaintViewModel"] = _complaintViewModel;
+            TempData["_complaintViewModel"] = cViewModel;
             return RedirectToAction("Search");
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Search)]
-
-        public ActionResult GetComplaintList(ComplaintViewModel _complaintViewModel)
+        public JsonResult Get_Complaints(ComplaintViewModel cViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
+            pager = cViewModel.Pager;
             try
             {
-                if(!string.IsNullOrEmpty(_complaintViewModel.Complaint_Filter.CustomerName))
+                if(cViewModel.Filter.Customer_Id != 0)
                 {
-                    _complaintViewModel.ComplaintList = _cMgr.Get_Complaints_By_CustName(_complaintViewModel.Complaint_Filter.CustomerName, _complaintViewModel.Pager);
+                    cViewModel.Complaints = _complaintMan.Get_Complaints_By_Cust_Id(cViewModel.Filter.Customer_Id, ref pager);
                 }
                 else
                 {
-                    _complaintViewModel.ComplaintList = _cMgr.Get_Complaint_List(_complaintViewModel.Pager);
+                    cViewModel.Complaints = _complaintMan.Get_Complaints(ref pager);
                 }
-                _complaintViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", _complaintViewModel.Pager.TotalRecords, _complaintViewModel.Pager.CurrentPage + 1, _complaintViewModel.Pager.PageSize, 10, true);
+                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
             }
             catch (Exception ex)
             {
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
-            return Json(_complaintViewModel, JsonRequestBehavior.AllowGet);
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Edit)]
-
-        public ActionResult GetComplaintById(ComplaintViewModel _complaintViewModel)
+        public ActionResult Get_Complaint_By_Id(ComplaintViewModel cViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
             try
             {
-                _complaintViewModel.Complaint = _cMgr.Get_Complaint_By_Id(_complaintViewModel.ComplaintId);
+                cViewModel.Complaint = _complaintMan.Get_Complaint_By_Id(cViewModel.Complaint_Id);
             }
             catch (Exception ex)
             {
-                _complaintViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
             }
-            return Index(_complaintViewModel);
+            return Index(cViewModel);
         }
 
-        [AuthorizeUser(AppFunction.Complaint_Edit)]
-
-        public JsonResult GetCustomerId(string CustomerName)
+        public JsonResult Get_Customer_Id(string customer_Name)
         {
-            AjaxManager aMan = new AjaxManager();
-            List<AutocompleteInfo> autoList = new List<AutocompleteInfo>();
-            autoList = aMan.Get_Customer_Id(CustomerName);
-            return Json(autoList, JsonRequestBehavior.AllowGet);
+            List<AutocompleteInfo> auto_List = new List<AutocompleteInfo>();
+            auto_List = _complaintMan.Get_Customer_Id(customer_Name);
+            return Json(auto_List, JsonRequestBehavior.AllowGet);
         }
     }
 }

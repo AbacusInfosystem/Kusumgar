@@ -54,7 +54,8 @@
 
                                     <div class="form-group">
                                         <label for="txtDefectTypeName">Defect - Type </label>
-                                        <input type="text" name="Filter.Defect_Type_Name" class="form-control input-sm" id="txtDefectTypeName" placeholder="Enter defect - type">
+                                        <input type="text" name="Filter.Defect_Type_Name" class="form-control" id="txtDefectTypeName" placeholder="Enter defect - type" value="@Model.Filter.Defect_Type_Name">
+                                        <input type="hidden" id="hdnDefectTypeId" value="@Model.Filter.Defect_Type_Id " name="Filter.Defect_Type_Id">
                                     </div>
 
                                 </div>

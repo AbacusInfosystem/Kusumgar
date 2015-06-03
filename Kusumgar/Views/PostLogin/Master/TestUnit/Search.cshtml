@@ -52,9 +52,10 @@
                                     <div class="form-group">
                                         <label for="txtTestUnitName">Test Unit name</label>
 
-                                       
-                                        <input type="text" name="Filter.Test_Unit_Name"  class="form-control input-sm" id="txtTestUnitName" placeholder="Enter test unit name">
-                                    </div>
+                                        <input type="text" name="Filter.Test_Unit_Name"  class="form-control" id="txtTestUnitName" placeholder="Enter test unit name" value="@Model.Filter.Test_Unit_Name">
+                                      
+                                        <input type="hidden" id="hdnTestUnitId" value="@Model.Filter.Test_Unit_Id" name="Filter.Test_Unit_Id">
+                                   </div>
 
                                 </div>
 

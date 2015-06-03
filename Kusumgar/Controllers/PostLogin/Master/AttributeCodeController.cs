@@ -8,6 +8,7 @@ using KusumgarBusinessEntities.Common;
 using Kusumgar.Models;
 using KusumgarModel;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers.PostLogin.Master
 {
@@ -44,6 +45,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
             catch (Exception ex)
             {
                 aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Attribute Code Controller - Insert " + ex.ToString());
             }
 
             return RedirectToAction("Search");
@@ -65,14 +68,14 @@ namespace Kusumgar.Controllers.PostLogin.Master
             catch (Exception ex)
             {
                 aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Attribute Code Controller - Update " + ex.ToString());
             }
 
             TempData["aViewModel"] = aViewModel;
 
             return RedirectToAction("Search");
-
-            
-        }
+  }
 
         public ActionResult Get_Attribute_Code_By_Id(AttributeCodeViewModel aViewModel)
         {

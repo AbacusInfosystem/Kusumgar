@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using KusumgarDatabaseEntities;
 using KusumgarBusinessEntities.Common;
 
+
 namespace KusumgarBusinessEntities
 {
-    public class ComplaintInfo
+    public class FactoryInfo
     {
-        public Complaint Complaint_Entity { get; set; }
-        public string Customer_Name { get; set; }
-        public ComplaintInfo()
+        public FactoryInfo()
         {
-            Complaint_Entity = new Complaint();
+            Factory_Entity = new M_Factory();
         }
+        public M_Factory Factory_Entity { get; set; }
     }
 }

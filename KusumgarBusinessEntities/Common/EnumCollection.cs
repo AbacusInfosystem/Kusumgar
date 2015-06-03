@@ -221,6 +221,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_Type_By_Name_sp,
         Insert_Defect_Type_sp,
         Update_Defect_Type_sp,
+        Get_Defect_AutoComplete_Sp,
 
         //Defect
         Get_Defects_sp,
@@ -231,6 +232,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
         Get_Test_Units_sp,
@@ -258,9 +260,9 @@ namespace KusumgarBusinessEntities.Common
         // Complaint
         Insert_Complaint_Sp,
         Update_Complaint_Sp,
-        Get_Complaint_List_Sp,
+        Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
-        Get_Complaint_By_CustName_Sp,
+        Get_Complaint_By_Cust_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,

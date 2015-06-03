@@ -59,5 +59,22 @@ namespace KusumgarModel
             dRepo.Update(defect);
         }
 
+        public List<AutocompleteInfo> Get_Defect_Type_AutoComplete(string defect_Type_Name)
+        {
+            DefectTypeRepo dRepo = new DefectTypeRepo();
+
+            return dRepo.Get_Defect_Type_AutoComplete(defect_Type_Name);
+        }
+
+        public List<DefectTypeInfo> Get_Defect_Types_By_Id(int Defect_Type_Id, PaginationInfo pager)
+        {
+            List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
+
+            DefectTypeRepo dRepo = new DefectTypeRepo();
+
+            defectTypes = dRepo.Get_Defect_Types_By_Id(Defect_Type_Id, pager);
+
+            return defectTypes;
+        }
     }
 }

@@ -10,6 +10,9 @@ var InitializeAutoComplete = function (elementObject) {
             if ($(elementObject).attr("id") == 'txtCustomer_Name') {
                 urlString = "/ajax/customer-list/" + $('#txtCustomer_Name').val();
             }
+            if ($(elementObject).attr("id") == 'txtCustName') {
+                urlString = "/crm/get-customer-id-by-customername/" + $('#txtCustName').val();
+            }
             if ($(elementObject).attr("id") == 'txtVendorName') {
                 urlString = "/master/get-vendor-id-by-vendorname/" + $('#txtVendorName').val();
             }
@@ -94,6 +97,19 @@ var InitializeAutoComplete = function (elementObject) {
 
             if ($(elementObject).attr("id") == 'txtMaterialName') {
                 urlString = "/master/get-material-by-material-name/" + $('#txtMaterialName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtDefectTypeName') {
+                urlString = "/ajax/defect-type-list/" + $('#txtDefectTypeName').val();
+            }
+
+
+            if ($(elementObject).attr("id") == 'txtDefectName') {
+                urlString = "/ajax/defect-list/" + $('#txtDefectName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnitName') {
+                urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
             }
 
             $.ajax({

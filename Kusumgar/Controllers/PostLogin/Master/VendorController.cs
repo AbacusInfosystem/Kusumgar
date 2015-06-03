@@ -60,9 +60,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {   
-                vViewModel.Vendor.Vendor_Entity.CreatedBy = 1;
+                vViewModel.Vendor.Vendor_Entity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+
+                vViewModel.Vendor.Vendor_Entity.CreatedOn = DateTime.Now;
+
+                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
 
                 vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
 
@@ -138,7 +142,10 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
+                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+
                 
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 

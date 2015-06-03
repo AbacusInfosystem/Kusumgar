@@ -1,5 +1,5 @@
-﻿
-
+﻿    
+    InitializeAutoComplete($('#txtCustName'));
 
 
 $(function () {
