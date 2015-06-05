@@ -38,8 +38,8 @@ namespace KusumgarDataAccess
                 {
                     FactoryInfo factory = new FactoryInfo();
 
-                    factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
-                    factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+                    factory.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+                    factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
 
                     factories.Add(factory);
                 }
@@ -378,8 +378,8 @@ namespace KusumgarDataAccess
             work_Center.Work_Center_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
             work_Center.Work_Center_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             work_Center.Work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
-            work_Center.Factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
-            //work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+            work_Center.Factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+            //work_Center.Factory.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
 
             return work_Center;
         }
@@ -450,8 +450,8 @@ namespace KusumgarDataAccess
             work_Center.Work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
             work_Center.Work_Station.Work_Station_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
 
-            work_Center.Factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
-            work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+            work_Center.Factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+            work_Center.Factory.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
           
             return work_Center;
         }

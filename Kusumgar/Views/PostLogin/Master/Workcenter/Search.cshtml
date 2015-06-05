@@ -54,17 +54,17 @@
 
                                     <div class="form-group">
                                         <label>Factory</label>
-                                        <select class="form-control" id="drpFactory" name="Work_Center.Factory.Factory_Entity.Factory_Id">
+                                        <select class="form-control" id="drpFactory" name="Work_Center.Factory.Factory_Id">
                                             <option value="">-Select factory-</option>
                                             @foreach (var item in Model.Work_Center.Factories)
                                             {
-                                                if (Model.Work_Center.Factory.Factory_Entity.Factory_Id == item.Factory_Entity.Factory_Id)
+                                                if (Model.Work_Center.Factory.Factory_Id == item.Factory_Id)
                                                 {
-                                                    <option value="@item.Factory_Entity.Factory_Id" selected="selected">@item.Factory_Entity.Factory_Name</option>
+                                                    <option value="@item.Factory_Id" selected="selected">@item.Factory_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Factory_Entity.Factory_Id">@item.Factory_Entity.Factory_Name</option>
+                                                    <option value="@item.Factory_Id">@item.Factory_Name</option>
                                                 }
                                             }
                                         </select>
