@@ -12,11 +12,25 @@ namespace KusumgarBusinessEntities
     {
         public RoleInfo()
         {
-            RoleEntity = new M_Role();
+            //RoleEntity = new M_Role();
 
-            RoleEntity.Is_Active = true;
+          //  RoleEntity.Is_Active = true;
         }
 
-        public M_Role RoleEntity { get; set; }
+        //public M_Role RoleEntity { get; set; }
+
+        public int Role_Id { get; set; }
+
+        public string Role_Name { get; set; }
+
+        public bool Is_Active { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public int CreatedBy { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
+
+        public int UpdatedBy { get; set; }
     }
 }

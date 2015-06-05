@@ -3,7 +3,7 @@
        
 
         rules: {
-            "Role.RoleEntity.Role_Name":
+            "Role.Role_Name":
             {
                 required: true,
                 validate_rolename : true
@@ -12,7 +12,7 @@
         },
         messages: {
 
-            "Role.RoleEntity.Role_Name":
+            "Role.Role_Name":
             {
                 required: "Role name is required."
             },

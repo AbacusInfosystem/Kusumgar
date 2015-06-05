@@ -125,18 +125,18 @@
                                                 foreach (var item in Model.Roles)
                                                 {
 
-                                                if (Model.User.User_Roles.Where(a => a.UserRoleEntity.Role_Id == item.RoleEntity.Role_Id).Count() > 0)
+                                                if (Model.User.User_Roles.Where(a => a.UserRoleEntity.Role_Id == item.Role_Id).Count() > 0)
                                                 {
                                                 <label style="color: #333">
-                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" checked value="@item.RoleEntity.Role_Id" />
-                                                    &nbsp;&nbsp; @item.RoleEntity.Role_Name &nbsp; &nbsp;
+                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" checked value="@item.Role_Id" />
+                                                    &nbsp;&nbsp; @item.Role_Name &nbsp; &nbsp;
                                                 </label>
                                                 }
                                                 else
                                                 {
                                                 <label style="color: #333">
-                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" value="@item.RoleEntity.Role_Id" />
-                                                    &nbsp;&nbsp; @item.RoleEntity.Role_Name &nbsp;&nbsp;
+                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" value="@item.Role_Id" />
+                                                    &nbsp;&nbsp; @item.Role_Name &nbsp;&nbsp;
                                                 </label>
                                                 }
                                                 }

@@ -64,9 +64,9 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
-                rViewModel.Role.RoleEntity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                rViewModel.Role.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                rViewModel.Role.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 int role_Id = _roleMgr.Insert_Role(rViewModel.Role);
 
@@ -90,11 +90,11 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
-                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                rViewModel.Role.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _roleMgr.Update_Role(rViewModel.Role);
 
-                _roleAccessMan.Insert_Role_Access(rViewModel.Role.RoleEntity.Role_Id, rViewModel.Selected_Role_Access);
+                _roleAccessMan.Insert_Role_Access(rViewModel.Role.Role_Id, rViewModel.Selected_Role_Access);
 
                 rViewModel.Friendly_Message.Add(MessageStore.Get("RO002"));
             }

@@ -22,7 +22,7 @@
     </section>
 
     <form id="frmRole">
-        <input type="hidden" class="form-control input-sm" name="Role.RoleEntity.Role_Id" id="hdnRole_Id" value="@Model.Role.RoleEntity.Role_Id">
+        <input type="hidden" class="form-control input-sm" name="Role.Role_Id" id="hdnRole_Id" value="@Model.Role.Role_Id">
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -41,8 +41,8 @@
 
                                     <div class="form-group">
                                         <label for="txtRole_Name" style="color: #333">Role Name</label>
-                                        <input type="text" class="form-control input-sm" name="Role.RoleEntity.Role_Name" id="txtRole_Name" placeholder="Enter Role name" value="@Model.Role.RoleEntity.Role_Name">
-                                        <input type="hidden" id="hdnRole_Name" value="@Model.Role.RoleEntity.Role_Name">
+                                        <input type="text" class="form-control input-sm" name="Role.Role_Name" id="txtRole_Name" placeholder="Enter Role name" value="@Model.Role.Role_Name">
+                                        <input type="hidden" id="hdnRole_Name" value="@Model.Role.Role_Name">
                                     </div>
 
                                 </div>
@@ -91,7 +91,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @if (Model.Role.RoleEntity.Is_Active == false)
+                                        @if (Model.Role.Is_Active == false)
                                         {
                                             <label>
                                                 <input type="checkbox" name="chkStatus" />
@@ -106,7 +106,7 @@
                                             </label>
                                         }
                                     </div>
-                                    <input type="hidden" id="hdnActive" name="Role.RoleEntity.Is_Active" value="@Model.Role.RoleEntity.Is_Active.ToString()">
+                                    <input type="hidden" id="hdnActive" name="Role.Is_Active" value="@Model.Role.Is_Active.ToString()">
                                 </div>
                             </div>
 
