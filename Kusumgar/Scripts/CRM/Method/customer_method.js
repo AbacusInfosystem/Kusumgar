@@ -19,7 +19,7 @@ function Save_Customer_Details()
 function Customer_CallBack(data)
 {
 
-    $("#hdnCustomer_Id").val(data.Customer.Customer_Entity.Customer_Id);
+    $("#hdnCustomer_Id").val(data.Customer.Customer_Id);
 
     $("#tabFinancial").show();
     $("#tabBilling").show();
@@ -39,8 +39,7 @@ function Set_Customer()
         {
             Customer: 
                 {
-                    Customer_Entity:
-                        {
+                    
                             Customer_Id: $("#hdnCustomer_Id").val(),
 
                             Customer_Name: $("#txtCustomer_Name").val(),
@@ -86,7 +85,7 @@ function Set_Customer()
                             Block_Order: $("#hdnBlock_Order").val(),
 
                             Is_Active: $("#hdnIs_Active").val()
-                        }
+                        
                 }
         }
 

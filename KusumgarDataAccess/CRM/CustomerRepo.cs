@@ -106,92 +106,92 @@ namespace KusumgarDataAccess
          {
              CustomerInfo customer = new CustomerInfo();
 
-             customer.Customer_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+             customer.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
 
-             customer.Customer_Entity.Customer_Name = Convert.ToString(dr["Customer_Name"]);
+             customer.Customer_Name = Convert.ToString(dr["Customer_Name"]);
 
-             customer.Customer_Entity.Company_Email = Convert.ToString(dr["Company_Email"]);
+             customer.Company_Email = Convert.ToString(dr["Company_Email"]);
 
-             customer.Customer_Entity.Head_Office_Address = Convert.ToString(dr["Head_Office_Address"]);
+             customer.Head_Office_Address = Convert.ToString(dr["Head_Office_Address"]);
 
              if (dr["Head_Office_State"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Head_Office_State = Convert.ToInt32(dr["Head_Office_State"]);
+                 customer.Head_Office_State = Convert.ToInt32(dr["Head_Office_State"]);
              }
 
-             customer.Customer_Entity.Head_Office_ZipCode = Convert.ToString(dr["Head_Office_ZipCode"]);
+             customer.Head_Office_ZipCode = Convert.ToString(dr["Head_Office_ZipCode"]);
 
              if (dr["Head_Office_Nation"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Head_Office_Nation = Convert.ToInt32(dr["Head_Office_Nation"]);
+                 customer.Head_Office_Nation = Convert.ToInt32(dr["Head_Office_Nation"]);
              }
 
-             customer.Customer_Entity.Head_Office_Landline1 = Convert.ToString(dr["Head_Office_Landline1"]);
+             customer.Head_Office_Landline1 = Convert.ToString(dr["Head_Office_Landline1"]);
 
-             customer.Customer_Entity.Head_Office_Landline2 = Convert.ToString(dr["Head_Office_Landline2"]);
+             customer.Head_Office_Landline2 = Convert.ToString(dr["Head_Office_Landline2"]);
 
-             customer.Customer_Entity.Head_Office_FaxNo = Convert.ToString(dr["Head_Office_FaxNo"]);
+             customer.Head_Office_FaxNo = Convert.ToString(dr["Head_Office_FaxNo"]);
 
-             customer.Customer_Entity.Company_Turnover = Convert.ToString(dr["Company_Turnover"]);
+             customer.Company_Turnover = Convert.ToString(dr["Company_Turnover"]);
 
              if (dr["Public_Private_Sector"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Public_Private_Sector = Convert.ToBoolean(dr["Public_Private_Sector"]);
+                 customer.Public_Private_Sector = Convert.ToBoolean(dr["Public_Private_Sector"]);
              }
 
              if (dr["Organised_UnOrganised_Sector"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Organised_UnOrganised_Sector = Convert.ToBoolean(dr["Organised_UnOrganised_Sector"]);
+                 customer.Organised_UnOrganised_Sector = Convert.ToBoolean(dr["Organised_UnOrganised_Sector"]);
              }
 
              if (dr["Proprietary_Private_Limited"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Proprietary_Private_Limited = Convert.ToInt32(dr["Proprietary_Private_Limited"]);
+                 customer.Proprietary_Private_Limited = Convert.ToInt32(dr["Proprietary_Private_Limited"]);
              }
 
              if (dr["Progressive_Stable_Turmoil"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Progressive_Stable_Turmoil = Convert.ToInt32(dr["Progressive_Stable_Turmoil"]);
+                 customer.Progressive_Stable_Turmoil = Convert.ToInt32(dr["Progressive_Stable_Turmoil"]);
              }
 
              if (dr["Expiration_Date_Of_Contract"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Expiration_Date_Of_Contract = Convert.ToDateTime(dr["Expiration_Date_Of_Contract"]);
+                 customer.Expiration_Date_Of_Contract = Convert.ToDateTime(dr["Expiration_Date_Of_Contract"]);
              }
 
              if (dr["Credit_limit"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
+                 customer.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
              }
 
              if (dr["Auto_Mail_Delivery"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Auto_Mail_Delivery = Convert.ToBoolean(dr["Auto_Mail_Delivery"]);
+                 customer.Auto_Mail_Delivery = Convert.ToBoolean(dr["Auto_Mail_Delivery"]);
              }
 
              if (dr["Order_Minimum_Value"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Order_Minimum_Value = Convert.ToInt32(dr["Order_Minimum_Value"]);
+                 customer.Order_Minimum_Value = Convert.ToInt32(dr["Order_Minimum_Value"]);
              }
 
              if (dr["Order_Maximum_Value"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Order_Maximum_Value = Convert.ToInt32(dr["Order_Maximum_Value"]);
+                 customer.Order_Maximum_Value = Convert.ToInt32(dr["Order_Maximum_Value"]);
              }
 
              if (dr["Is_Approved_By_Director"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Is_Approved_By_Director = Convert.ToBoolean(dr["Is_Approved_By_Director"]);
+                 customer.Is_Approved_By_Director = Convert.ToBoolean(dr["Is_Approved_By_Director"]);
              }
 
              if (dr["Block_Order"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Block_Order = Convert.ToBoolean(dr["Block_Order"]);
+                 customer.Block_Order = Convert.ToBoolean(dr["Block_Order"]);
              }
 
              if (dr["Is_Active"] != DBNull.Value)
              {
-                 customer.Customer_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+                 customer.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
              }
 
              return customer;
@@ -314,39 +314,39 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (customer.Customer_Entity.Customer_Id != 0)
+            if (customer.Customer_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Customer_Id", customer.Customer_Entity.Customer_Id));
+                sqlparam.Add(new SqlParameter("@Customer_Id", customer.Customer_Id));
             }
-           sqlparam.Add(new SqlParameter("@Customer_Name", customer.Customer_Entity.Customer_Name ));
-            sqlparam.Add(new SqlParameter("@Company_Email", customer.Customer_Entity.Company_Email ));
-            sqlparam.Add(new SqlParameter("@Head_Office_Address", customer.Customer_Entity.Head_Office_Address ));
-            sqlparam.Add(new SqlParameter("@Head_Office_State", customer.Customer_Entity.Head_Office_State));
-            sqlparam.Add(new SqlParameter("@Head_Office_ZipCode", customer.Customer_Entity.Head_Office_ZipCode));
-            sqlparam.Add(new SqlParameter("@Head_Office_Nation", customer.Customer_Entity.Head_Office_Nation));
-            sqlparam.Add(new SqlParameter("@Head_Office_Landline1", customer.Customer_Entity.Head_Office_Landline1));
-            sqlparam.Add(new SqlParameter("@Head_Office_Landline2", customer.Customer_Entity.Head_Office_Landline2));
-            sqlparam.Add(new SqlParameter("@Head_Office_FaxNo", customer.Customer_Entity.Head_Office_FaxNo));
-            sqlparam.Add(new SqlParameter("@Company_Turnover", customer.Customer_Entity.Company_Turnover));
-            sqlparam.Add(new SqlParameter("@Public_Private_Sector", customer.Customer_Entity.Public_Private_Sector));
-            sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Customer_Entity.Organised_UnOrganised_Sector));
-            sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Customer_Entity.Proprietary_Private_Limited));
-            sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Customer_Entity.Progressive_Stable_Turmoil));
-            sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Customer_Entity.Expiration_Date_Of_Contract));
-            sqlparam.Add(new SqlParameter("@Credit_limit", customer.Customer_Entity.Credit_limit));
-            sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Customer_Entity.Auto_Mail_Delivery));
-            sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Customer_Entity.Order_Minimum_Value));
-            sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Customer_Entity.Order_Maximum_Value));
-            sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", customer.Customer_Entity.Is_Approved_By_Director));
-            sqlparam.Add(new SqlParameter("@Block_Order", customer.Customer_Entity.Block_Order));
-            sqlparam.Add(new SqlParameter("@Is_Active", customer.Customer_Entity.Is_Active));
-            if (customer.Customer_Entity.Customer_Id == 0)
+           sqlparam.Add(new SqlParameter("@Customer_Name", customer.Customer_Name ));
+            sqlparam.Add(new SqlParameter("@Company_Email", customer.Company_Email ));
+            sqlparam.Add(new SqlParameter("@Head_Office_Address", customer.Head_Office_Address ));
+            sqlparam.Add(new SqlParameter("@Head_Office_State", customer.Head_Office_State));
+            sqlparam.Add(new SqlParameter("@Head_Office_ZipCode", customer.Head_Office_ZipCode));
+            sqlparam.Add(new SqlParameter("@Head_Office_Nation", customer.Head_Office_Nation));
+            sqlparam.Add(new SqlParameter("@Head_Office_Landline1", customer.Head_Office_Landline1));
+            sqlparam.Add(new SqlParameter("@Head_Office_Landline2", customer.Head_Office_Landline2));
+            sqlparam.Add(new SqlParameter("@Head_Office_FaxNo", customer.Head_Office_FaxNo));
+            sqlparam.Add(new SqlParameter("@Company_Turnover", customer.Company_Turnover));
+            sqlparam.Add(new SqlParameter("@Public_Private_Sector", customer.Public_Private_Sector));
+            sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Organised_UnOrganised_Sector));
+            sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Proprietary_Private_Limited));
+            sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Progressive_Stable_Turmoil));
+            sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
+            sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
+            sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Auto_Mail_Delivery));
+            sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Order_Minimum_Value));
+            sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Order_Maximum_Value));
+            sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", customer.Is_Approved_By_Director));
+            sqlparam.Add(new SqlParameter("@Block_Order", customer.Block_Order));
+            sqlparam.Add(new SqlParameter("@Is_Active", customer.Is_Active));
+            if (customer.Customer_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", customer.Customer_Entity.CreatedBy));
-                sqlparam.Add(new SqlParameter("@CreatedOn", customer.Customer_Entity.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", customer.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", customer.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", customer.Customer_Entity.UpdatedBy));
-            sqlparam.Add(new SqlParameter("@UpdatedOn", customer.Customer_Entity.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", customer.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", customer.UpdatedOn));
 
             return sqlparam;
         }

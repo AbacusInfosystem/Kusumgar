@@ -49,7 +49,7 @@ namespace Kusumgar.Controllers
 
                 cViewModel.Nations = _nationMan.Get_Nations(ref pager);
 
-                cViewModel.States = _stateMan.Get_States(cViewModel.Customer.Customer_Entity.Head_Office_Nation, ref pager);
+                cViewModel.States = _stateMan.Get_States(cViewModel.Customer.Head_Office_Nation, ref pager);
             }
             catch(Exception ex)
             {
@@ -101,17 +101,17 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Customer_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Customer_Entity.CreatedOn = DateTime.Now;
+                cViewModel.Customer.CreatedOn = DateTime.Now;
 
-                cViewModel.Customer.Customer_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Customer.UpdatedOn = DateTime.Now;
 
                 int customer_Id = _customerMan.Insert_Customer(cViewModel.Customer);
 
-                cViewModel.Customer.Customer_Entity.Customer_Id = customer_Id;
+                cViewModel.Customer.Customer_Id = customer_Id;
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CU001"));
             }
@@ -131,9 +131,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Customer_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Customer.UpdatedOn = DateTime.Now;
 
-                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _customerMan.Update_Customer(cViewModel.Customer);
 
@@ -361,7 +361,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Entity.Customer_Id);
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
             }
             catch(Exception ex)
             {
