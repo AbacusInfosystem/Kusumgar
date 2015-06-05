@@ -204,13 +204,13 @@ namespace KusumgarDataAccess
         private MaterialSubCategoryInfo Get_Material_SubCategory_Values(DataRow dr)
         {
             MaterialSubCategoryInfo Material_SubCategory = new MaterialSubCategoryInfo();
-            Material_SubCategory.Material_SubCategory_Entity.Material_SubCategory_Id = Convert.ToInt32(dr["Material_SubCategory_Id"]);
-            Material_SubCategory.Material_SubCategory_Entity.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
-            Material_SubCategory.Material_SubCategory_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
-            Material_SubCategory.Material_SubCategory_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            Material_SubCategory.Material_SubCategory_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            Material_SubCategory.Material_SubCategory_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            Material_SubCategory.Material_SubCategory_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            Material_SubCategory.Material_SubCategory_Id = Convert.ToInt32(dr["Material_SubCategory_Id"]);
+            Material_SubCategory.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
+            Material_SubCategory.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+            Material_SubCategory.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            Material_SubCategory.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            Material_SubCategory.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            Material_SubCategory.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             return Material_SubCategory;
         }
 

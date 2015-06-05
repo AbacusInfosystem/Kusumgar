@@ -27,6 +27,8 @@ function Bind_Vendor_Data_Callback(data) {
 
     $("#hdnVendor_Id").val($("#hdnVendorId").val());
 
+    $("#hdnVendor_Name").val($("#txtVendorName").val());
+
     InitializeAutoComplete($('#txt_auto_Vendor_Name'));
 
     Friendly_Message(data);

@@ -85,13 +85,13 @@
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Material_SubCategories)
                                                 {
-                                                    if (Model.Material.Material_SubCategory_Id == item.Material_SubCategory_Entity.Material_SubCategory_Id)
+                                                    if (Model.Material.Material_SubCategory_Id == item.Material_SubCategory_Id)
                                                     {
-                                                        <option value="@item.Material_SubCategory_Entity.Material_SubCategory_Id" selected="selected">@item.Material_SubCategory_Entity.Material_SubCategory_Name</option>
+                                                        <option value="@item.Material_SubCategory_Id" selected="selected">@item.Material_SubCategory_Name</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.Material_SubCategory_Entity.Material_SubCategory_Id">@item.Material_SubCategory_Entity.Material_SubCategory_Name</option>
+                                                        <option value="@item.Material_SubCategory_Id">@item.Material_SubCategory_Name</option>
                                                     }
                                                 }
                                             </select>
@@ -176,10 +176,11 @@
                                             <label for="txt_auto_Vendor_Name" style="color: #333">Vendor Name</label>
                                             <div class="auto-complete">
                                                 <div class="input-group-btn form-inline">
-                                                    <input type="text" class="form-control input-sm" name="Material_Vendor.Vendor_Name" id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name" value="@Model.Material_Vendor.Vendor_Name">
+                                                    <input type="text" class="form-control input-sm"  id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name" >
                                                     <button type="button" id="btnNew" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">New Vendor</button>
                                                 </div>
-                                                <input type="hidden" id="hdnVendor_Id"  name="Material_Vendor.Material_Vendor_Entity.Vendor_Id">
+                                                <input type="hidden" id="hdnVendor_Id" name="Material_Vendor.Material_Vendor_Entity.Vendor_Id" class="auto-complete-value">
+                                                <input type="hidden" id="hdnVendor_Name" value="@Model.Material_Vendor.Vendor_Name" name="Material_Vendor.Vendor_Name" class="auto-complete-label">
                                             </div>
                                             <br />
 

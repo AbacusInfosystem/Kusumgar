@@ -108,7 +108,7 @@ function PageMore(Id) {
 
 //    if (data.length > 0) {
 //        for (var i = 0; i < data.length ; i++) {
-//            htmltext += "<option value='" + data[i].Material_SubCategory_Entity.Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Entity.Material_SubCategory_Name + "</option>";
+//            htmltext += "<option value='" + data[i].Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Name + "</option>";
 //        }
 //    }
 //    $("#drpSubCatName").html(htmltext);
