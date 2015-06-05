@@ -38,8 +38,6 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             pager.IsPagingRequired = false;
 
-            
-            
             vViewModel.Is_Primary = true;
 
             return View("Index", vViewModel);
@@ -59,10 +57,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert_Vendor(VendorViewModel vViewModel)
         {
             try
-            {   
-                vViewModel.Vendor.Vendor_Entity.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+            {   vViewModel.Vendor.Vendor_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 vViewModel.Vendor.Vendor_Entity.CreatedOn = DateTime.Now;
 
@@ -144,9 +141,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
-
-                
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+              
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 
                 vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));

@@ -35,7 +35,6 @@ namespace KusumgarDataAccess
                     defects.Add(Get_Defect_Values(dr));
                 }
          
-
             return defects;
         }
 
@@ -93,26 +92,6 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    //defects.DefectEntity.Defect_Id = Convert.ToInt32(dr["Defect_Id"]);
-                    
-                    //defects.DefectEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
-                    
-                    //defects.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
-                    
-                    //defects.DefectEntity.Status = Convert.ToBoolean(dr["Status"]);
-                    
-                    //defects.DefectEntity.Defect_Code = Convert.ToString(dr["Defect_Code"]);
-                    
-                    //defects.DefectEntity.Defect_Name = Convert.ToString(dr["Defect_Name"]);
-                    
-                    //defects.DefectEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-                    
-                    //defects.DefectEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-                    
-                    //defects.DefectEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-                   
-                    //defects.DefectEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
                     defects = Get_Defect_Values(dr);
                 }
 
@@ -198,7 +177,7 @@ namespace KusumgarDataAccess
 
         public List<DefectInfo> Get_Grid_By_Defect_Type(int Defect_Type_Id)
         {
-            List<DefectInfo> retVal = new List<DefectInfo>();
+            List<DefectInfo> defects = new List<DefectInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
@@ -219,36 +198,14 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    DefectInfo defects = new DefectInfo();
-
-                    defects.DefectEntity.Defect_Id = Convert.ToInt32(dr["Defect_Id"]);
-
-                    defects.DefectEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
-
-                    defects.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
-
-                    defects.DefectEntity.Defect_Code = Convert.ToString(dr["Defect_Code"]);
-
-                    defects.DefectEntity.Defect_Name = Convert.ToString(dr["Defect_Name"]);
-
-                    defects.DefectEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                    defects.DefectEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                    defects.DefectEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                    defects.DefectEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                    defects.DefectEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                    retVal.Add(defects);
+                    defects.Add(Get_Defect_Values(dr));
                 }
             }
-
-            return retVal;
+           return defects;
+           
         }
 
-        public List<DefectInfo> Get_Defects_By_Id(int Defect_Id, ref PaginationInfo pager)
+        public List<DefectInfo> Get_Defects_By_Name(int Defect_Id, ref PaginationInfo pager)
         {
             List<DefectInfo> defects = new List<DefectInfo>();
 

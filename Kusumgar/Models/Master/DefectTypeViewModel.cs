@@ -41,7 +41,6 @@ namespace Kusumgar.Models
         public class Defect_Type_Edit_Mode
         {
             public int Defect_Type_Id { get; set; }
-
         }
 
         public class Defect_Type_Filter

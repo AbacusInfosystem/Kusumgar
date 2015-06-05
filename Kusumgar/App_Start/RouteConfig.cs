@@ -1244,11 +1244,6 @@ namespace Kusumgar
            defaults: new { controller = "Defect", action = "Get_Defect_AutoComplete", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
-         routes.MapRoute(
-         name: "ajax-6",
-         url: "ajax/test-unit-list/{test_Unit_Name}",
-         defaults: new { controller = "TestUnit", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
-         namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #endregion
