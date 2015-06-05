@@ -53,31 +53,31 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-            sqlParamList.Add(new SqlParameter("@Fabric_Type_Id", testInfo.TestEntity.Fabric_Type_Id));
-            sqlParamList.Add(new SqlParameter("@Status", testInfo.TestEntity.Status));
-            sqlParamList.Add(new SqlParameter("@Test_Name", testInfo.TestEntity.Test_Name));
-            sqlParamList.Add(new SqlParameter("@Test_Unit1", testInfo.TestEntity.Test_Unit1));
-            sqlParamList.Add(new SqlParameter("@Test_Unit2", testInfo.TestEntity.Test_Unit2));
-            sqlParamList.Add(new SqlParameter("@Test_Unit3", testInfo.TestEntity.Test_Unit3));
-            sqlParamList.Add(new SqlParameter("@Test_Unit4", testInfo.TestEntity.Test_Unit4));
-            sqlParamList.Add(new SqlParameter("@Test_Unit5", testInfo.TestEntity.Test_Unit5));
-            sqlParamList.Add(new SqlParameter("@Test_Unit6", testInfo.TestEntity.Test_Unit6));
-            sqlParamList.Add(new SqlParameter("@Test_Unit7", testInfo.TestEntity.Test_Unit7));
+            sqlParamList.Add(new SqlParameter("@Fabric_Type_Id", testInfo.Fabric_Type_Id));
+            sqlParamList.Add(new SqlParameter("@Status", testInfo.Status));
+            sqlParamList.Add(new SqlParameter("@Test_Name", testInfo.Test_Name));
+            sqlParamList.Add(new SqlParameter("@Test_Unit1", testInfo.Test_Unit1));
+            sqlParamList.Add(new SqlParameter("@Test_Unit2", testInfo.Test_Unit2));
+            sqlParamList.Add(new SqlParameter("@Test_Unit3", testInfo.Test_Unit3));
+            sqlParamList.Add(new SqlParameter("@Test_Unit4", testInfo.Test_Unit4));
+            sqlParamList.Add(new SqlParameter("@Test_Unit5", testInfo.Test_Unit5));
+            sqlParamList.Add(new SqlParameter("@Test_Unit6", testInfo.Test_Unit6));
+            sqlParamList.Add(new SqlParameter("@Test_Unit7", testInfo.Test_Unit7));
 
-            sqlParamList.Add(new SqlParameter("@Test_Unit8", testInfo.TestEntity.Test_Unit8));
+            sqlParamList.Add(new SqlParameter("@Test_Unit8", testInfo.Test_Unit8));
 
-            sqlParamList.Add(new SqlParameter("@Test_Unit9", testInfo.TestEntity.Test_Unit9));
+            sqlParamList.Add(new SqlParameter("@Test_Unit9", testInfo.Test_Unit9));
 
-            sqlParamList.Add(new SqlParameter("@Test_Unit10", testInfo.TestEntity.Test_Unit10));
+            sqlParamList.Add(new SqlParameter("@Test_Unit10", testInfo.Test_Unit10));
 
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", testInfo.TestEntity.UpdatedBy));
-            if (testInfo.TestEntity.Test_Id == 0)
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", testInfo.UpdatedBy));
+            if (testInfo.Test_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", testInfo.TestEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", testInfo.CreatedBy));
             }
-            if (testInfo.TestEntity.Test_Id != 0)
+            if (testInfo.Test_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Test_Id", testInfo.TestEntity.Test_Id));
+                sqlParamList.Add(new SqlParameter("@Test_Id", testInfo.Test_Id));
 
             }
 
@@ -193,110 +193,110 @@ namespace KusumgarDataAccess
         {
             TestInfo tests = new TestInfo();
 
-            tests.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
+            tests.Test_Id = Convert.ToInt32(dr["Test_Id"]);
 
-            tests.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
+            tests.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
 
-            tests.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
+            tests.Status = Convert.ToBoolean(dr["Status"]);
 
-            tests.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            tests.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            tests.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            tests.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            tests.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            tests.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            tests.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            tests.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
-            tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
+            tests.Test_Name = Convert.ToString(dr["Test_Name"]);
 
             if (dr["Test_Unit1"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+                tests.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit1 = 0;
+                tests.Test_Unit1 = 0;
             }
 
             if (dr["Test_Unit2"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+                tests.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit2 = 0;
+                tests.Test_Unit2 = 0;
             }
 
             if (dr["Test_Unit3"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+                tests.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit3 = 0;
+                tests.Test_Unit3 = 0;
             }
 
             if (dr["Test_Unit4"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+                tests.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit4 = 0;
+                tests.Test_Unit4 = 0;
             }
 
             if (dr["Test_Unit5"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+                tests.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit5 = 0;
+                tests.Test_Unit5 = 0;
             }
 
             if (dr["Test_Unit6"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+                tests.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit6 = 0;
+                tests.Test_Unit6 = 0;
             }
 
             if (dr["Test_Unit7"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+                tests.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit7 = 0;
+                tests.Test_Unit7 = 0;
             }
 
             if (dr["Test_Unit8"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+                tests.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit8 = 0;
+                tests.Test_Unit8 = 0;
             }
 
             if (dr["Test_Unit9"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+                tests.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit9 = 0;
+                tests.Test_Unit9 = 0;
             }
 
             if (dr["Test_Unit10"] != DBNull.Value)
             {
-                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+                tests.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
             }
             else
             {
-                tests.TestEntity.Test_Unit10 = 0;
+                tests.Test_Unit10 = 0;
             }
 
             tests.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);

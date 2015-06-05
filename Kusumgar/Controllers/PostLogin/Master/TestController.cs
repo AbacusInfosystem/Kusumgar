@@ -45,13 +45,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                tViewModel.Test.TestEntity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                tViewModel.Test.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                tViewModel.Test.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                tViewModel.Test.TestEntity.CreatedOn = DateTime.Now;
+                tViewModel.Test.CreatedOn = DateTime.Now;
 
-                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+                tViewModel.Test.UpdatedOn = DateTime.Now;
 
                 TestManager tMan = new TestManager();
 
@@ -77,9 +77,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+                tViewModel.Test.UpdatedOn = DateTime.Now;
 
-                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                tViewModel.Test.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 TestManager tMan = new TestManager();
 
