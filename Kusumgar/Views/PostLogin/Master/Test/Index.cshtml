@@ -51,13 +51,13 @@
 
                                             @foreach (var item in Model.Fabric_Type)
                                             {
-                                                if (Model.Test.TestEntity.Fabric_Type_Id == item.FabricTypeEntity.Fabric_Type_Id)
+                                                if (Model.Test.TestEntity.Fabric_Type_Id == item.Fabric_Type_Id)
                                                 {
-                                                    <option value="@item.FabricTypeEntity.Fabric_Type_Id" selected="selected">@item.FabricTypeEntity.Fabric_Type_Name</option>
+                                                    <option value="@item.Fabric_Type_Id" selected="selected">@item.Fabric_Type_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.FabricTypeEntity.Fabric_Type_Id">@item.FabricTypeEntity.Fabric_Type_Name</option>
+                                                    <option value="@item.Fabric_Type_Id">@item.Fabric_Type_Name</option>
                                                 }
 
                                             }

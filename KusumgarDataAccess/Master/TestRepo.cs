@@ -130,8 +130,8 @@ namespace KusumgarDataAccess
                 foreach (DataRow dr in drList)
                 {
                     FabricTypeInfo fabricTypes = new FabricTypeInfo();
-                    fabricTypes.FabricTypeEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
-                    fabricTypes.FabricTypeEntity.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
+                    fabricTypes.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
+                    fabricTypes.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
                     retVal.Add(fabricTypes);
                 }
 
