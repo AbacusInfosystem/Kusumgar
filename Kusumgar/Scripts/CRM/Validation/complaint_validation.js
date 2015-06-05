@@ -2,23 +2,23 @@
     $("#frmComp").validate({
 
         rules: {
-            "Complaint.Complaint_Entity.Customer_Id":
+            "Complaint.Customer_Id":
             {
                 customer_required: true,                
             },
-            "Complaint.Complaint_Entity.Order_Id":
+            "Complaint.Order_Id":
             {
                 required: true,
             },
-            "Complaint.Complaint_Entity.Order_Item_Id":
+            "Complaint.Order_Item_Id":
             {
                 required: true,
             },
-            "Complaint.Complaint_Entity.Challan_No":
+            "Complaint.Challan_No":
             {
                 required: true,
             },
-            "Complaint.Complaint_Entity.CDescription":
+            "Complaint.CDescription":
             {
                 required: true                
             }
@@ -26,23 +26,23 @@
         },
         messages: {
 
-            "Complaint.Complaint_Entity.Customer_Id":
+            "Complaint.Customer_Id":
             {
                 
             },
-            "Complaint.Complaint_Entity.Order_Id":
+            "Complaint.Order_Id":
             {
                 required: "Order Id is required."
             },
-            "Complaint.Complaint_Entity.Order_Item_Id":
+            "Complaint.Order_Item_Id":
             {
                 required: "Order Item Id is required."
             },
-            "Complaint.Complaint_Entity.Challan_No":
+            "Complaint.Challan_No":
             {
                 required: "Challan No is required."
             },
-            "Complaint.Complaint_Entity.CDescription":
+            "Complaint.CDescription":
             {
                 required: "Complaint Description is required."                
             }

@@ -37,20 +37,20 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Complaint(ComplaintInfo complaintInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if (complaintInfo.Complaint_Entity.Complaint_Id != 0)
+            if (complaintInfo.Complaint_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Complaint_Id", complaintInfo.Complaint_Entity.Complaint_Id));
+                sqlParamList.Add(new SqlParameter("@Complaint_Id", complaintInfo.Complaint_Id));
             }
-            sqlParamList.Add(new SqlParameter("@Customer_Id", complaintInfo.Complaint_Entity.Customer_Id));
-            sqlParamList.Add(new SqlParameter("@Order_Id", complaintInfo.Complaint_Entity.Order_Id));
-            sqlParamList.Add(new SqlParameter("@Order_Item_Id", complaintInfo.Complaint_Entity.Order_Item_Id));
-            sqlParamList.Add(new SqlParameter("@Challan_No", complaintInfo.Complaint_Entity.Challan_No));
-            sqlParamList.Add(new SqlParameter("@Description", complaintInfo.Complaint_Entity.CDescription));
-            if (complaintInfo.Complaint_Entity.Complaint_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Customer_Id", complaintInfo.Customer_Id));
+            sqlParamList.Add(new SqlParameter("@Order_Id", complaintInfo.Order_Id));
+            sqlParamList.Add(new SqlParameter("@Order_Item_Id", complaintInfo.Order_Item_Id));
+            sqlParamList.Add(new SqlParameter("@Challan_No", complaintInfo.Challan_No));
+            sqlParamList.Add(new SqlParameter("@Description", complaintInfo.CDescription));
+            if (complaintInfo.Complaint_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", complaintInfo.Complaint_Entity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", complaintInfo.CreatedBy));
             }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", complaintInfo.Complaint_Entity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", complaintInfo.UpdatedBy));
             return sqlParamList;
         }
 
@@ -68,12 +68,12 @@ namespace KusumgarDataAccess
         private ComplaintInfo Get_Complaint_Values(DataRow dr)
                 {
             ComplaintInfo complaint = new ComplaintInfo();
-            complaint.Complaint_Entity.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
+            complaint.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
             complaint.Customer_Name = Convert.ToString(dr["Customer_Name"]);
-            complaint.Complaint_Entity.Order_Id = Convert.ToString(dr["Order_Id"]);
-            complaint.Complaint_Entity.Order_Item_Id = Convert.ToString(dr["Order_Item_Id"]);
-            complaint.Complaint_Entity.Challan_No = Convert.ToString(dr["Challan_No"]);
-            complaint.Complaint_Entity.CDescription = Convert.ToString(dr["CDescription"]);
+            complaint.Order_Id = Convert.ToString(dr["Order_Id"]);
+            complaint.Order_Item_Id = Convert.ToString(dr["Order_Item_Id"]);
+            complaint.Challan_No = Convert.ToString(dr["Challan_No"]);
+            complaint.CDescription = Convert.ToString(dr["CDescription"]);
             return complaint;
                 }
 
@@ -116,13 +116,13 @@ namespace KusumgarDataAccess
         private ComplaintInfo Get_All_Complaint_Values(DataRow dr)
                 {
                     ComplaintInfo complaint = new ComplaintInfo();
-            complaint.Complaint_Entity.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
-            complaint.Complaint_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+            complaint.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
+            complaint.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             complaint.Customer_Name = Convert.ToString(dr["Customer_Name"]);
-            complaint.Complaint_Entity.Order_Id = Convert.ToString(dr["Order_Id"]);
-            complaint.Complaint_Entity.Order_Item_Id = Convert.ToString(dr["Order_Item_Id"]);
-            complaint.Complaint_Entity.Challan_No = Convert.ToString(dr["Challan_No"]);
-            complaint.Complaint_Entity.CDescription = Convert.ToString(dr["CDescription"]);
+            complaint.Order_Id = Convert.ToString(dr["Order_Id"]);
+            complaint.Order_Item_Id = Convert.ToString(dr["Order_Item_Id"]);
+            complaint.Challan_No = Convert.ToString(dr["Challan_No"]);
+            complaint.CDescription = Convert.ToString(dr["CDescription"]);
             return complaint;
         }
 
