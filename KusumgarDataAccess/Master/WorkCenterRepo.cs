@@ -84,8 +84,8 @@ namespace KusumgarDataAccess
                 {
                     ProcessInfo process = new ProcessInfo();
 
-                    process.Process_Entity.Process_Id = Convert.ToInt32(dr["Process_Id"]);
-                    process.Process_Entity.Process_Name = Convert.ToString(dr["Process_Name"]);
+                    process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
+                    process.Process_Name = Convert.ToString(dr["Process_Name"]);
 
                     processes.Add(process);
                 }

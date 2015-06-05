@@ -86,16 +86,16 @@
                                                 foreach (var item in Model.Work_Center.Processes)
                                                 {
 
-                                                    if (Model.Work_Center.Work_Center_Processes.Where(a => a.Work_Center_Process_Entity.Process_Id == item.Process_Entity.Process_Id).Count() > 0)
+                                                    if (Model.Work_Center.Work_Center_Processes.Where(a => a.Work_Center_Process_Entity.Process_Id == item.Process_Id).Count() > 0)
                                                     {
                                                         <label class="btn btn-primary active">
-                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" checked value="@item.Process_Entity.Process_Id"> @item.Process_Entity.Process_Name
+                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" checked value="@item.Process_Id"> @item.Process_Name
                                                         </label>
                                                     }
                                                     else
                                                     {
                                                         <label class="btn btn-primary ">
-                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" value="@item.Process_Entity.Process_Id"> @item.Process_Entity.Process_Name
+                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" value="@item.Process_Id"> @item.Process_Name
                                                         </label>
                                                     }
 
