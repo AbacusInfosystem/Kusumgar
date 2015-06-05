@@ -449,23 +449,23 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-           sqlParamList.Add(new SqlParameter("@Status", attributeCodes.AttributeCodeEntity.Status));
+           sqlParamList.Add(new SqlParameter("@Status", attributeCodes.Status));
 
-            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.AttributeCodeEntity.Attribute_Id));
+            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.Attribute_Id));
 
-            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.AttributeCodeEntity.Attribute_Code_Name));
+            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.Attribute_Code_Name));
 
-            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.AttributeCodeEntity.Code));
+            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.Code));
 
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.AttributeCodeEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.UpdatedBy));
 
-            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id == 0)
+            if (attributeCodes.Attribute_Code_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.AttributeCodeEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.CreatedBy));
             }
-            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id != 0)
+            if (attributeCodes.Attribute_Code_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.AttributeCodeEntity.Attribute_Code_Id));
+                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.Attribute_Code_Id));
             }
 
             return sqlParamList;

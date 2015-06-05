@@ -65,17 +65,17 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
 
-                vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
+                vViewModel.Attribute_Code.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
 
                 vViewModel.Vendor.Vendor_Entity.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
 
-                vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
+                vViewModel.Attribute_Code.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
 
                 if (vViewModel.Vendor.Material_Category_Entity.Material_Category_Name == "YarnCategory")
                 {
-                    vViewModel.Attribute_Code.AttributeCodeEntity.Status = true;
+                    vViewModel.Attribute_Code.Status = true;
 
-                    vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Id = _vendorMan.Insert_Attribute_Code(vViewModel.Attribute_Code);
+                    vViewModel.Attribute_Code.Attribute_Code_Id = _vendorMan.Insert_Attribute_Code(vViewModel.Attribute_Code);
                 }
               
                vViewModel.Friendly_Message.Add(MessageStore.Get("V011"));

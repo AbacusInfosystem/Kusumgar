@@ -117,7 +117,7 @@ namespace KusumgarBusinessEntities.Common
         TwistMingle = 2,
         Twist_type = 3,
         Ply = 4,
-        Yarn_type = 5,
+        Yarn_Type = 5,
         Shade = 6,
         Filaments = 7,
         Origin = 8,
