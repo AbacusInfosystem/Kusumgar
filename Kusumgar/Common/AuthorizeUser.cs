@@ -38,7 +38,8 @@ namespace Kusumgar
 
                 if (userInfo == null)
                 {
-                    filterContext.RequestContext.HttpContext.Response.Redirect("/");
+                    //filterContext.RequestContext.HttpContext.Response.Redirect("/");
+                    throw new Exception();
                 }
                 else
                 {

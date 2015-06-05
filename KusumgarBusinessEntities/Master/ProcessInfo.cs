@@ -8,14 +8,14 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class ProductCategoryInfo
+    public class ProcessInfo
     {
-        public M_Product_Category Product_Category_Entity { get; set; }
-
-        public ProductCategoryInfo()
+        public ProcessInfo()
         {
-            Product_Category_Entity = new M_Product_Category();
+            Process_Entity = new M_Process();
         }
-public string Product_Category_Name { get; set; }
+        public M_Process Process_Entity { get; set; }
+
+        //public String Process_Ids { get; set; }
     }
 }

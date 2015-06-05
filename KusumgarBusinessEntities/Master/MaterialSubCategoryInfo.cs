@@ -8,13 +8,13 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class ProductSubCategoryInfo
+    public class MaterialSubCategoryInfo
     {
-        public M_Product_SubCategory Product_SubCategory_Entity;
+        public M_Material_SubCategory Material_SubCategory_Entity;
 
-        public ProductSubCategoryInfo()
+        public MaterialSubCategoryInfo()
         {
-            Product_SubCategory_Entity = new M_Product_SubCategory();
+            Material_SubCategory_Entity = new M_Material_SubCategory();
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿@model Kusumgar.Models.AttributeCodeViewModel
 @using KusumgarBusinessEntities.Common;
-@{
-    ViewBag.Title = "AttributeCode";
-}
+
 <script src="~/Scripts/Master/Event/attribute_code_event.js"></script>
 <script src="~/Scripts/Master/Method/attribute_code_method.js"></script>
 <script src="~/Scripts/Master/Validation/attribute_code_validation.js"></script>
@@ -47,8 +45,8 @@
                                     <input type="hidden" id="hdfAttributeCodeId" name="Attribute_Code.AttributeCodeEntity.Attribute_Code_Id" value="@Model.Attribute_Code.AttributeCodeEntity.Attribute_Code_Id" />
 
                                     <div class="form-group">
-                                        <label for="drpAttributeCode">Attribute Code</label>
-                                        <select id="drpAttributeCode" class="form-control" name="Attribute_Code.AttributeCodeEntity.Attribute_Id">
+                                        <label for="drpAttributeCode" style="color: #333">Attribute Code</label>
+                                        <select id="drpAttributeCode" class="form-control input-sm" name="Attribute_Code.AttributeCodeEntity.Attribute_Id">
                                             <option value="">Select AttributeName</option>
                                             @foreach (var item in LookupInfo.GetAttributeNames())
                                             {
@@ -66,13 +64,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtYarnName"> Name</label>
-                                        <input type="text" class="form-control" id="txtYarnName" name="Attribute_Code.AttributeCodeEntity.Attribute_Code_Name" value="@Model.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name" placeholder="Enter Yarn Name">
+                                        <label for="txtYarnName" style="color: #333"> Name</label>
+                                        <input type="text" class="form-control input-sm" id="txtYarnName" name="Attribute_Code.AttributeCodeEntity.Attribute_Code_Name" value="@Model.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name" placeholder="Enter Yarn Name">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtYarnCode"> Code</label>
-                                        <input type="text" class="form-control" id="txtYarnCode" name="Attribute_Code.AttributeCodeEntity.Code" value="@Model.Attribute_Code.AttributeCodeEntity.Code" placeholder="Enter Yarn Code">
+                                        <label for="txtYarnCode" style="color: #333"> Code</label>
+                                        <input type="text" class="form-control input-sm" id="txtYarnCode" name="Attribute_Code.AttributeCodeEntity.Code" value="@Model.Attribute_Code.AttributeCodeEntity.Code" placeholder="Enter Yarn Code">
                                     </div>
 
                                     <div class="form-group">
@@ -107,9 +105,11 @@
                             </div>
 
                             <div class="box-footer">
-                                <button type="submit" id="btnSave" class="btn btn-success">Save</button>
-                                <a href="@Url.Action("Search", "AttributeCode")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                <div class="btn-group">
+                                    <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                    <a href="@Url.Action("Search", "AttributeCode")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
 
+                                </div>
                             </div>
 
                         </div>

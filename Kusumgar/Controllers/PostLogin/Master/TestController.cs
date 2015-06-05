@@ -8,6 +8,7 @@ using KusumgarBusinessEntities.Common;
 using Kusumgar.Models;
 using KusumgarModel;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -15,6 +16,8 @@ namespace Kusumgar.Controllers
     {
         public ActionResult Index(TestViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             TestManager tMan = new TestManager();
            
             tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
@@ -24,6 +27,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(TestViewModel tViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             TestManager tMan = new TestManager();
             
             if (TempData["tViewModel"] != null)
@@ -40,6 +45,14 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                tViewModel.Test.TestEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                tViewModel.Test.TestEntity.CreatedOn = DateTime.Now;
+
+                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+
                 TestManager tMan = new TestManager();
 
                 tMan.Insert(tViewModel.Test);
@@ -50,6 +63,8 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                 Logger.Error("Test Controller - Insert" + ex.ToString());
             }
 
             TempData["tViewModel"] = tViewModel;
@@ -62,6 +77,10 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+
+                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 TestManager tMan = new TestManager();
 
                 tMan.Update(tViewModel.Test);
@@ -71,6 +90,8 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Controller - Update" + ex.ToString());
             }
 
             TempData["tViewModel"] = tViewModel;
@@ -88,33 +109,55 @@ namespace Kusumgar.Controllers
                 tViewModel.Test = tMan.Get_Test_By_Id(tViewModel.Edit_Mode.Test_Id);
 
                 tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
-
-                return View("Index", tViewModel);
             }
 
             catch (Exception ex)
             {
-                throw ex;
-            }
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
+                Logger.Error("Test Controller-Get_Test_By_Id" + ex.ToString());
+            }
+            return View("Index", tViewModel);
         }
 
         public JsonResult Get_Tests(TestViewModel tViewModel)
         {
             TestManager tMan = new TestManager();
 
-            if (tViewModel.Filter.Fabric_Type_Id>0)
+            PaginationInfo pager = new PaginationInfo();
+            
+            try
             {
-                tViewModel.Test_Grid = tMan.Get_Test_By_Fabric_Type(tViewModel.Filter.Fabric_Type_Id,tViewModel.Pager);
-            }
-            else
-            {
-                tViewModel.Test_Grid = tMan.Get_Tests(tViewModel.Pager);
+                pager = tViewModel.Pager;
+
+                if (tViewModel.Filter.Fabric_Type_Id > 0)
+                {
+                    tViewModel.Test_Grid = tMan.Get_Test_By_Fabric_Type(tViewModel.Filter.Fabric_Type_Id, ref pager);
+                }
+                else
+                {
+                    tViewModel.Test_Grid = tMan.Get_Tests(ref pager);
+                }
+
+                tViewModel.Pager = pager;
+
+                tViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", tViewModel.Pager.TotalRecords, tViewModel.Pager.CurrentPage + 1, tViewModel.Pager.PageSize, 10, true);
             }
 
-         tViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", tViewModel.Pager.TotalRecords, tViewModel.Pager.CurrentPage + 1, tViewModel.Pager.PageSize, 10, true);
-           
-         return Json(tViewModel, JsonRequestBehavior.AllowGet);}
+            catch (Exception ex)
+            {
+                tViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Test Controller - Get_Tests" + ex.ToString());
+            }
+            
+            finally
+            {
+                pager = null;
+            }
+            return Json(tViewModel, JsonRequestBehavior.AllowGet);
+        
+       }
 
         public JsonResult Get_Test_AutoComplete(string testUnitName)
         {

@@ -2,6 +2,8 @@
 
     $('#hdfCurrentPage').val(0);
 
+    InitializeAutoComplete($('#txtRole_Name'));
+
     SearchRole();
 
     $("#btnEdit").click(function () {

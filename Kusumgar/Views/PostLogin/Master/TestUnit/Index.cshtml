@@ -1,7 +1,5 @@
 ﻿@model Kusumgar.Models.TestUnitViewModel
-@{
-    ViewBag.Title = "Customer";
-}
+
 
 <script src="~/Scripts/Master/Event/test_unit_event.js"></script>
 <script src="~/Scripts/Master/Method/test_unit_method.js"></script>
@@ -42,8 +40,8 @@
                                         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
                                         
                                         <input type="hidden" id="hdfTestUnitId" name="Test_Unit.TestUnitEntity.Test_Unit_Id" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Id" />
-                                        <label for="txtTestUnitName">Test Unit Name</label>
-                                        <input type="text" class="form-control" id="txtTestUnitName" name="Test_Unit.TestUnitEntity.Test_Unit_Name" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Name" placeholder="Enter test unit name" />
+                                        <label for="txtTestUnitName" style="color: #333">Test Unit Name</label>
+                                        <input type="text" class="form-control input-sm" id="txtTestUnitName" name="Test_Unit.TestUnitEntity.Test_Unit_Name" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Name" placeholder="Enter test unit name" />
                                     </div>
 
                                     <div class="form-group">
@@ -70,9 +68,11 @@
                             </div>
 
                             <div class="box-footer">
-                                <button type="submit" id="btnSave" class="btn btn-success">Save</button>
-                                <a href="@Url.Action("Search","TestUnit")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                <div class="btn-group">
+                                    <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                    <a href="@Url.Action("Search","TestUnit")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
 
+                                </div>
                             </div>
 
                         </div>
@@ -89,14 +89,3 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>

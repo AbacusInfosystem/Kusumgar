@@ -32,12 +32,12 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Index(VendorViewModel vViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             PaginationInfo pager = new PaginationInfo();
 
             pager.IsPagingRequired = false;
 
-            
-            
             vViewModel.Is_Primary = true;
 
             return View("Index", vViewModel);
@@ -45,6 +45,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
         public ActionResult Search(VendorViewModel vViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             if (TempData["vViewModel"] != null)
             {
                 vViewModel = (VendorViewModel)TempData["vViewModel"];
@@ -55,10 +57,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert_Vendor(VendorViewModel vViewModel)
         {
             try
-            {   
-                vViewModel.Vendor.Vendor_Entity.CreatedBy = 1;
+            {   vViewModel.Vendor.Vendor_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                vViewModel.Vendor.Vendor_Entity.CreatedOn = DateTime.Now;
+
+                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
 
                 vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
 
@@ -66,7 +71,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
                 vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
 
-                if (vViewModel.Vendor.Product_Category_Entity.Product_Category_Name == "YarnCategory")
+                if (vViewModel.Vendor.Material_Category_Entity.Material_Category_Name == "YarnCategory")
                 {
                     vViewModel.Attribute_Code.AttributeCodeEntity.Status = true;
 
@@ -134,8 +139,10 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = 1;
-                
+                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+              
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 
                 vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
@@ -276,7 +283,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             pager.IsPagingRequired = false;
             
-            vViewModel.Product_Category = _vendorMan.Get_Product_Category();
+            vViewModel.Material_Category = _vendorMan.Get_Material_Category();
 
             vViewModel.Nations = _nationMan.Get_Nations(ref pager);
 

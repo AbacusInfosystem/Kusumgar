@@ -51,6 +51,8 @@ namespace Kusumgar.Models
             public int Defect_Type_Id { get; set; }
             public string Defect_Name{get;set;}
 
+            public int Defect_Id { get; set; }
+
          }
 
     }

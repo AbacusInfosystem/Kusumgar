@@ -185,9 +185,11 @@ namespace KusumgarBusinessEntities.Common
         {
             Dictionary<int, string> Get_Product_Types = new Dictionary<int, string>();
 
-            Get_Product_Types.Add(1, ProductType.Product.ToString());
+            Get_Product_Types.Add(1, ProductType.Finish_Product.ToString().Replace('_',' ').ToString());
 
-            Get_Product_Types.Add(2, ProductType.Service.ToString());
+            Get_Product_Types.Add(2, ProductType.Raw_Material.ToString().Replace('_', ' ').ToString());
+
+            Get_Product_Types.Add(3, ProductType.Service.ToString());
 
             return Get_Product_Types;
         }

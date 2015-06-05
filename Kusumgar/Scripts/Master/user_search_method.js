@@ -4,9 +4,10 @@ function SearchUser()
 
     var _userViewModel = 
         {
-            FilterVal:
+            Filter:
                 {
-                    FirstName: $("#txtEmployeeName").val()
+                    FirstName: $("#txtEmployeeName").val(),
+                    User_Id: $("#txtUser_Id").val()
                 },
 
             Pager: {
@@ -27,49 +28,64 @@ function BindUserGrid(data)
 
     var htmlText = "";
 
-    for (i = 0; i < data.UserList.length; i++) {
+    if (data.Users.length > 0) {
 
+        for (i = 0; i < data.Users.length; i++) {
+
+            htmlText += "<tr>";
+
+            htmlText += "<td>";
+
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Users[i].UserEntity.UserId + "' class='iradio_square-green'/>";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Users[i].UserEntity.First_Name == null ? "" : data.Users[i].UserEntity.First_Name + " ";
+
+            htmlText += data.Users[i].UserEntity.First_Name == null ? "" : data.Users[i].UserEntity.Middle_Name + " ";
+
+            htmlText += data.Users[i].UserEntity.First_Name == null ? "" : data.Users[i].UserEntity.Last_Name + " ";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Users[i].UserEntity.Mobile_No1 == null ? "" : data.Users[i].UserEntity.Mobile_No1 + ", ";
+
+            htmlText += data.Users[i].UserEntity.Mobile_No2 == null ? "" : data.Users[i].UserEntity.Mobile_No2 + ", ";
+
+            htmlText += data.Users[i].UserEntity.Residence_Landline == null ? "" : data.Users[i].UserEntity.Residence_Landline + ", ";
+
+            htmlText += data.Users[i].UserEntity.Office_Landline == null ? "" : data.Users[i].UserEntity.Office_Landline + ", ";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Users[i].UserEntity.Personal_Email == null ? "" : data.Users[i].UserEntity.Personal_Email + ", ";
+
+            htmlText += data.Users[i].UserEntity.Office_Email == null ? "" : data.Users[i].UserEntity.Office_Email + ", ";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Users[i].UserEntity.Designtation;
+
+            htmlText += "</td>";
+
+            htmlText += "</tr>";
+        }
+    }
+    else
+    {
         htmlText += "<tr>";
 
-        htmlText += "<td>";
+        htmlText += "<td colspan = '5'>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.UserList[i].UserEntity.UserId + "' class='iradio_square-green'/>";
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.UserList[i].UserEntity.First_Name == null ? "" : data.UserList[i].UserEntity.First_Name + " ";
-
-        htmlText += data.UserList[i].UserEntity.First_Name == null ? "" : data.UserList[i].UserEntity.Middle_Name + " ";
-
-        htmlText += data.UserList[i].UserEntity.First_Name == null ? "" : data.UserList[i].UserEntity.Last_Name + " ";
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.UserList[i].UserEntity.Mobile_No1 == null ? "" : data.UserList[i].UserEntity.Mobile_No1 + ", ";
-
-        htmlText += data.UserList[i].UserEntity.Mobile_No2 == null ? "" : data.UserList[i].UserEntity.Mobile_No2 + ", ";
-
-        htmlText += data.UserList[i].UserEntity.Residence_Landline == null ? "" : data.UserList[i].UserEntity.Residence_Landline + ", ";
-
-        htmlText += data.UserList[i].UserEntity.Office_Landline == null ? "" : data.UserList[i].UserEntity.Office_Landline + ", ";
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.UserList[i].UserEntity.Personal_Email == null ? "" : data.UserList[i].UserEntity.Personal_Email + ", ";
-
-        htmlText += data.UserList[i].UserEntity.Office_Email == null ? "" : data.UserList[i].UserEntity.Office_Email + ", ";
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.UserList[i].UserEntity.Designtation;
+        htmlText += "No record found.";
 
         htmlText += "</td>";
 
@@ -85,12 +101,17 @@ function BindUserGrid(data)
     });
 
    
+    if (data.Users.length > 0) {
+        $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
-
-        $('.pagination').html(data.Pager.PageHtmlString);
+            $('.pagination').html(data.Pager.PageHtmlString);
+        }
+    }
+    else
+    {
+        $('.pagination').html("");
     }
 
     $("#divSearchGridOverlay").hide();

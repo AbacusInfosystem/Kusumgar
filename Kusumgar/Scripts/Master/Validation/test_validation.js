@@ -31,58 +31,58 @@
             },
             "Test.TestEntity.Test_Unit1":
             {
-                required: true
+                test_unit_required: true
 
-            },
-            "Test.TestEntity.Test_Unit2":
-            {
-                required: true
+            }
+            //"Test.TestEntity.Test_Unit2":
+            //{
+            //    required: true
 
-            },
-            "Test.TestEntity.Test_Unit3":
-            {
-                required: true
+            //},
+            //"Test.TestEntity.Test_Unit3":
+            //{
+            //    required: true
 
-            },
+            //},
 
-            "Test.TestEntity.Test_Unit4":
-              {
-                  required: true
+            //"Test.TestEntity.Test_Unit4":
+            //  {
+            //      required: true
 
-              },
-            "Test.TestEntity.Test_Unit5":
-            {
-                required: true
+            //  },
+            //"Test.TestEntity.Test_Unit5":
+            //{
+            //    required: true
 
-            },
-            "Test.TestEntity.Test_Unit6":
-            {
-                required: true
+            //},
+            //"Test.TestEntity.Test_Unit6":
+            //{
+            //    required: true
 
-            },
+            //},
 
-            "Test.TestEntity.Test_Unit7":
-            {
-                required: true
+            //"Test.TestEntity.Test_Unit7":
+            //{
+            //    required: true
 
-            },
+            //},
 
-            "Test.TestEntity.Test_Unit8":
-            {
-                required: true
+            //"Test.TestEntity.Test_Unit8":
+            //{
+            //    required: true
 
-            },
-            "Test.TestEntity.Test_Unit9":
-            {
-                required: true
+            //},
+            //"Test.TestEntity.Test_Unit9":
+            //{
+            //    required: true
 
-            },
+            //},
 
-            "Test.TestEntity.Test_Unit10":
-            {
-                required: true
+            //"Test.TestEntity.Test_Unit10":
+            //{
+            //    required: true
 
-            },
+            //},
 
         },
 
@@ -101,60 +101,76 @@
                 },
             "Test.TestEntity.Test_Unit1":
               {
-                    required: "Enter TestUnitName.."
+                  //required: "Enter TestUnitName.."
 
-              },
-            "Test.TestEntity.Test_Unit2":
-            {
-                required: "Enter TestUnitName.."
-
-            },
-            "Test.TestEntity.Test_Unit3":
-            {
-                required: "Enter TestUnitName.."
-
-            },
-
-            "Test.TestEntity.Test_Unit4":
-              {
-                  required: "Enter TestUnitName.."
-
-              },
-            "Test.TestEntity.Test_Unit5":
-            {
-                required: "Enter TestUnitName.."
-
-            },
-            "Test.TestEntity.Test_Unit6":
-            {
-                required: "Enter TestUnitName.."
-
-            },
-
-            "Test.TestEntity.Test_Unit7":
-            {
-                required: "Enter TestUnitName.."
-
-            },
-
-            "Test.TestEntity.Test_Unit8":
-            {
-                required: "Enter TestUnitName.."
-
-            },
-            "Test.TestEntity.Test_Unit9":
-             {
-                required: "Enter TestUnitName.."
-
-             },
-
-            "Test.TestEntity.Test_Unit10":
-            {
-                required: "Enter TestUnitName.."
-
-            },
+              }
 
         }
+        //"Test.TestEntity.Test_Unit2":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+        //"Test.TestEntity.Test_Unit3":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+
+        //"Test.TestEntity.Test_Unit4":
+        //  {
+        //      required: "Enter TestUnitName.."
+
+        //  },
+        //"Test.TestEntity.Test_Unit5":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+        //"Test.TestEntity.Test_Unit6":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+
+        //"Test.TestEntity.Test_Unit7":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+
+        //"Test.TestEntity.Test_Unit8":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+        //"Test.TestEntity.Test_Unit9":
+        // {
+        //    required: "Enter TestUnitName.."
+
+        // },
+
+        //"Test.TestEntity.Test_Unit10":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
     });
+
+    jQuery.validator.addMethod("test_unit_required", function (value, element) {
+        if ($(element).parents('.form-group').find('.text').length) {
+            if ($(element).parents('.form-group').find('.text').html() != "") {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }, "Test Unit is required.");
+
+
 
 });

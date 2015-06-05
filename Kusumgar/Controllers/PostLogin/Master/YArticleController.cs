@@ -39,7 +39,7 @@ namespace Kusumgar.Controllers
 
             try
             {
-                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
 
                 yViewModel.Is_Primary = true;
             }
@@ -66,7 +66,7 @@ namespace Kusumgar.Controllers
 
             try
             {
-                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
             }
             catch(Exception ex)
             {
@@ -91,9 +91,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.CreatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                yViewModel.YArticle.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
-                yViewModel.YArticle.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId; 
+                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 int yArticle_Id = _yArticleMan.Insert_YArticle(yViewModel.YArticle);
 
@@ -115,7 +115,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.UpdatedBy = ((EmployeeInfo)Session["User"]).EmployeeId;
+                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
 
                 _yArticleMan.Update_YArticle(yViewModel.YArticle);
 
@@ -139,13 +139,13 @@ namespace Kusumgar.Controllers
             {
                 pager = yViewModel.Pager;
 
-                if(!string.IsNullOrEmpty(yViewModel.Filter.Full_Code) && yViewModel.Filter.Yarn_Type_Id != 0)
+                if(yViewModel.Filter.YArticle_Id != 0 && yViewModel.Filter.Yarn_Type_Id != 0)
                 {
-                    yViewModel.YArticles = _yArticleMan.Get_Y_Articles_By_Full_Code_Yarn_Type(yViewModel.Filter.Full_Code, yViewModel.Filter.Yarn_Type_Id, ref pager);
+                    yViewModel.YArticles = _yArticleMan.Get_Y_Articles_By_YArticle_Id_Yarn_Type(yViewModel.Filter.YArticle_Id, yViewModel.Filter.Yarn_Type_Id, ref pager);
                 }
-                else if (!string.IsNullOrEmpty(yViewModel.Filter.Full_Code))
+                else if (yViewModel.Filter.YArticle_Id != 0)
                 {
-                    yViewModel.YArticles = _yArticleMan.Get_YArticles_By_Full_Code(yViewModel.Filter.Full_Code, ref pager);
+                    yViewModel.YArticles = _yArticleMan.Get_YArticles_By_Id(yViewModel.Filter.YArticle_Id, ref pager);
                 }
                 else if ( yViewModel.Filter.Yarn_Type_Id != 0)
                 {

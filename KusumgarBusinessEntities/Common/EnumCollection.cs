@@ -221,6 +221,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_Type_By_Name_sp,
         Insert_Defect_Type_sp,
         Update_Defect_Type_sp,
+        Get_Defect_AutoComplete_Sp,
 
         //Defect
         Get_Defects_sp,
@@ -231,6 +232,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
         Get_Test_Units_sp,
@@ -258,9 +260,9 @@ namespace KusumgarBusinessEntities.Common
         // Complaint
         Insert_Complaint_Sp,
         Update_Complaint_Sp,
-        Get_Complaint_List_Sp,
+        Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
-        Get_Complaint_By_CustName_Sp,
+        Get_Complaint_By_Cust_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,
@@ -308,8 +310,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Articles_By_Yarn_Type_Id_sp,
         Get_Y_Article_By_Id_sp,
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
-
-        // Work Center
+        Get_Y_Articles_By_YArticle_Id_Yarn_Type_sp,
         Get_Work_Stations_By_Code_Purpose_Sp,
 
         //Vendor
@@ -339,6 +340,39 @@ namespace KusumgarBusinessEntities.Common
         Insert_Product_Vendor_Sp,
         Delete_Product_Vendor_By_Id_Sp,
         Get_Product_Vendors_By_Id_Sp,
+
+        // Material
+        Insert_Material_Sp,
+        Update_Material_Sp,
+        Get_Materials_Sp,
+        Get_Materials_By_Material_Id_Sp,
+        Get_Materials_By_Material_Name_Sp,
+        Get_Material_By_Id_Sp,
+        Delete_Material_Vendor_By_Id_Sp,
+        Get_Material_Vendors_By_Id_Sp,
+        Insert_Material_Vendor_Sp,
+        Get_Material_Categories_sp,
+        Get_Material_SubCategory_By_CategoryId_Sp,
+
+        // Work Center
+
+        Get_Factories_Sp,
+        Get_Processes_Sp,
+        Get_Work_Stations_Sp,
+        Get_Work_Stations_By_Factory_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_Sp,
+        Get_Work_Centers_By_Work_Station_Id_Sp,
+        Get_Work_Centers_By_Process_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_By_Process_Id_Sp,
+        Get_Work_Centers_By_Work_Station_Id_By_Process_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_By_Process_Id_Sp,
+        Insert_Work_Center_sp,
+        Update_Work_Center_sp,
+        Get_Work_Centers_Sp,
+        Get_Work_Centers_By_Work_Center_Id_Sp,
+        Insert_Work_Center_Process_sp,
+        Delete_Work_Center_Process_By_Work_Center_Id_Sp,
     }
 
     public enum GenderType
@@ -431,8 +465,9 @@ namespace KusumgarBusinessEntities.Common
 
     public enum ProductType
     {
-        Product = 1,
-        Service = 2
+        Finish_Product = 1,
+        Raw_Material =2,
+        Service = 3
     }
 
 }

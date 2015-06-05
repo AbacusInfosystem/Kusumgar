@@ -25,16 +25,16 @@ namespace KusumgarDataAccess
 
         public List<VendorInfo> Get_Vendors(ref PaginationInfo pager)
         {
-            List<VendorInfo> Vendors = new List<VendorInfo>();
+            List<VendorInfo> vendors = new List<VendorInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Vendors_Sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                Vendors.Add(Get_Vendor_Values(dr));
+                vendors.Add(Get_Vendor_Values(dr));
             }
 
-            return Vendors;
+            return vendors;
         }
 
         private VendorInfo Get_Vendor_Values(DataRow dr)
@@ -46,38 +46,87 @@ namespace KusumgarDataAccess
            vendor.Vendor_Entity.Head_Office_ZipCode =  Convert.ToString(dr["Head_Office_ZipCode"]);
            vendor.Vendor_Entity.Head_Office_Nation =  Convert.ToInt32(dr["Head_Office_Nation"]);
            vendor.Vendor_Entity.Head_Office_Landline1 = Convert.ToString(dr["Head_Office_Landline1"]);
-           vendor.Vendor_Entity.Head_Office_Landline2 =  Convert.ToString(dr["Head_Office_Landline2"]);
-           vendor.Vendor_Entity.Head_Office_FaxNo =  Convert.ToString(dr["Head_Office_FaxNo"]);
+          
+            if (dr["Head_Office_Landline2"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Head_Office_Landline2 = Convert.ToString(dr["Head_Office_Landline2"]);
+           }
+            if (dr["Head_Office_FaxNo"] != DBNull.Value)
+            {
+                vendor.Vendor_Entity.Head_Office_FaxNo = Convert.ToString(dr["Head_Office_FaxNo"]);
+            }
            vendor.Vendor_Entity.Email =  Convert.ToString(dr["Email"]);
            vendor.Vendor_Entity.Quality_Certification =  Convert.ToString(dr["Quality_Certification"]);
-           vendor.Vendor_Entity.Quality_Certification_Year = Convert.ToInt32(dr["Quality_Certification_Year"]);
+           if (dr["Quality_Certification_Year"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Quality_Certification_Year = Convert.ToInt32(dr["Quality_Certification_Year"]);
+           }
            vendor.Vendor_Entity.Quality_Certification_Category =  Convert.ToString(dr["Quality_Certification_Category"]);
            vendor.Vendor_Entity.Performance_Certification =  Convert.ToString(dr["Performance_Certification"]);
-           vendor.Vendor_Entity.Performance_Certification_Year = Convert.ToInt32(dr["Performance_Certification_Year"]);
+
+           if (dr["Performance_Certification_Year"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Performance_Certification_Year = Convert.ToInt32(dr["Performance_Certification_Year"]);
+           }
            vendor.Vendor_Entity.Performance_Certification_Category =  Convert.ToString(dr["Performance_Certification_Category"]);
-           vendor.Vendor_Entity.Remark_about_Supplier =  Convert.ToString(dr["Remark_about_Supplier"]);
-           vendor.Vendor_Entity.Block_Payment =  Convert.ToBoolean(dr["Block_Payment"]);
-           vendor.Vendor_Entity.Shipment_Methods = Convert.ToInt32(dr["Shipment_Methods"]);
-           vendor.Vendor_Entity.Flagged_Supplier =  Convert.ToString(dr["Flagged_Supplier"]);
-           vendor.Vendor_Entity.Delivary_Term_Code =  Convert.ToString(dr["Delivary_Term_Code"]);
+          
+            if (dr["Remark_about_Supplier"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Remark_about_Supplier = Convert.ToString(dr["Remark_about_Supplier"]);
+           }
+           if (dr["Block_Payment"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Block_Payment = Convert.ToBoolean(dr["Block_Payment"]);
+           }
+           if (dr["Shipment_Methods"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Shipment_Methods = Convert.ToInt32(dr["Shipment_Methods"]);
+           }
+           if (dr["Flagged_Supplier"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Flagged_Supplier = Convert.ToString(dr["Flagged_Supplier"]);
+           }
+           if (dr["Delivary_Term_Code"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Delivary_Term_Code = Convert.ToString(dr["Delivary_Term_Code"]);
+           }
+
            vendor.Vendor_Entity.Is_Approved_By_Director = Convert.ToBoolean(dr["Is_Approved_By_Director"]);
-           vendor.Vendor_Entity.Central_Excise_Registration_Details =  Convert.ToString(dr["Central_Excise_Registration_Details"]);
+          
+            if (dr["Central_Excise_Registration_Details"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Central_Excise_Registration_Details = Convert.ToString(dr["Central_Excise_Registration_Details"]);
+           }
            vendor.Vendor_Entity.Registration_No =  Convert.ToString(dr["Registration_No"]);
            vendor.Vendor_Entity.Range =  Convert.ToString(dr["Range"]);
            vendor.Vendor_Entity.Division =  Convert.ToString(dr["Division"]);
            vendor.Vendor_Entity.PAN =  Convert.ToString(dr["PAN"]);
            vendor.Vendor_Entity.TAN =  Convert.ToString(dr["TAN"]);
            vendor.Vendor_Entity.Tax_Excemption_Code =  Convert.ToString(dr["Tax_Excemption_Code"]);
-           vendor.Vendor_Entity.Currency_Code =  Convert.ToInt32(dr["Currency_Code"]);
+           if (dr["Currency_Code"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Currency_Code = Convert.ToInt32(dr["Currency_Code"]);
+           }
+
            vendor.Vendor_Entity.VAT_Type =  Convert.ToString(dr["VAT_Type"]);
-           vendor.Vendor_Entity.PaymentTerms = Convert.ToInt32(dr["PaymentTerms"]);
+
+           if (dr["PaymentTerms"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.PaymentTerms = Convert.ToInt32(dr["PaymentTerms"]);
+           }
            vendor.Vendor_Entity.Is_Active =  Convert.ToBoolean(dr["Is_Active"]);
-           vendor.Vendor_Entity.Tax_Excemption_Code =  Convert.ToString(dr["Tax_Excemption_Code"]);
+          
            vendor.Vendor_Entity.CreatedBy =  Convert.ToInt32(dr["CreatedBy"]);
            vendor.Vendor_Entity.UpdatedBy =  Convert.ToInt32(dr["UpdatedBy"]);
            vendor.Vendor_Entity.Vendor_Id =  Convert.ToInt32(dr["Vendor_Id"]);
-           vendor.Vendor_Entity.Product_Category = Convert.ToInt32(dr["Product_Category"]);
-           vendor.Vendor_Entity.Code = Convert.ToString(dr["Code"]);
+           if (dr["Product_Category"] != DBNull.Value)
+           { vendor.Vendor_Entity.Product_Category = Convert.ToInt32(dr["Product_Category"]);
+           }
+
+           if (dr["Code"] != DBNull.Value)
+           {
+               vendor.Vendor_Entity.Code = Convert.ToString(dr["Code"]);
+           }
             return vendor ;
         }
 
@@ -355,11 +404,11 @@ namespace KusumgarDataAccess
             return check;
         }
 
-        public List<ProductCategoryInfo> Get_Product_Category()
+        public List<MaterialCategoryInfo> Get_Material_Category()
         {
-            List<ProductCategoryInfo> retVal = new List<ProductCategoryInfo>();
+            List<MaterialCategoryInfo> retVal = new List<MaterialCategoryInfo>();
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Product_Categories_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Material_Categories_sp.ToString(), CommandType.StoredProcedure);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -373,13 +422,13 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    ProductCategoryInfo productCategoryInfo = new ProductCategoryInfo();
+                    MaterialCategoryInfo MaterialCategoryInfo = new MaterialCategoryInfo();
 
-                    productCategoryInfo.Product_Category_Entity.Product_Category_Id = Convert.ToInt32(dr["Product_Category_Id"]);
+                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
 
-                    productCategoryInfo.Product_Category_Entity.Product_Category_Name = Convert.ToString(dr["Product_Category_Name"]);
+                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
 
-                    retVal.Add(productCategoryInfo);
+                    retVal.Add(MaterialCategoryInfo);
                 }
 
             }

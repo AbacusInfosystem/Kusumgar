@@ -40,11 +40,11 @@ function BindConsumableGrid(data) {
 
             htmlText += "</td>";
 
-            htmlText += "<td>";
+            //htmlText += "<td>";
 
-            htmlText += data.Consumables[i].Consumable_Entity.Consumable_Id;
+            //htmlText += data.Consumables[i].Consumable_Entity.Consumable_Id;
 
-            htmlText += "</td>";
+            //htmlText += "</td>";
 
             htmlText += "<td>";
 
@@ -72,11 +72,22 @@ function BindConsumableGrid(data) {
 
             htmlText += "</td>";
 
-            htmlText += "<td>";
+            if (data.Consumables[i].Consumable_Entity.IsActive == true)
+            {
+                htmlText += "<td>";
 
-            htmlText += data.Consumables[i].Consumable_Entity.IsActive;
+                htmlText += "Active";
 
-            htmlText += "</td>";
+                htmlText += "</td>";
+            }
+            else
+            {
+                htmlText += "<td>";
+
+                htmlText += "InActive";
+
+                htmlText += "</td>";
+            }
 
             htmlText += "</tr>";
         }

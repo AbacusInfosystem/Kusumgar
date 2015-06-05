@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     
-    InitializeAutoComplete($('#txtCustName'), autoComplaintCallback);
+    InitializeAutoComplete($('#txtCustName'));
 
     $("#btnSave").click(function () {
 

@@ -25,94 +25,23 @@ namespace KusumgarDataAccess
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<TestInfo> Get_Tests(PaginationInfo pager)
+        public List<TestInfo> Get_Tests(ref PaginationInfo pager)
         {
             List<TestInfo> retVal = new List<TestInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Tests_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = GetRows(dt, pager);
-
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                TestInfo tests = new TestInfo();
-
-                tests.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
-
-                tests.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
-
-                tests.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                tests.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                tests.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                tests.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                tests.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
-
-                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
-                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
-                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
-                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
-                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
-                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
-                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
-                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
-                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
-                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
-                
-                tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
-                tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
-                tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
-                tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
-                tests.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
-                tests.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
-                tests.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
-                tests.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
-                tests.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
-                tests.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
-                tests.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
-
-                retVal.Add(tests);
+                retVal.Add(Get_Test_Values(dr));
             }
 
             return retVal;
         }
 
-        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
-        {
-            List<DataRow> drList = new List<DataRow>();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int count = 0;
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-                }
-
-                pager.TotalRecords = count;
-
-                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-                pager.TotalPages = pages;
-            }
-
-            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
-        }
-
         public void Insert(TestInfo test)
         {
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Test(test), StoredProcedures.Insert_Test_sp.ToString(), CommandType.StoredProcedure);
-
         }
 
         public void Update(TestInfo test)
@@ -164,7 +93,7 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Test_Id", testId));
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Id_sp.ToString(), CommandType.StoredProcedure);
-            
+
             if (dt != null && dt.Rows.Count > 0)
             {
                 int count = 0;
@@ -177,48 +106,9 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    retVal.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
-
-                    retVal.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
-
-                    retVal.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                    retVal.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                    retVal.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                    retVal.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                    retVal.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                    retVal.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
-
-                    retVal.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
-                    retVal.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
-                    retVal.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
-                    retVal.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
-                    retVal.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
-                    retVal.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
-                    retVal.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
-                    retVal.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
-                    retVal.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
-                    retVal.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
-
-                    retVal.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
-                    retVal.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
-                    retVal.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
-                    retVal.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
-                    retVal.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
-                    retVal.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
-                    retVal.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
-                    retVal.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
-                    retVal.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
-                    retVal.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
-                    retVal.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
-
+                    retVal = Get_Test_Values(dr);
                 }
-
-            }
+           }
             return retVal;
         }
 
@@ -250,7 +140,7 @@ namespace KusumgarDataAccess
             return retVal;
         }
 
-        public List<TestInfo> Get_Test_By_Fabric_Type(int fabricTypeId,PaginationInfo Pager)
+        public List<TestInfo> Get_Test_By_Fabric_Type(int fabricTypeId,ref PaginationInfo pager)
         {
             List<TestInfo> retVal = new List<TestInfo>();
 
@@ -260,97 +150,13 @@ namespace KusumgarDataAccess
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Fabric_Type_sp.ToString(), CommandType.StoredProcedure);
 
-            
-            var tupleData = GetRows(dt, Pager);
-
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                 {
 
-                TestInfo tests = new TestInfo();
-
-                tests.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
-
-                tests.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
-
-                tests.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                tests.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                tests.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                tests.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                tests.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
-
-                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
-                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
-                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
-                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
-                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
-                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
-                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
-                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
-                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
-                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
-                
-                tests.Fabric_Type_Name =Convert.ToString(dr["Fabric_Type_Name"]);
-                tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
-                tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
-                tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
-                tests.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
-                tests.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
-                tests.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
-                tests.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
-                tests.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
-                tests.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
-                tests.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
-                retVal.Add(tests);
+                    retVal.Add(Get_Test_Values(dr));
            }
          return retVal;
         }
-
-        //public List<TestUnitInfo> Get_Test_Unit(string testUnitName)
-        //{
-        //    List<TestUnitInfo> retVal = new List<TestUnitInfo>();
-
-        //    try
-        //    {
-        //        using (SqlConnection con = new SqlConnection(_sqlCon))
-        //        {
-        //            con.Open();
-
-        //            using (SqlCommand command = new SqlCommand("Get_Test_Unit_AutoComplete_sp", con))
-        //            {
-        //                command.CommandType = CommandType.StoredProcedure;
-
-        //                command.Parameters.Add(new SqlParameter("@TestUnitName", testUnitName));
-
-        //                SqlDataReader dataReader = command.ExecuteReader();
-
-        //                if (dataReader.HasRows)
-        //                {
-        //                    while (dataReader.Read())
-        //                    {
-        //                        TestUnitInfo testUnit = new TestUnitInfo();
-        //                        testUnit.Label = Convert.ToString(dataReader["TestUnitName"]);
-        //                        testUnit.Value = Convert.ToInt32(dataReader["TestUnitId"]);
-        //                        retVal.Add(testUnit);
-        //                    }
-        //                }
-
-        //                dataReader.Close();
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-
-        //    return retVal;
-        //}
 
         public List<AutocompleteInfo> Get_Test_AutoComplete(string testUnitName)
         {
@@ -381,6 +187,131 @@ namespace KusumgarDataAccess
             }
 
             return testUnitNames;
+        }
+
+        private TestInfo Get_Test_Values(DataRow dr)
+        {
+            TestInfo tests = new TestInfo();
+
+            tests.TestEntity.Test_Id = Convert.ToInt32(dr["Test_Id"]);
+
+            tests.TestEntity.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
+
+            tests.TestEntity.Status = Convert.ToBoolean(dr["Status"]);
+
+            tests.TestEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+
+            tests.TestEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+            tests.TestEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+            tests.TestEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            tests.TestEntity.Test_Name = Convert.ToString(dr["Test_Name"]);
+
+            if (dr["Test_Unit1"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit1 = Convert.ToInt32(dr["Test_Unit1"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit1 = 0;
+            }
+
+            if (dr["Test_Unit2"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit2 = Convert.ToInt32(dr["Test_Unit2"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit2 = 0;
+            }
+
+            if (dr["Test_Unit3"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit3 = Convert.ToInt32(dr["Test_Unit3"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit3 = 0;
+            }
+
+            if (dr["Test_Unit4"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit4 = Convert.ToInt32(dr["Test_Unit4"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit4 = 0;
+            }
+
+            if (dr["Test_Unit5"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit5 = Convert.ToInt32(dr["Test_Unit5"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit5 = 0;
+            }
+
+            if (dr["Test_Unit6"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit6 = Convert.ToInt32(dr["Test_Unit6"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit6 = 0;
+            }
+
+            if (dr["Test_Unit7"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit7 = Convert.ToInt32(dr["Test_Unit7"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit7 = 0;
+            }
+
+            if (dr["Test_Unit8"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit8 = Convert.ToInt32(dr["Test_Unit8"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit8 = 0;
+            }
+
+            if (dr["Test_Unit9"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit9 = Convert.ToInt32(dr["Test_Unit9"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit9 = 0;
+            }
+
+            if (dr["Test_Unit10"] != DBNull.Value)
+            {
+                tests.TestEntity.Test_Unit10 = Convert.ToInt32(dr["Test_Unit10"]);
+            }
+            else
+            {
+                tests.TestEntity.Test_Unit10 = 0;
+            }
+
+            tests.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
+            tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
+            tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
+            tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);
+            tests.Test_Unit_Name4 = Convert.ToString(dr["Test_Unit_Name4"]);
+            tests.Test_Unit_Name5 = Convert.ToString(dr["Test_Unit_Name5"]);
+            tests.Test_Unit_Name6 = Convert.ToString(dr["Test_Unit_Name6"]);
+            tests.Test_Unit_Name7 = Convert.ToString(dr["Test_Unit_Name7"]);
+            tests.Test_Unit_Name8 = Convert.ToString(dr["Test_Unit_Name8"]);
+            tests.Test_Unit_Name9 = Convert.ToString(dr["Test_Unit_Name9"]);
+            tests.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
+
+            return tests;
         }
     }
 }

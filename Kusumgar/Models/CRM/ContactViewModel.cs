@@ -15,7 +15,7 @@ namespace Kusumgar.Models
         {
             Contacts = new List<ContactInfo>();
 
-            contact = new ContactInfo();
+            Contact = new ContactInfo();
 
             Friendly_Message = new List<FriendlyMessageInfo>();
 
@@ -26,7 +26,7 @@ namespace Kusumgar.Models
 
         public List<ContactInfo> Contacts{ get; set; }
 
-        public ContactInfo contact { get; set; }
+        public ContactInfo Contact { get; set; }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 

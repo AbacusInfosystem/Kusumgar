@@ -2,24 +2,24 @@
 
     $('#hdfCurrentPage').val(0);
 
-    SearchProduct();
+    SearchMaterial();
 
     $("#btnEdit").click(function () {
 
-        $("#frmSearch_Prod").attr("action", "/master/edit-product");
+        $("#frmSearch_Prod").attr("action", "/master/edit-material");
 
         $("#frmSearch_Prod").attr("method", "POST");
 
         $("#frmSearch_Prod").submit();
     });
 
-    InitializeAutoComplete($('#txtProductName'));
+    InitializeAutoComplete($('#txtMaterialName'));
 
     //$("#drpProdCatName").change(function () {
 
     //    $.ajax({
-    //        url: '/master/product-subcategory-by-category-id',
-    //        data: { product_Category_Id: $("#drpProdCatName").val() },
+    //        url: '/master/Material-subcategory-by-category-id',
+    //        data: { Material_Category_Id: $("#drpProdCatName").val() },
     //        method: 'GET',
     //        async: false,
     //        success: function (data) {
@@ -34,7 +34,7 @@
     $("#btnSearch").click(function () {
 
         $('#hdfCurrentPage').val(0);
-        SearchProduct();
+        SearchMaterial();
 
     });
 

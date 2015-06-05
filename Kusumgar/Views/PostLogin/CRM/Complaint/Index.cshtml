@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
-<script src="~/Scripts/CRM/complaint_event.js"></script>
-<script src="~/Scripts/CRM/complaint_method.js"></script>
-<script src="~/Scripts/CRM/complaint_validation.js"></script>
+<script src="/Scripts/CRM/Event/complaint_event.js"></script>
+<script src="/Scripts/CRM/Method/complaint_method.js"></script>
+<script src="/Scripts/CRM/Validation/complaint_validation.js"></script>
 <link rel="stylesheet" href="~/Content/jquery-ui.css">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    
@@ -24,7 +24,7 @@
         </ol>
     </section>
     <form id="frmComp">
-        <input type="hidden" class="form-control input-sm" name="Complaint.ComplaintEntity.ComplaintId" id="hdnComplaint_Id" value="@Model.Complaint.ComplaintEntity.ComplaintId">        
+        <input type="hidden" class="form-control input-sm" name="Complaint.Complaint_Entity.Complaint_Id" id="hdnComplaint_Id" value="@Model.Complaint.Complaint_Entity.Complaint_Id">        
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -43,24 +43,26 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="txtCustName" style="color: #333">Customer Name</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.CustomerName" id="txtCustName" placeholder="Enter Customer Name" value="@Model.Complaint.CustomerName">
-                                                <input type="hidden" id="hdnCustId" value="@Model.Complaint.ComplaintEntity.CustomerId" name="Complaint.ComplaintEntity.CustomerId" />                                                
+                                                <div class="auto-complete">
+                                                    <input type="text" class="form-control input-sm" name="Complaint.Customer_Name" id="txtCustName" placeholder="Enter Customer Name" value="@Model.Complaint.Customer_Name">
+                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Complaint_Entity.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" />
+                                            </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtOrdId" style="color: #333">Order Id</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.ComplaintEntity.OrderId" id="txtOrdId" placeholder="Enter Order Id" value="@Model.Complaint.ComplaintEntity.OrderId">
+                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Order_Id" id="txtOrdId" placeholder="Enter Order Id" value="@Model.Complaint.Complaint_Entity.Order_Id">
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtOrdItemId" style="color: #333">Order Item Id</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.ComplaintEntity.OrderItemId" id="txtOrdItemId" placeholder="Enter Order Item Id" value="@Model.Complaint.ComplaintEntity.OrderItemId">
+                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Order_Item_Id" id="txtOrdItemId" placeholder="Enter Order Item Id" value="@Model.Complaint.Complaint_Entity.Order_Item_Id">
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtChallanNo" style="color: #333">Challan No</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.ComplaintEntity.ChallanNo" id="txtChallanNo" placeholder="Enter Challan No" value="@Model.Complaint.ComplaintEntity.ChallanNo">
+                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Challan_No" id="txtChallanNo" placeholder="Enter Challan No" value="@Model.Complaint.Complaint_Entity.Challan_No">
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtDescription" style="color: #333">Description</label>
-                                                <textarea class="form-control input-sm" id="txtDescription" placeholder="Enter Complaint Description" name="Complaint.ComplaintEntity.CDescription">@Model.Complaint.ComplaintEntity.CDescription</textarea>
+                                                <textarea class="form-control input-sm" id="txtDescription" placeholder="Enter Complaint Description" name="Complaint.Complaint_Entity.CDescription">@Model.Complaint.Complaint_Entity.CDescription</textarea>
                                             </div>
 
                                         </div>
@@ -69,8 +71,14 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" id="btnSave" class="btn btn-success">Save</button>
-                            <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning" role="button">Cancel and Open Search</a>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="btn-group">
+                                        <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                        <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel and Open Search</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

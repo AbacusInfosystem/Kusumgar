@@ -23,6 +23,12 @@ function Bind_Vendor_Data_Callback(data) {
 
     $("#hdnVendorName").val($("#txtVendorName").val());
 
+    $("#txt_auto_Vendor_Name").val($("#txtVendorName").val());
+
+    $("#hdnVendor_Id").val($("#hdnVendorId").val());
+
+    InitializeAutoComplete($('#txt_auto_Vendor_Name'));
+
     Friendly_Message(data);
 }
 
@@ -53,8 +59,8 @@ function Set_Vendor() {
 
                         },
 
-                    Product_Category_Entity: {
-                        Product_Category_Name: $("#drpProductCategory option:selected").text()
+                    Material_Category_Entity: {
+                        Material_Category_Name: $("#drpProductCategory option:selected").text()
                     }
                 },
 

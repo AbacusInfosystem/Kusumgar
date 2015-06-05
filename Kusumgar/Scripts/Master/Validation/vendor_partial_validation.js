@@ -108,7 +108,7 @@
 
             "Vendor.Vendor_Entity.Head_Office_ZipCode":
        {
-           required: "Enter Zip Code"
+           required: "Zip code is required."
        },
 
         }

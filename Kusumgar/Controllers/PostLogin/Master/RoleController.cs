@@ -64,6 +64,10 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
+                rViewModel.Role.RoleEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 int role_Id = _roleMgr.Insert_Role(rViewModel.Role);
 
                 _roleAccessMan.Insert_Role_Access(role_Id, rViewModel.Selected_Role_Access);
@@ -86,6 +90,8 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
+                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 _roleMgr.Update_Role(rViewModel.Role);
 
                 _roleAccessMan.Insert_Role_Access(rViewModel.Role.RoleEntity.Role_Id, rViewModel.Selected_Role_Access);
@@ -127,9 +133,9 @@ namespace Kusumgar.Controllers.PostLogin
             {
                 pager = rViewModel.Pager;
 
-                if (!string.IsNullOrEmpty(rViewModel.Filter.Role_Name))
+                if (rViewModel.Filter.Role_Id != 0)
                 {
-                    rViewModel.Roles= _roleMgr.Get_Roles_By_Name(rViewModel.Filter.Role_Name, ref pager);
+                    rViewModel.Roles = _roleMgr.Get_Roles_By_Id(rViewModel.Filter.Role_Id,ref pager);
                 }
                 else
                 {
@@ -162,6 +168,23 @@ namespace Kusumgar.Controllers.PostLogin
             }
 
             return Json(check, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Roles_By_Name(string name)
+        {
+            List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
+            try
+            {
+                autoCompletes = _roleMgr.Get_Roles_By_Name(name);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Role Controller - Get_Roles_By_Name " + ex.ToString());
+            }
+
+
+            return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
     }

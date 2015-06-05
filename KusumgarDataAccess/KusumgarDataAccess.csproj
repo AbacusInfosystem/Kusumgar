@@ -64,7 +64,7 @@
     <Compile Include="Master\IndustrialRepo.cs" />
     <Compile Include="Master\NationRepo.cs" />
     <Compile Include="Master\ProductVendorRepo.cs" />
-    <Compile Include="Master\ProductRepo.cs" />
+    <Compile Include="Master\MaterialRepo.cs" />
     <Compile Include="Master\RoleAccessRepo.cs" />
     <Compile Include="Master\RoleRepo.cs" />
     <Compile Include="Master\StateRepo.cs" />
@@ -73,6 +73,7 @@
     <Compile Include="Master\UserRepo.cs" />
     <Compile Include="Master\VendorContactRepo.cs" />
     <Compile Include="Master\VendorRepo.cs" />
+    <Compile Include="Master\WorkCenterRepo.cs" />
     <Compile Include="Master\YArticleRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CommonMethods.cs" />

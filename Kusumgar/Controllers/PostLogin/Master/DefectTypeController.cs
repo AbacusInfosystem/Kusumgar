@@ -8,6 +8,7 @@ using KusumgarBusinessEntities.Common;
 using KusumgarModel;
 using Kusumgar.Models;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -16,12 +17,15 @@ namespace Kusumgar.Controllers
         [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Index(DefectTypeViewModel dViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             return View("Index", dViewModel);
         }
 
         [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public ActionResult Search(DefectTypeViewModel dViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
 
             if (TempData["dViewModel"] != null)
             {
@@ -34,7 +38,15 @@ namespace Kusumgar.Controllers
         public ActionResult Insert(DefectTypeViewModel dViewModel)
         {
             try
-            {
+            {  
+                dViewModel.DefectType.DefectTypeEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                dViewModel.DefectType.DefectTypeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
+                dViewModel.DefectType.DefectTypeEntity.CreatedOn = DateTime.Now;
+
+                dViewModel.DefectType.DefectTypeEntity.UpdatedOn = DateTime.Now;
+
                 DefectTypeManager dMan = new DefectTypeManager();
 
                 dMan.Insert(dViewModel.DefectType);
@@ -44,18 +56,23 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Type Controller - Insert" + ex.ToString());
             }
             TempData["dViewModel"] = dViewModel;
 
             return RedirectToAction("Search");
-
-        }
+     }
 
         [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Update(DefectTypeViewModel dViewModel)
         {
             try
             {
+                dViewModel.DefectType.DefectTypeEntity.UpdatedOn = DateTime.Now;
+
+                dViewModel.DefectType.DefectTypeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+
                 DefectTypeManager dMan = new DefectTypeManager();
 
                 dMan.Update(dViewModel.DefectType);
@@ -65,6 +82,8 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Type Controller - Update" + ex.ToString());
             }
             TempData["dViewModel"] = dViewModel;
             
@@ -84,6 +103,8 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Type Controller -Get_Defect_Type_By_Id" + ex.ToString());
             }
             return View("Index", dViewModel);
         }
@@ -92,17 +113,37 @@ namespace Kusumgar.Controllers
         public JsonResult Get_Defect_Types(DefectTypeViewModel dViewModel)
         {
             DefectTypeManager dMan = new DefectTypeManager();
- 
-            if (!string.IsNullOrEmpty(dViewModel.Filter.Defect_Type_Name))
-            {
-                dViewModel.DefectTypeGrid = dMan.Get_Defect_Type_By_Name(dViewModel.Filter.Defect_Type_Name, dViewModel.Pager);
+
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {  
+                pager = dViewModel.Pager;
+
+                if (dViewModel.Filter.Defect_Type_Id != 0)
+                {
+                    dViewModel.DefectTypeGrid = dMan.Get_Defect_Types_By_Id(dViewModel.Filter.Defect_Type_Id,ref pager);
+                }
+                else
+                {
+                    dViewModel.DefectTypeGrid = dMan.Get_Defect_Types(ref pager);
+                }
+
+                dViewModel.Pager = pager;
+
+                dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
             }
-            else
+            catch (Exception ex)
             {
-                dViewModel.DefectTypeGrid = dMan.Get_Defect_Types(dViewModel.Pager);
+                dViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Defect Type Controller - Get_Defect_Types " + ex.ToString());
             }
 
-            dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
+            finally
+            {
+                pager = null;
+            }
 
             return Json(dViewModel, JsonRequestBehavior.AllowGet);
         }
@@ -112,9 +153,7 @@ namespace Kusumgar.Controllers
             try
             {
                 TempData["DefectTypeId"] = (dViewModel.EditMode.Defect_Type_Id);
-
-                
-            }
+             }
 
             catch (Exception ex)
             {
@@ -124,6 +163,16 @@ namespace Kusumgar.Controllers
             return RedirectToAction("Search", "Defect");
         }
 
+        public JsonResult Get_Defect_Type_AutoComplete(string defect_Type_Name)
+        {
+            DefectTypeManager dMan = new DefectTypeManager();
+
+            List<AutocompleteInfo> defectTypeName = new List<AutocompleteInfo>();
+
+            defectTypeName = dMan.Get_Defect_Type_AutoComplete(defect_Type_Name);
+
+            return Json(defectTypeName, JsonRequestBehavior.AllowGet);
+        }
      }
 }
 

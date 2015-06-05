@@ -44,52 +44,66 @@ function BindAttributeCodesInGrid(data, mode) {
 
     var htmlText = "";
 
-    for (i = 0; i < data.Attribute_Code_Grid.length; i++) {
+    if (data.Attribute_Code_Grid.length > 0) {
+        for (i = 0; i < data.Attribute_Code_Grid.length; i++) {
 
+            htmlText += "<tr>";
+
+            htmlText += "<td>";
+
+            htmlText += "<input type='hidden' id='hdfAttributeCodeId_" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' value='" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' />";
+
+            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Name;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Attribute_Code_Grid[i].Attribute_Name;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Code;
+
+            htmlText += "</td>";
+
+            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == false) {
+
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
+
+            htmlText += "</tr>";
+        }
+    }
+    else
+    {
         htmlText += "<tr>";
 
-        htmlText += "<td>";
+        htmlText += "<td colspan ='5'>";
 
-        htmlText += "<input type='hidden' id='hdfAttributeCodeId_" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' value='" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' />";
-
-        htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+        htmlText += "No record found.";
 
         htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Name;
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.Attribute_Code_Grid[i].Attribute_Name;
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Code;
-
-        htmlText += "</td>";
-
-        if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == true) {
-
-            htmlText += "<td>";
-
-            htmlText += "Active";
-
-            htmlText += "</td>";
-        }
-        if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == false) {
-
-            htmlText += "<td>";
-
-            htmlText += "Inactive";
-
-            htmlText += "</td>";
-        }
 
         htmlText += "</tr>";
     }
@@ -99,11 +113,18 @@ function BindAttributeCodesInGrid(data, mode) {
 
     $('#tblSearchAttributeCode tr:first').after(htmlText);
 
-    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+    if (data.Attribute_Code_Grid.length > 0) {
 
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+        $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-        $('.pagination').html(data.Pager.PageHtmlString);
+        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+
+            $('.pagination').html(data.Pager.PageHtmlString);
+        }
+    }
+    else
+    {
+        $('.pagination').html("");
     }
 
    $('input').iCheck({

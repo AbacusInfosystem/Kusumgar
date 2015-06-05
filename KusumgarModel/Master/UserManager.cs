@@ -35,6 +35,11 @@ namespace KusumgarModel
             return _userRepo.Get_Users_By_Name(ref Pager, FirstName);
         }
 
+        public List<UserInfo> Get_Users_By_User_Id(int user_Id, ref PaginationInfo pager)
+        {
+            return _userRepo.Get_Users_By_User_Id(user_Id, ref pager);
+        }
+
         public UserInfo Get_User_By_User_Id(int UserId)
         {
             return _userRepo.Get_User_By_User_Id(UserId);

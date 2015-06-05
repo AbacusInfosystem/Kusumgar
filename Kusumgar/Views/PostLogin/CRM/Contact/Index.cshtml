@@ -30,12 +30,12 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" id="tabcontact" data-toggle="tab">Customer's contact</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Supplier's contact</a></li>
+                        @*<li><a href="#tab_2" data-toggle="tab">Supplier's contact</a></li>*@
                         <li><a href="#tab_3" data-toggle="tab" id="tabcustom_fields">Custom fields</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     @* hidden Fields *@
-                    <input type="hidden" id="hdnContact_Id" name="" value="@Model.contact.contact_Entity.Contact_Id">
+                    <input type="hidden" id="hdnContact_Id" name="" value="@Model.Contact.contact_Entity.Contact_Id">
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <br />
@@ -46,36 +46,37 @@
                                         <div class="form-group">
                                             <label style="color: #333" for="txtCustomer_Name">Customer name</label>
                                             <div class="auto-complete">
-                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="contact.Customer_Name" value="@Model.contact.Customer_Name">
-                                                <input type="hidden" id="hdnCustomer_Id" value="@(Model.contact.contact_Entity.Customer_Id == 0 ? "" : Model.contact.contact_Entity.Customer_Id.ToString())" name="contact.contact_Entity.Customer_Id">
+                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name"  value="@Model.Contact.Customer_Name">
+                                                <input type="hidden" id="hdnCustomer_Id" value="@(Model.Contact.contact_Entity.Customer_Id == 0 ? "" : Model.Contact.contact_Entity.Customer_Id.ToString())" name="contact.contact_Entity.Customer_Id" class="auto-complete-value">
+                                                <input type="hidden" id="hdnContact_Name" value="@Model.Contact.Customer_Name" name="contact.Customer_Name" class="auto-complete-label">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label style="color: #333" for="txtContactName">Contact name</label>
-                                            <input type="text" class="form-control input-sm" id="txtContact_Name" placeholder="Enter contact name" value="@Model.contact.contact_Entity.Contact_Name" name="contact.contact_Entity.Contact_Name">
+                                            <input type="text" class="form-control input-sm" id="txtContact_Name" placeholder="Enter contact name" value="@Model.Contact.contact_Entity.Contact_Name" name="contact.contact_Entity.Contact_Name">
                                         </div>
                                         <div class="form-group">
                                             <label style="color: #333" for="txtDesignation">Designation</label>
-                                            <input type="text" class="form-control input-sm" id="txtDesignation" placeholder="Enter designation" value="@Model.contact.contact_Entity.Designation" name="contact.contact_Entity.Designation">
+                                            <input type="text" class="form-control input-sm" id="txtDesignation" placeholder="Enter designation" value="@Model.Contact.contact_Entity.Designation" name="contact.contact_Entity.Designation">
                                         </div>
                                         <div class="form-group">
                                             <label style="color: #333" for="txtPersonal_Email">Personal email</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                <input type="text" class="form-control input-sm" id="txtPersonal_Email" placeholder="Enter email" value="@Model.contact.contact_Entity.Personal_Email" name="contact.contact_Entity.Personal_Email">
+                                                <input type="text" class="form-control input-sm" id="txtPersonal_Email" placeholder="Enter email" value="@Model.Contact.contact_Entity.Personal_Email" name="contact.contact_Entity.Personal_Email">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label style="color: #333">Office address</label>
-                                            <textarea class="form-control input-sm" id="txtOffice_Address" rows="2" placeholder="Enter office address" name="contact.contact_Entity.Office_Address">@Model.contact.contact_Entity.Office_Address</textarea>
+                                            <textarea class="form-control input-sm" id="txtOffice_Address" rows="2" placeholder="Enter office address" name="contact.contact_Entity.Office_Address">@Model.Contact.contact_Entity.Office_Address</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label style="color: #333" for="txtOffice_Email">Official email Id</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                <input type="text" class="form-control input-sm" id="txtOffice_Email" placeholder="Enter email" value="@Model.contact.contact_Entity.Official_Email" name="contact.contact_Entity.Official_Email">
+                                                <input type="text" class="form-control input-sm" id="txtOffice_Email" placeholder="Enter email" value="@Model.Contact.contact_Entity.Official_Email" name="contact.contact_Entity.Official_Email">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -84,7 +85,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtOffice_Landline1" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask name="contact.contact_Entity.Office_Landline1" value="@Model.contact.contact_Entity.Office_Landline1" />
+                                                <input type="text" id="txtOffice_Landline1" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask name="contact.contact_Entity.Office_Landline1" value="@Model.Contact.contact_Entity.Office_Landline1" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -94,7 +95,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtOffice_Landline2" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask name="contact.contact_Entity.Office_Landline2" value="@Model.contact.contact_Entity.Office_Landline2" />
+                                                <input type="text" id="txtOffice_Landline2" class="form-control input-sm" data-inputmask='"mask": "(999) 999-9999"' data-mask name="contact.contact_Entity.Office_Landline2" value="@Model.Contact.contact_Entity.Office_Landline2" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -104,7 +105,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-mobile"></i>
                                                 </div>
-                                                <input type="text" id="txtMobile1" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.contact_Entity.Mobile1" value="@Model.contact.contact_Entity.Mobile1" maxlength="10" />
+                                                <input type="text" id="txtMobile1" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.contact_Entity.Mobile1" value="@Model.Contact.contact_Entity.Mobile1" maxlength="10" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -114,7 +115,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-mobile"></i>
                                                 </div>
-                                                <input type="text" id="txtMobile2" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.contact_Entity.Mobile2" value="@Model.contact.contact_Entity.Mobile2" maxlength="10" />
+                                                <input type="text" id="txtMobile2" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.contact_Entity.Mobile2" value="@Model.Contact.contact_Entity.Mobile2" maxlength="10" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -126,7 +127,7 @@
                                                 <option value="">-Select DMU Status Influence-</option>
                                                 @foreach (var item in LookupInfo.Get_DMU_Status_Influence())
                                                 {
-                                                    if (Model.contact.contact_Entity.DMU_Status_Influence == item.Key)
+                                                    if (Model.Contact.contact_Entity.DMU_Status_Influence == item.Key)
                                                     {
                                                         <option value="@item.Key" selected="selected">@item.Value</option>
                                                     }
@@ -143,7 +144,7 @@
                                                 <option value="">-Select DMU Status Role-</option>
                                                 @foreach (var item in LookupInfo.Get_DMU_Status_Role())
                                                 {
-                                                    if (Model.contact.contact_Entity.DMU_Status_Role == item.Key)
+                                                    if (Model.Contact.contact_Entity.DMU_Status_Role == item.Key)
                                                     {
                                                         <option value="@item.Key" selected="selected">@item.Value</option>
                                                     }
@@ -158,7 +159,7 @@
                                             <label style="color: #333">
                                                 <input type="checkbox" name="chkIsBilling_Contact" checked />
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Billing contact
-                                                <input type="hidden" id="hdnBilling_Contact" name="contact.contact_Entity.Is_Billing_Contact" value="@Model.contact.contact_Entity.Is_Billing_Contact.ToString()">
+                                                <input type="hidden" id="hdnBilling_Contact" name="contact.contact_Entity.Is_Billing_Contact" value="@Model.Contact.contact_Entity.Is_Billing_Contact.ToString()">
                                             </label>
                                         </div>
 
@@ -166,7 +167,7 @@
                                             <label style="color: #333">
                                                 <input type="checkbox" name="chk_Status" checked />
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Active status
-                                                <input type="hidden" id="hdnIs_Active" name="contact.contact_Entity.Is_Active" value="@Model.contact.contact_Entity.Is_Active.ToString()">
+                                                <input type="hidden" id="hdnIs_Active" name="contact.contact_Entity.Is_Active" value="@Model.Contact.contact_Entity.Is_Active.ToString()">
                                             </label>
                                         </div>
                                     </div>

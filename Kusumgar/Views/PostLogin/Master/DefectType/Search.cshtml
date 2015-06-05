@@ -1,7 +1,5 @@
 ﻿@model Kusumgar.Models.DefectTypeViewModel
-@{
-    ViewBag.Title = "Search";
-}
+
 
 <style>
     .example-modal .modal {
@@ -55,11 +53,14 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <label for="txtDefectTypeName">Defect - Type </label>
-                                        <input type="text" name="Filter.Defect_Type_Name" class="form-control input-sm" id="txtDefectTypeName" placeholder="Enter defect - type">
-                                    </div>
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtDefectTypeName" placeholder="Enter Defect - Type" value="">
+                                            <input type="hidden" id="hdnDefectTypeId" value="@Model.Filter.Defect_Type_Id" name="Filter.Defect_Type_Id" class="auto-complete-value">
+                                            <input type="hidden" id="txtDefectTypeName" value="@Model.Filter.Defect_Type_Name" name="Filter.Defect_Type_Name" class="auto-complete-label">
+                                        </div>
 
-                                </div>
+                                    </div>
+                                    </div>
 
                             </div>
 

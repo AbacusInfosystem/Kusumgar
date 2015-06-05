@@ -29,7 +29,7 @@
                     <th>Field value</th>
                     <th style="min-width: 81px;">&nbsp; </th>
                 </tr>
-                @foreach (var item in Model.contact.Contact_Custom_Fields_List)
+                @foreach (var item in Model.Contact.Contact_Custom_Fields_List)
                 {
 
                     <tr id="cust_tr_@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
@@ -54,8 +54,10 @@
         </div>
     </div>
     <div class="box-footer">
-        <button type="button" class="btn btn-success btn-sm" id="btnSaveCustomField">Save custom field</button>
-        <a href="@Url.Action("Search","Contact")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-success btn-sm" id="btnSaveCustomField">Save custom field</button>
+            <a href="@Url.Action("Search","Contact")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+        </div>
     </div>
 
 </form>

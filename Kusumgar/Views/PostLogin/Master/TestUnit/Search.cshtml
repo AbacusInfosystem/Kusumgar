@@ -1,7 +1,4 @@
-﻿@{
-    ViewBag.Title = "Test Unit";
-}
-
+﻿
 <style>
     .example-modal .modal {
         position: relative;
@@ -53,12 +50,10 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <label for="txtTestUnitName">Test Unit name</label>
-
                                        
-                                        <input type="text" name="Filter.Test_Unit_Name"  class="form-control" id="txtTestUnitName" placeholder="Enter test unit name">
+                                     <input type="text" name="Filter.Test_Unit_Name" class="form-control" id="txtTestUnitName" placeholder="Enter Test Unit Name">
+                                       
                                     </div>
-
                                 </div>
 
                             </div>
@@ -68,8 +63,8 @@
                                     <div class="col-md-6">
 
                                         <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","TestUnit")" role="button">Create Test Unit</a>
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","TestUnit")" role="button">Create</a>
                                         </div>
 
                                     </div>
@@ -77,14 +72,12 @@
 
                                         <div class="btn-group pull-right">
 
-                                            @*<input type="hidden" id="hdfPageSize" name="" value="" />*@
                                             <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                            @*<input type="hidden" id="hdfIsPagingRequired" name="" value="" />*@
-
+                                         
                                             <input type="hidden" id="hdfTestUnitId" name="Edit_Mode.Test_Unit_Id" />
 
-                                            <button type="button" class="btn btn-warning" id="btnEdit" style="display:none;">Edit Test Unit</button>
-                                            <button type="button" class="btn btn-primary" id="btnView">View Test</button>
+                                            <button type="button" class="btn btn-warning btn-sm" id="btnEdit" style="display:none;">Edit</button>
+                                            <button type="button" class="btn btn-primary btn-sm" id="btnView">View Test</button>
                                         </div>
 
                                     </div>

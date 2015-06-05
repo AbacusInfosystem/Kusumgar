@@ -25,69 +25,26 @@ namespace KusumgarDataAccess
             _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<AttributeCodeInfo> Get_Attribute_Codes(PaginationInfo pager)
+        public List<AttributeCodeInfo> Get_Attribute_Codes(ref PaginationInfo pager)
         {
             List<AttributeCodeInfo> retVal = new List<AttributeCodeInfo>();
             
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Attribute_Codes_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = GetRows(dt, pager);
-
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                AttributeCodeInfo attributeCodes = new AttributeCodeInfo();
-                
-                attributeCodes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
-
-                attributeCodes.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
-
-                attributeCodes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
-
-                attributeCodes.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
-
-                attributeCodes.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.AttributeCodeEntity.Attribute_Id];
-
-                retVal.Add(attributeCodes);
+                retVal.Add(Get_Attribute_Code_Values(dr));
             }
           
             return retVal;
         }
 
-        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
-        {
-            List<DataRow> drList = new List<DataRow>();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int count = 0;
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-                }
-
-                pager.TotalRecords = count;
-
-                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-                pager.TotalPages = pages;
-            }
-
-            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
-        }
-        
         public void Insert(AttributeCodeInfo attributeCode)
         {
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Attribute_Code(attributeCode), StoredProcedures.Insert_Attribute_Code_sp.ToString(), CommandType.StoredProcedure);
         }
 
-        public List<AttributeCodeInfo> Get_Attribute_Codes_By_Attribute_Name(int attributeId,PaginationInfo pager)
+        public List<AttributeCodeInfo> Get_Attribute_Codes_By_Attribute_Name(int attributeId,ref PaginationInfo pager)
         {
             List<AttributeCodeInfo> retVal = new List<AttributeCodeInfo>();
             
@@ -97,27 +54,10 @@ namespace KusumgarDataAccess
 
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Attribute_Code_By_Attribute_Name_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = GetRows(dt, pager);
-               
-            foreach (DataRow dr in tupleData.Item1)
-                {
-
-                    AttributeCodeInfo attributeCodes = new AttributeCodeInfo();
-
-                    attributeCodes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
-
-                    attributeCodes.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
-
-                    attributeCodes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
-
-                    attributeCodes.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
-
-                    attributeCodes.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                    attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.AttributeCodeEntity.Attribute_Id];
-
-                    retVal.Add(attributeCodes);
-                }
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                retVal.Add(Get_Attribute_Code_Values(dr));
+            }
             
             return retVal;
         }
@@ -143,18 +83,7 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    retVal.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
-
-                    retVal.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
-
-                    retVal.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
-
-                    retVal.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
-
-                    retVal.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                    retVal.Attribute_Name = LookupInfo.GetAttributeNames()[retVal.AttributeCodeEntity.Attribute_Id];
-
+                    retVal=(Get_Attribute_Code_Values(dr));
                 }
             }
 
@@ -191,6 +120,55 @@ namespace KusumgarDataAccess
             }
 
             return sqlParamList;
-        } 
-    }
+        }
+
+        private AttributeCodeInfo Get_Attribute_Code_Values(DataRow dr)
+        {
+            AttributeCodeInfo attributeCodes = new AttributeCodeInfo();
+
+            attributeCodes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
+
+            attributeCodes.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
+
+            attributeCodes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
+
+            attributeCodes.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
+
+            attributeCodes.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
+
+            attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.AttributeCodeEntity.Attribute_Id];
+
+            return attributeCodes;
+        }
+
+        public List<AttributeCodeInfo> Get_Grid_By_Attrinute_Code_Name(int attributeId)
+        {
+            List<AttributeCodeInfo> retVal = new List<AttributeCodeInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Attribute_Id", attributeId));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Attribute_Code_By_Attribute_Name_sp.ToString(), CommandType.StoredProcedure);
+
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int count = 0;
+
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                foreach (DataRow dr in drList)
+                {
+                    retVal.Add(Get_Attribute_Code_Values(dr));
+                }
+            }
+            return retVal;
+
+        }
+   }
 }

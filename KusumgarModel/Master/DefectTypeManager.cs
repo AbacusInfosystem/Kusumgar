@@ -11,37 +11,26 @@ namespace KusumgarModel
 {
     public class DefectTypeManager
     {
-        public List<DefectTypeInfo> Get_Defect_Types(PaginationInfo Pager)
+        public List<DefectTypeInfo> Get_Defect_Types(ref PaginationInfo pager)
         {
             List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
            
             DefectTypeRepo dRepo = new DefectTypeRepo();
 
-            defectTypes = dRepo.Get_Defect_Types(Pager);
+            defectTypes = dRepo.Get_Defect_Types(ref pager);
             
             return defectTypes;
 
         }
 
-        public List<DefectTypeInfo> Get_Defect_Type_By_Name(string Defect_Type_Name,PaginationInfo Pager)
-        {
-            List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
-           
-            DefectTypeRepo dRepo = new DefectTypeRepo();
-
-            defectTypes = dRepo.Get_Defect_Type_By_Name(Defect_Type_Name, Pager);
-            
-            return defectTypes;
-        }
-
-       public void Insert(DefectTypeInfo defect)
+        public void Insert(DefectTypeInfo defect)
         {
             DefectTypeRepo dRepo = new DefectTypeRepo();
 
             dRepo.Insert(defect);
         }
 
-       public DefectTypeInfo Get_Defect_Type_By_Id(int Defect_Type_Id)
+        public DefectTypeInfo Get_Defect_Type_By_Id(int Defect_Type_Id)
        {
            DefectTypeInfo defectInfo = new DefectTypeInfo();
 
@@ -59,5 +48,22 @@ namespace KusumgarModel
             dRepo.Update(defect);
         }
 
+        public List<AutocompleteInfo> Get_Defect_Type_AutoComplete(string defect_Type_Name)
+        {
+            DefectTypeRepo dRepo = new DefectTypeRepo();
+
+            return dRepo.Get_Defect_Type_AutoComplete(defect_Type_Name);
+        }
+
+        public List<DefectTypeInfo> Get_Defect_Types_By_Id(int Defect_Type_Id, ref PaginationInfo pager)
+        {
+            List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
+
+            DefectTypeRepo dRepo = new DefectTypeRepo();
+
+            defectTypes = dRepo.Get_Defect_Types_By_Id(Defect_Type_Id, ref pager);
+
+            return defectTypes;
+        }
     }
 }
