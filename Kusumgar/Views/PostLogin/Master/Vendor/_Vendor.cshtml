@@ -144,15 +144,15 @@
                 <label for="chkStatus">Status :</label><br>
                 @if (Model.Vendor.Is_Active)
                     {
-            @:<input type="checkbox" name="Vendor.Is_Active" value="false" checked />
+            @:<input type="checkbox" class="iCheck" name="Vendor.Is_Active" value="false" checked />
                                                 }
                     else
                     {
-            @:<input type="checkbox" name="Vendor.Is_Active" value="true" />
+            @:<input type="checkbox" class="iCheck" name="Vendor.Is_Active" value="true" />
                                                 }
 
                 Active &nbsp;&nbsp;&nbsp;
-                <input type="hidden" id="hdnStatus" value="@((Model.Vendor.Is_Active == null ? false : Model.Vendor.Is_Active).ToString())">
+                <input type="hidden" class="iCheck-hidden" id="hdnStatus" value="@((Model.Vendor.Is_Active == null ? false : Model.Vendor.Is_Active).ToString())">
 
 
             </div>

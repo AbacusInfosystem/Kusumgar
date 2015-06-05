@@ -22,14 +22,6 @@
     });
 
 
-$('[name="Vendor.Is_Active"]').on('ifChanged', function (event) {
-    if ($(this).prop('checked')) {
-        $("#hdnStatus").val(true);
-    }
-    else {
-        $("#hdnStatus").val(false);
-    }
-});
 
 $("#drpHeadOfficeNation").change(function () {
 

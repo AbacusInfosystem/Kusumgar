@@ -9,10 +9,10 @@
 
     html += " $('.iCheck').on('ifChanged', function (event) {";
     html += "   if ($(this).prop('checked')) {";
-    html += "      $(this).parent().find('.iCheck-hidden').val(true);";
+    html += "      $(this).parent().parent().find('.iCheck-hidden').val(true);";
     html += "     }";
     html += "    else {";
-    html += "         $(this).parent().find('.iCheck-hidden').val(false);";
+    html += "         $(this).parent().parent().find('.iCheck-hidden').val(false);";
     html += "    }";
     html += " });";
 
