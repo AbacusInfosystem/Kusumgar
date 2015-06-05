@@ -956,6 +956,8 @@
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
+    <Content Include="Scripts\Master\Event\work_center_event.js" />
+    <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -1008,6 +1010,8 @@
     <Content Include="Scripts\Master\Method\consumable_method.js" />
     <Content Include="Scripts\Master\Method\consumable_search_method.js" />
     <Content Include="Scripts\Master\Method\vendor_partial_method.js" />
+    <Content Include="Scripts\Master\Method\work_center_listing_method.js" />
+    <Content Include="Scripts\Master\Method\work_center_method.js" />
     <Content Include="Scripts\Master\Method\yarticle_listing_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
@@ -1048,6 +1052,7 @@
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_partial_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_validation.js" />
+    <Content Include="Scripts\Master\Validation\work_center_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Sales\Event\enquiry_events.js" />

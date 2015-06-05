@@ -50,7 +50,7 @@
                                                    
                                                     <input type="text" class="form-control input-sm" id="txtVendor_Name" placeholder="Enter vendor name" value="">
                                                     <input type="hidden" id="hdnVendor_Id" value="@(Model.Vendor_Contact.Contact_Entity.Vendor_Id == 0 ?"" : Model.Vendor_Contact.Contact_Entity.Vendor_Id.ToString())" name="Vendor_Contact.Contact_Entity.Vendor_Id" class="auto-complete-value">
-                                                    <input type="hidden" id="hdnVendor_Name" value="@Model.Vendor_Contact.Vendor_Name" name="Vendor_Contact.Vendor_Name" class="auto-complete-value">
+                                                    <input type="hidden" id="hdnVendor_Name" value="@Model.Vendor_Contact.Vendor_Name" name="Vendor_Contact.Vendor_Name" class="auto-complete-label">
 
                                                 </div>
                                                 
@@ -186,19 +186,19 @@
                                             </tr>
                                             @foreach (var item in Model.Vendor_Contact.Vendor_Custom_Fields)
                                             {
-                                                <tr id="cust_tr_@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+                                                <tr id="cust_tr_@item.Contact_Custom_Field_Id">
 
-                                               <td>@item.Custom_Fields_Entity.Field_Name</td>
-                                               <td>@item.Custom_Fields_Entity.Field_Value</td>
+                                               <td>@item.Field_Name</td>
+                                               <td>@item.Field_Value</td>
                                                <td>
-                                                    <input type="hidden" class="hdn_Contact_Custom_Field_Id" value="@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+                                                    <input type="hidden" class="hdn_Contact_Custom_Field_Id" value="@item.Contact_Custom_Field_Id">
 
-                                                    <input type="hidden" class="Field_Name" value="@item.Custom_Fields_Entity.Field_Name">
-                                                    <input type="hidden" class="Field_Value" value="@item.Custom_Fields_Entity.Field_Value">
+                                                    <input type="hidden" class="Field_Name" value="@item.Field_Name">
+                                                    <input type="hidden" class="Field_Value" value="@item.Field_Value">
 
                                                    <div class="btn-group pull-right">
-                                                        <button type="button" id="btnEdit" class="btn btn-info btn-sm" onclick="Edit_Custom_Fields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-pencil-square-o'></i></button>
-                                                       <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="Remove_Custom_Fields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
+                                                        <button type="button" id="btnEdit" class="btn btn-info btn-sm" onclick="Edit_Custom_Fields(@item.Contact_Custom_Field_Id)"><i class='fa fa-pencil-square-o'></i></button>
+                                                       <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="Remove_Custom_Fields(@item.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
                                                    </div>
                                                </td>
                                             </tr>

@@ -16,15 +16,11 @@ namespace KusumgarDataAccess
 {
     public class RoleAccessRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public RoleAccessRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }   
 
         public List<RoleAccessInfo> Get_Access_List()
@@ -103,7 +99,7 @@ namespace KusumgarDataAccess
                 sqlparam.Add(new SqlParameter("@CreatedBy", 1));
                 sqlparam.Add(new SqlParameter("@UpdatedBy", 1));
 
-                _sqlHelper.ExecuteNonQuery(sqlparam, StoredProcedures.Insert_Role_Access_Sp.ToString(), CommandType.StoredProcedure);
+                sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Insert_Role_Access_Sp.ToString(), CommandType.StoredProcedure);
             }
         }
     }

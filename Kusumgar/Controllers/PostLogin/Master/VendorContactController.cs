@@ -178,17 +178,17 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.CreatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _vendorcontactMan.Insert_Vendor_Contact_Custom_Field(vcViewModel.Vendor_Contact.Vendor_Custom_Field);
 
-                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.Contact_Id);
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Contact_Id);
 
                 vcViewModel.Friendly_Message.Add(MessageStore.Get("VC002"));
             }
@@ -206,13 +206,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _vendorcontactMan.Update_Vendor_Contact_Custom_Field(vcViewModel.Vendor_Contact.Vendor_Custom_Field);
 
-                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.Contact_Id);
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Contact_Id);
 
                 vcViewModel.Friendly_Message.Add(MessageStore.Get("VC004"));
             }

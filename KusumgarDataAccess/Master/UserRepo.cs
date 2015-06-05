@@ -17,12 +17,10 @@ namespace KusumgarDataAccess
     public class UserRepo
     {
         SQLHelperRepo sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public UserRepo()
         {
             sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<UserInfo> Get_Users(ref PaginationInfo pager)

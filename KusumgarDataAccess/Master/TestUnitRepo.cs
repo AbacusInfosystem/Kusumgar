@@ -16,15 +16,11 @@ namespace KusumgarDataAccess
 {
   public  class TestUnitRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public TestUnitRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<TestUnitInfo> Get_Test_Units(ref PaginationInfo pager)

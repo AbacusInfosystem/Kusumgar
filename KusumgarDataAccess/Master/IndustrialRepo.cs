@@ -16,15 +16,11 @@ namespace KusumgarDataAccess
 {
     public class IndustrialRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public IndustrialRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public int Insert_Industrial(IndustrialInfo industrialInfo)

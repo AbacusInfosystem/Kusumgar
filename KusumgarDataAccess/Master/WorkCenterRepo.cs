@@ -17,12 +17,10 @@ namespace KusumgarDataAccess
     public class WorkCenterRepo
     {
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public WorkCenterRepo()
         {
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<FactoryInfo> Get_Factories(ref PaginationInfo pager)

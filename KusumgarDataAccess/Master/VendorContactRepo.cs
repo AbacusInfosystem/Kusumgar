@@ -121,22 +121,22 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (vendor_Custom_Field.Custom_Fields_Entity.Contact_Custom_Field_Id != 0)
+            if (vendor_Custom_Field.Contact_Custom_Field_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", vendor_Custom_Field.Custom_Fields_Entity.Contact_Custom_Field_Id));
+                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", vendor_Custom_Field.Contact_Custom_Field_Id));
             }
-            sqlparam.Add(new SqlParameter("@Contact_Id", vendor_Custom_Field.Custom_Fields_Entity.Contact_Id));
-            sqlparam.Add(new SqlParameter("@Field_Name", vendor_Custom_Field.Custom_Fields_Entity.Field_Name));
-            sqlparam.Add(new SqlParameter("@Field_Value", vendor_Custom_Field.Custom_Fields_Entity.Field_Value));
-            sqlparam.Add(new SqlParameter("@Is_Active", vendor_Custom_Field.Custom_Fields_Entity.Is_Active));
+            sqlparam.Add(new SqlParameter("@Contact_Id", vendor_Custom_Field.Contact_Id));
+            sqlparam.Add(new SqlParameter("@Field_Name", vendor_Custom_Field.Field_Name));
+            sqlparam.Add(new SqlParameter("@Field_Value", vendor_Custom_Field.Field_Value));
+            sqlparam.Add(new SqlParameter("@Is_Active", vendor_Custom_Field.Is_Active));
 
-            if (vendor_Custom_Field.Custom_Fields_Entity.Contact_Custom_Field_Id == 0)
+            if (vendor_Custom_Field.Contact_Custom_Field_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedOn", vendor_Custom_Field.Custom_Fields_Entity.CreatedOn));
-                sqlparam.Add(new SqlParameter("@CreatedBy", vendor_Custom_Field.Custom_Fields_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", vendor_Custom_Field.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", vendor_Custom_Field.CreatedBy));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedOn", vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn));
-            sqlparam.Add(new SqlParameter("@UpdatedBy", vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", vendor_Custom_Field.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", vendor_Custom_Field.UpdatedBy));
 
             return sqlparam;
         }
@@ -253,15 +253,15 @@ namespace KusumgarDataAccess
         {
             VendorContactCustomFieldsInfo vendor_Custom_Field = new VendorContactCustomFieldsInfo();
 
-            vendor_Custom_Field.Custom_Fields_Entity.Contact_Custom_Field_Id = Convert.ToInt32(dr["Contact_Custom_Field_Id"]);
-            vendor_Custom_Field.Custom_Fields_Entity.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
-            vendor_Custom_Field.Custom_Fields_Entity.Field_Name = Convert.ToString(dr["Field_Name"]);
-            vendor_Custom_Field.Custom_Fields_Entity.Field_Value = Convert.ToString(dr["Field_Value"]);
-            vendor_Custom_Field.Custom_Fields_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            vendor_Custom_Field.Custom_Fields_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            vendor_Custom_Field.Custom_Fields_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            vendor_Custom_Field.Contact_Custom_Field_Id = Convert.ToInt32(dr["Contact_Custom_Field_Id"]);
+            vendor_Custom_Field.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
+            vendor_Custom_Field.Field_Name = Convert.ToString(dr["Field_Name"]);
+            vendor_Custom_Field.Field_Value = Convert.ToString(dr["Field_Value"]);
+            vendor_Custom_Field.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            vendor_Custom_Field.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            vendor_Custom_Field.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            vendor_Custom_Field.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            vendor_Custom_Field.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
             return vendor_Custom_Field;
         }

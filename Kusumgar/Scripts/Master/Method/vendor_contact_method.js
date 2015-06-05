@@ -89,8 +89,7 @@ function Set_Vendor_Contact() {
                     {
                         Vendor_Custom_Field:
                             {
-                                Custom_Fields_Entity:
-                                    {
+                                
                                         Contact_Custom_Field_Id: $("#hdnVendor_Contact_Custom_Field_Id").val(),
 
                                         Contact_Id: $("#hdnContact_Id").val(),
@@ -100,7 +99,7 @@ function Set_Vendor_Contact() {
                                         Field_Value: $("#txtField_Value").val(),
 
                                         Is_Active: $("#hdnIs_Active").val()
-                                    }
+                                    
 
                             }
                     }
@@ -116,25 +115,25 @@ function Set_Vendor_Contact() {
 
             for (var i = 0; i < data.Vendor_Contact.Vendor_Custom_Fields.length; i++) {
 
-                htmlText += " <tr id='cust_tr_" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Contact_Custom_Field_Id + "'>";
+                htmlText += " <tr id='cust_tr_" + data.Vendor_Contact.Vendor_Custom_Fields[i].Contact_Custom_Field_Id + "'>";
               
-                htmlText += "<td>" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Field_Name + "</td>";
+                htmlText += "<td>" + data.Vendor_Contact.Vendor_Custom_Fields[i].Field_Name + "</td>";
 
-                htmlText += "<td>" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Field_Value + "</td>";
+                htmlText += "<td>" + data.Vendor_Contact.Vendor_Custom_Fields[i].Field_Value + "</td>";
 
                 htmlText += "<td>";
 
-                htmlText += "<input type='hidden' class='hdn_Contact_Custom_Field_Id' value='" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Contact_Custom_Field_Id + "'>";
+                htmlText += "<input type='hidden' class='hdn_Contact_Custom_Field_Id' value='" + data.Vendor_Contact.Vendor_Custom_Fields[i].Contact_Custom_Field_Id + "'>";
 
-                htmlText += "<input type='hidden' class='Field_Name' value='" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Field_Name + "'>";
+                htmlText += "<input type='hidden' class='Field_Name' value='" + data.Vendor_Contact.Vendor_Custom_Fields[i].Field_Name + "'>";
 
-                htmlText += "<input type='hidden' class='Field_Value' value='" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Field_Value + "'>";
+                htmlText += "<input type='hidden' class='Field_Value' value='" + data.Vendor_Contact.Vendor_Custom_Fields[i].Field_Value + "'>";
 
                 htmlText += "<div class='btn-group pull-right'>";
 
-                htmlText += "<button type='button' id='btnEdit' class='btn btn-info btn-sm' onclick='Edit_Custom_Fields(" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Contact_Custom_Field_Id + ")'><i class='fa fa-pencil-square-o'></i></button>";
+                htmlText += "<button type='button' id='btnEdit' class='btn btn-info btn-sm' onclick='Edit_Custom_Fields(" + data.Vendor_Contact.Vendor_Custom_Fields[i].Contact_Custom_Field_Id + ")'><i class='fa fa-pencil-square-o'></i></button>";
 
-                htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm ' onclick='Remove_Custom_Fields(" + data.Vendor_Contact.Vendor_Custom_Fields[i].Custom_Fields_Entity.Contact_Custom_Field_Id + ")'><i class='fa fa-times'></i></button>";
+                htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm ' onclick='Remove_Custom_Fields(" + data.Vendor_Contact.Vendor_Custom_Fields[i].Contact_Custom_Field_Id + ")'><i class='fa fa-times'></i></button>";
 
                 htmlText += "</div>";
 

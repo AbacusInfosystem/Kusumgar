@@ -130,15 +130,15 @@ namespace KusumgarDataAccess
         {
             ContactCustomFieldsInfo customfields = new ContactCustomFieldsInfo();
 
-            customfields.Custom_Fields_Entity.Contact_Custom_Field_Id = Convert.ToInt32(dr["Contact_Custom_Field_Id"]);
-            customfields.Custom_Fields_Entity.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
-            customfields.Custom_Fields_Entity.Field_Name = Convert.ToString(dr["Field_Name"]);
-            customfields.Custom_Fields_Entity.Field_Value = Convert.ToString(dr["Field_Value"]);
-            customfields.Custom_Fields_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            customfields.Custom_Fields_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            customfields.Custom_Fields_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            customfields.Custom_Fields_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            customfields.Custom_Fields_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);   
+            customfields.Contact_Custom_Field_Id = Convert.ToInt32(dr["Contact_Custom_Field_Id"]);
+            customfields.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
+            customfields.Field_Name = Convert.ToString(dr["Field_Name"]);
+            customfields.Field_Value = Convert.ToString(dr["Field_Value"]);
+            customfields.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            customfields.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            customfields.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            customfields.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            customfields.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);   
 
             return customfields;
         }
@@ -206,21 +206,21 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id != 0)
+            if (custom_Fields.Contact_Custom_Field_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id));
+                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", custom_Fields.Contact_Custom_Field_Id));
             }
-            sqlparam.Add(new SqlParameter("@Contact_Id", custom_Fields.Custom_Fields_Entity.Contact_Id));
-            sqlparam.Add(new SqlParameter("@Field_Name", custom_Fields.Custom_Fields_Entity.Field_Name));
-            sqlparam.Add(new SqlParameter("@Field_Value", custom_Fields.Custom_Fields_Entity.Field_Value));
-            sqlparam.Add(new SqlParameter("@Is_Active", custom_Fields.Custom_Fields_Entity.Is_Active));
-            if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id == 0)
+            sqlparam.Add(new SqlParameter("@Contact_Id", custom_Fields.Contact_Id));
+            sqlparam.Add(new SqlParameter("@Field_Name", custom_Fields.Field_Name));
+            sqlparam.Add(new SqlParameter("@Field_Value", custom_Fields.Field_Value));
+            sqlparam.Add(new SqlParameter("@Is_Active", custom_Fields.Is_Active));
+            if (custom_Fields.Contact_Custom_Field_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", custom_Fields.Custom_Fields_Entity.CreatedBy));
-                sqlparam.Add(new SqlParameter("@CreatedOn", custom_Fields.Custom_Fields_Entity.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", custom_Fields.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", custom_Fields.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.Custom_Fields_Entity.UpdatedBy));
-            sqlparam.Add(new SqlParameter("@UpdatedOn", custom_Fields.Custom_Fields_Entity.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", custom_Fields.UpdatedOn));
 
             return sqlparam;
         }

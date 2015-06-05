@@ -13,15 +13,11 @@ namespace KusumgarDataAccess
 {
  public class DefectRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public DefectRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
        
         public List<DefectInfo> Get_Defects(ref PaginationInfo pager)

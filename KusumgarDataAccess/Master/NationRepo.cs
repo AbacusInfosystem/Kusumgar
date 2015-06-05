@@ -17,12 +17,10 @@ namespace KusumgarDataAccess
     public class NationRepo
     {
          SQLHelperRepo sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public NationRepo()
         {
             sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<NationInfo> Get_Nations(ref PaginationInfo pager)
