@@ -25,10 +25,7 @@ namespace KusumgarModel
             return _ajaxRepo.GetTestUnit(testUnitName);
         }
 
-      public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
-      {
-          return _ajaxRepo.Get_Customer_AutoComplete(Customer_Name);
-      }
+     
 
       public List<AutocompleteInfo> Get_Vendor_AutoComplete(string Vendor_Name)
       {

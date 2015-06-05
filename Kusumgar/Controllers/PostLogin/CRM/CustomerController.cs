@@ -432,5 +432,20 @@ namespace Kusumgar.Controllers
             return Json(check, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Get_Customer_AutoComplete(string Customer_Name)
+        {
+            List<AutocompleteInfo> Customer_List = new List<AutocompleteInfo>();
+
+            try
+            {
+                Customer_List = _customerMan.Get_Customer_AutoComplete(Customer_Name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Json(Customer_List, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

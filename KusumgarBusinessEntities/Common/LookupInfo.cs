@@ -193,5 +193,41 @@ namespace KusumgarBusinessEntities.Common
 
             return Get_Product_Types;
         }
+
+        public static Dictionary<int, string> Get_Enquiry_Types()
+        {
+            Dictionary<int, string> Get_Enquiry_Types = new Dictionary<int, string>();
+
+            Get_Enquiry_Types.Add(1, EnquiryType.Trial.ToString().Replace('_', ' ').ToString());
+
+            Get_Enquiry_Types.Add(2, EnquiryType.General.ToString().Replace('_', ' ').ToString());
+
+            Get_Enquiry_Types.Add(3, EnquiryType.Stock.ToString().Replace('_', ' ').ToString());
+
+            return Get_Enquiry_Types;
+        }
+
+        public static Dictionary<int, string> Get_Enquiry_Status()
+        {
+            Dictionary<int, string> Get_Enquiry_Status = new Dictionary<int, string>();
+
+            Get_Enquiry_Status.Add(1, EnquiryStatus.Enquiry_Arrived.ToString().Replace('_', ' ').ToString());
+
+            Get_Enquiry_Status.Add(2, EnquiryStatus.Passed_PPC_Check_Point.ToString().Replace('_', ' ').ToString());
+
+            Get_Enquiry_Status.Add(3, EnquiryStatus.Passed_W_Manager_Check_Point.ToString().Replace('_', ' ').ToString());
+
+            Get_Enquiry_Status.Add(4, EnquiryStatus.Passed_P_Manager_Check_Point.ToString().Replace('_', ' ').ToString());
+            
+            Get_Enquiry_Status.Add(5, EnquiryStatus.Passed_C_Manager_Check_Point.ToString().Replace('_', ' ').ToString());
+            
+            Get_Enquiry_Status.Add(6, EnquiryStatus.Temp_Quality_Set_Created.ToString().Replace('_', ' ').ToString());
+            
+            Get_Enquiry_Status.Add(7, EnquiryStatus.Quality_Assigned.ToString().Replace('_', ' ').ToString());
+            
+            Get_Enquiry_Status.Add(8, EnquiryStatus.Planned.ToString().Replace('_', ' ').ToString());
+
+            return Get_Enquiry_Status;
+        }
     }
 }

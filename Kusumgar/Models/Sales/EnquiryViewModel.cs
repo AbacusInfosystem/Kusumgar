@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using KusumgarBusinessEntities;
+using KusumgarBusinessEntities.Common;
 
-namespace Kusumgar.Models.Sales
+namespace Kusumgar.Models
 {
     public class EnquiryViewModel
     {
@@ -26,7 +28,17 @@ namespace Kusumgar.Models.Sales
             MondayDate = CurrentDate.AddDays(-((CurrentDate.DayOfWeek - System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.FirstDayOfWeek + 7) % 7)).Date; ;// (DayOfWeek.Monday);
 
             SundayDate = CurrentDate.AddDays(-((CurrentDate.DayOfWeek - System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.FirstDayOfWeek -6) % 7)).Date; ;// (DayOfWeek.Monday);
+
+            Friendly_Message = new List<FriendlyMessageInfo>();
+            Pager = new PaginationInfo();
+            Enquiry = new EnquiryInfo();
+            Enquires = new List<EnquiryInfo>();
         }
+
+        public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+        public PaginationInfo Pager { get; set; }
+        public EnquiryInfo Enquiry { get; set; }
+        public List<EnquiryInfo> Enquires { get; set; }
 
         public List<MachineInfo> MachineInfoList { get; set; }
 
