@@ -53,13 +53,13 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
-                dViewModel.Defect.DefectEntity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                dViewModel.Defect.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.Defect.DefectEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                dViewModel.Defect.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.Defect.DefectEntity.CreatedOn = DateTime.Now;
+                dViewModel.Defect.CreatedOn = DateTime.Now;
 
-                dViewModel.Defect.DefectEntity.UpdatedOn = DateTime.Now;
+                dViewModel.Defect.UpdatedOn = DateTime.Now;
 
                 DefectManager dMan = new DefectManager();
 
@@ -84,9 +84,9 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
-                dViewModel.Defect.DefectEntity.UpdatedOn = DateTime.Now;
+                dViewModel.Defect.UpdatedOn = DateTime.Now;
 
-                dViewModel.Defect.DefectEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                dViewModel.Defect.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 DefectManager dMan = new DefectManager();
 

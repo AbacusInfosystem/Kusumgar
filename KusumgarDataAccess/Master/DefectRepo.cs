@@ -153,23 +153,23 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-            sqlParamList.Add(new SqlParameter("@Defect_Name", defects.DefectEntity.Defect_Name));
+            sqlParamList.Add(new SqlParameter("@Defect_Name", defects.Defect_Name));
 
-            sqlParamList.Add(new SqlParameter("@Defect_Type_Id", defects.DefectEntity.Defect_Type_Id));
+            sqlParamList.Add(new SqlParameter("@Defect_Type_Id", defects.Defect_Type_Id));
 
-            sqlParamList.Add(new SqlParameter("@Defect_Code", defects.DefectEntity.Defect_Code));
+            sqlParamList.Add(new SqlParameter("@Defect_Code", defects.Defect_Code));
 
-            sqlParamList.Add(new SqlParameter("@Status", defects.DefectEntity.Status));
+            sqlParamList.Add(new SqlParameter("@Status", defects.Status));
 
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", defects.DefectEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", defects.UpdatedBy));
             
-            if (defects.DefectEntity.Defect_Id == 0)
+            if (defects.Defect_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", defects.DefectEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", defects.CreatedBy));
             }
-            if (defects.DefectEntity.Defect_Id != 0)
+            if (defects.Defect_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Defect_Id", defects.DefectEntity.Defect_Id));
+                sqlParamList.Add(new SqlParameter("@Defect_Id", defects.Defect_Id));
             }
 
             return sqlParamList;
@@ -226,25 +226,25 @@ namespace KusumgarDataAccess
         {
             DefectInfo defects = new DefectInfo();
 
-            defects.DefectEntity.Defect_Id = Convert.ToInt32(dr["Defect_Id"]);
+            defects.Defect_Id = Convert.ToInt32(dr["Defect_Id"]);
 
-            defects.DefectEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
+            defects.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
 
             defects.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
 
-            defects.DefectEntity.Defect_Code = Convert.ToString(dr["Defect_Code"]);
+            defects.Defect_Code = Convert.ToString(dr["Defect_Code"]);
 
-            defects.DefectEntity.Defect_Name = Convert.ToString(dr["Defect_Name"]);
+            defects.Defect_Name = Convert.ToString(dr["Defect_Name"]);
 
-            defects.DefectEntity.Status = Convert.ToBoolean(dr["Status"]);
+            defects.Status = Convert.ToBoolean(dr["Status"]);
 
-            defects.DefectEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            defects.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            defects.DefectEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            defects.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            defects.DefectEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            defects.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            defects.DefectEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            defects.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
            
             return defects;
         }
