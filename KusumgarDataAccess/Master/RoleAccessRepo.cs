@@ -47,7 +47,7 @@ namespace KusumgarDataAccess
 
                      RoleAccessInfo roleAccess = new RoleAccessInfo();
 
-                     roleAccess.RoleAccessEntity.Access_Function_Id = Convert.ToInt32(dr["Access_Fuction_Id"]);
+                     roleAccess.Access_Function_Id = Convert.ToInt32(dr["Access_Fuction_Id"]);
 
                      roleAccess.Access_Name = Convert.ToString(dr["Access_Function_Name"]);
 
@@ -81,7 +81,7 @@ namespace KusumgarDataAccess
 
                     RoleAccessInfo roleAccess = new RoleAccessInfo();
 
-                    roleAccess.RoleAccessEntity.Access_Function_Id = Convert.ToInt32(dr["Access_Function_Id"]);
+                    roleAccess.Access_Function_Id = Convert.ToInt32(dr["Access_Function_Id"]);
 
                     roleAccess.Access_Name = Convert.ToString(dr["Access_Function_Name"]);
 

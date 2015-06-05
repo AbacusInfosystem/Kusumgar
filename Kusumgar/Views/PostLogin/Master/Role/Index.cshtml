@@ -62,9 +62,9 @@
                                         <select multiple="multiple" id="lst_Available_Access_Function" name="" class="form-control">
                                             @foreach (var item in Model.Role_Accesses)
                                             {
-                                                if (!(Model.Selecetd_Role_Accesses.Where(a => a.RoleAccessEntity.Access_Function_Id == item.RoleAccessEntity.Access_Function_Id).Count() > 0))
+                                                if (!(Model.Selecetd_Role_Accesses.Where(a => a.Access_Function_Id == item.Access_Function_Id).Count() > 0))
                                                 {
-                                                    <option value="@item.RoleAccessEntity.Access_Function_Id">@item.Access_Name</option>
+                                                    <option value="@item.Access_Function_Id">@item.Access_Name</option>
                                                 }
                                             }
                                         </select>
@@ -80,7 +80,7 @@
                                         <select multiple="multiple" id="lst_Selected_Access_Function" name="Selected_Role_Access" class="form-control">
                                             @foreach (var item in Model.Selecetd_Role_Accesses)
                                             {
-                                                <option value="@item.RoleAccessEntity.Access_Function_Id" selected>@item.Access_Name</option>
+                                                <option value="@item.Access_Function_Id" selected>@item.Access_Name</option>
                                             }
                                         </select>
 
