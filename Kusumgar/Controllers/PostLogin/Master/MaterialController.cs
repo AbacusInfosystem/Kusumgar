@@ -35,6 +35,8 @@ namespace Kusumgar.Controllers
                 pager.IsPagingRequired = false;
                 mViewModel.Material_Categories = _materialMan.Get_Material_Categories(ref pager);
                 mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Category_Id, ref pager);
+
+                mViewModel.Is_Primary = false;
             }
             catch (Exception ex)
             {

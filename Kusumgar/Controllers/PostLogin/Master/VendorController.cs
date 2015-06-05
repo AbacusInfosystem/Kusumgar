@@ -57,17 +57,17 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert_Vendor(VendorViewModel vViewModel)
         {
             try
-            {   vViewModel.Vendor.Vendor_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+            {   vViewModel.Vendor.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vViewModel.Vendor.Vendor_Entity.CreatedOn = DateTime.Now;
+                vViewModel.Vendor.CreatedOn = DateTime.Now;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
 
-                vViewModel.Attribute_Code.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
+                vViewModel.Attribute_Code.Attribute_Code_Name = vViewModel.Vendor.Vendor_Name;
 
-                vViewModel.Vendor.Vendor_Entity.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
+                vViewModel.Vendor.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
 
                 vViewModel.Attribute_Code.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
 
@@ -139,9 +139,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
               
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 
@@ -184,9 +184,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
+                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
                 
-                //vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
+                //vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
             }
             catch(Exception ex)
             {
@@ -287,7 +287,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             vViewModel.Nations = _nationMan.Get_Nations(ref pager);
 
-            vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Vendor_Entity.Head_Office_Nation), ref pager);
+            vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Head_Office_Nation), ref pager);
 
             return PartialView("_Vendor", vViewModel);
         }

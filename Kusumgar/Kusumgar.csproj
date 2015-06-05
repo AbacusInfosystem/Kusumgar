@@ -952,6 +952,7 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />

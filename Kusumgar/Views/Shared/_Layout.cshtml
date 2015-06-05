@@ -120,9 +120,9 @@
     <script src="/Scripts/generic.autocomplete.js"></script>
     <script src="/Scripts/generic.message.js"></script>
     <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="/Scripts/generic.iCheck.initialize.js"> </script>
     <style>
-    
-    .example-modal .modal {
+     .example-modal .modal {
         position: relative;
         top: auto;
         bottom: auto;
@@ -133,15 +133,14 @@
     }
 
     .example-modal .modal {
-        background: transparent!important;
+        background: transparent !important;
     }
 
     .td-radiobutton {
         line-height: 20px;
         padding-left: 9px;
     }
-
-    </style>
+</style>
     <!-- Ends --> 
 </head>
 
@@ -166,14 +165,20 @@
 </html>
 
 <script type="text/javascript">
-
+    
     $(document).ready(function () {
 
-        // get all checkboxes other than those which are added in .non-iCheck
-        $('input:not(.non-iCheck input:checkbox)').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
+        //// get all checkboxes other than those which are added in .non-iCheck
+        //$('input:not(.non-iCheck input:checkbox)').iCheck({
+        //    checkboxClass: 'icheckbox_square-green',
+        //    radioClass: 'iradio_square-green',
+        //    increaseArea: '20%' // optional
+        //});
+        $.getScript("/Content/AdminLTE/plugins/iCheck/icheck.js", function () {
+
+            $("body").append(Initialize_ICheck());
         });
+       
+      
     });
 </script>

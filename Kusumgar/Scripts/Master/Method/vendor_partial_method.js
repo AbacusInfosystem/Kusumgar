@@ -14,7 +14,7 @@
 
 function Bind_Vendor_Data_Callback(data) {
 
-    $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
+    $("#hdnVendorId").val(data.Vendor.Vendor_Id);
 
     $("#tabProductServices").show();
     $("#tabCertificates").show();
@@ -39,8 +39,7 @@ function Set_Vendor() {
         {
             Vendor:
                 {
-                    Vendor_Entity:
-                        {
+                    
                             Vendor_Id: $("#hdnVendorId").val(),
 
                             Vendor_Name: $("#txtVendorName").val(),
@@ -59,7 +58,7 @@ function Set_Vendor() {
                             Product_Category: $("#drpProductCategory").val(),
                             Code: $("#txtYarnCode").val(),
 
-                        },
+                        
 
                     Material_Category_Entity: {
                         Material_Category_Name: $("#drpProductCategory option:selected").text()

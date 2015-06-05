@@ -141,8 +141,7 @@ function Set_Material_Vendor()
         {
             Material_Vendor:
                 {
-                    Material_Vendor_Entity:
-                        {
+                   
                             Material_Vendor_Id: $("#hdnMaterial_Vendor_Id").val(),
 
                             Material_Id: $("#hdnMaterial_Id").val(),
@@ -151,7 +150,7 @@ function Set_Material_Vendor()
 
                             Priority_Order: $("#drpPriorityOrder").val()
                             
-                        }
+                        
                 }
         }
     return mViewModel;
