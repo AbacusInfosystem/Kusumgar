@@ -424,9 +424,9 @@ namespace KusumgarDataAccess
                 {
                     MaterialCategoryInfo MaterialCategoryInfo = new MaterialCategoryInfo();
 
-                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+                    MaterialCategoryInfo.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
 
-                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
+                    MaterialCategoryInfo.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
 
                     retVal.Add(MaterialCategoryInfo);
                 }

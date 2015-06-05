@@ -68,13 +68,13 @@
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Material_Categories)
                                                 {
-                                                    if (Model.Material.Material_Entity.Material_Category_Id == item.Material_Category_Entity.Material_Category_Id)
+                                                    if (Model.Material.Material_Entity.Material_Category_Id == item.Material_Category_Id)
                                                     {
-                                                        <option value="@item.Material_Category_Entity.Material_Category_Id" selected="selected">@item.Material_Category_Entity.Material_Category_Name</option>
+                                                        <option value="@item.Material_Category_Id" selected="selected">@item.Material_Category_Name</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.Material_Category_Entity.Material_Category_Id">@item.Material_Category_Entity.Material_Category_Name</option>
+                                                        <option value="@item.Material_Category_Id">@item.Material_Category_Name</option>
                                                     }
                                                 }
                                             </select>

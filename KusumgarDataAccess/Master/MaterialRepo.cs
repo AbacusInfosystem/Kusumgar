@@ -183,8 +183,8 @@ namespace KusumgarDataAccess
         private MaterialCategoryInfo Get_Material_Category_Values(DataRow dr)
         {
             MaterialCategoryInfo Material_Category = new MaterialCategoryInfo();
-            Material_Category.Material_Category_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
-            Material_Category.Material_Category_Entity.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
+            Material_Category.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+            Material_Category.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
             return Material_Category;
         }
 
