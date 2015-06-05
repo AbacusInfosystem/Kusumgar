@@ -49,13 +49,13 @@
                                             <option value="">Select Defect-Type</option>
                                             @foreach (var item in Model.DefectType)
                                             {
-                                                if (Model.Defect.Defect_Type_Id == item.DefectTypeEntity.Defect_Type_Id)
+                                                if (Model.Defect.Defect_Type_Id == item.Defect_Type_Id)
                                                 {
-                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id" selected="selected">@item.DefectTypeEntity.Defect_Type_Name</option>
+                                                    <option value="@item.Defect_Type_Id" selected="selected">@item.Defect_Type_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id">@item.DefectTypeEntity.Defect_Type_Name</option>
+                                                    <option value="@item.Defect_Type_Id">@item.Defect_Type_Name</option>
                                                 }
                                             }
                                         </select>

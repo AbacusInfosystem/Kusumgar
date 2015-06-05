@@ -58,9 +58,9 @@ namespace KusumgarDataAccess
                 {
                     DefectTypeInfo defectTypes= new DefectTypeInfo();
                     
-                    defectTypes.DefectTypeEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
+                    defectTypes.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
                     
-                    defectTypes.DefectTypeEntity.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
+                    defectTypes.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
                     
                     retVal.Add(defectTypes);
                 }
