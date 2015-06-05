@@ -47,19 +47,19 @@ namespace KusumgarDataAccess
         {
             NationInfo nation = new NationInfo();
 
-            nation.Nation_Entity.NationId = Convert.ToInt32(dr["NationId"]);
+            nation.NationId = Convert.ToInt32(dr["NationId"]);
 
-            nation.Nation_Entity.NationName = Convert.ToString(dr["NationName"]);
+            nation.NationName = Convert.ToString(dr["NationName"]);
 
-            nation.Nation_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            nation.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            nation.Nation_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            nation.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            nation.Nation_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            nation.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            nation.Nation_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            nation.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
-            nation.Nation_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            nation.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
 
             return nation;

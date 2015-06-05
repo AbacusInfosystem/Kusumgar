@@ -147,13 +147,13 @@
                                     <option value="">- Select Nation -</option>
                                     @foreach (var item in Model.Nations)
                                     {
-                                        if (Model.Filter.Nation_Id == item.Nation_Entity.NationId)
+                                        if (Model.Filter.Nation_Id == item.NationId)
                                         {
-                                            <option value="@item.Nation_Entity.NationId" selected="selected">@item.Nation_Entity.NationName</option>
+                                            <option value="@item.NationId" selected="selected">@item.NationName</option>
                                         }
                                         else
                                         {
-                                            <option value="@item.Nation_Entity.NationId">@item.Nation_Entity.NationName</option>
+                                            <option value="@item.NationId">@item.NationName</option>
                                         }
                                     }
                                 </select>
