@@ -109,10 +109,7 @@ namespace KusumgarDataAccess
                                 userInfo.User_Roles.Add(
                                     new UserRoleInfo()
                                     {
-                                        UserRoleEntity = new M_User_Role_Mapping // while removing DatabaseEntities, let update RoleInfo. Lets add Role_Name field in RoleInfo only.
-                                        {
-                                            Role_Id = Convert.ToInt32(dataReader["Role_Id"])
-                                        },
+                                        Role_Id = Convert.ToInt32(dataReader["Role_Id"]) ,
                                         Role_Name = Convert.ToString(dataReader["Role_Name"])
                                     });
                             }

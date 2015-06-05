@@ -125,7 +125,7 @@
                                                 foreach (var item in Model.Roles)
                                                 {
 
-                                                if (Model.User.User_Roles.Where(a => a.UserRoleEntity.Role_Id == item.Role_Id).Count() > 0)
+                                                if (Model.User.User_Roles.Where(a => a.Role_Id == item.Role_Id).Count() > 0)
                                                 {
                                                 <label style="color: #333">
                                                     <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" checked value="@item.Role_Id" />

@@ -162,9 +162,9 @@ namespace KusumgarDataAccess
 
                         user_role.Role_Name = Convert.ToString(dr1["Role_Name"]);
 
-                        user_role.UserRoleEntity.Role_Id = Convert.ToInt32(dr1["Role_Id"]);
+                        user_role.Role_Id = Convert.ToInt32(dr1["Role_Id"]);
 
-                        user_role.UserRoleEntity.UserId = Convert.ToInt32(dr1["UserId"]);
+                        user_role.UserId = Convert.ToInt32(dr1["UserId"]);
 
                         user.User_Roles.Add(user_role);
 
