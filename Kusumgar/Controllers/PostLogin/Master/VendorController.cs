@@ -57,9 +57,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert_Vendor(VendorViewModel vViewModel)
         {
             try
-            {   vViewModel.Vendor.Vendor_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+            {   vViewModel.Vendor.Vendor_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 vViewModel.Vendor.Vendor_Entity.CreatedOn = DateTime.Now;
 
@@ -141,7 +141,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
               
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 

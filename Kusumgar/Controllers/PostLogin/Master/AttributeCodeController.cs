@@ -36,9 +36,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             { 
-                aViewModel.Attribute_Code.AttributeCodeEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                aViewModel.Attribute_Code.AttributeCodeEntity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 aViewModel.Attribute_Code.AttributeCodeEntity.CreatedOn = DateTime.Now;
 
@@ -66,7 +66,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
            {
                aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedOn = DateTime.Now;
 
-               aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+               aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 AttributeCodeManager aMan = new AttributeCodeManager();
 

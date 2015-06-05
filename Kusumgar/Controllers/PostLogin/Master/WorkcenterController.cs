@@ -165,11 +165,11 @@ namespace Kusumgar.Controllers
             {
                 wcViewModel.Work_Center.Work_Center_Entity.CreatedOn = DateTime.Now;
 
-                wcViewModel.Work_Center.Work_Center_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                wcViewModel.Work_Center.Work_Center_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
                 wcViewModel.Work_Center.Work_Center_Entity.UpdatedOn = DateTime.Now;
 
-                wcViewModel.Work_Center.Work_Center_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                wcViewModel.Work_Center.Work_Center_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 //wcViewModel.Work_Center.Work_Center_Entity.Work_Center_Id = _workcenterMan.Insert_Work_Center(wcViewModel.Work_Center);
 
@@ -195,7 +195,7 @@ namespace Kusumgar.Controllers
             {
                 wcViewModel.Work_Center.Work_Center_Entity.UpdatedOn = DateTime.Now;
 
-                wcViewModel.Work_Center.Work_Center_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                wcViewModel.Work_Center.Work_Center_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _workcenterMan.Update_Work_Center(wcViewModel.Work_Center);
 

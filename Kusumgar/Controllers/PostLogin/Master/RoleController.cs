@@ -64,9 +64,9 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
-                rViewModel.Role.RoleEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                rViewModel.Role.RoleEntity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 int role_Id = _roleMgr.Insert_Role(rViewModel.Role);
 
@@ -90,7 +90,7 @@ namespace Kusumgar.Controllers.PostLogin
         {
             try
             {
-                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                rViewModel.Role.RoleEntity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _roleMgr.Update_Role(rViewModel.Role);
 

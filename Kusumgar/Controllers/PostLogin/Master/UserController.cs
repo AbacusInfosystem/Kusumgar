@@ -67,9 +67,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                uViewModel.User.UserEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                uViewModel.User.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                uViewModel.User.UserEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                uViewModel.User.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _userMan.Insert_User(uViewModel.User);
 
@@ -92,7 +92,7 @@ namespace Kusumgar.Controllers
             try
             {
 
-                uViewModel.User.UserEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId; 
+                uViewModel.User.UpdatedBy = ((UserInfo)Session["User"]).UserId; 
 
                 _userMan.Update_User(uViewModel.User);
 
@@ -174,7 +174,7 @@ namespace Kusumgar.Controllers
             return Json(check, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Roles_By_Name(string name)
+        public JsonResult Get_Users_By_Name(string name)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 

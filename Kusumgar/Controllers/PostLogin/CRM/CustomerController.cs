@@ -101,9 +101,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Customer_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Customer_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Customer.Customer_Entity.CreatedOn = DateTime.Now;
 
@@ -133,7 +133,7 @@ namespace Kusumgar.Controllers
             {
                 cViewModel.Customer.Customer_Entity.UpdatedOn = DateTime.Now;
 
-                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Customer_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _customerMan.Update_Customer(cViewModel.Customer);
 
@@ -155,9 +155,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedOn = DateTime.Now;
 
@@ -187,7 +187,7 @@ namespace Kusumgar.Controllers
             {
                 cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedOn = DateTime.Now;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _customerMan.Update_Customer_Address(cViewModel.Customer.Customer_Address);
 
@@ -211,9 +211,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedOn = DateTime.Now;
 
@@ -240,7 +240,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedOn = DateTime.Now;
 

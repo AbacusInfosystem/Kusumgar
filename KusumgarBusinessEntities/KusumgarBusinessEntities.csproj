@@ -55,6 +55,7 @@
     <Compile Include="CRM\EmployeeInfo.cs" />
     <Compile Include="Common\LookupInfo.cs" />
     <Compile Include="Common\PaginationInfo.cs" />
+    <Compile Include="Master\AccessFunctionInfo.cs" />
     <Compile Include="Master\AttributeCodeInfo.cs" />
     <Compile Include="Master\ConsumableInfo.cs" />
     <Compile Include="Master\ConsumableVendorInfo.cs" />

@@ -91,9 +91,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                yViewModel.YArticle.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 int yArticle_Id = _yArticleMan.Insert_YArticle(yViewModel.YArticle);
 
@@ -115,7 +115,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _yArticleMan.Update_YArticle(yViewModel.YArticle);
 

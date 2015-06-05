@@ -75,9 +75,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Contact.contact_Entity.CreatedOn = DateTime.Now;
 
@@ -103,7 +103,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Contact.contact_Entity.UpdatedOn = DateTime.Now;
 
@@ -127,9 +127,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.CreatedOn = DateTime.Now;
 
@@ -157,7 +157,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
 

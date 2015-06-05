@@ -40,9 +40,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                eViewModel.Enquiry.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                eViewModel.Enquiry.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 eViewModel.Enquiry.Enquiry_Id = _enquiryMan.Insert_Enquiry(eViewModel.Enquiry);
 
@@ -62,7 +62,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _enquiryMan.Update_Enquiry(eViewModel.Enquiry);
 
