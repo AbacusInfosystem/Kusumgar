@@ -201,44 +201,44 @@ namespace KusumgarDataAccess
         {
             BankDetailsInfo bank_details = new BankDetailsInfo();
 
-            bank_details.Bank_Details_Entity.Bank_Details_Id = Convert.ToInt32(dr["Bank_Details_Id"]);
+            bank_details.Bank_Details_Id = Convert.ToInt32(dr["Bank_Details_Id"]);
 
             if (dr["Supplier_Id"] != DBNull.Value)
             {
-                bank_details.Bank_Details_Entity.Supplier_Id = Convert.ToInt32(dr["Supplier_Id"]);
+                bank_details.Supplier_Id = Convert.ToInt32(dr["Supplier_Id"]);
             }
 
             if (dr["Customer_Id"] != DBNull.Value)
             {
-                bank_details.Bank_Details_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+                bank_details.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             }
 
-            bank_details.Bank_Details_Entity.Bank_Name = Convert.ToString(dr["Bank_Name"]);
-            bank_details.Bank_Details_Entity.Bank_Account_No = Convert.ToString(dr["Bank_Account_No"]);
-            bank_details.Bank_Details_Entity.Branch_Name = Convert.ToString(dr["Branch_Name"]);
-            bank_details.Bank_Details_Entity.Ifsc_Code = Convert.ToString(dr["Ifsc_Code"]);
-            bank_details.Bank_Details_Entity.Swift_Code = Convert.ToString(dr["Swift_Code"]);
-            bank_details.Bank_Details_Entity.Rtgs_No = Convert.ToString(dr["Rtgs_No"]);
-            bank_details.Bank_Details_Entity.Bank_Address = Convert.ToString(dr["Bank_Address"]);
-            bank_details.Bank_Details_Entity.Bank_Code = Convert.ToString(dr["Bank_Code"]);
-            bank_details.Bank_Details_Entity.Account_Code = Convert.ToString(dr["Account_Code"]);
-            bank_details.Bank_Details_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            bank_details.Bank_Details_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            bank_details.Bank_Details_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            bank_details.Bank_Details_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            bank_details.Bank_Details_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            bank_details.Bank_Name = Convert.ToString(dr["Bank_Name"]);
+            bank_details.Bank_Account_No = Convert.ToString(dr["Bank_Account_No"]);
+            bank_details.Branch_Name = Convert.ToString(dr["Branch_Name"]);
+            bank_details.Ifsc_Code = Convert.ToString(dr["Ifsc_Code"]);
+            bank_details.Swift_Code = Convert.ToString(dr["Swift_Code"]);
+            bank_details.Rtgs_No = Convert.ToString(dr["Rtgs_No"]);
+            bank_details.Bank_Address = Convert.ToString(dr["Bank_Address"]);
+            bank_details.Bank_Code = Convert.ToString(dr["Bank_Code"]);
+            bank_details.Account_Code = Convert.ToString(dr["Account_Code"]);
+            bank_details.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            bank_details.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            bank_details.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            bank_details.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            bank_details.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            bank_details.Bank_Details_Entity.Vat = Convert.ToString(dr["Vat"]);
+            bank_details.Vat = Convert.ToString(dr["Vat"]);
             if (dr["Currency_Id"] != DBNull.Value)
             {
-                bank_details.Bank_Details_Entity.Currency_Id = Convert.ToInt32(dr["Currency_Id"]);
+                bank_details.Currency_Id = Convert.ToInt32(dr["Currency_Id"]);
             }
             if (dr["Payment_Term_Id"] != DBNull.Value)
             {
-                bank_details.Bank_Details_Entity.Payment_Term_Id = Convert.ToInt32(dr["Payment_Term_Id"]);
+                bank_details.Payment_Term_Id = Convert.ToInt32(dr["Payment_Term_Id"]);
             }
 
-            bank_details.Bank_Details_Entity.Tax_Excemption_Code = Convert.ToString(dr["Tax_Excemption_Code"]);
+            bank_details.Tax_Excemption_Code = Convert.ToString(dr["Tax_Excemption_Code"]);
 
             return bank_details;
         }
@@ -355,34 +355,34 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (bank_Details.Bank_Details_Entity.Bank_Details_Id != 0)
+            if (bank_Details.Bank_Details_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Bank_Details_Id", bank_Details.Bank_Details_Entity.Bank_Details_Id));
+                sqlparam.Add(new SqlParameter("@Bank_Details_Id", bank_Details.Bank_Details_Id));
             }
-            sqlparam.Add(new SqlParameter("@Supplier_Id", bank_Details.Bank_Details_Entity.Supplier_Id));
-            sqlparam.Add(new SqlParameter("@Customer_Id", bank_Details.Bank_Details_Entity.Customer_Id));
-            sqlparam.Add(new SqlParameter("@Bank_Name", bank_Details.Bank_Details_Entity.Bank_Name));
-            sqlparam.Add(new SqlParameter("@Bank_Account_No", bank_Details.Bank_Details_Entity.Bank_Account_No));
-            sqlparam.Add(new SqlParameter("@Branch_Name", bank_Details.Bank_Details_Entity.Branch_Name));
-            sqlparam.Add(new SqlParameter("@Ifsc_Code", bank_Details.Bank_Details_Entity.Ifsc_Code));
-            sqlparam.Add(new SqlParameter("@Swift_Code", bank_Details.Bank_Details_Entity.Swift_Code));
-            sqlparam.Add(new SqlParameter("@Rtgs_No", bank_Details.Bank_Details_Entity.Rtgs_No));
-            sqlparam.Add(new SqlParameter("@Bank_Address", bank_Details.Bank_Details_Entity.Bank_Address));
-            sqlparam.Add(new SqlParameter("@Bank_Code", bank_Details.Bank_Details_Entity.Bank_Code));
-            sqlparam.Add(new SqlParameter("@Account_Code", bank_Details.Bank_Details_Entity.Account_Code));
-            sqlparam.Add(new SqlParameter("@Is_Active", bank_Details.Bank_Details_Entity.Is_Active));
-            if (bank_Details.Bank_Details_Entity.Bank_Details_Id == 0)
+            sqlparam.Add(new SqlParameter("@Supplier_Id", bank_Details.Supplier_Id));
+            sqlparam.Add(new SqlParameter("@Customer_Id", bank_Details.Customer_Id));
+            sqlparam.Add(new SqlParameter("@Bank_Name", bank_Details.Bank_Name));
+            sqlparam.Add(new SqlParameter("@Bank_Account_No", bank_Details.Bank_Account_No));
+            sqlparam.Add(new SqlParameter("@Branch_Name", bank_Details.Branch_Name));
+            sqlparam.Add(new SqlParameter("@Ifsc_Code", bank_Details.Ifsc_Code));
+            sqlparam.Add(new SqlParameter("@Swift_Code", bank_Details.Swift_Code));
+            sqlparam.Add(new SqlParameter("@Rtgs_No", bank_Details.Rtgs_No));
+            sqlparam.Add(new SqlParameter("@Bank_Address", bank_Details.Bank_Address));
+            sqlparam.Add(new SqlParameter("@Bank_Code", bank_Details.Bank_Code));
+            sqlparam.Add(new SqlParameter("@Account_Code", bank_Details.Account_Code));
+            sqlparam.Add(new SqlParameter("@Is_Active", bank_Details.Is_Active));
+            if (bank_Details.Bank_Details_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", bank_Details.Bank_Details_Entity.CreatedBy));
-                sqlparam.Add(new SqlParameter("@CreatedOn", bank_Details.Bank_Details_Entity.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", bank_Details.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", bank_Details.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedOn", bank_Details.Bank_Details_Entity.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", bank_Details.UpdatedOn));
 
-            sqlparam.Add(new SqlParameter("@Vat", bank_Details.Bank_Details_Entity.Vat));
-            sqlparam.Add(new SqlParameter("@Currency_Id", bank_Details.Bank_Details_Entity.Currency_Id));
-            sqlparam.Add(new SqlParameter("@Payment_Term_Id", bank_Details.Bank_Details_Entity.Payment_Term_Id));
-            sqlparam.Add(new SqlParameter("@Tax_Excemption_Code", bank_Details.Bank_Details_Entity.Tax_Excemption_Code));
-            sqlparam.Add(new SqlParameter("@UpdatedBy", bank_Details.Bank_Details_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@Vat", bank_Details.Vat));
+            sqlparam.Add(new SqlParameter("@Currency_Id", bank_Details.Currency_Id));
+            sqlparam.Add(new SqlParameter("@Payment_Term_Id", bank_Details.Payment_Term_Id));
+            sqlparam.Add(new SqlParameter("@Tax_Excemption_Code", bank_Details.Tax_Excemption_Code));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", bank_Details.UpdatedBy));
 
             return sqlparam;
         }

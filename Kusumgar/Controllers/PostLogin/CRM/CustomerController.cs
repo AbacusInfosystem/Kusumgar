@@ -211,13 +211,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Bank_Details.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Bank_Details.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.CreatedOn = DateTime.Now;
+                cViewModel.Customer.Bank_Details.CreatedOn = DateTime.Now;
 
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Customer.Bank_Details.UpdatedOn = DateTime.Now;
 
                 _customerMan.Insert_Bank_Details(cViewModel.Customer.Bank_Details);
 
@@ -240,9 +240,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Bank_Details.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Bank_Details.Bank_Details_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Customer.Bank_Details.UpdatedOn = DateTime.Now;
 
                 _customerMan.Update_Bank_Details(cViewModel.Customer.Bank_Details);
 
