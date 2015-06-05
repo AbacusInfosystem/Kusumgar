@@ -155,19 +155,19 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Customer_Address.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Customer_Address.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.CreatedOn = DateTime.Now;
+                cViewModel.Customer.Customer_Address.CreatedOn = DateTime.Now;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Customer.Customer_Address.UpdatedOn = DateTime.Now;
 
                 _customerMan.Insert_Customer_Address(cViewModel.Customer.Customer_Address);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CU003"));
 
-                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Address.Customer_Address_Entity.Customer_Id);
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Address.Customer_Id);
             }
             catch (Exception ex)
             {
@@ -185,15 +185,15 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Customer.Customer_Address.UpdatedOn = DateTime.Now;
 
-                cViewModel.Customer.Customer_Address.Customer_Address_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Customer_Address.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _customerMan.Update_Customer_Address(cViewModel.Customer.Customer_Address);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CU004"));
 
-                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Address.Customer_Address_Entity.Customer_Id);
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Address.Customer_Id);
             }
             catch (Exception ex)
             {

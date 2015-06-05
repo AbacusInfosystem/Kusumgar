@@ -255,18 +255,18 @@ namespace KusumgarDataAccess
             {
                 CustomerAddressInfo customerAddress = new CustomerAddressInfo();
 
-                customerAddress.Customer_Address_Entity.Customer_Address_Id = Convert.ToInt32(dr["Customer_Address_Id"]);
-                customerAddress.Customer_Address_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
-                customerAddress.Customer_Address_Entity.Address_Type = Convert.ToInt32(dr["Address_Type"]);
-                customerAddress.Customer_Address_Entity.Addresss = Convert.ToString(dr["Addresss"]);
-                customerAddress.Customer_Address_Entity.Landline1 = Convert.ToString(dr["Landline1"]);
-                customerAddress.Customer_Address_Entity.landline2 = Convert.ToString(dr["landline2"]);
-                customerAddress.Customer_Address_Entity.FaxNo = Convert.ToString(dr["FaxNo"]);
-                customerAddress.Customer_Address_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-                customerAddress.Customer_Address_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-                customerAddress.Customer_Address_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-                customerAddress.Customer_Address_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-                customerAddress.Customer_Address_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+                customerAddress.Customer_Address_Id = Convert.ToInt32(dr["Customer_Address_Id"]);
+                customerAddress.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+                customerAddress.Address_Type = Convert.ToInt32(dr["Address_Type"]);
+                customerAddress.Addresss = Convert.ToString(dr["Addresss"]);
+                customerAddress.Landline1 = Convert.ToString(dr["Landline1"]);
+                customerAddress.landline2 = Convert.ToString(dr["landline2"]);
+                customerAddress.FaxNo = Convert.ToString(dr["FaxNo"]);
+                customerAddress.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+                customerAddress.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+                customerAddress.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+                customerAddress.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+                customerAddress.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
                 customer_Address_List.Add(customerAddress);
             }
@@ -391,24 +391,24 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (customerAddress.Customer_Address_Entity.Customer_Address_Id != 0)
+            if (customerAddress.Customer_Address_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Customer_Address_Id", customerAddress.Customer_Address_Entity.Customer_Address_Id));
+                sqlparam.Add(new SqlParameter("@Customer_Address_Id", customerAddress.Customer_Address_Id));
             }
-            sqlparam.Add(new SqlParameter("@Customer_Id", customerAddress.Customer_Address_Entity.Customer_Id));
-            sqlparam.Add(new SqlParameter("@Address_Type", customerAddress.Customer_Address_Entity.Address_Type));
-            sqlparam.Add(new SqlParameter("@Addresss", customerAddress.Customer_Address_Entity.Addresss));
-            sqlparam.Add(new SqlParameter("@Landline1", customerAddress.Customer_Address_Entity.Landline1));
-            sqlparam.Add(new SqlParameter("@landline2", customerAddress.Customer_Address_Entity.landline2));
-            sqlparam.Add(new SqlParameter("@FaxNo", customerAddress.Customer_Address_Entity.FaxNo));
-            sqlparam.Add(new SqlParameter("@Is_Active", customerAddress.Customer_Address_Entity.Is_Active));
-            if (customerAddress.Customer_Address_Entity.Customer_Address_Id == 0)
+            sqlparam.Add(new SqlParameter("@Customer_Id", customerAddress.Customer_Id));
+            sqlparam.Add(new SqlParameter("@Address_Type", customerAddress.Address_Type));
+            sqlparam.Add(new SqlParameter("@Addresss", customerAddress.Addresss));
+            sqlparam.Add(new SqlParameter("@Landline1", customerAddress.Landline1));
+            sqlparam.Add(new SqlParameter("@landline2", customerAddress.landline2));
+            sqlparam.Add(new SqlParameter("@FaxNo", customerAddress.FaxNo));
+            sqlparam.Add(new SqlParameter("@Is_Active", customerAddress.Is_Active));
+            if (customerAddress.Customer_Address_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", customerAddress.Customer_Address_Entity.CreatedBy));
-                sqlparam.Add(new SqlParameter("@CreatedOn", customerAddress.Customer_Address_Entity.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", customerAddress.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", customerAddress.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", customerAddress.Customer_Address_Entity.UpdatedBy));
-            sqlparam.Add(new SqlParameter("@UpdatedOn", customerAddress.Customer_Address_Entity.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", customerAddress.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", customerAddress.UpdatedOn));
 
             return sqlparam;
         }

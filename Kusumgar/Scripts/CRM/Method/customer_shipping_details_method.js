@@ -19,8 +19,7 @@ function set_Customer_Shipping_details() {
                 {
                     Customer_Address:
                         {
-                            Customer_Address_Entity:
-                                {
+                            
                                     Address_Type: 2,
 
                                     Addresss: $("#txtShippingOfficeAddress").val(),
@@ -34,7 +33,7 @@ function set_Customer_Shipping_details() {
                                     Landline1: $("#txtShippingOfficeLandline1").val(),
 
                                     landline2: $("#txtShippingOfficeLandline2").val()
-                                }
+                                
 
                         }
                 }
@@ -51,28 +50,28 @@ function Bind_Shipping_Details(data) {
     if (data.Customer.Customer_Address_List.length > 0) {
 
         for (var i = 0; i < data.Customer.Customer_Address_List.length; i++) {
-            if (data.Customer.Customer_Address_List[i].Customer_Address_Entity.Address_Type == 2) {
-                htmlText += " <tr id='Ship_tr_"+data.Customer.Customer_Address_List[i].Customer_Address_Entity.Customer_Address_Id+"'>";
+            if (data.Customer.Customer_Address_List[i].Address_Type == 2) {
+                htmlText += " <tr id='Ship_tr_"+data.Customer.Customer_Address_List[i].Customer_Address_Id+"'>";
 
-                htmlText += "<td>" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Addresss + "</td>";
+                htmlText += "<td>" + data.Customer.Customer_Address_List[i].Addresss + "</td>";
 
                 htmlText += "<td>";
 
-                htmlText += "<input type='hidden' class='hdn_Customer_shipping_Address_Id' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Customer_Address_Id + "'>";
+                htmlText += "<input type='hidden' class='hdn_Customer_shipping_Address_Id' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Id + "'>";
 
-                htmlText += "<input type='hidden' class='shipping_Address' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Addresss + "'>";
+                htmlText += "<input type='hidden' class='shipping_Address' value='" + data.Customer.Customer_Address_List[i].Addresss + "'>";
 
-                htmlText += "<input type='hidden' class='shipping_Landline1' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Landline1 + "'>";
+                htmlText += "<input type='hidden' class='shipping_Landline1' value='" + data.Customer.Customer_Address_List[i].Landline1 + "'>";
 
-                htmlText += "<input type='hidden' class='shipping_Landline2' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.landline2 + "'>";
+                htmlText += "<input type='hidden' class='shipping_Landline2' value='" + data.Customer.Customer_Address_List[i].landline2 + "'>";
 
-                htmlText += "<input type='hidden' class='shipping_FaxNo' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.FaxNo + "'>";
+                htmlText += "<input type='hidden' class='shipping_FaxNo' value='" + data.Customer.Customer_Address_List[i].FaxNo + "'>";
 
                 htmlText += "<div class='btn-group pull-right'>";
 
                 htmlText += "<button type='button' id='btnEdit' class='btn btn-info btn-sm btn-Shipping'><i class='fa fa-pencil-square-o'></i></button>";
 
-                htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm ' onclick='RemoveShippingAddress(" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Customer_Address_Id + ")'><i class='fa fa-times'></i></button>";
+                htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm ' onclick='RemoveShippingAddress(" + data.Customer.Customer_Address_List[i].Customer_Address_Id + ")'><i class='fa fa-times'></i></button>";
 
                 htmlText += "</div>";
 
