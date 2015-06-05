@@ -74,34 +74,34 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (vendor_Contact.Contact_Entity.Contact_Id != 0)
+            if (vendor_Contact.Contact_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Contact_Id", vendor_Contact.Contact_Entity.Contact_Id));
+                sqlparam.Add(new SqlParameter("@Contact_Id", vendor_Contact.Contact_Id));
             }
-            sqlparam.Add(new SqlParameter("@Contact_Type", vendor_Contact.Contact_Entity.Contact_Type));
-            sqlparam.Add(new SqlParameter("@Customer_Id", vendor_Contact.Contact_Entity.Customer_Id));
-            sqlparam.Add(new SqlParameter("@Vendor_Id", vendor_Contact.Contact_Entity.Vendor_Id));
-            sqlparam.Add(new SqlParameter("@Contact_Name", vendor_Contact.Contact_Entity.Contact_Name));
-            sqlparam.Add(new SqlParameter("@Designation", vendor_Contact.Contact_Entity.Designation));
-            sqlparam.Add(new SqlParameter("@Office_Address", vendor_Contact.Contact_Entity.Office_Address));
-            sqlparam.Add(new SqlParameter("@Office_Landline1", vendor_Contact.Contact_Entity.Office_Landline1));
-            sqlparam.Add(new SqlParameter("@Office_Landline2", vendor_Contact.Contact_Entity.Office_Landline2));
-            sqlparam.Add(new SqlParameter("@Mobile1", vendor_Contact.Contact_Entity.Mobile1));
-            sqlparam.Add(new SqlParameter("@Mobile2", vendor_Contact.Contact_Entity.Mobile2));
-            sqlparam.Add(new SqlParameter("@Official_Email", vendor_Contact.Contact_Entity.Official_Email));
-            sqlparam.Add(new SqlParameter("@Personal_Email", vendor_Contact.Contact_Entity.Personal_Email));
-            sqlparam.Add(new SqlParameter("@Is_Billing_Contact", vendor_Contact.Contact_Entity.Is_Billing_Contact));
-            sqlparam.Add(new SqlParameter("@DMU_Status_Role", vendor_Contact.Contact_Entity.DMU_Status_Role));
-            sqlparam.Add(new SqlParameter("@DMU_Status_Influence", vendor_Contact.Contact_Entity.DMU_Status_Influence));
-            sqlparam.Add(new SqlParameter("@Is_Active", vendor_Contact.Contact_Entity.Is_Active));
+            sqlparam.Add(new SqlParameter("@Contact_Type", vendor_Contact.Contact_Type));
+            sqlparam.Add(new SqlParameter("@Customer_Id", vendor_Contact.Customer_Id));
+            sqlparam.Add(new SqlParameter("@Vendor_Id", vendor_Contact.Vendor_Id));
+            sqlparam.Add(new SqlParameter("@Contact_Name", vendor_Contact.Contact_Name));
+            sqlparam.Add(new SqlParameter("@Designation", vendor_Contact.Designation));
+            sqlparam.Add(new SqlParameter("@Office_Address", vendor_Contact.Office_Address));
+            sqlparam.Add(new SqlParameter("@Office_Landline1", vendor_Contact.Office_Landline1));
+            sqlparam.Add(new SqlParameter("@Office_Landline2", vendor_Contact.Office_Landline2));
+            sqlparam.Add(new SqlParameter("@Mobile1", vendor_Contact.Mobile1));
+            sqlparam.Add(new SqlParameter("@Mobile2", vendor_Contact.Mobile2));
+            sqlparam.Add(new SqlParameter("@Official_Email", vendor_Contact.Official_Email));
+            sqlparam.Add(new SqlParameter("@Personal_Email", vendor_Contact.Personal_Email));
+            sqlparam.Add(new SqlParameter("@Is_Billing_Contact", vendor_Contact.Is_Billing_Contact));
+            sqlparam.Add(new SqlParameter("@DMU_Status_Role", vendor_Contact.DMU_Status_Role));
+            sqlparam.Add(new SqlParameter("@DMU_Status_Influence", vendor_Contact.DMU_Status_Influence));
+            sqlparam.Add(new SqlParameter("@Is_Active", vendor_Contact.Is_Active));
 
-            if (vendor_Contact.Contact_Entity.Contact_Id == 0)
+            if (vendor_Contact.Contact_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedOn", vendor_Contact.Contact_Entity.CreatedOn));
-                sqlparam.Add(new SqlParameter("@CreatedBy", vendor_Contact.Contact_Entity.CreatedBy));  
+                sqlparam.Add(new SqlParameter("@CreatedOn", vendor_Contact.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", vendor_Contact.CreatedBy));  
             }
-            sqlparam.Add(new SqlParameter("@UpdatedOn", vendor_Contact.Contact_Entity.UpdatedOn));
-            sqlparam.Add(new SqlParameter("@UpdatedBy", vendor_Contact.Contact_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", vendor_Contact.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", vendor_Contact.UpdatedBy));
            
             return sqlparam;
         }
@@ -164,27 +164,27 @@ namespace KusumgarDataAccess
         {
             VendorContactInfo vendor_Contact = new VendorContactInfo();
 
-            vendor_Contact.Contact_Entity.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
-            vendor_Contact.Contact_Entity.Contact_Type = Convert.ToInt32(dr["Contact_Type"]);
-            vendor_Contact.Contact_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
-            vendor_Contact.Contact_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
-            vendor_Contact.Contact_Entity.Contact_Name = Convert.ToString(dr["Contact_Name"]);
-            vendor_Contact.Contact_Entity.Designation = Convert.ToString(dr["Designation"]);
-            vendor_Contact.Contact_Entity.Office_Address = Convert.ToString(dr["Office_Address"]);
-            vendor_Contact.Contact_Entity.Office_Landline1 = Convert.ToString(dr["Office_Landline1"]);
-            vendor_Contact.Contact_Entity.Office_Landline2 = Convert.ToString(dr["Office_Landline2"]);
-            vendor_Contact.Contact_Entity.Mobile1 = Convert.ToString(dr["Mobile1"]);
-            vendor_Contact.Contact_Entity.Mobile2 = Convert.ToString(dr["Mobile2"]);
-            vendor_Contact.Contact_Entity.Official_Email = Convert.ToString(dr["Official_Email"]);
-            vendor_Contact.Contact_Entity.Personal_Email = Convert.ToString(dr["Personal_Email"]);
-            vendor_Contact.Contact_Entity.Is_Billing_Contact = Convert.ToBoolean(dr["Is_Billing_Contact"]);
-            vendor_Contact.Contact_Entity.DMU_Status_Role = Convert.ToInt32(dr["DMU_Status_Role"]);
-            vendor_Contact.Contact_Entity.DMU_Status_Influence = Convert.ToInt32(dr["DMU_Status_Influence"]);
-            vendor_Contact.Contact_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            vendor_Contact.Contact_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            vendor_Contact.Contact_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            vendor_Contact.Contact_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            vendor_Contact.Contact_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            vendor_Contact.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
+            vendor_Contact.Contact_Type = Convert.ToInt32(dr["Contact_Type"]);
+            vendor_Contact.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+            vendor_Contact.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+            vendor_Contact.Contact_Name = Convert.ToString(dr["Contact_Name"]);
+            vendor_Contact.Designation = Convert.ToString(dr["Designation"]);
+            vendor_Contact.Office_Address = Convert.ToString(dr["Office_Address"]);
+            vendor_Contact.Office_Landline1 = Convert.ToString(dr["Office_Landline1"]);
+            vendor_Contact.Office_Landline2 = Convert.ToString(dr["Office_Landline2"]);
+            vendor_Contact.Mobile1 = Convert.ToString(dr["Mobile1"]);
+            vendor_Contact.Mobile2 = Convert.ToString(dr["Mobile2"]);
+            vendor_Contact.Official_Email = Convert.ToString(dr["Official_Email"]);
+            vendor_Contact.Personal_Email = Convert.ToString(dr["Personal_Email"]);
+            vendor_Contact.Is_Billing_Contact = Convert.ToBoolean(dr["Is_Billing_Contact"]);
+            vendor_Contact.DMU_Status_Role = Convert.ToInt32(dr["DMU_Status_Role"]);
+            vendor_Contact.DMU_Status_Influence = Convert.ToInt32(dr["DMU_Status_Influence"]);
+            vendor_Contact.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            vendor_Contact.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            vendor_Contact.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            vendor_Contact.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            vendor_Contact.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             vendor_Contact.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
 
             return vendor_Contact;

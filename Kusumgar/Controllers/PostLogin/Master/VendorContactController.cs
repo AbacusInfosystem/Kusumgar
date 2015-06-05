@@ -114,15 +114,15 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Contact_Entity.CreatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.CreatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                vcViewModel.Vendor_Contact.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                vcViewModel.Vendor_Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.Contact_Id = _vendorcontactMan.Insert_Vendor_Contact(vcViewModel.Vendor_Contact);
+                vcViewModel.Vendor_Contact.Contact_Id = _vendorcontactMan.Insert_Vendor_Contact(vcViewModel.Vendor_Contact);
 
                 vcViewModel.Friendly_Message.Add(MessageStore.Get("VC001"));
             }
@@ -140,9 +140,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                vcViewModel.Vendor_Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _vendorcontactMan.Update_Vendor_Contact(vcViewModel.Vendor_Contact);
 
@@ -162,7 +162,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Entity.Contact_Id);
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Id);
             }
             catch (Exception ex)
             {

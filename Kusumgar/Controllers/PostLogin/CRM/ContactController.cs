@@ -75,15 +75,15 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Contact.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.CreatedOn = DateTime.Now;
+                cViewModel.Contact.CreatedOn = DateTime.Now;
 
-                cViewModel.Contact.contact_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Contact.UpdatedOn = DateTime.Now;
 
-                cViewModel.Contact.contact_Entity.Contact_Id = _contactMan.Insert_Contact(cViewModel.Contact);
+                cViewModel.Contact.Contact_Id = _contactMan.Insert_Contact(cViewModel.Contact);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
             }
@@ -103,9 +103,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Contact.UpdatedOn = DateTime.Now;
 
                 _contactMan.Update_Contact(cViewModel.Contact);
 
@@ -219,7 +219,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.contact_Entity.Contact_Id);
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Contact_Id);
             }
             catch (Exception ex)
             {

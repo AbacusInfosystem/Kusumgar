@@ -15,7 +15,7 @@ function Save_Vendor_Contact() {
 function Vendor_Contact_CallBack(data) {
     $("#tabcustom_fields").show();
    
-    $("#hdnContact_Id").val(data.Vendor_Contact.Contact_Entity.Contact_Id);
+    $("#hdnContact_Id").val(data.Vendor_Contact.Contact_Id);
 
     Friendly_Message(data);
 }
@@ -25,8 +25,7 @@ function Set_Vendor_Contact() {
         {
             Vendor_Contact:
                 {
-                    Contact_Entity:
-                        {
+                    
                             Contact_Id: $("#hdnContact_Id").val(),
 
                             Contact_Type: 2,
@@ -62,7 +61,7 @@ function Set_Vendor_Contact() {
                             Is_Active: $("#hdnIs_Active").val()
 
 
-                        }
+                        
                 }
         }
 
