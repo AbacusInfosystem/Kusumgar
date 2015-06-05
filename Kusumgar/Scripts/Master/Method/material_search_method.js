@@ -27,13 +27,13 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Entity.Material_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Id + "' class='iradio_square-green'/>";
         
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Materials[i].Material_Entity.Material_Code;
+        htmlText += data.Materials[i].Material_Code;
 
         htmlText += "</td>";
 
@@ -45,7 +45,7 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
         
-        htmlText += data.Materials[i].Material_Entity.Material_Name;
+        htmlText += data.Materials[i].Material_Name;
 
         htmlText += "</td>";
         

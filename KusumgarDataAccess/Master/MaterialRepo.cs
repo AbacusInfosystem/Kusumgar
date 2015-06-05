@@ -42,25 +42,25 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Material(MaterialInfo MaterialInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if (MaterialInfo.Material_Entity.Material_Id != 0)
+            if (MaterialInfo.Material_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Material_Id", MaterialInfo.Material_Entity.Material_Id));
+                sqlParamList.Add(new SqlParameter("@Material_Id", MaterialInfo.Material_Id));
             }
-            sqlParamList.Add(new SqlParameter("@Material_Code", MaterialInfo.Material_Entity.Material_Code));
-            sqlParamList.Add(new SqlParameter("@Material_Category_Id", MaterialInfo.Material_Entity.Material_Category_Id));
-            sqlParamList.Add(new SqlParameter("@Material_SubCategory_Id", MaterialInfo.Material_Entity.Material_SubCategory_Id));
-            sqlParamList.Add(new SqlParameter("@Material_Name", MaterialInfo.Material_Entity.Material_Name));
-            sqlParamList.Add(new SqlParameter("@Size", MaterialInfo.Material_Entity.Size));
-            sqlParamList.Add(new SqlParameter("@COD", MaterialInfo.Material_Entity.COD));
-            sqlParamList.Add(new SqlParameter("@Material_Type", MaterialInfo.Material_Entity.Material_Type));
-            sqlParamList.Add(new SqlParameter("@Original_Manufacturer", MaterialInfo.Material_Entity.Original_Manufacturer));
-            sqlParamList.Add(new SqlParameter("@Inspection_Facility", MaterialInfo.Material_Entity.Inspection_Facility));
-            sqlParamList.Add(new SqlParameter("@Testing_Facility", MaterialInfo.Material_Entity.Testing_Facility));
-            if (MaterialInfo.Material_Entity.Material_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Material_Code", MaterialInfo.Material_Code));
+            sqlParamList.Add(new SqlParameter("@Material_Category_Id", MaterialInfo.Material_Category_Id));
+            sqlParamList.Add(new SqlParameter("@Material_SubCategory_Id", MaterialInfo.Material_SubCategory_Id));
+            sqlParamList.Add(new SqlParameter("@Material_Name", MaterialInfo.Material_Name));
+            sqlParamList.Add(new SqlParameter("@Size", MaterialInfo.Size));
+            sqlParamList.Add(new SqlParameter("@COD", MaterialInfo.COD));
+            sqlParamList.Add(new SqlParameter("@Material_Type", MaterialInfo.Material_Type));
+            sqlParamList.Add(new SqlParameter("@Original_Manufacturer", MaterialInfo.Original_Manufacturer));
+            sqlParamList.Add(new SqlParameter("@Inspection_Facility", MaterialInfo.Inspection_Facility));
+            sqlParamList.Add(new SqlParameter("@Testing_Facility", MaterialInfo.Testing_Facility));
+            if (MaterialInfo.Material_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", MaterialInfo.Material_Entity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", MaterialInfo.CreatedBy));
             }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", MaterialInfo.Material_Entity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", MaterialInfo.UpdatedBy));
             return sqlParamList;
         }
 
@@ -91,17 +91,17 @@ namespace KusumgarDataAccess
         private MaterialInfo Get_Material_Values(DataRow dr)
         {
             MaterialInfo Material = new MaterialInfo();
-            Material.Material_Entity.Material_Id = Convert.ToInt32(dr["Material_Id"]);
-            Material.Material_Entity.Material_Code = Convert.ToString(dr["Material_Code"]);
+            Material.Material_Id = Convert.ToInt32(dr["Material_Id"]);
+            Material.Material_Code = Convert.ToString(dr["Material_Code"]);
             Material.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
             Material.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
-            Material.Material_Entity.Material_Name = Convert.ToString(dr["Material_Name"]);
-            Material.Material_Entity.Size = Convert.ToString(dr["Size"]);
-            Material.Material_Entity.COD = Convert.ToString(dr["COD"]);
-            Material.Material_Entity.Material_Type = Convert.ToInt32(dr["Material_Type"]);
-            Material.Material_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
-            Material.Material_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
-            Material.Material_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
+            Material.Material_Name = Convert.ToString(dr["Material_Name"]);
+            Material.Size = Convert.ToString(dr["Size"]);
+            Material.COD = Convert.ToString(dr["COD"]);
+            Material.Material_Type = Convert.ToInt32(dr["Material_Type"]);
+            Material.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
+            Material.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
+            Material.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
             return Material;
         }
 
@@ -153,19 +153,19 @@ namespace KusumgarDataAccess
         private MaterialInfo Get_Material_Values_By_Id(DataRow dr)
         {
             MaterialInfo Material = new MaterialInfo();
-            Material.Material_Entity.Material_Id = Convert.ToInt32(dr["Material_Id"]);
-            Material.Material_Entity.Material_Code = Convert.ToString(dr["Material_Code"]);
-            Material.Material_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
-            Material.Material_Entity.Material_SubCategory_Id = Convert.ToInt32(dr["Material_SubCategory_Id"]);
+            Material.Material_Id = Convert.ToInt32(dr["Material_Id"]);
+            Material.Material_Code = Convert.ToString(dr["Material_Code"]);
+            Material.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+            Material.Material_SubCategory_Id = Convert.ToInt32(dr["Material_SubCategory_Id"]);
             Material.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
             Material.Material_SubCategory_Name = Convert.ToString(dr["Material_SubCategory_Name"]);
-            Material.Material_Entity.Material_Name = Convert.ToString(dr["Material_Name"]);
-            Material.Material_Entity.Size = Convert.ToString(dr["Size"]);
-            Material.Material_Entity.COD = Convert.ToString(dr["COD"]);
-            Material.Material_Entity.Material_Type = Convert.ToInt32(dr["Material_Type"]);
-            Material.Material_Entity.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
-            Material.Material_Entity.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
-            Material.Material_Entity.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
+            Material.Material_Name = Convert.ToString(dr["Material_Name"]);
+            Material.Size = Convert.ToString(dr["Size"]);
+            Material.COD = Convert.ToString(dr["COD"]);
+            Material.Material_Type = Convert.ToInt32(dr["Material_Type"]);
+            Material.Original_Manufacturer = Convert.ToBoolean(dr["Original_Manufacturer"]);
+            Material.Inspection_Facility = Convert.ToString(dr["Inspection_Facility"]);
+            Material.Testing_Facility = Convert.ToString(dr["Testing_Facility"]);
             return Material;
         }
 

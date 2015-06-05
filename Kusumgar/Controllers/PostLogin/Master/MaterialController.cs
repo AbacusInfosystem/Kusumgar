@@ -34,7 +34,7 @@ namespace Kusumgar.Controllers
             {
                 pager.IsPagingRequired = false;
                 mViewModel.Material_Categories = _materialMan.Get_Material_Categories(ref pager);
-                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Entity.Material_Category_Id, ref pager);
+                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Category_Id, ref pager);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                mViewModel.Material.Material_Entity.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
+                mViewModel.Material.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
                 mViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
             }
             catch (Exception ex)

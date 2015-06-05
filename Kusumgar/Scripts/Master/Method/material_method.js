@@ -10,7 +10,7 @@
 }
 
 function Bind_Material_Data_Callback(data) {
-    $("#hdnMaterial_Id").val(data.Material.Material_Entity.Material_Id);
+    $("#hdnMaterial_Id").val(data.Material.Material_Id);
 
     $("#tabMaterialVendor").show();
 

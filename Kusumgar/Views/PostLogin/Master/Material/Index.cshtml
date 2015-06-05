@@ -56,19 +56,19 @@
                                 <div class="row">
                                     <div class="col-md-4">
 
-                                        <input type="hidden" id="hdnMaterial_Id" value="@Model.Material.Material_Entity.Material_Id">
+                                        <input type="hidden" id="hdnMaterial_Id" value="@Model.Material.Material_Id">
 
                                         <div class="form-group">
                                             <label for="txtMaterialCode" style="color: #333">Material Code</label>
-                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.Material_Code" id="txtMaterialCode" placeholder="Enter Material Code" value="@Model.Material.Material_Entity.Material_Code">
+                                            <input type="text" class="form-control input-sm" name="Material.Material_Code" id="txtMaterialCode" placeholder="Enter Material Code" value="@Model.Material.Material_Code">
                                         </div>
                                         <div class="form-group">
                                             <label for="drpProdCatName" style="color: #333">Material Category Name</label>
-                                            <select class="form-control input-sm" id="drpProdCatName" name="Material.Material_Entity.Material_Category_Id">
+                                            <select class="form-control input-sm" id="drpProdCatName" name="Material.Material_Category_Id">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Material_Categories)
                                                 {
-                                                    if (Model.Material.Material_Entity.Material_Category_Id == item.Material_Category_Id)
+                                                    if (Model.Material.Material_Category_Id == item.Material_Category_Id)
                                                     {
                                                         <option value="@item.Material_Category_Id" selected="selected">@item.Material_Category_Name</option>
                                                     }
@@ -81,11 +81,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="drpSubCatName" style="color: #333">Material Sub Category Name</label>
-                                            <select class="form-control input-sm" id="drpSubCatName" name="Material.Material_Entity.Material_SubCategory_Id">
+                                            <select class="form-control input-sm" id="drpSubCatName" name="Material.Material_SubCategory_Id">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Material_SubCategories)
                                                 {
-                                                    if (Model.Material.Material_Entity.Material_SubCategory_Id == item.Material_SubCategory_Entity.Material_SubCategory_Id)
+                                                    if (Model.Material.Material_SubCategory_Id == item.Material_SubCategory_Entity.Material_SubCategory_Id)
                                                     {
                                                         <option value="@item.Material_SubCategory_Entity.Material_SubCategory_Id" selected="selected">@item.Material_SubCategory_Entity.Material_SubCategory_Name</option>
                                                     }
@@ -98,25 +98,25 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="txtMaterialName" style="color: #333">Material Name</label>
-                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.Material_Name" id="txtMaterialName" placeholder="Enter Material Name" value="@Model.Material.Material_Entity.Material_Name">
+                                            <input type="text" class="form-control input-sm" name="Material.Material_Name" id="txtMaterialName" placeholder="Enter Material Name" value="@Model.Material.Material_Name">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="txtSize" style="color: #333">Size</label>
-                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.Size" id="txtSize" placeholder="Enter Size" value="@Model.Material.Material_Entity.Size">
+                                            <input type="text" class="form-control input-sm" name="Material.Size" id="txtSize" placeholder="Enter Size" value="@Model.Material.Size">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtCOD" style="color: #333">COD</label>
-                                            <input type="text" class="form-control input-sm" name="Material.Material_Entity.COD" id="txtCOD" placeholder="Enter COD" value="@Model.Material.Material_Entity.COD">
+                                            <input type="text" class="form-control input-sm" name="Material.COD" id="txtCOD" placeholder="Enter COD" value="@Model.Material.COD">
                                         </div>
                                         <div class="form-group">
                                             <label for="drpProdType" style="color: #333">Material Type</label>
-                                            <select class="form-control input-sm" id="drpProdType" name="Material.Material_Entity.Material_Type">
+                                            <select class="form-control input-sm" id="drpProdType" name="Material.Material_Type">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in LookupInfo.Get_Product_Types())
                                                 {
-                                                    if (Model.Material.Material_Entity.Material_Type == item.Key)
+                                                    if (Model.Material.Material_Type == item.Key)
                                                     {
                                                         <option value="@item.Key" selected="selected">@item.Value</option>
                                                     }
@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>
-                                                @if (Model.Material.Material_Entity.Original_Manufacturer == true)
+                                                @if (Model.Material.Original_Manufacturer == true)
                                                 { 
                                                     <input type="checkbox" name="chkIsOrigMan" id="chkIsOrigMan" value="false" checked />
                                                 }
@@ -138,18 +138,18 @@
                                                     <input type="checkbox" name="chkIsOrigMan" id="chkIsOrigMan" value="true" />
                                                 }
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Original Manufacturer
-                                                <input type="hidden" class="form-control input-sm" id="hdnIs_OrigMan" name="Material.Material_Entity.Original_Manufacturer" value="@Model.Material.Material_Entity.Original_Manufacturer.ToString()">
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_OrigMan" name="Material.Original_Manufacturer" value="@Model.Material.Original_Manufacturer.ToString()">
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="txtInspFacility" style="color: #333">Inspection Facility</label>
-                                            <textarea class="form-control input-sm" id="txtInspFacility" placeholder="Enter Inspection Facility" name="Material.Material_Entity.Inspection_Facility">@Model.Material.Material_Entity.Inspection_Facility</textarea>
+                                            <textarea class="form-control input-sm" id="txtInspFacility" placeholder="Enter Inspection Facility" name="Material.Inspection_Facility">@Model.Material.Inspection_Facility</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="txtTestFacility" style="color: #333">Testing Facility</label>
-                                            <textarea class="form-control input-sm" id="txtTestFacility" placeholder="Enter Testing Facility" name="Material.Material_Entity.Testing_Facility">@Model.Material.Material_Entity.Testing_Facility</textarea>
+                                            <textarea class="form-control input-sm" id="txtTestFacility" placeholder="Enter Testing Facility" name="Material.Testing_Facility">@Model.Material.Testing_Facility</textarea>
                                         </div>
                                     </div>
                                 </div>
