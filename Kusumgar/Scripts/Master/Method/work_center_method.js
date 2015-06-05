@@ -10,7 +10,7 @@ function Bind_Work_Stations(data) {
     if (data.Work_Center.Work_Stations.length > 0) {
         for (var i = 0; i < data.Work_Center.Work_Stations.length ; i++) {
 
-            htmltext += "<option value='" + data.Work_Center.Work_Stations[i].Work_Station_Entity.Work_Station_Id + "'>" + data.Work_Center.Work_Stations[i].Work_Station_Entity.Work_Station_Name + "</option>";
+            htmltext += "<option value='" + data.Work_Center.Work_Stations[i].Work_Station_Id + "'>" + data.Work_Center.Work_Stations[i].Work_Station_Name + "</option>";
         }
     }
     $("#drpWork_Station").html(htmltext);
@@ -33,7 +33,7 @@ function Save_Work_Center() {
 
 function Work_Center_CallBack(data) {
    
-    //$("#hdnWork_Center_Id").val(data.Work_Center.Work_Center_Entity.Work_Center_Id);
+    //$("#hdnWork_Center_Id").val(data.Work_Center.Work_Center_Id);
     $("#hdnWork_Center_Id").val(0);
 
     $("#drpFactory").val("");
@@ -66,15 +66,13 @@ function Get_Work_Center_values() {
 
                     Work_Station:
                         {
-                         Work_Station_Entity:
-                            {
+                         
                                 Work_Station_Id: $("#drpWork_Station").val(),
-                            },
+                            
                          
                         },
                    
-                    Work_Center_Entity:
-                        {
+                    
                             
                             Work_Center_Id: $("#hdnWork_Center_Id").val(),
 
@@ -99,7 +97,7 @@ function Get_Work_Center_values() {
                             Is_Active: $("#hdnIs_Active").val(),
                            
 
-                        }
+                        
                 }
         }
 

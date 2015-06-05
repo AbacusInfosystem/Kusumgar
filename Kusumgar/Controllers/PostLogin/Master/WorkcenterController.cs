@@ -163,15 +163,15 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                wcViewModel.Work_Center.Work_Center_Entity.CreatedOn = DateTime.Now;
+                wcViewModel.Work_Center.CreatedOn = DateTime.Now;
 
-                wcViewModel.Work_Center.Work_Center_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                wcViewModel.Work_Center.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                wcViewModel.Work_Center.Work_Center_Entity.UpdatedOn = DateTime.Now;
+                wcViewModel.Work_Center.UpdatedOn = DateTime.Now;
 
-                wcViewModel.Work_Center.Work_Center_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                wcViewModel.Work_Center.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                //wcViewModel.Work_Center.Work_Center_Entity.Work_Center_Id = _workcenterMan.Insert_Work_Center(wcViewModel.Work_Center);
+                //wcViewModel.Work_Center.Work_Center_Id = _workcenterMan.Insert_Work_Center(wcViewModel.Work_Center);
 
                 _workcenterMan.Insert_Work_Center(wcViewModel.Work_Center);
 
@@ -193,9 +193,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                wcViewModel.Work_Center.Work_Center_Entity.UpdatedOn = DateTime.Now;
+                wcViewModel.Work_Center.UpdatedOn = DateTime.Now;
 
-                wcViewModel.Work_Center.Work_Center_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                wcViewModel.Work_Center.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _workcenterMan.Update_Work_Center(wcViewModel.Work_Center);
 
@@ -219,7 +219,7 @@ namespace Kusumgar.Controllers
             PaginationInfo pager = new PaginationInfo();
             try
             {
-                wcViewModel.Work_Center = _workcenterMan.Get_Work_Centers_By_Work_Center_Id(wcViewModel.Work_Center.Work_Center_Entity.Work_Center_Id);
+                wcViewModel.Work_Center = _workcenterMan.Get_Work_Centers_By_Work_Center_Id(wcViewModel.Work_Center.Work_Center_Id);
 
                 pager.IsPagingRequired = false;
 

@@ -48,7 +48,7 @@
                         <!-- form start -->
                         <div class="box-body">
                             <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                            <input type="hidden" id="hdnWork_Center_Id" name="Work_Center.Work_Center_Entity.Work_Center_Id">
+                            <input type="hidden" id="hdnWork_Center_Id" name="Work_Center.Work_Center_Id">
                             <div class="row">
                                 <div class="col-md-12">
 
@@ -71,17 +71,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Work Station</label>
-                                        <select class="form-control " id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Name">
+                                        <select class="form-control " id="drpWork_Station" name="Work_Center.Work_Station_Name">
                                             <option value="">-Select work station-</option>
                                             @foreach (var item in Model.Work_Center.Work_Stations)
                                             {
-                                                if (Model.Work_Center.Work_Center_Entity.Work_Station_Id == item.Work_Station_Entity.Work_Station_Id)
+                                                if (Model.Work_Center.Work_Station_Id == item.Work_Station_Id)
                                                 {
-                                                    <option value="@item.Work_Station_Entity.Work_Station_Id" selected="selected">@item.Work_Station_Entity.Work_Station_Name</option>
+                                                    <option value="@item.Work_Station_Id" selected="selected">@item.Work_Station_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Work_Station_Entity.Work_Station_Id">@item.Work_Station_Entity.Work_Station_Name</option>
+                                                    <option value="@item.Work_Station_Id">@item.Work_Station_Name</option>
                                                 }
                                             }
                                         </select>
