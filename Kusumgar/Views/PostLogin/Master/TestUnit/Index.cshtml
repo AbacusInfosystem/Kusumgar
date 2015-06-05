@@ -39,23 +39,23 @@
 
                                         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
                                         
-                                        <input type="hidden" id="hdfTestUnitId" name="Test_Unit.TestUnitEntity.Test_Unit_Id" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Id" />
+                                        <input type="hidden" id="hdfTestUnitId" name="Test_Unit.Test_Unit_Id" value="@Model.Test_Unit.Test_Unit_Id" />
                                         <label for="txtTestUnitName" style="color: #333">Test Unit Name</label>
-                                        <input type="text" class="form-control input-sm" id="txtTestUnitName" name="Test_Unit.TestUnitEntity.Test_Unit_Name" value="@Model.Test_Unit.TestUnitEntity.Test_Unit_Name" placeholder="Enter test unit name" />
+                                        <input type="text" class="form-control input-sm" id="txtTestUnitName" name="Test_Unit.Test_Unit_Name" value="@Model.Test_Unit.Test_Unit_Name" placeholder="Enter test unit name" />
                                     </div>
 
                                     <div class="form-group">
                                         <label>
 
-                                            @if (Model.Test_Unit.TestUnitEntity.Status == true)
+                                            @if (Model.Test_Unit.Status == true)
                                             {
-                                                @:<input type="checkbox" name="Test_Unit.TestUnitEntity.Status" value="false" checked />
+                                                @:<input type="checkbox" name="Test_Unit.Status" value="false" checked />
                                                 
                                             }
                                             else
                                             
                                             {
-                                                @:<input type="checkbox" name="Test_Unit.TestUnitEntity.Status" value="true" />
+                                                @:<input type="checkbox" name="Test_Unit.Status" value="true" />
 
                                             }
                                             
