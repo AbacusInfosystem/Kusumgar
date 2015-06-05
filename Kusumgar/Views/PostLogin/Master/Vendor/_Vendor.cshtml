@@ -85,13 +85,13 @@
                     <option value="">- Select State-</option>
                     @foreach (var item in Model.States)
                     {
-                        if (Model.Vendor.Vendor_Entity.Head_Office_State == item.State_Entity.StateId)
+                        if (Model.Vendor.Vendor_Entity.Head_Office_State == item.StateId)
                         {
-                            <option value="@item.State_Entity.StateId" selected="selected">@item.State_Entity.StateName</option>
+                            <option value="@item.StateId" selected="selected">@item.StateName</option>
                         }
                         else
                         {
-                            <option value="@item.State_Entity.StateId">@item.State_Entity.StateName</option>
+                            <option value="@item.StateId">@item.StateName</option>
                         }
                     }
                 </select>

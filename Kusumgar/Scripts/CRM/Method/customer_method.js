@@ -106,7 +106,7 @@ function Bind_States(data)
     {
         for (var i = 0; i < data.length ; i++)
         {
-            htmltext += "<option value='" + data[i].State_Entity.StateId + "'>" + data[i].State_Entity.StateName + "</option>";
+            htmltext += "<option value='" + data[i].StateId + "'>" + data[i].StateName + "</option>";
         }
     }
     $("#drpHead_Office_State").html(htmltext);
