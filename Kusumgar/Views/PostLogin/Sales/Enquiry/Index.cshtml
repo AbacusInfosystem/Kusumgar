@@ -10,6 +10,7 @@
 <script src="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 <script src="/Scripts/Sales/Event/enquiry_events.js"></script>
 <script src="/Scripts/Sales/Method/enquiry_methods.js"></script>
+<script src="/Scripts/Sales/Validation/enquiry_validation.js"></script>
 <style>
     .div-drag-drop {
         width: 100%;
@@ -28,7 +29,7 @@
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -46,7 +47,7 @@
     <!--Hidden Fields-->
     <input type="hidden" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id" name="Enquiry.Enquiry_Id">
     <input type="hidden" id="hdnEnquiry_Status_Id" value="@(Convert.ToInt32(EnquiryStatus.Enquiry_Arrived))" name="Enquiry.Enquiry_Status_Id">
-
+    <input type="hidden" id="hdnEnquiry_No" value="@Model.Enquiry.Enquiry_No" name="Enquiry.Enquiry_No">
 
     <!-- Main content -->
     <section class="content">
@@ -55,10 +56,10 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
-                        <li><a href="#tab_2" id="tabFinancial" data-toggle="tab">Staggered Order</a></li>
-                        <li><a href="#tab_3" id="tabBilling" data-toggle="tab">Customer Quality Details</a></li>
-                        <li><a href="#tab_4" id="tabShipping" data-toggle="tab">Quality Supporting Details</a></li>
-                        <li><a href="#tab_5" id="tabShipping" data-toggle="tab">Functional / Visual</a></li>
+                        <li><a href="#tab_2" id="tabStaggered" data-toggle="tab">Staggered Order</a></li>
+                        <li><a href="#tab_3" id="tabCustomer_Quality" data-toggle="tab">Customer Quality Details</a></li>
+                        <li><a href="#tab_4" id="tabQuality_Supporting" data-toggle="tab">Quality Supporting Details</a></li>
+                        <li><a href="#tab_5" id="tabFuncational_Visual" data-toggle="tab">Functional / Visual</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
 
@@ -66,219 +67,210 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                                <div id="divEnquiryPrerequisites">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="box-body">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        @foreach (var item in LookupInfo.Get_Enquiry_Types())
-                                                        {
-                                                            if (Model.Enquiry.Enquiry_Type_Id == item.Key)
+                                <form id="frmEnquiry_Prerequisites">
+                                    <div id="divEnquiryPrerequisites">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="box-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            @foreach (var item in LookupInfo.Get_Enquiry_Types())
                                                             {
-                                                                <div class="col-md-4 col-xs-4">
-                                                                    <input type="radio" name="r1" id="rd_@item.Value" checked="checked" value="@item.Key" />
-                                                                    &nbsp; @item.Value
-                                                                </div>
+                                                                if (Model.Enquiry.Enquiry_Type_Id == item.Key)
+                                                                {
+                                                                    <div class="col-md-4 col-xs-4">
+                                                                        <input type="radio" name="Enquiry_Type" id="rd_@item.Value" checked="checked" value="@item.Key" />
+                                                                        &nbsp; @item.Value
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="col-md-4 col-xs-4">
+                                                                        <input type="radio" name="Enquiry_Type" id="rd_@item.Value" value="@item.Key" />
+                                                                        &nbsp; @item.Value
+                                                                    </div>
+                                                                }
                                                             }
+                                                            <input type="hidden" id="hdnEnquiry_Type_Id" value="@Model.Enquiry.Enquiry_Type_Id" name="Enquiry.Enquiry_Type_Id">
+                                                        </div>
+                                                        <br />
+
+                                                        <div class="form-group">
+                                                            <label style="color: #333" for="txtCustomer_Name">Customer name</label>
+                                                            <div class="auto-complete">
+                                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="@Model.Enquiry.Customer_Name">
+                                                                <input type="hidden" id="hdnCustomer_Id" value="@(Model.Enquiry.Customer_Id == 0 ? "" : Model.Enquiry.Customer_Id.ToString())" name="Enquiry.Customer_Id" class="auto-complete-value">
+                                                                <input type="hidden" id="hdnCustomer_Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name" class="auto-complete-label">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label style="color: #333" for="txtQuality_No">Quality name</label>
+                                                            <div class="auto-complete">
+                                                                <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code" value="@Model.Enquiry.Quality_No">
+                                                                <input type="hidden" id="hdnQuality_Id" value="@(Model.Enquiry.Quality_Id == 0 ? "" : Model.Enquiry.Quality_Id.ToString())" name="Enquiry.Quality_Id" class="auto-complete-value">
+                                                                <input type="hidden" id="hdnQuality_No" value="@Model.Enquiry.Quality_No" name="Enquiry.Quality_No" class="auto-complete-label">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box-body table-responsive no-padding">
+                                                            <table class="table table-striped">
+                                                                <tr>
+                                                                    <th>Quality Attributes</th>
+                                                                    <th>Values</th>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Yarn Type</td>
+                                                                    <td>Nylon 66</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Reed
+                                                                    </td>
+                                                                    <td>50</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Pick
+                                                                    </td>
+                                                                    <td>62</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Weave
+                                                                    </td>
+                                                                    <td>62</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Minimum Order Size
+                                                                    </td>
+                                                                    <td>62</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Ideal Roll Length
+                                                                    </td>
+                                                                    <td>62</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Our Sample No
+                                                                    </td>
+                                                                    <td>62</td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="chkStatus">Status :</label><br>
+                                                            @if (Model.Enquiry.Is_Active)
+                                                            {
+                                                                @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="false" checked />
+                                                        }
                                                             else
                                                             {
-                                                                 <div class="col-md-4 col-xs-4">
-                                                                    <input type="radio" name="r1" id="rd_@item.Value" checked="checked" value="@item.Key" />
-                                                                    &nbsp; @item.Value
-                                                                </div>
-                                                            }
+                                                                @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="true" />
                                                         }
-                                                        <input type="hidden" id="hdnEnquiry_Type_Id" value="@Model.Enquiry.Enquiry_Type_Id" name="Enquiry.Enquiry_Type_Id">
-                                                    </div>
-                                                    <br />
 
-                                                    <div class="form-group">
-                                                        <label style="color: #333" for="txtCustomer_Name">Customer name</label>
-                                                        <div class="auto-complete">
-                                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="@Model.Enquiry.Customer_Name">
-                                                            <input type="hidden" id="hdnCustomer_Id" value="@(Model.Enquiry.Customer_Id == 0 ? "" : Model.Enquiry.Customer_Id.ToString())" name="Enquiry.Customer_Id" class="auto-complete-value">
-                                                            <input type="hidden" id="hdnCustomer_Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name" class="auto-complete-label">
+                                                            Active &nbsp;&nbsp;&nbsp;
+                                                            <input type="hidden" class="iCheck-hidden" id="hdnStatus" value="@((Model.Enquiry.Is_Active == null ? false : Model.Enquiry.Is_Active).ToString())">
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label style="color: #333" for="txtQuality_No">Quality name</label>
-                                                        <div class="auto-complete">
-                                                            <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code" value="@Model.Enquiry.Quality_No">
-                                                            <input type="hidden" id="hdnQuality_Id" value="@(Model.Enquiry.Quality_Id == 0 ? "" : Model.Enquiry.Quality_Id.ToString())" name="Enquiry.Quality_Id" class="auto-complete-value">
-                                                            <input type="hidden" id="hdnQuality_No" value="@Model.Enquiry.Quality_No" name="Enquiry.Quality_No" class="auto-complete-label">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="box-body table-responsive no-padding">
-                                                        <table class="table table-striped">
-                                                            <tr>
-                                                                <th>Quality Attributes</th>
-                                                                <th>Values</th>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Yarn Type</td>
-                                                                <td>Nylon 66</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    Reed
-                                                                </td>
-                                                                <td>50</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    Pick
-                                                                </td>
-                                                                <td>62</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    Weave
-                                                                </td>
-                                                                <td>62</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    Minimum Order Size
-                                                                </td>
-                                                                <td>62</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    Ideal Roll Length
-                                                                </td>
-                                                                <td>62</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    Our Sample No
-                                                                </td>
-                                                                <td>62</td>
-                                                            </tr>
-                                                        </table>
 
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="box-footer">
-                                        <div class="btn-group">
-                                            <button type="button" id="btnSave_Enquiry" class="btn btn-success btn-sm">Save</button>
-                                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                        <div class="box-footer">
+                                            <div class="btn-group">
+                                                <button type="button" id="btnSave_Enquiry" class="btn btn-success btn-sm">Save</button>
+                                                <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
 
                             <div class="tab-pane" id="tab_2">
-                                <div id="divStaggeredOrderItemDetails">
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-4 col-xs-4">
-                                                <div class="form-group">
-                                                    <label for="txtQuantity">Quantity</label>
-                                                    <div class="input-group">
-                                                        <input type="text" id="txtQuantity" placeholder="Enter Quantity" class="form-control input-sm" />
-                                                        <span class="input-group-addon">Meters</span>
+                                <form id="frmStaggered_Order">
+                                    <div id="divStaggeredOrderItemDetails">
+                                        <input type="hidden" id="hdnOrder_No"  name="Enquiry.Staggered_Order.Order_No">
+                                        <input type="hidden" id="hdnOrder_Status" name="Enquiry.Staggered_Order.Order_Status">
+                                        <input type="hidden" id="hdnStaggered_Order_Id" name="Enquiry.Staggered_Order.Staggered_Order_Id" value="0">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-4">
+                                                    <div class="form-group">
+                                                        <label for="txtQuantity" style="color: #333">Quantity</label>
+                                                        <div class="input-group">
+                                                            @if (Model.Enquiry.Staggered_Order.Quantity != 0)
+                                                            { 
+                                                                <input type="text" id="txtQuantity" placeholder="Enter Quantity" class="form-control input-sm" value="@Model.Enquiry.Staggered_Order.Quantity" name="Enquiry.Staggered_Order.Quantity" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="text" id="txtQuantity" placeholder="Enter Quantity" class="form-control input-sm"  name="Enquiry.Staggered_Order.Quantity" />
+                                                            }
+                                                            
+                                                            <span class="input-group-addon">Meters</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="DtDelivery_Date" style="color: #333">Delivery Date</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @if (Model.Enquiry.Staggered_Order.Delivery_Date != DateTime.MinValue)
+                                                            { 
+                                                            <input type="text" id="DtDelivery_Date" placeholder="Enter Delivery Date" class="datemask form-control input-sm" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask value="@Model.Enquiry.Staggered_Order.Delivery_Date" name="Enquiry.Staggered_Order.Delivery_Date" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="text" id="DtDelivery_Date" placeholder="Enter Delivery Date" class="datemask form-control input-sm" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  name="Enquiry.Staggered_Order.Delivery_Date" />
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="DtDelivery_Date">Delivery Date</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" id="DtDelivery_Date" placeholder="Enter Delivery Date" class="datemask form-control input-sm" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
-                                                    </div>
+
+                                                <div class="col-md-8 col-xs-8">
+                                                    <table class="table table-hover" id="tblStaggered_Order">
+                                                        <tr>
+                                                            <th>Quantity</th>
+                                                            <th>Delivery Date</th>
+                                                            <th style="width: 10px;">&nbsp; </th>
+                                                        </tr>
+                                                        @*<tr>
+                                                            <td>3000</td>
+                                                            <td>03-Apr-2015</td>
+                                                            <td>
+                                                                <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
+                                                            </td>
+                                                        </tr>*@
+                                                        
+                                                       
+                                                    </table>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="col-md-8 col-xs-8">
-                                                <table class="table table-hover">
-                                                    <tr>
-                                                        <th>Quantity</th>
-                                                        <th>Delivery Date</th>
-                                                        <th style="width: 10px;">&nbsp; </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3000</td>
-                                                        <td>03-Apr-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5000</td>
-                                                        <td>23-Mar-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4000</td>
-                                                        <td>23-Jun-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4000</td>
-                                                        <td>27-Aug-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4000</td>
-                                                        <td>03-Oct-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4000</td>
-                                                        <td>14-Nov-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4000</td>
-                                                        <td>20-Dec-2015</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4000</td>
-                                                        <td>10-Jan-2016</td>
-                                                        <td>
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-xs"><i class='fa fa-remove'></i></button>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-
+                                        <div class="box-footer">
+                                            <div class="btn-group">
+                                                <button type="button" id="btnSave_Staggered_Order" class="btn btn-success btn-sm">Save</button>
+                                                <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="box-footer">
-                                        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-                                        <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
 
                             <div class="tab-pane" id="tab_3">

@@ -13,11 +13,13 @@ namespace KusumgarBusinessEntities
         {
             SupportingDetails = new SupportingDetailsInfo();
 
-            StaggedOrders = new List<StaggedOrderInfo>();
+            Staggered_Orders = new List<StaggeredOrderInfo>();
 
             TempCustomerQualityDetails = new TempCustomerQualityDetailsInfo();
 
             Attachments = new List<AttachmentsInfo>();
+
+            Staggered_Order = new StaggeredOrderInfo();
         }
 
         public int Enquiry_Id { get; set; }
@@ -46,16 +48,34 @@ namespace KusumgarBusinessEntities
 
         public DateTime UpdatedOn { get; set; }
 
+        #region Additional Fields
+
         public string Customer_Name { get; set; }
 
         public string Quality_No { get; set; }
 
         public SupportingDetailsInfo SupportingDetails { get; set; }
 
-        public List<StaggedOrderInfo> StaggedOrders { get; set; }
+        public StaggeredOrderInfo Staggered_Order { get; set; }
+
+        public List<StaggeredOrderInfo> Staggered_Orders { get; set; }
 
         public TempCustomerQualityDetailsInfo TempCustomerQualityDetails { get; set; }
 
         public List<AttachmentsInfo> Attachments { get; set; }
+
+        public string  Enquiry_Status
+        {
+            get
+            {
+                return ((EnquiryStatus)Enquiry_Status_Id).ToString();             
+            }
+            set
+            {
+                Enquiry_Status = value; 
+            }
+        }
+
+        #endregion
     }
 }

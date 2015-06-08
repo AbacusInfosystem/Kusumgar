@@ -87,7 +87,7 @@
    $(document).ready(function () {
 
 
-       var EnquiryViewModel =
+       var SchedulerViewModel =
            {
                //hours: $("#txthours").val()
                StartDate: $("#txtStartDate").val(),
@@ -99,7 +99,7 @@
 
            dataType: "json",
 
-           data: JSON.stringify(EnquiryViewModel),
+           data: JSON.stringify(SchedulerViewModel),
 
            method: 'POST',
 
@@ -109,7 +109,7 @@
 
            success: function (data) {
                alert("hi");
-               GetSchedule(data.EnquiryViewModel);
+               GetSchedule(data.SchedulerViewModel);
            }
        });
    });
@@ -297,7 +297,7 @@
                 ProcessId = "0";
             }
 
-            var EnquiryViewModel =
+            var SchedulerViewModel =
                 {
                     MachineInfo:
                         {
@@ -314,7 +314,7 @@
 
                 dataType: "json",
 
-                data: JSON.stringify(EnquiryViewModel),
+                data: JSON.stringify(SchedulerViewModel),
 
                 method: 'POST',
 
@@ -348,7 +348,7 @@
                 ProcessId = "0";
             }
 
-            var EnquiryViewModel =
+            var SchedulerViewModel =
                 {
                     MachineInfo:
                         {
@@ -365,7 +365,7 @@
 
                 dataType: "json",
 
-                data: JSON.stringify(EnquiryViewModel),
+                data: JSON.stringify(SchedulerViewModel),
 
                 method: 'POST',
 
@@ -406,7 +406,7 @@
                 ProcessId = "0";
             }
 
-            var EnquiryViewModel =
+            var SchedulerViewModel =
                 {
                     MachineInfo:
                         {
@@ -424,7 +424,7 @@
 
                 dataType: "json",
 
-                data: JSON.stringify(EnquiryViewModel),
+                data: JSON.stringify(SchedulerViewModel),
 
                 method: 'POST',
 
@@ -435,27 +435,27 @@
                     var EventId = parseInt(parseInt($("#hdnEventId").val()) + 1);
                     $("#hdnEventId").val(EventId);
                     alert("hi");
-                    alert(data.EnquiryViewModel.MachineInfo.ProcessId);
+                    alert(data.SchedulerViewModel.MachineInfo.ProcessId);
 
-                    if (data.EnquiryViewModel.MachineInfo.ProcessId != 0) {
+                    if (data.SchedulerViewModel.MachineInfo.ProcessId != 0) {
                         var e = new DayPilot.Event({
-                            start: data.EnquiryViewModel.MachineInfo.StartTimeStr,
-                            end: data.EnquiryViewModel.MachineInfo.EndTimeStr,
+                            start: data.SchedulerViewModel.MachineInfo.StartTimeStr,
+                            end: data.SchedulerViewModel.MachineInfo.EndTimeStr,
                             id: EventId,
-                            resource: data.EnquiryViewModel.MachineInfo.ProcessId.toString(),
+                            resource: data.SchedulerViewModel.MachineInfo.ProcessId.toString(),
                             text: name,
-                            complete: data.EnquiryViewModel.MachineInfo.Percentage
+                            complete: data.SchedulerViewModel.MachineInfo.Percentage
                         });
                         dp.events.add(e);
                     }
                     else {
                         var e = new DayPilot.Event({
-                            start: data.EnquiryViewModel.MachineInfo.StartTimeStr,
-                            end: data.EnquiryViewModel.MachineInfo.EndTimeStr,
+                            start: data.SchedulerViewModel.MachineInfo.StartTimeStr,
+                            end: data.SchedulerViewModel.MachineInfo.EndTimeStr,
                             id: EventId,
-                            resource: data.EnquiryViewModel.MachineInfo.MachineId.toString(),
+                            resource: data.SchedulerViewModel.MachineInfo.MachineId.toString(),
                             text: name,
-                            complete: data.EnquiryViewModel.MachineInfo.Percentage
+                            complete: data.SchedulerViewModel.MachineInfo.Percentage
                         });
                         dp.events.add(e);
                     }
@@ -492,7 +492,7 @@
                 }
 
 
-                var EnquiryViewModel =
+                var SchedulerViewModel =
                   {
                       MachineInfo:
                           {
@@ -509,7 +509,7 @@
 
                     dataType: "json",
 
-                    data: JSON.stringify(EnquiryViewModel),
+                    data: JSON.stringify(SchedulerViewModel),
 
                     method: 'POST',
 

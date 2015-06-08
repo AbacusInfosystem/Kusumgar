@@ -294,6 +294,28 @@ namespace Kusumgar
 
             #endregion
 
+            #region Sales
+
+            FriendlyMessageInfo EQ001 = new FriendlyMessageInfo("EQ001", MessageType.Success, "Enquiry has been added successfully.");
+            hash.Add("EQ001", EQ001);
+
+            FriendlyMessageInfo EQ002 = new FriendlyMessageInfo("EQ002", MessageType.Success, "Enquiry has been updated successfully.");
+            hash.Add("EQ002", EQ002);
+
+            FriendlyMessageInfo EQ003 = new FriendlyMessageInfo("EQ003", MessageType.Success, "Staggered order has been added successfully.");
+            hash.Add("EQ003", EQ003);
+
+            FriendlyMessageInfo EQ004 = new FriendlyMessageInfo("EQ004", MessageType.Success, "Staggered order has been updated successfully.");
+            hash.Add("EQ004", EQ004);
+
+            FriendlyMessageInfo EQ005 = new FriendlyMessageInfo("EQ005", MessageType.Success, "Staggered order has been deleted successfully.");
+            hash.Add("EQ005", EQ005);
+
+
+
+
+            #endregion
+
         }
 
         public static FriendlyMessageInfo Get(string code)

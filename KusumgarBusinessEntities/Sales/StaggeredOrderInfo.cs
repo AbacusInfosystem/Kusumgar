@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace KusumgarBusinessEntities
 {
-    public class StaggedOrderInfo
+    public class StaggeredOrderInfo
     {
-        public int Stagged_Order_Id { get; set; }
+        public int Staggered_Order_Id { get; set; }
 
         public int Enquiry_Id { get; set; }
+
+        public string Order_No { get; set; }
+
+        public int Order_Status { get; set; }
 
         public int Quantity { get; set; }
 
@@ -25,6 +29,7 @@ namespace KusumgarBusinessEntities
         public int UpdatedBy { get; set; }
 
         public DateTime UpdatedOn { get; set; }
+
 
     }
 }

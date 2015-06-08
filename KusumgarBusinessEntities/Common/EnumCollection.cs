@@ -379,10 +379,13 @@ namespace KusumgarBusinessEntities.Common
         Update_Enquiry_Sp,
         Get_Enquiries_Sp,
         Get_Enquiry_By_Id_Sp,
-        Insert_Stagged_Order_Sp,
-        Update_Stagged_Order_Sp,
-        Get_Stagged_Orders_Sp,
-        Get_Stagged_Order_By_Id_Sp,
+        Get_Enquiries_By_Status_Sp,
+        Insert_Staggered_Order_Sp,
+        Update_Staggered_Order_Sp,
+        Get_Staggered_Order_Sp,
+        Get_Staggered_Order_By_Id_Sp,
+        Get_Staggered_Order_By_Enquiry_Id_Sp,
+        Delete_Staggered_Order_By_Id,
         Insert_Attachments_Sp,
         Insert_Temp_Customer_Quality_Details_Sp,
         Update_Temp_Customer_Quality_Details_Sp,
@@ -506,6 +509,19 @@ namespace KusumgarBusinessEntities.Common
         Temp_Quality_Set_Created = 6,
         Quality_Assigned = 7,
         Planned = 8
+    }
+
+    public enum OrderStatus
+    {
+        Order_Arrived = 1,
+        Passed_PPC_Check_Point = 2,
+        Passed_W_Manager_Check_Point = 3,
+        Passed_P_Manager_Check_Point = 4,
+        Passed_C_Manager_Check_Point = 5,
+        Temp_Quality_Set_Created = 6,
+        Quality_Assigned = 7,
+        Planned = 8,
+        Delivered = 9,
     }
 
 }

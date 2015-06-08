@@ -1175,23 +1175,23 @@ namespace Kusumgar
             defaults: new { controller = "Enquiry", action = "Quality_Checkpoint", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
-            routes.MapRoute(
-            name: "enquiry-5",
-            url: "ppc/planning",
-            defaults: new { controller = "Enquiry", action = "PPC_Planning", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+            //routes.MapRoute(
+            //name: "enquiry-5",
+            //url: "ppc/planning",
+            //defaults: new { controller = "Enquiry", action = "PPC_Planning", id = UrlParameter.Optional },
+            //namespaces: new string[] { "Kusumgar.Controllers" });
 
-            routes.MapRoute(
-            name: "enquiry-6",
-            url: "ppc/planning/scheduler",
-            defaults: new { controller = "Enquiry", action = "_Schedule", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+            //routes.MapRoute(
+            //name: "enquiry-6",
+            //url: "ppc/planning/scheduler",
+            //defaults: new { controller = "Enquiry", action = "_Schedule", id = UrlParameter.Optional },
+            //namespaces: new string[] { "Kusumgar.Controllers" });
 
-            routes.MapRoute(
-            name: "enquiry-7",
-            url: "ppc/planning/scheduler-bind",
-            defaults: new { controller = "Enquiry", action = "BindSchedule", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+            //routes.MapRoute(
+            //name: "enquiry-7",
+            //url: "ppc/planning/scheduler-bind",
+            //defaults: new { controller = "Enquiry", action = "BindSchedule", id = UrlParameter.Optional },
+            //namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "enquiry-8",
@@ -1212,10 +1212,69 @@ namespace Kusumgar
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-          name: "enquiry-11",
-          url: "sales/quality-autocomplete/{quality_No}",
-          defaults: new { controller = "Enquiry", action = "Get_Quality_Autocomplete", quality_No = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-11",
+            url: "sales/quality-autocomplete/{quality_No}",
+            defaults: new { controller = "Enquiry", action = "Get_Quality_Autocomplete", quality_No = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-12",
+            url: "sales/enquiry-search",
+            defaults: new { controller = "Enquiry", action = "Get_Enquiries", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-13",
+            url: "sales/enquiry-by-id",
+            defaults: new { controller = "Enquiry", action = "Get_Enquiry_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-14",
+            url: "sales/insert-staggered-order",
+            defaults: new { controller = "Enquiry", action = "Insert_Staggered_Order", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-15",
+            url: "sales/update-staggered-order",
+            defaults: new { controller = "Enquiry", action = "Update_Staggered_Order", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-16",
+            url: "sales/get-staggered-orders",
+            defaults: new { controller = "Enquiry", action = "Get_Staggered_Orders", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "enquiry-17",
+           url: "sales/delete-staggered-order-by-id/{staggered_Order_Id}",
+           defaults: new { controller = "Enquiry", action = "Delete_Staggered_Order_By_Id", staggered_Order_Id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+
+            #endregion
+
+            #region Scheduler 
+
+            routes.MapRoute(
+           name: "scheduler-1",
+           url: "ppc/planning",
+           defaults: new { controller = "Scheduler", action = "PPC_Planning", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "scheduler-2",
+           url: "ppc/planning/scheduler",
+           defaults: new { controller = "Scheduler", action = "_Schedule", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "scheduler-3",
+            url: "ppc/planning/scheduler-bind",
+            defaults: new { controller = "Scheduler", action = "BindSchedule", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 
@@ -1223,7 +1282,7 @@ namespace Kusumgar
 
             #region Ajax
 
-            
+
 
 
             routes.MapRoute(

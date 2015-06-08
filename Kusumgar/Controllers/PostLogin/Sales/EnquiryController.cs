@@ -26,33 +26,75 @@ namespace Kusumgar.Controllers
             _enquiryMan = new EnquiryManager();
         }
 
+        #region Enquiry
+
         public ActionResult Index(EnquiryViewModel eViewModel)
         {
-            return View(eViewModel);
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Index " + ex.ToString());
+            }
+
+            return View("Index", eViewModel);
         }
 
         public ActionResult Search(EnquiryViewModel eViewModel)
         {
+            //PaginationInfo pager = new PaginationInfo();
+
+            //try
+            //{
+            //    pager = eViewModel.Pager;
+
+            //    eViewModel.Enquires = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
+            //}
+            //catch(Exception ex)
+            //{
+
+            //}
+
             return View(eViewModel);
         }
 
         public JsonResult Insert(EnquiryViewModel eViewModel)
         {
+            EnquiryInfo enquiry = new EnquiryInfo();
+
             try
             {
                 eViewModel.Enquiry.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
                 eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                eViewModel.Enquiry.Enquiry_Id = _enquiryMan.Insert_Enquiry(eViewModel.Enquiry);
+                eViewModel.Enquiry.CreatedOn = DateTime.Now;
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("YA001"));
+                eViewModel.Enquiry.UpdatedOn = DateTime.Now;
+
+                enquiry = eViewModel.Enquiry;
+
+                _enquiryMan.Insert_Enquiry(ref enquiry);
+
+                eViewModel.Enquiry = enquiry;
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ001"));
             }
             catch (Exception ex)
             {
                 eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Enquiry Controller - Insert " + ex.ToString());
+            }
+            finally
+            {
+                enquiry = null;
             }
 
             return Json(eViewModel);
@@ -64,15 +106,53 @@ namespace Kusumgar.Controllers
             {
                 eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
+                eViewModel.Enquiry.UpdatedOn = DateTime.Now;
+
                 _enquiryMan.Update_Enquiry(eViewModel.Enquiry);
 
-                eViewModel.Friendly_Message.Add(MessageStore.Get("YA001"));
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ002"));
             }
             catch (Exception ex)
             {
                 eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Enquiry Controller - Update " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Get_Enquiries(EnquiryViewModel eViewModel)
+        {
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                pager = eViewModel.Pager;
+
+                //if (eViewModel.Filter.Customer_Id != 0)
+                //{
+                //    eViewModel.Contacts = eViewModel.Get_Contacts_By_Name(eViewModel.Filter.Customer_Id, ref pager);
+                //}
+                //else
+                //{
+
+                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
+              //  }
+
+                eViewModel.Pager = pager;
+
+                eViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", eViewModel.Pager.TotalRecords, eViewModel.Pager.CurrentPage + 1, eViewModel.Pager.PageSize, 10, true);
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Enquiries " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
             }
 
             return Json(eViewModel);
@@ -93,8 +173,118 @@ namespace Kusumgar.Controllers
             return Json(qualities, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Get_Enquiry_By_Id(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry = _enquiryMan.Get_Enquiry_By_Id(eViewModel.Enquiry.Enquiry_Id);
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
+                Logger.Error("Enquiry Controller - Get_Enquiry_By_Id " + ex.ToString());
+            }
 
+            return Index(eViewModel);
+        }
+
+        #endregion
+
+        #region Staggered Order
+
+        public JsonResult Get_Staggered_Orders(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                PaginationInfo pager = new PaginationInfo();
+
+                pager.IsPagingRequired = false;
+
+                if (eViewModel.Enquiry.Staggered_Order.Enquiry_Id != 0)
+                {
+                    eViewModel.Enquiry.Staggered_Orders = _enquiryMan.Get_Staggered_Orders_By_Enquiry_Id(eViewModel.Enquiry.Staggered_Order.Enquiry_Id,ref pager);
+                }
+                else
+                {
+                    eViewModel.Enquiry.Staggered_Orders = _enquiryMan.Get_Staggered_Orders(ref pager);
+                }
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Staggered_Orders " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Insert_Staggered_Order(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Staggered_Order.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Staggered_Order.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Staggered_Order.CreatedOn = DateTime.Now;
+
+                eViewModel.Enquiry.Staggered_Order.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Insert_Staggered_Order(eViewModel.Enquiry.Staggered_Order);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ003"));
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert_Staggered_Order " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Update_Staggered_Order(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                _enquiryMan.Update_Staggered_Order(eViewModel.Enquiry.Staggered_Order);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ004"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Update_Staggered_Order " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Delete_Staggered_Order_By_Id(int staggered_Order_Id)
+        {
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+
+            try
+            {
+                _enquiryMan.Delete_Staggered_Order_By_Id(staggered_Order_Id);
+
+                Friendly_Message.Add(MessageStore.Get("EQ005"));
+            }
+            catch(Exception ex)
+            {
+                Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Delete_Staggered_Order_By_Id " + ex.ToString());
+            }
+
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
         //
 
@@ -151,122 +341,11 @@ namespace Kusumgar.Controllers
             return View();
         }
 
-        public ActionResult PPC_Planning()
-        {
-            return View();
-        }
+        //public ActionResult PPC_Planning()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult _Schedule(DateTime? StartDate, DateTime? EndDate)
-        {
-            EnquiryViewModel EnquiryViewModel = new EnquiryViewModel();
-            try
-            {
-                EnquiryViewModel.StartDate = Convert.ToDateTime(StartDate);
-                EnquiryViewModel.EndDate = Convert.ToDateTime(EndDate);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return PartialView( EnquiryViewModel);
-        }
-
-
-
-        public ActionResult BindSchedule(EnquiryViewModel EnquiryViewModel)
-        {
-            //HomeModel HomeModel = new Models.HomeModel();
-            EnquiryViewModel.MachineInfoList = new List<MachineInfo>();
-
-
-            try
-            {
-               EnquiryViewModel.EndDate =  EnquiryViewModel.EndDate.AddDays(5);
-
-                if (EnquiryViewModel.hours == 0)
-                {
-                    EnquiryViewModel.hours = 3;
-                }
-
-
-                EnquiryViewModel.MachineInfoList.Add(
-               new MachineInfo()
-               {
-                   MachineId = 1,
-                   ProcessId = 1.1m,
-                   EventId = 1,
-                   EventName = "Job -1",
-                   StartTime = new DateTime(2015, 04, 27, 12, 30, 00),
-                   EndTime = DateTime.Now.AddHours(EnquiryViewModel.hours),
-                   BufferTime = 300
-               });
-
-                EnquiryViewModel.MachineInfoList.Add(
-              new MachineInfo()
-              {
-                  MachineId = 2,
-                  EventId = 1,
-                  EventName = "Job -2",
-                  StartTime = DateTime.Now,
-                  EndTime = DateTime.Now.AddHours(EnquiryViewModel.hours),
-                  BufferTime = 20
-              });
-
-
-                List<Process> ProcessList = new List<Process>();
-                ProcessList.Add(new Process()
-                {
-                    ProcessId = 1.1m,
-                    ProcessName = "Process 1"
-                });
-                ProcessList.Add(new Process()
-                {
-                    ProcessId = 1.2m,
-                    ProcessName = "Process 2"
-                });
-                ProcessList.Add(new Process()
-                {
-                    ProcessId = 1.3m,
-                    ProcessName = "Process 3"
-                });
-                ProcessList.Add(new Process()
-                {
-                    ProcessId = 1.4m,
-                    ProcessName = "Process 4"
-                });
-
-
-                EnquiryViewModel.MachineProcessList.Add(new Machine()
-                {
-                    MachineId = 1,
-                    MachineName = "Machine 1",
-                    IsExpanded = true,
-                    ProcessList = ProcessList
-                });
-
-                EnquiryViewModel.MachineProcessList.Add(new Machine()
-                {
-                    MachineId = 2,
-                    MachineName = "Machine 2"
-
-                });
-
-                EnquiryViewModel.MachineProcessList.Add(new Machine()
-                {
-                    MachineId = 3,
-                    MachineName = "Machine 3"
-
-                });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            ViewBag.Message = "Your app description page.";
-
-            return Json(new { EnquiryViewModel });
-        }
+        
     }
 }
