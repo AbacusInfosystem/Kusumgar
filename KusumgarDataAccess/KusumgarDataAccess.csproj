@@ -56,7 +56,7 @@
     <Compile Include="CRM\ContactRepo.cs" />
     <Compile Include="CRM\CustomerRepo.cs" />
     <Compile Include="Login\LoginRepo.cs" />
-    <Compile Include="Master\AjaxRepo.cs" />
+    <Compile Include="AjaxRepo.cs" />
     <Compile Include="Master\AttributeCodeRepo.cs" />
     <Compile Include="Master\ConsumableRepo.cs" />
     <Compile Include="Master\DefectRepo.cs" />

@@ -129,6 +129,87 @@ function Remove_Staggered_Order(id)
  
 // End : Staggered Order
 
+// Start : Supporting Details
+
+function Save_Supporting_Details()
+{
+    var eViewModel = Set_Enquiry();
+
+    if($("#hdnSupporting_Details_Id").val() == 0)
+    {
+        CallAjax("/sales/insert-supporting-details/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Supporting_Details_CallBack, "", null);
+    }
+    else
+    {
+        CallAjax("/sales/update-supporting-details/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Supporting_Details_CallBack, "", null);
+    }
+}
+
+function Supporting_Details_CallBack(data)
+{
+    $("#hdnSupporting_Details_Id").val(data.Enquiry.Supporting_Details.Supporting_Details_Id);
+
+    Friendly_Message(data);
+}
+
+// End : Supporting Details
+
+// Start : Temp Customer Quality Details
+
+function Save_Temp_Customer_Quality_Details()
+{
+    var eViewModel = Set_Enquiry();
+
+    CallAjax("/sales/insert-temp-customer-quality-details/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Temp_Customer_Quality_Details_CallBack, "", null);
+}
+
+function Temp_Customer_Quality_Details_CallBack(data)
+{
+    Friendly_Message(data);
+}
+
+// End : temp Customer Qulaity Details
+
+// Start : Attachments
+
+function Callback(data) {
+
+    Friendly_Message(data);
+
+    // Multiple_Autocomplete($("#Enquiry_Attach_Emails"), data.Attachments, Delete_Attachment);
+
+    Bind_Attachments();
+}
+
+function Delete_Attachment(id) {
+
+    $.ajax({
+        url: '/ajax/delete-attachments',
+        data: { attachment_Id: id },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            Friendly_Message(data);
+        }
+    });
+}
+
+function Bind_Attachments()
+{
+    $.ajax({
+        url: '/ajax/get-attachments-by-ref-type-id',
+        data: { ref_Type: $('#hdnRefType').val(), ref_Id: $('#hdnEnquiry_Id').val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            Multiple_Autocomplete($("#Enquiry_Attach_Emails_Files"), data.Attachments, Delete_Attachment);
+        }
+    });
+}
+
+// End : Attachments
+
+
 function Set_Enquiry()
 {
     var eViewModel =
@@ -166,7 +247,55 @@ function Set_Enquiry()
                         Delivery_Date: $("#DtDelivery_Date").val(),
 
                         Is_Active: $("#hdnStatus").val()
+                    },
+
+                Supporting_Details:
+                    {
+                        Supporting_Details_Id: $("#hdnSupporting_Details_Id").val(),
+
+                        Enquiry_Id: $("#hdnEnquiry_Id").val(),
+
+                        Rate: $("#txtRate").val(),
+
+                        Customer_Roll_Length: $("#txtCustomer_Roll_Length").val(),
+
+                        Packing: $("#txtPacking").val(),
+
+                        Dispatch: $("#txtDispatch").val(),
+
+                        Additional_Customer_Prop: $("#txtAdditional_Customer_Property").val(),
+
+                        Source_Of_Enquiry: $("#txtSource_of_Inquiry").val(),
+
+                        Is_Active: $("#hdnStatus").val()
+                    },
+
+                Temp_Customer_Quality_Details:
+                    {
+                        Enquiry_Id: $("#hdnEnquiry_Id").val(),
+
+                        Width_Of_Fabric: $("#txtWidth_of_fabric").val(),
+
+                        Coating: $("#txtCoating").val(),
+
+                        Applications: $("#txtApplication").val(),
+
+                        Physicla_Appearance: $("#txtPhysical_Appearance").val(),
+
+                        Shades: $("#drpShade").val(),
+
+                        Finish: $("#txtFinish").val(),
+
+                        Prints: $("#txtPrint").val(),
+
+                        Customer_Approved_Sample: $("#hdnCustomer_Approved_Sample").val(),
+
+                        Market_Segment: $("#txtMarket_Segment").val(),
+
+                        Lable_Tagging: $("#txtLabel_Tagging").val()
                     }
+
+
             }
     }
 

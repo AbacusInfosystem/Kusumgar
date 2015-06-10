@@ -11,6 +11,7 @@ using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
 using KusumgarCrossCutting.Logging;
 using System.Web.Security;
+using System.IO;
 
 namespace Kusumgar.Controllers
 {
@@ -175,9 +176,22 @@ namespace Kusumgar.Controllers
 
         public ActionResult Get_Enquiry_By_Id(EnquiryViewModel eViewModel)
         {
+            AttributeCodeManager attrCodeMan = new AttributeCodeManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
             try
             {
                 eViewModel.Enquiry = _enquiryMan.Get_Enquiry_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Supporting_Details = _enquiryMan.Get_Supporting_Details_By_Enquiry_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details = _enquiryMan.Get_Temp_Customer_Quality_Details_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Attribute_Codes = attrCodeMan.Get_Attribute_Codes(ref pager);
+
             }
             catch (Exception ex)
             {
@@ -284,6 +298,165 @@ namespace Kusumgar.Controllers
             return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
+        #endregion
+
+        #region Supporting Details
+
+        public JsonResult Insert_Supporting_Details(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Supporting_Details.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Supporting_Details.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Supporting_Details.CreatedOn = DateTime.Now;
+
+                eViewModel.Enquiry.Supporting_Details.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Insert_Supporting_Details(eViewModel.Enquiry.Supporting_Details);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ006"));
+
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert_Supporting_Details " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Update_Supporting_Details(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Supporting_Details.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Supporting_Details.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Update_Supporting_Details(eViewModel.Enquiry.Supporting_Details);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ007"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Update_Supporting_Details " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        //public JsonResult Get_Supporting_Details(EnquiryViewModel eViewModel)
+        //{
+        //    try
+        //    {
+        //      eViewModel.Enquiry.Supporting_Details = _enquiryMan.Get_Supporting_Details_By_Enquiry_Id(eViewModel.Enquiry.Enquiry_Id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+        //        Logger.Error("Enquiry Controller - Get_Supporting_Details " + ex.ToString());
+        //    }
+
+        //    return Json(eViewModel);
+        //}
+
+        #endregion
+
+        #region Temp Customer Quality Details
+
+        public JsonResult Insert_Temp_Customer_Quality_Details(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Temp_Customer_Quality_Details.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details.CreatedOn = DateTime.Now;
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Insert_Temp_Customer_Quality_Details(eViewModel.Enquiry.Temp_Customer_Quality_Details);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ006"));
+
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert_Temp_Customer_Quality_Details " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Update_Temp_Customer_Quality_Details(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Temp_Customer_Quality_Details.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Update_Temp_Customer_Quality_Details(eViewModel.Enquiry.Temp_Customer_Quality_Details);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ007"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Update_Supporting_Details " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        #endregion
+
+        #region Attachments 
+
+        //public JsonResult Insert_Enquiry_Attachments(object obj)
+        //{
+        //    List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+
+        //    try
+        //    {
+        //        var length = Request.ContentLength;
+        //        var bytes = new byte[length];
+        //        Request.InputStream.Read(bytes, 0, length);
+        //        // bytes has byte content here. what do do next?
+
+        //        var fileName = Request.Headers["X-File-Name"];
+        //        var fileSize = Request.Headers["X-File-Size"];
+        //        var fileType = Request.Headers["X-File-Type"];
+
+        //        var saveToFileLoc = string.Format("{0}\\{1}",
+        //                                       Server.MapPath("/uploads"),
+        //                                       fileName);
+
+        //        // save the file.
+        //        var fileStream = new FileStream(saveToFileLoc, FileMode.Create, FileAccess.ReadWrite);
+        //        fileStream.Write(bytes, 0, length);
+        //        fileStream.Close();
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+        //        Logger.Error("Enquiry Controller - Insert_Enquiry_Attachments " + ex.ToString());
+        //    }
+
+        //    return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        //}
         #endregion
 
         //

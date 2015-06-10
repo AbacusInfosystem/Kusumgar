@@ -85,5 +85,43 @@ namespace KusumgarModel
          }
         
         #endregion
+
+        #region Supporting Details
+
+         public void Insert_Supporting_Details(SupportingDetailsInfo supporting_Details)
+         {
+             _enquiryRepo.Insert_Supporting_Details(supporting_Details);
+         }
+
+        public void Update_Supporting_Details(SupportingDetailsInfo supporting_Details)
+         {
+             _enquiryRepo.Update_Supporting_Details(supporting_Details);
+         }
+
+         public SupportingDetailsInfo Get_Supporting_Details_By_Enquiry_Id(int enquiry_Id)
+        {
+           return _enquiryRepo.Get_Supporting_Details_By_Enquiry_Id(enquiry_Id);
+        }
+
+        #endregion
+
+        #region Temp Customer Quality Details
+
+         public void Insert_Temp_Customer_Quality_Details(TempCustomerQualityDetailsInfo temp_Customer_Quality_Details)
+         {
+             _enquiryRepo.Insert_Temp_Customer_Quality_Details(temp_Customer_Quality_Details);
+         }
+
+        public void Update_Temp_Customer_Quality_Details(TempCustomerQualityDetailsInfo temp_Customer_Quality_Details)
+         {
+             _enquiryRepo.Update_Temp_Customer_Quality_Details(temp_Customer_Quality_Details);
+         }
+
+        public TempCustomerQualityDetailsInfo Get_Temp_Customer_Quality_Details_By_Id(int enquiry_Id)
+        {
+           return  _enquiryRepo.Get_Temp_Customer_Quality_Details_By_Id(enquiry_Id);
+        }
+
+        #endregion
     }
 }

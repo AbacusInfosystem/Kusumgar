@@ -386,15 +386,22 @@ namespace KusumgarBusinessEntities.Common
         Get_Staggered_Order_By_Id_Sp,
         Get_Staggered_Order_By_Enquiry_Id_Sp,
         Delete_Staggered_Order_By_Id,
-        Insert_Attachments_Sp,
         Insert_Temp_Customer_Quality_Details_Sp,
         Update_Temp_Customer_Quality_Details_Sp,
+        Get_Temp_Customer_Quality_Details_By_Id_Sp,
         Insert_Supporting_Details_Sp,
         Update_Supporting_Details_Sp,
         Get_Supporting_Details_Sp,
+        Get_Supporting_Details_By_Enquiry_Id_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
+
+        // Attachments
+        Insert_Attachment_Sp,
+        Delete_Attachment_By_Id,
+        Get_Attachments_By_Ref_Type_Ref_Id_Sp,
+        Get_Attachments_By_Id_Sp,
     }
 
     public enum GenderType
@@ -514,14 +521,12 @@ namespace KusumgarBusinessEntities.Common
     public enum OrderStatus
     {
         Order_Arrived = 1,
-        Passed_PPC_Check_Point = 2,
-        Passed_W_Manager_Check_Point = 3,
-        Passed_P_Manager_Check_Point = 4,
-        Passed_C_Manager_Check_Point = 5,
-        Temp_Quality_Set_Created = 6,
-        Quality_Assigned = 7,
-        Planned = 8,
-        Delivered = 9,
+        
+    }
+
+    public enum RefType
+    {
+        Enquiry = 1, 
     }
 
 }

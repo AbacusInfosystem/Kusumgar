@@ -53,6 +53,26 @@
         }
     });
 
+    $("#frmSupporting_Details").validate({
+
+        rules: {
+
+            "Enquiry.Supporting_Details.Rate":
+                {
+                    number:true
+                },
+            "Enquiry.Supporting_Details.Customer_Roll_Length":
+                {
+                    number: true
+                }
+
+        },
+        messages: {
+
+        }
+
+    });
+
 
 
 });

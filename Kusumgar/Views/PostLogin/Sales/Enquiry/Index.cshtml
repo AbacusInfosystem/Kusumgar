@@ -48,6 +48,7 @@
     <input type="hidden" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id" name="Enquiry.Enquiry_Id">
     <input type="hidden" id="hdnEnquiry_Status_Id" value="@(Convert.ToInt32(EnquiryStatus.Enquiry_Arrived))" name="Enquiry.Enquiry_Status_Id">
     <input type="hidden" id="hdnEnquiry_No" value="@Model.Enquiry.Enquiry_No" name="Enquiry.Enquiry_No">
+    <input type="hidden" id="hdnRefType" value="@(Convert.ToInt32(RefType.Enquiry))">
 
     <!-- Main content -->
     <section class="content">
@@ -274,274 +275,180 @@
                             </div>
 
                             <div class="tab-pane" id="tab_3">
-                                <div id="">
+                                <form id="frmTemp_Customer_Quality_Details">
+                                    <div id="dvTempCustomerQualityDetails">
+                                        <div class="box-body">
 
-                                    <div class="box-body">
-                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="txtWidth_of_fabric" style="color: #333">Width of fabric</label>
+                                                        <input type="text" id="txtWidth_of_fabric" placeholder="Enter width of fabric" class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Width_Of_Fabric" value="@Model.Enquiry.Temp_Customer_Quality_Details.Width_Of_Fabric" />
+                                                    </div>
 
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtWidth_of_fabric">Width of fabric</label>
-                                                    <input type="text" id="txtWidth_of_fabric" placeholder="Enter width of fabric" class="form-control input-sm" />
+                                                    <div class="form-group">
+                                                        <label for="drpShade" style="color: #333">Shades</label>
+                                                        <select id="drpShade" class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Shades">
+                                                            <option value="">-Select shade-</option>
+                                                            @if (Model.Attribute_Codes.Count > 0)
+                                                            {
+                                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Shade.ToString()))
+                                                                {
+                                                                    if (Model.Enquiry.Temp_Customer_Quality_Details.Shades == item.Attribute_Code_Id)
+                                                                    {
+                                                                        <option value="@item.Attribute_Code_Id" selected="selected"> @item.Attribute_Code_Name</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@item.Attribute_Code_Id"> @item.Attribute_Code_Name</option>
+                                                                    }
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtPrint" style="color: #333">Print</label>
+                                                        <input type="text" id="txtPrint" placeholder="Enter Print" class="form-control input-sm" value="@Model.Enquiry.Temp_Customer_Quality_Details.Prints" name="Enquiry.Temp_Customer_Quality_Details.Prints" />
+                                                    </div>
+
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="drpShade">Shades</label>
-                                                    <select id="drpShade" class="form-control input-sm">
-                                                        <option>-Select shade-</option>
-                                                        <option>Bright Yarn</option>
-                                                        <option>Semi Dull</option>
-                                                        <option>Full Dull</option>
-                                                    </select>
+                                                <div class="col-md-3">
+
+                                                    <div class="form-group">
+                                                        <label for="txtCoating" style="color: #333">Coating</label>
+                                                        <input type="text" id="txtCoating" placeholder="Enter Coating " class="form-control input-sm" value="@Model.Enquiry.Temp_Customer_Quality_Details.Coating" name="Enquiry.Temp_Customer_Quality_Details.Coating" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtFinish" style="color: #333">Finish</label>
+                                                        <input type="text" id="txtFinish" placeholder="Enter Finish" class="form-control input-sm" value="@Model.Enquiry.Temp_Customer_Quality_Details.Finish" name="Enquiry.Temp_Customer_Quality_Details.Finish" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                            <label for="txtCustomer_Approved_Sample" style="color: #333">Cust. approved sample</label>
+                                                            <input type="text" id="txtCustomer_Approved_Sample" placeholder="Enter cust. app. sample" class="form-control input-sm" />
+                                                        <div class="auto-complete">
+                                                            <input type="hidden" id="hdnCustomer_Approved_Sample" value="@(Model.Enquiry.Temp_Customer_Quality_Details.Customer_Approved_Sample == 0 ? "" : Model.Enquiry.Temp_Customer_Quality_Details.Customer_Approved_Sample.ToString())" name="Enquiry.Temp_Customer_Quality_Details.Customer_Approved_Sample" class="auto-complete-value">
+                                                            <input type="hidden" id="hdnSample_No" value="@Model.Enquiry.Temp_Customer_Quality_Details.Sample_No" name="contact.Customer_Name" class="auto-complete-label">
+                                                        </div>
+                                                    </div>
+
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="txtPrint">Print</label>
-                                                    <input type="text" id="txtPrint" placeholder="Enter Print" class="form-control input-sm" />
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="txtApplication" style="color: #333">Application</label>
+                                                        <textarea id="txtApplication" placeholder="Enter application" class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Applications">@Model.Enquiry.Temp_Customer_Quality_Details.Applications</textarea>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtMarket_Segment" style="color: #333">Market segment</label>
+                                                        <textarea id="txtMarket_Segment" placeholder="Enter market segment" class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Market_Segment">@Model.Enquiry.Temp_Customer_Quality_Details.Market_Segment</textarea>
+                                                    </div>
                                                 </div>
 
+                                                <div class="col-md-3">
+
+                                                    <div class="form-group">
+                                                        <label for="txtPhysical_Appearance" style="color: #333">Physical apperarance</label>
+                                                        <textarea id="txtPhysical_Appearance" placeholder="Enter physical appearance " class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Physicla_Appearance">@Model.Enquiry.Temp_Customer_Quality_Details.Physicla_Appearance</textarea>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtLabel_Tagging" style="color: #333">Label / Tagging</label>
+                                                        <textarea id="txtLabel_Tagging" placeholder="Enter label / tagging " class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Lable_Tagging">@Model.Enquiry.Temp_Customer_Quality_Details.Lable_Tagging</textarea>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
 
-                                            <div class="col-md-3">
+                                        <div class="box-footer">
+                                            <button type="button" id="btnSave_Temp_Customer_Quality" class="btn btn-success">Save</button>
+                                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
-                                                <div class="form-group">
-                                                    <label for="txtCoating">Coating</label>
-                                                    <input type="text" id="txtCoating" placeholder="Enter Coating " class="form-control input-sm" />
+                            <div class="tab-pane" id="tab_4">
+                                <form id="frmSupporting_Details" enctype="multipart/form-data" method="POST">
+                                    <input type="hidden" id="hdnSupporting_Details_Id" value="@Model.Enquiry.Supporting_Details.Supporting_Details_Id">
+                                    <div id="divQualitySupporting_Details">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+
+                                                    <div class="form-group">
+                                                        <label for="txtRate" style="color: #333">Rate</label>
+                                                        <input type="text" id="txtRate" placeholder="Enter rate" class="form-control input-sm" name="Enquiry.Supporting_Details.Rate" value="@(Model.Enquiry.Supporting_Details.Rate == 0 ? "" : Model.Enquiry.Supporting_Details.Rate.ToString()) " />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtCustomer_Roll_Length" style="color: #333">Cust. roll Length</label>
+                                                        <input type="text" id="txtCustomer_Roll_Length" placeholder="Enter customer roll length" class="form-control input-sm" name="Enquiry.Supporting_Details.Customer_Roll_Length" value="@(Model.Enquiry.Supporting_Details.Customer_Roll_Length == 0 ? "" : Model.Enquiry.Supporting_Details.Customer_Roll_Length.ToString())">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtPacking" style="color: #333">Packing</label>
+                                                        <input type="text" id="txtPacking" placeholder="Enter Packing" class="form-control input-sm" name="Enquiry.Supporting_Details.Packing" value="@Model.Enquiry.Supporting_Details.Packing" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtDispatch" style="color: #333">Dispatch</label>
+                                                        <input type="text" id="txtDispatch" placeholder="Enter Dispatch" class="form-control input-sm" name="Enquiry.Supporting_Details.Dispatch" value="@Model.Enquiry.Supporting_Details.Dispatch" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtAdditional_Customer_Property" style="color: #333">Additional Cust. Prop.</label>
+                                                        <textarea id="txtAdditional_Customer_Property" placeholder="Enter add. cust. property " class="form-control input-sm" name="Enquiry.Supporting_Details.Additional_Customer_Prop">@Model.Enquiry.Supporting_Details.Additional_Customer_Prop</textarea>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtSource_of_Inquiry" style="color: #333">Source of enquiry</label>
+                                                        <input type="text" id="txtSource_of_Inquiry" placeholder="Enter source of enquiry" class="form-control input-sm" name="Enquiry.Supporting_Details.Source_Of_Enquiry" value="@Model.Enquiry.Supporting_Details.Source_Of_Enquiry" />
+                                                    </div>
+
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="txtFinish">Finish</label>
-                                                    <input type="text" id="txtFinish" placeholder="Enter Finish" class="form-control input-sm" />
-                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="Enquiry_Attach_Emails_Files" style="color: #333">Attach Emails and Files</label>
+                                                        <div class="div-drag-drop" id="Enquiry_Attach_Emails_Files">drag and drop here.</div>
+                                                        <br>
+                                                        <div class="multiple-list"></div>
+                                                    </div>
+                                                    </div>
+                                                    
 
-                                                <div class="form-group">
-                                                    <label for="txtCustomer_Approved_Sample">Cust. approved sample</label>
-                                                    <input type="text" id="txtCustomer_Approved_Sample" placeholder="Enter cust. app. sample" class="form-control input-sm" />
+                                                @*<div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="Attach_Files" style="color: #333">Attach Files</label>
+                                                        <div class="div-drag-drop" id="Attach_Files">drag and drop here.</div>
+                                                    </div>
                                                     <ul class="todo-list ui-sortable">
                                                         <li>
-                                                            <span class="text">Sample 1</span>
+                                                            <span class="text">Files 1</span>
                                                             <div class="tools">
                                                                 <i class="fa fa-remove"></i>
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                </div>
-
+                                                </div>*@
                                             </div>
-
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtApplication">Application</label>
-                                                    <textarea id="txtApplication" placeholder="Enter application" class="form-control input-sm"></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtMarket_Segment">Market segment</label>
-                                                    <textarea id="txtMarket_Segment" placeholder="Enter market segment" class="form-control input-sm"></textarea>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3">
-
-                                                <div class="form-group">
-                                                    <label for="txtPhysical_Appearance">Physical apperarance</label>
-                                                    <textarea id="txtPhysical_Appearance" placeholder="Enter physical appearance " class="form-control input-sm"></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtLabel_Tagging">Label / Tagging</label>
-                                                    <textarea id="txtLabel_Tagging" placeholder="Enter label / tagging " class="form-control input-sm"></textarea>
-                                                </div>
-                                            </div>
-
                                         </div>
 
-                                    </div>
-
-                                    <div class="box-footer">
-                                        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-                                        <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="tab-pane" id="tab_4">
-                                <div id="divQualitySupportingDetails">
-
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-
-                                                <div class="form-group">
-                                                    <label for="txtRate">Rate</label>
-                                                    <input type="text" id="txtRate" placeholder="Enter Rate" class="form-control input-sm" />
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtCustomer_Roll_Length">Cust. roll Length</label>
-                                                    <input type="text" id="txtCustomer_Roll_Length" placeholder="Enter customer roll length" class="form-control input-sm">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtPacking">Packing</label>
-                                                    <input type="text" id="txtPacking" placeholder="Enter Packing" class="form-control input-sm" />
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtDispatch">Dispatch</label>
-                                                    <input type="text" id="txtDispatch" placeholder="Enter Dispatch" class="form-control input-sm" />
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtAdditional_Customer_Property">Additional Cust. Prop.</label>
-                                                    <textarea id="txtAdditional_Customer_Property" placeholder="Enter add. cust. property " class="form-control input-sm"></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="txtSource_of_Inquiry">Source of enquiry</label>
-                                                    <input type="text" id="txtSource_of_Inquiry" placeholder="Enter source of enquiry" class="form-control input-sm" />
-                                                </div>
-
+                                        <div class="box-footer">
+                                            <div class="btn-group">
+                                                <button type="button" id="btnSave_Supporting_Details" class="btn btn-success btn-sm">Save</button>
+                                                <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
                                             </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="txtAttach_Emails">Attach Emails</label>
-                                                    <div class="div-drag-drop">drag and drop here.</div>
-                                                </div>
-                                                <ul class="todo-list ui-sortable">
-                                                    <li>
-                                                        <span class="text">Emails 1</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 2</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 4</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 5</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 6</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 7</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 8</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Emails 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="txtAttach_Files">Attach Files</label>
-                                                    <div class="div-drag-drop">drag and drop here.</div>
-                                                </div>
-                                                <ul class="todo-list ui-sortable">
-                                                    <li>
-                                                        <span class="text">Files 1</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 2</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 4</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 5</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 6</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 7</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 8</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Files 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
                                         </div>
                                     </div>
-
-                                    <div class="box-footer">
-                                        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-                                        <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
+                           
 
                             <div class="tab-pane" id="tab_5">
                                 <div id="divFunctional_Visual">
@@ -549,7 +456,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="txtQuantity">Functional Parameters</label>
+                                                    <label for="txtQuantity" style="color: #333">Functional Parameters</label>
                                                     <div class="input-group input-group-sm">
                                                         <input type="text" class="form-control input-sm" />
                                                         <span class="input-group-btn">
@@ -666,33 +573,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        //Datemask dd/mm/yyyy
-        $(".datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
-
-        $("#divCustomerQualityDetails").hide();
-
-        $("#btnCustomerQualityDetails").click(function () {
-
-            if ($("#divCustomerQualityDetails").css("display") == "none") {
-
-                $("#divCustomerQualityDetails").slideDown(1000);
-
-                $("#btnCustomerQualityDetails").text("I dont want to create new Quality !");
-            }
-            else {
-
-                $("#divCustomerQualityDetails").slideUp(1000);
-
-                $("#btnCustomerQualityDetails").text("No Quality # found. Apply for New !");
-
-            }
-        });
-    });
-</script>
+@*<script src="/Scripts/generic.dragdrop.js"></script>*@
 
 

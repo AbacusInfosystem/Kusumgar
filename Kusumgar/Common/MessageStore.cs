@@ -311,8 +311,33 @@ namespace Kusumgar
             FriendlyMessageInfo EQ005 = new FriendlyMessageInfo("EQ005", MessageType.Success, "Staggered order has been deleted successfully.");
             hash.Add("EQ005", EQ005);
 
+            FriendlyMessageInfo EQ006 = new FriendlyMessageInfo("EQ006", MessageType.Success, "Supporting details has been added successfully.");
+            hash.Add("EQ006", EQ006);
+
+            FriendlyMessageInfo EQ007 = new FriendlyMessageInfo("EQ007", MessageType.Success, "Supporting details has been updated successfully.");
+            hash.Add("EQ007", EQ007);
+
+            FriendlyMessageInfo EQ008 = new FriendlyMessageInfo("EQ008", MessageType.Success, "Attachment has been added successfully.");
+            hash.Add("EQ008", EQ008);
+
+            FriendlyMessageInfo EQ009 = new FriendlyMessageInfo("EQ009", MessageType.Success, "Attachment has been deleted successfully.");
+            hash.Add("EQ009", EQ009);
 
 
+
+
+            #endregion
+
+            #region Ajax
+
+            FriendlyMessageInfo AJ001 = new FriendlyMessageInfo("AJ001", MessageType.Success, "Attachments has been added successfully.");
+            hash.Add("AJ001", AJ001);
+
+            FriendlyMessageInfo AJ002 = new FriendlyMessageInfo("AJ002", MessageType.Success, "Attachment has been deleted successfully.");
+            hash.Add("AJ002", AJ002);
+
+            FriendlyMessageInfo AJ003 = new FriendlyMessageInfo("AJ003", MessageType.Warning, "Attachment already exist.");
+            hash.Add("AJ003", AJ003);
 
             #endregion
 

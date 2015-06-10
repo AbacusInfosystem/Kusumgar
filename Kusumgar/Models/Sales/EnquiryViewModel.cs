@@ -9,24 +9,32 @@ namespace Kusumgar.Models
 {
     public class EnquiryViewModel
     {
-       
-
         public EnquiryViewModel()
         {
             Friendly_Message = new List<FriendlyMessageInfo>();
+
             Pager = new PaginationInfo();
+
             Enquiry = new EnquiryInfo();
+
             Enquiries = new List<EnquiryInfo>();
 
             Filter = new Enquiry_Filter();
+
+            Attribute_Codes = new List<AttributeCodeInfo>();
         }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
+
         public PaginationInfo Pager { get; set; }
+
         public EnquiryInfo Enquiry { get; set; }
+
         public List<EnquiryInfo> Enquiries { get; set; }
 
         public Enquiry_Filter Filter { get; set; }
+
+        public List<AttributeCodeInfo> Attribute_Codes { get; set; }
        
     }
 

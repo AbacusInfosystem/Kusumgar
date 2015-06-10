@@ -244,7 +244,7 @@
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\CustomerController.cs" />
     <Compile Include="Controllers\PostLogin\Dashboard\DashboardController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\AjaxController.cs" />
+    <Compile Include="Controllers\PostLogin\AjaxController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ArticleProcessWorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
@@ -281,7 +281,7 @@
     <Compile Include="Models\CRM\ComplaintViewModel.cs" />
     <Compile Include="Models\CRM\ContactViewModel.cs" />
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
-    <Compile Include="Models\Master\AjaxController.cs" />
+    <Compile Include="Models\Master\AjaxViewModel.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
     <Compile Include="Models\Master\ConsumableViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
@@ -954,7 +954,9 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\generic.dragdrop.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
+    <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />

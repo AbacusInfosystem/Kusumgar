@@ -265,12 +265,46 @@ namespace KusumgarDataAccess
 
         #endregion
 
+        #region Supporting Details
 
+        public void Insert_Supporting_Details(SupportingDetailsInfo supporting_Details)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Supporting_Details(supporting_Details), StoredProcedures.Insert_Supporting_Details_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Update_Supporting_Details(SupportingDetailsInfo supporting_Details)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Supporting_Details(supporting_Details), StoredProcedures.Update_Supporting_Details_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public SupportingDetailsInfo Get_Supporting_Details_By_Enquiry_Id(int enquiry_Id)
+        {
+            SupportingDetailsInfo supporting_Details = new SupportingDetailsInfo();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", enquiry_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Supporting_Details_By_Enquiry_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                supporting_Details = Get_Supporting_Details_Values(dr);
+            }
+            return supporting_Details;
+        }
 
         private List<SqlParameter> Set_Values_In_Supporting_Details(SupportingDetailsInfo supporting_Details)
         {
             List<SqlParameter> sqlParams = new List<SqlParameter>();
-            sqlParams.Add(new SqlParameter("@Supporting_Details_Id", supporting_Details.Supporting_Details_Id));
+            if (supporting_Details.Supporting_Details_Id != 0)
+            {
+                sqlParams.Add(new SqlParameter("@Supporting_Details_Id", supporting_Details.Supporting_Details_Id));
+            }
             sqlParams.Add(new SqlParameter("@Enquiry_Id", supporting_Details.Enquiry_Id));
             sqlParams.Add(new SqlParameter("@Rate", supporting_Details.Rate));
             sqlParams.Add(new SqlParameter("@Customer_Roll_Length", supporting_Details.Customer_Roll_Length));
@@ -279,45 +313,13 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Additional_Customer_Prop", supporting_Details.Additional_Customer_Prop));
             sqlParams.Add(new SqlParameter("@Source_Of_Enquiry", supporting_Details.Source_Of_Enquiry));
             sqlParams.Add(new SqlParameter("@Is_Active", supporting_Details.Is_Active));
-            sqlParams.Add(new SqlParameter("@CreatedBy", supporting_Details.CreatedBy));
-            sqlParams.Add(new SqlParameter("@CreatedOn", supporting_Details.CreatedOn));
+            if (supporting_Details.Supporting_Details_Id == 0)
+            {
+                sqlParams.Add(new SqlParameter("@CreatedBy", supporting_Details.CreatedBy));
+                sqlParams.Add(new SqlParameter("@CreatedOn", supporting_Details.CreatedOn));
+            }
             sqlParams.Add(new SqlParameter("@UpdatedBy", supporting_Details.UpdatedBy));
             sqlParams.Add(new SqlParameter("@UpdatedOn", supporting_Details.UpdatedOn));
-            return sqlParams;
-        }
-
-        private List<SqlParameter> Set_Values_In_Temp_Customer_Quality_Details(TempCustomerQualityDetailsInfo tempcustomerqualitydetails)
-        {
-            List<SqlParameter> sqlParams = new List<SqlParameter>();
-            sqlParams.Add(new SqlParameter("@Enquiry_Id", tempcustomerqualitydetails.Enquiry_Id));
-            sqlParams.Add(new SqlParameter("@Width_Of_Fabric", tempcustomerqualitydetails.Width_Of_Fabric));
-            sqlParams.Add(new SqlParameter("@Coating", tempcustomerqualitydetails.Coating));
-            sqlParams.Add(new SqlParameter("@Applications", tempcustomerqualitydetails.Applications));
-            sqlParams.Add(new SqlParameter("@Physicla_Appearance", tempcustomerqualitydetails.Physicla_Appearance));
-            sqlParams.Add(new SqlParameter("@Shades", tempcustomerqualitydetails.Shades));
-            sqlParams.Add(new SqlParameter("@Finish", tempcustomerqualitydetails.Finish));
-            sqlParams.Add(new SqlParameter("@Prints", tempcustomerqualitydetails.Prints));
-            sqlParams.Add(new SqlParameter("@Customer_Approved_Sample", tempcustomerqualitydetails.Customer_Approved_Sample));
-            sqlParams.Add(new SqlParameter("@Market_Segment", tempcustomerqualitydetails.Market_Segment));
-            sqlParams.Add(new SqlParameter("@Lable_Tagging", tempcustomerqualitydetails.Lable_Tagging));
-            sqlParams.Add(new SqlParameter("@CreatedBy", tempcustomerqualitydetails.CreatedBy));
-            sqlParams.Add(new SqlParameter("@CreatedOn", tempcustomerqualitydetails.CreatedOn));
-            sqlParams.Add(new SqlParameter("@UpdatedBy", tempcustomerqualitydetails.UpdatedBy));
-            sqlParams.Add(new SqlParameter("@UpdatedOn", tempcustomerqualitydetails.UpdatedOn));
-            return sqlParams;
-        }
-
-        private List<SqlParameter> Set_Values_In_Attachments(AttachmentsInfo attachments)
-        {
-            List<SqlParameter> sqlParams = new List<SqlParameter>();
-            sqlParams.Add(new SqlParameter("@Attachment_Id", attachments.Attachment_Id));
-            sqlParams.Add(new SqlParameter("@Attachment_Type_Id", attachments.Attachment_Type_Id));
-            sqlParams.Add(new SqlParameter("@Ref_Id", attachments.Ref_Id));
-            sqlParams.Add(new SqlParameter("@Is_Active", attachments.Is_Active));
-            sqlParams.Add(new SqlParameter("@CreatedBy", attachments.CreatedBy));
-            sqlParams.Add(new SqlParameter("@CreatedOn", attachments.CreatedOn));
-            sqlParams.Add(new SqlParameter("@UpdatedBy", attachments.UpdatedBy));
-            sqlParams.Add(new SqlParameter("@UpdatedOn", attachments.UpdatedOn));
             return sqlParams;
         }
 
@@ -341,19 +343,67 @@ namespace KusumgarDataAccess
             return supportingdetails;
         }
 
-        private AttachmentsInfo Get_Attachments_Values(DataRow dr)
-        {
-            AttachmentsInfo attachments = new AttachmentsInfo();
+        #endregion
 
-            attachments.Attachment_Id = Convert.ToInt32(dr["Attachment_Id"]);
-            attachments.Attachment_Type_Id = Convert.ToInt32(dr["Attachment_Type_Id"]);
-            attachments.Ref_Id = Convert.ToInt32(dr["Ref_Id"]);
-            attachments.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            attachments.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            attachments.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            attachments.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-            attachments.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            return attachments;
+        #region Temp Customer Quality Details
+
+        public void Insert_Temp_Customer_Quality_Details(TempCustomerQualityDetailsInfo temp_Customer_Quality_Details)
+        {
+            string mode = "insert";
+
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Temp_Customer_Quality_Details(temp_Customer_Quality_Details,mode), StoredProcedures.Insert_Temp_Customer_Quality_Details_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Update_Temp_Customer_Quality_Details(TempCustomerQualityDetailsInfo temp_Customer_Quality_Details)
+        {
+            string mode = "update";
+
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Temp_Customer_Quality_Details(temp_Customer_Quality_Details, mode), StoredProcedures.Update_Supporting_Details_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public TempCustomerQualityDetailsInfo Get_Temp_Customer_Quality_Details_By_Id(int enquiry_Id)
+        {
+            TempCustomerQualityDetailsInfo temp_Customer_Quality_Details = new TempCustomerQualityDetailsInfo();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", enquiry_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Temp_Customer_Quality_Details_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                temp_Customer_Quality_Details = Get_Temp_Customer_Quality_Details_Values(dr);
+            }
+            return temp_Customer_Quality_Details;
+        }
+
+        private List<SqlParameter> Set_Values_In_Temp_Customer_Quality_Details(TempCustomerQualityDetailsInfo tempcustomerqualitydetails,string mode)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", tempcustomerqualitydetails.Enquiry_Id));
+            sqlParams.Add(new SqlParameter("@Width_Of_Fabric", tempcustomerqualitydetails.Width_Of_Fabric));
+            sqlParams.Add(new SqlParameter("@Coating", tempcustomerqualitydetails.Coating));
+            sqlParams.Add(new SqlParameter("@Applications", tempcustomerqualitydetails.Applications));
+            sqlParams.Add(new SqlParameter("@Physicla_Appearance", tempcustomerqualitydetails.Physicla_Appearance));
+            sqlParams.Add(new SqlParameter("@Shades", tempcustomerqualitydetails.Shades));
+            sqlParams.Add(new SqlParameter("@Finish", tempcustomerqualitydetails.Finish));
+            sqlParams.Add(new SqlParameter("@Prints", tempcustomerqualitydetails.Prints));
+            sqlParams.Add(new SqlParameter("@Customer_Approved_Sample", tempcustomerqualitydetails.Customer_Approved_Sample));
+            sqlParams.Add(new SqlParameter("@Market_Segment", tempcustomerqualitydetails.Market_Segment));
+            sqlParams.Add(new SqlParameter("@Lable_Tagging", tempcustomerqualitydetails.Lable_Tagging));
+            sqlParams.Add(new SqlParameter("@CreatedBy", tempcustomerqualitydetails.CreatedBy));
+            sqlParams.Add(new SqlParameter("@CreatedOn", tempcustomerqualitydetails.CreatedOn));
+            if (mode != "update")
+            {
+                sqlParams.Add(new SqlParameter("@UpdatedBy", tempcustomerqualitydetails.UpdatedBy));
+                sqlParams.Add(new SqlParameter("@UpdatedOn", tempcustomerqualitydetails.UpdatedOn));
+            }
+            return sqlParams;
         }
 
         private TempCustomerQualityDetailsInfo Get_Temp_Customer_Quality_Details_Values(DataRow dr)
@@ -375,9 +425,14 @@ namespace KusumgarDataAccess
             tempcustomerqualitydetails.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             tempcustomerqualitydetails.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             tempcustomerqualitydetails.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            tempcustomerqualitydetails.Sample_No = Convert.ToString(dr["Sample_No"]);
             return tempcustomerqualitydetails;
         }
 
+        #endregion
+
+        
         public List<AutocompleteInfo> Get_Quality_Autocomplete(string quality_No)
         {
             List<AutocompleteInfo> qualities = new List<AutocompleteInfo>();

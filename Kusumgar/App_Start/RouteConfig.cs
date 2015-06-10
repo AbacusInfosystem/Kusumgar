@@ -810,6 +810,24 @@ namespace Kusumgar
             defaults: new { controller = "Test", action = "Get_Test_AutoComplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+          name: "ajax-2",
+          url: "ajax/attachments",
+          defaults: new { controller = "Ajax", action = "Insert_Attachment", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "ajax-3",
+          url: "ajax/delete-attachments",
+          defaults: new { controller = "Ajax", action = "Delete_Attachment", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "ajax-4",
+          url: "ajax/get-attachments-by-ref-type-id",
+          defaults: new { controller = "Ajax", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Vendor
@@ -1253,6 +1271,30 @@ namespace Kusumgar
            defaults: new { controller = "Enquiry", action = "Delete_Staggered_Order_By_Id", staggered_Order_Id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+          name: "enquiry-18",
+          url: "sales/insert-supporting-details",
+          defaults: new { controller = "Enquiry", action = "Insert_Supporting_Details", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "enquiry-19",
+          url: "sales/update-supporting-details",
+          defaults: new { controller = "Enquiry", action = "Update_Supporting_Details", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "enquiry-20",
+          url: "sales/insert-temp-customer-quality-details",
+          defaults: new { controller = "Enquiry", action = "Insert_Temp_Customer_Quality_Details", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "enquiry-21",
+          url: "sales/update-temp-customer-quality-details",
+          defaults: new { controller = "Enquiry", action = "Update_Temp_Customer_Quality_Details", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
 
             #endregion
 
@@ -1285,23 +1327,23 @@ namespace Kusumgar
 
 
 
-            routes.MapRoute(
-            name: "ajax-3",
-            url: "ajax/vendor-list/{vendor_Name}",
-            defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+           // routes.MapRoute(
+           // name: "ajax-3",
+           // url: "ajax/vendor-list/{vendor_Name}",
+           // defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
+           // namespaces: new string[] { "Kusumgar.Controllers" });
 
-            routes.MapRoute(
-            name: "ajax-4",
-            url: "ajax/defect-type-list/{defect_Type_Name}",
-            defaults: new { controller = "DefectType", action = "Get_Defect_Type_AutoComplete", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+           // routes.MapRoute(
+           // name: "ajax-4",
+           // url: "ajax/defect-type-list/{defect_Type_Name}",
+           // defaults: new { controller = "DefectType", action = "Get_Defect_Type_AutoComplete", id = UrlParameter.Optional },
+           // namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "ajax-5",
-           url: "ajax/defect-list/{defect_Name}",
-           defaults: new { controller = "Defect", action = "Get_Defect_AutoComplete", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+           //routes.MapRoute(
+           //name: "ajax-5",
+           //url: "ajax/defect-list/{defect_Name}",
+           //defaults: new { controller = "Defect", action = "Get_Defect_AutoComplete", id = UrlParameter.Optional },
+           //namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

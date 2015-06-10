@@ -11,11 +11,11 @@ namespace KusumgarBusinessEntities
     {
         public EnquiryInfo()
         {
-            SupportingDetails = new SupportingDetailsInfo();
+            Supporting_Details = new SupportingDetailsInfo();
 
             Staggered_Orders = new List<StaggeredOrderInfo>();
 
-            TempCustomerQualityDetails = new TempCustomerQualityDetailsInfo();
+            Temp_Customer_Quality_Details = new TempCustomerQualityDetailsInfo();
 
             Attachments = new List<AttachmentsInfo>();
 
@@ -54,13 +54,13 @@ namespace KusumgarBusinessEntities
 
         public string Quality_No { get; set; }
 
-        public SupportingDetailsInfo SupportingDetails { get; set; }
+        public SupportingDetailsInfo Supporting_Details { get; set; }
 
         public StaggeredOrderInfo Staggered_Order { get; set; }
 
         public List<StaggeredOrderInfo> Staggered_Orders { get; set; }
 
-        public TempCustomerQualityDetailsInfo TempCustomerQualityDetails { get; set; }
+        public TempCustomerQualityDetailsInfo Temp_Customer_Quality_Details { get; set; }
 
         public List<AttachmentsInfo> Attachments { get; set; }
 

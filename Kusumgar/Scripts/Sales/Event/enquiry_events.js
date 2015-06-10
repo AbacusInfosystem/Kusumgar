@@ -1,6 +1,8 @@
 ﻿
 $(function () {
 
+    $(".datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+
     //Start : Enquiry 
     
     InitializeAutoComplete($('#txtQuality_No'));
@@ -15,7 +17,7 @@ $(function () {
         $("#tabFuncational_Visual").hide();
     }
 
-    if ($("#hdnQuality_Id").val() == 0)
+    if ($("#hdnQuality_Id").val() != 0)
     {
         $("#tabCustomer_Quality").hide();
     }
@@ -51,4 +53,35 @@ $(function () {
 
 
     // End : Staggered Order
+
+    // Start : Supporting Details
+
+    $("#btnSave_Supporting_Details").click(function () {
+        
+        if($("#frmSupporting_Details").valid())
+        {
+            Save_Supporting_Details();
+        }
+    });
+
+    // End : Supporting Details
+
+    // Start : Temp Customer Quality
+    $("#btnSave_Temp_Customer_Quality").click(function () {
+       // if ($("#frmTemp_Customer_Quality_Details").valid()) {
+            Save_Temp_Customer_Quality_Details();
+        //}
+    });
+
+    // End Temp Customer Quality
+
+    // Start : Attachments
+
+    // Drag and Drop Initialization
+    InitializeDragDrop($("#Enquiry_Attach_Emails_Files"), "/ajax/attachments", Callback, { RefType: $('#hdnRefType').val(), RefId: $('#hdnEnquiry_Id').val() });
+
+    Bind_Attachments();
+
+    // End : Attachments
 });
+

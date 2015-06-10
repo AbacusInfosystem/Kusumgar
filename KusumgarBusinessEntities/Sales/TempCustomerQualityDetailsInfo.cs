@@ -38,5 +38,11 @@ namespace KusumgarBusinessEntities
 
         public DateTime UpdatedOn { get; set; }
 
+        #region Additional Fields
+
+        public string Sample_No { get; set; }
+
+        #endregion
+
     }
 }

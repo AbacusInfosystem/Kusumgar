@@ -58,7 +58,7 @@
     <Compile Include="CRM\ComplaintManager.cs" />
     <Compile Include="CRM\ContactManager.cs" />
     <Compile Include="Login\LoginManager.cs" />
-    <Compile Include="Master\AjaxManager.cs" />
+    <Compile Include="AjaxManager.cs" />
     <Compile Include="Master\AttributeCodeManager.cs" />
     <Compile Include="CRM\CustomerManager.cs" />
     <Compile Include="Master\ConsumableManager.cs" />
