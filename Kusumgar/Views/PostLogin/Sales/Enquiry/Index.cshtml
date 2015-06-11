@@ -115,58 +115,8 @@
                                                         </div>
 
                                                         <div class="box-body table-responsive no-padding">
-                                                            <table class="table table-striped">
-                                                                <tr>
-                                                                    <th>Quality Attributes</th>
-                                                                    <th>Values</th>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Yarn Type</td>
-                                                                    <td>Nylon 66</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        Reed
-                                                                    </td>
-                                                                    <td>50</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        Pick
-                                                                    </td>
-                                                                    <td>62</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        Weave
-                                                                    </td>
-                                                                    <td>62</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        Minimum Order Size
-                                                                    </td>
-                                                                    <td>62</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        Ideal Roll Length
-                                                                    </td>
-                                                                    <td>62</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        Our Sample No
-                                                                    </td>
-                                                                    <td>62</td>
-                                                                </tr>
+                                                            <table class="table table-striped" id="tblQuality_Details">
+                                                               
                                                             </table>
 
                                                         </div>
@@ -353,7 +303,7 @@
 
                                                     <div class="form-group">
                                                         <label for="txtPhysical_Appearance" style="color: #333">Physical apperarance</label>
-                                                        <textarea id="txtPhysical_Appearance" placeholder="Enter physical appearance " class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Physicla_Appearance">@Model.Enquiry.Temp_Customer_Quality_Details.Physicla_Appearance</textarea>
+                                                        <textarea id="txtPhysical_Appearance" placeholder="Enter physical appearance " class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Physical_Appearance">@Model.Enquiry.Temp_Customer_Quality_Details.Physical_Appearance</textarea>
                                                     </div>
 
                                                     <div class="form-group">
@@ -365,8 +315,10 @@
                                         </div>
 
                                         <div class="box-footer">
-                                            <button type="button" id="btnSave_Temp_Customer_Quality" class="btn btn-success">Save</button>
-                                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle</a>
+                                            <div class="btn-group">
+                                                <button type="button" id="btnSave_Temp_Customer_Quality" class="btn btn-success btn-sm">Save</button>
+                                                <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -456,108 +408,46 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="txtQuantity" style="color: #333">Functional Parameters</label>
+                                                    <label for="txtFunctional_Parameters" style="color: #333">Functional Parameters</label>
                                                     <div class="input-group input-group-sm">
-                                                        <input type="text" class="form-control input-sm" />
+                                                        <input type="text" class="form-control input-sm" id="txtFunctional_Parameters" />
+                                                        <input type="hidden" id="hdnFunctional_Parameters" >
                                                         <span class="input-group-btn">
-                                                            <button class="btn btn-success btn-flat" type="button">Add</button>
+                                                            <button class="btn btn-success btn-flat" type="button" id="btnAdd_Functional_Parameters">Add</button>
                                                         </span>
                                                     </div>
+                                                    <br>
+                                                    <div class="multiple-list"></div>
                                                 </div>
 
                                                 <!-- /input-group -->
 
-                                                <ul class="todo-list ui-sortable">
-                                                    <li>
-                                                        <span class="text">Test Report 1</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 2</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 4</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 5</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 6</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 7</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 8</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                </ul>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="txtQuantity">Visual Parameters</label>
+                                                    <label for="txtVisual_Parameters">Visual Parameters</label>
                                                     <div class="input-group input-group-sm">
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" class="form-control" id="txtVisual_Parameters">
+                                                        <input type="hidden" id="hdnVisual_Parameters">
                                                         <span class="input-group-btn">
-                                                            <button class="btn btn-success btn-flat" type="button">Add</button>
+                                                            <button class="btn btn-success btn-flat" type="button" id="btnAdd_Visual_Parameters">Add</button>
                                                         </span>
                                                     </div>
+                                                    <br>
+                                                    <div class="multiple-list"></div>
                                                 </div>
                                                 <!-- /input-group -->
 
-                                                <ul class="todo-list ui-sortable">
-                                                    <li>
-                                                        <span class="text">Test Report 1</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 2</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                    <li style="" class="">
-                                                        <span class="text">Test Report 3</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                              
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-footer">
+                                        <div class="btn-group">
+                                            
+                                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
                                         </div>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@ namespace KusumgarBusinessEntities
 
         public string Applications { get; set; }
 
-        public string Physicla_Appearance { get; set; }
+        public string Physical_Appearance { get; set; }
 
         public int Shades { get; set; }
 

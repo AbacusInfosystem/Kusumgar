@@ -20,6 +20,10 @@ namespace KusumgarBusinessEntities
             Attachments = new List<AttachmentsInfo>();
 
             Staggered_Order = new StaggeredOrderInfo();
+
+            Temp_Functional_Parameters = new TempFunctionalParametersInfo();
+
+            Temp_Visual_Parameters = new TempVisualParametersInfo();
         }
 
         public int Enquiry_Id { get; set; }
@@ -64,11 +68,15 @@ namespace KusumgarBusinessEntities
 
         public List<AttachmentsInfo> Attachments { get; set; }
 
+        public TempFunctionalParametersInfo Temp_Functional_Parameters { get; set; }
+
+        public TempVisualParametersInfo Temp_Visual_Parameters { get; set; }
+
         public string  Enquiry_Status
         {
             get
             {
-                return ((EnquiryStatus)Enquiry_Status_Id).ToString();             
+                return ((EnquiryStatus)Enquiry_Status_Id).ToString().Replace('_',' ');             
             }
             set
             {

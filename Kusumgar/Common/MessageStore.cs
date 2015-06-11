@@ -323,6 +323,18 @@ namespace Kusumgar
             FriendlyMessageInfo EQ009 = new FriendlyMessageInfo("EQ009", MessageType.Success, "Attachment has been deleted successfully.");
             hash.Add("EQ009", EQ009);
 
+            FriendlyMessageInfo EQ010 = new FriendlyMessageInfo("EQ010", MessageType.Success, "Funcational parameter has been added successfully.");
+            hash.Add("EQ010", EQ010);
+
+            FriendlyMessageInfo EQ011 = new FriendlyMessageInfo("EQ011", MessageType.Success, "Funcational parameter has been deleted successfully.");
+            hash.Add("EQ011", EQ011);
+
+            FriendlyMessageInfo EQ012 = new FriendlyMessageInfo("EQ012", MessageType.Success, "Visual parameter has been added successfully.");
+            hash.Add("EQ012", EQ012);
+
+            FriendlyMessageInfo EQ013 = new FriendlyMessageInfo("EQ013", MessageType.Success, "Visual parameter has been deleted successfully.");
+            hash.Add("EQ013", EQ013);
+
 
 
 

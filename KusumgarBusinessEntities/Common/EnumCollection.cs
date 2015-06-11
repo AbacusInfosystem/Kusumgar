@@ -249,6 +249,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Fabric_Types_sp,
         Get_Test_By_Fabric_Type_sp,
         Get_Test_Unit_AutoComplete_sp,
+        Get_Test_By_Test_Name_sp,
 
         //AttributeCode
         Get_Attribute_Codes_sp,
@@ -393,15 +394,28 @@ namespace KusumgarBusinessEntities.Common
         Update_Supporting_Details_Sp,
         Get_Supporting_Details_Sp,
         Get_Supporting_Details_By_Enquiry_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Quality_Id_Sp,
+        Get_Enquiries_By_Quality_Id_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
+        Get_Quality_By_Id_Sp,
 
         // Attachments
         Insert_Attachment_Sp,
         Delete_Attachment_By_Id,
         Get_Attachments_By_Ref_Type_Ref_Id_Sp,
         Get_Attachments_By_Id_Sp,
+
+        // Temp Functional Visual Parameters
+        Insert_Temp_Functional_Parameters_Sp,
+        Insert_Temp_Visual_Parameters_Sp,
+        Get_Temp_Visual_Parameters_By_Enquiry_Id,
+        Get_Temp_Functional_Parameters_By_Enquiry_Id,
+        Delete_Temp_Functional_Parameters_By_Id,
+        Delete_Temp_Visual_Parameters_By_Id,
+
     }
 
     public enum GenderType

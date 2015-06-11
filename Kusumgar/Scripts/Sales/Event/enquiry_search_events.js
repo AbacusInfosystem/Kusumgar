@@ -1,6 +1,8 @@
 ﻿$(function () {
 
-    
+    InitializeAutoComplete($('#txtCustomer_Name'));
+
+    InitializeAutoComplete($('#txtQuality_No'));
 
     $('#hdfCurrentPage').val(0);
 

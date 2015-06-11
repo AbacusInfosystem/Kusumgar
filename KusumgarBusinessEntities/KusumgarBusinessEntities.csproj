@@ -73,6 +73,7 @@
     <Compile Include="Master\MaterialInfo.cs" />
     <Compile Include="Master\MaterialSubCategoryInfo.cs" />
     <Compile Include="Master\ProcessInfo.cs" />
+    <Compile Include="Master\QualityInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
     <Compile Include="Master\StateInfo.cs" />
@@ -93,6 +94,8 @@
     <Compile Include="Sales\StaggeredOrderInfo.cs" />
     <Compile Include="Sales\SupportingDetailsInfo.cs" />
     <Compile Include="Sales\TempCustomerQualityDetailsInfo.cs" />
+    <Compile Include="Sales\TempFunctionalParametersInfo.cs" />
+    <Compile Include="Sales\TempVisualParametersInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CMS\" />

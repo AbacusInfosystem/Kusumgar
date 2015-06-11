@@ -168,6 +168,9 @@ var InitializeAutoComplete = function (elementObject) {
             $(this).parents('.form-group').find('.auto-complete-value').val(ui.item.value);
             $(this).parents('.form-group').find('.auto-complete-label').val(ui.item.label);
 
+            $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+            $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
+
             if ($(this).parents('.form-group').find(".todo-list")[0]) {
                 $(this).parents('.form-group').find('.todo-list').remove();
             }
@@ -182,11 +185,13 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').append(htmlText);
             }
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
             });
 
@@ -246,13 +251,14 @@ var InitializeAutoComplete = function (elementObject) {
 
             $(this).parents('.form-group').find('input[type=text]').val("");
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
-
             });
         }
         else {

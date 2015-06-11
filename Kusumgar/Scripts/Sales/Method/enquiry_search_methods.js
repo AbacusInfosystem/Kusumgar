@@ -4,10 +4,10 @@ function SearchEnquiry() {
         {
             Filter:
                 {
-                    Quality_Id: $("#").val(),
-                    Quality_No: $("#").val(),
-                    Customer_Id: $("#").val(),
-                    Customer_Name : $("#").val()
+                    Quality_Id: $("#hdnQuality_Id").val(),
+                    Quality_No: $("#hdnQuality_No").val(),
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+                    Customer_Name: $("#hdnContact_Name").val()
                 },
 
             Pager: {

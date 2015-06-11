@@ -69,10 +69,16 @@ namespace KusumgarModel
             return fabricTypes;
         }
 
-        public List<AutocompleteInfo> Get_Test_AutoComplete(string testUnitName)
+        public List<AutocompleteInfo> Get_Test_Unit_AutoComplete(string testUnitName)
         {
             TestRepo tRepo = new TestRepo();
-            return tRepo.Get_Test_AutoComplete(testUnitName);
+            return tRepo.Get_Test_Unit_AutoComplete(testUnitName);
+        }
+
+        public List<AutocompleteInfo> Get_Test_Autocomplete(string test_Name)
+        {
+            TestRepo tRepo = new TestRepo();
+            return tRepo.Get_Test_Autocomplete(test_Name);
         }
 
     }

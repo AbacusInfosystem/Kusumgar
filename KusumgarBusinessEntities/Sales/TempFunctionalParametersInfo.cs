@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KusumgarBusinessEntities.Common;
 
-namespace KusumgarBusinessEntities.Common
+namespace KusumgarBusinessEntities
 {
-    public class AttachmentsInfo
+    public class TempFunctionalParametersInfo
     {
-        public long Attachment_Id { get; set; }
+        public int Temp_Functional_Parameters_Id { get; set; }
 
-        public int Ref_Id { get; set; }
+        public int Enquiry_Id { get; set; }
 
-        public int Ref_Type { get; set; }
-
-        public string Document_Name { get; set; }
+        public int Test_Id { get; set; }
 
         public int CreatedBy { get; set; }
 
@@ -26,11 +25,13 @@ namespace KusumgarBusinessEntities.Common
 
         #region Additional Fields
 
+        public string Test_Name { get; set; }
+
         public string Label 
         {
             get
             {
-                return Document_Name;
+                return Test_Name;
             }
             set
             {
@@ -38,30 +39,19 @@ namespace KusumgarBusinessEntities.Common
             }
         }
 
-        public long Value
+        public int Value
         {
             get
             {
-                return Attachment_Id;
+                return Temp_Functional_Parameters_Id;
             }
             set
             {
-                Value = value;    
-            }
-        }
-
-        public string Ref_Type_Str
-        {
-            get
-            {
-                 return ((RefType)Ref_Type).ToString();
-            }
-            set
-            {
-                Ref_Type_Str = value;
+                Value = value;  
             }
         }
 
         #endregion
+
     }
 }

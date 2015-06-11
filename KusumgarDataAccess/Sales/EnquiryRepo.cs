@@ -145,6 +145,61 @@ namespace KusumgarDataAccess
             return enquiry;
         }
 
+        public List<EnquiryInfo> Get_Enquiries_By_Customer_Id(int customer_Id, ref PaginationInfo pager)
+        {
+             List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Enquiries_By_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                enquiries.Add(Get_Enquiry_Values(dr));
+            }
+            return enquiries;
+        }
+
+        public List<EnquiryInfo> Get_Enquiries_By_Customer_Id_Quality_Id(int customer_Id,int quality_Id, ref PaginationInfo pager)
+        {
+             List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
+
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            sqlParams.Add(new SqlParameter("@Quality_Id", quality_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Enquiries_By_Customer_Id_Quality_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                enquiries.Add(Get_Enquiry_Values(dr));
+            }
+
+            return enquiries;
+        }
+
+        public List<EnquiryInfo> Get_Enquiries_By_Quality_Id(int quality_Id, ref PaginationInfo pager)
+        {
+            List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Quality_Id", quality_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Enquiries_By_Quality_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                enquiries.Add(Get_Enquiry_Values(dr));
+            }
+
+            return enquiries;
+        }
+
         #endregion
 
         #region Staggered Order
@@ -389,7 +444,7 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Width_Of_Fabric", tempcustomerqualitydetails.Width_Of_Fabric));
             sqlParams.Add(new SqlParameter("@Coating", tempcustomerqualitydetails.Coating));
             sqlParams.Add(new SqlParameter("@Applications", tempcustomerqualitydetails.Applications));
-            sqlParams.Add(new SqlParameter("@Physicla_Appearance", tempcustomerqualitydetails.Physicla_Appearance));
+            sqlParams.Add(new SqlParameter("@Physical_Appearance", tempcustomerqualitydetails.Physical_Appearance));
             sqlParams.Add(new SqlParameter("@Shades", tempcustomerqualitydetails.Shades));
             sqlParams.Add(new SqlParameter("@Finish", tempcustomerqualitydetails.Finish));
             sqlParams.Add(new SqlParameter("@Prints", tempcustomerqualitydetails.Prints));
@@ -414,7 +469,7 @@ namespace KusumgarDataAccess
             tempcustomerqualitydetails.Width_Of_Fabric = Convert.ToString(dr["Width_Of_Fabric"]);
             tempcustomerqualitydetails.Coating = Convert.ToString(dr["Coating"]);
             tempcustomerqualitydetails.Applications = Convert.ToString(dr["Applications"]);
-            tempcustomerqualitydetails.Physicla_Appearance = Convert.ToString(dr["Physicla_Appearance"]);
+            tempcustomerqualitydetails.Physical_Appearance = Convert.ToString(dr["Physical_Appearance"]);
             tempcustomerqualitydetails.Shades = Convert.ToInt32(dr["Shades"]);
             tempcustomerqualitydetails.Finish = Convert.ToString(dr["Finish"]);
             tempcustomerqualitydetails.Prints = Convert.ToString(dr["Prints"]);
@@ -432,7 +487,143 @@ namespace KusumgarDataAccess
 
         #endregion
 
-        
+        #region Temp Functional Visual Parameters
+
+        public void Insert_Temp_Functional_Parameters(TempFunctionalParametersInfo temp_Functional_Parameters)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Temp_Functional_Parameters(temp_Functional_Parameters), StoredProcedures.Insert_Temp_Functional_Parameters_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Insert_Temp_Visual_Parameters(TempVisualParametersInfo temp_Visual_Parameters)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Temp_Visual_Parameters(temp_Visual_Parameters), StoredProcedures.Insert_Temp_Visual_Parameters_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Delete_Temp_Functional_Parameters_By_Id(int temp_Functional_Parameters_Id)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Temp_Functional_Parameters_Id", temp_Functional_Parameters_Id));
+
+            _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Temp_Functional_Parameters_By_Id.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Delete_Temp_Visual_Parameters_By_Id(int temp_Visual_Parameters_Id)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Temp_Visual_Parameters_Id", temp_Visual_Parameters_Id));
+
+            _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Temp_Visual_Parameters_By_Id.ToString(), CommandType.StoredProcedure);
+        }
+
+        public List<TempFunctionalParametersInfo> Get_Temp_Functional_Parameters_By_Enquiry_Id(int enquiry_Id)
+        {
+            List<TempFunctionalParametersInfo> temp_Functional_Parameters = new List<TempFunctionalParametersInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", enquiry_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Temp_Functional_Parameters_By_Enquiry_Id.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                temp_Functional_Parameters.Add(Get_Temp_Functional_Parameters_Values(dr));
+            }
+
+            return temp_Functional_Parameters;
+        }
+
+        public List<TempVisualParametersInfo> Get_Temp_Visual_Parameters_By_Enquiry_Id(int enquiry_Id)
+        {
+            List<TempVisualParametersInfo> temp_Visual_Parameters = new List<TempVisualParametersInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", enquiry_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Temp_Visual_Parameters_By_Enquiry_Id.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                temp_Visual_Parameters.Add(Get_Temp_Visual_Parameters_Values(dr));
+            }
+
+
+            return temp_Visual_Parameters;
+        }
+
+        private List<SqlParameter> Set_Values_In_Temp_Functional_Parameters(TempFunctionalParametersInfo temp_Functional_Parameters)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+           
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", temp_Functional_Parameters.Enquiry_Id));
+            sqlParams.Add(new SqlParameter("@Test_Id", temp_Functional_Parameters.Test_Id));
+            sqlParams.Add(new SqlParameter("@CreatedBy", temp_Functional_Parameters.CreatedBy));
+            sqlParams.Add(new SqlParameter("@CreatedOn", temp_Functional_Parameters.CreatedOn));
+            sqlParams.Add(new SqlParameter("@UpdatedBy", temp_Functional_Parameters.UpdatedBy));
+            sqlParams.Add(new SqlParameter("@UpdatedOn", temp_Functional_Parameters.UpdatedOn));
+            return sqlParams;
+        }
+
+        private TempFunctionalParametersInfo Get_Temp_Functional_Parameters_Values(DataRow dr)
+        {
+            TempFunctionalParametersInfo temp_Functional_Parameters = new TempFunctionalParametersInfo();
+
+            temp_Functional_Parameters.Temp_Functional_Parameters_Id = Convert.ToInt32(dr["Temp_Functional_Parameters_Id"]);
+            temp_Functional_Parameters.Enquiry_Id = Convert.ToInt32(dr["Enquiry_Id"]);
+            temp_Functional_Parameters.Test_Id = Convert.ToInt32(dr["Test_Id"]);
+            temp_Functional_Parameters.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            temp_Functional_Parameters.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            temp_Functional_Parameters.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            temp_Functional_Parameters.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            temp_Functional_Parameters.Test_Name = Convert.ToString(dr["Test_Name"]);
+            return temp_Functional_Parameters;
+        }
+
+        private TempVisualParametersInfo Get_Temp_Visual_Parameters_Values(DataRow dr)
+        {
+            TempVisualParametersInfo temp_Visual_Parameters = new TempVisualParametersInfo();
+
+            temp_Visual_Parameters.Temp_Visual_Parameters_Id = Convert.ToInt32(dr["Temp_Visual_Parameters_Id"]);
+            temp_Visual_Parameters.Enquiry_Id = Convert.ToInt32(dr["Enquiry_Id"]);
+            temp_Visual_Parameters.Defect_Id = Convert.ToInt32(dr["Defect_Id"]);
+            temp_Visual_Parameters.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            temp_Visual_Parameters.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            temp_Visual_Parameters.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            temp_Visual_Parameters.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            temp_Visual_Parameters.Defect_Name = Convert.ToString(dr["Defect_Name"]);
+            return temp_Visual_Parameters;
+        }
+
+        private List<SqlParameter> Set_Values_In_Temp_Visual_Parameters(TempVisualParametersInfo temp_Visual_Parameters)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", temp_Visual_Parameters.Enquiry_Id));
+            sqlParams.Add(new SqlParameter("@Defect_Id", temp_Visual_Parameters.Defect_Id));
+            sqlParams.Add(new SqlParameter("@CreatedBy", temp_Visual_Parameters.CreatedBy));
+            sqlParams.Add(new SqlParameter("@CreatedOn", temp_Visual_Parameters.CreatedOn));
+            sqlParams.Add(new SqlParameter("@UpdatedBy", temp_Visual_Parameters.UpdatedBy));
+            sqlParams.Add(new SqlParameter("@UpdatedOn", temp_Visual_Parameters.UpdatedOn));
+            return sqlParams;
+        }
+ 
+
+        #endregion
+
+
+        #region Quality Details
+
         public List<AutocompleteInfo> Get_Quality_Autocomplete(string quality_No)
         {
             List<AutocompleteInfo> qualities = new List<AutocompleteInfo>();
@@ -463,6 +654,51 @@ namespace KusumgarDataAccess
 
             return qualities;
         }
+
+        private QualityInfo Get_Quality_Values(DataRow dr)
+        {
+            QualityInfo quality = new QualityInfo();
+
+            quality.Quality_Id = Convert.ToInt32(dr["Quality_Id"]);
+            quality.Yarn_Type_Id = Convert.ToInt32(dr["Yarn_Type_Id"]);
+            quality.Reed = Convert.ToString(dr["Reed"]);
+            quality.Pick = Convert.ToString(dr["Pick"]);
+            quality.Weave = Convert.ToInt32(dr["Weave"]);
+            quality.Minimum_Order_Size = Convert.ToInt32(dr["Minimum_Order_Size"]);
+            quality.Ideal_Roll_Length = Convert.ToInt32(dr["Ideal_Roll_Length"]);
+            quality.Our_Sample_No = Convert.ToInt32(dr["Our_Sample_No"]);
+            quality.Quality_No = Convert.ToInt32(dr["Quality_No"]);
+            quality.Status = Convert.ToBoolean(dr["Status"]);
+            quality.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            quality.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            quality.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            quality.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+            return quality;
+        } 
+
+        public QualityInfo Get_Quality_By_Id(int quality_Id)
+        {
+            QualityInfo quality = new QualityInfo();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Quality_Id", quality_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Quality_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                quality = Get_Quality_Values(dr);
+            }
+            return quality;
+        }
+
+        #endregion
 
     }
 }

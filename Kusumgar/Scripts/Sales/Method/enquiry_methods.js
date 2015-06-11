@@ -17,12 +17,85 @@ function Enquiry_CallBack(data) {
     if (data.Enquiry.Quality_Id == 0) {
         $("#tabCustomer_Quality").show();
     }
+    else
+    {
+        $("#tabCustomer_Quality").hide();
+    }
     $("#tabQuality_Supporting").show();
     $("#tabFuncational_Visual").show();
     $("#hdnEnquiry_Id").val(data.Enquiry.Enquiry_Id);
     $("#hdnEnquiry_No").val(data.Enquiry.Enquiry_No);
 
     Friendly_Message(data);
+}
+
+function Get_Quality_Details(Quality_Id)
+{
+    $.ajax({
+        url: '/sales/get-quality-by-id',
+        data: { quality_Id: $("#hdnQuality_Id").val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            Bind_Quality_Details(data);
+        }
+    });
+}
+
+function Bind_Quality_Details(data)
+{
+    $("#tblQuality_Details").html("");
+
+    var htmlText = "";
+    htmlText += "<tr>";
+    htmlText += "<th>Quality Attributes</th>";
+    htmlText += "<th>Values</th>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>Yarn Type</td>";
+    htmlText += "<td>"+data.quality.Yarn_Type_Id+"</td>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>";
+    htmlText += "Reed";
+    htmlText += "</td>";
+    htmlText += "<td>"+data.quality.Reed+"</td>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>";
+    htmlText += "Pick";
+    htmlText += "</td>";
+    htmlText += "<td>"+data.quality.Pick+"</td>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>";
+    htmlText += "Weave";
+    htmlText += "</td>";
+    htmlText += "<td>"+data.quality.Weave+"</td>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>";
+    htmlText += "Minimum Order Size";
+    htmlText += "</td>";
+    htmlText += "<td>" + data.quality.Minimum_Order_Size + "</td>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>";
+    htmlText += "Ideal Roll Length";
+    htmlText += "</td>";
+    htmlText += "<td>"+data.quality.Ideal_Roll_Length+"</td>";
+    htmlText += "</tr>";
+    htmlText += "<tr>";
+    htmlText += "<td>";
+    htmlText += "Our Sample No";
+    htmlText += "</td>";
+    htmlText += "<td>" + data.quality.Our_Sample_No + "</td>";
+    htmlText += "</tr>";
+
+    $("#tblQuality_Details").html(htmlText);
+
+    alert(Quality_Id);
 }
 
 // End : Enquiry 
@@ -210,6 +283,104 @@ function Bind_Attachments()
 // End : Attachments
 
 
+// start : Temp Functional Visual Parameters 
+
+function Save_Temp_Functional_Parameters()
+{
+    var eViewModel = Set_Enquiry();
+
+    CallAjax("/sales/insert-temp-functional-parameters/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Temp_Functional_Parameters_CallBack, "", null);
+}
+
+function Temp_Functional_Parameters_CallBack(data)
+{
+    $("#txtFunctional_Parameters").val("");
+
+    $("#hdnFunctional_Parameters").val("");
+
+    Bind_Temp_Functional_Parameters();
+
+    Friendly_Message(data);
+}
+
+function Delete_Temp_Functional_Parameters(id)
+{
+    $.ajax({
+        url: '/sales/delete_temp_functional_parameters_by_id',
+        data: { temp_Functional_Parameters_Id: id },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            Friendly_Message(data);
+        }
+    });
+}
+
+function Bind_Temp_Functional_Parameters()
+{
+    $.ajax({
+        url: '/sales/get-temp-functional-parameters-by-enquiry-id',
+        data: { enquiry_Id: $("#hdnEnquiry_Id").val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            Multiple_Autocomplete($("#txtFunctional_Parameters"), data.temp_Functional_Parameters, Delete_Temp_Functional_Parameters);
+
+            Friendly_Message(data);
+        }
+    });
+}
+
+function Save_Temp_Visual_Parameters() {
+
+    var eViewModel = Set_Enquiry();
+
+    CallAjax("/sales/insert-temp-visual-parameters/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Temp_Visual_CallBack, "", null);
+
+}
+
+function Temp_Visual_CallBack(data)
+{
+    $("#txtVisual_Parameters").val("");
+
+    $("#hdnVisual_Parameters").val("");
+
+    Bind_Temp_Visual_Parameters();
+
+    Friendly_Message(data);
+}
+
+function Delete_Temp_Visual_Parameters(id) {
+
+    $.ajax({
+        url: '/sales/delete_temp_visual_parameters_by_id',
+        data: { temp_Visual_Parameters_Id: id },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            Friendly_Message(data);
+        }
+    });
+}
+
+function Bind_Temp_Visual_Parameters() {
+    $.ajax({
+        url: '/sales/get-temp-visual-parameters-by-enquiry-id',
+        data: { enquiry_Id: $("#hdnEnquiry_Id").val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            Multiple_Autocomplete($("#txtVisual_Parameters"), data.temp_Visual_Parameters, Delete_Temp_Visual_Parameters);
+
+            Friendly_Message(data);
+        }
+    });
+}
+
+// End : Temp Functional Visual parameters
+
 function Set_Enquiry()
 {
     var eViewModel =
@@ -228,7 +399,7 @@ function Set_Enquiry()
 
                 Quality_Id: $("#hdnQuality_Id").val(),
 
-                PPC_Article_Type_Id:0,
+                PPC_Article_Type_Id: 0,
 
                 Quality_Set_Id: 0,
 
@@ -280,7 +451,7 @@ function Set_Enquiry()
 
                         Applications: $("#txtApplication").val(),
 
-                        Physicla_Appearance: $("#txtPhysical_Appearance").val(),
+                        Physical_Appearance: $("#txtPhysical_Appearance").val(),
 
                         Shades: $("#drpShade").val(),
 
@@ -293,8 +464,21 @@ function Set_Enquiry()
                         Market_Segment: $("#txtMarket_Segment").val(),
 
                         Lable_Tagging: $("#txtLabel_Tagging").val()
-                    }
+                    },
 
+                Temp_Functional_Parameters:
+                {
+                    Enquiry_Id: $("#hdnEnquiry_Id").val(),
+
+                    Test_Id: $("#hdnFunctional_Parameters").val()
+                },
+
+                Temp_Visual_Parameters:
+                    {
+                        Enquiry_Id: $("#hdnEnquiry_Id").val(),
+
+                        Defect_Id: $("#hdnVisual_Parameters").val()
+                    }
 
             }
     }

@@ -36,12 +36,20 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txtQualityNo">Quality No. : </label>
-                                        <input type="text" class="form-control" id="txtQualityNo" placeholder="Enter Quality No">
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code" >
+                                            <input type="hidden" id="hdnQuality_Id" value="@(Model.Filter.Quality_Id == 0 ? "" : Model.Filter.Quality_Id.ToString())" name="Filter.Quality_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdnQuality_No" value="@Model.Filter.Quality_No" name="Filter.Quality_No" class="auto-complete-label">
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtCustomer_Name">Customer Name : </label>
-                                        <input type="text" class="form-control" id="txtCustomer_Name" placeholder="Enter Customer Name">
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" >
+                                            <input type="hidden" id="hdnCustomer_Id" value="@(Model.Filter.Customer_Id == 0 ? "" : Model.Filter.Customer_Id.ToString())" name="Filter.Customer_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdnContact_Name" value="@Model.Filter.Customer_Name" name="Filter.Customer_Name" class="auto-complete-label">
+                                        </div>
                                     </div>
 
                                 </div>
@@ -51,8 +59,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group pull-left">
-                                            <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index", "Enquiry")" role="button">Create Enquiry</a>
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index", "Enquiry")" role="button">Create</a>
                                         </div>
                                     </div>
 
@@ -62,22 +70,26 @@
                                                 <a class="btn btn-warning" href="@Url.Action("Level2", "Enquiry")" role="button">Level 2</a>
                                             *@
 
-                                            <button type="button" class="btn btn-warning" id="btnEdit" style="display:none">Edit Enquiry</button>
+                                            <button type="button" class="btn btn-warning btn-sm" id="btnEdit" style="display:none">Edit</button>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-warning">Filter Enquiry by Stage</button>
-                                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                                                <button type="button" class="btn btn-warning btn-sm">Filter by Stage</button>
+                                                <button type="button" class="btn btn-warning dropdown-toggle btn-sm" data-toggle="dropdown">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Level 1 - Enquiry Arrived</a></li>
-                                                    <li><a href="#">Level 2 - Passed PPC Check-point</a></li>
+                                                    @foreach (var item in LookupInfo.Get_Enquiry_Status())
+                                                    {
+                                                         <li><a href="#">@item.Value</a></li>
+                                                    }
+                                                   
+                                                    @*<li><a href="#">Level 2 - Passed PPC Check-point</a></li>
                                                     <li><a href="#">Level 3 - Passed W Manager Check-point</a></li>
                                                     <li><a href="#">Level 4 - Passed P Manager Check-point</a></li>
                                                     <li><a href="#">Level 5 - Passed C Manager Check-point</a></li>
                                                     <li><a href="#">Level 6 - Temp. Quality Set Created</a></li>
                                                     <li><a href="#">Level 7 - Quality Assigned</a></li>
-                                                    <li><a href="#">Level 8 - Planned</a></li>
+                                                    <li><a href="#">Level 8 - Planned</a></li>*@
                                                 </ul>
                                             </div>
                                         </div>

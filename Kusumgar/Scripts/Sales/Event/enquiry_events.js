@@ -1,6 +1,8 @@
 ﻿
 $(function () {
 
+    InitializeAutoComplete($("#txtCustomer_Approved_Sample"));
+
     $(".datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
 
     //Start : Enquiry 
@@ -35,6 +37,23 @@ $(function () {
             $("#hdnEnquiry_Type_Id").val($(this).val());
         }
     });
+
+    $("#hdnQuality_Id").change(function () {
+
+        if ($("#hdnQuality_Id").val() != "") {
+
+            var Quality_Id = $("#hdnQuality_Id").val();
+
+            Get_Quality_Details(Quality_Id);
+        }
+        else
+        {
+            $("#tblQuality_Details").html("");
+        }
+      
+    });
+
+    $("#hdnQuality_Id").trigger("change");
 
     // End : Enquiry 
 
@@ -83,5 +102,35 @@ $(function () {
     Bind_Attachments();
 
     // End : Attachments
+
+    // Start : Temp Functional Visual paramenters
+
+    InitializeMultiAutoComplete($("#txtFunctional_Parameters"));
+
+    InitializeMultiAutoComplete($("#txtVisual_Parameters"));
+
+    $("#btnAdd_Functional_Parameters").click(function () {
+
+        if($("#txtFunctional_Parameters").val() != "")
+        {
+            Save_Temp_Functional_Parameters();
+        }
+
+    });
+
+    $("#btnAdd_Visual_Parameters").click(function () {
+
+        if ($("#txtVisual_Parameters").val() != "") {
+
+            Save_Temp_Visual_Parameters();
+
+        }
+    });
+
+    Bind_Temp_Functional_Parameters();
+
+    Bind_Temp_Visual_Parameters();
+
+    // End : Temp Functional Visual paramenters
 });
 

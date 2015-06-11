@@ -131,15 +131,24 @@ namespace Kusumgar.Controllers
             {
                 pager = eViewModel.Pager;
 
-                //if (eViewModel.Filter.Customer_Id != 0)
-                //{
-                //    eViewModel.Contacts = eViewModel.Get_Contacts_By_Name(eViewModel.Filter.Customer_Id, ref pager);
-                //}
-                //else
-                //{
+                if (eViewModel.Filter.Customer_Id != 0 && eViewModel.Filter.Quality_Id != 0)
+                {
+                    eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Customer_Id_Quality_Id(eViewModel.Filter.Customer_Id,eViewModel.Filter.Quality_Id, ref pager);
+                }
+                else if (eViewModel.Filter.Customer_Id != 0)
+                {
+                    eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Customer_Id(eViewModel.Filter.Customer_Id,ref pager);
+                }
+                else if (eViewModel.Filter.Quality_Id != 0)
+                {
+                    eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Quality_Id(eViewModel.Filter.Quality_Id,ref pager);
+                }
+                else 
+                {
+                   // eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
 
-                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
-              //  }
+                    eViewModel.Enquiries = _enquiryMan.Get_Enquiries(ref pager);
+                }
 
                 eViewModel.Pager = pager;
 
@@ -422,42 +431,149 @@ namespace Kusumgar.Controllers
 
         #endregion
 
-        #region Attachments 
+        #region Temp Functional Visual Parameters
 
-        //public JsonResult Insert_Enquiry_Attachments(object obj)
-        //{
-        //    List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+        public JsonResult Insert_Temp_Functional_Parameters(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Temp_Functional_Parameters.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-        //    try
-        //    {
-        //        var length = Request.ContentLength;
-        //        var bytes = new byte[length];
-        //        Request.InputStream.Read(bytes, 0, length);
-        //        // bytes has byte content here. what do do next?
+                eViewModel.Enquiry.Temp_Functional_Parameters.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-        //        var fileName = Request.Headers["X-File-Name"];
-        //        var fileSize = Request.Headers["X-File-Size"];
-        //        var fileType = Request.Headers["X-File-Type"];
+                eViewModel.Enquiry.Temp_Functional_Parameters.CreatedOn = DateTime.Now;
 
-        //        var saveToFileLoc = string.Format("{0}\\{1}",
-        //                                       Server.MapPath("/uploads"),
-        //                                       fileName);
+                eViewModel.Enquiry.Temp_Functional_Parameters.UpdatedOn = DateTime.Now;
 
-        //        // save the file.
-        //        var fileStream = new FileStream(saveToFileLoc, FileMode.Create, FileAccess.ReadWrite);
-        //        fileStream.Write(bytes, 0, length);
-        //        fileStream.Close();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Friendly_Message.Add(MessageStore.Get("SYS01"));
+                _enquiryMan.Insert_Temp_Functional_Parameters(eViewModel.Enquiry.Temp_Functional_Parameters);
 
-        //        Logger.Error("Enquiry Controller - Insert_Enquiry_Attachments " + ex.ToString());
-        //    }
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ010"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-        //    return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
-        //}
+                Logger.Error("Enquiry Controller - Insert_Temp_Functional_Parameters " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Insert_Temp_Visual_Parameters(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Temp_Visual_Parameters.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Temp_Visual_Parameters.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Temp_Visual_Parameters.CreatedOn = DateTime.Now;
+
+                eViewModel.Enquiry.Temp_Visual_Parameters.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Insert_Temp_Visual_Parameters(eViewModel.Enquiry.Temp_Visual_Parameters);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ012"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert_Temp_Visual_Parameters " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Delete_Temp_Functional_Parameters_By_Id(int temp_Functional_Parameters_Id)
+        {
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+
+            try
+            {
+                _enquiryMan.Delete_Temp_Functional_Parameters_By_Id(temp_Functional_Parameters_Id);
+
+                Friendly_Message.Add(MessageStore.Get("EQ011"));
+            }
+            catch(Exception ex)
+            {
+                Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert_Temp_Visual_Parameters " + ex.ToString());
+            }
+
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Delete_Temp_Visual_Parameters_By_Id(int temp_Visual_Parameters_Id)
+        {
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+
+            try
+            {
+                _enquiryMan.Delete_Temp_Visual_Parameters_By_Id(temp_Visual_Parameters_Id);
+
+                Friendly_Message.Add(MessageStore.Get("EQ013"));
+            }
+            catch (Exception ex)
+            {
+                Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert_Temp_Visual_Parameters " + ex.ToString());
+            }
+
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Temp_Functional_Parameters_By_Enquiry_Id(int enquiry_Id)
+        {
+            List<TempFunctionalParametersInfo> temp_Functional_Parameters = new List<TempFunctionalParametersInfo>();
+
+            try
+            {
+                temp_Functional_Parameters = _enquiryMan.Get_Temp_Functional_Parameters_By_Enquiry_Id(enquiry_Id);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("Enquiry Controller - Get_Temp_Functional_Parameters " + ex.ToString());
+            }
+
+            return Json(new { temp_Functional_Parameters }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_Temp_Visual_Parameters_By_Enquiry_Id(int enquiry_Id)
+        {
+            List<TempVisualParametersInfo> temp_Visual_Parameters = new List<TempVisualParametersInfo>();
+
+            try
+            {
+                temp_Visual_Parameters = _enquiryMan.Get_Temp_Visual_Parameters_By_Enquiry_Id(enquiry_Id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Enquiry Controller - Get_Temp_Functional_Parameters " + ex.ToString());
+            }
+
+            return Json(new { temp_Visual_Parameters }, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
+
+        public JsonResult Get_Quality_By_Id(int quality_Id)
+        {
+            QualityInfo quality = new QualityInfo();
+            
+            try
+            {
+                quality = _enquiryMan.Get_Quality_By_Id(quality_Id);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("Enquiry Controller - Get_Quality_By_Id " + ex.ToString());
+            }
+
+            return Json(new { quality }, JsonRequestBehavior.AllowGet);
+        }
 
         //
 
@@ -518,6 +634,7 @@ namespace Kusumgar.Controllers
         //{
         //    return View();
         //}
+
 
         
     }
