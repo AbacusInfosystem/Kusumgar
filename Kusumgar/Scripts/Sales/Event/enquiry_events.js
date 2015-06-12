@@ -111,7 +111,7 @@ $(function () {
 
     $("#btnAdd_Functional_Parameters").click(function () {
 
-        if($("#txtFunctional_Parameters").val() != "")
+        if ($("#frmFunctional_Parameters").valid())
         {
             Save_Temp_Functional_Parameters();
         }
@@ -120,7 +120,7 @@ $(function () {
 
     $("#btnAdd_Visual_Parameters").click(function () {
 
-        if ($("#txtVisual_Parameters").val() != "") {
+        if ($("#frmVisualParameters").valid()) {
 
             Save_Temp_Visual_Parameters();
 

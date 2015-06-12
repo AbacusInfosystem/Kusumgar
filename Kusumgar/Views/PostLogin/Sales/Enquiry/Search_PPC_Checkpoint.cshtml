@@ -1,7 +1,7 @@
-﻿@{
-    ViewBag.Title = "Search Enquiry";
-}
-
+﻿@model Kusumgar.Models.EnquiryViewModel
+@using KusumgarBusinessEntities.Common
+<script src="/Scripts/Sales/Event/ppc_checkpoint_search_events.js"></script>
+<script src="/Scripts/Sales/Method/ppc_checkpoint_search_methods.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -19,7 +19,9 @@
         </ol>
     </section>
 
-
+    <form id="frmSearch_PPC_Checkpoint">
+        <input type="hidden" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id" name="Enquiry.Enquiry_Id">
+    <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
     <!-- Main content -->
     <section class="content">
 
@@ -35,7 +37,7 @@
 
 
                                     @*<button type="button" class="btn btn-warning">Edit Enquiry on PPC Check-point</button>*@
-                                    <a class="btn btn-warning" href="@Url.Action("PPC_Checkpoint", "Enquiry")" role="button">Edit Enquiry on PPC Check point</a>
+                                    <a class="btn btn-warning" style="display:none;"  id="btnEdit_Enquiry_PPC" role="button">Edit Enquiry on PPC Check point</a>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-warning">Filter Enquiry by Stage</button>
                                         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
@@ -56,6 +58,38 @@
         </div>
 
         <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body table-responsive no-padding">
+
+                        <table class="table table-striped" id="tblEnquiry">
+                            <tr>
+                                <th style="width: 50px;"></th>
+                                <th>Enquiry No</th>
+                                <th>Customer Name</th>
+                                <th>Quality No</th>
+                                <th>Quantity</th>
+                                <th>Delivary Date</th>
+                                <th>Stage</th>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <ul></ul>
+                        </div>
+                        <div id="divSearchGridOverlay" class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row">
             <div class="col-md-12">
                 <div class="box box-solid">
                     <div class="box-body table-responsive no-padding">
@@ -151,28 +185,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     </section>
     <!-- /.content -->
+
+        </form>
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-
-
-        $("#btnSearch").click(function () {
-            $("#divSearchGridOverlay").show();
-        });
-
-        $("#divSearchGridOverlay").hide();
-    });
-</script>

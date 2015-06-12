@@ -1062,8 +1062,12 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Sales\Event\enquiry_events.js" />
     <Content Include="Scripts\Sales\Event\enquiry_search_events.js" />
+    <Content Include="Scripts\Sales\Event\ppc_checkpoint_events.js" />
+    <Content Include="Scripts\Sales\Event\ppc_checkpoint_search_events.js" />
     <Content Include="Scripts\Sales\Method\enquiry_methods.js" />
     <Content Include="Scripts\Sales\Method\enquiry_search_methods.js" />
+    <Content Include="Scripts\Sales\Method\ppc_checkpoint_methods.js" />
+    <Content Include="Scripts\Sales\Method\ppc_checkpoint_search_methods.js" />
     <Content Include="Scripts\Sales\Validation\enquiry_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />

@@ -405,42 +405,43 @@
                             <div class="tab-pane" id="tab_5">
                                 <div id="divFunctional_Visual">
                                     <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="txtFunctional_Parameters" style="color: #333">Functional Parameters</label>
-                                                    <div class="input-group input-group-sm">
-                                                        <input type="text" class="form-control input-sm" id="txtFunctional_Parameters" />
-                                                        <input type="hidden" id="hdnFunctional_Parameters" >
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-success btn-flat" type="button" id="btnAdd_Functional_Parameters">Add</button>
-                                                        </span>
+                                        <Div class="row">
+                                            <form id="frmFunctional_Parameters">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="txtFunctional_Parameters" style="color: #333">Functional Parameters</label>
+                                                        <div class="input-group input-group-sm">
+                                                            <input type="text" class="form-control input-sm" id="txtFunctional_Parameters" />
+                                                            <input type="hidden" id="hdnFunctional_Parameters" name="Functional_Parameters">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-success btn-flat" type="button" id="btnAdd_Functional_Parameters">Add</button>
+                                                            </span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="multiple-list"></div>
                                                     </div>
-                                                    <br>
-                                                    <div class="multiple-list"></div>
+
+                                                    <!-- /input-group -->
+
                                                 </div>
-
-                                                <!-- /input-group -->
-
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="txtVisual_Parameters">Visual Parameters</label>
-                                                    <div class="input-group input-group-sm">
-                                                        <input type="text" class="form-control" id="txtVisual_Parameters">
-                                                        <input type="hidden" id="hdnVisual_Parameters">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-success btn-flat" type="button" id="btnAdd_Visual_Parameters">Add</button>
-                                                        </span>
+                                            </form>
+                                            <form id="frmVisualParameters">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="txtVisual_Parameters" style="color: #333">Visual Parameters</label>
+                                                        <div class="input-group input-group-sm">
+                                                            <input type="text" class="form-control" id="txtVisual_Parameters">
+                                                            <input type="hidden" id="hdnVisual_Parameters" name="Visual_Parameters">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-success btn-flat" type="button" id="btnAdd_Visual_Parameters">Add</button>
+                                                            </span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="multiple-list"></div>
                                                     </div>
-                                                    <br>
-                                                    <div class="multiple-list"></div>
+                                                    <!-- /input-group -->
                                                 </div>
-                                                <!-- /input-group -->
-
-                                              
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
 

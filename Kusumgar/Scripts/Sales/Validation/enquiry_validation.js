@@ -73,6 +73,42 @@
 
     });
 
+    $("#frmFunctional_Parameters").validate({
+
+        rules: {
+        
+            "Functional_Parameters":
+                {
+                    required:true
+                }
+
+        },
+        messages: {
+            "Functional_Parameters":
+                {
+                    required: "Enter valid functional parameter."
+                }
+         }
+    });
+
+    $("#frmVisualParameters").validate({
+
+        rules: {
+
+            "Visual_Parameters":
+                {
+                    required: true
+                }
+
+        },
+        messages: {
+            "Visual_Parameters":
+                {
+                    required: "Enter valid visual parameter."
+                }
+        }
+    });
+
 
 
 });

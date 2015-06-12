@@ -212,6 +212,40 @@ namespace Kusumgar.Controllers
             return Index(eViewModel);
         }
 
+        public ActionResult Get_Customer_Quality_Details_By_Id(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Temp_Customer_Quality_Details = _enquiryMan.Get_Temp_Customer_Quality_Details_By_Id(eViewModel.Enquiry.Enquiry_Id);
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Customer_Quality_Details " + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Get_Supporting_Details_By_Enquiry_Id(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.Supporting_Details = _enquiryMan.Get_Supporting_Details_By_Enquiry_Id(eViewModel.Enquiry.Enquiry_Id);
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Supporting_Details_By_Enquiry_Id " + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+
+
         #endregion
 
         #region Staggered Order
@@ -577,10 +611,51 @@ namespace Kusumgar.Controllers
 
         //
 
-        public ActionResult PPC_Checkpoint()
+        #region PPC Check Point
+
+        public ActionResult Search_PPC_Checkpoint(EnquiryViewModel eViewModel)
         {
-            return View();
+         
+
+            try
+            {
+              
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Search_PPC_Checkpoint " + ex.ToString());
+            }
+
+            return View(eViewModel);
         }
+
+        public ActionResult PPC_Checkpoint(EnquiryViewModel eViewModel)
+        {
+            AjaxManager ajaxMan = new AjaxManager();
+
+            try
+            {
+                eViewModel.Enquiry = _enquiryMan.Get_Enquiry_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Supporting_Details = _enquiryMan.Get_Supporting_Details_By_Enquiry_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details = _enquiryMan.Get_Temp_Customer_Quality_Details_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Attachments = ajaxMan.Get_Attachments_By_Ref_Type_Ref_Id(Convert.ToInt32(RefType.Enquiry), eViewModel.Enquiry.Enquiry_Id);
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - PPC_Checkpoint " + ex.ToString());
+            }
+
+            return View(eViewModel);
+        }
+
+        #endregion
 
         public ActionResult Quality_Checkpoint()
         {
@@ -594,10 +669,7 @@ namespace Kusumgar.Controllers
 
         
 
-        public ActionResult Search_PPC_Checkpoint()
-        {
-            return View();
-        }
+      
 
         public ActionResult Search_W_Manager_Checkpoint()
         {

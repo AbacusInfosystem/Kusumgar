@@ -54,6 +54,18 @@ namespace KusumgarBusinessEntities
 
         #region Additional Fields
 
+        public string Enquiry_Type
+        {
+            get
+            {
+                return ((EnquiryType)Enquiry_Type_Id).ToString();
+            }
+            set
+            {
+                value = Enquiry_Type;
+            }
+        }
+
         public string Customer_Name { get; set; }
 
         public string Quality_No { get; set; }
