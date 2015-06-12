@@ -145,7 +145,7 @@ namespace Kusumgar.Controllers
                 }
                 else 
                 {
-                   // eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
+                  //  eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
 
                     eViewModel.Enquiries = _enquiryMan.Get_Enquiries(ref pager);
                 }

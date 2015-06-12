@@ -65,6 +65,63 @@ function Bind_Quality_Details(data) {
     alert(Quality_Id);
 }
 
+function Save_Enquiry() {
+
+    var eViewModel = Set_Enquiry();
+
+        CallAjax("/sales/update-enquiry/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Enquiry_CallBack, "", null);
+    
+}
+
+function Enquiry_CallBack(data) {
+    Friendly_Message(data);
+}
+
+
+function Set_Enquiry() {
+
+    var Article_Type = "";
+
+    if ($("#rdbQualityNo").prop('checked')) {
+
+        Article_Type = $("#drpExistingQualityArticleType").val();
+
+        Quality_Id = $("#hdnQuality_Id").val();
+    }
+    else
+    {
+        Article_Type = $("#drpArticleType").val();
+
+        Quality_Id = 0;
+    }
+
+    var eViewModel =
+    {
+        Enquiry:
+            {
+                Enquiry_Id: $("#hdnEnquiry_Id").val(),
+
+                Enquiry_No: $("#hdnEnquiry_No").val(),
+
+                Enquiry_Type_Id: $("#hdnEnquiry_Type_Id").val(),
+
+                Enquiry_Status_Id: $("#hdnEnquiry_Status_Id").val(),
+
+                Customer_Id: $("#hdnCustomer_Id").val(),
+
+                Quality_Id: $("#hdnQuality_Id").val(),
+
+                PPC_Article_Type_Id: Article_Type,
+
+                Quality_Set_Id: Quality_Id,
+
+                Is_Active: $("#hdnStatus").val()
+            }
+    }
+
+    return eViewModel;
+}
+
 
 //function Get_Customer_Quality_Details(Enquiry_Id)
 //{

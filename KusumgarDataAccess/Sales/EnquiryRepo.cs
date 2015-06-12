@@ -200,6 +200,13 @@ namespace KusumgarDataAccess
             return enquiries;
         }
 
+        //public void Update_Enquiry_Quality_Id_Status(EnquiryInfo enquiry)
+        //{
+        //    List<SqlParameter> sqlParams = new List<SqlParameter>();
+        //    sqlParams.Add(new SqlParameter("@Enquiry_Status_Id", enquiry.Enquiry_Status_Id));
+
+        //}
+
         #endregion
 
         #region Staggered Order

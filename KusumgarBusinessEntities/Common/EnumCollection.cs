@@ -397,6 +397,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Enquiries_By_Customer_Id_Sp,
         Get_Enquiries_By_Customer_Id_Quality_Id_Sp,
         Get_Enquiries_By_Quality_Id_Sp,
+        Update_Enquiry_Quality_Id_Status_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
