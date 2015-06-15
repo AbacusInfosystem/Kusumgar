@@ -5,19 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KusumgarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Attachments">
-          <Key>
-            <PropertyRef Name="Attachment_Id" />
-          </Key>
-          <Property Name="Attachment_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ref_Id" Type="bigint" Nullable="false" />
-          <Property Name="Ref_Type" Type="int" Nullable="false" />
-          <Property Name="Document_Name" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" />
-        </EntityType>
         <EntityType Name="Bank_Details">
           <Key>
             <PropertyRef Name="Bank_Details_Id" />
@@ -527,25 +514,6 @@ warning 6002: The table/view 'Kusumgar.dbo.M_Application' does not have a primar
           <Property Name="Inspection_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Testing_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="M_Quality">
-          <Key>
-            <PropertyRef Name="Quality_Id" />
-          </Key>
-          <Property Name="Quality_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
-          <Property Name="Reed" Type="nvarchar" MaxLength="100" />
-          <Property Name="Pick" Type="nvarchar" MaxLength="100" />
-          <Property Name="Weave" Type="int" Nullable="false" />
-          <Property Name="Minimum_Order_Size" Type="int" />
-          <Property Name="Ideal_Roll_Length" Type="int" />
-          <Property Name="Our_Sample_No" Type="int" />
-          <Property Name="Quality_No" Type="int" />
-          <Property Name="Status" Type="bit" Nullable="false" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-        </EntityType>
         <EntityType Name="M_Quality_Application_Mapping">
           <Key>
             <PropertyRef Name="Quality_Application_Id" />
@@ -855,31 +823,7 @@ warning 6002: The table/view 'Kusumgar.dbo.M_Application' does not have a primar
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Kusumgar.dbo.Temp_Customer_Quality_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Temp_Customer_Quality_Details">
-          <Key>
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="UpdatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-          </Key>
-          <Property Name="Enquiry_Id" Type="int" />
-          <Property Name="Width_Of_Fabric" Type="nvarchar" MaxLength="50" />
-          <Property Name="Coating" Type="nvarchar" MaxLength="50" />
-          <Property Name="Applications" Type="nvarchar" MaxLength="255" />
-          <Property Name="Physical_Appearance" Type="nvarchar" MaxLength="255" />
-          <Property Name="Shades" Type="int" />
-          <Property Name="Finish" Type="nvarchar" MaxLength="50" />
-          <Property Name="Prints" Type="nvarchar" MaxLength="50" />
-          <Property Name="Customer_Approved_Sample" Type="int" />
-          <Property Name="Market_Segment" Type="nvarchar" MaxLength="255" />
-          <Property Name="Lable_Tagging" Type="nvarchar" MaxLength="255" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="KusumgarModelStoreContainer">
-          <EntitySet Name="Attachments" EntityType="Self.Attachments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank_Details" EntityType="Self.Bank_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
@@ -910,7 +854,6 @@ warning 6002: The table/view 'Kusumgar.dbo.Temp_Customer_Quality_Details' does n
           <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Process" EntityType="Self.M_Process" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Product_Vendors" EntityType="Self.M_Product_Vendors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="M_Quality" EntityType="Self.M_Quality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Quality_Application_Mapping" EntityType="Self.M_Quality_Application_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" Schema="dbo" store:Type="Tables" />
@@ -937,25 +880,6 @@ warning 6002: The table/view 'Kusumgar.dbo.Temp_Customer_Quality_Details' does n
 [M_Application].[UpdatedOn] AS [UpdatedOn], 
 [M_Application].[UpdatedBy] AS [UpdatedBy]
 FROM [dbo].[M_Application] AS [M_Application]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Temp_Customer_Quality_Details" EntityType="Self.Temp_Customer_Quality_Details" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Temp_Customer_Quality_Details].[Enquiry_Id] AS [Enquiry_Id], 
-[Temp_Customer_Quality_Details].[Width_Of_Fabric] AS [Width_Of_Fabric], 
-[Temp_Customer_Quality_Details].[Coating] AS [Coating], 
-[Temp_Customer_Quality_Details].[Applications] AS [Applications], 
-[Temp_Customer_Quality_Details].[Physical_Appearance] AS [Physical_Appearance], 
-[Temp_Customer_Quality_Details].[Shades] AS [Shades], 
-[Temp_Customer_Quality_Details].[Finish] AS [Finish], 
-[Temp_Customer_Quality_Details].[Prints] AS [Prints], 
-[Temp_Customer_Quality_Details].[Customer_Approved_Sample] AS [Customer_Approved_Sample], 
-[Temp_Customer_Quality_Details].[Market_Segment] AS [Market_Segment], 
-[Temp_Customer_Quality_Details].[Lable_Tagging] AS [Lable_Tagging], 
-[Temp_Customer_Quality_Details].[CreatedBy] AS [CreatedBy], 
-[Temp_Customer_Quality_Details].[CreatedOn] AS [CreatedOn], 
-[Temp_Customer_Quality_Details].[UpdatedBy] AS [UpdatedBy], 
-[Temp_Customer_Quality_Details].[UpdatedOn] AS [UpdatedOn]
-FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1003,14 +927,11 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
           <EntitySet Name="M_Work_Center_Process" EntityType="KusumgarModel.M_Work_Center_Process" />
           <EntitySet Name="M_Work_Station" EntityType="KusumgarModel.M_Work_Station" />
           <EntitySet Name="M_Y_Article" EntityType="KusumgarModel.M_Y_Article" />
-          <EntitySet Name="Attachments" EntityType="KusumgarModel.Attachment" />
           <EntitySet Name="Enquiries" EntityType="KusumgarModel.Enquiry" />
-          <EntitySet Name="M_Quality" EntityType="KusumgarModel.M_Quality" />
           <EntitySet Name="M_Quality_Application_Mapping" EntityType="KusumgarModel.M_Quality_Application_Mapping" />
           <EntitySet Name="M_Samples" EntityType="KusumgarModel.M_Samples" />
           <EntitySet Name="Supporting_Details" EntityType="KusumgarModel.Supporting_Details" />
           <EntitySet Name="M_Application" EntityType="KusumgarModel.M_Application" />
-          <EntitySet Name="Temp_Customer_Quality_Details" EntityType="KusumgarModel.Temp_Customer_Quality_Details" />
           <EntitySet Name="M_Customer_Quality" EntityType="KusumgarModel.M_Customer_Quality" />
           <EntitySet Name="M_W_Article" EntityType="KusumgarModel.M_W_Article" />
           <EntitySet Name="M_G_Article" EntityType="KusumgarModel.M_G_Article" />
@@ -1666,21 +1587,6 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="Attachment">
-          <Key>
-            <PropertyRef Name="Attachment_Id" />
-          </Key>
-          <Property Name="Attachment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Attachment_Type_Id" Type="Int32" Nullable="false" />
-          <Property Name="Ref_Id" Type="Int32" Nullable="false" />
-          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="Ref_Type" Type="Int32" Nullable="false" />
-          <Property Name="Document_Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Enquiry">
           <Key>
             <PropertyRef Name="Enquiry_Id" />
@@ -1698,26 +1604,6 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Enquiry_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Enquiry_Status_Id" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="M_Quality">
-          <Key>
-            <PropertyRef Name="Quality_Id" />
-          </Key>
-          <Property Name="Quality_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Yarn_Type" Type="Int32" Nullable="false" />
-          <Property Name="Reed" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Pick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Weave" Type="Int32" Nullable="false" />
-          <Property Name="Minimum_Order_Size" Type="Int32" />
-          <Property Name="Ideal_Roll_Length" Type="Int32" />
-          <Property Name="Our_Sample_No" Type="Int32" />
-          <Property Name="Quality_No" Type="Int32" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="M_Quality_Application_Mapping">
           <Key>
@@ -1774,30 +1660,6 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Temp_Customer_Quality_Details">
-          <Key>
-            <PropertyRef Name="CreatedBy" />
-            <PropertyRef Name="CreatedOn" />
-            <PropertyRef Name="UpdatedBy" />
-            <PropertyRef Name="UpdatedOn" />
-          </Key>
-          <Property Name="Enquiry_Id" Type="Int32" />
-          <Property Name="Width_Of_Fabric" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Coating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Applications" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Physicla_Appearance" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Shades" Type="Int32" />
-          <Property Name="Finish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Prints" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Customer_Approved_Sample" Type="Int32" />
-          <Property Name="Market_Segment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Lable_Tagging" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Physical_Appearance" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="M_Customer_Quality">
           <Key>
@@ -2585,20 +2447,6 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Attachments">
-            <EntityTypeMapping TypeName="KusumgarModel.Attachment">
-              <MappingFragment StoreEntitySet="Attachments">
-                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
-                <ScalarProperty Name="Ref_Type" ColumnName="Ref_Type" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Ref_Id" ColumnName="Ref_Id" />
-                <ScalarProperty Name="Attachment_Id" ColumnName="Attachment_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Enquiries">
             <EntityTypeMapping TypeName="KusumgarModel.Enquiry">
               <MappingFragment StoreEntitySet="Enquiry">
@@ -2615,26 +2463,6 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
                 <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
                 <ScalarProperty Name="Enquiry_Type_Id" ColumnName="Enquiry_Type_Id" />
                 <ScalarProperty Name="Enquiry_Id" ColumnName="Enquiry_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="M_Quality">
-            <EntityTypeMapping TypeName="KusumgarModel.M_Quality">
-              <MappingFragment StoreEntitySet="M_Quality">
-                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Quality_No" ColumnName="Quality_No" />
-                <ScalarProperty Name="Our_Sample_No" ColumnName="Our_Sample_No" />
-                <ScalarProperty Name="Ideal_Roll_Length" ColumnName="Ideal_Roll_Length" />
-                <ScalarProperty Name="Minimum_Order_Size" ColumnName="Minimum_Order_Size" />
-                <ScalarProperty Name="Weave" ColumnName="Weave" />
-                <ScalarProperty Name="Pick" ColumnName="Pick" />
-                <ScalarProperty Name="Reed" ColumnName="Reed" />
-                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2691,27 +2519,6 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="Application_Name" ColumnName="Application_Name" />
                 <ScalarProperty Name="Application_Id" ColumnName="Application_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Temp_Customer_Quality_Details">
-            <EntityTypeMapping TypeName="KusumgarModel.Temp_Customer_Quality_Details">
-              <MappingFragment StoreEntitySet="Temp_Customer_Quality_Details">
-                <ScalarProperty Name="Physical_Appearance" ColumnName="Physical_Appearance" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Lable_Tagging" ColumnName="Lable_Tagging" />
-                <ScalarProperty Name="Market_Segment" ColumnName="Market_Segment" />
-                <ScalarProperty Name="Customer_Approved_Sample" ColumnName="Customer_Approved_Sample" />
-                <ScalarProperty Name="Prints" ColumnName="Prints" />
-                <ScalarProperty Name="Finish" ColumnName="Finish" />
-                <ScalarProperty Name="Shades" ColumnName="Shades" />
-                <ScalarProperty Name="Applications" ColumnName="Applications" />
-                <ScalarProperty Name="Coating" ColumnName="Coating" />
-                <ScalarProperty Name="Width_Of_Fabric" ColumnName="Width_Of_Fabric" />
-                <ScalarProperty Name="Enquiry_Id" ColumnName="Enquiry_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
