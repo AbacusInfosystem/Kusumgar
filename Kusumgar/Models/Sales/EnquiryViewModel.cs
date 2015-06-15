@@ -48,5 +48,7 @@ namespace Kusumgar.Models
         public int Quality_Id { get; set; }
 
         public string Quality_No { get; set; }
+
+        public int Status_Id { get; set; }
     }
 }

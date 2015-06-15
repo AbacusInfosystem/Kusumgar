@@ -1064,10 +1064,12 @@
     <Content Include="Scripts\Sales\Event\enquiry_search_events.js" />
     <Content Include="Scripts\Sales\Event\ppc_checkpoint_events.js" />
     <Content Include="Scripts\Sales\Event\ppc_checkpoint_search_events.js" />
+    <Content Include="Scripts\Sales\Event\w_manager_checkpoint_search_events.js" />
     <Content Include="Scripts\Sales\Method\enquiry_methods.js" />
     <Content Include="Scripts\Sales\Method\enquiry_search_methods.js" />
     <Content Include="Scripts\Sales\Method\ppc_checkpoint_methods.js" />
     <Content Include="Scripts\Sales\Method\ppc_checkpoint_search_methods.js" />
+    <Content Include="Scripts\Sales\Method\w_manager_checkpoint_search_methods.js" />
     <Content Include="Scripts\Sales\Validation\enquiry_validation.js" />
     <Content Include="Scripts\Sales\Validation\ppc_checkpoint_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />

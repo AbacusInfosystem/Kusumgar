@@ -1357,36 +1357,67 @@ namespace Kusumgar
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-           name: "enquiry-28",
-           url: "sales/get-quality-by-id",
-           defaults: new { controller = "Enquiry", action = "Get_Quality_By_Id", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-28",
+            url: "sales/get-quality-by-id",
+            defaults: new { controller = "Enquiry", action = "Get_Quality_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-          name: "enquiry-29",
-          url: "sales/search-ppc-checkpoint",
-          defaults: new { controller = "Enquiry", action = "Search_PPC_Checkpoint", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-29",
+            url: "sales/search-ppc-checkpoint",
+            defaults: new { controller = "Enquiry", action = "Search_PPC_Checkpoint", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-         name: "enquiry-30",
-         url: "sales/ppc-checkpoint",
-         defaults: new { controller = "Enquiry", action = "PPC_Checkpoint", id = UrlParameter.Optional },
-         namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-30",
+            url: "sales/ppc-checkpoint",
+            defaults: new { controller = "Enquiry", action = "PPC_Checkpoint", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
 
             routes.MapRoute(
-       name: "enquiry-31",
-       url: "sales/get-customer-quality-details-by-Id",
-       defaults: new { controller = "Enquiry", action = "Get_Customer_Quality_Details_By_Id", id = UrlParameter.Optional },
-       namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-31",
+            url: "sales/get-customer-quality-details-by-Id",
+            defaults: new { controller = "Enquiry", action = "Get_Customer_Quality_Details_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-       name: "enquiry-32",
-       url: "sales/get-supporting-details-by-enquiry-Id",
-       defaults: new { controller = "Enquiry", action = "Get_Supporting_Details_By_Enquiry_Id", id = UrlParameter.Optional },
-       namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-32",
+            url: "sales/get-supporting-details-by-enquiry-Id",
+            defaults: new { controller = "Enquiry", action = "Get_Supporting_Details_By_Enquiry_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
+
+            routes.MapRoute(
+            name: "enquiry-33",
+            url: "sales/search-w-manager-checkpoint",
+            defaults: new { controller = "Enquiry", action = "Search_W_Manager_Checkpoint", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+
+            routes.MapRoute(
+            name: "enquiry-34",
+            url: "sales/qualityset-checkpoint",
+            defaults: new { controller = "Enquiry", action = "QualitySet_Checkpoint", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-35",
+            url: "sales/get-enquiries-by-status",
+            defaults: new { controller = "Enquiry", action = "Get_Enquiries_By_Status", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-36",
+            url: "sales/get-enquiries-for-ppc-chekck-point",
+            defaults: new { controller = "Enquiry", action = "Get_Enquiries_For_PPC_Check_Point", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-37",
+            url: "sales/get-enquiries-for-w-manager-chekck-point",
+            defaults: new { controller = "Enquiry", action = "Get_Enquiries_For_W_Manager_Checkpoint", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

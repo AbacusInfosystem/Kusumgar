@@ -87,9 +87,9 @@ $(function () {
 
     // Start : Temp Customer Quality
     $("#btnSave_Temp_Customer_Quality").click(function () {
-       // if ($("#frmTemp_Customer_Quality_Details").valid()) {
+        if ($("#frmTemp_Customer_Quality_Details").valid()) {
             Save_Temp_Customer_Quality_Details();
-        //}
+        }
     });
 
     // End Temp Customer Quality

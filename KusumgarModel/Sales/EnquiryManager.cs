@@ -65,6 +65,11 @@ namespace KusumgarModel
             return _enquiryRepo.Get_Enquiries_By_Quality_Id(quality_Id, ref pager);
         }
 
+        public List<EnquiryInfo> Get_Enquiries_By_Status_Ids(string enquiry_Status_Ids, ref PaginationInfo pager)
+        {
+            return _enquiryRepo.Get_Enquiries_By_Status_Ids(enquiry_Status_Ids, ref pager);
+        }
+
         #endregion
 
         #region Staggered Order
@@ -177,5 +182,7 @@ namespace KusumgarModel
         {
             return _enquiryRepo.Get_Quality_By_Id(quality_Id);
         }
+
+        
     }
 }

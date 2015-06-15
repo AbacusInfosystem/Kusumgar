@@ -49,6 +49,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult Search(EnquiryViewModel eViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Search";
+
             //PaginationInfo pager = new PaginationInfo();
 
             //try
@@ -145,9 +147,9 @@ namespace Kusumgar.Controllers
                 }
                 else 
                 {
-                  //  eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
+                   eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, Convert.ToInt32(EnquiryStatus.Enquiry_Arrived));
 
-                    eViewModel.Enquiries = _enquiryMan.Get_Enquiries(ref pager);
+                    //eViewModel.Enquiries = _enquiryMan.Get_Enquiries(ref pager);
                 }
 
                 eViewModel.Pager = pager;
@@ -244,7 +246,32 @@ namespace Kusumgar.Controllers
             return Json(eViewModel, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Get_Enquiries_By_Status(EnquiryViewModel eViewModel)
+        {
+            PaginationInfo pager = new PaginationInfo();
 
+
+            try
+            {
+                pager = eViewModel.Pager;
+
+                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status(ref pager, eViewModel.Filter.Status_Id);
+
+                eViewModel.Pager = pager ;
+
+                eViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", eViewModel.Pager.TotalRecords, eViewModel.Pager.CurrentPage + 1, eViewModel.Pager.PageSize, 10, true);
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Enquiries_By_Status " + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet); 
+        }
+
+      
 
         #endregion
 
@@ -613,9 +640,38 @@ namespace Kusumgar.Controllers
 
         #region PPC Check Point
 
+        public JsonResult Get_Enquiries_For_PPC_Check_Point(EnquiryViewModel eViewModel)
+        {
+
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                string enquiry_Status_Ids = Convert.ToInt32(EnquiryStatus.Enquiry_Arrived) + "," + Convert.ToInt32(EnquiryStatus.Passed_PPC_Check_Point);
+
+                pager = eViewModel.Pager;
+
+                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status_Ids(enquiry_Status_Ids, ref pager);
+
+                eViewModel.Pager = pager;
+
+                eViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", eViewModel.Pager.TotalRecords, eViewModel.Pager.CurrentPage + 1, eViewModel.Pager.PageSize, 10, true);
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Enquiries_By_Status " + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+
         public ActionResult Search_PPC_Checkpoint(EnquiryViewModel eViewModel)
         {
-         
+
+            ViewBag.Title = "KPCL ERP :: Search";
 
             try
             {
@@ -633,6 +689,8 @@ namespace Kusumgar.Controllers
 
         public ActionResult PPC_Checkpoint(EnquiryViewModel eViewModel)
         {
+            ViewBag.Title = "KPCL ERP :: Create, Update";
+
             AjaxManager ajaxMan = new AjaxManager();
 
             try
@@ -657,24 +715,90 @@ namespace Kusumgar.Controllers
 
         #endregion
 
-        public ActionResult Quality_Checkpoint()
+        #region W Manager Checkpoint
+
+        public JsonResult Get_Enquiries_For_W_Manager_Checkpoint(EnquiryViewModel eViewModel)
         {
-            return View();
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                string enquiry_Status_Ids =  (Convert.ToInt32(EnquiryStatus.Passed_PPC_Check_Point)).ToString();
+
+                pager = eViewModel.Pager;
+
+                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status_Ids(enquiry_Status_Ids, ref pager);
+
+                eViewModel.Pager = pager;
+
+                eViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", eViewModel.Pager.TotalRecords, eViewModel.Pager.CurrentPage + 1, eViewModel.Pager.PageSize, 10, true);
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Enquiries_By_Status " + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult QualitySet_Checkpoint()
+        public ActionResult Search_W_Manager_Checkpoint(EnquiryViewModel eViewModel)
         {
-            return View();
+            return View(eViewModel);
         }
 
-        
-
-      
-
-        public ActionResult Search_W_Manager_Checkpoint()
+        public ActionResult Quality_Checkpoint(EnquiryViewModel eViewModel)
         {
-            return View();
+            AjaxManager ajaxMan = new AjaxManager();
+
+            try
+            {
+                eViewModel.Enquiry = _enquiryMan.Get_Enquiry_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Supporting_Details = _enquiryMan.Get_Supporting_Details_By_Enquiry_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details = _enquiryMan.Get_Temp_Customer_Quality_Details_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Attachments = ajaxMan.Get_Attachments_By_Ref_Type_Ref_Id(Convert.ToInt32(RefType.Enquiry), eViewModel.Enquiry.Enquiry_Id);
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Quality_Checkpoint " + ex.ToString());
+            }
+
+            return View(eViewModel);
         }
+
+        public ActionResult QualitySet_Checkpoint(EnquiryViewModel eViewModel)
+        {
+            AjaxManager ajaxMan = new AjaxManager();
+
+            try
+            {
+                eViewModel.Enquiry = _enquiryMan.Get_Enquiry_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Supporting_Details = _enquiryMan.Get_Supporting_Details_By_Enquiry_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Temp_Customer_Quality_Details = _enquiryMan.Get_Temp_Customer_Quality_Details_By_Id(eViewModel.Enquiry.Enquiry_Id);
+
+                eViewModel.Enquiry.Attachments = ajaxMan.Get_Attachments_By_Ref_Type_Ref_Id(Convert.ToInt32(RefType.Enquiry), eViewModel.Enquiry.Enquiry_Id);
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - QualitySet_Checkpoint " + ex.ToString());
+            }
+
+            return View(eViewModel);
+        }
+
+        #endregion
 
         public ActionResult Search_P_Manager_Checkpoint()
         {

@@ -1,15 +1,13 @@
-﻿
-function SearchEnquiry() {
+﻿function SearchEnquiry() {
     var eViewModel =
         {
-            Filter:
-                {
-                    Quality_Id: $("#hdnQuality_Id").val(),
-                    Quality_No: $("#hdnQuality_No").val(),
-                    Customer_Id: $("#hdnCustomer_Id").val(),
-                    Customer_Name: $("#hdnContact_Name").val(),
-                    Status_Id: $("#hdfEnquiry_Status_Id").val()
-                },
+            //Filter:
+            //    {
+            //        Quality_Id: $("#hdnQuality_Id").val(),
+            //        Quality_No: $("#hdnQuality_No").val(),
+            //        Customer_Id: $("#hdnCustomer_Id").val(),
+            //        Customer_Name: $("#hdnContact_Name").val()
+            //    },
 
             Pager: {
                 CurrentPage: $('#hdfCurrentPage').val(),
@@ -18,16 +16,7 @@ function SearchEnquiry() {
 
     $("#divSearchGridOverlay").show();
 
-    if ($("#hdfEnquiry_Status_Id").val() != 0)
-    {
-        CallAjax("/sales/get-enquiries-by-status", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Bind_Enquiry_Grid, "", null);
-    }
-    else
-    {
-        CallAjax("/sales/enquiry-search", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Bind_Enquiry_Grid, "", null);
-    }
-
-    
+    CallAjax("/sales/get-enquiries-for-w-manager-chekck-point", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Bind_Enquiry_Grid, "", null);
 }
 
 
@@ -43,7 +32,7 @@ function Bind_Enquiry_Grid(data) {
 
             htmlText += "<tr>";
 
-            if (data.Enquiries[i].Enquiry_Status == "Enquiry Arrived") {
+            if ( data.Enquiries[i].Enquiry_Status == "Passed PPC Check Point") {
 
                 htmlText += "<td>";
 
@@ -51,8 +40,7 @@ function Bind_Enquiry_Grid(data) {
 
                 htmlText += "</td>";
             }
-            else
-            {
+            else {
                 htmlText += "<td>";
 
                 htmlText += "</td>";
@@ -78,13 +66,13 @@ function Bind_Enquiry_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText +=  " " ;
+            htmlText += " ";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText +=  " ";
+            htmlText += " ";
 
             htmlText += "</td>";
 
@@ -138,7 +126,7 @@ function Bind_Enquiry_Grid(data) {
     $('[name="r1"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnEnquiry_Id").val(this.id.replace("r1_", ""));
-            $("#btnEdit").show();
+            $("#btnCreate_Article").show();
         }
     });
 
@@ -146,7 +134,7 @@ function Bind_Enquiry_Grid(data) {
 
 function PageMore(Id) {
 
-    $("#btnEdit").hide();
+    $("#btnCreate_Article").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

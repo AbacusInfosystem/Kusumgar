@@ -207,6 +207,25 @@ namespace KusumgarDataAccess
 
         //}
 
+        public List<EnquiryInfo> Get_Enquiries_By_Status_Ids(string enquiry_Status_Ids, ref PaginationInfo pager)
+        {
+            List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Status_Ids", enquiry_Status_Ids));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Enquiries_By_Status_Ids_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                enquiries.Add(Get_Enquiry_Values(dr));
+            }
+            return enquiries;
+        }
+        
+
+
         #endregion
 
         #region Staggered Order
@@ -489,6 +508,7 @@ namespace KusumgarDataAccess
             tempcustomerqualitydetails.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
             tempcustomerqualitydetails.Sample_No = Convert.ToString(dr["Sample_No"]);
+            tempcustomerqualitydetails.Shade_Name = Convert.ToString(dr["Shade_Name"]);
             return tempcustomerqualitydetails;
         }
 

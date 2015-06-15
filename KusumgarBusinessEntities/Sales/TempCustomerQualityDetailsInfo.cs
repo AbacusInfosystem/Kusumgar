@@ -42,6 +42,8 @@ namespace KusumgarBusinessEntities
 
         public string Sample_No { get; set; }
 
+        public string Shade_Name { get; set; }
+
         #endregion
 
     }

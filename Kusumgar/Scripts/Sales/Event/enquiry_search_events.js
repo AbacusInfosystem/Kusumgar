@@ -8,6 +8,8 @@
 
     SearchEnquiry();
 
+    $("#hdfEnquiry_Status_Id").val(0);
+
     $("#btnEdit").click(function () {
 
         $("#frmSearch_Enquiry").attr("action", "/sales/enquiry-by-id");
@@ -27,7 +29,23 @@
     });
 
     $("#btnSearch").click(function () {
+
         $('#hdfCurrentPage').val(0);
+
+        $("#hdfEnquiry_Status_Id").val(0);
+
         SearchEnquiry();
     });
+
+
+    $(".dropdown-menu").find('li a').click(function () {
+
+        $('.fa-remove').trigger("click");
+
+        $("#hdfEnquiry_Status_Id").val($(this).prop('id'));
+
+        SearchEnquiry();
+
+    });
+
 });

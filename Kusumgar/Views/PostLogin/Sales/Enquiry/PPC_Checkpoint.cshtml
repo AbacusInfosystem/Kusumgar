@@ -81,20 +81,6 @@
                                                 <br />
                                                 <br />
 
-                                                @*<div class="form-group">
-
-                                                    <input type="text" id="txtQualityNo" class="form-control input-sm" placeholder="Enter existing Quality #" />
-
-                                                    <ul class="todo-list ui-sortable">
-                                                        <li>
-                                                            <span class="text">42115</span>
-                                                            <div class="tools">
-                                                                <i class="fa fa-remove"></i>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>*@
-
                                                 <div class="form-group">
                                                     <div class="auto-complete">
                                                         <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code">
@@ -123,10 +109,7 @@
 
                                                 <div class="box-body table-responsive no-padding">
                                                     <table class="table table-striped" id="tblQuality_Details"></table>
-
                                                 </div>
-
-
                                             </div>
 
                                             <div class="col-md-1 col-xs-1">
@@ -135,11 +118,9 @@
 
                                             <div class="col-md-11 col-xs-11">
                                                 <span class="label label-danger">Create new Quality</span>
-
                                                 <br />
                                                 <br />
                                                 <div class="form-group">
-
                                                     <select id="drpArticleType" class="form-control input-sm"  name="Enquiry.PPC_Article_Type_Id">
                                                         <option value="">Select final Article type to create</option>
                                                         @foreach (var item in LookupInfo.Get_Article_Types().Where(a => a.Value != "YArticle" && a.Value != "WArticle"))
@@ -155,12 +136,8 @@
                                                         }
                                                     </select>
                                                 </div>
-
                                             </div>
-
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +172,7 @@
                                                             <td>
                                                                 Shade
                                                             </td>
-                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Shades</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Shade_Name</td>
                                                         </tr>
 
                                                         <tr class="Customer_Quality">
@@ -220,15 +197,15 @@
                                                         </tr>
 
                                                         <tr class="Customer_Quality">
-                                                            <td>Customer Approved Sample                                                            </td>
+                                                            <td>Customer Approved Sample</td>
                                                             <td>
                                                                 <ul class="todo-list ui-sortable">
                                                                     <li>
-                                                                        <span class="text">Sample1.jpg</span>
+                                                                        <span class="text">@Model.Enquiry.Temp_Customer_Quality_Details.Sample_No</span>
                                                                     </li>
-                                                                    <li style="" class="">
+                                                                    @*<li style="" class="">
                                                                         <span class="text">Sample2.jpg</span>
-                                                                    </li>
+                                                                    </li>*@
                                                                 </ul>
 
                                                             </td>
@@ -303,19 +280,10 @@
                                                             <td>@Model.Enquiry.Supporting_Details.Source_Of_Enquiry</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Attached Emails
+                                                            <td>Attached Emails & Files
                                                             </td>
                                                             <td>
                                                                 <ul class="todo-list ui-sortable">
-                                                                    @*<li>
-                                                                        <span class="text">Email1.pub</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">Email2.pub</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">Email3.pub</span>
-                                                                    </li>*@
                                                                     @foreach(var item in Model.Enquiry.Attachments)
                                                                     {
                                                                         <li>
@@ -326,24 +294,7 @@
                                                                 </ul>
                                                             </td>
                                                         </tr>
-                                                        @*<tr>
-                                                            <td>Attached Files
-                                                            </td>
-                                                            <td>
-                                                                <ul class="todo-list ui-sortable">
-                                                                    <li>
-                                                                        <span class="text">1.doc</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">1.xlxs</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">1.jpg</span>
-                                                                    </li>
-                                                                </ul>
-
-                                                            </td>
-                                                        </tr>*@
+                                                      
                                                     </table>
                                                 </div>
                                             </div>

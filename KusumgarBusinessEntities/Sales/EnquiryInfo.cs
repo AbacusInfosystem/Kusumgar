@@ -96,6 +96,20 @@ namespace KusumgarBusinessEntities
             }
         }
 
+        public string Article_Type 
+        {
+            get
+            {
+                return ((ArticleType)PPC_Article_Type_Id).ToString();
+            }
+            set
+            {
+                value = Article_Type;
+            }
+        }
+
+        public string Shade_Name { get; set; }
+
         #endregion
     }
 }

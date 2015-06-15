@@ -59,16 +59,58 @@
 
             "Enquiry.Supporting_Details.Rate":
                 {
-                    number:true
+                    required: true,
+                    number: true
                 },
             "Enquiry.Supporting_Details.Customer_Roll_Length":
                 {
+                    required: true,
                     number: true
+                },
+            "Enquiry.Supporting_Details.Packing":
+                {
+                    required: true
+                },
+            "Enquiry.Supporting_Details.Dispatch":
+                {
+                    required: true
+                },
+            "Enquiry.Supporting_Details.Additional_Customer_Prop":
+                {
+                    required: true
+                },
+            "Enquiry.Supporting_Details.Source_Of_Enquiry":
+                {
+                    required: true
                 }
 
         },
         messages: {
 
+            "Enquiry.Supporting_Details.Rate":
+               {
+                   required: "Rate is required."
+               },
+            "Enquiry.Supporting_Details.Customer_Roll_Length":
+                {
+                    required: "Customer roll length is required."
+                },
+            "Enquiry.Supporting_Details.Packing":
+                {
+                    required: "Packing is required."
+                },
+            "Enquiry.Supporting_Details.Dispatch":
+                {
+                    required: "Dispatch is required."
+                },
+            "Enquiry.Supporting_Details.Additional_Customer_Prop":
+                {
+                    required: "Additional customer property is required."
+                },
+            "Enquiry.Supporting_Details.Source_Of_Enquiry":
+                {
+                    required: "Source of enquiry is required."
+                }
         }
 
     });
@@ -109,7 +151,33 @@
         }
     });
 
+    $("#frmTemp_Customer_Quality_Details").validate({
 
+        rules: {
+
+            "Enquiry.Temp_Customer_Quality_Details.Applications":
+                {
+                    required: true
+                },
+
+            "Enquiry.Temp_Customer_Quality_Details.Market_Segment":
+                {
+                    required: true
+                }
+
+        },
+        messages: {
+            "Enquiry.Temp_Customer_Quality_Details.Applications":
+                {
+                    required: "Application is required."
+                },
+
+            "Enquiry.Temp_Customer_Quality_Details.Market_Segment":
+                {
+                    required: "Market segment is required."
+                }
+        }
+    });
 
 });
     

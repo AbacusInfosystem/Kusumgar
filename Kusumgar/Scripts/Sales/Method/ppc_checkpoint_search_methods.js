@@ -17,7 +17,7 @@ function SearchEnquiry() {
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/sales/enquiry-search", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Bind_Enquiry_Grid, "", null);
+    CallAjax("/sales/get-enquiries-for-ppc-chekck-point", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Bind_Enquiry_Grid, "", null);
 }
 
 
@@ -33,11 +33,20 @@ function Bind_Enquiry_Grid(data) {
 
             htmlText += "<tr>";
 
-            htmlText += "<td>";
+            if (data.Enquiries[i].Enquiry_Status == "Enquiry Arrived" || data.Enquiries[i].Enquiry_Status == "Quality Assigned" || data.Enquiries[i].Enquiry_Status == "Passed PPC Check Point") {
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Enquiries[i].Enquiry_Id + "' class='iradio_square-green'/>";
+                htmlText += "<td>";
 
-            htmlText += "</td>";
+                htmlText += "<input type='radio' name='r1' id='r1_" + data.Enquiries[i].Enquiry_Id + "' class='iradio_square-green'/>";
+
+                htmlText += "</td>";
+            }
+            else
+            {
+                htmlText += "<td>";
+
+                htmlText += "</td>";
+            }
 
             htmlText += "<td>";
 

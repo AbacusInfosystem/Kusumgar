@@ -22,6 +22,7 @@
     <form id="frmSearch_Enquiry">
         <input type="hidden" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id" name="Enquiry.Enquiry_Id">
         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+        <input type="hidden" id="hdfEnquiry_Status_Id" value="@Model.Filter.Status_Id" name="Filter.Status_Id">
         <!-- Main content -->
 
         <section class="content">
@@ -80,7 +81,7 @@
                                                 <ul class="dropdown-menu" role="menu">
                                                     @foreach (var item in LookupInfo.Get_Enquiry_Status())
                                                     {
-                                                         <li><a href="#">@item.Value</a></li>
+                                                         <li><a href="#" id="@item.Key">@item.Value</a></li>
                                                     }
                                                    
                                                     @*<li><a href="#">Level 2 - Passed PPC Check-point</a></li>
