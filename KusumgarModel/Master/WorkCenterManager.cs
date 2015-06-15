@@ -93,5 +93,10 @@ namespace KusumgarModel
             return _workcenterRepo.Get_Work_Centers_By_Work_Center_Id(work_Center_Id);
         }
 
+        public List<WorkCenterProcessInfo> Get_Work_Center_Processes(int work_Center_Id, ref PaginationInfo pager)
+        {
+            return _workcenterRepo.Get_Work_Center_Processes(work_Center_Id, ref pager);
+        }
+
     }
 }

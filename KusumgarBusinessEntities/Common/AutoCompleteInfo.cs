@@ -10,5 +10,6 @@ namespace KusumgarBusinessEntities.Common
     {
         public string Label { get; set; }
         public int Value { get; set; }
+
     }
 }

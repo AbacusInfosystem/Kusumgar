@@ -54,7 +54,7 @@
 
                                     <div class="form-group">
                                         <label>Factory</label>
-                                        <select class="form-control" id="drpFactory" name="Work_Center.Factory.Factory_Entity.Factory_Id">
+                                        <select class="form-control input-sm" id="drpFactory" name="Work_Center.Factory.Factory_Entity.Factory_Id">
                                             <option value="">-Select factory-</option>
                                             @foreach (var item in Model.Work_Center.Factories)
                                             {
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Work Station</label>
-                                        <select class="form-control " id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Name">
+                                        <select class="form-control input-sm" id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Name">
                                             <option value="">-Select work station-</option>
                                             @foreach (var item in Model.Work_Center.Work_Stations)
                                             {
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Process</label>
-                                        <select class="form-control " id="drpProcess" name="Work_Center.Process.Process_Entity.Process_Name">
+                                        <select class="form-control input-sm" id="drpProcess" name="Work_Center.Process.Process_Entity.Process_Name">
                                             <option value="">-Select process-</option>
                                             @foreach (var item in Model.Work_Center.Processes)
                                             {
@@ -112,8 +112,8 @@
 
                                     <div class="col-md-6">
                                         <div class="btn-group pull-left">
-                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Workcenter")" role="button">Create Workcenter</a>
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Workcenter")" role="button">Create Workcenter</a>
                                         </div>
                                     </div>
 

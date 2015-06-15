@@ -642,6 +642,36 @@ namespace Kusumgar
             defaults: new { controller = "GArticle", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "g-article-2",
+            url: "master/g-article/insert",
+            defaults: new { controller = "GArticle", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "g-article-3",
+            url: "master/g-article/update",
+            defaults: new { controller = "GArticle", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "g-article-4",
+            url: "master/g-articles-search",
+            defaults: new { controller = "GArticle", action = "Get_G_Articles", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "g-article-5",
+           url: "master/g-article/get-by-id",
+           defaults: new { controller = "GArticle", action = "Get_G_Article_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "g-article-6",
+            url: "master/g-articles-by-full-code/{full_Code}",
+            defaults: new { controller = "GArticle", action = "Get_G_Articles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region P Article
@@ -697,9 +727,46 @@ namespace Kusumgar
             #region Customer Quality Creation
 
             routes.MapRoute(
-            name: "customer-quality-creation-1",
+            name: "customer-quality-1",
             url: "master/customer-quality-creation",
-            defaults: new { controller = "CustomerQualityCreation", action = "Index", id = UrlParameter.Optional },
+            defaults: new { controller = "CustomerQuality", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-2",
+            url: "master/customer-quality-insert",
+            defaults: new { controller = "CustomerQuality", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-3",
+            url: "master/customer-quality-details-update",
+            defaults: new { controller = "CustomerQuality", action = "Update_Details", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-4",
+            url: "master/sample-no-list/{sample_No}",
+            defaults: new { controller = "CustomerQuality", action = "Get_Sample_No_AutoComplete", sample_No = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-5",
+            url: "master/customer-quality-search",
+            defaults: new { controller = "CustomerQuality", action = "Get_Customer_Qualities", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-6",
+            url: "master/get-customer-quality-by-id",
+            defaults: new { controller = "CustomerQuality", action = "Get_Customer_Quality_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-7",
+            url: "master/customer-quality-update",
+            defaults: new { controller = "CustomerQuality", action = "Update_Details", id = UrlParameter.Optional },
+            // defaults: new { controller = "CustomerQuality", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

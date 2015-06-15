@@ -59,8 +59,10 @@
     <Compile Include="Master\AjaxRepo.cs" />
     <Compile Include="Master\AttributeCodeRepo.cs" />
     <Compile Include="Master\ConsumableRepo.cs" />
+    <Compile Include="Master\CustomerQualityRepo.cs" />
     <Compile Include="Master\DefectRepo.cs" />
     <Compile Include="Master\DefectTypeRepo.cs" />
+    <Compile Include="Master\GArticleRepo.cs" />
     <Compile Include="Master\IndustrialRepo.cs" />
     <Compile Include="Master\NationRepo.cs" />
     <Compile Include="Master\ProductVendorRepo.cs" />

@@ -4,7 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="KusumgarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KusumgarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attachments">
+          <Key>
+            <PropertyRef Name="Attachment_Id" />
+          </Key>
+          <Property Name="Attachment_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ref_Id" Type="bigint" Nullable="false" />
+          <Property Name="Ref_Type" Type="int" Nullable="false" />
+          <Property Name="Document_Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="Bank_Details">
           <Key>
             <PropertyRef Name="Bank_Details_Id" />
@@ -135,12 +148,47 @@
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Enquiry">
+          <Key>
+            <PropertyRef Name="Enquiry_Id" />
+          </Key>
+          <Property Name="Enquiry_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Enquiry_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enquiry_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Enquiry_Status_Id" Type="int" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="PPC_Article_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Quality_Set_Id" Type="int" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Access_Function">
           <Key>
             <PropertyRef Name="Access_Fuction_Id" />
           </Key>
           <Property Name="Access_Fuction_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Access_Function_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Kusumgar.dbo.M_Application' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="M_Application">
+          <Key>
+            <PropertyRef Name="Application_Id" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="UpdatedOn" />
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="Application_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Application_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
@@ -200,6 +248,33 @@
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedDtm" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Customer_Quality">
+          <Key>
+            <PropertyRef Name="Customer_Quality_Id" />
+          </Key>
+          <Property Name="Customer_Quality_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="Customer_Roll_Length" Type="nvarchar" MaxLength="200" />
+          <Property Name="Storage" Type="nvarchar" MaxLength="100" />
+          <Property Name="Transport" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lot_Testing" Type="nvarchar" MaxLength="100" />
+          <Property Name="End_Product_Criteria" Type="nvarchar" MaxLength="200" />
+          <Property Name="Testing_Requirements" Type="nvarchar" MaxLength="200" />
+          <Property Name="Inspection_Requirements" Type="nvarchar" MaxLength="200" />
+          <Property Name="Process_Control" Type="nvarchar" MaxLength="200" />
+          <Property Name="Sample_Id" Type="int" Nullable="false" />
+          <Property Name="Special_Care_Details" Type="nvarchar" MaxLength="200" />
+          <Property Name="Special_Requirements_Material_Handling" Type="nvarchar" MaxLength="200" />
+          <Property Name="Special_Requirements_Packaging" Type="nvarchar" MaxLength="200" />
+          <Property Name="Special_Requirements_Defect_Defination" Type="nvarchar" MaxLength="200" />
+          <Property Name="Special_Requirements_Verdicting" Type="nvarchar" MaxLength="200" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Defect">
           <Key>
             <PropertyRef Name="Defect_Id" />
@@ -244,6 +319,51 @@
           <Property Name="Factory_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Factory_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Factory_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_G_Article">
+          <Key>
+            <PropertyRef Name="G_Article_Id" />
+          </Key>
+          <Property Name="G_Article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Weave_Id" Type="int" Nullable="false" />
+          <Property Name="Grey_with_Cms" Type="int" Nullable="false" />
+          <Property Name="GSM" Type="int" Nullable="false" />
+          <Property Name="Full_Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Warp_1" Type="int" Nullable="false" />
+          <Property Name="Warp_2" Type="int" Nullable="false" />
+          <Property Name="Warp_3" Type="int" Nullable="false" />
+          <Property Name="Warp_4" Type="int" Nullable="false" />
+          <Property Name="Weft_1" Type="int" Nullable="false" />
+          <Property Name="Weft_2" Type="int" Nullable="false" />
+          <Property Name="Weft_3" Type="int" Nullable="false" />
+          <Property Name="Weft_4" Type="int" Nullable="false" />
+          <Property Name="Reed" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pick" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="R_S" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="G_W" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Total_Ends" Type="int" Nullable="false" />
+          <Property Name="Beam_Weight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Beam_Roll" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Weave" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="No_Of_Healds" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Drawing_Sequence_Body" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Drawing_Sequence_Selvedge" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Roll_Size" Type="int" Nullable="false" />
+          <Property Name="Warp_Yarn_Vendor" Type="int" Nullable="false" />
+          <Property Name="Weft_Yarn_Vendor" Type="int" Nullable="false" />
+          <Property Name="RSP" Type="int" Nullable="false" />
+          <Property Name="Warping_Meters" Type="int" Nullable="false" />
+          <Property Name="Draft" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Crimp_In_Percentage" Type="int" Nullable="false" />
+          <Property Name="Peg_Plan_Rows" Type="int" Nullable="false" />
+          <Property Name="Peg_Plan_Columns" Type="int" Nullable="false" />
           <Property Name="Is_Active" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -407,6 +527,37 @@
           <Property Name="Inspection_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Testing_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Quality">
+          <Key>
+            <PropertyRef Name="Quality_Id" />
+          </Key>
+          <Property Name="Quality_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Reed" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pick" Type="nvarchar" MaxLength="100" />
+          <Property Name="Weave" Type="int" Nullable="false" />
+          <Property Name="Minimum_Order_Size" Type="int" />
+          <Property Name="Ideal_Roll_Length" Type="int" />
+          <Property Name="Our_Sample_No" Type="int" />
+          <Property Name="Quality_No" Type="int" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Quality_Application_Mapping">
+          <Key>
+            <PropertyRef Name="Quality_Application_Id" />
+          </Key>
+          <Property Name="Quality_Application_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="Application_Name_Id" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Role">
           <Key>
             <PropertyRef Name="Role_Id" />
@@ -430,6 +581,17 @@
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Samples">
+          <Key>
+            <PropertyRef Name="Sample_Id" />
+          </Key>
+          <Property Name="Sample_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sample_No" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="M_State">
           <Key>
@@ -580,6 +742,23 @@
           <Property Name="Product_Category" Type="int" Nullable="false" />
           <Property Name="Code" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="M_W_Article">
+          <Key>
+            <PropertyRef Name="W_Article_Id" />
+          </Key>
+          <Property Name="W_Article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Reed_Space_Inch" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_No_Of_Ends" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Full_Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ideal_Beam" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Work_Center">
           <Key>
             <PropertyRef Name="Work_Center_Id" />
@@ -656,22 +835,69 @@
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Supporting_Details">
+          <Key>
+            <PropertyRef Name="Supporting_Details_Id" />
+          </Key>
+          <Property Name="Supporting_Details_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Enquiry_Id" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="int" Nullable="false" />
+          <Property Name="Customer_Roll_Length" Type="int" Nullable="false" />
+          <Property Name="Packing" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dispatch" Type="nvarchar" MaxLength="50" />
+          <Property Name="Additional_Customer_Prop" Type="nvarchar" MaxLength="50" />
+          <Property Name="Source_Of_Enquiry" Type="nvarchar" MaxLength="50" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Kusumgar.dbo.Temp_Customer_Quality_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Temp_Customer_Quality_Details">
+          <Key>
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="UpdatedBy" />
+            <PropertyRef Name="UpdatedOn" />
+          </Key>
+          <Property Name="Enquiry_Id" Type="int" />
+          <Property Name="Width_Of_Fabric" Type="nvarchar" MaxLength="50" />
+          <Property Name="Coating" Type="nvarchar" MaxLength="50" />
+          <Property Name="Applications" Type="nvarchar" MaxLength="255" />
+          <Property Name="Physical_Appearance" Type="nvarchar" MaxLength="255" />
+          <Property Name="Shades" Type="int" />
+          <Property Name="Finish" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prints" Type="nvarchar" MaxLength="50" />
+          <Property Name="Customer_Approved_Sample" Type="int" />
+          <Property Name="Market_Segment" Type="nvarchar" MaxLength="255" />
+          <Property Name="Lable_Tagging" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="KusumgarModelStoreContainer">
+          <EntitySet Name="Attachments" EntityType="Self.Attachments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank_Details" EntityType="Self.Bank_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact_Custom_Fields" EntityType="Self.Contact_Custom_Fields" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer_Addresss" EntityType="Self.Customer_Addresss" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Access_Function" EntityType="Self.M_Access_Function" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Attribute_Code" EntityType="Self.M_Attribute_Code" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Category" EntityType="Self.M_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Consumable" EntityType="Self.M_Consumable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Consumable_Vendors" EntityType="Self.M_Consumable_Vendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Customer_Quality" EntityType="Self.M_Customer_Quality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Defect" EntityType="Self.M_Defect" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Defect_Type" EntityType="Self.M_Defect_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Fabric_Type" EntityType="Self.M_Fabric_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Factory" EntityType="Self.M_Factory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_G_Article" EntityType="Self.M_G_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Industrial" EntityType="Self.M_Industrial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Industrial_Category" EntityType="Self.M_Industrial_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Industrial_Group" EntityType="Self.M_Industrial_Group" Schema="dbo" store:Type="Tables" />
@@ -684,8 +910,11 @@
           <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Process" EntityType="Self.M_Process" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Product_Vendors" EntityType="Self.M_Product_Vendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Quality" EntityType="Self.M_Quality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Quality_Application_Mapping" EntityType="Self.M_Quality_Application_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Samples" EntityType="Self.M_Samples" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_State" EntityType="Self.M_State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_SubCategory" EntityType="Self.M_SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Test" EntityType="Self.M_Test" Schema="dbo" store:Type="Tables" />
@@ -693,10 +922,41 @@
           <EntitySet Name="M_User" EntityType="Self.M_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Vendor" EntityType="Self.M_Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_W_Article" EntityType="Self.M_W_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Center" EntityType="Self.M_Work_Center" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Center_Process" EntityType="Self.M_Work_Center_Process" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Station" EntityType="Self.M_Work_Station" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Y_Article" EntityType="Self.M_Y_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supporting_Details" EntityType="Self.Supporting_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Application" EntityType="Self.M_Application" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[M_Application].[Application_Id] AS [Application_Id], 
+[M_Application].[Application_Name] AS [Application_Name], 
+[M_Application].[CreatedOn] AS [CreatedOn], 
+[M_Application].[CreatedBy] AS [CreatedBy], 
+[M_Application].[UpdatedOn] AS [UpdatedOn], 
+[M_Application].[UpdatedBy] AS [UpdatedBy]
+FROM [dbo].[M_Application] AS [M_Application]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Temp_Customer_Quality_Details" EntityType="Self.Temp_Customer_Quality_Details" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Temp_Customer_Quality_Details].[Enquiry_Id] AS [Enquiry_Id], 
+[Temp_Customer_Quality_Details].[Width_Of_Fabric] AS [Width_Of_Fabric], 
+[Temp_Customer_Quality_Details].[Coating] AS [Coating], 
+[Temp_Customer_Quality_Details].[Applications] AS [Applications], 
+[Temp_Customer_Quality_Details].[Physical_Appearance] AS [Physical_Appearance], 
+[Temp_Customer_Quality_Details].[Shades] AS [Shades], 
+[Temp_Customer_Quality_Details].[Finish] AS [Finish], 
+[Temp_Customer_Quality_Details].[Prints] AS [Prints], 
+[Temp_Customer_Quality_Details].[Customer_Approved_Sample] AS [Customer_Approved_Sample], 
+[Temp_Customer_Quality_Details].[Market_Segment] AS [Market_Segment], 
+[Temp_Customer_Quality_Details].[Lable_Tagging] AS [Lable_Tagging], 
+[Temp_Customer_Quality_Details].[CreatedBy] AS [CreatedBy], 
+[Temp_Customer_Quality_Details].[CreatedOn] AS [CreatedOn], 
+[Temp_Customer_Quality_Details].[UpdatedBy] AS [UpdatedBy], 
+[Temp_Customer_Quality_Details].[UpdatedOn] AS [UpdatedOn]
+FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -743,6 +1003,17 @@
           <EntitySet Name="M_Work_Center_Process" EntityType="KusumgarModel.M_Work_Center_Process" />
           <EntitySet Name="M_Work_Station" EntityType="KusumgarModel.M_Work_Station" />
           <EntitySet Name="M_Y_Article" EntityType="KusumgarModel.M_Y_Article" />
+          <EntitySet Name="Attachments" EntityType="KusumgarModel.Attachment" />
+          <EntitySet Name="Enquiries" EntityType="KusumgarModel.Enquiry" />
+          <EntitySet Name="M_Quality" EntityType="KusumgarModel.M_Quality" />
+          <EntitySet Name="M_Quality_Application_Mapping" EntityType="KusumgarModel.M_Quality_Application_Mapping" />
+          <EntitySet Name="M_Samples" EntityType="KusumgarModel.M_Samples" />
+          <EntitySet Name="Supporting_Details" EntityType="KusumgarModel.Supporting_Details" />
+          <EntitySet Name="M_Application" EntityType="KusumgarModel.M_Application" />
+          <EntitySet Name="Temp_Customer_Quality_Details" EntityType="KusumgarModel.Temp_Customer_Quality_Details" />
+          <EntitySet Name="M_Customer_Quality" EntityType="KusumgarModel.M_Customer_Quality" />
+          <EntitySet Name="M_W_Article" EntityType="KusumgarModel.M_W_Article" />
+          <EntitySet Name="M_G_Article" EntityType="KusumgarModel.M_G_Article" />
         </EntityContainer>
         <EntityType Name="Bank_Details">
           <Key>
@@ -1394,6 +1665,228 @@
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="Attachment_Id" />
+          </Key>
+          <Property Name="Attachment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Attachment_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Ref_Id" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Ref_Type" Type="Int32" Nullable="false" />
+          <Property Name="Document_Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Enquiry">
+          <Key>
+            <PropertyRef Name="Enquiry_Id" />
+          </Key>
+          <Property Name="Enquiry_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Enquiry_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+          <Property Name="PPC_Article_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quality_Set_Id" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Enquiry_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enquiry_Status_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Quality">
+          <Key>
+            <PropertyRef Name="Quality_Id" />
+          </Key>
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yarn_Type" Type="Int32" Nullable="false" />
+          <Property Name="Reed" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Weave" Type="Int32" Nullable="false" />
+          <Property Name="Minimum_Order_Size" Type="Int32" />
+          <Property Name="Ideal_Roll_Length" Type="Int32" />
+          <Property Name="Our_Sample_No" Type="Int32" />
+          <Property Name="Quality_No" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Quality_Application_Mapping">
+          <Key>
+            <PropertyRef Name="Quality_Application_Id" />
+          </Key>
+          <Property Name="Quality_Application_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Application_Name_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Samples">
+          <Key>
+            <PropertyRef Name="Sample_Id" />
+          </Key>
+          <Property Name="Sample_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sample_No" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Supporting_Details">
+          <Key>
+            <PropertyRef Name="Supporting_Details_Id" />
+          </Key>
+          <Property Name="Supporting_Details_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Enquiry_Id" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Roll_Length" Type="Int32" Nullable="false" />
+          <Property Name="Packing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dispatch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Additional_Customer_Prop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Source_Of_Enquiry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_Application">
+          <Key>
+            <PropertyRef Name="Application_Id" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="UpdatedOn" />
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="Application_Id" Type="Int32" Nullable="false" />
+          <Property Name="Application_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Temp_Customer_Quality_Details">
+          <Key>
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="UpdatedBy" />
+            <PropertyRef Name="UpdatedOn" />
+          </Key>
+          <Property Name="Enquiry_Id" Type="Int32" />
+          <Property Name="Width_Of_Fabric" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Coating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Applications" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Physicla_Appearance" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Shades" Type="Int32" />
+          <Property Name="Finish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prints" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Approved_Sample" Type="Int32" />
+          <Property Name="Market_Segment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Lable_Tagging" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Physical_Appearance" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_Customer_Quality">
+          <Key>
+            <PropertyRef Name="Customer_Quality_Id" />
+          </Key>
+          <Property Name="Customer_Quality_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Roll_Length" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Storage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Transport" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lot_Testing" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="End_Product_Criteria" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Testing_Requirements" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Inspection_Requirements" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Process_Control" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Sample_Id" Type="Int32" Nullable="false" />
+          <Property Name="Special_Care_Details" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Requirements_Material_Handling" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Requirements_Packaging" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Requirements_Defect_Defination" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Requirements_Verdicting" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_W_Article">
+          <Key>
+            <PropertyRef Name="W_Article_Id" />
+          </Key>
+          <Property Name="W_Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Reed_Space_Inch" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total_No_Of_Ends" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Full_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ideal_Beam" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_G_Article">
+          <Key>
+            <PropertyRef Name="G_Article_Id" />
+          </Key>
+          <Property Name="G_Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Weave_Id" Type="Int32" Nullable="false" />
+          <Property Name="Grey_with_Cms" Type="Int32" Nullable="false" />
+          <Property Name="GSM" Type="Int32" Nullable="false" />
+          <Property Name="Full_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Warp_1" Type="Int32" Nullable="false" />
+          <Property Name="Warp_2" Type="Int32" Nullable="false" />
+          <Property Name="Warp_3" Type="Int32" Nullable="false" />
+          <Property Name="Warp_4" Type="Int32" Nullable="false" />
+          <Property Name="Weft_1" Type="Int32" Nullable="false" />
+          <Property Name="Weft_2" Type="Int32" Nullable="false" />
+          <Property Name="Weft_3" Type="Int32" Nullable="false" />
+          <Property Name="Weft_4" Type="Int32" Nullable="false" />
+          <Property Name="Reed" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pick" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="R_S" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="G_W" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Total_Ends" Type="Int32" Nullable="false" />
+          <Property Name="Beam_Weight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Beam_Roll" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Weave" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="No_Of_Healds" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Drawing_Sequence_Body" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Drawing_Sequence_Selvedge" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Roll_Size" Type="Int32" Nullable="false" />
+          <Property Name="Warp_Yarn_Vendor" Type="Int32" Nullable="false" />
+          <Property Name="Weft_Yarn_Vendor" Type="Int32" Nullable="false" />
+          <Property Name="RSP" Type="Int32" Nullable="false" />
+          <Property Name="Warping_Meters" Type="Int32" Nullable="false" />
+          <Property Name="Draft" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Crimp_In_Percentage" Type="Int32" Nullable="false" />
+          <Property Name="Peg_Plan_Rows" Type="Int32" Nullable="false" />
+          <Property Name="Peg_Plan_Columns" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2089,6 +2582,228 @@
                 <ScalarProperty Name="Twist_Mingle_Id" ColumnName="Twist_Mingle_Id" />
                 <ScalarProperty Name="Denier_Id" ColumnName="Denier_Id" />
                 <ScalarProperty Name="Y_Article_Id" ColumnName="Y_Article_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attachments">
+            <EntityTypeMapping TypeName="KusumgarModel.Attachment">
+              <MappingFragment StoreEntitySet="Attachments">
+                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+                <ScalarProperty Name="Ref_Type" ColumnName="Ref_Type" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Ref_Id" ColumnName="Ref_Id" />
+                <ScalarProperty Name="Attachment_Id" ColumnName="Attachment_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enquiries">
+            <EntityTypeMapping TypeName="KusumgarModel.Enquiry">
+              <MappingFragment StoreEntitySet="Enquiry">
+                <ScalarProperty Name="Enquiry_Status_Id" ColumnName="Enquiry_Status_Id" />
+                <ScalarProperty Name="Enquiry_No" ColumnName="Enquiry_No" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Quality_Set_Id" ColumnName="Quality_Set_Id" />
+                <ScalarProperty Name="PPC_Article_Type_Id" ColumnName="PPC_Article_Type_Id" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Enquiry_Type_Id" ColumnName="Enquiry_Type_Id" />
+                <ScalarProperty Name="Enquiry_Id" ColumnName="Enquiry_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Quality">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Quality">
+              <MappingFragment StoreEntitySet="M_Quality">
+                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Quality_No" ColumnName="Quality_No" />
+                <ScalarProperty Name="Our_Sample_No" ColumnName="Our_Sample_No" />
+                <ScalarProperty Name="Ideal_Roll_Length" ColumnName="Ideal_Roll_Length" />
+                <ScalarProperty Name="Minimum_Order_Size" ColumnName="Minimum_Order_Size" />
+                <ScalarProperty Name="Weave" ColumnName="Weave" />
+                <ScalarProperty Name="Pick" ColumnName="Pick" />
+                <ScalarProperty Name="Reed" ColumnName="Reed" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Quality_Application_Mapping">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Quality_Application_Mapping">
+              <MappingFragment StoreEntitySet="M_Quality_Application_Mapping">
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Application_Name_Id" ColumnName="Application_Name_Id" />
+                <ScalarProperty Name="Quality_Application_Id" ColumnName="Quality_Application_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Samples">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Samples">
+              <MappingFragment StoreEntitySet="M_Samples">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Sample_No" ColumnName="Sample_No" />
+                <ScalarProperty Name="Sample_Id" ColumnName="Sample_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supporting_Details">
+            <EntityTypeMapping TypeName="KusumgarModel.Supporting_Details">
+              <MappingFragment StoreEntitySet="Supporting_Details">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Source_Of_Enquiry" ColumnName="Source_Of_Enquiry" />
+                <ScalarProperty Name="Additional_Customer_Prop" ColumnName="Additional_Customer_Prop" />
+                <ScalarProperty Name="Dispatch" ColumnName="Dispatch" />
+                <ScalarProperty Name="Packing" ColumnName="Packing" />
+                <ScalarProperty Name="Customer_Roll_Length" ColumnName="Customer_Roll_Length" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Enquiry_Id" ColumnName="Enquiry_Id" />
+                <ScalarProperty Name="Supporting_Details_Id" ColumnName="Supporting_Details_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Application">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Application">
+              <MappingFragment StoreEntitySet="M_Application">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Application_Name" ColumnName="Application_Name" />
+                <ScalarProperty Name="Application_Id" ColumnName="Application_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temp_Customer_Quality_Details">
+            <EntityTypeMapping TypeName="KusumgarModel.Temp_Customer_Quality_Details">
+              <MappingFragment StoreEntitySet="Temp_Customer_Quality_Details">
+                <ScalarProperty Name="Physical_Appearance" ColumnName="Physical_Appearance" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Lable_Tagging" ColumnName="Lable_Tagging" />
+                <ScalarProperty Name="Market_Segment" ColumnName="Market_Segment" />
+                <ScalarProperty Name="Customer_Approved_Sample" ColumnName="Customer_Approved_Sample" />
+                <ScalarProperty Name="Prints" ColumnName="Prints" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="Shades" ColumnName="Shades" />
+                <ScalarProperty Name="Applications" ColumnName="Applications" />
+                <ScalarProperty Name="Coating" ColumnName="Coating" />
+                <ScalarProperty Name="Width_Of_Fabric" ColumnName="Width_Of_Fabric" />
+                <ScalarProperty Name="Enquiry_Id" ColumnName="Enquiry_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Customer_Quality">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Customer_Quality">
+              <MappingFragment StoreEntitySet="M_Customer_Quality">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Special_Requirements_Verdicting" ColumnName="Special_Requirements_Verdicting" />
+                <ScalarProperty Name="Special_Requirements_Defect_Defination" ColumnName="Special_Requirements_Defect_Defination" />
+                <ScalarProperty Name="Special_Requirements_Packaging" ColumnName="Special_Requirements_Packaging" />
+                <ScalarProperty Name="Special_Requirements_Material_Handling" ColumnName="Special_Requirements_Material_Handling" />
+                <ScalarProperty Name="Special_Care_Details" ColumnName="Special_Care_Details" />
+                <ScalarProperty Name="Sample_Id" ColumnName="Sample_Id" />
+                <ScalarProperty Name="Process_Control" ColumnName="Process_Control" />
+                <ScalarProperty Name="Inspection_Requirements" ColumnName="Inspection_Requirements" />
+                <ScalarProperty Name="Testing_Requirements" ColumnName="Testing_Requirements" />
+                <ScalarProperty Name="End_Product_Criteria" ColumnName="End_Product_Criteria" />
+                <ScalarProperty Name="Lot_Testing" ColumnName="Lot_Testing" />
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="Customer_Roll_Length" ColumnName="Customer_Roll_Length" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Customer_Quality_Id" ColumnName="Customer_Quality_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_W_Article">
+            <EntityTypeMapping TypeName="KusumgarModel.M_W_Article">
+              <MappingFragment StoreEntitySet="M_W_Article">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Ideal_Beam" ColumnName="Ideal_Beam" />
+                <ScalarProperty Name="Full_Code" ColumnName="Full_Code" />
+                <ScalarProperty Name="Total_No_Of_Ends" ColumnName="Total_No_Of_Ends" />
+                <ScalarProperty Name="Reed_Space_Inch" ColumnName="Reed_Space_Inch" />
+                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="W_Article_Id" ColumnName="W_Article_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_G_Article">
+            <EntityTypeMapping TypeName="KusumgarModel.M_G_Article">
+              <MappingFragment StoreEntitySet="M_G_Article">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Peg_Plan_Columns" ColumnName="Peg_Plan_Columns" />
+                <ScalarProperty Name="Peg_Plan_Rows" ColumnName="Peg_Plan_Rows" />
+                <ScalarProperty Name="Crimp_In_Percentage" ColumnName="Crimp_In_Percentage" />
+                <ScalarProperty Name="Draft" ColumnName="Draft" />
+                <ScalarProperty Name="Warping_Meters" ColumnName="Warping_Meters" />
+                <ScalarProperty Name="RSP" ColumnName="RSP" />
+                <ScalarProperty Name="Weft_Yarn_Vendor" ColumnName="Weft_Yarn_Vendor" />
+                <ScalarProperty Name="Warp_Yarn_Vendor" ColumnName="Warp_Yarn_Vendor" />
+                <ScalarProperty Name="Roll_Size" ColumnName="Roll_Size" />
+                <ScalarProperty Name="Drawing_Sequence_Selvedge" ColumnName="Drawing_Sequence_Selvedge" />
+                <ScalarProperty Name="Drawing_Sequence_Body" ColumnName="Drawing_Sequence_Body" />
+                <ScalarProperty Name="No_Of_Healds" ColumnName="No_Of_Healds" />
+                <ScalarProperty Name="Weave" ColumnName="Weave" />
+                <ScalarProperty Name="Beam_Roll" ColumnName="Beam_Roll" />
+                <ScalarProperty Name="Beam_Weight" ColumnName="Beam_Weight" />
+                <ScalarProperty Name="Total_Ends" ColumnName="Total_Ends" />
+                <ScalarProperty Name="G_W" ColumnName="G_W" />
+                <ScalarProperty Name="R_S" ColumnName="R_S" />
+                <ScalarProperty Name="Pick" ColumnName="Pick" />
+                <ScalarProperty Name="Reed" ColumnName="Reed" />
+                <ScalarProperty Name="Weft_4" ColumnName="Weft_4" />
+                <ScalarProperty Name="Weft_3" ColumnName="Weft_3" />
+                <ScalarProperty Name="Weft_2" ColumnName="Weft_2" />
+                <ScalarProperty Name="Weft_1" ColumnName="Weft_1" />
+                <ScalarProperty Name="Warp_4" ColumnName="Warp_4" />
+                <ScalarProperty Name="Warp_3" ColumnName="Warp_3" />
+                <ScalarProperty Name="Warp_2" ColumnName="Warp_2" />
+                <ScalarProperty Name="Warp_1" ColumnName="Warp_1" />
+                <ScalarProperty Name="Full_Code" ColumnName="Full_Code" />
+                <ScalarProperty Name="GSM" ColumnName="GSM" />
+                <ScalarProperty Name="Grey_with_Cms" ColumnName="Grey_with_Cms" />
+                <ScalarProperty Name="Weave_Id" ColumnName="Weave_Id" />
+                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="G_Article_Id" ColumnName="G_Article_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
