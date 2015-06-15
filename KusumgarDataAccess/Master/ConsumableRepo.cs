@@ -14,17 +14,13 @@ namespace KusumgarDataAccess
 {
     public class ConsumableRepo 
     {
-        //private string _sqlCon = string.Empty;
 
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public ConsumableRepo()
         {
-            //_sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
 
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
 
         }
 

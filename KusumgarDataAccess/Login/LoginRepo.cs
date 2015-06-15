@@ -48,9 +48,9 @@ namespace KusumgarDataAccess
                             while (dataReader.Read())
                             {
 
-                                retVal.UserEntity.UserId = Convert.ToInt32(dataReader["UserId"]);
+                                retVal.UserId = Convert.ToInt32(dataReader["UserId"]);
 
-                                retVal.UserEntity.Is_Active = Convert.ToBoolean(dataReader["Is_Active"]);
+                                retVal.Is_Active = Convert.ToBoolean(dataReader["Is_Active"]);
                             }
                         }
 
@@ -90,15 +90,15 @@ namespace KusumgarDataAccess
                         {
                             while (dataReader.Read())
                             {
-                                userInfo.UserEntity.UserId = Convert.ToInt32(dataReader["UserId"]);
+                                userInfo.UserId = Convert.ToInt32(dataReader["UserId"]);
 
                                 //userInfo.Employee.EmployeeId = Convert.ToInt32(dataReader["EmployeeId"]);
 
-                                userInfo.UserEntity.First_Name = Convert.ToString(dataReader["First_Name"]);
+                                userInfo.First_Name = Convert.ToString(dataReader["First_Name"]);
 
-                                userInfo.UserEntity.Middle_Name = Convert.ToString(dataReader["Middle_Name"]);
+                                userInfo.Middle_Name = Convert.ToString(dataReader["Middle_Name"]);
 
-                                userInfo.UserEntity.Last_Name = Convert.ToString(dataReader["Last_Name"]);
+                                userInfo.Last_Name = Convert.ToString(dataReader["Last_Name"]);
                             }
                         }
 
@@ -106,13 +106,10 @@ namespace KusumgarDataAccess
                         {
                             while (dataReader.Read())
                             {
-                                userInfo.UserRoleList.Add(
+                                userInfo.User_Roles.Add(
                                     new UserRoleInfo()
                                     {
-                                        UserRoleEntity = new M_User_Role_Mapping // while removing DatabaseEntities, let update RoleInfo. Lets add Role_Name field in RoleInfo only.
-                                        {
-                                            Role_Id = Convert.ToInt32(dataReader["Role_Id"])
-                                        },
+                                        Role_Id = Convert.ToInt32(dataReader["Role_Id"]) ,
                                         Role_Name = Convert.ToString(dataReader["Role_Name"])
                                     });
                             }
@@ -122,7 +119,7 @@ namespace KusumgarDataAccess
                         {
                             while (dataReader.Read())
                             {
-                                userInfo.AccessFunctions.Add(new M_Access_Function { Access_Fuction_Id = Convert.ToInt32(dataReader["Access_Fuction_Id"]), Access_Function_Name = Convert.ToString(dataReader["Access_Function_Name"]) });
+                                userInfo.Access_Functions.Add(new AccessFunctionInfo { Access_Fuction_Id = Convert.ToInt32(dataReader["Access_Fuction_Id"]), Access_Function_Name = Convert.ToString(dataReader["Access_Function_Name"]) });
                             }
                         }
 

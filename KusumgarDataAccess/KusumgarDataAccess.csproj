@@ -78,6 +78,7 @@
     <Compile Include="Master\WorkCenterRepo.cs" />
     <Compile Include="Master\YArticleRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\EnquiryRepo.cs" />
     <Compile Include="Utilities\CommonMethods.cs" />
     <Compile Include="Utilities\Encrypter.cs" />
     <Compile Include="Utilities\SQLHelperRepo.cs" />
@@ -85,7 +86,6 @@
   <ItemGroup>
     <Folder Include="CMS\" />
     <Folder Include="Planning\" />
-    <Folder Include="Sales\" />
     <Folder Include="SystemConfig\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

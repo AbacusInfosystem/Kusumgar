@@ -20,8 +20,7 @@ function Get_Bank_Details_Values() {
                 {
                     Bank_Details:
                         {
-                            Bank_Details_Entity:
-                                {
+                            
                                     Bank_Account_No: $("#txtBank_Account_No").val(),
 
                                     Bank_Address: $("#txtBank_Address").val(),
@@ -51,7 +50,7 @@ function Get_Bank_Details_Values() {
                                     Currency_Id: $("#drpCurrency").val(),
 
                                     Payment_Term_Id: $("#drpPaymentTerms").val()
-                                }
+                                
                         }
                 }
         }

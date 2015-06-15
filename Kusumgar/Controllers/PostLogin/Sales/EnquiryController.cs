@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Kusumgar.Models.Sales;
+using Kusumgar.Models;
+using KusumgarBusinessEntities;
+using KusumgarDatabaseEntities;
+using KusumgarModel;
+using KusumgarBusinessEntities.Common;
+using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
+using System.Web.Security;
 
 namespace Kusumgar.Controllers
 {
@@ -12,10 +19,84 @@ namespace Kusumgar.Controllers
         //
         // GET: /Enquiry/
 
-        public ActionResult Index()
+        public EnquiryManager _enquiryMan;
+
+        public EnquiryController()
         {
-            return View();
+            _enquiryMan = new EnquiryManager();
         }
+
+        public ActionResult Index(EnquiryViewModel eViewModel)
+        {
+            return View(eViewModel);
+        }
+
+        public ActionResult Search(EnquiryViewModel eViewModel)
+        {
+            return View(eViewModel);
+        }
+
+        public JsonResult Insert(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.Enquiry_Id = _enquiryMan.Insert_Enquiry(eViewModel.Enquiry);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("YA001"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Insert " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Update(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _enquiryMan.Update_Enquiry(eViewModel.Enquiry);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("YA001"));
+            }
+            catch (Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Update " + ex.ToString());
+            }
+
+            return Json(eViewModel);
+        }
+
+        public JsonResult Get_Quality_Autocomplete(string quality_No)
+        {
+            List<AutocompleteInfo> qualities = new List<AutocompleteInfo>();
+
+            try
+            {
+                qualities = _enquiryMan.Get_Quality_Autocomplete(quality_No);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Json(qualities, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+        //
 
         public ActionResult PPC_Checkpoint()
         {
@@ -32,10 +113,7 @@ namespace Kusumgar.Controllers
             return View();
         }
 
-        public ActionResult Search()
-        {
-            return View();
-        }
+        
 
         public ActionResult Search_PPC_Checkpoint()
         {

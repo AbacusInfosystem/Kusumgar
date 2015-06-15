@@ -40,17 +40,17 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
+            htmlText += data.DefectGrid[i].Defect_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
+            htmlText += data.DefectGrid[i].Defect_Name;
 
             htmlText += "</td>";
 
-            if (data.DefectGrid[i].DefectEntity.Status == true) {
+            if (data.DefectGrid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -58,7 +58,7 @@ function BindDefectInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.DefectGrid[i].DefectEntity.Status == false) {
+            if (data.DefectGrid[i].Status == false) {
 
                 htmlText += "<td>";
 

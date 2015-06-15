@@ -7,14 +7,14 @@
         }
     });
 
-    $('[name="Vendor.Vendor_Entity.Is_Active"]').on('ifChanged', function (event) {
-        if ($(this).prop('checked')) {
-            $("#hdnStatus").val(true);
-        }
-        else {
-            $("#hdnStatus").val(false);
-        }
-    });
+    //$('[name="Vendor.Is_Active"]').on('ifChanged', function (event) {
+    //    if ($(this).prop('checked')) {
+    //        $("#hdnStatus").val(true);
+    //    }
+    //    else {
+    //        $("#hdnStatus").val(false);
+    //    }
+    //});
 
     $("#btnSaveCertificationDetails").click(function () {
       
@@ -30,7 +30,7 @@
         }
     });
     
-    $('[name="Vendor.Vendor_Entity.Block_Payment"]').on('ifChanged', function (event) {
+    $('[name="Vendor.Block_Payment"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnBlockPayment").val(true);
         }
@@ -39,7 +39,7 @@
         }
     });
 
-    $('[name="Vendor.Vendor_Entity.Is_Approved_By_Director"]').on('ifChanged', function (event) {
+    $('[name="Vendor.Is_Approved_By_Director"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnApprovedByDirector").val(true);
         }

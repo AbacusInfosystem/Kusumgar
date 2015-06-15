@@ -309,6 +309,12 @@ namespace Kusumgar
             defaults: new { controller = "Customer", action = "Check_Existing_Customer", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers.PostLogin.CRM" });
 
+            routes.MapRoute(
+            name: "customer-13",
+            url: "customer/customer-list/{Customer_Name}",
+            defaults: new { controller = "Customer", action = "Get_Customer_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Contact
@@ -1243,15 +1249,39 @@ namespace Kusumgar
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-           name: "enquiry-6",
-           url: "ppc/planning/scheduler",
-           defaults: new { controller = "Enquiry", action = "_Schedule", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "enquiry-6",
+            url: "ppc/planning/scheduler",
+            defaults: new { controller = "Enquiry", action = "_Schedule", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-          name: "enquiry-7",
-          url: "ppc/planning/scheduler-bind",
-          defaults: new { controller = "Enquiry", action = "BindSchedule", id = UrlParameter.Optional },
+            name: "enquiry-7",
+            url: "ppc/planning/scheduler-bind",
+            defaults: new { controller = "Enquiry", action = "BindSchedule", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-8",
+            url: "sales/enquiry",
+            defaults: new { controller = "Enquiry", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-9",
+            url: "sales/insert-enquiry",
+            defaults: new { controller = "Enquiry", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "enquiry-10",
+            url: "sales/update-enquiry",
+            defaults: new { controller = "Enquiry", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "enquiry-11",
+          url: "sales/quality-autocomplete/{quality_No}",
+          defaults: new { controller = "Enquiry", action = "Get_Quality_Autocomplete", quality_No = UrlParameter.Optional },
           namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -1260,11 +1290,7 @@ namespace Kusumgar
 
             #region Ajax
 
-            routes.MapRoute(
-            name: "ajax-2",
-            url: "ajax/customer-list/{Customer_Name}",
-            defaults: new { controller = "Ajax", action = "Get_Customer_AutoComplete", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+            
 
 
             routes.MapRoute(
@@ -1285,11 +1311,6 @@ namespace Kusumgar
            defaults: new { controller = "Defect", action = "Get_Defect_AutoComplete", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
-         routes.MapRoute(
-         name: "ajax-6",
-         url: "ajax/test-unit-list/{test_Unit_Name}",
-         defaults: new { controller = "TestUnit", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
-         namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #endregion

@@ -1,6 +1,6 @@
-﻿@{
-    ViewBag.Title = "Enquiry";
-}
+﻿@model Kusumgar.Models.EnquiryViewModel
+@using KusumgarBusinessEntities.Common
+
 <!-- daterange picker -->
 <link href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 <!-- InputMask -->
@@ -8,7 +8,8 @@
 <script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
 <script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
 <script src="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-
+<script src="/Scripts/Sales/Event/enquiry_events.js"></script>
+<script src="/Scripts/Sales/Method/enquiry_methods.js"></script>
 <style>
     .div-drag-drop {
         width: 100%;
@@ -30,7 +31,8 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Enquiry
+        <h1>
+            Enquiry
 
             <small>Master</small>
         </h1>
@@ -41,76 +43,75 @@
         </ol>
     </section>
 
+    <!--Hidden Fields-->
+    <input type="hidden" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id" name="Enquiry.Enquiry_Id">
+    <input type="hidden" id="hdnEnquiry_Status_Id" value="@(Convert.ToInt32(EnquiryStatus.Enquiry_Arrived))" name="Enquiry.Enquiry_Status_Id">
+
+
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-primary">
-                    <form>
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
+                        <li><a href="#tab_2" id="tabFinancial" data-toggle="tab">Staggered Order</a></li>
+                        <li><a href="#tab_3" id="tabBilling" data-toggle="tab">Customer Quality Details</a></li>
+                        <li><a href="#tab_4" id="tabShipping" data-toggle="tab">Quality Supporting Details</a></li>
+                        <li><a href="#tab_5" id="tabShipping" data-toggle="tab">Functional / Visual</a></li>
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+                    </ul>
 
-                        <div class="row">
+                    <div class="tab-content">
 
-                            <div class="col-md-6">
-
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
                                 <div id="divEnquiryPrerequisites">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Enquiry Prerequisites</h3>
-
-                                        <div class="box-tools pull-right">
-                                            <button class="btn btn-box-tool"><i class="fa fa-bar-chart fa-1x"></i></button>
-                                            <button class="btn btn-box-tool"><i class="fa fa-calculator fa-1x"></i></button>
-                                        </div>
-                                    </div>
-
-                                    <div class="box-body">
-
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-md-4 col-xs-4">
-                                                    <input type="radio" name="r1" id="rdTrial" checked />
-                                                    &nbsp; Trial
-                                                </div>
-                                                <div class="col-md-4 col-xs-4">
-                                                    <input type="radio" name="r1" id="rdStock" />
-                                                    &nbsp; Stock
-                                                </div>
-                                                <div class="col-md-4 col-xs-4">
-                                                    <input type="radio" name="r1" id="rdGenral" />
-                                                    &nbsp; General
-                                                </div>
-                                            </div>
-                                            <br />
-
-                                            <div class="form-group">
-                                                <label for="txtCustomerName">Customer Name :</label>
-                                                <input type="text" id="txtCustomerName" class="form-control input-sm" placeholder="Enter Customer Name" />
-
-                                                <ul class="todo-list ui-sortable">
-                                                    <li>
-                                                        <span class="text">Entered Customer Name</span>
-                                                        <div class="tools">
-                                                            <i class="fa fa-remove"></i>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="form-group">
-                                                        <label for="txtCustomerName">Quality # :</label>
-                                                        <input type="text" id="txtQualityNo" class="form-control input-sm" placeholder="Enter Quality #" />
-
-                                                        <ul class="todo-list ui-sortable">
-                                                            <li>
-                                                                <span class="text">547855662</span>
-                                                                <div class="tools">
-                                                                    <i class="fa fa-remove"></i>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="box-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        @foreach (var item in LookupInfo.Get_Enquiry_Types())
+                                                        {
+                                                            if (Model.Enquiry.Enquiry_Type_Id == item.Key)
+                                                            {
+                                                                <div class="col-md-4 col-xs-4">
+                                                                    <input type="radio" name="r1" id="rd_@item.Value" checked="checked" value="@item.Key" />
+                                                                    &nbsp; @item.Value
                                                                 </div>
-                                                            </li>
-                                                        </ul>
+                                                            }
+                                                            else
+                                                            {
+                                                                 <div class="col-md-4 col-xs-4">
+                                                                    <input type="radio" name="r1" id="rd_@item.Value" checked="checked" value="@item.Key" />
+                                                                    &nbsp; @item.Value
+                                                                </div>
+                                                            }
+                                                        }
+                                                        <input type="hidden" id="hdnEnquiry_Type_Id" value="@Model.Enquiry.Enquiry_Type_Id" name="Enquiry.Enquiry_Type_Id">
+                                                    </div>
+                                                    <br />
+
+                                                    <div class="form-group">
+                                                        <label style="color: #333" for="txtCustomer_Name">Customer name</label>
+                                                        <div class="auto-complete">
+                                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="@Model.Enquiry.Customer_Name">
+                                                            <input type="hidden" id="hdnCustomer_Id" value="@(Model.Enquiry.Customer_Id == 0 ? "" : Model.Enquiry.Customer_Id.ToString())" name="Enquiry.Customer_Id" class="auto-complete-value">
+                                                            <input type="hidden" id="hdnCustomer_Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name" class="auto-complete-label">
+                                                        </div>
                                                     </div>
 
-                                            <div class="box-body table-responsive no-padding">
+                                                    <div class="form-group">
+                                                        <label style="color: #333" for="txtQuality_No">Quality name</label>
+                                                        <div class="auto-complete">
+                                                            <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code" value="@Model.Enquiry.Quality_No">
+                                                            <input type="hidden" id="hdnQuality_Id" value="@(Model.Enquiry.Quality_Id == 0 ? "" : Model.Enquiry.Quality_Id.ToString())" name="Enquiry.Quality_Id" class="auto-complete-value">
+                                                            <input type="hidden" id="hdnQuality_No" value="@Model.Enquiry.Quality_No" name="Enquiry.Quality_No" class="auto-complete-label">
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="box-body table-responsive no-padding">
                                                         <table class="table table-striped">
                                                             <tr>
                                                                 <th>Quality Attributes</th>
@@ -123,37 +124,43 @@
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Reed
+                                                                <td>
+                                                                    Reed
                                                                 </td>
                                                                 <td>50</td>
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Pick
+                                                                <td>
+                                                                    Pick
                                                                 </td>
                                                                 <td>62</td>
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Weave
+                                                                <td>
+                                                                    Weave
                                                                 </td>
                                                                 <td>62</td>
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Minimum Order Size
+                                                                <td>
+                                                                    Minimum Order Size
                                                                 </td>
                                                                 <td>62</td>
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Ideal Roll Length
+                                                                <td>
+                                                                    Ideal Roll Length
                                                                 </td>
                                                                 <td>62</td>
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Our Sample No
+                                                                <td>
+                                                                    Our Sample No
                                                                 </td>
                                                                 <td>62</td>
                                                             </tr>
@@ -161,78 +168,25 @@
 
                                                     </div>
 
-                                            @*<div class="form-group">
-                                                        <label>Article # :</label>
-
-                                                        <div class="input-group margin" style="margin: 0px;">
-                                                            <div class="input-group-btn" style="padding-right: 10px;">
-                                                                <input type="radio" name="r1" id="rdbGArticle" checked />
-                                                            </div>
-                                                            <!-- /btn-group -->
-                                                            <label for="txtCustomerName">G # : </label>
-                                                            0PES  PLN155  100
-
-                                                        </div>
-
-                                                        <div class="input-group margin" style="margin: 0px;">
-                                                            <div class="input-group-btn" style="padding-right: 10px;">
-                                                                <input type="radio" name="r1" id="rdbPArticle" />
-                                                            </div>
-                                                            <!-- /btn-group -->
-                                                            <label for="txtCustomerName">P # : </label>
-                                                            0PES  PLN155  100 4433
-
-                                                        </div>
-
-                                                        <div class="input-group margin" style="margin: 0px;">
-                                                            <div class="input-group-btn" style="padding-right: 10px;">
-                                                                <input type="radio" name="r1" id="rdbCArticle" />
-                                                            </div>
-                                                            <!-- /btn-group -->
-                                                            <label for="txtCustomerName">C # : </label>
-                                                            0PES  PLN155  100 4433 5544
-
-                                                        </div>
-                                                        <!-- /input-group -->
-                                                    </div>*@
-
-                                            @*<div id="divQualityDetails" class="row" style="text-align: center;">
-                                                <div class="col-md-12"><b>Yarn Article:</b> 04200200 S01NY06 BR0048IM HS0HT 000NRL SUPRF</div>
-                                                <div class="col-md-12"><i class="fa fa-sort-desc fa-1x"></i></div>
-                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 062.00" 02740</div>
-                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 061.00" 02740</div>
-                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 063.00" 02740</div>
-                                                <div class="col-md-12"><b>W Article:</b> 4042 0PES 064.00" 02740</div>
-                                                <div class="col-md-12" style="text-align: center;"><i class="fa fa-sort-desc fa-1x"></i></div>
-                                                <div class="col-md-12"><b>G Article:</b> 0PES PLN155 100</div>
-                                                <div class="col-md-12" style="text-align: center;"><i class="fa fa-sort-desc fa-2x"></i></div>
-                                                <div class="col-md-12"><b>P Article:</b> AAA BBB CCCC PLN155 100</div>
-                                                <div class="col-md-12" style="text-align: center;"><i class="fa fa-sort-desc fa-3x"></i></div>
-                                                <div class="col-md-12"><b>C Article:</b> AAA BBB CCCC EEE FFF PLN155 100</div>
-
-                                            </div>*@
-                                            <br />
-                                            <div class="form-group">
-                                                <button type="button" id="btnCustomerQualityDetails" class="btn btn-success btn-block">No Quality # found. Apply for New !</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div class="box-footer">
+                                        <div class="btn-group">
+                                            <button type="button" id="btnSave_Enquiry" class="btn btn-success btn-sm">Save</button>
+                                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
 
-                            <div class="col-md-6">
-
+                            <div class="tab-pane" id="tab_2">
                                 <div id="divStaggeredOrderItemDetails">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Staggered Order Item Details</h3>
-                                    </div>
-
                                     <div class="box-body">
-
                                         <div class="row">
-                                            <div class="col-md-5 col-xs-5">
+                                            <div class="col-md-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="txtQuantity">Quantity</label>
                                                     <div class="input-group">
@@ -240,12 +194,6 @@
                                                         <span class="input-group-addon">Meters</span>
                                                     </div>
                                                 </div>
-
-
-
-                                            </div>
-
-                                            <div class="col-md-5 col-xs-5">
                                                 <div class="form-group">
                                                     <label for="DtDelivery_Date">Delivery Date</label>
                                                     <div class="input-group">
@@ -257,13 +205,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-2 col-xs-2">
-                                                <br />
-                                                <button id="btnAdd" class="btn btn-success btn-block">Add</button>
-                                            </div>
-
-                                            <div class="col-md-12 col-xs-12">
-
+                                            <div class="col-md-8 col-xs-8">
                                                 <table class="table table-hover">
                                                     <tr>
                                                         <th>Quantity</th>
@@ -330,19 +272,17 @@
 
                                             </div>
                                         </div>
-
                                     </div>
 
+                                    <div class="box-footer">
+                                        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
+                                        <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                    </div>
                                 </div>
-
                             </div>
 
-                            <div class="col-md-12">
-                                <div id="divCustomerQualityDetails" class="div-highlight">
-
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Customer Quality Details</h3>
-                                    </div>
+                            <div class="tab-pane" id="tab_3">
+                                <div id="">
 
                                     <div class="box-body">
                                         <div class="row">
@@ -426,13 +366,17 @@
 
                                     </div>
 
-                                </div>
+                                    <div class="box-footer">
+                                        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
+                                        <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
 
-                                <div id="divQualitySupportingDetails">
-
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Quality Supporting Details</h3>
                                     </div>
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab_4">
+                                <div id="divQualitySupportingDetails">
 
                                     <div class="box-body">
                                         <div class="row">
@@ -467,17 +411,150 @@
                                                     <label for="txtSource_of_Inquiry">Source of enquiry</label>
                                                     <input type="text" id="txtSource_of_Inquiry" placeholder="Enter source of enquiry" class="form-control input-sm" />
                                                 </div>
+
+                                            </div>
+
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="txtAttach_Emails">Attach Emails</label>
                                                     <div class="div-drag-drop">drag and drop here.</div>
                                                 </div>
+                                                <ul class="todo-list ui-sortable">
+                                                    <li>
+                                                        <span class="text">Emails 1</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 2</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 4</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 5</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 6</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 7</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 8</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Emails 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
 
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="txtAttach_Files">Attach Files</label>
                                                     <div class="div-drag-drop">drag and drop here.</div>
                                                 </div>
+                                                <ul class="todo-list ui-sortable">
+                                                    <li>
+                                                        <span class="text">Files 1</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 2</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 4</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 5</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 6</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 7</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 8</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li style="" class="">
+                                                        <span class="text">Files 3</span>
+                                                        <div class="tools">
+                                                            <i class="fa fa-remove"></i>
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             </div>
 
+
+                                        </div>
+                                    </div>
+
+                                    <div class="box-footer">
+                                        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
+                                        <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab_5">
+                                <div id="divFunctional_Visual">
+                                    <div class="box-body">
+                                        <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="txtQuantity">Functional Parameters</label>
@@ -587,14 +664,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="box-footer">
-                            <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-
-                        </div>
-
-                    </form>
+                    </div>
                 </div>
             </div>
             <!-- /.col -->

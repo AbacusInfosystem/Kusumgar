@@ -14,6 +14,7 @@ namespace Kusumgar.Controllers
 {
     public class DefectTypeController : Controller
     {
+        [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Index(DefectTypeViewModel dViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
@@ -21,6 +22,7 @@ namespace Kusumgar.Controllers
             return View("Index", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public ActionResult Search(DefectTypeViewModel dViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Search";
@@ -32,10 +34,19 @@ namespace Kusumgar.Controllers
             return View("Search", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Insert(DefectTypeViewModel dViewModel)
         {
             try
-            {
+            {  
+                dViewModel.DefectType.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                dViewModel.DefectType.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                dViewModel.DefectType.CreatedOn = DateTime.Now;
+
+                dViewModel.DefectType.UpdatedOn = DateTime.Now;
+
                 DefectTypeManager dMan = new DefectTypeManager();
 
                 dMan.Insert(dViewModel.DefectType);
@@ -51,13 +62,17 @@ namespace Kusumgar.Controllers
             TempData["dViewModel"] = dViewModel;
 
             return RedirectToAction("Search");
+     }
 
-        }
-
+        [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Update(DefectTypeViewModel dViewModel)
         {
             try
             {
+                dViewModel.DefectType.UpdatedOn = DateTime.Now;
+
+                dViewModel.DefectType.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
                 DefectTypeManager dMan = new DefectTypeManager();
 
                 dMan.Update(dViewModel.DefectType);
@@ -75,6 +90,7 @@ namespace Kusumgar.Controllers
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Get_Defect_Type_By_Id(DefectTypeViewModel dViewModel)
         {
             try
@@ -93,6 +109,7 @@ namespace Kusumgar.Controllers
             return View("Index", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public JsonResult Get_Defect_Types(DefectTypeViewModel dViewModel)
         {
             DefectTypeManager dMan = new DefectTypeManager();
@@ -100,15 +117,19 @@ namespace Kusumgar.Controllers
             PaginationInfo pager = new PaginationInfo();
 
             try
-            {
+            {  
+                pager = dViewModel.Pager;
+
                 if (dViewModel.Filter.Defect_Type_Id != 0)
                 {
-                    dViewModel.DefectTypeGrid = dMan.Get_Defect_Types_By_Id(dViewModel.Filter.Defect_Type_Id, dViewModel.Pager);
+                    dViewModel.DefectTypeGrid = dMan.Get_Defect_Types_By_Id(dViewModel.Filter.Defect_Type_Id,ref pager);
                 }
                 else
                 {
-                    dViewModel.DefectTypeGrid = dMan.Get_Defect_Types(dViewModel.Pager);
+                    dViewModel.DefectTypeGrid = dMan.Get_Defect_Types(ref pager);
                 }
+
+                dViewModel.Pager = pager;
 
                 dViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", dViewModel.Pager.TotalRecords, dViewModel.Pager.CurrentPage + 1, dViewModel.Pager.PageSize, 10, true);
             }

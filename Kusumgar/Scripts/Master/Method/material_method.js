@@ -10,7 +10,7 @@
 }
 
 function Bind_Material_Data_Callback(data) {
-    $("#hdnMaterial_Id").val(data.Material.Material_Entity.Material_Id);
+    $("#hdnMaterial_Id").val(data.Material.Material_Id);
 
     $("#tabMaterialVendor").show();
 
@@ -22,8 +22,7 @@ function Set_Material() {
         {
             Material:
                 {
-                    Material_Entity:
-                        {
+                    
                             Material_Id: $("#hdnMaterial_Id").val(),
 
                             Material_Code: $("#txtMaterialCode").val(),
@@ -45,7 +44,7 @@ function Set_Material() {
                             Inspection_Facility: $("#txtInspFacility").val(),
 
                             Testing_Facility: $("#txtTestFacility").val()
-                        }
+                        
                 }
         }
     return mViewModel;
@@ -60,7 +59,7 @@ function Bind_SubCategories(data) {
 
     if (data.length > 0) {
         for (var i = 0; i < data.length ; i++) {
-            htmltext += "<option value='" + data[i].Material_SubCategory_Entity.Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Entity.Material_SubCategory_Name + "</option>";
+            htmltext += "<option value='" + data[i].Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Name + "</option>";
         }
     }
     $("#drpSubCatName").html(htmltext);
@@ -142,8 +141,7 @@ function Set_Material_Vendor()
         {
             Material_Vendor:
                 {
-                    Material_Vendor_Entity:
-                        {
+                   
                             Material_Vendor_Id: $("#hdnMaterial_Vendor_Id").val(),
 
                             Material_Id: $("#hdnMaterial_Id").val(),
@@ -152,7 +150,7 @@ function Set_Material_Vendor()
 
                             Priority_Order: $("#drpPriorityOrder").val()
                             
-                        }
+                        
                 }
         }
     return mViewModel;

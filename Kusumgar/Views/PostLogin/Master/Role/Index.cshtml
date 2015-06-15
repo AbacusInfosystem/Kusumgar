@@ -22,7 +22,7 @@
     </section>
 
     <form id="frmRole">
-        <input type="hidden" class="form-control input-sm" name="Role.RoleEntity.Role_Id" id="hdnRole_Id" value="@Model.Role.RoleEntity.Role_Id">
+        <input type="hidden" class="form-control input-sm" name="Role.Role_Id" id="hdnRole_Id" value="@Model.Role.Role_Id">
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -41,8 +41,8 @@
 
                                     <div class="form-group">
                                         <label for="txtRole_Name" style="color: #333">Role Name</label>
-                                        <input type="text" class="form-control input-sm" name="Role.RoleEntity.Role_Name" id="txtRole_Name" placeholder="Enter Role name" value="@Model.Role.RoleEntity.Role_Name">
-                                        <input type="hidden" id="hdnRole_Name" value="@Model.Role.RoleEntity.Role_Name">
+                                        <input type="text" class="form-control input-sm" name="Role.Role_Name" id="txtRole_Name" placeholder="Enter Role name" value="@Model.Role.Role_Name">
+                                        <input type="hidden" id="hdnRole_Name" value="@Model.Role.Role_Name">
                                     </div>
 
                                 </div>
@@ -62,9 +62,9 @@
                                         <select multiple="multiple" id="lst_Available_Access_Function" name="" class="form-control">
                                             @foreach (var item in Model.Role_Accesses)
                                             {
-                                                if (!(Model.Selecetd_Role_Accesses.Where(a => a.RoleAccessEntity.Access_Function_Id == item.RoleAccessEntity.Access_Function_Id).Count() > 0))
+                                                if (!(Model.Selecetd_Role_Accesses.Where(a => a.Access_Function_Id == item.Access_Function_Id).Count() > 0))
                                                 {
-                                                    <option value="@item.RoleAccessEntity.Access_Function_Id">@item.Access_Name</option>
+                                                    <option value="@item.Access_Function_Id">@item.Access_Name</option>
                                                 }
                                             }
                                         </select>
@@ -80,7 +80,7 @@
                                         <select multiple="multiple" id="lst_Selected_Access_Function" name="Selected_Role_Access" class="form-control">
                                             @foreach (var item in Model.Selecetd_Role_Accesses)
                                             {
-                                                <option value="@item.RoleAccessEntity.Access_Function_Id" selected>@item.Access_Name</option>
+                                                <option value="@item.Access_Function_Id" selected>@item.Access_Name</option>
                                             }
                                         </select>
 
@@ -91,7 +91,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @if (Model.Role.RoleEntity.Is_Active == false)
+                                        @if (Model.Role.Is_Active == false)
                                         {
                                             <label>
                                                 <input type="checkbox" name="chkStatus" />
@@ -106,7 +106,7 @@
                                             </label>
                                         }
                                     </div>
-                                    <input type="hidden" id="hdnActive" name="Role.RoleEntity.Is_Active" value="@Model.Role.RoleEntity.Is_Active.ToString()">
+                                    <input type="hidden" id="hdnActive" name="Role.Is_Active" value="@Model.Role.Is_Active.ToString()">
                                 </div>
                             </div>
 

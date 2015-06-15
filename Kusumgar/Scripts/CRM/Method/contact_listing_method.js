@@ -34,9 +34,9 @@ function Bind_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Contacts[i].contact_Entity.Contact_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Contacts[i].Contact_Id + "' class='iradio_square-green'/>";
 
-            htmlText += "<input type='hidden'  id='hdnCust_" + data.Contacts[i].contact_Entity.Contact_Id + "' value='" + data.Contacts[i].contact_Entity.Customer_Id + "' />";
+            htmlText += "<input type='hidden'  id='hdnCust_" + data.Contacts[i].Contact_Id + "' value='" + data.Contacts[i].Customer_Id + "' />";
 
             htmlText += "</td>";
 
@@ -48,25 +48,25 @@ function Bind_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Contacts[i].contact_Entity.Contact_Name == null ? "" : data.Contacts[i].contact_Entity.Contact_Name;
+            htmlText += data.Contacts[i].Contact_Name == null ? "" : data.Contacts[i].Contact_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contacts[i].contact_Entity.Official_Email == null ? "" : data.Contacts[i].contact_Entity.Official_Email;
+            htmlText += data.Contacts[i].Official_Email == null ? "" : data.Contacts[i].Official_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contacts[i].contact_Entity.Office_Landline1 == null ? "" : data.Contacts[i].contact_Entity.Office_Landline1;
+            htmlText += data.Contacts[i].Office_Landline1 == null ? "" : data.Contacts[i].Office_Landline1;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Contacts[i].contact_Entity.Office_Landline2 == null ? "" : data.Contacts[i].contact_Entity.Office_Landline2;
+            htmlText += data.Contacts[i].Office_Landline2 == null ? "" : data.Contacts[i].Office_Landline2;
 
             htmlText += "</td>";
 

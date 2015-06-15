@@ -43,18 +43,18 @@
                             <form id="frmCustomer">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <input type="hidden" id="hdnCustomer_Id" value="@Model.Customer.Customer_Entity.Customer_Id">
+                                        <input type="hidden" id="hdnCustomer_Id" value="@Model.Customer.Customer_Id">
                                         <div class="form-group">
                                             <label for="txtCustomer_Name" style="color: #333">Customer name</label>
-                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" name="Customer.Customer_Entity.Customer_Name" placeholder="Enter customer name" value="@Model.Customer.Customer_Entity.Customer_Name">
-                                            <input type="hidden" class="form-control input-sm" id="hdnCustomer_Name" placeholder="Enter customer name" value="@Model.Customer.Customer_Entity.Customer_Name">
+                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" name="Customer.Customer_Name" placeholder="Enter customer name" value="@Model.Customer.Customer_Name">
+                                            <input type="hidden" class="form-control input-sm" id="hdnCustomer_Name" placeholder="Enter customer name" value="@Model.Customer.Customer_Name">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="txtEmailId" style="color: #333">Email </label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                <input type="text" class="form-control input-sm" id="txtEmail_Id" name="Customer.Customer_Entity.Company_Email" placeholder="Enter email" value="@Model.Customer.Customer_Entity.Company_Email">
+                                                <input type="text" class="form-control input-sm" id="txtEmail_Id" name="Customer.Company_Email" placeholder="Enter email" value="@Model.Customer.Company_Email">
                                             </div>
                                         </div>
                                     </div>
@@ -63,22 +63,22 @@
                                         <!-- Head Office Details -->
                                         <div class="form-group">
                                             <label style="color: #333">Office address</label>
-                                            <textarea class="form-control input-sm" rows="2" id="txtHead_Office_Address" name="Customer.Customer_Entity.Head_Office_Address" placeholder="Enter head office address">@Model.Customer.Customer_Entity.Head_Office_Address</textarea>
+                                            <textarea class="form-control input-sm" rows="2" id="txtHead_Office_Address" name="Customer.Head_Office_Address" placeholder="Enter head office address">@Model.Customer.Head_Office_Address</textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label style="color: #333">Nation</label>
-                                            <select class="form-control input-sm" id="drpHead_Office_Nation" name="Customer.Customer_Entity.Head_Office_Nation">
+                                            <select class="form-control input-sm" id="drpHead_Office_Nation" name="Customer.Head_Office_Nation">
                                                 <option value="">- Select Nation -</option>
                                                 @foreach (var item in Model.Nations)
                                                 {
-                                                    if (Model.Customer.Customer_Entity.Head_Office_Nation == item.Nation_Entity.NationId)
+                                                    if (Model.Customer.Head_Office_Nation == item.NationId)
                                                     {
-                                                        <option value="@item.Nation_Entity.NationId" selected="selected">@item.Nation_Entity.NationName</option>
+                                                        <option value="@item.NationId" selected="selected">@item.NationName</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.Nation_Entity.NationId">@item.Nation_Entity.NationName</option>
+                                                        <option value="@item.NationId">@item.NationName</option>
                                                     }
                                                 }
                                             </select>
@@ -86,17 +86,17 @@
 
                                         <div class="form-group">
                                             <label style="color: #333">State</label>
-                                            <select class="form-control input-sm" id="drpHead_Office_State" name="Customer.Customer_Entity.Head_Office_State">
+                                            <select class="form-control input-sm" id="drpHead_Office_State" name="Customer.Head_Office_State">
                                                 <option value="">- Select State-</option>
                                                 @foreach (var item in Model.States)
                                                 {
-                                                    if (Model.Customer.Customer_Entity.Head_Office_State == item.State_Entity.StateId)
+                                                    if (Model.Customer.Head_Office_State == item.StateId)
                                                     {
-                                                        <option value="@item.State_Entity.StateId" selected="selected">@item.State_Entity.StateName</option>
+                                                        <option value="@item.StateId" selected="selected">@item.StateName</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.State_Entity.StateId">@item.State_Entity.StateName</option>
+                                                        <option value="@item.StateId">@item.StateName</option>
                                                     }
                                                 }
                                             </select>
@@ -107,7 +107,7 @@
 
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                                                <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Customer_Entity.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Customer_Entity.Head_Office_ZipCode" maxlength="6">
+                                                <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6">
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_Landline1" class="form-control input-sm" name="Customer.Customer_Entity.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Customer_Entity.Head_Office_Landline1" />
+                                                <input type="text" id="txtHead_Office_Landline1" class="form-control input-sm" name="Customer.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline1" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -131,7 +131,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_Landline2" class="form-control input-sm" name="Customer.Customer_Entity.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Customer_Entity.Head_Office_Landline2" />
+                                                <input type="text" id="txtHead_Office_Landline2" class="form-control input-sm" name="Customer.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline2" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -142,7 +142,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-fax"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_FaxNo" class="form-control" name="Customer.Customer_Entity.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Customer_Entity.Head_Office_FaxNo" />
+                                                <input type="text" id="txtHead_Office_FaxNo" class="form-control" name="Customer.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_FaxNo" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -151,7 +151,7 @@
                                             <label>
                                                 <input type="checkbox" name="chkIsApproved" id="chkIsApproved" checked />
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Approved status
-                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Approved_By_Director" name="Customer.Customer_Entity.Is_Approved_By_Director">
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Approved_By_Director" name="Customer.Is_Approved_By_Director">
                                             </label>
                                         </div>
 
@@ -159,7 +159,7 @@
                                             <label>
                                                 <input type="checkbox" name="chkStatus" id="chkStatus" checked />
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Active status
-                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer.Customer_Entity.Is_Active">
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer.Is_Active">
                                             </label>
                                         </div>
 
@@ -207,50 +207,50 @@
 
                                         <div class="form-group">
                                             <label for="txtCustomerName" style="color: #333">Company turnover</label>
-                                            <input type="text" class="form-control input-sm" id="txtCompany_Turnover" placeholder="Enter company turnover" name="Customer.Customer_Entity.Company_Turnover" value="@(Model.Customer.Customer_Entity.Company_Turnover == null ? "" : Model.Customer.Customer_Entity.Company_Turnover)">
+                                            <input type="text" class="form-control input-sm" id="txtCompany_Turnover" placeholder="Enter company turnover" name="Customer.Company_Turnover" value="@(Model.Customer.Company_Turnover == null ? "" : Model.Customer.Company_Turnover)">
                                         </div>
-                                        @if (Model.Customer.Customer_Entity.Credit_limit == 0)
+                                        @if (Model.Customer.Credit_limit == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Credit limit</label>
-                                                <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Customer_Entity.Credit_limit">
+                                                <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Credit_limit">
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Credit limit</label>
-                                                <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Customer_Entity.Credit_limit" value="@Model.Customer.Customer_Entity.Credit_limit">
+                                                <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Credit_limit" value="@Model.Customer.Credit_limit">
                                             </div>
                                         }
 
-                                        @if (Model.Customer.Customer_Entity.Order_Minimum_Value == 0)
+                                        @if (Model.Customer.Order_Minimum_Value == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order minimum value</label>
-                                                <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Customer_Entity.Order_Minimum_Value">
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Order_Minimum_Value">
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order minimum value</label>
-                                                <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Customer_Entity.Order_Minimum_Value" value="@Model.Customer.Customer_Entity.Order_Minimum_Value">
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Minimum_Value" placeholder="Enter order minimum value" name="Customer.Order_Minimum_Value" value="@Model.Customer.Order_Minimum_Value">
                                             </div>
                                         }
 
-                                        @if (@Model.Customer.Customer_Entity.Order_Maximum_Value == 0)
+                                        @if (@Model.Customer.Order_Maximum_Value == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
-                                                <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Customer_Entity.Order_Maximum_Value">
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Order_Maximum_Value">
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
-                                                <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Customer_Entity.Order_Maximum_Value" value="@Model.Customer.Customer_Entity.Order_Maximum_Value">
+                                                <input type="text" class="form-control input-sm" id="txtOrder_Maximum_Value" placeholder="Enter order maximum value" name="Customer.Order_Maximum_Value" value="@Model.Customer.Order_Maximum_Value">
                                             </div>
                                         }
 
@@ -260,7 +260,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Customer_Entity.Expiration_Date_Of_Contract" value="@((Model.Customer.Customer_Entity.Expiration_Date_Of_Contract == null ? "" : Model.Customer.Customer_Entity.Expiration_Date_Of_Contract.Value.ToShortDateString()))" />
+                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == null ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -271,7 +271,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Customer_Entity.Auto_Mail_Delivery == true)
+                                                        @if (Model.Customer.Auto_Mail_Delivery == true)
                                                         {
                                                             <input type="checkbox" name="chkAutoMailDelivery" checked />
                                                         }
@@ -281,7 +281,7 @@
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Auto Mail Delivery
                                                     </label>
-                                                    <input type="hidden" id="hdnAuto_Mail_Delivery" value="@((Model.Customer.Customer_Entity.Auto_Mail_Delivery == null ? false : Model.Customer.Customer_Entity.Auto_Mail_Delivery).ToString())">
+                                                    <input type="hidden" id="hdnAuto_Mail_Delivery" value="@((Model.Customer.Auto_Mail_Delivery == null ? false : Model.Customer.Auto_Mail_Delivery).ToString())">
                                                 </div>
                                             </div>
                                         </div>
@@ -290,7 +290,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Customer_Entity.Block_Order == true)
+                                                        @if (Model.Customer.Block_Order == true)
                                                         {
                                                             <input type="checkbox" name="chkBlockOrder" checked />
                                                         }
@@ -300,7 +300,7 @@
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Block order
                                                     </label>
-                                                    <input type="hidden" id="hdnBlock_Order" value="@((Model.Customer.Customer_Entity.Block_Order== null ? false :Model.Customer.Customer_Entity.Block_Order).ToString())">
+                                                    <input type="hidden" id="hdnBlock_Order" value="@((Model.Customer.Block_Order== null ? false :Model.Customer.Block_Order).ToString())">
                                                 </div>
                                             </div>
                                         </div>
@@ -309,7 +309,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-4">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Customer_Entity.Public_Private_Sector == true)
+                                                        @if (Model.Customer.Public_Private_Sector == true)
                                                         {
                                                             <input type="radio" name="Public_Private" id="rdbPublic" checked />
                                                         }
@@ -322,7 +322,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Customer_Entity.Public_Private_Sector == false)
+                                                        @if (Model.Customer.Public_Private_Sector == false)
                                                         {
                                                             <input type="radio" name="Public_Private" id="rdbPrivate" checked />
                                                         }
@@ -336,7 +336,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     &nbsp;
-                                                    <input type="hidden" id="hdnPublic_Private_Sector" value="@((Model.Customer.Customer_Entity.Public_Private_Sector == null ? false : Model.Customer.Customer_Entity.Public_Private_Sector).ToString())">
+                                                    <input type="hidden" id="hdnPublic_Private_Sector" value="@((Model.Customer.Public_Private_Sector == null ? false : Model.Customer.Public_Private_Sector).ToString())">
                                                 </div>
                                             </div>
                                         </div>
@@ -346,7 +346,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-4">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == true)
+                                                        @if (Model.Customer.Organised_UnOrganised_Sector == true)
                                                         {
                                                             <input type="radio" name="Organised_Unorganised" id="rdbOrganised" checked />
                                                         }
@@ -360,7 +360,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == false)
+                                                        @if (Model.Customer.Organised_UnOrganised_Sector == false)
                                                         {
                                                             <input type="radio" name="Organised_Unorganised" id="rdbUnorganised" checked />
                                                         }
@@ -370,7 +370,7 @@
                                                         }
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Unorganised sectors
                                                     </label>
-                                                    <input type="hidden" id="hdnOrganised_UnOrganised_Sector" value="@((Model.Customer.Customer_Entity.Organised_UnOrganised_Sector == null ? false : Model.Customer.Customer_Entity.Organised_UnOrganised_Sector).ToString())">
+                                                    <input type="hidden" id="hdnOrganised_UnOrganised_Sector" value="@((Model.Customer.Organised_UnOrganised_Sector == null ? false : Model.Customer.Organised_UnOrganised_Sector).ToString())">
                                                 </div>
                                                 <div class="col-md-4">
                                                     &nbsp;
@@ -382,7 +382,7 @@
                                             <div class="form-group">
                                                 @foreach (var item in LookupInfo.Get_Compnay_Types())
                                                 {
-                                                    if (Model.Customer.Customer_Entity.Proprietary_Private_Limited == item.Key)
+                                                    if (Model.Customer.Proprietary_Private_Limited == item.Key)
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
@@ -401,7 +401,7 @@
                                                         </div>
                                                     }
                                                 }
-                                                <input type="hidden" id="hdnProprietary_Private_Limited" value="@((Model.Customer.Customer_Entity.Proprietary_Private_Limited ==null ? 0: Model.Customer.Customer_Entity.Proprietary_Private_Limited))">
+                                                <input type="hidden" id="hdnProprietary_Private_Limited" value="@((Model.Customer.Proprietary_Private_Limited ==null ? 0: Model.Customer.Proprietary_Private_Limited))">
                                             </div>
                                         </div>
 
@@ -409,7 +409,7 @@
                                             <div class="form-group">
                                                 @foreach (var item in LookupInfo.Get_Compnay_Status())
                                                 {
-                                                    if (Model.Customer.Customer_Entity.Progressive_Stable_Turmoil == item.Key)
+                                                    if (Model.Customer.Progressive_Stable_Turmoil == item.Key)
                                                     {
                                                         <div class="col-md-4">
                                                             <label style="color: #333">
@@ -429,7 +429,7 @@
                                                     }
 
                                                 }
-                                                <input type="hidden" id="hdnProgressive_Stable_Turmoil" value="@((Model.Customer.Customer_Entity.Progressive_Stable_Turmoil==null ? 0: Model.Customer.Customer_Entity.Progressive_Stable_Turmoil))">
+                                                <input type="hidden" id="hdnProgressive_Stable_Turmoil" value="@((Model.Customer.Progressive_Stable_Turmoil==null ? 0: Model.Customer.Progressive_Stable_Turmoil))">
                                             </div>
                                         </div>
                                     </div>

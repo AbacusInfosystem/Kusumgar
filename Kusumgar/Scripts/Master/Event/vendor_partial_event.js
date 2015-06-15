@@ -21,20 +21,7 @@
     }
     });
 
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square-green',
-        increaseArea: '20%' // optional
-    });
 
-$('[name="Vendor.Vendor_Entity.Is_Active"]').on('ifChanged', function (event) {
-    if ($(this).prop('checked')) {
-        $("#hdnStatus").val(true);
-    }
-    else {
-        $("#hdnStatus").val(false);
-    }
-});
 
 $("#drpHeadOfficeNation").change(function () {
 

@@ -13,9 +13,23 @@ namespace KusumgarBusinessEntities
 
         public NationInfo()
         {
-            Nation_Entity = new M_Nation();
+          //   Nation_Entity = new M_Nation();
         }
 
-        public M_Nation Nation_Entity { get; set; }
+      //  public M_Nation Nation_Entity { get; set; }
+
+        public int NationId { get; set; }
+
+        public string NationName { get; set; }
+
+        public bool Is_Active { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public int CreatedBy { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
+
+        public int UpdatedBy { get; set; }
     }
 }

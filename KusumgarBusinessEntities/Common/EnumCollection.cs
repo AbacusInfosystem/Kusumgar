@@ -117,7 +117,7 @@ namespace KusumgarBusinessEntities.Common
         TwistMingle = 2,
         Twist_type = 3,
         Ply = 4,
-        Yarn_type = 5,
+        Yarn_Type = 5,
         Shade = 6,
         Filaments = 7,
         Origin = 8,
@@ -392,6 +392,25 @@ namespace KusumgarBusinessEntities.Common
         Get_G_Articles_Sp,
         Get_G_Articles_By_G_Article_Id_By_Yarn_Type_Id_Sp,
         Get_G_Articles_By_G_Article_Id_Sp,
+
+        // Enquiry
+        Insert_Enquiry_Sp,
+        Update_Enquiry_Sp,
+        Get_Enquiries_Sp,
+        Get_Enquiry_By_Id_Sp,
+        Insert_Stagged_Order_Sp,
+        Update_Stagged_Order_Sp,
+        Get_Stagged_Orders_Sp,
+        Get_Stagged_Order_By_Id_Sp,
+        Insert_Attachments_Sp,
+        Insert_Temp_Customer_Quality_Details_Sp,
+        Update_Temp_Customer_Quality_Details_Sp,
+        Insert_Supporting_Details_Sp,
+        Update_Supporting_Details_Sp,
+        Get_Supporting_Details_Sp,
+
+        // Quality 
+        Get_Quality_Autocomplete,
         Get_G_Articles_By_Yarn_Type_Id_Sp,
         Get_G_Articles_By_Full_Code_Sp,
 
@@ -491,6 +510,25 @@ namespace KusumgarBusinessEntities.Common
         Finish_Product = 1,
         Raw_Material =2,
         Service = 3
+    }
+
+    public enum EnquiryType
+    {
+        Trial =1,
+        Stock = 2,
+        General = 3
+    }
+
+    public enum EnquiryStatus
+    {
+        Enquiry_Arrived = 1,
+        Passed_PPC_Check_Point = 2,
+        Passed_W_Manager_Check_Point = 3,
+        Passed_P_Manager_Check_Point = 4,
+        Passed_C_Manager_Check_Point = 5,
+        Temp_Quality_Set_Created = 6,
+        Quality_Assigned = 7,
+        Planned = 8
     }
 
 }

@@ -3,80 +3,80 @@
 
 
         rules: {
-            "User.UserEntity.First_Name":
+            "User.First_Name":
             {
                 required: true
             },
-            "User.UserEntity.Last_Name":
+            "User.Last_Name":
             {
                 required: true
             },
-            "User.UserEntity.Birth_Date":
+            "User.Birth_Date":
             {
                 required: true
             },
-            "User.UserEntity.Gender":
+            "User.Gender":
             {
                 required: true
             },
-            "User.UserEntity.Date_Of_Joining":
+            "User.Date_Of_Joining":
             {
                 required: true
             },
-            "User.UserEntity.Personal_Email":
+            "User.Personal_Email":
             {
                 required: true,
                 email :true
             },
-            "User.UserEntity.Mobile_No1":
+            "User.Mobile_No1":
             {
                 required: true,
                 number: true,
                 minlength: 10
             },
-            "User.UserEntity.Last_Name":
+            "User.Last_Name":
             {
                 required: true
             },
-            "User.UserEntity.Mobile_No2":
+            "User.Mobile_No2":
             {
                 number: true,
                 minlength: 10
             },
-            "User.UserEntity.Fax_No":
+            "User.Fax_No":
             {
                 number: true
             },
-            "User.UserEntity.Office_Email":
+            "User.Office_Email":
             {
                 email: true
             },
-            "User.UserEntity.Residence_PinCode":
+            "User.Residence_PinCode":
             {
                 number: true
             },
-            "User.UserEntity.Office_PinCode":
+            "User.Office_PinCode":
             {
                 number: true
             },
-            "User.UserEntity.Office_Landline":
+            "User.Office_Landline":
             {
                 number: true
             },
-            "User.UserEntity.Residence_Landline":
+            "User.Residence_Landline":
             {
                 number: true
             },
-            "User.UserEntity.User_Name":
+            "User.User_Name":
             {
                 validate_Online_User: true,
                 validate_username : true
             },
-            "User.UserEntity.Password":
+            "User.Password":
             {
                 validate_password: true
             },
-            "User.UserEntity.ConformPassword":
+            "User.ConformPassword":
             {
                 validate_password: true
             },
@@ -88,31 +88,31 @@
         },
         messages: {
 
-            "User.UserEntity.First_Name":
+            "User.First_Name":
             {
                 required: "User name is required."
             },
-            "User.UserEntity.Birth_Date":
+            "User.Birth_Date":
             {
                 required: "Birth date is required."
             },
-            "User.UserEntity.Gender":
+            "User.Gender":
             {
                 required: "Gender is required."
             },
-            "User.UserEntity.Date_Of_Joining":
+            "User.Date_Of_Joining":
             {
                 required: "Date of joining is required."
             },
-            "User.UserEntity.Personal_Email":
+            "User.Personal_Email":
             {
                 required: "Personal email is required."
             },
-            "User.UserEntity.Mobile_No1":
+            "User.Mobile_No1":
             {
                 required: "Mobile no1 is required."
             },
-            "User.UserEntity.Last_Name":
+            "User.Last_Name":
             {
                 required: "Last name is required."
             },

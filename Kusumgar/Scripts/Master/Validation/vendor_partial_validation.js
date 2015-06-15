@@ -20,52 +20,52 @@
         //    }
         //},
         rules: {
-            "Vendor.Vendor_Entity.Vendor_Name":
+            "Vendor.Vendor_Name":
                  {
                      required: true,
                      check_vendor_exists: true
 
                  },
-            "Vendor.Vendor_Entity.Email":
+            "Vendor.Email":
                 {
                     required: true,
                     email: true
                 },
-            "Vendor.Vendor_Entity.HeadOfficeAddress":
+            "Vendor.HeadOfficeAddress":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Head_Office_Nation":
+            "Vendor.Head_Office_Nation":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Head_Office_State":
+            "Vendor.Head_Office_State":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Head_Office_ZipCode":
+            "Vendor.Head_Office_ZipCode":
                 {
                     required: true,
                     number: true
                 },
-            "Vendor.Vendor_Entity.Head_Office_Landline1":
+            "Vendor.Head_Office_Landline1":
                 {
                     required: true,
                     number: true
                 },
-            "Vendor.Vendor_Entity.Head_Office_Landline2":
+            "Vendor.Head_Office_Landline2":
                 {
                     number: true
                 },
-            "Vendor.Vendor_Entity.Head_Office_FaxNo":
+            "Vendor.Head_Office_FaxNo":
                 {
                     number: true
                 },
-            "Vendor.Vendor_Entity.Product_Category":
+            "Vendor.Product_Category":
              {
                  required: true,
              },
-            "Vendor.Vendor_Entity.Head_Office_ZipCode":
+            "Vendor.Head_Office_ZipCode":
                {
                    required: true,
                },
@@ -73,40 +73,40 @@
         },
         messages: {
 
-            "Vendor.Vendor_Entity.Vendor_Name":
+            "Vendor.Vendor_Name":
              {
                  required: "Vendor name is required."
              },
-            "Vendor.Vendor_Entity.Email":
+            "Vendor.Email":
                 {
                     required: "Email is required."
                 },
-            "Vendor.Vendor_Entity.HeadOfficeAddress":
+            "Vendor.HeadOfficeAddress":
                 {
                     required: " Office address is required."
                 },
-            "Vendor.Vendor_Entity.Head_Office_Nation":
+            "Vendor.Head_Office_Nation":
                 {
                     required: "Nation is required."
                 },
-            "Vendor.Vendor_Entity.Head_Office_State":
+            "Vendor.Head_Office_State":
                 {
                     required: "Office state is required."
                 },
-            "Vendor.Vendor_Entity.Head_Office_ZipCode":
+            "Vendor.Head_Office_ZipCode":
                 {
                     required: "Zip code is required."
                 },
-            "Vendor.Vendor_Entity.Head_Office_Landline1":
+            "Vendor.Head_Office_Landline1":
                 {
                     required: "Office landline is required."
                 },
-            "Vendor.Vendor_Entity.Product_Category":
+            "Vendor.Product_Category":
              {
                  required: "Product Category is required."
              },
 
-            "Vendor.Vendor_Entity.Head_Office_ZipCode":
+            "Vendor.Head_Office_ZipCode":
        {
            required: "Zip code is required."
        },

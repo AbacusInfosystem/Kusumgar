@@ -36,17 +36,17 @@ function BindRoleGrid(data)
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].Role_Id + "' class='iradio_square-green'/>";
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Roles[i].RoleEntity.Role_Name;
+        htmlText += data.Roles[i].Role_Name;
 
         htmlText += "</td>";
 
-            if (data.Roles[i].RoleEntity.Is_Active == true) {
+            if (data.Roles[i].Is_Active == true) {
 
                 htmlText += "<td>";
 

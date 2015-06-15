@@ -53,7 +53,7 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].DefectEntity.Defect_Id + "' value='" + data.DefectGrid[i].DefectEntity.Defect_Id + "' />";
+            htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].Defect_Id + "' value='" + data.DefectGrid[i].Defect_Id + "' />";
 
             htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -67,17 +67,17 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
+            htmlText += data.DefectGrid[i].Defect_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
+            htmlText += data.DefectGrid[i].Defect_Name;
 
             htmlText += "</td>";
 
-            if (data.DefectGrid[i].DefectEntity.Status == true) {
+            if (data.DefectGrid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -85,7 +85,7 @@ function BindDefectInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.DefectGrid[i].DefectEntity.Status == false) {
+            if (data.DefectGrid[i].Status == false) {
                 htmlText += "<td>";
 
                 htmlText += "Inactive";
@@ -155,8 +155,6 @@ function PageMore(Id) {
     var dViewModel = {
 
         Filter: {
-
-            //Defect_Name: $('#txtDefectName').val(),
 
             Defect_Id: $('#hdnDefectId').val(),
 

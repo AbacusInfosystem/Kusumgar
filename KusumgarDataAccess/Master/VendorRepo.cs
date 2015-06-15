@@ -25,107 +25,107 @@ namespace KusumgarDataAccess
 
         public List<VendorInfo> Get_Vendors(ref PaginationInfo pager)
         {
-            List<VendorInfo> Vendors = new List<VendorInfo>();
+            List<VendorInfo> vendors = new List<VendorInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Vendors_Sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                Vendors.Add(Get_Vendor_Values(dr));
+                vendors.Add(Get_Vendor_Values(dr));
             }
 
-            return Vendors;
+            return vendors;
         }
 
         private VendorInfo Get_Vendor_Values(DataRow dr)
         {
            VendorInfo vendor = new VendorInfo();
-           vendor.Vendor_Entity.Vendor_Name =  Convert.ToString(dr["Vendor_Name"]);
-           vendor.Vendor_Entity.HeadOfficeAddress =  Convert.ToString(dr["HeadOfficeAddress"]);
-           vendor.Vendor_Entity.Head_Office_State =  Convert.ToInt32(dr["Head_Office_State"]);
-           vendor.Vendor_Entity.Head_Office_ZipCode =  Convert.ToString(dr["Head_Office_ZipCode"]);
-           vendor.Vendor_Entity.Head_Office_Nation =  Convert.ToInt32(dr["Head_Office_Nation"]);
-           vendor.Vendor_Entity.Head_Office_Landline1 = Convert.ToString(dr["Head_Office_Landline1"]);
+           vendor.Vendor_Name =  Convert.ToString(dr["Vendor_Name"]);
+           vendor.HeadOfficeAddress =  Convert.ToString(dr["HeadOfficeAddress"]);
+           vendor.Head_Office_State =  Convert.ToInt32(dr["Head_Office_State"]);
+           vendor.Head_Office_ZipCode =  Convert.ToString(dr["Head_Office_ZipCode"]);
+           vendor.Head_Office_Nation =  Convert.ToInt32(dr["Head_Office_Nation"]);
+           vendor.Head_Office_Landline1 = Convert.ToString(dr["Head_Office_Landline1"]);
           
             if (dr["Head_Office_Landline2"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Head_Office_Landline2 = Convert.ToString(dr["Head_Office_Landline2"]);
+               vendor.Head_Office_Landline2 = Convert.ToString(dr["Head_Office_Landline2"]);
            }
             if (dr["Head_Office_FaxNo"] != DBNull.Value)
             {
-                vendor.Vendor_Entity.Head_Office_FaxNo = Convert.ToString(dr["Head_Office_FaxNo"]);
+                vendor.Head_Office_FaxNo = Convert.ToString(dr["Head_Office_FaxNo"]);
             }
-           vendor.Vendor_Entity.Email =  Convert.ToString(dr["Email"]);
-           vendor.Vendor_Entity.Quality_Certification =  Convert.ToString(dr["Quality_Certification"]);
+           vendor.Email =  Convert.ToString(dr["Email"]);
+           vendor.Quality_Certification =  Convert.ToString(dr["Quality_Certification"]);
            if (dr["Quality_Certification_Year"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Quality_Certification_Year = Convert.ToInt32(dr["Quality_Certification_Year"]);
+               vendor.Quality_Certification_Year = Convert.ToInt32(dr["Quality_Certification_Year"]);
            }
-           vendor.Vendor_Entity.Quality_Certification_Category =  Convert.ToString(dr["Quality_Certification_Category"]);
-           vendor.Vendor_Entity.Performance_Certification =  Convert.ToString(dr["Performance_Certification"]);
+           vendor.Quality_Certification_Category =  Convert.ToString(dr["Quality_Certification_Category"]);
+           vendor.Performance_Certification =  Convert.ToString(dr["Performance_Certification"]);
 
            if (dr["Performance_Certification_Year"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Performance_Certification_Year = Convert.ToInt32(dr["Performance_Certification_Year"]);
+               vendor.Performance_Certification_Year = Convert.ToInt32(dr["Performance_Certification_Year"]);
            }
-           vendor.Vendor_Entity.Performance_Certification_Category =  Convert.ToString(dr["Performance_Certification_Category"]);
+           vendor.Performance_Certification_Category =  Convert.ToString(dr["Performance_Certification_Category"]);
           
             if (dr["Remark_about_Supplier"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Remark_about_Supplier = Convert.ToString(dr["Remark_about_Supplier"]);
+               vendor.Remark_about_Supplier = Convert.ToString(dr["Remark_about_Supplier"]);
            }
            if (dr["Block_Payment"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Block_Payment = Convert.ToBoolean(dr["Block_Payment"]);
+               vendor.Block_Payment = Convert.ToBoolean(dr["Block_Payment"]);
            }
            if (dr["Shipment_Methods"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Shipment_Methods = Convert.ToInt32(dr["Shipment_Methods"]);
+               vendor.Shipment_Methods = Convert.ToInt32(dr["Shipment_Methods"]);
            }
            if (dr["Flagged_Supplier"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Flagged_Supplier = Convert.ToString(dr["Flagged_Supplier"]);
+               vendor.Flagged_Supplier = Convert.ToString(dr["Flagged_Supplier"]);
            }
            if (dr["Delivary_Term_Code"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Delivary_Term_Code = Convert.ToString(dr["Delivary_Term_Code"]);
+               vendor.Delivary_Term_Code = Convert.ToString(dr["Delivary_Term_Code"]);
            }
 
-           vendor.Vendor_Entity.Is_Approved_By_Director = Convert.ToBoolean(dr["Is_Approved_By_Director"]);
+           vendor.Is_Approved_By_Director = Convert.ToBoolean(dr["Is_Approved_By_Director"]);
           
             if (dr["Central_Excise_Registration_Details"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Central_Excise_Registration_Details = Convert.ToString(dr["Central_Excise_Registration_Details"]);
+               vendor.Central_Excise_Registration_Details = Convert.ToString(dr["Central_Excise_Registration_Details"]);
            }
-           vendor.Vendor_Entity.Registration_No =  Convert.ToString(dr["Registration_No"]);
-           vendor.Vendor_Entity.Range =  Convert.ToString(dr["Range"]);
-           vendor.Vendor_Entity.Division =  Convert.ToString(dr["Division"]);
-           vendor.Vendor_Entity.PAN =  Convert.ToString(dr["PAN"]);
-           vendor.Vendor_Entity.TAN =  Convert.ToString(dr["TAN"]);
-           vendor.Vendor_Entity.Tax_Excemption_Code =  Convert.ToString(dr["Tax_Excemption_Code"]);
+           vendor.Registration_No =  Convert.ToString(dr["Registration_No"]);
+           vendor.Range =  Convert.ToString(dr["Range"]);
+           vendor.Division =  Convert.ToString(dr["Division"]);
+           vendor.PAN =  Convert.ToString(dr["PAN"]);
+           vendor.TAN =  Convert.ToString(dr["TAN"]);
+           vendor.Tax_Excemption_Code =  Convert.ToString(dr["Tax_Excemption_Code"]);
            if (dr["Currency_Code"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Currency_Code = Convert.ToInt32(dr["Currency_Code"]);
+               vendor.Currency_Code = Convert.ToInt32(dr["Currency_Code"]);
            }
 
-           vendor.Vendor_Entity.VAT_Type =  Convert.ToString(dr["VAT_Type"]);
+           vendor.VAT_Type =  Convert.ToString(dr["VAT_Type"]);
 
            if (dr["PaymentTerms"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.PaymentTerms = Convert.ToInt32(dr["PaymentTerms"]);
+               vendor.PaymentTerms = Convert.ToInt32(dr["PaymentTerms"]);
            }
-           vendor.Vendor_Entity.Is_Active =  Convert.ToBoolean(dr["Is_Active"]);
+           vendor.Is_Active =  Convert.ToBoolean(dr["Is_Active"]);
           
-           vendor.Vendor_Entity.CreatedBy =  Convert.ToInt32(dr["CreatedBy"]);
-           vendor.Vendor_Entity.UpdatedBy =  Convert.ToInt32(dr["UpdatedBy"]);
-           vendor.Vendor_Entity.Vendor_Id =  Convert.ToInt32(dr["Vendor_Id"]);
+           vendor.CreatedBy =  Convert.ToInt32(dr["CreatedBy"]);
+           vendor.UpdatedBy =  Convert.ToInt32(dr["UpdatedBy"]);
+           vendor.Vendor_Id =  Convert.ToInt32(dr["Vendor_Id"]);
            if (dr["Product_Category"] != DBNull.Value)
-           { vendor.Vendor_Entity.Product_Category = Convert.ToInt32(dr["Product_Category"]);
+           { vendor.Product_Category = Convert.ToInt32(dr["Product_Category"]);
            }
 
            if (dr["Code"] != DBNull.Value)
            {
-               vendor.Vendor_Entity.Code = Convert.ToString(dr["Code"]);
+               vendor.Code = Convert.ToString(dr["Code"]);
            }
             return vendor ;
         }
@@ -144,54 +144,54 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
           
-             sqlParamList.Add(new SqlParameter("@Vendor_Name", vendors.Vendor_Entity.Vendor_Name));
-             sqlParamList.Add(new SqlParameter("@HeadOfficeAddress", vendors.Vendor_Entity.HeadOfficeAddress));
-             sqlParamList.Add(new SqlParameter("@Head_Office_State", vendors.Vendor_Entity.Head_Office_State));
-             sqlParamList.Add(new SqlParameter("@Head_Office_ZipCode", vendors.Vendor_Entity.Head_Office_ZipCode));
-             sqlParamList.Add(new SqlParameter("@Head_Office_Nation", vendors.Vendor_Entity.Head_Office_Nation));
-             sqlParamList.Add(new SqlParameter("@Head_Office_Landline1", vendors.Vendor_Entity.Head_Office_Landline1));
-             sqlParamList.Add(new SqlParameter("@Head_Office_Landline2", vendors.Vendor_Entity.Head_Office_Landline2));
-             sqlParamList.Add(new SqlParameter("@Head_Office_FaxNo", vendors.Vendor_Entity.Head_Office_FaxNo));
-             sqlParamList.Add(new SqlParameter("@Email", vendors.Vendor_Entity.Email));
-             sqlParamList.Add(new SqlParameter("@Quality_Certification", vendors.Vendor_Entity.Quality_Certification));
-             sqlParamList.Add(new SqlParameter("@Quality_Certification_Year", vendors.Vendor_Entity.Quality_Certification_Year));
-             sqlParamList.Add(new SqlParameter("@Quality_Certification_Category", vendors.Vendor_Entity.Quality_Certification_Category));
-             sqlParamList.Add(new SqlParameter("@Performance_Certification", vendors.Vendor_Entity.Performance_Certification));
-             sqlParamList.Add(new SqlParameter("@Performance_Certification_Year", vendors.Vendor_Entity.Performance_Certification_Year));
-             sqlParamList.Add(new SqlParameter("@Performance_Certification_Category", vendors.Vendor_Entity.Performance_Certification_Category));
-             sqlParamList.Add(new SqlParameter("@Remark_about_Supplier", vendors.Vendor_Entity.Remark_about_Supplier));
-             sqlParamList.Add(new SqlParameter("@Block_Payment", vendors.Vendor_Entity.Block_Payment));
-             sqlParamList.Add(new SqlParameter("@Shipment_Methods", vendors.Vendor_Entity.Shipment_Methods));
-             sqlParamList.Add(new SqlParameter("@Flagged_Supplier", vendors.Vendor_Entity.Flagged_Supplier));
+             sqlParamList.Add(new SqlParameter("@Vendor_Name", vendors.Vendor_Name));
+             sqlParamList.Add(new SqlParameter("@HeadOfficeAddress", vendors.HeadOfficeAddress));
+             sqlParamList.Add(new SqlParameter("@Head_Office_State", vendors.Head_Office_State));
+             sqlParamList.Add(new SqlParameter("@Head_Office_ZipCode", vendors.Head_Office_ZipCode));
+             sqlParamList.Add(new SqlParameter("@Head_Office_Nation", vendors.Head_Office_Nation));
+             sqlParamList.Add(new SqlParameter("@Head_Office_Landline1", vendors.Head_Office_Landline1));
+             sqlParamList.Add(new SqlParameter("@Head_Office_Landline2", vendors.Head_Office_Landline2));
+             sqlParamList.Add(new SqlParameter("@Head_Office_FaxNo", vendors.Head_Office_FaxNo));
+             sqlParamList.Add(new SqlParameter("@Email", vendors.Email));
+             sqlParamList.Add(new SqlParameter("@Quality_Certification", vendors.Quality_Certification));
+             sqlParamList.Add(new SqlParameter("@Quality_Certification_Year", vendors.Quality_Certification_Year));
+             sqlParamList.Add(new SqlParameter("@Quality_Certification_Category", vendors.Quality_Certification_Category));
+             sqlParamList.Add(new SqlParameter("@Performance_Certification", vendors.Performance_Certification));
+             sqlParamList.Add(new SqlParameter("@Performance_Certification_Year", vendors.Performance_Certification_Year));
+             sqlParamList.Add(new SqlParameter("@Performance_Certification_Category", vendors.Performance_Certification_Category));
+             sqlParamList.Add(new SqlParameter("@Remark_about_Supplier", vendors.Remark_about_Supplier));
+             sqlParamList.Add(new SqlParameter("@Block_Payment", vendors.Block_Payment));
+             sqlParamList.Add(new SqlParameter("@Shipment_Methods", vendors.Shipment_Methods));
+             sqlParamList.Add(new SqlParameter("@Flagged_Supplier", vendors.Flagged_Supplier));
 
-            sqlParamList.Add(new SqlParameter("@Delivary_Term_Code", vendors.Vendor_Entity.Delivary_Term_Code));
+            sqlParamList.Add(new SqlParameter("@Delivary_Term_Code", vendors.Delivary_Term_Code));
 
-            sqlParamList.Add(new SqlParameter("@Is_Approved_By_Director", vendors.Vendor_Entity.Is_Approved_By_Director));
+            sqlParamList.Add(new SqlParameter("@Is_Approved_By_Director", vendors.Is_Approved_By_Director));
 
-            sqlParamList.Add(new SqlParameter("@Central_Excise_Registration_Details", vendors.Vendor_Entity.Central_Excise_Registration_Details));
+            sqlParamList.Add(new SqlParameter("@Central_Excise_Registration_Details", vendors.Central_Excise_Registration_Details));
 
-            sqlParamList.Add(new SqlParameter("@Registration_No", vendors.Vendor_Entity.Registration_No));
-            sqlParamList.Add(new SqlParameter("@Range", vendors.Vendor_Entity.Range));
-            sqlParamList.Add(new SqlParameter("@Division", vendors.Vendor_Entity.Division));
-            sqlParamList.Add(new SqlParameter("@PAN", vendors.Vendor_Entity.PAN));
-            sqlParamList.Add(new SqlParameter("@TAN", vendors.Vendor_Entity.TAN));
-            sqlParamList.Add(new SqlParameter("@Tax_Excemption_Code", vendors.Vendor_Entity.Tax_Excemption_Code));
-            sqlParamList.Add(new SqlParameter("@Currency_Code", vendors.Vendor_Entity.Currency_Code));
-            sqlParamList.Add(new SqlParameter("@VAT_Type", vendors.Vendor_Entity.VAT_Type));
-            sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.Vendor_Entity.PaymentTerms));
-            sqlParamList.Add(new SqlParameter("@Is_Active", vendors.Vendor_Entity.Is_Active));
-            sqlParamList.Add(new SqlParameter("@Product_Category", vendors.Vendor_Entity.Product_Category));
-            sqlParamList.Add(new SqlParameter("@Code", vendors.Vendor_Entity.Code));
+            sqlParamList.Add(new SqlParameter("@Registration_No", vendors.Registration_No));
+            sqlParamList.Add(new SqlParameter("@Range", vendors.Range));
+            sqlParamList.Add(new SqlParameter("@Division", vendors.Division));
+            sqlParamList.Add(new SqlParameter("@PAN", vendors.PAN));
+            sqlParamList.Add(new SqlParameter("@TAN", vendors.TAN));
+            sqlParamList.Add(new SqlParameter("@Tax_Excemption_Code", vendors.Tax_Excemption_Code));
+            sqlParamList.Add(new SqlParameter("@Currency_Code", vendors.Currency_Code));
+            sqlParamList.Add(new SqlParameter("@VAT_Type", vendors.VAT_Type));
+            sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.PaymentTerms));
+            sqlParamList.Add(new SqlParameter("@Is_Active", vendors.Is_Active));
+            sqlParamList.Add(new SqlParameter("@Product_Category", vendors.Product_Category));
+            sqlParamList.Add(new SqlParameter("@Code", vendors.Code));
 
-           if (vendors.Vendor_Entity.Vendor_Id == 0)
+           if (vendors.Vendor_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", vendors.Vendor_Entity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", vendors.CreatedBy));
             }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", vendors.Vendor_Entity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", vendors.UpdatedBy));
             
-            if (vendors.Vendor_Entity.Vendor_Id != 0)
+            if (vendors.Vendor_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Vendor_Id", vendors.Vendor_Entity.Vendor_Id));
+                sqlParamList.Add(new SqlParameter("@Vendor_Id", vendors.Vendor_Id));
             }
 
             return sqlParamList;
@@ -424,9 +424,9 @@ namespace KusumgarDataAccess
                 {
                     MaterialCategoryInfo MaterialCategoryInfo = new MaterialCategoryInfo();
 
-                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
+                    MaterialCategoryInfo.Material_Category_Id = Convert.ToInt32(dr["Material_Category_Id"]);
 
-                    MaterialCategoryInfo.Material_Category_Entity.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
+                    MaterialCategoryInfo.Material_Category_Name = Convert.ToString(dr["Material_Category_Name"]);
 
                     retVal.Add(MaterialCategoryInfo);
                 }
@@ -449,23 +449,23 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-           sqlParamList.Add(new SqlParameter("@Status", attributeCodes.AttributeCodeEntity.Status));
+           sqlParamList.Add(new SqlParameter("@Status", attributeCodes.Status));
 
-            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.AttributeCodeEntity.Attribute_Id));
+            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.Attribute_Id));
 
-            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.AttributeCodeEntity.Attribute_Code_Name));
+            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.Attribute_Code_Name));
 
-            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.AttributeCodeEntity.Code));
+            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.Code));
 
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.AttributeCodeEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.UpdatedBy));
 
-            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id == 0)
+            if (attributeCodes.Attribute_Code_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.AttributeCodeEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.CreatedBy));
             }
-            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id != 0)
+            if (attributeCodes.Attribute_Code_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.AttributeCodeEntity.Attribute_Code_Id));
+                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.Attribute_Code_Id));
             }
 
             return sqlParamList;

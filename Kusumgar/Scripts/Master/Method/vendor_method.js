@@ -13,7 +13,7 @@
 
 function Bind_Vendor_Other_Details_Data_Callback(data) {
     
-    $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
+    $("#hdnVendorId").val(data.Vendor.Vendor_Id);
 
     $("#hdnVendorName").val($("#txtVendorName").val());
    
@@ -26,8 +26,7 @@ function Set_Vendor_Other_Details() {
         {
             Vendor:
                 {
-                    Vendor_Entity:
-                        {
+                   
                             Vendor_Id: $("#hdnVendorId").val(),
                             Vendor_Name: $("#txtVendorName").val(),
                             Email: $("#txtEmailId ").val(),
@@ -63,7 +62,7 @@ function Set_Vendor_Other_Details() {
                             Flagged_Supplier: $("#txtSupplierName").val(),
                             Is_Approved_By_Director: $("#hdnApprovedByDirector").val(),
                             Delivary_Term_Code: $("#txtDelivaryTermCode").val(),
-                       }
+                       
               }
      }
 
@@ -79,7 +78,7 @@ function Bind_States(data) {
 
     if (data.length > 0) {
         for (var i = 0; i < data.length ; i++) {
-            htmltext += "<option value='" + data[i].State_Entity.StateId + "'>" + data[i].State_Entity.StateName + "</option>";
+            htmltext += "<option value='" + data[i].StateId + "'>" + data[i].StateName + "</option>";
         }
     }
     $("#drpHeadOfficeState").html(htmltext);

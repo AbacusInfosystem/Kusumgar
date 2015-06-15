@@ -8,7 +8,7 @@ var InitializeAutoComplete = function (elementObject) {
             var urlString = ''
 
             if ($(elementObject).attr("id") == 'txtCustomer_Name') {
-                urlString = "/ajax/customer-list/" + $('#txtCustomer_Name').val();
+                urlString = "/customer/customer-list/" + $('#txtCustomer_Name').val();
             }
             if ($(elementObject).attr("id") == 'txtCustName') {
                 urlString = "/crm/get-customer-id-by-customername/" + $('#txtCustName').val();
@@ -110,6 +110,10 @@ var InitializeAutoComplete = function (elementObject) {
 
             if ($(elementObject).attr("id") == 'txtTestUnitName') {
                 urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtQuality_No') {
+                urlString = "/sales/quality-autocomplete/" + $('#txtQuality_No').val();
             }
 
             if ($(elementObject).attr("id") == 'txtCustomer_Sample_No') {
