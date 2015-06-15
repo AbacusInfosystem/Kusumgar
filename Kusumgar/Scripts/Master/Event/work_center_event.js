@@ -1,10 +1,7 @@
 ﻿
 $(function () {
 
-   
-
-
-
+  
     $("#drpFactory").change(function () {
 
         $.ajax({

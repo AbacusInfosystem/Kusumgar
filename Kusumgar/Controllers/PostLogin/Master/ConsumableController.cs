@@ -27,19 +27,47 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
+            try
+            {
+                cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
+
+                cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error(" Consumable Controller - Index " + ex.ToString());
+            }
+
+            return View("Index", cViewModel);
+        }
+
+        public ActionResult Search(ConsumableViewModel cViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+            try
+            {
+
             cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
 
-            cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
+             }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-            return View(cViewModel);
+                Logger.Error(" Consumable Controller - Index " + ex.ToString());
+            }
+           
+            return View("Search", cViewModel);
         }
 
         public JsonResult Insert(ConsumableViewModel cViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Search";
-
+           
             try
             {
+
                 int consumableId = _consumableMan.Insert_Consumable(cViewModel.Consumable);
 
                 cViewModel.Consumable.Consumable_Entity.Consumable_Id = consumableId;
@@ -52,14 +80,6 @@ namespace Kusumgar.Controllers.PostLogin.Master
             }
 
             return Json(cViewModel,JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Search(ConsumableViewModel cViewModel)
-        {
-
-            cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
-
-            return View(cViewModel);
         }
 
         public ActionResult Get_Consumables(ConsumableViewModel cViewModel)

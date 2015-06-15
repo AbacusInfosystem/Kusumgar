@@ -374,6 +374,25 @@ namespace KusumgarBusinessEntities.Common
         Get_Work_Centers_By_Work_Center_Id_Sp,
         Insert_Work_Center_Process_sp,
         Delete_Work_Center_Process_By_Work_Center_Id_Sp,
+        Get_Work_Center_Processes_Sp,
+
+        //Customer Quality
+        Get_Qualities_Sp,
+        Insert_Customer_Quality_Sp,
+        Get_Customer_Quality_By_Id_Sp,
+        Update_Customer_Quality_Sp,
+        Get_Sample_By_No_Sp,
+        Get_Customer_Qualities_Sp,
+        Get_Customer_Qualities_By_Customer_Id_Sp,
+        Get_Customer_Qualities_By_Quality_Id_Sp,
+        Get_Customer_Qualities_By_Customer_Id_Quality_Id_Sp,
+
+        //G Article
+        Insert_G_Article_Sp,
+        Update_G_Article_Sp,
+        Get_G_Articles_Sp,
+        Get_G_Articles_By_G_Article_Id_By_Yarn_Type_Id_Sp,
+        Get_G_Articles_By_G_Article_Id_Sp,
 
         // Enquiry
         Insert_Enquiry_Sp,
@@ -402,6 +421,10 @@ namespace KusumgarBusinessEntities.Common
 
         // Quality 
         Get_Quality_Autocomplete,
+        Get_G_Articles_By_Yarn_Type_Id_Sp,
+        Get_G_Articles_By_Full_Code_Sp,
+
+
         Get_Quality_By_Id_Sp,
 
         // Attachments

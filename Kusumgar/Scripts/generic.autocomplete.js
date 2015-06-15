@@ -116,6 +116,14 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/sales/quality-autocomplete/" + $('#txtQuality_No').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtCustomer_Sample_No') {
+                urlString = "/master/sample-no-list/" + $('#txtCustomer_Sample_No').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFull_Code') {
+                urlString = "/master/g-articles-by-full-code/" + $('#txtFull_Code').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",

@@ -249,7 +249,7 @@
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ConsumableController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\CustomerQualityCreationController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\CustomerQualityController.cs" />
     <Compile Include="Controllers\PostLogin\Master\GArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PArticleController.cs" />
@@ -284,8 +284,10 @@
     <Compile Include="Models\Master\AjaxViewModel.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
     <Compile Include="Models\Master\ConsumableViewModel.cs" />
+    <Compile Include="Models\Master\CustomerQualityViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
+    <Compile Include="Models\Master\GArticleViewModel.cs" />
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
     <Compile Include="Models\Master\MaterialVendorViewModel.cs" />
     <Compile Include="Models\Master\MaterialViewModel.cs" />
@@ -954,15 +956,25 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\Master\Event\customer_quality_event.js" />
     <Content Include="Scripts\generic.dragdrop.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.multi.autocomplete.js" />
+    <Content Include="Scripts\Master\Event\customer_quality_search_event.js" />
+    <Content Include="Scripts\Master\Event\customer_specific_information_event.js" />
+    <Content Include="Scripts\Master\Event\g_article_event.js" />
+    <Content Include="Scripts\Master\Event\g_article_listing_event.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
     <Content Include="Scripts\Master\Event\work_center_event.js" />
     <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
+    <Content Include="Scripts\Master\Method\customer_quality_method.js" />
+    <Content Include="Scripts\Master\Method\customer_quality_search_method.js" />
+    <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
+    <Content Include="Scripts\Master\Method\g_article_listing_method.js" />
+    <Content Include="Scripts\Master\Method\g_article_method.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -1047,9 +1059,11 @@
     <Content Include="Scripts\Master\user_validation.js" />
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
     <Content Include="Scripts\Master\Validation\consumable_validation.js" />
+    <Content Include="Scripts\Master\Validation\customer_quality_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
+    <Content Include="Scripts\Master\Validation\g_article_validation.js" />
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\material_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
@@ -1389,19 +1403,13 @@
     <Content Include="Views\PostLogin\Master\QualityCreation\_Applications.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_CustomerSpecificInformation.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_Attachments.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_SpecificFunctionalStandards.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\CArticle\Copy of Index.cshtml" />

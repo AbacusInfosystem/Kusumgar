@@ -17,10 +17,12 @@ namespace KusumgarDataAccess
     public class WorkCenterRepo
     {
         SQLHelperRepo _sqlRepo;
+        public SQLHelperRepo _sqlHelper { get; set; }
 
         public WorkCenterRepo()
         {
             _sqlRepo = new SQLHelperRepo();
+            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<FactoryInfo> Get_Factories(ref PaginationInfo pager)
@@ -177,8 +179,8 @@ namespace KusumgarDataAccess
             {
                 sqlparam.Add(new SqlParameter("@Work_Center_Id", work_Center.Work_Center_Id));
             }
-            //sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station.Work_Station_Id));
-            sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station_Id));
+            sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station.Work_Station_Id));
+            //sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station_Id));
             sqlparam.Add(new SqlParameter("@Work_Center_Code", work_Center.Work_Center_Code));
             sqlparam.Add(new SqlParameter("@Machine_Name", work_Center.Machine_Name));
             sqlparam.Add(new SqlParameter("@Machine_Properties", work_Center.Machine_Properties));
@@ -377,7 +379,7 @@ namespace KusumgarDataAccess
             work_Center.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             work_Center.Work_Station.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
             work_Center.Factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
-            //work_Center.Factory.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+            //work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
 
             return work_Center;
         }
@@ -406,18 +408,6 @@ namespace KusumgarDataAccess
                 {
                     work_Center = Get_Work_Center_Values_By_Id(dr);
 
-                    //foreach (DataRow dr1 in dt1.Rows)
-                    //{
-                    //    WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
-
-                    //    work_Center_Process.Process_Name = Convert.ToString(dr1["Process_Name"]);
-
-                    //    work_Center_Process.Process_Id = Convert.ToInt32(dr1["Process_Id"]);
-
-                    //    work_Center_Process.Work_Center_Process_Entity.Work_Center_Id = Convert.ToInt32(dr1["Work_Center_Id"]);
-
-                    //    work_Center.Work_Center_Processes.Add(work_Center_Process);
-                    //}
                 }
             }
 
@@ -454,8 +444,29 @@ namespace KusumgarDataAccess
             return work_Center;
         }
 
-      
 
+        public List<WorkCenterProcessInfo> Get_Work_Center_Processes(int work_Center_Id, ref PaginationInfo pager)
+        {
+            List<WorkCenterProcessInfo> work_Center_Processes = new List<WorkCenterProcessInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Work_Center_Id", work_Center_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Work_Center_Processes_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
+
+                work_Center_Process.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
+                work_Center_Process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
+
+                work_Center_Processes.Add(work_Center_Process);
+            }
+
+            return work_Center_Processes;
+        }
 
     }
 }

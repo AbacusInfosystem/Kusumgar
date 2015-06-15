@@ -62,8 +62,10 @@
     <Compile Include="Master\AttributeCodeManager.cs" />
     <Compile Include="CRM\CustomerManager.cs" />
     <Compile Include="Master\ConsumableManager.cs" />
+    <Compile Include="Master\CustomerQualityManager.cs" />
     <Compile Include="Master\DefectManager.cs" />
     <Compile Include="Master\DefectTypeManager.cs" />
+    <Compile Include="Master\GArticleManager.cs" />
     <Compile Include="Master\IndustrialManager.cs" />
     <Compile Include="Master\NationManager.cs" />
     <Compile Include="Master\ProductVendorManager.cs" />
