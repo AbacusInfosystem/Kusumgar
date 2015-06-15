@@ -37,7 +37,7 @@ namespace Kusumgar.Controllers
 
                 gaViewModel.G_Article.Qualities = _garticleMan.Get_Qualities(ref pager);
 
-                gaViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                gaViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
 
                 gaViewModel.G_Article.Vendors = _garticleMan.Get_Vendors(ref pager);
 
@@ -66,7 +66,7 @@ namespace Kusumgar.Controllers
 
             try
             {
-                gaViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                gaViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
             }
             catch (Exception ex)
             {
@@ -86,11 +86,11 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                gaViewModel.G_Article.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                gaViewModel.G_Article.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
                 gaViewModel.G_Article.CreatedOn = DateTime.Now;
 
-                gaViewModel.G_Article.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                gaViewModel.G_Article.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 gaViewModel.G_Article.UpdatedOn = DateTime.Now;
 
@@ -112,7 +112,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                gaViewModel.G_Article.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                gaViewModel.G_Article.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 gaViewModel.G_Article.UpdatedOn = DateTime.Now;
 

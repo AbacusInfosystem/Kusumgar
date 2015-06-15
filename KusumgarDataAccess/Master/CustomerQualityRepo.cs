@@ -256,7 +256,7 @@ namespace KusumgarDataAccess
              customer_Quality.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
              customer_Quality.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
              customer_Quality.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-             customer_Quality.Customer.Customer_Entity.Customer_Name = Convert.ToString(dr["Customer_Name"]);
+             customer_Quality.Customer.Customer_Name = Convert.ToString(dr["Customer_Name"]);
              customer_Quality.Quality.Quality_No = Convert.ToInt32(dr["Quality_No"]);
              //customer_Quality.Sample.Sample_No = Convert.ToInt32(dr["Sample_No"]);
 
@@ -317,7 +317,7 @@ namespace KusumgarDataAccess
              customer_Quality.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
              customer_Quality.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
              customer_Quality.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-             customer_Quality.Customer.Customer_Entity.Customer_Name = Convert.ToString(dr["Customer_Name"]);
+             customer_Quality.Customer.Customer_Name = Convert.ToString(dr["Customer_Name"]);
              customer_Quality.Quality.Quality_No = Convert.ToInt32(dr["Quality_No"]);
              //customer_Quality.Sample.Sample_No = Convert.ToInt32(dr["Sample_No"]);
              if (dr["Sample_No"] != DBNull.Value)

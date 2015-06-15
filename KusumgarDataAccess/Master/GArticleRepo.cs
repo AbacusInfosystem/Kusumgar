@@ -59,8 +59,8 @@ namespace KusumgarDataAccess
                  {
                      VendorInfo vendor = new VendorInfo();
 
-                     vendor.Vendor_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
-                     vendor.Vendor_Entity.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
+                     vendor.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+                     vendor.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
 
                      vendors.Add(vendor);
                  }

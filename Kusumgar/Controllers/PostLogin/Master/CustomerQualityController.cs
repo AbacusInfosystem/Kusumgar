@@ -123,11 +123,11 @@ namespace Kusumgar.Controllers
             {
                 cqViewModel.Customer_Quality.CreatedOn = DateTime.Now;
 
-                cqViewModel.Customer_Quality.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cqViewModel.Customer_Quality.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cqViewModel.Customer_Quality.UpdatedOn = DateTime.Now;
 
-                cqViewModel.Customer_Quality.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cqViewModel.Customer_Quality.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 cqViewModel.Customer_Quality.Customer_Quality_Id = _customerqualityMan.Insert_Customer_Quality(cqViewModel.Customer_Quality);
 
@@ -167,7 +167,7 @@ namespace Kusumgar.Controllers
             {
                 cqViewModel.Customer_Quality.UpdatedOn = DateTime.Now;
 
-                cqViewModel.Customer_Quality.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cqViewModel.Customer_Quality.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _customerqualityMan.Update_Customer_Quality(cqViewModel.Customer_Quality);
                

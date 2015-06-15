@@ -229,7 +229,7 @@ namespace Kusumgar.Controllers
 
                 wcViewModel.Work_Center.Processes = _workcenterMan.Get_Processes(ref pager);
 
-                wcViewModel.Work_Center.Work_Center_Processes = _workcenterMan.Get_Work_Center_Processes(wcViewModel.Work_Center.Work_Center_Entity.Work_Center_Id, ref pager);
+                wcViewModel.Work_Center.Work_Center_Processes = _workcenterMan.Get_Work_Center_Processes(wcViewModel.Work_Center.Work_Center_Id, ref pager);
 
             }
             catch (Exception ex)
