@@ -690,16 +690,33 @@ namespace KusumgarDataAccess
             quality.Yarn_Type_Id = Convert.ToInt32(dr["Yarn_Type_Id"]);
             quality.Reed = Convert.ToString(dr["Reed"]);
             quality.Pick = Convert.ToString(dr["Pick"]);
-            quality.Weave = Convert.ToInt32(dr["Weave"]);
-            quality.Minimum_Order_Size = Convert.ToInt32(dr["Minimum_Order_Size"]);
-            quality.Ideal_Roll_Length = Convert.ToInt32(dr["Ideal_Roll_Length"]);
-            quality.Our_Sample_No = Convert.ToInt32(dr["Our_Sample_No"]);
-            quality.Quality_No = Convert.ToInt32(dr["Quality_No"]);
+            if (DBNull.Value != dr["Weave"])
+            {
+                quality.Weave = Convert.ToInt32(dr["Weave"]);
+            }
+            if (DBNull.Value != dr["Minimum_Order_Size"])
+            {
+                quality.Minimum_Order_Size = Convert.ToInt32(dr["Minimum_Order_Size"]);
+            }
+            if (DBNull.Value != dr["Ideal_Roll_Length"])
+            {
+                quality.Ideal_Roll_Length = Convert.ToInt32(dr["Ideal_Roll_Length"]);
+            }
+            if (DBNull.Value != dr["Our_Sample_No"])
+            {
+                quality.Our_Sample_No = Convert.ToInt32(dr["Our_Sample_No"]);
+            }
+            if (DBNull.Value != dr["Quality_No"])
+            {
+                quality.Quality_No = Convert.ToInt32(dr["Quality_No"]);
+            }
             quality.Status = Convert.ToBoolean(dr["Status"]);
             quality.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
             quality.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
             quality.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             quality.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            quality.Weave_Name = Convert.ToString(dr["Weave_Name"]);
+            quality.Yarn_Type_Name = Convert.ToString(dr["Yarn_Type_Name"]);
 
             return quality;
         } 
@@ -712,7 +729,7 @@ namespace KusumgarDataAccess
 
             sqlParams.Add(new SqlParameter("@Quality_Id", quality_Id));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Quality_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Quality_Details_By_Id_Sp.ToString(), CommandType.StoredProcedure);
 
             List<DataRow> drList = new List<DataRow>();
 
@@ -724,6 +741,48 @@ namespace KusumgarDataAccess
             }
             return quality;
         }
+
+        #endregion
+
+        #region PPC Checklist 
+
+        public List<EnquiryInfo> Get_Enquiries_For_PPC_Checkpoint(string enquiry_Status_Ids, ref PaginationInfo pager)
+        {
+            List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Status_Ids", enquiry_Status_Ids));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Enquiries_For_PPC_Checkpoint_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                enquiries.Add(Get_Enquiry_Values(dr));
+            }
+            return enquiries;
+        }
+
+        public void Update_Enquiry_PPC_Checkpoint(EnquiryInfo enquiry)
+        {
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Id", enquiry.Enquiry_Id));
+
+            sqlParams.Add(new SqlParameter("@PPC_Article_Type_Id", enquiry.PPC_Article_Type_Id));
+
+            sqlParams.Add(new SqlParameter("@Enquiry_Status_Id", enquiry.Enquiry_Status_Id));
+
+            sqlParams.Add(new SqlParameter("@Quality_Id", enquiry.Quality_Id));
+
+            sqlParams.Add(new SqlParameter("@UpdatedBy", enquiry.UpdatedBy));
+
+            sqlParams.Add(new SqlParameter("@UpdatedOn", enquiry.UpdatedOn));
+
+            _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Update_Enquiry_PPC_Checkpoint_Sp.ToString(), CommandType.StoredProcedure);
+        }
+        
 
         #endregion
 

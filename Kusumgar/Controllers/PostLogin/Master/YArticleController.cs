@@ -33,15 +33,15 @@ namespace Kusumgar.Controllers
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
-            PaginationInfo pager = new PaginationInfo();
+            //PaginationInfo pager = new PaginationInfo();
 
-            pager.IsPagingRequired = false; 
+           // pager.IsPagingRequired = false; 
 
             try
             {
-                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
+               // yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
 
-                yViewModel.Is_Primary = true;
+               // yViewModel.Is_Primary = true;
             }
             catch(Exception ex)
             {
@@ -51,7 +51,7 @@ namespace Kusumgar.Controllers
             }
             finally
             {
-                pager = null;
+             //   pager = null;
             }
             return View("Index",yViewModel);
         }
@@ -84,6 +84,28 @@ namespace Kusumgar.Controllers
 
         public PartialViewResult Load_YArticle(YArticleViewModel yViewModel)
         {
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
+
+                yViewModel.Is_Primary = true;
+            }
+            catch (Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Load_YArticle " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
+            }
+
             return PartialView("_YArticle", yViewModel);
         }
 

@@ -48,6 +48,8 @@ namespace KusumgarBusinessEntities
 
         public string Yarn_Type_Name { get; set; }
 
+        public string Weave_Name { get; set; }
+
         #endregion
     }
 }

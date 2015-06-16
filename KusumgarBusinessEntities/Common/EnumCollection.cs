@@ -448,6 +448,9 @@ Get_Material_SubCategory_By_CategoryId_Sp,
         Get_Enquiries_By_Quality_Id_Sp,
         Update_Enquiry_Quality_Id_Status_Sp,
         Get_Enquiries_By_Status_Ids_Sp,
+        Get_Enquiries_For_PPC_Checkpoint_Sp,
+        Get_Quality_Details_By_Id_Sp,
+        Update_Enquiry_PPC_Checkpoint_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,

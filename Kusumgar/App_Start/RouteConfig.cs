@@ -1666,6 +1666,12 @@ namespace Kusumgar
             defaults: new { controller = "Enquiry", action = "Get_Enquiries_For_W_Manager_Checkpoint", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+           name: "enquiry-38",
+           url: "sales/update-enquiry-ppc-checkpoint",
+           defaults: new { controller = "Enquiry", action = "Update_Enquiry_PPC_Checkpoint", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Scheduler 

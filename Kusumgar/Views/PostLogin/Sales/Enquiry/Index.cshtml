@@ -92,7 +92,7 @@
                                                                     </div>
                                                                 }
                                                             }
-                                                            <input type="hidden" id="hdnEnquiry_Type_Id" value="@Model.Enquiry.Enquiry_Type_Id" name="Enquiry.Enquiry_Type_Id">
+                                                            <input type="hidden" id="hdnEnquiry_Type_Id" value="@(Model.Enquiry.Enquiry_Type_Id == 0 ? "" : Model.Enquiry.Enquiry_Type_Id.ToString())" name="Enquiry.Enquiry_Type_Id">
                                                         </div>
                                                         <br />
 

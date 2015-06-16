@@ -1167,7 +1167,7 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
           <EntitySet Name="Temp_Functional_Parameters" EntityType="KusumgarModel.Temp_Functional_Parameters" />
           <EntitySet Name="Temp_Visual_Parameters" EntityType="KusumgarModel.Temp_Visual_Parameters" />
           <EntitySet Name="M_Market_Segment" EntityType="KusumgarModel.M_Market_Segment" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Attachment">
           <Key>
             <PropertyRef Name="Attachment_Id" />
@@ -3215,7 +3215,7 @@ FROM [dbo].[Temp_Customer_Quality_Details] AS [Temp_Customer_Quality_Details]</D
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

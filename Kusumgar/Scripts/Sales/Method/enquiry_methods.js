@@ -54,7 +54,7 @@ function Bind_Quality_Details(data)
     htmlText += "</tr>";
     htmlText += "<tr>";
     htmlText += "<td>Yarn Type</td>";
-    htmlText += "<td>"+data.quality.Yarn_Type_Id+"</td>";
+    htmlText += "<td>" + data.quality.Yarn_Type_Name + "</td>";
     htmlText += "</tr>";
     htmlText += "<tr>";
     htmlText += "<td>";
@@ -72,7 +72,7 @@ function Bind_Quality_Details(data)
     htmlText += "<td>";
     htmlText += "Weave";
     htmlText += "</td>";
-    htmlText += "<td>"+data.quality.Weave+"</td>";
+    htmlText += "<td>" + data.quality.Weave_Name + "</td>";
     htmlText += "</tr>";
     htmlText += "<tr>";
     htmlText += "<td>";
