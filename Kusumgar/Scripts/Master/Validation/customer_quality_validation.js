@@ -28,6 +28,10 @@ $(function () {
             "Customer_Quality.Quality.Quality_No":
                 {
                     required: true
+                },
+            "Customer_Quality.Sample.Sample_Id":
+                {
+                    number: true
                 }
             
         },

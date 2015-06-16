@@ -12,14 +12,14 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Quality_Application_Mapping
+    public partial class Temp_Functional_Parameters
     {
-        public int Quality_Application_Id { get; set; }
-        public int Application_Name_Id { get; set; }
+        public int Temp_Functional_Parameters_Id { get; set; }
+        public int Enquiry_Id { get; set; }
+        public int Test_Id { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int UpdatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
-        public int Quality_Id { get; set; }
     }
 }

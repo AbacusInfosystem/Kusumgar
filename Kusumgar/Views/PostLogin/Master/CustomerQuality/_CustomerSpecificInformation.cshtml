@@ -32,7 +32,7 @@
                                     <div class="auto-complete">
                                         <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="">
                                         <input type="hidden" id="hdnCustomer_Id" value="@(Model.Customer_Quality.Customer_Id == 0 ? "" : Model.Customer_Quality.Customer_Id.ToString())" name="Customer_Quality.Customer.Customer_Entity.Customer_Id" class="auto-complete-value">
-                                        <input type="hidden" id="hdnContact_Name" value="@Model.Customer_Quality.Customer.Customer_Entity.Customer_Name" name="Customer_Quality.Customer.Customer_Entity.Customer_Name" class="auto-complete-label">
+                                        <input type="hidden" id="hdnContact_Name" value="@Model.Customer_Quality.Customer.Customer_Name" name="Customer_Quality.Customer.Customer_Name" class="auto-complete-label">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -77,9 +77,9 @@
 
                             </div>
                         </div>
-                        <div class="box-footer">
+                        <div class="btn-group box-footer">
                             <button type="button" id="btnSave_Primary" class="btn btn-success btn-sm">Save Primary</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
                         </div>
                     </form>
                 </div>
@@ -137,9 +137,10 @@
                                 <div class="form-group">
                                     <label for="txtCustomer_Sample_No">Customer Sample No</label>
                                     <div class="auto-complete">
-                                        <input type="text" class="form-control input-sm" id="txtCustomer_Sample_No" placeholder="Enter sample no" value="">
+                                        <input type="text" class="form-control input-sm" id="txtCustomer_Sample_No" placeholder="Enter sample no" name="Customer_Quality.Sample.Sample_Id" value="">
                                         @*<input type="hidden" id="hdnSample_Id" value="@(Model.Customer_Quality.Sample.Sample_Id == 0 ? "" : Model.Customer_Quality.Sample.Sample_Id.ToString())" name="Customer_Quality.Sample_Id" class="auto-complete-value">*@
-                                        <input type="hidden" id="hdnSample_Id" value="@Model.Customer_Quality.Sample.Sample_Id" name="Customer_Quality.Sample_Id" class="auto-complete-value">
+                                        <input type="hidden" id="hdnSample_Id" value="@Model.Customer_Quality.Sample_Id" name="Customer_Quality.Sample_Id" class="auto-complete-value">
+                                        @*<input type="hidden" id="hdnSample_Id" value="@(Model.Customer_Quality.Sample.Sample_Id ==0 ? " " : Model.Customer_Quality.Sample_Id.ToString())" name="Customer_Quality.Sample_Id" class="auto-complete-value">*@
                                         <input type="hidden" id="hdnSample_No" value="@Model.Customer_Quality.Sample.Sample_No.ToString()" name="Customer_Quality.Sample.Sample_No" class="auto-complete-label">
                                     </div>
                                 </div>
@@ -157,9 +158,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box-footer">
+                        <div class="btn-group box-footer">
                             <button type="button" class="btn btn-success btn-sm" id="btnSave_Customer_Specific_Information">Save Customer Specific Information</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
                         </div>
                     </form>
                 </div>
@@ -281,16 +282,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
-                        </div>
+                    <div class="btn-group box-footer">
+                        <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
+                        <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                    </div>
                 </div>
 
                 <div class="tab-pane " id="tab_4">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group ">
+                                <div class="btn-group form-group ">
                                     <label for="txtTest_Name">Test Name</label>
                                     <input type="text" class="form-control input-sm" id="txtTest_Name" placeholder="Enter Test Name">
                                 </div>
@@ -363,10 +364,10 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-success btn-sm">Save Test</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
-                        </div>
+                    <div class="btn-group box-footer">
+                        <button type="submit" class="btn btn-success btn-sm">Save Test</button>
+                        <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                    </div>
                 </div>
 
             </div>

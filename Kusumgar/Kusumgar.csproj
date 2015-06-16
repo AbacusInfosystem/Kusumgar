@@ -1434,21 +1434,6 @@
     <Content Include="Views\PostLogin\Master\ProcessRouteCode\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\Search.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_CustomerSpecificInformation.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_Attachments.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_SpecificFunctionalStandards.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PostLogin\Master\CArticle\Copy of Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1572,6 +1557,9 @@
     <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
