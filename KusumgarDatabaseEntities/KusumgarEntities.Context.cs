@@ -32,8 +32,6 @@ public partial class KusumgarEntities : DbContext
     }
 
 
-    public DbSet<Bank_Details> Bank_Details { get; set; }
-
     public DbSet<Complaint> Complaints { get; set; }
 
     public DbSet<Contact> Contacts { get; set; }

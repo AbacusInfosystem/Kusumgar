@@ -62,18 +62,18 @@
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
                                 <select id="drpYarn_type" class="form-control input-sm attribute-name" name="G_Article.Yarn_Type_Id">
-                                    <option value="">-Select Yarn type- </option>
+                                    <option value="">-Select Yarn Type- </option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_", " ")))
                                         {
-                                            if (Model.G_Article.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.G_Article.Yarn_Type_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -100,13 +100,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Weave.ToString()))
                                         {
-                                            if (Model.G_Article.Weave_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.G_Article.Weave_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -307,13 +307,13 @@
                                 <option value="">-Select Warp yarn supplier-</option>
                                 @foreach (var item in Model.G_Article.Vendors)
                                 {
-                                    if (Model.G_Article.Warp_Yarn_Vendor == item.Vendor_Entity.Vendor_Id)
+                                    if (Model.G_Article.Warp_Yarn_Vendor == item.Vendor_Id)
                                     {
-                                        <option value="@item.Vendor_Entity.Vendor_Id" selected="selected">@item.Vendor_Entity.Vendor_Name</option>
+                                        <option value="@item.Vendor_Id" selected="selected">@item.Vendor_Name</option>
                                     }
                                     else
                                     {
-                                        <option value="@item.Vendor_Entity.Vendor_Id">@item.Vendor_Entity.Vendor_Name</option>
+                                        <option value="@item.Vendor_Id">@item.Vendor_Name</option>
                                     }
                                 }
                             </select>
@@ -325,13 +325,13 @@
                                 <option value="">-Select Weft yarn supplier-</option>
                                 @foreach (var item in Model.G_Article.Vendors)
                                 {
-                                    if (Model.G_Article.Weft_Yarn_Vendor == item.Vendor_Entity.Vendor_Id)
+                                    if (Model.G_Article.Weft_Yarn_Vendor == item.Vendor_Id)
                                     {
-                                        <option value="@item.Vendor_Entity.Vendor_Id" selected="selected">@item.Vendor_Entity.Vendor_Name</option>
+                                        <option value="@item.Vendor_Id" selected="selected">@item.Vendor_Name</option>
                                     }
                                     else
                                     {
-                                        <option value="@item.Vendor_Entity.Vendor_Id">@item.Vendor_Entity.Vendor_Name</option>
+                                        <option value="@item.Vendor_Id">@item.Vendor_Name</option>
                                     }
                                 }
                             </select>
@@ -504,10 +504,9 @@
 
     </div>
 
-    <div class="box-footer">
+    <div class="btn-group box-footer">
         <button type="button" id="btnSave_G_Article" class="btn btn-success btn-sm">Save</button>
-        <a href="@Url.Action("Search", "GArticle")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
-
+        <a href="@Url.Action("Search", "GArticle")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
     </div>
 
 </form>

@@ -49,9 +49,6 @@
     <Compile Include="Attachment.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Bank_Details.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Complaint.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>

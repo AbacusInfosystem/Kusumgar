@@ -38,7 +38,7 @@ function Bind_Customer_Quality_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Customer_Qualities[i].Customer.Customer_Entity.Customer_Name == null ? "" : data.Customer_Qualities[i].Customer.Customer_Entity.Customer_Name;
+            htmlText += data.Customer_Qualities[i].Customer.Customer_Name == null ? "" : data.Customer_Qualities[i].Customer.Customer_Name;
 
             htmlText += "</td>";
 
