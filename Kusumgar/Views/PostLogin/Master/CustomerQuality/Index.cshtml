@@ -1,0 +1,42 @@
+﻿@model Kusumgar.Models.CustomerQualityViewModel
+@using KusumgarBusinessEntities.Common
+
+@*<script src="~/Scripts/Master/Event/customer_quality_event.js"></script>
+<script src="~/Scripts/Master/Method/customer_quality_method.js"></script>
+<script src="~/Scripts/Master/Validation/customer_quality_validation.js"></script>*@
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Customer Quality Creation
+
+            <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">Customer Quality Creation</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                
+                    <div class="box box-primary">
+                        @Html.Partial("_CustomerSpecificInformation", Model)
+                    </div>
+                    <!-- /.row -->
+               
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+ 
+</div>
+<!-- /.content-wrapper -->
+
+

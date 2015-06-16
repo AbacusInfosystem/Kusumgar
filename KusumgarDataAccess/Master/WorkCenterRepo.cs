@@ -38,8 +38,8 @@ namespace KusumgarDataAccess
                 {
                     FactoryInfo factory = new FactoryInfo();
 
-                    factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
-                    factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+                    factory.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+                    factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
 
                     factories.Add(factory);
                 }
@@ -61,8 +61,8 @@ namespace KusumgarDataAccess
                 {
                     WorkStationInfo work_Station = new WorkStationInfo();
 
-                    work_Station.Work_Station_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
-                    work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
+                    work_Station.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+                    work_Station.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
 
                     work_Stations.Add(work_Station);
                 }
@@ -84,8 +84,8 @@ namespace KusumgarDataAccess
                 {
                     ProcessInfo process = new ProcessInfo();
 
-                    process.Process_Entity.Process_Id = Convert.ToInt32(dr["Process_Id"]);
-                    process.Process_Entity.Process_Name = Convert.ToString(dr["Process_Name"]);
+                    process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
+                    process.Process_Name = Convert.ToString(dr["Process_Name"]);
 
                     processes.Add(process);
                 }
@@ -111,8 +111,8 @@ namespace KusumgarDataAccess
                 {
                     WorkStationInfo work_Station = new WorkStationInfo();
 
-                    work_Station.Work_Station_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
-                    work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
+                    work_Station.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+                    work_Station.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
 
                     work_Stations.Add(work_Station);
                 }
@@ -141,7 +141,7 @@ namespace KusumgarDataAccess
 
             if (!string.IsNullOrEmpty(work_Center.Process_Ids))
             {
-                Insert_Work_Center_Process(work_Center.Process_Ids, work_Center.Work_Center_Entity.Work_Center_Id);
+                Insert_Work_Center_Process(work_Center.Process_Ids, work_Center.Work_Center_Id);
             }
            
         }
@@ -175,30 +175,30 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (work_Center.Work_Center_Entity.Work_Center_Id != 0)
+            if (work_Center.Work_Center_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Work_Center_Id", work_Center.Work_Center_Entity.Work_Center_Id));
+                sqlparam.Add(new SqlParameter("@Work_Center_Id", work_Center.Work_Center_Id));
             }
-            //sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station.Work_Station_Entity.Work_Station_Id));
-            sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Center_Entity.Work_Station_Id));
-            sqlparam.Add(new SqlParameter("@Work_Center_Code", work_Center.Work_Center_Entity.Work_Center_Code));
-            sqlparam.Add(new SqlParameter("@Machine_Name", work_Center.Work_Center_Entity.Machine_Name));
-            sqlparam.Add(new SqlParameter("@Machine_Properties", work_Center.Work_Center_Entity.Machine_Properties));
-            sqlparam.Add(new SqlParameter("@TPM_Speed", work_Center.Work_Center_Entity.TPM_Speed));
-            sqlparam.Add(new SqlParameter("@Average_Order_Length", work_Center.Work_Center_Entity.Average_Order_Length));
-            sqlparam.Add(new SqlParameter("@Capacity", work_Center.Work_Center_Entity.Capacity));
-            sqlparam.Add(new SqlParameter("@Wastage", work_Center.Work_Center_Entity.Wastage));
-            sqlparam.Add(new SqlParameter("@Target_Efficiency", work_Center.Work_Center_Entity.Target_Efficiency));
-            sqlparam.Add(new SqlParameter("@Under_Maintainance", work_Center.Work_Center_Entity.Under_Maintainance));
-            sqlparam.Add(new SqlParameter("@Is_Active", work_Center.Work_Center_Entity.Is_Active));
+            sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station.Work_Station_Id));
+            //sqlparam.Add(new SqlParameter("@Work_Station_Id", work_Center.Work_Station_Id));
+            sqlparam.Add(new SqlParameter("@Work_Center_Code", work_Center.Work_Center_Code));
+            sqlparam.Add(new SqlParameter("@Machine_Name", work_Center.Machine_Name));
+            sqlparam.Add(new SqlParameter("@Machine_Properties", work_Center.Machine_Properties));
+            sqlparam.Add(new SqlParameter("@TPM_Speed", work_Center.TPM_Speed));
+            sqlparam.Add(new SqlParameter("@Average_Order_Length", work_Center.Average_Order_Length));
+            sqlparam.Add(new SqlParameter("@Capacity", work_Center.Capacity));
+            sqlparam.Add(new SqlParameter("@Wastage", work_Center.Wastage));
+            sqlparam.Add(new SqlParameter("@Target_Efficiency", work_Center.Target_Efficiency));
+            sqlparam.Add(new SqlParameter("@Under_Maintainance", work_Center.Under_Maintainance));
+            sqlparam.Add(new SqlParameter("@Is_Active", work_Center.Is_Active));
 
-            if (work_Center.Work_Center_Entity.Work_Center_Id == 0)
+            if (work_Center.Work_Center_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedOn", work_Center.Work_Center_Entity.CreatedOn));
-                sqlparam.Add(new SqlParameter("@CreatedBy", work_Center.Work_Center_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", work_Center.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", work_Center.CreatedBy));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedOn", work_Center.Work_Center_Entity.UpdatedOn));
-            sqlparam.Add(new SqlParameter("@UpdatedBy", work_Center.Work_Center_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", work_Center.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", work_Center.UpdatedBy));
 
             return sqlparam;
         }
@@ -361,24 +361,24 @@ namespace KusumgarDataAccess
         {
             WorkCenterInfo work_Center = new WorkCenterInfo();
 
-            work_Center.Work_Center_Entity.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
-            work_Center.Work_Center_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
-            work_Center.Work_Center_Entity.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
-            work_Center.Work_Center_Entity.Machine_Name = Convert.ToString(dr["Machine_Name"]);
-            work_Center.Work_Center_Entity.Machine_Properties = Convert.ToString(dr["Machine_Properties"]);
-            work_Center.Work_Center_Entity.TPM_Speed = Convert.ToInt32(dr["TPM_Speed"]);
-            work_Center.Work_Center_Entity.Average_Order_Length = Convert.ToDecimal(dr["Average_Order_Length"]);
-            work_Center.Work_Center_Entity.Capacity = Convert.ToString(dr["Capacity"]);
-            work_Center.Work_Center_Entity.Wastage = Convert.ToInt32(dr["Wastage"]);
-            work_Center.Work_Center_Entity.Target_Efficiency = Convert.ToInt32(dr["Target_Efficiency"]);
-            work_Center.Work_Center_Entity.Under_Maintainance = Convert.ToBoolean(dr["Under_Maintainance"]);
-            work_Center.Work_Center_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            work_Center.Work_Center_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            work_Center.Work_Center_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            work_Center.Work_Center_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            work_Center.Work_Center_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-            work_Center.Work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
-            work_Center.Factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+            work_Center.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
+            work_Center.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+            work_Center.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
+            work_Center.Machine_Name = Convert.ToString(dr["Machine_Name"]);
+            work_Center.Machine_Properties = Convert.ToString(dr["Machine_Properties"]);
+            work_Center.TPM_Speed = Convert.ToInt32(dr["TPM_Speed"]);
+            work_Center.Average_Order_Length = Convert.ToDecimal(dr["Average_Order_Length"]);
+            work_Center.Capacity = Convert.ToString(dr["Capacity"]);
+            work_Center.Wastage = Convert.ToInt32(dr["Wastage"]);
+            work_Center.Target_Efficiency = Convert.ToInt32(dr["Target_Efficiency"]);
+            work_Center.Under_Maintainance = Convert.ToBoolean(dr["Under_Maintainance"]);
+            work_Center.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            work_Center.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            work_Center.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            work_Center.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            work_Center.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            work_Center.Work_Station.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
+            work_Center.Factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
             //work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
 
             return work_Center;
@@ -408,18 +408,6 @@ namespace KusumgarDataAccess
                 {
                     work_Center = Get_Work_Center_Values_By_Id(dr);
 
-                    //foreach (DataRow dr1 in dt1.Rows)
-                    //{
-                    //    WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
-
-                    //    work_Center_Process.Process_Name = Convert.ToString(dr1["Process_Name"]);
-
-                    //    work_Center_Process.Work_Center_Process_Entity.Process_Id = Convert.ToInt32(dr1["Process_Id"]);
-
-                    //    work_Center_Process.Work_Center_Process_Entity.Work_Center_Id = Convert.ToInt32(dr1["Work_Center_Id"]);
-
-                    //    work_Center.Work_Center_Processes.Add(work_Center_Process);
-                    //}
                 }
             }
 
@@ -430,34 +418,55 @@ namespace KusumgarDataAccess
         {
             WorkCenterInfo work_Center = new WorkCenterInfo();
 
-            work_Center.Work_Center_Entity.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
-            work_Center.Work_Center_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
-            work_Center.Work_Center_Entity.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
-            work_Center.Work_Center_Entity.Machine_Name = Convert.ToString(dr["Machine_Name"]);
-            work_Center.Work_Center_Entity.Machine_Properties = Convert.ToString(dr["Machine_Properties"]);
-            work_Center.Work_Center_Entity.TPM_Speed = Convert.ToInt32(dr["TPM_Speed"]);
-            work_Center.Work_Center_Entity.Average_Order_Length = Convert.ToDecimal(dr["Average_Order_Length"]);
-            work_Center.Work_Center_Entity.Capacity = Convert.ToString(dr["Capacity"]);
-            work_Center.Work_Center_Entity.Wastage = Convert.ToInt32(dr["Wastage"]);
-            work_Center.Work_Center_Entity.Target_Efficiency = Convert.ToInt32(dr["Target_Efficiency"]);
-            work_Center.Work_Center_Entity.Under_Maintainance = Convert.ToBoolean(dr["Under_Maintainance"]);
-            work_Center.Work_Center_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            work_Center.Work_Center_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            work_Center.Work_Center_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            work_Center.Work_Center_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            work_Center.Work_Center_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            work_Center.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
+            work_Center.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+            work_Center.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
+            work_Center.Machine_Name = Convert.ToString(dr["Machine_Name"]);
+            work_Center.Machine_Properties = Convert.ToString(dr["Machine_Properties"]);
+            work_Center.TPM_Speed = Convert.ToInt32(dr["TPM_Speed"]);
+            work_Center.Average_Order_Length = Convert.ToDecimal(dr["Average_Order_Length"]);
+            work_Center.Capacity = Convert.ToString(dr["Capacity"]);
+            work_Center.Wastage = Convert.ToInt32(dr["Wastage"]);
+            work_Center.Target_Efficiency = Convert.ToInt32(dr["Target_Efficiency"]);
+            work_Center.Under_Maintainance = Convert.ToBoolean(dr["Under_Maintainance"]);
+            work_Center.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            work_Center.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            work_Center.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            work_Center.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            work_Center.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            work_Center.Work_Station.Work_Station_Entity.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
-            work_Center.Work_Station.Work_Station_Entity.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+            work_Center.Work_Station.Work_Station_Name = Convert.ToString(dr["Work_Station_Name"]);
+            work_Center.Work_Station.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
 
-            work_Center.Factory.Factory_Entity.Factory_Name = Convert.ToString(dr["Factory_Name"]);
-            work_Center.Factory.Factory_Entity.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
+            work_Center.Factory.Factory_Name = Convert.ToString(dr["Factory_Name"]);
+            work_Center.Factory.Factory_Id = Convert.ToInt32(dr["Factory_Id"]);
           
             return work_Center;
         }
 
-      
 
+        public List<WorkCenterProcessInfo> Get_Work_Center_Processes(int work_Center_Id, ref PaginationInfo pager)
+        {
+            List<WorkCenterProcessInfo> work_Center_Processes = new List<WorkCenterProcessInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Work_Center_Id", work_Center_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Work_Center_Processes_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
+
+                work_Center_Process.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
+                work_Center_Process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
+
+                work_Center_Processes.Add(work_Center_Process);
+            }
+
+            return work_Center_Processes;
+        }
 
     }
 }

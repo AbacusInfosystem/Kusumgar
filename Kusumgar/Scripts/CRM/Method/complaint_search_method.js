@@ -23,56 +23,56 @@ function BindCompGrid(data) {
 
     var htmlText = "";
 
-    for (i = 0; i < data.Complaints.length; i++) {
+    if (data.Complaints.length > 0) {
+        for (i = 0; i < data.Complaints.length; i++) {
 
-        htmlText += "<tr>";
+            htmlText += "<tr>";
 
-        htmlText += "<td>";
+            htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Entity.Complaint_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Id + "' class='iradio_square-green'/>";
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "<td>";
+            htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Customer_Name;
+            htmlText += data.Complaints[i].Customer_Name;
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "<td>";
+            htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.Order_Id;
+            htmlText += data.Complaints[i].Order_Id;
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "<td>";
+            htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.Order_Item_Id;
+            htmlText += data.Complaints[i].Order_Item_Id;
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "<td>";
+            htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.Challan_No;
+            htmlText += data.Complaints[i].Challan_No;
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "<td>";
+            htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.CDescription;
+            htmlText += data.Complaints[i].CDescription;
 
-        htmlText += "</td>";
+            htmlText += "</td>";
 
-        htmlText += "</tr>";
+            htmlText += "</tr>";
+        }
     }
-    }
-    else
-    {
+    else {
         htmlText += "<tr>";
 
         htmlText += "<td colspan='5'>";
 
-        htmlText +="No record found.";
+        htmlText += "No record found.";
 
         htmlText += "</td>";
 
@@ -87,7 +87,7 @@ function BindCompGrid(data) {
         increaseArea: '20%' // optional
     });
 
-    if (data.ComplaintList.length > 0) {
+    if (data.Complaints.length > 0) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 

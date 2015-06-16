@@ -36,13 +36,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             { 
-                aViewModel.Attribute_Code.AttributeCodeEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                aViewModel.Attribute_Code.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                aViewModel.Attribute_Code.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                aViewModel.Attribute_Code.AttributeCodeEntity.CreatedOn = DateTime.Now;
+                aViewModel.Attribute_Code.CreatedOn = DateTime.Now;
 
-                aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedOn = DateTime.Now;
+                aViewModel.Attribute_Code.UpdatedOn = DateTime.Now;
 
                 AttributeCodeManager aMan = new AttributeCodeManager();
 
@@ -64,15 +64,15 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
            try
            {
-               aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedOn = DateTime.Now;
+               aViewModel.Attribute_Code.UpdatedOn = DateTime.Now;
 
-               aViewModel.Attribute_Code.AttributeCodeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+               aViewModel.Attribute_Code.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 AttributeCodeManager aMan = new AttributeCodeManager();
 
                 aMan.Update(aViewModel.Attribute_Code);
 
-                aViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id =0;
+                aViewModel.Attribute_Code.Attribute_Id =0;
 
                 aViewModel.Friendly_Message.Add(MessageStore.Get("AC012"));
                

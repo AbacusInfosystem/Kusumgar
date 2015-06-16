@@ -42,11 +42,11 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                qViewModel.Quality.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                qViewModel.Quality.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                qViewModel.Quality.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                qViewModel.Quality.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                qViewModel.Quality.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                qViewModel.Quality.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 qViewModel.Quality.CreatedOn = DateTime.Now;
 
@@ -70,7 +70,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                qViewModel.Quality.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                qViewModel.Quality.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 qViewModel.Quality.UpdatedOn = DateTime.Now;
 

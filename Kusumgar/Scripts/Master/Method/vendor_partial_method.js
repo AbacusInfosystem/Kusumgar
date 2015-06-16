@@ -14,7 +14,7 @@
 
 function Bind_Vendor_Data_Callback(data) {
 
-    $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
+    $("#hdnVendorId").val(data.Vendor.Vendor_Id);
 
     $("#tabProductServices").show();
     $("#tabCertificates").show();
@@ -27,6 +27,8 @@ function Bind_Vendor_Data_Callback(data) {
 
     $("#hdnVendor_Id").val($("#hdnVendorId").val());
 
+    $("#hdnVendor_Name").val($("#txtVendorName").val());
+
     InitializeAutoComplete($('#txt_auto_Vendor_Name'));
 
     Friendly_Message(data);
@@ -37,8 +39,7 @@ function Set_Vendor() {
         {
             Vendor:
                 {
-                    Vendor_Entity:
-                        {
+                    
                             Vendor_Id: $("#hdnVendorId").val(),
 
                             Vendor_Name: $("#txtVendorName").val(),
@@ -57,7 +58,7 @@ function Set_Vendor() {
                             Product_Category: $("#drpProductCategory").val(),
                             Code: $("#txtYarnCode").val(),
 
-                        },
+                        
 
                     Material_Category_Entity: {
                         Material_Category_Name: $("#drpProductCategory option:selected").text()
@@ -86,7 +87,7 @@ function Bind_States(data) {
 
     if (data.length > 0) {
         for (var i = 0; i < data.length ; i++) {
-            htmltext += "<option value='" + data[i].State_Entity.StateId + "'>" + data[i].State_Entity.StateName + "</option>";
+            htmltext += "<option value='" + data[i].StateId + "'>" + data[i].StateName + "</option>";
         }
     }
     $("#drpHeadOfficeState").html(htmltext);

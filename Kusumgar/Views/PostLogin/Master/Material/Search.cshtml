@@ -3,7 +3,6 @@
 
 <script src="/Scripts/Master/Event/material_search_event.js"></script>
 <script src="/Scripts/Master/Method/material_search_method.js"></script>
-<link rel="stylesheet" href="~/Content/jquery-ui.css">
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -37,8 +36,9 @@
                                     <div class="form-group">
                                         <label for="txtMaterialName">Material Name</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtMaterialName" placeholder="Enter material name" name="Filter.Material_Name" value="@Model.Filter.Material_Name">
-                                            <input type="hidden" id="hdfMaterial_Id" value="@Model.Filter.Material_Id" name="Filter.Material_Id">
+                                            <input type="text" class="form-control input-sm" id="txtMaterialName" placeholder="Enter material name"  >
+                                            <input type="hidden" id="hdfMaterial_Id" value="@Model.Filter.Material_Id" name="Filter.Material_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdnMaterial_Name" value="@Model.Filter.Material_Name" name="Filter.Material_Name" class="auto-complete-label">
                                         </div>
                                     </div>                                    
                                 </div>

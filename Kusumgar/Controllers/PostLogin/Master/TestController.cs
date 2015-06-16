@@ -45,13 +45,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                tViewModel.Test.TestEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                tViewModel.Test.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                tViewModel.Test.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                tViewModel.Test.TestEntity.CreatedOn = DateTime.Now;
+                tViewModel.Test.CreatedOn = DateTime.Now;
 
-                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+                tViewModel.Test.UpdatedOn = DateTime.Now;
 
                 TestManager tMan = new TestManager();
 
@@ -77,9 +77,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+                tViewModel.Test.UpdatedOn = DateTime.Now;
 
-                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                tViewModel.Test.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 TestManager tMan = new TestManager();
 
@@ -159,17 +159,27 @@ namespace Kusumgar.Controllers
         
        }
 
-        public JsonResult Get_Test_AutoComplete(string testUnitName)
+        public JsonResult Get_Test_Unit_AutoComplete(string testUnitName)
         {
             TestManager tMan = new TestManager();
 
             List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
 
-            testUnitNames = tMan.Get_Test_AutoComplete(testUnitName);
+            testUnitNames = tMan.Get_Test_Unit_AutoComplete(testUnitName);
 
             return Json(testUnitNames, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Get_Test_Autocomplete(string test_Name)
+        {
+            TestManager tMan = new TestManager();
+
+            List<AutocompleteInfo> test_Names = new List<AutocompleteInfo>();
+
+            test_Names = tMan.Get_Test_Autocomplete(test_Name);
+
+            return Json(test_Names, JsonRequestBehavior.AllowGet);
+        }
     }
  }
 

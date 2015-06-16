@@ -8,7 +8,7 @@ var InitializeAutoComplete = function (elementObject) {
             var urlString = ''
 
             if ($(elementObject).attr("id") == 'txtCustomer_Name') {
-                urlString = "/ajax/customer-list/" + $('#txtCustomer_Name').val();
+                urlString = "/customer/customer-list/" + $('#txtCustomer_Name').val();
             }
             if ($(elementObject).attr("id") == 'txtCustName') {
                 urlString = "/crm/get-customer-id-by-customername/" + $('#txtCustName').val();
@@ -110,16 +110,26 @@ var InitializeAutoComplete = function (elementObject) {
 
             if ($(elementObject).attr("id") == 'txtApplicationName') {
                 urlString = "/ajax/application-list/" + $('#txtApplicationName').val();
+            if ($(elementObject).attr("id") == 'txtTestUnitName') {
+                urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
             }
 
             if ($(elementObject).attr("id") == 'txtMarketSegmentName') {
                 urlString = "/ajax/segment-list/" + $('#txtMarketSegmentName').val();
+            if ($(elementObject).attr("id") == 'txtQuality_No') {
+                urlString = "/sales/quality-autocomplete/" + $('#txtQuality_No').val();
             }
 
             if ($(elementObject).attr("id") == 'txtFull_Code') {
                 urlString = "/master/p-articles-by-full-code/" + $('#txtFull_Code').val();
+            if ($(elementObject).attr("id") == 'txtCustomer_Sample_No') {
+                urlString = "/master/sample-no-list/" + $('#txtCustomer_Sample_No').val();
             }
 
+
+            if ($(elementObject).attr("id") == 'txtFull_Code') {
+                urlString = "/master/g-articles-by-full-code/" + $('#txtFull_Code').val();
+            }
 
             $.ajax({
                 url: urlString,
@@ -173,6 +183,9 @@ var InitializeAutoComplete = function (elementObject) {
             $(this).parents('.form-group').find('.auto-complete-value').val(ui.item.value);
             $(this).parents('.form-group').find('.auto-complete-label').val(ui.item.label);
 
+            $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+            $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
+
             if ($(this).parents('.form-group').find(".todo-list")[0]) {
                 $(this).parents('.form-group').find('.todo-list').remove();
             }
@@ -187,11 +200,13 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').append(htmlText);
             }
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
             });
 
@@ -251,11 +266,13 @@ var InitializeAutoComplete = function (elementObject) {
 
             $(this).parents('.form-group').find('input[type=text]').val("");
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
 
             });

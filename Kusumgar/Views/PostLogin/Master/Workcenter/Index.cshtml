@@ -44,7 +44,7 @@
                                     <input type="hidden" id="hdnWork_Center_Id" value="@Model.Work_Center.Work_Center_Entity.Work_Center_Id" name="Work_Center.Work_Center_Entity.Work_Center_Id">
                                     <div class="form-group">
                                         <label>Factory</label>
-                                        <select class="form-control" id="drpFactory" name="Work_Center.Factory_Entity.Factory_Id">
+                                        <select class="form-control input-sm" id="drpFactory" name="Work_Center.Factory_Entity.Factory_Id">
                                             <option value="">-Select factory-</option>
                                             @foreach (var item in Model.Work_Center.Factories)
                                             {
@@ -62,7 +62,8 @@
 
                                     <div class="form-group">
                                         <label>Work Station</label>
-                                        <select class="form-control " id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Id">
+                                        @*<select class="form-control " id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Id">*@
+                                        <select class="form-control input-sm" id="drpWork_Station" name="Work_Center.Work_Station.Work_Station_Entity.Work_Station_Id">
                                             <option value="">-Select work station-</option>
                                             @foreach (var item in Model.Work_Center.Work_Stations)
                                             {
@@ -83,24 +84,26 @@
                                         <br />
                                         <div class="btn-group non-iCheck" id="divProcess" data-toggle="buttons">
                                             @{
+                                                
                                                 foreach (var item in Model.Work_Center.Processes)
                                                 {
 
                                                     if (Model.Work_Center.Work_Center_Processes.Where(a => a.Work_Center_Process_Entity.Process_Id == item.Process_Entity.Process_Id).Count() > 0)
                                                     {
                                                         <label class="btn btn-primary active">
-                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" checked value="@item.Process_Entity.Process_Id"> @item.Process_Entity.Process_Name
+                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" checked="checked" value="@item.Process_Entity.Process_Id"> @item.Process_Entity.Process_Name
                                                         </label>
                                                     }
                                                     else
                                                     {
                                                         <label class="btn btn-primary ">
-                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" value="@item.Process_Entity.Process_Id"> @item.Process_Entity.Process_Name
+                                                            <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess"  value="@item.Process_Entity.Process_Id"> @item.Process_Entity.Process_Name
                                                         </label>
                                                     }
 
-                                                }
-
+                                                  }
+                                               
+                                               
                                                 <input type="hidden" id="hdnProcess_Id" name="Work_Center.Process_Ids">
                                             }
                                         </div>
@@ -151,11 +154,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        @*<label>
-                                            <input type="checkbox" name="chkUnder_Maintainance" checked />
-                                            &nbsp;&nbsp;&nbsp;&nbsp; Under Maintainance Status
-                                            <input type="hidden" class="form-control input-sm" id="hdnUnder_Maintainance" name="Work_Center.Work_Center_Entity.Under_Maintainance" value="@Model.Work_Center.Work_Center_Entity.Under_Maintainance.ToString()">
-                                        </label>*@
+                                       
                                         @if (Model.Work_Center.Work_Center_Entity.Under_Maintainance == false)
                                         {
                                             <label>
@@ -196,8 +195,8 @@
                             </div>
 
                             <div class="box-footer">
-                                <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                                <a href="@Url.Action("Search", "Workcenter")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+                                <button type="button" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                <a href="@Url.Action("Search", "Workcenter")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
 
                             </div>
 

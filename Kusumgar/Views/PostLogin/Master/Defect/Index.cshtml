@@ -41,21 +41,21 @@
                                     
                                     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
                                     
-                                     <input type="hidden" id="hdfDefectId" name="Defect.DefectEntity.Defect_Id" value="@Model.Defect.DefectEntity.Defect_Id" />
+                                     <input type="hidden" id="hdfDefectId" name="Defect.Defect_Id" value="@Model.Defect.Defect_Id" />
                                     
                                     <div class="form-group">
                                         <label style="color: #333">Defect - Type</label>
-                                        <select class="form-control input-sm" id="drpDefectTypeName" name="Defect.DefectEntity.Defect_Type_Id">
+                                        <select class="form-control input-sm" id="drpDefectTypeName" name="Defect.Defect_Type_Id">
                                             <option value="">Select Defect-Type</option>
                                             @foreach (var item in Model.DefectType)
                                             {
-                                                if (Model.Defect.DefectEntity.Defect_Type_Id == item.DefectTypeEntity.Defect_Type_Id)
+                                                if (Model.Defect.Defect_Type_Id == item.Defect_Type_Id)
                                                 {
-                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id" selected="selected">@item.DefectTypeEntity.Defect_Type_Name</option>
+                                                    <option value="@item.Defect_Type_Id" selected="selected">@item.Defect_Type_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id">@item.DefectTypeEntity.Defect_Type_Name</option>
+                                                    <option value="@item.Defect_Type_Id">@item.Defect_Type_Name</option>
                                                 }
                                             }
                                         </select>
@@ -64,28 +64,30 @@
                                  
                                     <div class="form-group">
                                         <label for="txtDefectCode" style="color: #333">Defect Code</label>
-                                        <input type="text" class="form-control  input-sm" id="txtDefectCode" name="Defect.DefectEntity.Defect_Code" value="@Model.Defect.DefectEntity.Defect_Code" placeholder="Enter defect code">
+                                        <input type="text" class="form-control  input-sm" id="txtDefectCode" name="Defect.Defect_Code" value="@Model.Defect.Defect_Code" placeholder="Enter defect code">
                                         
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtDefectName" style="color: #333">Defect Name</label>
-                                        <input type="text" class="form-control  input-sm" id="txtDefectName" name="Defect.DefectEntity.Defect_Name" value="@Model.Defect.DefectEntity.Defect_Name" placeholder="Enter defect name">
+                                        <input type="text" class="form-control  input-sm" id="txtDefectName" name="Defect.Defect_Name" value="@Model.Defect.Defect_Name" placeholder="Enter defect name">
                                         
                                     </div>
 
                                     <div class="form-group">
-                                        @if (Model.Defect.DefectEntity.Status == true)
+                                        <label>
+                                            @if (Model.Defect.Status == true)
                                         {
 
                                             <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
                                         }
                                         else
                                         {
-                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                                @:<input type="checkbox" name="Defect.Status" value="true" />
                                         }
                                         &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 
+                                        </label>
                                     </div>
                                     <input type="hidden" id="hdnActive" name="Defect.DefectEntity.Status" value="@Model.Defect.DefectEntity.Status.ToString()">
                                     

@@ -117,7 +117,7 @@ namespace KusumgarBusinessEntities.Common
         TwistMingle = 2,
         Twist_type = 3,
         Ply = 4,
-        Yarn_type = 5,
+        Yarn_Type = 5,
         Shade = 6,
         Filaments = 7,
         Origin = 8,
@@ -249,6 +249,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Fabric_Types_sp,
         Get_Test_By_Fabric_Type_sp,
         Get_Test_Unit_AutoComplete_sp,
+        Get_Test_By_Test_Name_sp,
 
         //AttributeCode
         Get_Attribute_Codes_sp,
@@ -393,17 +394,82 @@ namespace KusumgarBusinessEntities.Common
         Delete_Quality_Market_Segment_By_Id_sp,
         Get_Segment_AutoComplete_sp,
         Check_Existing_Quality_No_Sp,
+        Get_Work_Center_Processes_Sp,
+
+        //Customer Quality
+        Get_Qualities_Sp,
+        Insert_Customer_Quality_Sp,
+        Get_Customer_Quality_By_Id_Sp,
+        Update_Customer_Quality_Sp,
+        Get_Sample_By_No_Sp,
+        Get_Customer_Qualities_Sp,
+        Get_Customer_Qualities_By_Customer_Id_Sp,
+        Get_Customer_Qualities_By_Quality_Id_Sp,
+        Get_Customer_Qualities_By_Customer_Id_Quality_Id_Sp,
+
+        //G Article
+        Insert_G_Article_Sp,
+        Update_G_Article_Sp,
+        Get_G_Articles_Sp,
+        Get_G_Articles_By_G_Article_Id_By_Yarn_Type_Id_Sp,
+        Get_G_Articles_By_G_Article_Id_Sp,
 
         //PArticle
 
         Insert_P_Article_Sp,
         Update_P_Article_Sp,
         Get_P_Article_Sp,
-        Get_Qualities_Sp,
+ 
         Get_P_Article_By_Id_sp,
         Get_P_Articles_By_Full_Code_sp,
         Get_P_Articles_By_Yarn_Type_Id_sp,
-        Get_P_Articles_By_PArticle_Id_Yarn_Type_sp
+        Get_P_Articles_By_PArticle_Id_Yarn_Type_sp,
+        // Enquiry
+        Insert_Enquiry_Sp,
+        Update_Enquiry_Sp,
+        Get_Enquiries_Sp,
+        Get_Enquiry_By_Id_Sp,
+        Get_Enquiries_By_Status_Sp,
+        Insert_Staggered_Order_Sp,
+        Update_Staggered_Order_Sp,
+        Get_Staggered_Order_Sp,
+        Get_Staggered_Order_By_Id_Sp,
+        Get_Staggered_Order_By_Enquiry_Id_Sp,
+        Delete_Staggered_Order_By_Id,
+        Insert_Temp_Customer_Quality_Details_Sp,
+        Update_Temp_Customer_Quality_Details_Sp,
+        Get_Temp_Customer_Quality_Details_By_Id_Sp,
+        Insert_Supporting_Details_Sp,
+        Update_Supporting_Details_Sp,
+        Get_Supporting_Details_Sp,
+        Get_Supporting_Details_By_Enquiry_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Quality_Id_Sp,
+        Get_Enquiries_By_Quality_Id_Sp,
+        Update_Enquiry_Quality_Id_Status_Sp,
+        Get_Enquiries_By_Status_Ids_Sp,
+
+        // Quality 
+        Get_Quality_Autocomplete,
+        Get_G_Articles_By_Yarn_Type_Id_Sp,
+        Get_G_Articles_By_Full_Code_Sp,
+
+
+
+        // Attachments
+        Insert_Attachment_Sp,
+        Delete_Attachment_By_Id,
+        Get_Attachments_By_Ref_Type_Ref_Id_Sp,
+        Get_Attachments_By_Id_Sp,
+
+        // Temp Functional Visual Parameters
+        Insert_Temp_Functional_Parameters_Sp,
+        Insert_Temp_Visual_Parameters_Sp,
+        Get_Temp_Visual_Parameters_By_Enquiry_Id,
+        Get_Temp_Functional_Parameters_By_Enquiry_Id,
+        Delete_Temp_Functional_Parameters_By_Id,
+        Delete_Temp_Visual_Parameters_By_Id,
+
     }
 
     public enum GenderType
@@ -446,6 +512,7 @@ namespace KusumgarBusinessEntities.Common
         Secondary = 2,
         Last_Option = 3,
     }
+
 
     public enum PaymentTerms
     {
@@ -497,6 +564,36 @@ namespace KusumgarBusinessEntities.Common
         Finish_Product = 1,
         Raw_Material =2,
         Service = 3
+    }
+
+    public enum EnquiryType
+    {
+        Trial =1,
+        Stock = 2,
+        General = 3
+    }
+
+    public enum EnquiryStatus
+    {
+        Enquiry_Arrived = 1,
+        Passed_PPC_Check_Point = 2,
+        Passed_W_Manager_Check_Point = 3,
+        Passed_P_Manager_Check_Point = 4,
+        Passed_C_Manager_Check_Point = 5,
+        Temp_Quality_Set_Created = 6,
+        Quality_Assigned = 7,
+        Planned = 8
+    }
+
+    public enum OrderStatus
+    {
+        Order_Arrived = 1,
+        
+    }
+
+    public enum RefType
+    {
+        Enquiry = 1, 
     }
 
 }

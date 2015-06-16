@@ -37,13 +37,13 @@
                                         {
                                             foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Denier.ToString()))
                                             {
-                                                if (Model.YArticle.Denier_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                if (Model.YArticle.Denier_Id == item.Attribute_Code_Id)
                                                 {
-                                                    <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                                 }
                                             }
                                         }
@@ -73,13 +73,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.TwistMingle.ToString()))
                                         {
-                                            if (Model.YArticle.Twist_Mingle_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Twist_Mingle_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -105,15 +105,15 @@
                                     <option value="">-Select Twist Type- </option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Twist_type.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Twist_type.ToString().Replace('_',' ')))
                                         {
-                                            if (Model.YArticle.Twist_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Twist_Type_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -141,13 +141,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Ply.ToString()))
                                         {
-                                            if (Model.YArticle.Ply_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Ply_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -173,15 +173,15 @@
                                     <option  value="">-Select Yarn type- </option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace('_',' ')))
                                         {
-                                            if (Model.YArticle.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Yarn_Type_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -209,13 +209,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Shade.ToString()))
                                         {
-                                            if (Model.YArticle.Shade_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Shade_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -244,13 +244,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Filaments.ToString()))
                                         {
-                                            if (Model.YArticle.Filaments_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Filaments_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -292,13 +292,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Origin.ToString()))
                                         {
-                                            if (Model.YArticle.Origin_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Origin_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -327,13 +327,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Shrinkage.ToString()))
                                         {
-                                            if (Model.YArticle.Shrinkage_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Shrinkage_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -362,13 +362,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Tenasity.ToString()))
                                         {
-                                            if (Model.YArticle.Tenasity_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Tenasity_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -395,15 +395,15 @@
                                     <option  value="">-Select Chemical Treatment-</option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Treatment.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Treatment.ToString().Replace('_',' ')))
                                         {
-                                            if (Model.YArticle.Chemical_Treatment_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Chemical_Treatment_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -432,13 +432,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Colour.ToString()))
                                         {
-                                            if (Model.YArticle.Colour_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Colour_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }
@@ -467,13 +467,13 @@
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Supplier.ToString()))
                                         {
-                                            if (Model.YArticle.Supplier_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.YArticle.Supplier_Id == item.Attribute_Code_Id)
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                                <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                             }
                                         }
                                     }

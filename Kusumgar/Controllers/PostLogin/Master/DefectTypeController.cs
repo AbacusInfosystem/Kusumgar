@@ -14,6 +14,7 @@ namespace Kusumgar.Controllers
 {
     public class DefectTypeController : Controller
     {
+        [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Index(DefectTypeViewModel dViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
@@ -21,6 +22,7 @@ namespace Kusumgar.Controllers
             return View("Index", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public ActionResult Search(DefectTypeViewModel dViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Search";
@@ -32,17 +34,18 @@ namespace Kusumgar.Controllers
             return View("Search", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Create)]
         public ActionResult Insert(DefectTypeViewModel dViewModel)
         {
             try
             {  
-                dViewModel.DefectType.DefectTypeEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.DefectType.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.DefectType.DefectTypeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.DefectType.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.DefectType.DefectTypeEntity.CreatedOn = DateTime.Now;
+                dViewModel.DefectType.CreatedOn = DateTime.Now;
 
-                dViewModel.DefectType.DefectTypeEntity.UpdatedOn = DateTime.Now;
+                dViewModel.DefectType.UpdatedOn = DateTime.Now;
 
                 DefectTypeManager dMan = new DefectTypeManager();
 
@@ -61,13 +64,14 @@ namespace Kusumgar.Controllers
             return RedirectToAction("Search");
      }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Update(DefectTypeViewModel dViewModel)
         {
             try
             {
-                dViewModel.DefectType.DefectTypeEntity.UpdatedOn = DateTime.Now;
+                dViewModel.DefectType.UpdatedOn = DateTime.Now;
 
-                dViewModel.DefectType.DefectTypeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.DefectType.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 DefectTypeManager dMan = new DefectTypeManager();
 
@@ -86,6 +90,7 @@ namespace Kusumgar.Controllers
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Edit)]
         public ActionResult Get_Defect_Type_By_Id(DefectTypeViewModel dViewModel)
         {
             try
@@ -104,6 +109,7 @@ namespace Kusumgar.Controllers
             return View("Index", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Type_Search)]
         public JsonResult Get_Defect_Types(DefectTypeViewModel dViewModel)
         {
             DefectTypeManager dMan = new DefectTypeManager();

@@ -16,15 +16,11 @@ namespace KusumgarDataAccess
 {
   public  class TestUnitRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public TestUnitRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<TestUnitInfo> Get_Test_Units(ref PaginationInfo pager)
@@ -83,19 +79,19 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-            sqlParamList.Add(new SqlParameter("@Test_Unit_Name", testUnitInfo.TestUnitEntity.Test_Unit_Name));
+            sqlParamList.Add(new SqlParameter("@Test_Unit_Name", testUnitInfo.Test_Unit_Name));
             
-            sqlParamList.Add(new SqlParameter("@Status", testUnitInfo.TestUnitEntity.Status));
+            sqlParamList.Add(new SqlParameter("@Status", testUnitInfo.Status));
             
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", testUnitInfo.TestUnitEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", testUnitInfo.UpdatedBy));
             
-            if (testUnitInfo.TestUnitEntity.Test_Unit_Id == 0)
+            if (testUnitInfo.Test_Unit_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", testUnitInfo.TestUnitEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", testUnitInfo.CreatedBy));
             }
-            if (testUnitInfo.TestUnitEntity.Test_Unit_Id!= 0)
+            if (testUnitInfo.Test_Unit_Id!= 0)
             {
-                sqlParamList.Add(new SqlParameter("@Test_Unit_Id", testUnitInfo.TestUnitEntity.Test_Unit_Id));
+                sqlParamList.Add(new SqlParameter("@Test_Unit_Id", testUnitInfo.Test_Unit_Id));
 
             }
 
@@ -137,19 +133,19 @@ namespace KusumgarDataAccess
         {
             TestUnitInfo testUnits = new TestUnitInfo();
 
-            testUnits.TestUnitEntity.Test_Unit_Id = Convert.ToInt32(dr["Test_Unit_Id"]);
+            testUnits.Test_Unit_Id = Convert.ToInt32(dr["Test_Unit_Id"]);
 
-            testUnits.TestUnitEntity.Test_Unit_Name = Convert.ToString(dr["Test_Unit_Name"]);
+            testUnits.Test_Unit_Name = Convert.ToString(dr["Test_Unit_Name"]);
 
-            testUnits.TestUnitEntity.Status = Convert.ToBoolean(dr["Status"]);
+            testUnits.Status = Convert.ToBoolean(dr["Status"]);
 
-            testUnits.TestUnitEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            testUnits.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            testUnits.TestUnitEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            testUnits.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            testUnits.TestUnitEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            testUnits.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            testUnits.TestUnitEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            testUnits.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
             return testUnits;
         }

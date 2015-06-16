@@ -19,8 +19,7 @@ function Get_Customer_biling_details() {
                 {
                     Customer_Address:
                         {
-                            Customer_Address_Entity:
-                                {
+                            
                                     Address_Type: 1,
 
                                     Addresss: $("#txtBillingOfficeAddress").val(),
@@ -34,7 +33,7 @@ function Get_Customer_biling_details() {
                                     Landline1: $("#txtBillingOfficeLandline1").val(),
 
                                     landline2: $("#txtBillingOfficeLandline2").val()
-                                }
+                                
 
                         }
                 }
@@ -52,29 +51,29 @@ function Bind_Billing_Details(data)
 
         for(var i= 0; i < data.Customer.Customer_Address_List.length;i++ )
         {
-            if(data.Customer.Customer_Address_List[i].Customer_Address_Entity.Address_Type == 1)
+            if(data.Customer.Customer_Address_List[i].Address_Type == 1)
             {
-                htmlText += " <tr id='Bill_tr_" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Customer_Address_Id + "'>";
+                htmlText += " <tr id='Bill_tr_" + data.Customer.Customer_Address_List[i].Customer_Address_Id + "'>";
                 
-                htmlText +="<td>"+ data.Customer.Customer_Address_List[i].Customer_Address_Entity.Addresss+ "</td>";
+                htmlText +="<td>"+ data.Customer.Customer_Address_List[i].Addresss+ "</td>";
 
                 htmlText +="<td>";
 
-                htmlText +="<input type='hidden' class='hdn_Customer_Address_Id' value='"+data.Customer.Customer_Address_List[i].Customer_Address_Entity.Customer_Address_Id+"'>";
+                htmlText +="<input type='hidden' class='hdn_Customer_Address_Id' value='"+data.Customer.Customer_Address_List[i].Customer_Address_Id+"'>";
 
-                htmlText +="<input type='hidden' class='billing_Address' value='"+data.Customer.Customer_Address_List[i].Customer_Address_Entity.Addresss+"'>";
+                htmlText +="<input type='hidden' class='billing_Address' value='"+data.Customer.Customer_Address_List[i].Addresss+"'>";
 
-                htmlText +="<input type='hidden' class='billing_Landline1' value='"+data.Customer.Customer_Address_List[i].Customer_Address_Entity.Landline1+"'>";
+                htmlText +="<input type='hidden' class='billing_Landline1' value='"+data.Customer.Customer_Address_List[i].Landline1+"'>";
 
-                htmlText +="<input type='hidden' class='billing_Landline2' value='"+data.Customer.Customer_Address_List[i].Customer_Address_Entity.landline2+"'>";
+                htmlText +="<input type='hidden' class='billing_Landline2' value='"+data.Customer.Customer_Address_List[i].landline2+"'>";
 
-                htmlText += "<input type='hidden' class='billing_FaxNo' value='" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.FaxNo + "'>";
+                htmlText += "<input type='hidden' class='billing_FaxNo' value='" + data.Customer.Customer_Address_List[i].FaxNo + "'>";
 
                 htmlText +="<div class='btn-group pull-right'>";
 
                 htmlText +="<button type='button' id='btnEdit' class='btn btn-info btn-sm btn-billing'><i class='fa fa-pencil-square-o'></i></button>";
 
-                htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm' onclick='RemoveBillingAddress(" + data.Customer.Customer_Address_List[i].Customer_Address_Entity.Customer_Address_Id + ")'><i class='fa fa-times'></i></button>";
+                htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm' onclick='RemoveBillingAddress(" + data.Customer.Customer_Address_List[i].Customer_Address_Id + ")'><i class='fa fa-times'></i></button>";
 
                 htmlText +="</div>";
 

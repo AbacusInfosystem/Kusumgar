@@ -10,7 +10,7 @@ function Bind_Work_Stations(data) {
     if (data.Work_Center.Work_Stations.length > 0) {
         for (var i = 0; i < data.Work_Center.Work_Stations.length ; i++) {
 
-            htmltext += "<option value='" + data.Work_Center.Work_Stations[i].Work_Station_Entity.Work_Station_Id + "'>" + data.Work_Center.Work_Stations[i].Work_Station_Entity.Work_Station_Name + "</option>";
+            htmltext += "<option value='" + data.Work_Center.Work_Stations[i].Work_Station_Id + "'>" + data.Work_Center.Work_Stations[i].Work_Station_Name + "</option>";
         }
     }
     $("#drpWork_Station").html(htmltext);
@@ -53,74 +53,74 @@ function Bind_Work_Center_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Work_Centers[i].Work_Center_Entity.Work_Center_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Work_Centers[i].Work_Center_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Work_Station_Id == null ? "" : data.Work_Centers[i].Work_Center_Entity.Work_Station_Id;
-            //htmlText += data.Work_Center.Work_Stations[i].Work_Station_Entity.Work_Station_Name == null ? "" : data.Work_Center.Work_Stations[i].Work_Station_Entity.Work_Station_Name;
+            htmlText += data.Work_Centers[i].Work_Station_Id == null ? "" : data.Work_Centers[i].Work_Station_Id;
+            //htmlText += data.Work_Center.Work_Stations[i].Work_Station_Name == null ? "" : data.Work_Center.Work_Stations[i].Work_Station_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Work_Center_Code == null ? "" : data.Work_Centers[i].Work_Center_Entity.Work_Center_Code;
+            htmlText += data.Work_Centers[i].Work_Center_Code == null ? "" : data.Work_Centers[i].Work_Center_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Machine_Name == null ? "" : data.Work_Centers[i].Work_Center_Entity.Machine_Name;
+            htmlText += data.Work_Centers[i].Machine_Name == null ? "" : data.Work_Centers[i].Machine_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Machine_Properties == null ? "" : data.Work_Centers[i].Work_Center_Entity.Machine_Properties;
+            htmlText += data.Work_Centers[i].Machine_Properties == null ? "" : data.Work_Centers[i].Machine_Properties;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.TPM_Speed == null ? "" : data.Work_Centers[i].Work_Center_Entity.TPM_Speed;
+            htmlText += data.Work_Centers[i].TPM_Speed == null ? "" : data.Work_Centers[i].TPM_Speed;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Average_Order_Length == null ? "" : data.Work_Centers[i].Work_Center_Entity.Average_Order_Length;
+            htmlText += data.Work_Centers[i].Average_Order_Length == null ? "" : data.Work_Centers[i].Average_Order_Length;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Capacity == null ? "" : data.Work_Centers[i].Work_Center_Entity.Capacity;
+            htmlText += data.Work_Centers[i].Capacity == null ? "" : data.Work_Centers[i].Capacity;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Wastage == null ? "" : data.Work_Centers[i].Work_Center_Entity.Wastage;
+            htmlText += data.Work_Centers[i].Wastage == null ? "" : data.Work_Centers[i].Wastage;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Target_Efficiency == null ? "" : data.Work_Centers[i].Work_Center_Entity.Target_Efficiency;
+            htmlText += data.Work_Centers[i].Target_Efficiency == null ? "" : data.Work_Centers[i].Target_Efficiency;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Under_Maintainance == null ? "" : data.Work_Centers[i].Work_Center_Entity.Under_Maintainance;
+            htmlText += data.Work_Centers[i].Under_Maintainance == null ? "" : data.Work_Centers[i].Under_Maintainance;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Entity.Is_Active == null ? "" : data.Work_Centers[i].Work_Center_Entity.Is_Active;
+            htmlText += data.Work_Centers[i].Is_Active == null ? "" : data.Work_Centers[i].Is_Active;
 
             htmlText += "</td>";
 

@@ -236,6 +236,8 @@
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\AjaxController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\CustomerQualityController.cs" />
     <Compile Include="Controllers\PostLogin\Master\MaterialController.cs" />
     <Compile Include="Controllers\PostLogin\Master\QualityController.cs">
       <SubType>Code</SubType>
@@ -246,12 +248,10 @@
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\CustomerController.cs" />
     <Compile Include="Controllers\PostLogin\Dashboard\DashboardController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\AjaxController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ArticleProcessWorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ConsumableController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\CustomerQualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\GArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PArticleController.cs" />
@@ -282,11 +282,13 @@
     <Compile Include="Models\CRM\ComplaintViewModel.cs" />
     <Compile Include="Models\CRM\ContactViewModel.cs" />
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
-    <Compile Include="Models\Master\AjaxController.cs" />
+    <Compile Include="Models\Master\AjaxViewModel.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
     <Compile Include="Models\Master\ConsumableViewModel.cs" />
+    <Compile Include="Models\Master\CustomerQualityViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
     <Compile Include="Models\Master\DefectViewModel.cs" />
+    <Compile Include="Models\Master\GArticleViewModel.cs" />
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
     <Compile Include="Models\Master\MaterialVendorViewModel.cs" />
     <Compile Include="Models\Master\MaterialViewModel.cs" />
@@ -302,6 +304,7 @@
     <Compile Include="Models\Master\YArticleViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
+    <Compile Include="Models\Sales\SchedulerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1509,6 +1512,7 @@
     </None>
     <Content Include="Views\PostLogin\Master\DefectType\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\DefectType\Search.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Enquiry\Index_Old.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

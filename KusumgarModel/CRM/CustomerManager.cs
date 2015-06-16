@@ -134,5 +134,10 @@ namespace KusumgarModel
         {
             return _customerRepo.Get_Customers_By_Turnover_Customer_Id_Nation_Id(turnover, nation_Id, customer_Id,ref  pager);
         }
+
+         public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
+         {
+             return _customerRepo.Get_Customer_AutoComplete(Customer_Name);
+         }
     }
 }

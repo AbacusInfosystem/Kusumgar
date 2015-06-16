@@ -36,43 +36,43 @@ function BindUserGrid(data)
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Users[i].UserEntity.UserId + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Users[i].UserId + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Users[i].UserEntity.First_Name == null ? "" : data.Users[i].UserEntity.First_Name + " ";
+            htmlText += data.Users[i].First_Name == null ? "" : data.Users[i].First_Name + " ";
 
-            htmlText += data.Users[i].UserEntity.First_Name == null ? "" : data.Users[i].UserEntity.Middle_Name + " ";
+            htmlText += data.Users[i].First_Name == null ? "" : data.Users[i].Middle_Name + " ";
 
-            htmlText += data.Users[i].UserEntity.First_Name == null ? "" : data.Users[i].UserEntity.Last_Name + " ";
-
-            htmlText += "</td>";
-
-            htmlText += "<td>";
-
-            htmlText += data.Users[i].UserEntity.Mobile_No1 == null ? "" : data.Users[i].UserEntity.Mobile_No1 + ", ";
-
-            htmlText += data.Users[i].UserEntity.Mobile_No2 == null ? "" : data.Users[i].UserEntity.Mobile_No2 + ", ";
-
-            htmlText += data.Users[i].UserEntity.Residence_Landline == null ? "" : data.Users[i].UserEntity.Residence_Landline + ", ";
-
-            htmlText += data.Users[i].UserEntity.Office_Landline == null ? "" : data.Users[i].UserEntity.Office_Landline + ", ";
+            htmlText += data.Users[i].First_Name == null ? "" : data.Users[i].Last_Name + " ";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Users[i].UserEntity.Personal_Email == null ? "" : data.Users[i].UserEntity.Personal_Email + ", ";
+            htmlText += data.Users[i].Mobile_No1 == null ? "" : data.Users[i].Mobile_No1 + ", ";
 
-            htmlText += data.Users[i].UserEntity.Office_Email == null ? "" : data.Users[i].UserEntity.Office_Email + ", ";
+            htmlText += data.Users[i].Mobile_No2 == null ? "" : data.Users[i].Mobile_No2 + ", ";
+
+            htmlText += data.Users[i].Residence_Landline == null ? "" : data.Users[i].Residence_Landline + ", ";
+
+            htmlText += data.Users[i].Office_Landline == null ? "" : data.Users[i].Office_Landline + ", ";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Users[i].UserEntity.Designtation;
+            htmlText += data.Users[i].Personal_Email == null ? "" : data.Users[i].Personal_Email + ", ";
+
+            htmlText += data.Users[i].Office_Email == null ? "" : data.Users[i].Office_Email + ", ";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Users[i].Designtation;
 
             htmlText += "</td>";
 

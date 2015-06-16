@@ -20,65 +20,65 @@
             }
         },
         rules: {
-            "Test.TestEntity.Fabric_Type_Id":
+            "Test.Fabric_Type_Id":
             {
                 required: true
             },
-            "Test.TestEntity.Test_Name":
+            "Test.Test_Name":
             {
                 required: true
 
             },
-            "Test.TestEntity.Test_Unit1":
+            "Test.Test_Unit1":
             {
                 test_unit_required: true
 
             }
-            //"Test.TestEntity.Test_Unit2":
+            //"Test.Test_Unit2":
             //{
             //    required: true
 
             //},
-            //"Test.TestEntity.Test_Unit3":
+            //"Test.Test_Unit3":
             //{
             //    required: true
 
             //},
 
-            //"Test.TestEntity.Test_Unit4":
+            //"Test.Test_Unit4":
             //  {
             //      required: true
 
             //  },
-            //"Test.TestEntity.Test_Unit5":
+            //"Test.Test_Unit5":
             //{
             //    required: true
 
             //},
-            //"Test.TestEntity.Test_Unit6":
-            //{
-            //    required: true
-
-            //},
-
-            //"Test.TestEntity.Test_Unit7":
+            //"Test.Test_Unit6":
             //{
             //    required: true
 
             //},
 
-            //"Test.TestEntity.Test_Unit8":
-            //{
-            //    required: true
-
-            //},
-            //"Test.TestEntity.Test_Unit9":
+            //"Test.Test_Unit7":
             //{
             //    required: true
 
             //},
 
-            //"Test.TestEntity.Test_Unit10":
+            //"Test.Test_Unit8":
+            //{
+            //    required: true
+
+            //},
+            //"Test.Test_Unit9":
+            //{
+            //    required: true
+
+            //},
+
+            //"Test.Test_Unit10":
             //{
             //    required: true
 
@@ -88,69 +88,69 @@
 
         messages: {
 
-            "Test.TestEntity.Fabric_Type_Id":
+            "Test.Fabric_Type_Id":
                 {
                     required: "Enter Fabric Type.."
 
                 },
 
-            "Test.TestEntity.Test_Name":
+            "Test.Test_Name":
                 {
                     required: "Enter TestName.."
 
                 },
-            "Test.TestEntity.Test_Unit1":
+            "Test.Test_Unit1":
               {
                   //required: "Enter TestUnitName.."
 
               }
 
         }
-        //"Test.TestEntity.Test_Unit2":
+        //"Test.Test_Unit2":
         //{
         //    required: "Enter TestUnitName.."
 
         //},
-        //"Test.TestEntity.Test_Unit3":
+        //"Test.Test_Unit3":
         //{
         //    required: "Enter TestUnitName.."
 
         //},
 
-        //"Test.TestEntity.Test_Unit4":
+        //"Test.Test_Unit4":
         //  {
         //      required: "Enter TestUnitName.."
 
         //  },
-        //"Test.TestEntity.Test_Unit5":
+        //"Test.Test_Unit5":
         //{
         //    required: "Enter TestUnitName.."
 
         //},
-        //"Test.TestEntity.Test_Unit6":
-        //{
-        //    required: "Enter TestUnitName.."
-
-        //},
-
-        //"Test.TestEntity.Test_Unit7":
+        //"Test.Test_Unit6":
         //{
         //    required: "Enter TestUnitName.."
 
         //},
 
-        //"Test.TestEntity.Test_Unit8":
+        //"Test.Test_Unit7":
         //{
         //    required: "Enter TestUnitName.."
 
         //},
-        //"Test.TestEntity.Test_Unit9":
+
+        //"Test.Test_Unit8":
+        //{
+        //    required: "Enter TestUnitName.."
+
+        //},
+        //"Test.Test_Unit9":
         // {
         //    required: "Enter TestUnitName.."
 
         // },
 
-        //"Test.TestEntity.Test_Unit10":
+        //"Test.Test_Unit10":
         //{
         //    required: "Enter TestUnitName.."
 

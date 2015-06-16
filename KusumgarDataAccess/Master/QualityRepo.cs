@@ -204,9 +204,9 @@ namespace KusumgarDataAccess
                     {
                         AttributeCodeInfo yarnTypes= new AttributeCodeInfo();
 
-                        yarnTypes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
+                        yarnTypes.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
 
-                        yarnTypes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
+                        yarnTypes.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
 
                         retVal.Add(yarnTypes);
 
@@ -255,9 +255,9 @@ namespace KusumgarDataAccess
                     {
                         AttributeCodeInfo yarnTypes = new AttributeCodeInfo();
 
-                        yarnTypes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
+                        yarnTypes.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
 
-                        yarnTypes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
+                        yarnTypes.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
 
                         retVal.Add(yarnTypes);
 

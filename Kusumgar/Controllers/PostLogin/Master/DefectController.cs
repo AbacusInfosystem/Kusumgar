@@ -14,6 +14,7 @@ namespace Kusumgar.Controllers.PostLogin
 {
     public class DefectController : Controller
     {
+        [AuthorizeUser(AppFunction.Defect_Create)]
         public ActionResult Index(DefectViewModel dViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
@@ -25,6 +26,7 @@ namespace Kusumgar.Controllers.PostLogin
             return View(dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Search)]
         public ActionResult Search(DefectViewModel dViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Search";
@@ -46,17 +48,18 @@ namespace Kusumgar.Controllers.PostLogin
             return View("Search", dViewModel);
         }
 
+        [AuthorizeUser(AppFunction.Defect_Create)]
         public ActionResult Insert(DefectViewModel dViewModel)
         {
             try
             {
-                dViewModel.Defect.DefectEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.Defect.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.Defect.DefectEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.Defect.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.Defect.DefectEntity.CreatedOn = DateTime.Now;
+                dViewModel.Defect.CreatedOn = DateTime.Now;
 
-                dViewModel.Defect.DefectEntity.UpdatedOn = DateTime.Now;
+                dViewModel.Defect.UpdatedOn = DateTime.Now;
 
                 DefectManager dMan = new DefectManager();
 
@@ -76,13 +79,14 @@ namespace Kusumgar.Controllers.PostLogin
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Edit)]
         public ActionResult Update(DefectViewModel dViewModel)
         {
             try
             {
-                dViewModel.Defect.DefectEntity.UpdatedOn = DateTime.Now;
+                dViewModel.Defect.UpdatedOn = DateTime.Now;
 
-                dViewModel.Defect.DefectEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.Defect.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 DefectManager dMan = new DefectManager();
 
@@ -102,6 +106,7 @@ namespace Kusumgar.Controllers.PostLogin
             return RedirectToAction("Search");
         }
 
+        [AuthorizeUser(AppFunction.Defect_Edit)]
         public ActionResult Get_Defect_By_Id(DefectViewModel dViewModel)
         {
             try
@@ -121,6 +126,7 @@ namespace Kusumgar.Controllers.PostLogin
 
         }
 
+        [AuthorizeUser(AppFunction.Defect_Search)]
         public JsonResult Get_Defects(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();

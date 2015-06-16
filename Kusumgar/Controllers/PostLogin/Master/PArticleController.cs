@@ -71,9 +71,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                pViewModel.PArticle.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                pViewModel.PArticle.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                pViewModel.PArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                pViewModel.PArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 pViewModel.PArticle.CreatedOn = DateTime.Now;
 
@@ -104,7 +104,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                pViewModel.PArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                pViewModel.PArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 pViewModel.PArticle.UpdatedOn = DateTime.Now;
 

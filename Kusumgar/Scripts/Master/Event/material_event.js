@@ -15,8 +15,8 @@
 
     $("#btnNew").click(function () {
 
-        $("#myModal").find(".modal-body").load("/master/partial-vendor", null);
-
+        $("#myModal").find(".modal-body").load("/master/partial-vendor", null, Append);
+       
     });
 
     $('[name="chkIsOrigMan"]').on('ifChanged', function (event) {
@@ -54,3 +54,8 @@
         }
     });
 });
+
+function Append()
+{
+    $("#myModal").find(".modal-body").append(Initialize_ICheck);
+}

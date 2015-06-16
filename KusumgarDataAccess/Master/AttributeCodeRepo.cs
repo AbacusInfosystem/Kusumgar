@@ -14,15 +14,11 @@ namespace KusumgarDataAccess
 {
    public class AttributeCodeRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public AttributeCodeRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<AttributeCodeInfo> Get_Attribute_Codes(ref PaginationInfo pager)
@@ -100,23 +96,23 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-            sqlParamList.Add(new SqlParameter("@Status", attributeCodes.AttributeCodeEntity.Status));
+            sqlParamList.Add(new SqlParameter("@Status", attributeCodes.Status));
             
-            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.AttributeCodeEntity.Attribute_Id));
+            sqlParamList.Add(new SqlParameter("@Attribute_Id", attributeCodes.Attribute_Id));
 
-            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.AttributeCodeEntity.Attribute_Code_Name));
+            sqlParamList.Add(new SqlParameter("@Attribute_Code_Name", attributeCodes.Attribute_Code_Name));
 
-            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.AttributeCodeEntity.Code));
+            sqlParamList.Add(new SqlParameter("@Code", attributeCodes.Code));
 
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.AttributeCodeEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", attributeCodes.UpdatedBy));
 
-            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id == 0)
+            if (attributeCodes.Attribute_Code_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.AttributeCodeEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", attributeCodes.CreatedBy));
             }
-            if (attributeCodes.AttributeCodeEntity.Attribute_Code_Id != 0)
+            if (attributeCodes.Attribute_Code_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.AttributeCodeEntity.Attribute_Code_Id));
+                sqlParamList.Add(new SqlParameter("@Attribute_Code_Id", attributeCodes.Attribute_Code_Id));
             }
 
             return sqlParamList;
@@ -126,17 +122,17 @@ namespace KusumgarDataAccess
         {
             AttributeCodeInfo attributeCodes = new AttributeCodeInfo();
 
-            attributeCodes.AttributeCodeEntity.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
+            attributeCodes.Attribute_Code_Id = Convert.ToInt32(dr["Attribute_Code_Id"]);
 
-            attributeCodes.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
+            attributeCodes.Attribute_Id = Convert.ToInt32(dr["Attribute_Id"]);
 
-            attributeCodes.AttributeCodeEntity.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
+            attributeCodes.Attribute_Code_Name = Convert.ToString(dr["Attribute_Code_Name"]);
 
-            attributeCodes.AttributeCodeEntity.Code = Convert.ToString(dr["Code"]);
+            attributeCodes.Code = Convert.ToString(dr["Code"]);
 
-            attributeCodes.AttributeCodeEntity.Status = Convert.ToBoolean(dr["Status"]);
+            attributeCodes.Status = Convert.ToBoolean(dr["Status"]);
 
-            attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.AttributeCodeEntity.Attribute_Id];
+            attributeCodes.Attribute_Name = LookupInfo.GetAttributeNames()[attributeCodes.Attribute_Id];
 
             return attributeCodes;
         }

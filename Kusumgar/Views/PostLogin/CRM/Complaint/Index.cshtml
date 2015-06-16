@@ -24,7 +24,7 @@
         </ol>
     </section>
     <form id="frmComp">
-        <input type="hidden" class="form-control input-sm" name="Complaint.Complaint_Entity.Complaint_Id" id="hdnComplaint_Id" value="@Model.Complaint.Complaint_Entity.Complaint_Id">        
+        <input type="hidden" class="form-control input-sm" name="Complaint.Complaint_Id" id="hdnComplaint_Id" value="@Model.Complaint.Complaint_Id">        
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -45,24 +45,24 @@
                                                 <label for="txtCustName" style="color: #333">Customer Name</label>
                                                 <div class="auto-complete">
                                                     <input type="text" class="form-control input-sm" name="Complaint.Customer_Name" id="txtCustName" placeholder="Enter Customer Name" value="@Model.Complaint.Customer_Name">
-                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Complaint_Entity.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" />
+                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Customer_Id" name="Complaint.Customer_Id" />
                                             </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtOrdId" style="color: #333">Order Id</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Order_Id" id="txtOrdId" placeholder="Enter Order Id" value="@Model.Complaint.Complaint_Entity.Order_Id">
+                                                <input type="text" class="form-control input-sm" name="Complaint.Order_Id" id="txtOrdId" placeholder="Enter Order Id" value="@Model.Complaint.Order_Id">
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtOrdItemId" style="color: #333">Order Item Id</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Order_Item_Id" id="txtOrdItemId" placeholder="Enter Order Item Id" value="@Model.Complaint.Complaint_Entity.Order_Item_Id">
+                                                <input type="text" class="form-control input-sm" name="Complaint.Order_Item_Id" id="txtOrdItemId" placeholder="Enter Order Item Id" value="@Model.Complaint.Order_Item_Id">
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtChallanNo" style="color: #333">Challan No</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Challan_No" id="txtChallanNo" placeholder="Enter Challan No" value="@Model.Complaint.Complaint_Entity.Challan_No">
+                                                <input type="text" class="form-control input-sm" name="Complaint.Challan_No" id="txtChallanNo" placeholder="Enter Challan No" value="@Model.Complaint.Challan_No">
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtDescription" style="color: #333">Description</label>
-                                                <textarea class="form-control input-sm" id="txtDescription" placeholder="Enter Complaint Description" name="Complaint.Complaint_Entity.CDescription">@Model.Complaint.Complaint_Entity.CDescription</textarea>
+                                                <textarea class="form-control input-sm" id="txtDescription" placeholder="Enter Complaint Description" name="Complaint.CDescription">@Model.Complaint.CDescription</textarea>
                                             </div>
 
                                         </div>

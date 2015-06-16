@@ -3,39 +3,39 @@
 
 
         rules: {
-            "Material.Material_Entity.Material_Code":
+            "Material.Material_Code":
             {
                 required: true,
             },
-            "Material.Material_Entity.Material_Category_Id":
+            "Material.Material_Category_Id":
             {
                 required: true,
             },
-            "Material.Material_Entity.Material_SubCategory_Id":
+            "Material.Material_SubCategory_Id":
             {
                 required: true,
             },
-            "Material.Material_Entity.Material_Name":
+            "Material.Material_Name":
             {
                 required: true,
             },
-            "Material.Material_Entity.Size":
+            "Material.Size":
             {
                 required: true,
             },
-            "Material.Material_Entity.COD":
+            "Material.COD":
             {
                 required: true,
             },
-            "Material.Material_Entity.Material_Type":
+            "Material.Material_Type":
             {
                 required: true,
             },
-            "Material.Material_Entity.Inspection_Facility":
+            "Material.Inspection_Facility":
             {
                 required: true,
             },
-            "Material.Material_Entity.Testing_Facility":
+            "Material.Testing_Facility":
             {
                 required: true,
             },
@@ -50,39 +50,39 @@
         },
         messages: {
 
-            "Material.Material_Entity.Material_Code":
+            "Material.Material_Code":
             {
                 required: "Material code is required."
             },
-            "Material.Material_Entity.Material_Category_Id":
+            "Material.Material_Category_Id":
             {
                 required: "Material category name is required."
             },
-            "Material.Material_Entity.Material_SubCategory_Id":
+            "Material.Material_SubCategory_Id":
             {
                 required: "Material sub-category name is required."
             },
-            "Material.Material_Entity.Material_Name":
+            "Material.Material_Name":
             {
                 required: "Material name is required."
             },
-            "Material.Material_Entity.Size":
+            "Material.Size":
             {
                 required: "Size is required."
             },
-            "Material.Material_Entity.COD":
+            "Material.COD":
             {
                 required: "COD is required."
             },
-            "Material.Material_Entity.Material_Type":
+            "Material.Material_Type":
             {
                 required: "Material type is required."
             },            
-            "Material.Material_Entity.Inspection_Facility":
+            "Material.Inspection_Facility":
             {
                 required: "Inspection facility is required."
             },
-            "Material.Material_Entity.Testing_Facility":
+            "Material.Testing_Facility":
             {
                 required: "Testing facility is required.",
             },
