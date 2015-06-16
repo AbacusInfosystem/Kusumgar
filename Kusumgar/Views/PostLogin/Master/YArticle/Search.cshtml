@@ -54,7 +54,7 @@
                                             <option value="">-Select Yarn type- </option>
                                             @if (Model.Attribute_Codes.Count > 0)
                                             {
-                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString()))
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_"," ")))
                                                 {
                                                     if (Model.YArticle.Yarn_Type_Id == item.Attribute_Code_Id)
                                                     {

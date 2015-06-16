@@ -972,6 +972,11 @@
     <Content Include="Scripts\generic.dragdrop.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.multi.autocomplete.js" />
+    <Content Include="Scripts\Master\Event\customer_quality_event.js" />
+    <Content Include="Scripts\Master\Event\customer_quality_search_event.js" />
+    <Content Include="Scripts\Master\Event\customer_specific_information_event.js" />
+    <Content Include="Scripts\Master\Event\g_article_event.js" />
+    <Content Include="Scripts\Master\Event\g_article_listing_event.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
     <Content Include="Scripts\Master\Event\particle_event.js" />
     <Content Include="Scripts\Master\Event\particle_listing_event.js" />
@@ -982,6 +987,11 @@
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
     <Content Include="Scripts\Master\Event\work_center_event.js" />
     <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
+    <Content Include="Scripts\Master\Method\customer_quality_method.js" />
+    <Content Include="Scripts\Master\Method\customer_quality_search_method.js" />
+    <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
+    <Content Include="Scripts\Master\Method\g_article_listing_method.js" />
+    <Content Include="Scripts\Master\Method\g_article_method.js" />
     <Content Include="Scripts\Master\Method\particle_listing_method.js" />
     <Content Include="Scripts\Master\Method\particle_method.js" />
     <Content Include="Scripts\Master\Method\quality_method.js" />
