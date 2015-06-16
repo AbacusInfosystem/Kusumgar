@@ -17,12 +17,10 @@ namespace KusumgarDataAccess
     public class StateRepo
     {
          SQLHelperRepo sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public StateRepo()
         {
             sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
         public List<StateInfo> Get_States(int nation_Id, ref PaginationInfo pager)
@@ -50,19 +48,19 @@ namespace KusumgarDataAccess
         {
             StateInfo State = new StateInfo();
 
-            State.State_Entity.StateId = Convert.ToInt32(dr["StateId"]);
+            State.StateId = Convert.ToInt32(dr["StateId"]);
 
-            State.State_Entity.StateName = Convert.ToString(dr["StateName"]);
+            State.StateName = Convert.ToString(dr["StateName"]);
 
-            State.State_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            State.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            State.State_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            State.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            State.State_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            State.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            State.State_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            State.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
-            State.State_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            State.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
             return State;
         }

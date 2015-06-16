@@ -6,8 +6,14 @@
 
             Defect_Type_Id: $('#drpDefectTypeName').val(),
 
-                },
-          };
+        },
+
+        Pager: {
+
+            CurrentPage: $('#hdfCurrentPage').val(1),
+        },
+
+    };
 
     $("#divSearchGridOverlay").show();
 
@@ -21,6 +27,7 @@ function BindDefectInGrid(data, mode) {
     var htmlText = "";
 
     if (data.DefectGrid.length > 0) {
+
         for (i = 0; i < data.DefectGrid.length; i++) {
 
             htmlText += "<tr>";
@@ -33,17 +40,17 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
+            htmlText += data.DefectGrid[i].Defect_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
+            htmlText += data.DefectGrid[i].Defect_Name;
 
             htmlText += "</td>";
 
-            if (data.DefectGrid[i].DefectEntity.Status == true) {
+            if (data.DefectGrid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -51,7 +58,7 @@ function BindDefectInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.DefectGrid[i].DefectEntity.Status == false) {
+            if (data.DefectGrid[i].Status == false) {
 
                 htmlText += "<td>";
 
@@ -77,4 +84,6 @@ function BindDefectInGrid(data, mode) {
 
     $('#tblSearchDefect tr:first').after(htmlText);
 
+  
 }
+

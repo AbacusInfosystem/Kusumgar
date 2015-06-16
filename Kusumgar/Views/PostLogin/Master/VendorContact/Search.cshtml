@@ -28,17 +28,18 @@
                     <div class="tab-content">
                         <form id="frmSearch_Contact">
                             <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                            <input type="hidden" id="hdfContact_Id" name="Vendor_Contact.Contact_Entity.Contact_Id">
+                            <input type="hidden" id="hdfContact_Id" name="Vendor_Contact.Contact_Id">
                             <br />
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="txtCustomerName">Vendor name</label>
+                                                <label for="txtVendor_Name">Vendor name</label>
                                                 <div class="auto-complete">
-                                                    <input type="text" class="form-control input-sm" id="txtVendor_Name" placeholder="Enter vendor name" name="Filter.Vendor_Name" value="@Model.Filter.Vendor_Name">
-                                                    <input type="hidden" id="hdnVendor_Id" value="@Model.Filter.Vendor_Id" name="Filter.Vendor_Id">
+                                                    <input type="text" class="form-control input-sm" id="txtVendor_Name" placeholder="Enter vendor name"  >
+                                                    <input type="hidden" id="hdnVendor_Id" value="@Model.Filter.Vendor_Id" name="Filter.Vendor_Id" class="auto-complete-value">
+                                                    <input type="hidden" id="hdnVendor_Name" value="@Model.Filter.Vendor_Name" name="Filter.Vendor_Name" class="auto-complete-value">
                                                 </div>
                                             </div>
                                         </div>

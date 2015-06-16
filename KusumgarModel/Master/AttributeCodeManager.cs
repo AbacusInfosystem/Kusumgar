@@ -11,25 +11,24 @@ namespace KusumgarModel
 {
    public class AttributeCodeManager
     {
-        public List<AttributeCodeInfo> Get_Attribute_Codes(PaginationInfo pager)
+        public List<AttributeCodeInfo> Get_Attribute_Codes(ref PaginationInfo pager)
         {
             List<AttributeCodeInfo> attributeCodes = new List<AttributeCodeInfo>();
 
             AttributeCodeRepo dRepo = new AttributeCodeRepo();
 
-            attributeCodes = dRepo.Get_Attribute_Codes(pager);
+            attributeCodes = dRepo.Get_Attribute_Codes(ref pager);
 
             return attributeCodes;
+       }
 
-        }
-
-        public List<AttributeCodeInfo> Get_Attribute_Codes_By_Attribute_Name(int attributeId, PaginationInfo pager)
+        public List<AttributeCodeInfo> Get_Attribute_Codes_By_Attribute_Name(int attributeId,ref PaginationInfo pager)
         {
             List<AttributeCodeInfo> attributeCodes = new List<AttributeCodeInfo>();
 
             AttributeCodeRepo dRepo = new AttributeCodeRepo();
 
-            attributeCodes = dRepo.Get_Attribute_Codes_By_Attribute_Name(attributeId,pager);
+            attributeCodes = dRepo.Get_Attribute_Codes_By_Attribute_Name(attributeId,ref pager);
 
             return attributeCodes;
         }
@@ -59,5 +58,15 @@ namespace KusumgarModel
             dRepo.Update(attributeCode);
         }
 
+        public List<AttributeCodeInfo> Get_Grid_By_Attrinute_Code_Name(int attributeId)
+        {
+            List<AttributeCodeInfo> attributeCodes = new List<AttributeCodeInfo>();
+
+            AttributeCodeRepo dRepo = new AttributeCodeRepo();
+
+            attributeCodes = dRepo.Get_Grid_By_Attrinute_Code_Name(attributeId);
+
+            return attributeCodes;
+        }
     }
 }

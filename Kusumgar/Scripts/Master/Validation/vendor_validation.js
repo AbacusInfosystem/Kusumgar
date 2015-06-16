@@ -70,29 +70,29 @@
     $("#frmCertificationDetails").validate({
 
         rules: {
-            "Vendor.Vendor_Entity.Performance_Certification":
+            "Vendor.Performance_Certification":
                  {
                      required: true,
                      
                  },
-            "Vendor.Vendor_Entity.Quality_Certification_Year":
+            "Vendor.Quality_Certification_Year":
                 {
                     required: true,
                    
                 },
-            "Vendor.Vendor_Entity.Performance_Certification_Year":
+            "Vendor.Performance_Certification_Year":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Quality_Certification":
+            "Vendor.Quality_Certification":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Quality_Certification_Category":
+            "Vendor.Quality_Certification_Category":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Performance_Certification_Category":
+            "Vendor.Performance_Certification_Category":
                 {
                     required: true,
                    
@@ -101,27 +101,27 @@
         },
         messages: {
 
-            "Vendor.Vendor_Entity.Performance_Certification":
+            "Vendor.Performance_Certification":
              {
                  required: "Performance Certification is required."
              },
-            "Vendor.Vendor_Entity.Quality_Certification_Year":
+            "Vendor.Quality_Certification_Year":
                 {
                     required: "Quality Certification Year is required."
                 },
-            "Vendor.Vendor_Entity.Performance_Certification_Year":
+            "Vendor.Performance_Certification_Year":
                 {
                     required: " Performance Certification Year address is required."
                 },
-            "Vendor.Vendor_Entity.Quality_Certification":
+            "Vendor.Quality_Certification":
                 {
                     required: "Quality Certification is required."
                 },
-            "Vendor.Vendor_Entity.Quality_Certification_Category":
+            "Vendor.Quality_Certification_Category":
                 {
                     required: "Quality Certification Category is required."
                 },
-            "Vendor.Vendor_Entity.Performance_Certification_Category":
+            "Vendor.Performance_Certification_Category":
                 {
                     required: "Performance Certification Category is required."
                 },
@@ -135,46 +135,46 @@
     $("#frmCentralRegistrationDetails").validate({
 
         rules: {
-            "Vendor.Vendor_Entity.Registration_No":
+            "Vendor.Registration_No":
             {
                 required: true,
             },
-            "Vendor.Vendor_Entity.Range":
+            "Vendor.Range":
                 {
                     required: true
                 },
-            "Vendor.Vendor_Entity.Division":
+            "Vendor.Division":
             {
                 required: true
             },
-            "Vendor.Vendor_Entity.PAN":
+            "Vendor.PAN":
             {
                 required: true,
                 validate_PAN: true
             },
-            "Vendor.Vendor_Entity.TAN":
+            "Vendor.TAN":
             {
                 required: true
             },
 
 
-            "Vendor.Vendor_Entity.Tax_Excemption_Code":
+            "Vendor.Tax_Excemption_Code":
            {
                required: true
            },
 
 
-            "Vendor.Vendor_Entity.Currency_Code":
+            "Vendor.Currency_Code":
            {
                required: true
            },
 
   
-            "Vendor.Vendor_Entity.VAT":
+            "Vendor.VAT":
          {
              required: true
          },
-            "Vendor.Vendor_Entity.PaymentTerms":
+            "Vendor.PaymentTerms":
          {
              required: true
          }
@@ -183,15 +183,15 @@
 
         messages: {
 
-            "Vendor.Vendor_Entity.Registration_No":
+            "Vendor.Registration_No":
             {
                 required: "Registration No is required." ,
             },
-            "Vendor.Vendor_Entity.Range":
+            "Vendor.Range":
                 {
                     required: "Division is required."
                 },
-            "Vendor.Vendor_Entity.Division":
+            "Vendor.Division":
             {
                 required: "Registration No is required."
             },
@@ -199,29 +199,29 @@
             {
                 required: "PAN is required"
             },
-            "Vendor.Vendor_Entity.TAN":
+            "Vendor.TAN":
             {
                 required: "TAN is required."
             },
 
 
-            "Vendor.Vendor_Entity.Tax_Excemption_Code":
+            "Vendor.Tax_Excemption_Code":
            {
                required: "Tax Excemption Code is required."
            },
 
 
-            "Vendor.Vendor_Entity.Currency_Code":
+            "Vendor.Currency_Code":
            {
                required: "Currency Code is required."
            },
 
 
-            "Vendor.Vendor_Entity.VAT":
+            "Vendor.VAT":
          {
              required: "VAT is required."
          },
-            "Vendor.Vendor_Entity.PaymentTerms":
+            "Vendor.PaymentTerms":
          {
              required: "PaymentTerms is required."
          },
@@ -229,6 +229,7 @@
         }
 
     });
+
 
     jQuery.validator.addMethod("validate_PAN", function (value, element) {
         return this.optional(element) || /^[A-Z]{5}\d{4}[A-Z]{1}$/.test(value);

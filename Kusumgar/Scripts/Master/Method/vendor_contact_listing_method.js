@@ -32,7 +32,7 @@ function Bind_Vendor_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Vendor_Contacts[i].Contact_Entity.Contact_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Vendor_Contacts[i].Contact_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
@@ -44,25 +44,25 @@ function Bind_Vendor_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Contact_Name == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Contact_Name;
+            htmlText += data.Vendor_Contacts[i].Contact_Name == null ? "" : data.Vendor_Contacts[i].Contact_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Official_Email == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Official_Email;
+            htmlText += data.Vendor_Contacts[i].Official_Email == null ? "" : data.Vendor_Contacts[i].Official_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Office_Landline1 == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Office_Landline1;
+            htmlText += data.Vendor_Contacts[i].Office_Landline1 == null ? "" : data.Vendor_Contacts[i].Office_Landline1;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Office_Landline2 == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Office_Landline2;
+            htmlText += data.Vendor_Contacts[i].Office_Landline2 == null ? "" : data.Vendor_Contacts[i].Office_Landline2;
 
             htmlText += "</td>";
 

@@ -16,110 +16,24 @@ namespace KusumgarDataAccess
 {
   public  class TestUnitRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public TestUnitRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<TestUnitInfo> Get_Test_Units(PaginationInfo pager)
+        public List<TestUnitInfo> Get_Test_Units(ref PaginationInfo pager)
         {
             List<TestUnitInfo> retVal = new List<TestUnitInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Test_Units_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = GetRows(dt, pager);
-
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                TestUnitInfo testUnits = new TestUnitInfo();
-
-                testUnits.TestUnitEntity.Test_Unit_Id = Convert.ToInt32(dr["Test_Unit_Id"]);
-
-                testUnits.TestUnitEntity.Test_Unit_Name = Convert.ToString(dr["Test_Unit_Name"]);
-
-                testUnits.TestUnitEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                testUnits.TestUnitEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                testUnits.TestUnitEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                testUnits.TestUnitEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                testUnits.TestUnitEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                retVal.Add(testUnits);
-
-            }
-                return retVal;
-        }
-
-        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
-        {
-            List<DataRow> drList = new List<DataRow>();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int count = 0;
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-                }
-
-                pager.TotalRecords = count;
-
-                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-                pager.TotalPages = pages;
-            }
-
-            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
-        }
-      
-        public List<TestUnitInfo> Get_Test_Unit_By_Name(string testUnit,PaginationInfo pager)
-        {
-            List<TestUnitInfo> retVal = new List<TestUnitInfo>();
-
-            List<SqlParameter> sqlParams = new List<SqlParameter>();
-
-            sqlParams.Add(new SqlParameter("@Test_Unit_Name",testUnit));
-
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_By_Name_sp.ToString(), CommandType.StoredProcedure);
-
-            var tupleData = GetRows(dt, pager);
-
-             foreach (DataRow dr in tupleData.Item1)
-                {
-                    TestUnitInfo testUnits = new TestUnitInfo();
-
-                    testUnits.TestUnitEntity.Test_Unit_Id = Convert.ToInt32(dr["Test_Unit_Id"]);
-
-                    testUnits.TestUnitEntity.Test_Unit_Name = Convert.ToString(dr["Test_Unit_Name"]);
-
-                    testUnits.TestUnitEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                    testUnits.TestUnitEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                    testUnits.TestUnitEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                    testUnits.TestUnitEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                    testUnits.TestUnitEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                    retVal.Add(testUnits);
-
-                }
-
+               retVal.Add(Get_Test_Unit_Values(dr));
+           }
+               
             return retVal;
         }
 
@@ -150,19 +64,7 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    retVal.TestUnitEntity.Test_Unit_Id = Convert.ToInt32(dr["Test_Unit_Id"]);
-                    
-                    retVal.TestUnitEntity.Test_Unit_Name = Convert.ToString(dr["Test_Unit_Name"]);
-                    
-                    retVal.TestUnitEntity.Status = Convert.ToBoolean(dr["Status"]);
-                    
-                    retVal.TestUnitEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-                    
-                    retVal.TestUnitEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-                    
-                    retVal.TestUnitEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-                    
-                    retVal.TestUnitEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+                    retVal = (Get_Test_Unit_Values(dr));
                 }
             }
             return retVal;
@@ -177,23 +79,93 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-            sqlParamList.Add(new SqlParameter("@Test_Unit_Name", testUnitInfo.TestUnitEntity.Test_Unit_Name));
+            sqlParamList.Add(new SqlParameter("@Test_Unit_Name", testUnitInfo.Test_Unit_Name));
             
-            sqlParamList.Add(new SqlParameter("@Status", testUnitInfo.TestUnitEntity.Status));
+            sqlParamList.Add(new SqlParameter("@Status", testUnitInfo.Status));
             
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", testUnitInfo.TestUnitEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", testUnitInfo.UpdatedBy));
             
-            if (testUnitInfo.TestUnitEntity.Test_Unit_Id == 0)
+            if (testUnitInfo.Test_Unit_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", testUnitInfo.TestUnitEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", testUnitInfo.CreatedBy));
             }
-            if (testUnitInfo.TestUnitEntity.Test_Unit_Id!= 0)
+            if (testUnitInfo.Test_Unit_Id!= 0)
             {
-                sqlParamList.Add(new SqlParameter("@Test_Unit_Id", testUnitInfo.TestUnitEntity.Test_Unit_Id));
+                sqlParamList.Add(new SqlParameter("@Test_Unit_Id", testUnitInfo.Test_Unit_Id));
 
             }
 
             return sqlParamList;
         }
-    }
+
+        public List<AutocompleteInfo> Get_Test_Unit_AutoComplete(string test_Unit_Name)
+        {
+            List<AutocompleteInfo> testUnitName = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Test_Unit_Name", test_Unit_Name));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_AutoComplete_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Test_Unit_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Test_Unit_Id"]);
+
+                    testUnitName.Add(auto);
+                }
+            }
+
+            return testUnitName;
+        }
+
+        private TestUnitInfo Get_Test_Unit_Values(DataRow dr)
+        {
+            TestUnitInfo testUnits = new TestUnitInfo();
+
+            testUnits.Test_Unit_Id = Convert.ToInt32(dr["Test_Unit_Id"]);
+
+            testUnits.Test_Unit_Name = Convert.ToString(dr["Test_Unit_Name"]);
+
+            testUnits.Status = Convert.ToBoolean(dr["Status"]);
+
+            testUnits.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+
+            testUnits.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+            testUnits.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+            testUnits.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            return testUnits;
+        }
+
+        public List<TestUnitInfo> Get_Test_Unit_By_Name(string testUnit, ref PaginationInfo pager)
+        {
+            List<TestUnitInfo> retVal = new List<TestUnitInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Test_Unit_Name", testUnit));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_Unit_By_Name_sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+             {
+                  retVal.Add(Get_Test_Unit_Values(dr));
+            }
+
+           return retVal;
+        }
+  }
 }

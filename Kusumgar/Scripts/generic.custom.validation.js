@@ -13,7 +13,7 @@
         unhighlight: function (element, errorClass, validClass) {
             $(element).closest('.form-group').removeClass('has-error');
             // 
-            $(element).parent().removeClass('has-error');
+            $(element).parent().removeClass('has-error'); 
             //
             $(element).closest('.form-group').find('.input-group-addon').css({ 'color': 'black', 'background-color': '#FFF', 'border-color': '#D2D6DE' });
         },

@@ -34,6 +34,11 @@ namespace KusumgarModel
             return _roleRepo.Get_Role_By_Id(Role_Id);
         }
 
+        public List<RoleInfo> Get_Roles_By_Id(int Role_Id, ref PaginationInfo pager)
+        {
+            return _roleRepo.Get_Roles_By_Id(Role_Id,ref pager);
+        }
+
         public int Insert_Role(RoleInfo RoleInfo)
         {
           return _roleRepo.Insert_Role(RoleInfo);

@@ -29,7 +29,7 @@ namespace Kusumgar
             //check if user contains specified access function
 
             //if (userInfo != null && userInfo.Roles.Count() != 0 && userInfo.Roles.Any(r => r.RoleName == _appFunction.ToString()))
-            if (userInfo != null && userInfo.AccessFunctions.Count() != 0 && userInfo.AccessFunctions.Any(r => r.Access_Function_Name == _appFunction.ToString()))
+            if (userInfo != null && userInfo.Access_Functions.Count() != 0 && userInfo.Access_Functions.Any(r => r.Access_Function_Name == _appFunction.ToString()))
             {
                 // Log Activity.
             }
@@ -38,7 +38,8 @@ namespace Kusumgar
 
                 if (userInfo == null)
                 {
-                    filterContext.RequestContext.HttpContext.Response.Redirect("/");
+                    //filterContext.RequestContext.HttpContext.Response.Redirect("/");
+                    throw new Exception();
                 }
                 else
                 {

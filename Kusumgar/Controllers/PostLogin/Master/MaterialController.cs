@@ -34,7 +34,9 @@ namespace Kusumgar.Controllers
             {
                 pager.IsPagingRequired = false;
                 mViewModel.Material_Categories = _materialMan.Get_Material_Categories(ref pager);
-                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Entity.Material_Category_Id, ref pager);
+                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Category_Id, ref pager);
+
+                mViewModel.Is_Primary = false;
             }
             catch (Exception ex)
             {
@@ -61,11 +63,11 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                mViewModel.Material.Material_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                mViewModel.Material.Material_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                mViewModel.Material.Material_Entity.CreatedOn = DateTime.Now;
-                mViewModel.Material.Material_Entity.UpdatedOn = DateTime.Now;
-                mViewModel.Material.Material_Entity.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
+                mViewModel.Material.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                mViewModel.Material.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                mViewModel.Material.CreatedOn = DateTime.Now;
+                mViewModel.Material.UpdatedOn = DateTime.Now;
+                mViewModel.Material.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
                 mViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
             }
             catch (Exception ex)
@@ -79,8 +81,8 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                mViewModel.Material.Material_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                mViewModel.Material.Material_Entity.UpdatedOn = DateTime.Now;
+                mViewModel.Material.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                mViewModel.Material.UpdatedOn = DateTime.Now;
                 _materialMan.Update_Material(mViewModel.Material);
                 mViewModel.Friendly_Message.Add(MessageStore.Get("P002"));
             }

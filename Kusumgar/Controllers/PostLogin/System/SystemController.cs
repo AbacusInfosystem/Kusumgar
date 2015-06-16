@@ -16,7 +16,7 @@ namespace Kusumgar.Controllers.PostLogin.Common
             {
                 Session["ReturnURL"] = returnURL;
 
-                Logger.Debug("UnAuthorize Access to UserId" + ((UserInfo)Session["User"]).UserEntity.UserId + " on this URL: " + returnURL); 
+                Logger.Debug("UnAuthorize Access to UserId" + ((UserInfo)Session["User"]).UserId + " on this URL: " + returnURL); 
             }
             catch (Exception ex)
             {
@@ -25,5 +25,12 @@ namespace Kusumgar.Controllers.PostLogin.Common
 
             return View();
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Error(string message)
+        {
+            return View();
+        }
+       
     }
 }

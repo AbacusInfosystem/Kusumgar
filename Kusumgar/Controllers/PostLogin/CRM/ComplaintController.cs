@@ -55,10 +55,10 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Complaint.Complaint_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                cViewModel.Complaint.Complaint_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                cViewModel.Complaint.Complaint_Entity.CreatedOn = DateTime.Now;
-                cViewModel.Complaint.Complaint_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Complaint.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Complaint.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Complaint.CreatedOn = DateTime.Now;
+                cViewModel.Complaint.UpdatedOn = DateTime.Now;
                 _complaintMan.Insert_Complaint(cViewModel.Complaint);
                 cViewModel.Friendly_Message.Add(MessageStore.Get("COM001"));
             }
@@ -74,8 +74,8 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Complaint.Complaint_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                cViewModel.Complaint.Complaint_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Complaint.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Complaint.UpdatedOn = DateTime.Now;
                 _complaintMan.Update_Complaint(cViewModel.Complaint);
                 cViewModel.Friendly_Message.Add(MessageStore.Get("COM002"));
             }

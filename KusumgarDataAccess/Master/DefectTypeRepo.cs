@@ -16,110 +16,25 @@ namespace KusumgarDataAccess
 {
     public class DefectTypeRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo _sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public DefectTypeRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             _sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }
 
-        public List<DefectTypeInfo> Get_Defect_Types(PaginationInfo Pager)
+        public List<DefectTypeInfo> Get_Defect_Types(ref PaginationInfo pager)
         {
             List<DefectTypeInfo> retVal = new List<DefectTypeInfo>();
 
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Defect_Types_sp.ToString(), CommandType.StoredProcedure);
 
-            var tupleData = GetRows(dt, Pager);
-
-            foreach (DataRow dr in tupleData.Item1)
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
-                DefectTypeInfo defectTypes = new DefectTypeInfo();
-
-                defectTypes.DefectTypeEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
-
-                defectTypes.DefectTypeEntity.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
-
-                defectTypes.DefectTypeEntity.Status = Convert.ToBoolean(dr["Status"]);
-
-                defectTypes.DefectTypeEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-
-                defectTypes.DefectTypeEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-
-                defectTypes.DefectTypeEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-
-                defectTypes.DefectTypeEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-
-                retVal.Add(defectTypes);
+                retVal.Add(Get_Defect_Type_Values(dr));
             }
 
             return retVal;
-        }
-
-        private Tuple<List<DataRow>, PaginationInfo> GetRows(DataTable dt, PaginationInfo pager)
-        {
-            List<DataRow> drList = new List<DataRow>();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int count = 0;
-
-                drList = dt.AsEnumerable().ToList();
-
-                count = drList.Count();
-
-                if (pager.IsPagingRequired)
-                {
-                    drList = drList.Skip(pager.CurrentPage * pager.PageSize).Take(pager.PageSize).ToList();
-                }
-
-                pager.TotalRecords = count;
-
-                int pages = (pager.TotalRecords + pager.PageSize - 1) / pager.PageSize;
-
-                pager.TotalPages = pages;
-            }
-
-            return new Tuple<List<DataRow>, PaginationInfo>(drList, pager);
-        }
-
-        public List<DefectTypeInfo> Get_Defect_Type_By_Name(string Defect_Type_Name,PaginationInfo Pager)
-        {
-            List<DefectTypeInfo> retVal = new List<DefectTypeInfo>();
-
-               List<SqlParameter> sqlParams = new List<SqlParameter>();
-
-              sqlParams.Add(new SqlParameter("@Defect_Type_Name", Defect_Type_Name));
-
-              DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Defect_Type_By_Name_sp.ToString(), CommandType.StoredProcedure);
-
-              var tupleData = GetRows(dt, Pager);
-
-              foreach (DataRow dr in tupleData.Item1)
-                  {
-                      DefectTypeInfo defectTypes = new DefectTypeInfo();
-
-                      defectTypes.DefectTypeEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
-                      
-                      defectTypes.DefectTypeEntity.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
-                      
-                      defectTypes.DefectTypeEntity.Status = Convert.ToBoolean(dr["Status"]);
-                      
-                      defectTypes.DefectTypeEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-                      
-                      defectTypes.DefectTypeEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-                      
-                      defectTypes.DefectTypeEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-                      
-                      defectTypes.DefectTypeEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-                      
-                      retVal.Add(defectTypes);
-                  }
-             
-              return retVal;
         }
 
         public DefectTypeInfo Get_Defects_Type_By_Id(int Defect_Type_Id)
@@ -135,6 +50,7 @@ namespace KusumgarDataAccess
             if (dt != null && dt.Rows.Count > 0)
             {
                 int count = 0;
+                
                 List<DataRow> drList = new List<DataRow>();
 
                 drList = dt.AsEnumerable().ToList();
@@ -143,19 +59,7 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    retVal.DefectTypeEntity.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
-                    
-                    retVal.DefectTypeEntity.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
-                    
-                    retVal.DefectTypeEntity.Status = Convert.ToBoolean(dr["Status"]);
-                    
-                    retVal.DefectTypeEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-                    
-                    retVal.DefectTypeEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-                    
-                    retVal.DefectTypeEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-                    
-                    retVal.DefectTypeEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+                    retVal=(Get_Defect_Type_Values(dr));
                  }
               }
             return retVal;
@@ -175,22 +79,93 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
             
-            sqlParamList.Add(new SqlParameter("@Defect_Type_Name", defectInfo.DefectTypeEntity.Defect_Type_Name));
+            sqlParamList.Add(new SqlParameter("@Defect_Type_Name", defectInfo.Defect_Type_Name));
             
-            sqlParamList.Add(new SqlParameter("@Status", defectInfo.DefectTypeEntity.Status));
+            sqlParamList.Add(new SqlParameter("@Status", defectInfo.Status));
             
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", defectInfo.DefectTypeEntity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", defectInfo.UpdatedBy));
             
-            if (defectInfo.DefectTypeEntity.Defect_Type_Id == 0)
+            if (defectInfo.Defect_Type_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", defectInfo.DefectTypeEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", defectInfo.CreatedBy));
             }
-            if (defectInfo.DefectTypeEntity.Defect_Type_Id != 0)
+            if (defectInfo.Defect_Type_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Defect_Type_Id", defectInfo.DefectTypeEntity.Defect_Type_Id));
+                sqlParamList.Add(new SqlParameter("@Defect_Type_Id", defectInfo.Defect_Type_Id));
             }
              return sqlParamList;
         }
-    }
-}
+
+        public List<AutocompleteInfo> Get_Defect_Type_AutoComplete(string defect_Type_Name)
+        {
+            List<AutocompleteInfo> defectTypeName = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Defect_Type_Name", defect_Type_Name));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Defect_Type_AutoComplete_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Defect_Type_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Defect_Type_Id"]);
+
+                    defectTypeName.Add(auto);
+                }
+            }
+
+            return defectTypeName;
+        }
+
+        public List<DefectTypeInfo> Get_Defect_Types_By_Id(int Defect_Type_Id, ref PaginationInfo pager)
+        {
+            List<DefectTypeInfo> retVal = new List<DefectTypeInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Defect_Type_Id", Defect_Type_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Defect_Type_By_Id_sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+             {
+                 retVal.Add(Get_Defect_Type_Values(dr));
+             }
+                return retVal;
+        }
+
+        private DefectTypeInfo Get_Defect_Type_Values(DataRow dr)
+        {
+            DefectTypeInfo defectTypes = new DefectTypeInfo();
+            
+            defectTypes.Defect_Type_Id = Convert.ToInt32(dr["Defect_Type_Id"]);
+
+            defectTypes.Defect_Type_Name = Convert.ToString(dr["Defect_Type_Name"]);
+
+            defectTypes.Status = Convert.ToBoolean(dr["Status"]);
+
+            defectTypes.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+
+            defectTypes.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+            defectTypes.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+            defectTypes.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            return defectTypes;
+        }
+          
+        }
+ }
+
 

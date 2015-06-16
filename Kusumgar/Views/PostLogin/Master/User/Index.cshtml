@@ -22,7 +22,7 @@
     </section>
 
     <form id="frmUser">
-        <input type="hidden" class="form-control input-sm" name="User.UserEntity.UserId" id="hdnUserId"  value="@Model.User.UserEntity.UserId">
+        <input type="hidden" class="form-control input-sm" name="User.UserId" id="hdnUserId"  value="@Model.User.UserId">
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -43,22 +43,22 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="txtFirstName" style="color: #333">First Name</label>
-                                                <input type="text" class="form-control input-sm" name="User.UserEntity.First_Name" id="txtFirstName" placeholder="Enter First name" value="@Model.User.UserEntity.First_Name">
+                                                <input type="text" class="form-control input-sm" name="User.First_Name" id="txtFirstName" placeholder="Enter First name" value="@Model.User.First_Name">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="txtMiddleName" style="color: #333">Middle Name</label>
-                                                <input type="text" class="form-control input-sm" name="User.UserEntity.Middle_Name" id="txtMiddleName" placeholder="Enter Middle name" value="@Model.User.UserEntity.Middle_Name">
+                                                <input type="text" class="form-control input-sm" name="User.Middle_Name" id="txtMiddleName" placeholder="Enter Middle name" value="@Model.User.Middle_Name">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="txtLastName" style="color: #333">Last Name</label>
-                                                <input type="text" class="form-control input-sm" id="txtLastName" name="User.UserEntity.Last_Name" placeholder="Enter Last name" value="@Model.User.UserEntity.Last_Name">
+                                                <input type="text" class="form-control input-sm" id="txtLastName" name="User.Last_Name" placeholder="Enter Last name" value="@Model.User.Last_Name">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="txtDesignation" style="color: #333">Designation</label>
-                                                <input type="text" class="form-control input-sm" name="User.UserEntity.Designtation" id="txtDesignation" placeholder="Enter Designation" value="@Model.User.UserEntity.Designtation">
+                                                <input type="text" class="form-control input-sm" name="User.Designtation" id="txtDesignation" placeholder="Enter Designation" value="@Model.User.Designtation">
                                             </div>
 
                                         </div>
@@ -66,19 +66,19 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="txtBirthDate" style="color: #333">Birth Date</label>
-                                                <input type="text" class="form-control input-sm" name="User.UserEntity.Birth_Date" id="txtBirthDate" placeholder="Enter Birth Date" value="@(Model.User.UserEntity.Birth_Date == DateTime.MinValue ? "" : Model.User.UserEntity.Birth_Date.ToString("MM/dd/yyyy"))">
+                                                <input type="text" class="form-control input-sm" name="User.Birth_Date" id="txtBirthDate" placeholder="Enter Birth Date" value="@(Model.User.Birth_Date == DateTime.MinValue ? "" : Model.User.Birth_Date.ToString("MM/dd/yyyy"))">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="txtDate_of_Joing" style="color: #333">Date of Joing</label>
-                                                <input type="text" class="form-control input-sm" name="User.UserEntity.Date_Of_Joining" id="txtDate_of_Joing" placeholder="Enter Date of Joining" value="@(Model.User.UserEntity.Date_Of_Joining == DateTime.MinValue ? "" : Model.User.UserEntity.Date_Of_Joining.ToString("MM/dd/yyyy"))">
+                                                <input type="text" class="form-control input-sm" name="User.Date_Of_Joining" id="txtDate_of_Joing" placeholder="Enter Date of Joining" value="@(Model.User.Date_Of_Joining == DateTime.MinValue ? "" : Model.User.Date_Of_Joining.ToString("MM/dd/yyyy"))">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="rdGender" style="color: #333">Gender :</label><br>
                                                 @foreach (var item in LookupInfo.GetGenderTypes())
                                                 {
-                                                    if (Model.User.UserEntity.Gender == item.Key)
+                                                    if (Model.User.Gender == item.Key)
                                                     {
                                                         <label style="color: #333">
                                                             <input type="radio" name="rdGender" checked value="@item.Key" />
@@ -93,13 +93,13 @@
                                                         </label><br>
                                                     }
                                                 }
-                                                @if (Model.User.UserEntity.Gender != 0)
+                                                @if (Model.User.Gender != 0)
                                                 {
-                                                    <input type="hidden" value="@Model.User.UserEntity.Gender" name="User.UserEntity.Gender" id="hdnGender">
+                                                    <input type="hidden" value="@Model.User.Gender" name="User.Gender" id="hdnGender">
                                                 }
                                                 else
                                                 {
-                                                    <input type="hidden" name="User.UserEntity.Gender" id="hdnGender">
+                                                    <input type="hidden" name="User.Gender" id="hdnGender">
                                                 }
                                             </div>
 
@@ -122,21 +122,21 @@
                                                 @{
 
                                                 <label style="color: #333">Role : </label><br>
-                                                foreach (var item in Model.RoleInfoList)
+                                                foreach (var item in Model.Roles)
                                                 {
 
-                                                if (Model.User.UserRoleList.Where(a => a.UserRoleEntity.Role_Id == item.RoleEntity.Role_Id).Count() > 0)
+                                                if (Model.User.User_Roles.Where(a => a.Role_Id == item.Role_Id).Count() > 0)
                                                 {
                                                 <label style="color: #333">
-                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" checked value="@item.RoleEntity.Role_Id" />
-                                                    &nbsp;&nbsp; @item.RoleEntity.Role_Name &nbsp; &nbsp;
+                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" checked value="@item.Role_Id" />
+                                                    &nbsp;&nbsp; @item.Role_Name &nbsp; &nbsp;
                                                 </label>
                                                 }
                                                 else
                                                 {
                                                 <label style="color: #333">
-                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" value="@item.RoleEntity.Role_Id" />
-                                                    &nbsp;&nbsp; @item.RoleEntity.Role_Name &nbsp;&nbsp;
+                                                    <input type="checkbox" name="Chk_User_Role" id="Chk_User_Role" value="@item.Role_Id" />
+                                                    &nbsp;&nbsp; @item.Role_Name &nbsp;&nbsp;
                                                 </label>
                                                 }
                                                 }
@@ -146,25 +146,25 @@
                                             </div>
 
                                             <div class="form-group">
-                                                @if (Model.User.UserEntity.System_User_Flag == true)
+                                                @if (Model.User.System_User_Flag == true)
                                                 {
                                                     <label>
-                                                        <input type="checkbox" name="ChkSystem_User_Flag" id="ChkSystem_User_Flag" checked value="@Model.User.UserEntity.System_User_Flag" />
+                                                        <input type="checkbox" name="ChkSystem_User_Flag" id="ChkSystem_User_Flag" checked value="@Model.User.System_User_Flag" />
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Online User
                                                     </label>
                                                 }
                                                 else
                                                 {
                                                     <label>
-                                                        <input type="checkbox" name="ChkSystem_User_Flag" id="ChkSystem_User_Flag"  value="@Model.User.UserEntity.System_User_Flag" />
+                                                        <input type="checkbox" name="ChkSystem_User_Flag" id="ChkSystem_User_Flag"  value="@Model.User.System_User_Flag" />
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Online User
                                                     </label>
                                                 }
                                             </div>
-                                            <input type="hidden" id="hdnSystem_User_Flag" name="User.UserEntity.System_User_Flag" value="@Model.User.UserEntity.System_User_Flag.ToString()">
+                                            <input type="hidden" id="hdnSystem_User_Flag" name="User.System_User_Flag" value="@Model.User.System_User_Flag.ToString()">
 
                                             <div class="form-group">
-                                                @if (Model.User.UserEntity.Is_Active == false)
+                                                @if (Model.User.Is_Active == false)
                                                 {
                                                     <label>
                                                         <input type="checkbox" name="chkStatus" />
@@ -179,31 +179,31 @@
                                                     </label>
                                                 }
                                             </div>
-                                            <input type="hidden" id="hdnActive" name="User.UserEntity.Is_Active" value="@Model.User.UserEntity.Is_Active.ToString()">
+                                            <input type="hidden" id="hdnActive" name="User.Is_Active" value="@Model.User.Is_Active.ToString()">
 
                                         </div>
                                         <div class="col-md-6">
                                             @{
                                                 string display = "none";
-                                                if (Model.User.UserEntity.System_User_Flag == true)
+                                                if (Model.User.System_User_Flag == true)
                                                 {
                                                     display = "block";
                                                 }
                                                 <div id="dvUser" style="display:@display">
                                                     <div class="form-group">
                                                         <label for="txtUser_Name" style="color: #333">User Name</label>
-                                                        <input type="text" class="form-control input-sm" name="User.UserEntity.User_Name" id="txtUser_Name" placeholder="Enter User Name" value="@Model.User.UserEntity.User_Name">
-                                                        <input type="hidden" id="hdnUser_Name" placeholder="Enter User Name" value="@Model.User.UserEntity.User_Name">
+                                                        <input type="text" class="form-control input-sm" name="User.User_Name" id="txtUser_Name" placeholder="Enter User Name" value="@Model.User.User_Name">
+                                                        <input type="hidden" id="hdnUser_Name" placeholder="Enter User Name" value="@Model.User.User_Name">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="txtPassword" style="color: #333">Password</label>
-                                                        <input type="password" class="form-control input-sm" name="User.UserEntity.Password" id="txtPassword" placeholder="Enter Password" value="@Model.User.UserEntity.Password">
+                                                        <input type="password" class="form-control input-sm" name="User.Password" id="txtPassword" placeholder="Enter Password" value="@Model.User.Password">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="txtConform_Password" style="color: #333">Conform Password</label>
-                                                        <input type="password" class="form-control input-sm" name="User.UserEntity.ConformPassword" id="txtConform_Password" placeholder="Enter Conform Password" value="@Model.User.UserEntity.Password">
+                                                        <input type="password" class="form-control input-sm" name="User.ConformPassword" id="txtConform_Password" placeholder="Enter Conform Password" value="@Model.User.Password">
                                                     </div>
                                                 </div>
                                             }
@@ -225,7 +225,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-phone"></i>
                                                     </div>
-                                                    <input type="text" class="form-control input-sm" id="txtResidence_Landline" placeholder="Enter Residence Landline" name="User.UserEntity.Residence_Landline" value="@Model.User.UserEntity.Residence_Landline">
+                                                    <input type="text" class="form-control input-sm" id="txtResidence_Landline" placeholder="Enter Residence Landline" name="User.Residence_Landline" value="@Model.User.Residence_Landline">
                                                 </div>
                                             </div>
 
@@ -236,7 +236,7 @@
                                                         <i class="fa fa-mobile"></i>
                                                     </div>
 
-                                                    <input type="text" class="form-control input-sm" id="txtMobile_No1" placeholder="Enter Mobile No" name="User.UserEntity.Mobile_No1" value="@Model.User.UserEntity.Mobile_No1" maxlength="10"/>
+                                                    <input type="text" class="form-control input-sm" id="txtMobile_No1" placeholder="Enter Mobile No" name="User.Mobile_No1" value="@Model.User.Mobile_No1" maxlength="10"/>
                                                 </div>
                                             </div>
 
@@ -245,7 +245,7 @@
                                                 <label for="txtResidence_PinCode" style="color: #333">Residence PinCode</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                                                    <input type="text" class="form-control input-sm" id="txtResidence_PinCode" placeholder="Enter Residence PinCode" name="User.UserEntity.Residence_PinCode" value="@Model.User.UserEntity.Residence_PinCode" maxlength="6">
+                                                    <input type="text" class="form-control input-sm" id="txtResidence_PinCode" placeholder="Enter Residence PinCode" name="User.Residence_PinCode" value="@Model.User.Residence_PinCode" maxlength="6">
                                                 </div>
                                             </div>
                                         </div>
@@ -255,7 +255,7 @@
                                                 <label for="txtPersonal_Email" style="color: #333">Personal Email</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                    <input type="text" class="form-control input-sm" id="txtPersonal_Email" placeholder="Enter Personal Email" name="User.UserEntity.Personal_Email" value="@Model.User.UserEntity.Personal_Email">
+                                                    <input type="text" class="form-control input-sm" id="txtPersonal_Email" placeholder="Enter Personal Email" name="User.Personal_Email" value="@Model.User.Personal_Email">
                                                 </div>
                                             </div>
 
@@ -266,13 +266,13 @@
                                                         <i class="fa fa-mobile"></i>
                                                     </div>
 
-                                                    <input type="text" class="form-control input-sm" id="txtMobile_No2" placeholder="Enter Mobile No" name="User.UserEntity.Mobile_No2" value="@Model.User.UserEntity.Mobile_No2" maxlength="10"/>
+                                                    <input type="text" class="form-control input-sm" id="txtMobile_No2" placeholder="Enter Mobile No" name="User.Mobile_No2" value="@Model.User.Mobile_No2" maxlength="10"/>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="txtResidence_Address" style="color: #333">Residence Address</label>
-                                                <textarea class="form-control input-sm" id="txtResidence_Address" placeholder="Enter Residence Landline" name="User.UserEntity.Residence_Address">@Model.User.UserEntity.Residence_Address</textarea>
+                                                <textarea class="form-control input-sm" id="txtResidence_Address" placeholder="Enter Residence Landline" name="User.Residence_Address">@Model.User.Residence_Address</textarea>
                                             </div>
 
                                         </div>
@@ -290,7 +290,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-phone"></i>
                                                     </div>
-                                                    <input type="text" class="form-control input-sm" id="txtOffice_Landline" placeholder="Enter Office Landline" name="User.UserEntity.Office_Landline" value="@Model.User.UserEntity.Office_Landline">
+                                                    <input type="text" class="form-control input-sm" id="txtOffice_Landline" placeholder="Enter Office Landline" name="User.Office_Landline" value="@Model.User.Office_Landline">
                                                 </div>
                                             </div>
 
@@ -298,7 +298,7 @@
                                                 <label for="txtOffice_PinCode" style="color: #333">Office PinCode</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                                                    <input type="text" class="form-control input-sm" id="txtOffice_PinCode" placeholder="Enter Office PinCode" name="User.UserEntity.Office_PinCode" value="@Model.User.UserEntity.Office_PinCode" maxlength="6">
+                                                    <input type="text" class="form-control input-sm" id="txtOffice_PinCode" placeholder="Enter Office PinCode" name="User.Office_PinCode" value="@Model.User.Office_PinCode" maxlength="6">
                                                 </div>
                                             </div>
 
@@ -308,7 +308,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-fax"></i>
                                                     </div>
-                                                    <input type="text" class="form-control input-sm" id="txtFax_No" placeholder="Enter Fax No" name="User.UserEntity.Fax_No" value="@Model.User.UserEntity.Fax_No">
+                                                    <input type="text" class="form-control input-sm" id="txtFax_No" placeholder="Enter Fax No" name="User.Fax_No" value="@Model.User.Fax_No">
                                                 </div>
                                             </div>
 
@@ -318,13 +318,13 @@
                                                 <label for="txtOffice_Email" style="color: #333">Office Email</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                    <input type="text" class="form-control input-sm" id="txtOffice_Email" placeholder="Enter Personal Email" name="User.UserEntity.Office_Email" value="@Model.User.UserEntity.Office_Email">
+                                                    <input type="text" class="form-control input-sm" id="txtOffice_Email" placeholder="Enter Personal Email" name="User.Office_Email" value="@Model.User.Office_Email">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="txtOffice_Address" style="color: #333">Office Address</label>
-                                                <textarea class="form-control input-sm" id="txtOffice_Address" placeholder="Enter Office Landline" name="User.UserEntity.Office_Address">@Model.User.UserEntity.Office_Address</textarea>
+                                                <textarea class="form-control input-sm" id="txtOffice_Address" placeholder="Enter Office Landline" name="User.Office_Address">@Model.User.Office_Address</textarea>
                                             </div>
                                         </div>
                                     </div>

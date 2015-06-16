@@ -39,13 +39,13 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Entity.Customer_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
-            htmlText += "<td id='Cust_" + data.Customers[i].Customer_Entity.Customer_Id + "'>";
+            htmlText += "<td id='Cust_" + data.Customers[i].Customer_Id + "'>";
 
-            htmlText += data.Customers[i].Customer_Entity.Customer_Name == null ? "" : data.Customers[i].Customer_Entity.Customer_Name;
+            htmlText += data.Customers[i].Customer_Name == null ? "" : data.Customers[i].Customer_Name;
 
             htmlText += "</td>";
 
@@ -53,25 +53,25 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Company_Email == null ? "" : data.Customers[i].Customer_Entity.Company_Email;
+            htmlText += data.Customers[i].Company_Email == null ? "" : data.Customers[i].Company_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Head_Office_Landline1 == null ? "" : data.Customers[i].Customer_Entity.Head_Office_Landline1;
+            htmlText += data.Customers[i].Head_Office_Landline1 == null ? "" : data.Customers[i].Head_Office_Landline1;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Head_Office_Landline2 == null ? "" : data.Customers[i].Customer_Entity.Head_Office_Landline2;
+            htmlText += data.Customers[i].Head_Office_Landline2 == null ? "" : data.Customers[i].Head_Office_Landline2;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Company_Turnover;
+            htmlText += data.Customers[i].Company_Turnover;
 
             htmlText += "</td>";
 

@@ -62,8 +62,8 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                iViewModel.Industrial.Industrial_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                iViewModel.Industrial.Industrial_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                iViewModel.Industrial.Industrial_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                iViewModel.Industrial.Industrial_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 iViewModel.Industrial.Industrial_Entity.CreatedDtm = DateTime.Now;
                 iViewModel.Industrial.Industrial_Entity.UpdatedDtm = DateTime.Now;
 
@@ -82,7 +82,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                iViewModel.Industrial.Industrial_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                iViewModel.Industrial.Industrial_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 iViewModel.Industrial.Industrial_Entity.UpdatedDtm = DateTime.Now;
                 _industrialMan.Update_Industrial(iViewModel.Industrial);
                 iViewModel.Friendly_Message.Add(MessageStore.Get("IND002"));

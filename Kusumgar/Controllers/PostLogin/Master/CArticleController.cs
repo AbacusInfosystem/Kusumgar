@@ -36,7 +36,7 @@ namespace Kusumgar.Controllers
             try
             {
                 cViewModel.Quality_List = _cArticleMan.Get_Quality(ref pager);
-                cViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                cViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
                 cViewModel.Is_Primary = true;
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@ namespace Kusumgar.Controllers
 
             try
             {
-                cViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(pager);
+                cViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
             }
             catch (Exception ex)
             {
@@ -74,9 +74,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.CArticle.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.CArticle.CreatedBy = ((UserInfo)Session["User"]).UserId;
                 cViewModel.CArticle.CreatedOn = DateTime.Now;
-                cViewModel.CArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.CArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 cViewModel.CArticle.UpdatedOn = DateTime.Now;
                 int cArticle_Id = _cArticleMan.Insert_CArticle(cViewModel.CArticle);
                 cViewModel.CArticle.C_Article_Id = cArticle_Id;
@@ -94,7 +94,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.CArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.CArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 cViewModel.CArticle.UpdatedOn = DateTime.Now;
                 _cArticleMan.Update_CArticle(cViewModel.CArticle);
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CA002"));

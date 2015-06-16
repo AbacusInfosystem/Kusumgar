@@ -1,0 +1,255 @@
+﻿@model Kusumgar.Models.QualityViewModel
+
+<script src="~/Scripts/Master/Event/quality_event.js"></script>
+<script src="~/Scripts/Master/Method/quality_method.js"></script>
+<script src="~/Scripts/Master/Validation/quality_validation.js"></script>
+
+
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" id="tabPrimary" data-toggle="tab">Primary</a></li>
+            <li><a href="#tab_2" id="tabApplication" data-toggle="tab">Applications</a></li>
+            <li><a href="#tab_3" id="tabSegment" data-toggle="tab">Segment</a></li>
+            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+        </ul>
+        <div class="tab-content">
+          
+            <div class="tab-pane active" id="tab_1">
+                <br />
+                <form id="frmQuality">
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <input type="hidden" id="hdnQualityId" name="Quality.Quality_Id" value="@Model.Quality.Quality_Id">
+
+                            <div class="form-group">
+                                <label>Yarn Type</label>
+                                <select class="form-control input-sm" id="drpYarnType" name="Quality.Yarn_Type_Id">
+                                    <option value="">Select Yarn Type </option>
+
+
+                                    @foreach (var item in Model.Yarn_Types)
+                                {
+                                    if (Model.Quality.Yarn_Type_Id == item.Attribute_Code_Id)
+                                    {
+                                <option value="@item.Attribute_Code_Id" selected="selected">@item.Attribute_Code_Name</option>
+                                    }
+                                    else
+                                    {
+                                <option value="@item.Attribute_Code_Id">@item.Attribute_Code_Name</option>
+                                    }
+
+                                }
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtQuality_No">Quality No.</label>
+                                <input type="text" class="form-control input-sm" id="txtQualityNo" placeholder="Enter Quality No." name="Quality.Quality_No" value="@Model.Quality.Quality_No" />
+                                <input type="hidden" class="form-control input-sm" id="hdnQualityNo" value="@Model.Quality.Quality_No">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Weave Type</label>
+                                <select class="form-control input-sm" id="drpWeaveType" name="Quality.Weave">
+                                    <option value="">Select Weave Type </option>
+
+
+                                    @foreach (var item in Model.Weaves_Types)
+                                    {
+                                        if (Model.Quality.Weave == item.Attribute_Code_Id)
+                                        {
+                                            <option value="@item.Attribute_Code_Id" selected="selected">@item.Attribute_Code_Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Attribute_Code_Id">@item.Attribute_Code_Name</option>
+                                        }
+
+                                    }
+
+                                </select>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label for="txtMinimum_Order_Size">Minimum Order Size</label>
+                                <input type="text" class="form-control input-sm" id="txtMinimumOrderSize" placeholder="Enter minimum order size" name="Quality.Minimum_Order_Size" value="@Model.Quality.Minimum_Order_Size" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtIdeal_Roll_Length">Ideal Roll Length</label>
+                                <input type="text" class="form-control input-sm" id="txtIdealRollLength" placeholder="Enter Ideal Roll Length" name="Quality.Ideal_Roll_Length" value="@Model.Quality.Ideal_Roll_Length" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtSample_No">Our Sample No</label>
+                                <input type="text" class="form-control input-sm" id="txtSampleNo" placeholder="Enter Our Sample No" name="Quality.Our_Sample_No" value="@Model.Quality.Our_Sample_No" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtReed_Name">Reed</label>
+                                <input type="text" class="form-control input-sm" id="txtReedName" placeholder="Enter Reed Name" name="Quality.Reed" value="@Model.Quality.Reed" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtPick_Name">Pick</label>
+                                <input type="text" class="form-control input-sm" id="txtPickName" placeholder="Enter Pick Name" name="Quality.Pick" value="@Model.Quality.Pick" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="chkStatus">Status</label><br>
+                                @if (Model.Quality.Status)
+                                {
+                                    @:<input type="checkbox" name="Quality.Status" value="false" checked />
+                                                }
+                                else
+                                {
+                                    @:<input type="checkbox" name="Quality.Status" value="true" />
+                                                }
+
+                                Active &nbsp;&nbsp;&nbsp;
+                                <input type="hidden" id="hdnStatus" value="@((Model.Quality.Status == null ? false : Model.Quality.Status).ToString())">
+
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-striped" id="tblQuality" style="display:none">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Quality No</th>
+                                            <th>Yarn Type</th>
+                                            <th>Minimum Order Size</th>
+                                            <th>Ideal Roll Length</th>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="btn-group">
+                            <button type="button" id="btnSave" class="btn btn-success btn-sm">Save Primary</button>
+                            <a href="@Url.Action("Search", "Quality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                        </div>
+                        </div>
+                </form>
+
+             </div>
+           
+            <div class="tab-pane" id="tab_2">
+                <form id="frmApplication">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <input type="hidden" id="hdnQualityApplicationId" value="@Model.Quality_Application_Mapping.Quality_Application_Id" name="Quality_Application_Mapping.Quality_Application_Id">
+
+                            <div class="form-group">
+                                <div class="auto-complete">
+                                    <input type="text" class="form-control input-sm" id="txtApplicationName" placeholder="Enter Application Name" value="">
+                                    <input type="hidden" id="hdfApplicationId" value="@Model.Application.Application_Id" name="Application.Application_Id" class="auto-complete-value">
+                                    <input type="hidden" id="txtApplicationName" value="@Model.Application.Application_Name" name="Application.Application_Name" class="auto-complete-label">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 ">
+
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover" id="tblQualityApplication">
+
+                                    <tr>
+                                        <th>Application Name</th>
+                                        <th style="min-width: 61px;">&nbsp; </th>
+                                    </tr>
+                                    @foreach (var item in Model.Quality_Application_Mapping_Grid)
+                                    {
+                                    <tr id="tr_iquality_@item.Quality_Application_Id">
+                                        <td>@item.Application_Name</td>
+
+                                        <td>
+                                            <div class="btn-group pull-right">
+                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm" onclick="RemoveQualityApplication(@item.Quality_Application_Id)"><i class='fa fa-times'></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    }
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="btn-group">
+                            <button type="button" id="btnApplicationSave" class="btn btn-success btn-sm">Save Applications</button>
+                            <a href="@Url.Action("Search","Quality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                        </div>
+                        </div>
+                    </form>
+          </div>
+
+            <div class="tab-pane" id="tab_3">
+                <form id="frmSegment">
+                    <div class="row">
+                        <div class="col-md-4">
+                           
+                            <input type="hidden" id="hdnQualityMarketSegmentId" value="@Model.Quality_Market_Segment_Mapping.Quality_Market_Segment_Id" name="Quality_Market_Segment_Mapping.Quality_Market_Segment_Id">
+
+                            <div class="form-group">
+                                <div class="auto-complete">
+                                    <input type="text" class="form-control input-sm" id="txtMarketSegmentName" placeholder="Enter Segment Name" value="">
+                                    <input type="hidden" id="hdfMarketSegmentId" value="@Model.Market_Segment.Market_Segment_Id" name="Market_Segment.Market_Segment_Id" class="auto-complete-value">
+                                    <input type="hidden" id="txtMarketSegmentName" value="@Model.Market_Segment.Market_Segment_Name" name="Market_Segment.Market_Segment_Name" class="auto-complete-label">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 ">
+                            <table class="table table-hover" id="tblQualitySegment">
+                                <tr>
+                                    <th>Segment Name</th>
+                                    <th style="min-width: 81px;">&nbsp; </th>
+                                </tr>
+                                @foreach (var item in Model.Quality_Market_Segment_Mapping_Grid)
+                                {
+                                <tr id="tr_iqualitysegment_@item.Quality_Market_Segment_Id">
+                                    <td>@item.Segment_Name </td>
+
+                                    <td>
+                                        <div class="btn-group pull-right">
+                                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm" onclick="RemoveQualitySegment(@item.Quality_Market_Segment_Id)"><i class='fa fa-times'></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="btn-group">
+                            <button type="button" id="btnSaveSegment" class="btn btn-success btn-sm">Save Segments</button>
+                            <a href="@Url.Action("Search","Quality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                        </div>
+                        </div>
+                    </form>
+             </div>
+        
+          </div>
+
+        </div>
+
+

@@ -3,7 +3,7 @@
     var tViewModel = {
 
         Filter: {
-
+           
             Test_Unit_Name: $('#txtTestUnitName').val()
         },
 
@@ -24,7 +24,7 @@ function GetAllTestUnits() {
     var tViewModel = {
 
         Filter: {
-
+           
             Test_Unit_Name: ""
         },
 
@@ -53,7 +53,7 @@ function BindTestUnitInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' />";
+            htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].Test_Unit_Id + "' />";
 
             htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -61,11 +61,11 @@ function BindTestUnitInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Name;
+            htmlText += data.Test_Unit_Grid[i].Test_Unit_Name;
 
             htmlText += "</td>";
 
-            if (data.Test_Unit_Grid[i].TestUnitEntity.Status == true) {
+            if (data.Test_Unit_Grid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -73,7 +73,7 @@ function BindTestUnitInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.Test_Unit_Grid[i].TestUnitEntity.Status == false) {
+            if (data.Test_Unit_Grid[i].Status == false) {
 
                 htmlText += "<td>";
 
@@ -141,7 +141,6 @@ function PageMore(Id) {
     var tViewModel = {
 
         Filter: {
-
             Test_Unit_Name: $('#txtTestUnitName').val()
         },
 

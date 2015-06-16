@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    InitializeAutoComplete($('#txtDefectTypeName'));
+
     GetAllDefectTypes();
 
     $("#btnSearch").click(function () {

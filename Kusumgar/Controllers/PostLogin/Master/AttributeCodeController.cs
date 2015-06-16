@@ -8,6 +8,7 @@ using KusumgarBusinessEntities.Common;
 using Kusumgar.Models;
 using KusumgarModel;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers.PostLogin.Master
 {
@@ -34,7 +35,15 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert(AttributeCodeViewModel aViewModel)
         {
             try
-            {
+            { 
+                aViewModel.Attribute_Code.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                aViewModel.Attribute_Code.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                aViewModel.Attribute_Code.CreatedOn = DateTime.Now;
+
+                aViewModel.Attribute_Code.UpdatedOn = DateTime.Now;
+
                 AttributeCodeManager aMan = new AttributeCodeManager();
 
                 aMan.Insert(aViewModel.Attribute_Code);
@@ -44,6 +53,8 @@ namespace Kusumgar.Controllers.PostLogin.Master
             catch (Exception ex)
             {
                 aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Attribute Code Controller - Insert " + ex.ToString());
             }
 
             return RedirectToAction("Search");
@@ -52,12 +63,16 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Update(AttributeCodeViewModel aViewModel)
         {
            try
-            {
+           {
+               aViewModel.Attribute_Code.UpdatedOn = DateTime.Now;
+
+               aViewModel.Attribute_Code.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
                 AttributeCodeManager aMan = new AttributeCodeManager();
 
                 aMan.Update(aViewModel.Attribute_Code);
 
-                aViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id =0;
+                aViewModel.Attribute_Code.Attribute_Id =0;
 
                 aViewModel.Friendly_Message.Add(MessageStore.Get("AC012"));
                
@@ -65,14 +80,14 @@ namespace Kusumgar.Controllers.PostLogin.Master
             catch (Exception ex)
             {
                 aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Attribute Code Controller - Update " + ex.ToString());
             }
 
             TempData["aViewModel"] = aViewModel;
 
             return RedirectToAction("Search");
-
-            
-        }
+  }
 
         public ActionResult Get_Attribute_Code_By_Id(AttributeCodeViewModel aViewModel)
         {
@@ -96,18 +111,37 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             AttributeCodeManager aMan = new AttributeCodeManager();
 
-            if (aViewModel.Filter.Attribute_Id > 0)
+            PaginationInfo pager = new PaginationInfo();
+            try
             {
-                aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes_By_Attribute_Name(aViewModel.Filter.Attribute_Id, aViewModel.Pager);
+                pager = aViewModel.Pager;
+
+                if (aViewModel.Filter.Attribute_Id > 0)
+                {
+                    aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes_By_Attribute_Name(aViewModel.Filter.Attribute_Id, ref pager);
+                }
+
+                else
+                {
+                    aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes(ref pager);
+                }
+
+                aViewModel.Pager = pager;
+
+                aViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", aViewModel.Pager.TotalRecords, aViewModel.Pager.CurrentPage + 1, aViewModel.Pager.PageSize, 10, true);
+            }
+            
+            catch (Exception ex)
+            {
+                aViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Attribute Code Controller - Get_Attribute_Codes " + ex.ToString());
             }
 
-            else
+            finally
             {
-                aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes(aViewModel.Pager);
+                pager = null;
             }
-
-            aViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", aViewModel.Pager.TotalRecords, aViewModel.Pager.CurrentPage + 1, aViewModel.Pager.PageSize, 10, true);
-           
             return Json(aViewModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -115,9 +149,11 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             AttributeCodeManager aMan = new AttributeCodeManager();
 
+            PaginationInfo pager = new PaginationInfo();
+
             if (aViewModel.Filter.Attribute_Id > 0)
             {
-                aViewModel.Attribute_Code_Grid = aMan.Get_Attribute_Codes_By_Attribute_Name(aViewModel.Filter.Attribute_Id,aViewModel.Pager);
+                aViewModel.Attribute_Code_Grid = aMan.Get_Grid_By_Attrinute_Code_Name(aViewModel.Filter.Attribute_Id);
             }
 
             return Json(aViewModel, JsonRequestBehavior.AllowGet);

@@ -51,7 +51,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' id='hdfTestId_" + data.Test_Grid[i].TestEntity.Test_Id + "' value='" + data.Test_Grid[i].TestEntity.Test_Id + "' />";
+            htmlText += "<input type='hidden' id='hdfTestId_" + data.Test_Grid[i].Test_Id + "' value='" + data.Test_Grid[i].Test_Id + "' />";
 
             htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -65,7 +65,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.Test_Grid[i].TestEntity.Test_Name;
+            htmlText += data.Test_Grid[i].Test_Name;
 
             htmlText += "</td>";
 
@@ -129,7 +129,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "</td>";
 
-            if (data.Test_Grid[i].TestEntity.Status == true) {
+            if (data.Test_Grid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -137,7 +137,7 @@ function BindTestInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.Test_Grid[i].TestEntity.Status == false) {
+            if (data.Test_Grid[i].Status == false) {
 
                 htmlText += "<td>";
 

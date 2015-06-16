@@ -4,7 +4,7 @@
 
         Filter: {
 
-            Vendor_Id: $('#hdnVendorId').val(),
+             Vendor_Id: $('#hdnVendorId').val(),
              Vendor_Name : $('#txtVendorName').val()
 
                },
@@ -53,7 +53,7 @@ function BindVendorInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='hidden' id='hdfVendorId_" + data.Vendor_Grid[i].Vendor_Entity.Vendor_Id + "' value='" + data.Vendor_Grid[i].Vendor_Entity.Vendor_Id + "' />";
+        htmlText += "<input type='hidden' id='hdfVendorId_" + data.Vendor_Grid[i].Vendor_Id + "' value='" + data.Vendor_Grid[i].Vendor_Id + "' />";
 
         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -61,19 +61,19 @@ function BindVendorInGrid(data, mode) {
 
         htmlText += "<td>";
 
-        htmlText += data.Vendor_Grid[i].Vendor_Entity.Vendor_Name;
+        htmlText += data.Vendor_Grid[i].Vendor_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Vendor_Grid[i].Vendor_Entity.Email;
+        htmlText += data.Vendor_Grid[i].Email;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Vendor_Grid[i].Vendor_Entity.HeadOfficeAddress;
+        htmlText += data.Vendor_Grid[i].HeadOfficeAddress;
 
         htmlText += "</td>";
 

@@ -58,18 +58,24 @@
     <Compile Include="CRM\ComplaintManager.cs" />
     <Compile Include="CRM\ContactManager.cs" />
     <Compile Include="Login\LoginManager.cs" />
-    <Compile Include="Master\AjaxManager.cs" />
+    <Compile Include="AjaxManager.cs" />
     <Compile Include="Master\AttributeCodeManager.cs" />
     <Compile Include="CRM\CustomerManager.cs" />
     <Compile Include="Master\CArticleManager.cs" />
     <Compile Include="Master\ConsumableManager.cs" />
+    <Compile Include="Master\CustomerQualityManager.cs" />
     <Compile Include="Master\DefectManager.cs" />
     <Compile Include="Master\DefectTypeManager.cs" />
+    <Compile Include="Master\GArticleManager.cs" />
     <Compile Include="Master\IndustrialManager.cs" />
     <Compile Include="Master\NationManager.cs" />
     <Compile Include="Master\ProcessManager.cs" />
+    <Compile Include="Master\PArticleManager.cs" />
     <Compile Include="Master\ProductVendorManager.cs" />
     <Compile Include="Master\MaterialManager.cs" />
+    <Compile Include="Master\QualityManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Master\RoleAccessManager.cs" />
     <Compile Include="Master\RoleManager.cs" />
     <Compile Include="Master\StateManager.cs" />
@@ -78,14 +84,15 @@
     <Compile Include="Master\UserManager.cs" />
     <Compile Include="Master\VendorContactManager.cs" />
     <Compile Include="Master\VendorManager.cs" />
+    <Compile Include="Master\WorkCenterManager.cs" />
     <Compile Include="Master\WArticleManager.cs" />
     <Compile Include="Master\YArticleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\EnquiryManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CMS\" />
     <Folder Include="Planning\" />
-    <Folder Include="Sales\" />
     <Folder Include="SystemConfig\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

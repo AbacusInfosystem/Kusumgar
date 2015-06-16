@@ -27,13 +27,13 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Entity.Material_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Id + "' class='iradio_square-green'/>";
         
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Materials[i].Material_Entity.Material_Code;
+        htmlText += data.Materials[i].Material_Code;
 
         htmlText += "</td>";
 
@@ -45,7 +45,7 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
         
-        htmlText += data.Materials[i].Material_Entity.Material_Name;
+        htmlText += data.Materials[i].Material_Name;
 
         htmlText += "</td>";
         
@@ -108,7 +108,7 @@ function PageMore(Id) {
 
 //    if (data.length > 0) {
 //        for (var i = 0; i < data.length ; i++) {
-//            htmltext += "<option value='" + data[i].Material_SubCategory_Entity.Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Entity.Material_SubCategory_Name + "</option>";
+//            htmltext += "<option value='" + data[i].Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Name + "</option>";
 //        }
 //    }
 //    $("#drpSubCatName").html(htmltext);

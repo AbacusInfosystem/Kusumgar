@@ -1,7 +1,16 @@
-﻿<form>
+﻿@model Kusumgar.Models.GArticleViewModel
+@using KusumgarBusinessEntities.Common
+
+<script src="~/Scripts/Master/Event/g_article_event.js"></script>
+<script src="~/Scripts/Master/Method/g_article_method.js"></script>
+<script src="~/Scripts/Master/Validation/g_article_validation.js"></script>
+
+
+<form id="frmG_Article">
 
     <div class="row">
 
+        <input type="hidden" id="hdnG_Article_Id" value="@Model.G_Article.G_Article_Id">
         <div class="col-md-5">
 
             <div class="box-header with-border">
@@ -12,7 +21,6 @@
 
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
                                 <label>Attribute</label>
@@ -21,83 +29,185 @@
                                 <label>Code</label>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpQualityNo" class="form-control input-sm">
-                                    <option>-Select Quality No-</option>
-                                    <option>4042</option>
-                                    <option>4041</option>
-                                    <option>4043</option>
+                                <select id="drpQualityNo" class="form-control input-sm attribute-name" name="G_Article.Quality_Id">
+                                    <option value="">-Select Quality No-</option>
+                                    @foreach (var item in Model.G_Article.Qualities)
+                                    {
+                                        if (Model.G_Article.Quality_Id == item.Quality_Id)
+                                        {
+                                            <option value="@(item.Quality_Id + "_" + item.Quality_No)" selected="selected">@item.Quality_No</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@(item.Quality_Id + "_" + item.Quality_No)">@item.Quality_No</option>
+                                        }
+                                    }
+                                    @if (Model.G_Article.Quality_Id == 0 && Model.G_Article.G_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>4042</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
-
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpYarn_type" class="form-control input-sm">
-                                    <option>-Select Yarn type-</option>
-                                    <option>Polyster texturised</option>
-                                    <option>Air texturised Nylon</option>
-                                    <option>Viscose Staple</option>
-                                    <option>Polyster Cotton Mix</option>
-                                    <option>Meta aramide</option>
+                                <select id="drpYarn_type" class="form-control input-sm attribute-name" name="G_Article.Yarn_Type_Id">
+                                    <option value="">-Select Yarn type- </option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_"," ")))
+                                        {
+                                            if (Model.G_Article.Yarn_Type_Id == item.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.G_Article.Yarn_Type_Id == 0 && Model.G_Article.G_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>0PES</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
-
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <select id="drpWavae" class="form-control input-sm">
-                                    <option>-Select Weave-</option>
-                                    <option>Plain</option>
-                                    <option>Cross</option>
-                                    <option>Checks</option>
+                                <select id="drpWeave" class="form-control input-sm attribute-name" name="G_Article.Weave_Id">
+                                    <option value="">-Select Weave-</option>
+                                    @if (Model.Attribute_Codes.Count > 0)
+                                    {
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Weave.ToString()))
+                                        {
+                                            if (Model.G_Article.Weave_Id == item.Attribute_Code_Id)
+                                            {
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
+                                            }
+                                        }
+                                    }
+                                    @if (Model.G_Article.Weave_Id == 0 && Model.G_Article.G_Article_Id != 0)
+                                    {
+                                        <option value="0_" selected="selected">none</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0_">none</option>
+                                    }
                                 </select>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>062.00</label>
+                                <label class="attribute-code">-</label>
                             </div>
                         </div>
                         <br />
-
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <input type="text" class="form-control input-sm" id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" />
+                                
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm " id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" name="G_Article.Grey_with_Cms" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm " id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" name="G_Article.Grey_with_Cms" value="@Model.G_Article.Grey_with_Cms" />
+                            }
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>02740</label>
+                                @if (Model.G_Article.G_Article_Id == 0)
+                                {
+                                    <label class="attribute-code" id="lblGrey_with_Cms">-</label>
+                                }
+                                else
+                                {
+                                    <label class="attribute-code" id="lblGrey_with_Cms">@Model.G_Article.Grey_with_Cms</label>
+                                }
                             </div>
                         </div>
                         <br />
-
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
-                                <input type="text" class="form-control input-sm" id="txtGSM" placeholder="Enter GSM" />
+                                
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm " id="txtGSM" placeholder="Enter GSM" name="G_Article.GSM" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm " id="txtGSM" placeholder="Enter GSM" name="G_Article.GSM" value="@Model.G_Article.GSM" />
+                            }
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <label>02740</label>
+                                @if (Model.G_Article.G_Article_Id == 0)
+                                {
+                                    <label class="attribute-code" id="lblGSM">-</label>
+                                }
+                                else
+                                {
+                                    <label class="attribute-code" id="lblGSM">@Model.G_Article.GSM</label>
+                                }
                             </div>
                         </div>
                         <br />
+                        
+                            <div class="col-md-12">
+                                <div class="well text-center">
+                                    @if (Model.G_Article.G_Article_Id == 0)
+                                    {
+                                        <label class="full-code">- - - -</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="full-code">@Model.G_Article.Full_Code</label>
+                                    }
+                                </div>
+                            </div> 
+
+                        <div class="form-group">
+                            @if (Model.G_Article.Is_Active == false)
+                            {
+                                <label>
+                                    <input type="checkbox" name="chkIs_Active" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                </label>
+                            }
+                            else
+                            {
+                                <label>
+                                    <input type="checkbox" name="chkIs_Active" checked="checked" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                </label>
+                            }
+                            <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="G_Article.Is_Active" value="@Model.G_Article.Is_Active.ToString()">
+                        </div>
 
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="well text-center">
-                            <label>0PES  PLN155  100</label>
-                        </div>
-                    </div>
-                </div>
-
+               
+              </div>
 
             </div>
         </div>
@@ -113,98 +223,280 @@
                     <div class="col-md-6">
 
                         <div class="form-group">
-                            <label for="txtRollSize">Roll Size</label>
-                            <input type="text" class="form-control input-sm" id="txtRollSize" placeholder="Enter Roll Size" />
+                            <label for="txtWarp_1">Warp 1</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWarp_1" placeholder="Enter Warp 1" value="">
+                                <input type="hidden" id="hdnWarp_1" value="@(Model.G_Article.Warp_1 == 0 ? "" : Model.G_Article.Warp_1.ToString())" name="G_Article.Warp_1" class="auto-complete-value">
+                                <input type="hidden" id="hdnWarp_Name_1" value="@Model.G_Article.Warp_Name_1" name="G_Article.Warp_Name_1" class="auto-complete-label">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWarp_2">Warp 2</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWarp_2" placeholder="Enter Warp 2" value="">
+                                <input type="hidden" id="hdnWarp_2" value="@(Model.G_Article.Warp_2 == 0 ? "" : Model.G_Article.Warp_2.ToString())" name="G_Article.Warp_2" class="auto-complete-value">
+                                <input type="hidden" id="hdnWarp_Name_2" value="@Model.G_Article.Warp_Name_2" name="G_Article.Warp_Name_2" class="auto-complete-label">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWarp_3">Warp 3</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWarp_3" placeholder="Enter Warp 3" value="">
+                                <input type="hidden" id="hdnWarp_3" value="@(Model.G_Article.Warp_3 == 0 ? "" : Model.G_Article.Warp_3.ToString())" name="G_Article.Warp_3" class="auto-complete-value">
+                                <input type="hidden" id="hdnWarp_Name_3" value="@Model.G_Article.Warp_Name_3" name="G_Article.Warp_Name_3" class="auto-complete-label">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWarp_4">Warp 4</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWarp_4" placeholder="Enter Warp 4" value="">
+                                <input type="hidden" id="hdnWarp_4" value="@(Model.G_Article.Warp_4 == 0 ? "" : Model.G_Article.Warp_4.ToString())" name="G_Article.Warp_4" class="auto-complete-value">
+                                <input type="hidden" id="hdnWarp_Name_4" value="@Model.G_Article.Warp_Name_4" name="G_Article.Warp_Name_4" class="auto-complete-label">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtReed">Reed</label>
+                            <input type="text" class="form-control input-sm" id="txtReed" placeholder="Enter Reed" name="G_Article.Reed" value="@Model.G_Article.Reed" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtPick">Pick</label>
+                            <input type="text" class="form-control input-sm" id="txtPick" placeholder="Enter Pick" name="G_Article.Pick" value="@Model.G_Article.Pick" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtTotal_Ends">Total Ends</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" name="G_Article.Total_Ends" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" name="G_Article.Total_Ends" value="@Model.G_Article.Total_Ends" />
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtBeam_Weight">Beam Weight</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtBeam_Weight" placeholder="Enter Beam Weight" name="G_Article.Beam_Weight" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtBeam_Weight" placeholder="Enter Beam Weight" name="G_Article.Beam_Weight" value="@Model.G_Article.Beam_Weight" />
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtBeam_Roll">Beam Roll</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtBeam_Roll" placeholder="Enter Beam Roll" name="G_Article.Beam_Roll" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtBeam_Roll" placeholder="Enter Beam Roll" name="G_Article.Beam_Roll" value="@Model.G_Article.Beam_Roll" />
+                            }
                         </div>
 
                         <div class="form-group">
                             <label for="drpWarp_yarn_supplier">Warp yarn supplier</label>
-                            <select id="drpWarp_yarn_supplier" class="form-control input-sm">
-                                <option>-Select Warp yarn supplier-</option>
-                                <option>ALOK IND</option>
-                                <option>C.ENKA</option>
-                                <option>DAMAN POLY</option>
-                                <option>INVISTA</option>
-                                <option>JIGNISHA CORPORATION</option>
-                                <option>MAHESHWARI SYNTHETICKS</option>
-                                <option>OMKAR SYNTHETICKS</option>
+                            <select id="drpWarp_yarn_supplier" class="form-control input-sm" name="G_Article.Warp_Yarn_Vendor">
+                                <option value="">-Select Warp yarn supplier-</option>
+                                @foreach (var item in Model.G_Article.Vendors)
+                                {
+                                    if (Model.G_Article.Warp_Yarn_Vendor == item.Vendor_Id)
+                                    {
+                                        <option value="@item.Vendor_Id" selected="selected">@item.Vendor_Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Vendor_Id">@item.Vendor_Name</option>
+                                    }
+                                }
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="drpWeft_yarn_supplier">Weft yarn supplier</label>
-                            <select id="drpWeft_yarn_supplier" class="form-control input-sm">
-                                <option>-Select Weft yarn supplier-</option>
-                                <option>ALOK IND</option>
-                                <option>C.ENKA</option>
-                                <option>DAMAN POLY</option>
-                                <option>INVISTA</option>
-                                <option>JIGNISHA CORPORATION</option>
-                                <option>MAHESHWARI SYNTHETICKS</option>
-                                <option>OMKAR SYNTHETICKS</option>
+                            <select id="drpWeft_yarn_supplier" class="form-control input-sm" name="G_Article.Weft_Yarn_Vendor">
+                                <option value="">-Select Weft yarn supplier-</option>
+                                @foreach (var item in Model.G_Article.Vendors)
+                                {
+                                    if (Model.G_Article.Weft_Yarn_Vendor == item.Vendor_Id)
+                                    {
+                                        <option value="@item.Vendor_Id" selected="selected">@item.Vendor_Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Vendor_Id">@item.Vendor_Name</option>
+                                    }
+                                }
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtPick">Pick</label>
-                            <input type="text" class="form-control input-sm" id="txtPick" placeholder="Enter Pick" />
-                        </div>
-
-                        <div class="form-group">
                             <label for="txtRSP">RSP</label>
-                            <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" />
+                            
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" name="G_Article.RSP" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" name="G_Article.RSP" value="@Model.G_Article.RSP" />
+                            }
                         </div>
 
                         <div class="form-group">
-                            <label for="txtTotal_Ends">Total Ends</label>
-                            <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" />
+                            <label for="txtDraft">Draft</label>
+                            <input type="text" class="form-control input-sm" id="txtDraft" placeholder="Enter Draft" name="G_Article.Draft" value="@Model.G_Article.Draft" />
                         </div>
 
+                        <div class="form-group">
+                            <label for="txtCrimp_in_Percentage">Crimp in Percentage</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" name="G_Article.Crimp_In_Percentage" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" name="G_Article.Crimp_In_Percentage" value="@Model.G_Article.Crimp_In_Percentage" />
+                            }
+                        </div>
+                        
                     </div>
 
                     <div class="col-md-6">
 
                         <div class="form-group">
-                            <label for="txtWarping_Meters">Warping Meters</label>
-                            <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" />
+                            <label for="txtWeft_1">Weft 1</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWeft_1" placeholder="Enter Weft 1" value="">
+                                <input type="hidden" id="hdnWeft_1" value="@(Model.G_Article.Weft_1 == 0 ? "" : Model.G_Article.Weft_1.ToString())" name="G_Article.Weft_1" class="auto-complete-value">
+                                <input type="hidden" id="hdnWeft_Name_1" value="@Model.G_Article.Weft_Name_1" name="G_Article.Weft_Name_1" class="auto-complete-label">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWeft_2">Weft 2</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWeft_2" placeholder="Enter Weft 2" value="">
+                                <input type="hidden" id="hdnWeft_2" value="@(Model.G_Article.Weft_2 == 0 ? "" : Model.G_Article.Weft_2.ToString())" name="G_Article.Weft_2" class="auto-complete-value">
+                                <input type="hidden" id="hdnWeft_Name_2" value="@Model.G_Article.Weft_Name_2" name="G_Article.Weft_Name_2" class="auto-complete-label">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWeft_3">Weft 3</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWeft_3" placeholder="Enter Weft 3" value="">
+                                <input type="hidden" id="hdnWeft_3" value="@(Model.G_Article.Weft_3 == 0 ? "" : Model.G_Article.Weft_3.ToString())" name="G_Article.Weft_3" class="auto-complete-value">
+                                <input type="hidden" id="hdnWeft_Name_3" value="@Model.G_Article.Weft_Name_3" name="G_Article.Weft_Name_3" class="auto-complete-label">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWeft_4">Weft 4</label>
+                            <div class="auto-complete">
+                                <input type="text" class="form-control input-sm" id="txtWeft_4" placeholder="Enter Weft 4" value="">
+                                <input type="hidden" id="hdnWeft_4" value="@(Model.G_Article.Weft_4 == 0 ? "" : Model.G_Article.Weft_4.ToString())" name="G_Article.Weft_4" class="auto-complete-value">
+                                <input type="hidden" id="hdnWeft_Name_4" value="@Model.G_Article.Weft_Name_4" name="G_Article.Weft_Name_4" class="auto-complete-label">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtR_S">R/S</label>
+                            <input type="text" class="form-control input-sm" id="txtR_S" placeholder="Enter R/S" name="G_Article.R_S" value="@Model.G_Article.R_S" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtG_W">G. W</label>
+                            <input type="text" class="form-control input-sm" id="txtG_W" placeholder="Enter G. W" name="G_Article.G_W" value="@Model.G_Article.G_W" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtWeave">Weave</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtWeave" placeholder="Enter Weave" name="G_Article.Weave" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtWeave" placeholder="Enter Weave" name="G_Article.Weave" value="@Model.G_Article.Weave" />
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtNo_Of_Healds">No Of Healds</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtNo_Of_Healds" placeholder="Enter No Of Healds" name="G_Article.No_Of_Healds" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtNo_Of_Healds" placeholder="Enter No Of Healds" name="G_Article.No_Of_Healds" value="@Model.G_Article.No_Of_Healds" />
+                            }
                         </div>
 
                         <div class="form-group">
                             <label for="txtDrawing_Sequence_Body">Drawing Sequence Body</label>
-                            <input type="text" class="form-control input-sm" id="txtDrawing_Sequence_Body" placeholder="Enter Drawing Sequence Body" />
+                            <input type="text" class="form-control input-sm" id="txtDrawing_Sequence_Body" placeholder="Enter Drawing Sequence Body" name="G_Article.Drawing_Sequence_Body" value="@Model.G_Article.Drawing_Sequence_Body" />
                         </div>
 
                         <div class="form-group">
                             <label for="txtDrawing_Sequence_Selvedge">Drawing Sequence Selvedge</label>
-                            <input type="text" class="form-control input-sm" id="txtDrawing_Sequence_Selvedge" placeholder="Enter Drawing Sequence Selvedge" />
+                            <input type="text" class="form-control input-sm" id="txtDrawing_Sequence_Selvedge" placeholder="Enter Drawing Sequence Selvedge" name="G_Article.Drawing_Sequence_Selvedge" value="@Model.G_Article.Drawing_Sequence_Selvedge" />
                         </div>
 
                         <div class="form-group">
-                            <label for="txtDraft">Draft</label>
-                            <input type="text" class="form-control input-sm" id="txtDraft" placeholder="Enter Draft" />
+                            <label for="txtRoll_Size">Roll Size</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtRoll_Size" placeholder="Enter Roll Size" name="G_Article.Roll_Size" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtRoll_Size" placeholder="Enter Roll Size" name="G_Article.Roll_Size" value="@Model.G_Article.Roll_Size" />
+                            }
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="txtCrimp_in_Percentage">Crimp in Percentage</label>
-                            <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" />
+                            <label for="txtWarping_Meters">Warping Meters</label>
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" name="G_Article.Warping_Meters" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" name="G_Article.Warping_Meters" value="@Model.G_Article.Warping_Meters" />
+                            }
                         </div>
 
                         <div class="form-group">
                             <label for="txtPeg_Plan_Rows">Peg Plan Rows</label>
-                            <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" />
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" name="G_Article.Peg_Plan_Rows" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" name="G_Article.Peg_Plan_Rows" value="@Model.G_Article.Peg_Plan_Rows" />
+                            }
                         </div>
 
                         <div class="form-group">
                             <label for="txtPeg_Plan_Columns">Peg Plan Columns</label>
-                            <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" />
+                            @if (Model.G_Article.G_Article_Id == 0)
+                            {
+                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" name="G_Article.Peg_Plan_Columns" value="" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" name="G_Article.Peg_Plan_Columns" value="@Model.G_Article.Peg_Plan_Columns" />
+                            }
                         </div>
 
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" name="chkStatus" checked />
-                                &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                            </label>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -213,8 +505,8 @@
     </div>
 
     <div class="box-footer">
-        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-        <a href="@Url.Action("Search", "YArticle")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
+        <button type="button" id="btnSave_G_Article" class="btn btn-success btn-sm">Save</button>
+        <a href="@Url.Action("Search", "GArticle")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
 
     </div>
 

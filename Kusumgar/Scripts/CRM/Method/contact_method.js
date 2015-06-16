@@ -16,7 +16,7 @@ function Save_Contact()
 function Contact_CallBack(data)
 {
     $("#tabcustom_fields").show();
-    $("#hdnContact_Id").val(data.contact.contact_Entity.Contact_Id);
+    $("#hdnContact_Id").val(data.Contact.Contact_Id);
     Friendly_Message(data);
 }
 
@@ -26,8 +26,7 @@ function Set_Contact()
         {
             contact: 
                 {
-                    contact_Entity:
-                        {
+                    
                             Contact_Id: $("#hdnContact_Id").val(),
 
                             Contact_Name: $("#txtContact_Name").val(),
@@ -62,7 +61,7 @@ function Set_Contact()
 
                             Supplier_Id:0
 
-                        }
+                        
                 }
         }
 

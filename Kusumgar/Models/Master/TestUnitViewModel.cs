@@ -48,6 +48,8 @@ namespace Kusumgar.Models
         {
             public string Test_Unit_Name { get; set; }
 
+            public int Test_Unit_Id { get; set; }
+
         }
     }
 }

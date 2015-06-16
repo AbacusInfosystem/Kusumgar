@@ -1,0 +1,129 @@
+﻿@model Kusumgar.Models.QualityViewModel
+@{
+    ViewBag.Title = "Search Quality";
+}
+
+<script src="~/Scripts/Master/Event/quality_search_event.js"></script>
+<script src="~/Scripts/Master/Method/quality_search_method.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Quality Creation
+            <small>Search</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active"> Quality Creation Search</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Quality Creation Search -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form id="frmQualitySearch">
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+                                    <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                                    <div class="form-group">
+                                        <label>Yarn Type</label>
+                                        <select class="form-control input-sm" id="drpYarnType" name="Filter.Yarn_Type_Id">
+                                            <option value="">Select Yarn Type </option>
+
+
+                                            @foreach (var item in Model.Yarn_Types)
+                                        {
+                                            if (Model.Filter.Yarn_Type_Id == item.Attribute_Code_Id)
+                                            {
+                                        <option value="@item.Attribute_Code_Id" selected="selected">@item.Attribute_Code_Name</option>
+                                            }
+                                            else
+                                            {
+                                        <option value="@item.Attribute_Code_Id">@item.Attribute_Code_Name</option>
+                                            }
+
+                                        }
+
+                                        </select>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-left btn-group-sm">
+                                            <button type="button" id="btnSearch" class="btn btn-success">Search</button>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","Quality")" role="button">Create</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-right  btn-group-sm">
+                                            <input type="hidden" id="hdfQualityId" name="Quality.Quality_Id" />
+
+                                            <button type="button" class="btn btn-warning" id="btnEdit" style="display:none;">Edit</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </form>
+                   </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body table-responsive no-padding">
+
+                        <table class="table table-striped" id="tblSearchQuality">
+                            <tr>
+                                
+                               <th></th>
+                               <th>Quality No</th>
+                               <th>Yarn Type</th>
+                               <th>Minimum Order Size</th>
+                               <th>Ideal Roll Length</th>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                          
+                        </ul>
+                    </div>
+
+                    <div id="divSearchGridOverlay" class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

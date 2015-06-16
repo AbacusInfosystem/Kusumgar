@@ -19,7 +19,7 @@ function Save_Customer_Details()
 function Customer_CallBack(data)
 {
 
-    $("#hdnCustomer_Id").val(data.Customer.Customer_Entity.Customer_Id);
+    $("#hdnCustomer_Id").val(data.Customer.Customer_Id);
 
     $("#tabFinancial").show();
     $("#tabBilling").show();
@@ -39,8 +39,7 @@ function Set_Customer()
         {
             Customer: 
                 {
-                    Customer_Entity:
-                        {
+                    
                             Customer_Id: $("#hdnCustomer_Id").val(),
 
                             Customer_Name: $("#txtCustomer_Name").val(),
@@ -86,7 +85,7 @@ function Set_Customer()
                             Block_Order: $("#hdnBlock_Order").val(),
 
                             Is_Active: $("#hdnIs_Active").val()
-                        }
+                        
                 }
         }
 
@@ -106,7 +105,7 @@ function Bind_States(data)
     {
         for (var i = 0; i < data.length ; i++)
         {
-            htmltext += "<option value='" + data[i].State_Entity.StateId + "'>" + data[i].State_Entity.StateName + "</option>";
+            htmltext += "<option value='" + data[i].StateId + "'>" + data[i].StateName + "</option>";
         }
     }
     $("#drpHead_Office_State").html(htmltext);

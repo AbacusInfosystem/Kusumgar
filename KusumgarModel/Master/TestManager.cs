@@ -11,13 +11,13 @@ namespace KusumgarModel
 {
   public  class TestManager
     {
-      public List<TestInfo> Get_Tests(PaginationInfo pager)
+      public List<TestInfo> Get_Tests(ref PaginationInfo pager)
         {
             List<TestInfo> tests = new List<TestInfo>();
 
             TestRepo tRepo = new TestRepo();
 
-            tests = tRepo.Get_Tests(pager);
+            tests = tRepo.Get_Tests(ref pager);
 
             return tests;
        }
@@ -58,21 +58,27 @@ namespace KusumgarModel
             return fabricTypes;
         }
 
-        public List<TestInfo> Get_Test_By_Fabric_Type(int fabricTypeId, PaginationInfo pager)
+        public List<TestInfo> Get_Test_By_Fabric_Type(int fabricTypeId, ref PaginationInfo pager)
         {
             List<TestInfo> fabricTypes = new List<TestInfo>();
 
             TestRepo tRepo = new TestRepo();
 
-            fabricTypes = tRepo.Get_Test_By_Fabric_Type(fabricTypeId,pager);
+            fabricTypes = tRepo.Get_Test_By_Fabric_Type(fabricTypeId,ref pager);
 
             return fabricTypes;
         }
 
-        public List<AutocompleteInfo> Get_Test_AutoComplete(string testUnitName)
+        public List<AutocompleteInfo> Get_Test_Unit_AutoComplete(string testUnitName)
         {
             TestRepo tRepo = new TestRepo();
-            return tRepo.Get_Test_AutoComplete(testUnitName);
+            return tRepo.Get_Test_Unit_AutoComplete(testUnitName);
+        }
+
+        public List<AutocompleteInfo> Get_Test_Autocomplete(string test_Name)
+        {
+            TestRepo tRepo = new TestRepo();
+            return tRepo.Get_Test_Autocomplete(test_Name);
         }
 
     }

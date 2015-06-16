@@ -73,7 +73,7 @@ function Consumable_Vendor_CallBack(data) {
 
             htmlText += "<td>";
             //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Vendor_Id;
-            htmlText += data.Consumable.Consumable_Vendors[i].Vendor_Entity.Vendor_Name;
+            htmlText += data.Consumable.Consumable_Vendors[i].Vendor_Name;
             htmlText += "</td>";
 
             //htmlText += "<td>";
@@ -88,7 +88,7 @@ function Consumable_Vendor_CallBack(data) {
 
             htmlText += "<input type='hidden' class='hdn_Consumable_Vendor_Id' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + "'>";
             //htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Vendor_Id + "'>";
-            htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Vendor_Entity.Vendor_Name + "'>";
+            htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Vendor_Name + "'>";
             htmlText += "<input type='hidden' class='Priority_Order' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Priority_Order + "'>";
 
             htmlText += "<div class='btn-group pull-right'>";

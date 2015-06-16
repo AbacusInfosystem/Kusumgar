@@ -67,19 +67,19 @@ namespace KusumgarDataAccess
         {
             RoleInfo role = new RoleInfo();
 
-            role.RoleEntity.Role_Id = Convert.ToInt32(dr["Role_Id"]);
+            role.Role_Id = Convert.ToInt32(dr["Role_Id"]);
 
-            role.RoleEntity.Role_Name = Convert.ToString(dr["Role_Name"]);
+            role.Role_Name = Convert.ToString(dr["Role_Name"]);
 
-            role.RoleEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            role.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            role.RoleEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            role.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            role.RoleEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            role.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            role.RoleEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            role.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
-            role.RoleEntity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            role.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
             return role;
         }
@@ -112,6 +112,28 @@ namespace KusumgarDataAccess
             return RoleInfo;
         }
 
+        public List<RoleInfo> Get_Roles_By_Id(int Role_Id, ref PaginationInfo pager)
+        {
+            List<RoleInfo> Roles = new List<RoleInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Role_Id", Role_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Role_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+                {
+                    Roles.Add( Get_Role_Values(dr));
+                }
+            }
+
+            return Roles;
+        }
+
         public int Insert_Role(RoleInfo RoleInfo)
         {
              int Role_Id = Convert.ToInt32(sqlRepo.ExecuteScalerObj(SetValues_In_Role(RoleInfo), StoredProcedures.Insert_Role_Sp.ToString(), CommandType.StoredProcedure));
@@ -128,16 +150,16 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
             
-            sqlParamList.Add(new SqlParameter("@Role_Name", RoleInfo.RoleEntity.Role_Name));
-            sqlParamList.Add(new SqlParameter("@Is_Active", RoleInfo.RoleEntity.Is_Active));
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", RoleInfo.RoleEntity.UpdatedBy));
-            if (RoleInfo.RoleEntity.Role_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Role_Name", RoleInfo.Role_Name));
+            sqlParamList.Add(new SqlParameter("@Is_Active", RoleInfo.Is_Active));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", RoleInfo.UpdatedBy));
+            if (RoleInfo.Role_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", RoleInfo.RoleEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", RoleInfo.CreatedBy));
             }
-            if (RoleInfo.RoleEntity.Role_Id != 0)
+            if (RoleInfo.Role_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Role_Id", RoleInfo.RoleEntity.Role_Id));
+                sqlParamList.Add(new SqlParameter("@Role_Id", RoleInfo.Role_Id));
                
             }
 

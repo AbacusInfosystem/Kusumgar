@@ -3,7 +3,7 @@
     var dViewModel = {
 
         Filter: {
-
+            Defect_Type_Id: $('#hdnDefectTypeId').val(),
            Defect_Type_Name: $('#txtDefectTypeName').val()
         },
 
@@ -24,6 +24,7 @@ function GetAllDefectTypes() {
 
         Filter: {
 
+                Defect_Type_Id:"",
                  Defect_Type_Name: ""
                 },
 
@@ -50,7 +51,7 @@ function BindDefectTypeInGrid(data, mode) {
 
          htmlText += "<td>";
 
-         htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' />";
+         htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].Defect_Type_Id + "' />";
 
          htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
@@ -58,11 +59,11 @@ function BindDefectTypeInGrid(data, mode) {
 
          htmlText += "<td>";
 
-         htmlText += data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Name;
+         htmlText += data.DefectTypeGrid[i].Defect_Type_Name;
 
          htmlText += "</td>";
 
-         if (data.DefectTypeGrid[i].DefectTypeEntity.Status == true) {
+         if (data.DefectTypeGrid[i].Status == true) {
 
              htmlText += "<td>";
 
@@ -70,7 +71,7 @@ function BindDefectTypeInGrid(data, mode) {
 
              htmlText += "</td>";
          }
-         if (data.DefectTypeGrid[i].DefectTypeEntity.Status == false) {
+         if (data.DefectTypeGrid[i].Status == false) {
              htmlText += "<td>";
 
              htmlText += "Inactive";
@@ -98,8 +99,6 @@ function BindDefectTypeInGrid(data, mode) {
     $('#tblSearchDefectType tr:first').after(htmlText);
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-    
 
     if (data.DefectTypeGrid.length > 0) {
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
@@ -138,6 +137,7 @@ function PageMore(Id) {
 
         Filter: {
 
+            Defect_Type_Id: $('#hdnDefectTypeId').val(),
             Defect_Type_Name: $('#txtDefectTypeName').val()
         },
 

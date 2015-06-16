@@ -29,22 +29,22 @@
                     <th>Field value</th>
                     <th style="min-width: 81px;">&nbsp; </th>
                 </tr>
-                @foreach (var item in Model.contact.Contact_Custom_Fields_List)
+                @foreach (var item in Model.Contact.Contact_Custom_Fields_List)
                 {
 
-                    <tr id="cust_tr_@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+                    <tr id="cust_tr_@item.Contact_Custom_Field_Id">
 
-                        <td>@item.Custom_Fields_Entity.Field_Name</td>
-                        <td>@item.Custom_Fields_Entity.Field_Value</td>
+                        <td>@item.Field_Name</td>
+                        <td>@item.Field_Value</td>
                         <td>
-                            <input type="hidden" class="hdn_Contact_Custom_Field_Id" value="@item.Custom_Fields_Entity.Contact_Custom_Field_Id">
+                            <input type="hidden" class="hdn_Contact_Custom_Field_Id" value="@item.Contact_Custom_Field_Id">
 
-                            <input type="hidden" class="Field_Name" value="@item.Custom_Fields_Entity.Field_Name">
-                            <input type="hidden" class="Field_Value" value="@item.Custom_Fields_Entity.Field_Value">
+                            <input type="hidden" class="Field_Name" value="@item.Field_Name">
+                            <input type="hidden" class="Field_Value" value="@item.Field_Value">
 
                             <div class="btn-group pull-right">
-                                <button type="button" id="btnEdit" class="btn btn-info btn-sm" onclick="EditCustomFields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-pencil-square-o'></i></button>
-                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveCustomFields(@item.Custom_Fields_Entity.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
+                                <button type="button" id="btnEdit" class="btn btn-info btn-sm" onclick="EditCustomFields(@item.Contact_Custom_Field_Id)"><i class='fa fa-pencil-square-o'></i></button>
+                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveCustomFields(@item.Contact_Custom_Field_Id)"><i class='fa fa-times'></i></button>
                             </div>
                         </td>
                     </tr>
@@ -54,8 +54,10 @@
         </div>
     </div>
     <div class="box-footer">
-        <button type="button" class="btn btn-success btn-sm" id="btnSaveCustomField">Save custom field</button>
-        <a href="@Url.Action("Search","Contact")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-success btn-sm" id="btnSaveCustomField">Save custom field</button>
+            <a href="@Url.Action("Search","Contact")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+        </div>
     </div>
 
 </form>

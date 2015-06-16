@@ -54,8 +54,11 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <label for="txtDefectTypeName">Defect name</label>
-                                        <input type="text" name="Filter.Defect_Name" class="form-control input-sm" id="txtDefectName" placeholder="Enter defect - type">
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtDefectName" placeholder="Enter Defect -Name" value="">
+                                            <input type="hidden" id="hdnDefectId" value="@Model.Filter.Defect_Id" name="Filter.Defect_Id" class="auto-complete-value">
+                                            <input type="hidden" id="txtDefectName" value="@Model.Filter.Defect_Name" name="Filter.Defect_Name" class="auto-complete-label">
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -64,13 +67,13 @@
                                             <option value="">Select defect-type</option>
                                             @foreach (var item in Model.DefectType)
                                             {
-                                                if (Model.Filter.Defect_Type_Id == item.DefectTypeEntity.Defect_Type_Id)
+                                                if (Model.Filter.Defect_Type_Id == item.Defect_Type_Id)
                                                 {
-                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id" selected="selected">@item.DefectTypeEntity.Defect_Type_Name</option>
+                                                    <option value="@item.Defect_Type_Id" selected="selected">@item.Defect_Type_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.DefectTypeEntity.Defect_Type_Id">@item.DefectTypeEntity.Defect_Type_Name</option>
+                                                    <option value="@item.Defect_Type_Id">@item.Defect_Type_Name</option>
                                                 }
                                             }
                                         </select>

@@ -23,7 +23,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-        <input type="hidden" id="hdfCustomer_Id" name="Customer.Customer_Entity.Customer_Id" />
+        <input type="hidden" id="hdfCustomer_Id" name="Customer.Customer_Id" />
         <input type="hidden" id="hdCustomer_Id" name="Filter.Customer_Id" />
         <input type="hidden" id="hdfCustomer_Name" name="Filter.Customer_Name" />
         <!-- Content Header (Page header) -->
@@ -54,8 +54,9 @@
                                     <div class="form-group">
                                         <label for="txtCustomerName">Customer name</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" name="Filter.Customer_Name" value="@Model.Filter.Customer_Name">
-                                            <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter.Customer_Id" name="Filter.Customer_Id">
+                                            <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name"  value="@Model.Filter.Customer_Name">
+                                            <input type="hidden" id="hdnCustomer_Id" value="@Model.Filter.Customer_Id" name="Filter.Customer_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdnCustomer_Name" value="@Model.Filter.Customer_Name" name="Filter.Customer_Name" class="auto-complete-label">
                                         </div>
                                     </div>
                                 </div>
@@ -146,13 +147,13 @@
                                     <option value="">- Select Nation -</option>
                                     @foreach (var item in Model.Nations)
                                     {
-                                        if (Model.Filter.Nation_Id == item.Nation_Entity.NationId)
+                                        if (Model.Filter.Nation_Id == item.NationId)
                                         {
-                                            <option value="@item.Nation_Entity.NationId" selected="selected">@item.Nation_Entity.NationName</option>
+                                            <option value="@item.NationId" selected="selected">@item.NationName</option>
                                         }
                                         else
                                         {
-                                            <option value="@item.Nation_Entity.NationId">@item.Nation_Entity.NationName</option>
+                                            <option value="@item.NationId">@item.NationName</option>
                                         }
                                     }
                                 </select>

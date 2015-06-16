@@ -42,8 +42,9 @@
                                     <div class="form-group">
                                         <label for="txtFull_Code">Full Code</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtFull_Code" placeholder="Enter Full Code" name="Filter.Full_Code" value="@Model.Filter.Full_Code" />
-                                            <input type="hidden" id="hdnFull_Code" />
+                                            <input type="text" class="form-control input-sm" id="txtFull_Code" placeholder="Enter Full Code" />
+                                            <input type="hidden" name="Filter.Full_Code" id="hdnFull_Code" value="@Model.Filter.Full_Code" class="auto-complete-label"  />
+                                            <input type="hidden" id="hdnYArticle_Id" value="@Model.Filter.YArticle_Id" name="Filter.YArticle_Id" class="auto-complete-value" />
                                         </div>
                                     </div>
 
@@ -53,15 +54,15 @@
                                             <option value="">-Select Yarn type- </option>
                                             @if (Model.Attribute_Codes.Count > 0)
                                             {
-                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString()))
                                                 {
-                                                    if (Model.YArticle.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    if (Model.YArticle.Yarn_Type_Id == item.Attribute_Code_Id)
                                                     {
-                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
                                                     }
                                                 }
                                             }

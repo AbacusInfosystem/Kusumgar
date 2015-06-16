@@ -47,5 +47,7 @@ namespace Kusumgar.Models
         public string Full_Code { get; set; }
 
         public int Yarn_Type_Id { get; set; }
+
+        public int YArticle_Id { get; set; }
     }
 }

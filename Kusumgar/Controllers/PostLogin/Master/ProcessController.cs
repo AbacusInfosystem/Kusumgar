@@ -52,8 +52,8 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                pViewModel.Process.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
-                pViewModel.Process.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                pViewModel.Process.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                pViewModel.Process.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 pViewModel.Process.CreatedOn = DateTime.Now;
                 pViewModel.Process.UpdatedOn = DateTime.Now;
                 _processMan.Insert_Process(pViewModel.Process);
@@ -71,7 +71,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                pViewModel.Process.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                pViewModel.Process.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 pViewModel.Process.UpdatedOn = DateTime.Now;
                 _processMan.Update_Process(pViewModel.Process);
 

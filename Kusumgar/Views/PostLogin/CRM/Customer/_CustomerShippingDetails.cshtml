@@ -57,21 +57,21 @@
                 </tr>
                 @foreach (var item in Model.Customer.Customer_Address_List)
                 {
-                    if (item.Customer_Address_Entity.Address_Type == 2)
+                    if (item.Address_Type == 2)
                     {
-                        <tr id="Ship_tr_@item.Customer_Address_Entity.Customer_Address_Id">
+                        <tr id="Ship_tr_@item.Customer_Address_Id">
 
-                            <td>@item.Customer_Address_Entity.Addresss</td>
+                            <td>@item.Addresss</td>
                             <td>
-                                <input type="hidden" class="hdn_Customer_shipping_Address_Id" value="@item.Customer_Address_Entity.Customer_Address_Id">
+                                <input type="hidden" class="hdn_Customer_shipping_Address_Id" value="@item.Customer_Address_Id">
 
-                                <input type="hidden" class="shipping_Address" value="@item.Customer_Address_Entity.Addresss">
-                                <input type="hidden" class="shipping_Landline1" value="@item.Customer_Address_Entity.Landline1">
-                                <input type="hidden" class="shipping_Landline2" value="@item.Customer_Address_Entity.landline2">
-                                <input type="hidden" class="shipping_FaxNo" value="@item.Customer_Address_Entity.FaxNo">
+                                <input type="hidden" class="shipping_Address" value="@item.Addresss">
+                                <input type="hidden" class="shipping_Landline1" value="@item.Landline1">
+                                <input type="hidden" class="shipping_Landline2" value="@item.landline2">
+                                <input type="hidden" class="shipping_FaxNo" value="@item.FaxNo">
                                 <div class="btn-group pull-right">
                                     <button type="button" id="btnEdit" class="btn btn-info btn-sm btn-Shipping"><i class='fa fa-pencil-square-o'></i></button>
-                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveShippingAddress(@item.Customer_Address_Entity.Customer_Address_Id)"><i class='fa fa-times'></i></button>
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm " onclick="RemoveShippingAddress(@item.Customer_Address_Id)"><i class='fa fa-times'></i></button>
                                 </div>
                             </td>
                         </tr>

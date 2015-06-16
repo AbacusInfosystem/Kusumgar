@@ -25,48 +25,48 @@ function BindCompGrid(data) {
 
     if (data.Complaints.length > 0) {
 
-        for (i = 0; i < data.Complaints.length; i++) {
+    for (i = 0; i < data.Complaints.length; i++) {
 
-            htmlText += "<tr>";
+        htmlText += "<tr>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Entity.Complaint_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Id + "' class='iradio_square-green'/>";
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Customer_Name;
+        htmlText += data.Complaints[i].Customer_Name;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Complaint_Entity.Order_Id;
+            htmlText += data.Complaints[i].Order_Id;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Complaint_Entity.Order_Item_Id;
+            htmlText += data.Complaints[i].Order_Item_Id;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Complaint_Entity.Challan_No;
+            htmlText += data.Complaints[i].Challan_No;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Complaint_Entity.CDescription;
+            htmlText += data.Complaints[i].CDescription;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "</tr>";
-        }
+        htmlText += "</tr>";
+    }
 
     }
 
@@ -92,12 +92,12 @@ function BindCompGrid(data) {
 
     if (data.Complaints.length > 0) {
 
-        $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-        if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
-            $('.pagination').html(data.Pager.PageHtmlString);
-        }
+        $('.pagination').html(data.Pager.PageHtmlString);
+    }
     }
     else
     {
