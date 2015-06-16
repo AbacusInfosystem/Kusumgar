@@ -1,190 +1,118 @@
-﻿@{
-    ViewBag.Title = "Search C Article";
-}
+﻿@model Kusumgar.Models.CArticleViewModel
+@using KusumgarBusinessEntities.Common
 
+<script src="/Scripts/Master/Event/carticle_search_event.js"></script>
+<script src="/Scripts/Master/Method/carticle_search_method.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+    @*@{Html.RenderPartial("_ServerMessage");}*@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             C Article
+
             <small>Search</small>
         </h1>
 
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li>Master</li>
-            <li class="active"> C Article Search</li>
+            <li>Masters</li>
+            <li class="active">C Article Search</li>
         </ol>
     </section>
-
-
-    <!-- Main content -->
-    <section class="content">
-        <!-- C Article Search -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <!-- form start -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label for="txtFullCode">Full Code</label>
-                                    <input type="text" class="form-control" id="txtFullCode" placeholder="Enter Full Code" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txtFullCode">Yarn Type</label>
-                                    <select id="drpYarn_type" class="form-control input-sm" >
-                                        <option>Select Yarn type</option>
-                                        <option>Polyster texturised</option>
-                                        <option>Air texturised Nylon</option>
-                                        <option>Viscose Staple</option>
-                                        <option>Polyster Cotton Mix</option>
-                                        <option>Meta aramide</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="box-footer">
+    <form id="frmSearch_CArticle">
+        <input type="hidden" id="hdfC_Article_Id" name="CArticle.C_Article_Id" value="">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <div class="box-body">
                             <div class="row">
-                                <div class="col-md-6">
-
-                                    <div class="btn-group pull-left">
-                                        <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
-                                        <a class="btn btn-primary" href="@Url.Action("Index","CArticle")" role="button">Create C Article</a>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="txtFullCode">Full Code</label>
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtFullCode" placeholder="Enter Full Code">
+                                            <input type="hidden" id="hdfFull_Code" name="Filter.Full_Code" value="@Model.Filter.Full_Code" class="auto-complete-label" />
+                                            <input type="hidden" id="hdnCArticle_Id" value="@Model.Filter.CArticle_Id" name="Filter.CArticle_Id" class="auto-complete-value" />
+                                        </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="drpYarnType">Yarn Type</label>
+                                        <select id="drpYarnType" class="form-control input-sm" name="Filter.Yarn_Type_Id">
+                                            <option>-Select Yarn Type-</option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                                {
+                                                    if (Model.CArticle.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
 
-                                    <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-warning">Edit C Article</button>
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="btn-group pull-left btn-group-sm">
+                                                <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","CArticle")" role="button">Create </a>
+                                            </div>
+                                        </div>
                                     </div>
-
+                                    <div class="col-md-6">
+                                        <div class="btn-group pull-right btn-group-sm">
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-solid">
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-striped">
-                            <tr>
-                                <th style="width:50px;"></th>
-                                <th style="width:400px;">Full Code</th>
-                                <th style="width:200px;">Yarn Type</th>
-                                <th style="width:200px;">QualityNo</th>
-                                <th style="width:200px;">Weave</th>
-                                <th style="width:200px;">Shades</th>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" checked />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Nylon 6</td>
-                                <td>4042</td>
-                                <td>Plain</td>
-                                <td>Bright Yarn</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1"  />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Polyster texturised</td>
-                                <td>4123</td>
-                                <td>Plain</td>
-                                <td>Semi Dull</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Spun Polyster</td>
-                                <td>4342</td>
-                                <td>Plain</td>
-                                <td>Full Dull</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Spun Polyster</td>
-                                <td>4342</td>
-                                <td>Plain</td>
-                                <td>Full Dull</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Spun Polyster</td>
-                                <td>4342</td>
-                                <td>Plain</td>
-                                <td>Full Dull</td>
-                            </tr>
-                        </table>
+            <!-- /.content -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-striped" id="tblCArticle">
+                                <tr id="subhead">
+                                    <th></th>
+                                    <th>Full Code</th>
+                                    <th>Yarn Type</th>
+                                    <th>Quality No</th>
+                                    <th>Weave</th>
+                                    <th>Shade</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="box-footer clearfix">
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                <ul></ul>
+                            </div>
+                            <div id="divSearchGridOverlay" class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
-
-                    <div id="divSearchGridOverlay" class="overlay">
-                        <i class="fa fa-refresh fa-spin"></i>
-                    </div>
-
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- /.content -->
+        </section>
+    </form>
 </div>
 <!-- /.content-wrapper -->
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-
-        //Date range picker
-        $('#dtpContractExpirationDate').datepicker();
-
-        $("#btnSearch").click(function () {
-            $("#divSearchGridOverlay").show();
-        });
-
-        $("#divSearchGridOverlay").hide();
-    });
-</script>

@@ -45,13 +45,9 @@
         <EntityTypeShape EntityType="KusumgarModel.M_Work_Center_Process" Width="1.5" PointX="18.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Work_Station" Width="1.5" PointX="18.75" PointY="3.75" />
         <EntityTypeShape EntityType="KusumgarModel.M_Y_Article" Width="1.5" PointX="18.75" PointY="7.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Samples" Width="1.5" PointX="4.75" PointY="19.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Application" Width="1.5" PointX="19.75" PointY="14.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Quality" Width="1.5" PointX="21.375" PointY="0.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Quality_Application_Mapping" Width="1.5" PointX="0.75" PointY="19.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Market_Segment" Width="1.5" PointX="19.375" PointY="17.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_Quality_Market_Segment_Mapping" Width="1.5" PointX="19.375" PointY="20.75" />
-        <EntityTypeShape EntityType="KusumgarModel.M_P_Article" Width="1.5" PointX="21.375" PointY="5.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_Quality" Width="1.5" PointX="3.375" PointY="19.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_W_Article" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="KusumgarModel.M_C_Article" Width="1.5" PointX="5.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

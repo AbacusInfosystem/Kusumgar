@@ -83,9 +83,6 @@
     <Compile Include="M_Access_Function.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="M_Application.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="M_Attribute_Code.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -96,6 +93,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Consumable_Vendors.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_C_Article.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Defect.cs">
@@ -122,9 +122,6 @@
     <Compile Include="M_Industrial_Vendors.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="M_Market_Segment.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="M_Material.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -149,25 +146,13 @@
     <Compile Include="M_Product_Vendors.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="M_P_Article.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="M_Quality.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="M_Quality_Application_Mapping.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="M_Quality_Market_Segment_Mapping.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Role.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Role_Access_Function_Mapping.cs">
-      <DependentUpon>KusumgarEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="M_Samples.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_State.cs">
@@ -198,6 +183,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Work_Station.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_W_Article.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Y_Article.cs">

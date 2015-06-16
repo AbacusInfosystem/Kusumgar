@@ -55,8 +55,12 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                cViewModel.Complaint.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Complaint.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Complaint.CreatedOn = DateTime.Now;
+                cViewModel.Complaint.UpdatedOn = DateTime.Now;
                 _complaintMan.Insert_Complaint(cViewModel.Complaint);
-                cViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("COM001"));
             }
             catch (Exception ex)
             {
@@ -70,8 +74,10 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                cViewModel.Complaint.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Complaint.UpdatedOn = DateTime.Now;
                 _complaintMan.Update_Complaint(cViewModel.Complaint);
-                cViewModel.Friendly_Message.Add(MessageStore.Get("CO002"));
+                cViewModel.Friendly_Message.Add(MessageStore.Get("COM002"));
             }
             catch (Exception ex)
             {

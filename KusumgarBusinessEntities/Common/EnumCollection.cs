@@ -354,7 +354,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Material_Vendors_By_Id_Sp,
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
-        Get_Material_SubCategory_By_CategoryId_Sp,
+Get_Material_SubCategory_By_CategoryId_Sp,
 
         // Work Center
 
@@ -470,6 +470,31 @@ namespace KusumgarBusinessEntities.Common
         Delete_Temp_Functional_Parameters_By_Id,
         Delete_Temp_Visual_Parameters_By_Id,
 
+
+        //Process
+        Insert_Process_Sp,
+        Update_Process_Sp,
+        Get_Process_Sp,
+        Get_Process_By_Id_Sp,
+        Get_Process_By_Process_Name_Sp,
+
+        //W Article
+        Insert_W_Article_Sp,
+        Update_W_Article_Sp,
+        Get_W_Articles_Sp,
+        Get_W_Article_By_Id_Sp,
+        Get_W_Articles_By_Full_Code_Sp,
+        Get_W_Articles_By_Yarn_Type_Id_Sp,
+        Get_W_Articles_By_WArticle_Id_Yarn_Type_Sp,
+        
+        //C Article
+        Insert_C_Article_Sp,
+        Update_C_Article_Sp,
+        Get_C_Articles_Sp,
+        Get_C_Article_By_Id_Sp,
+        Get_C_Articles_By_Full_Code_Sp,
+        Get_C_Articles_By_Yarn_Type_Id_Sp,
+        Get_C_Articles_By_CArticle_Id_Yarn_Type_Sp,
     }
 
     public enum GenderType
@@ -538,13 +563,13 @@ namespace KusumgarBusinessEntities.Common
         option5 = 5,
     }
    
-    public enum ProductVendor
+      public enum ProductVendor
       {
           ProductType=1,
           Service=2
       }
    
-   public enum ShipmentMethod
+    public enum ShipmentMethod
     {
         method1=1,
         method2=2

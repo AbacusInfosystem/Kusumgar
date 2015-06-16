@@ -137,6 +137,18 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/g-articles-by-full-code/" + $('#txtFull_Code').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtProcessName') {
+                urlString = "/master/get-process-id-by-process-name/" + $('#txtProcessName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFullCode') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtFullCode').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFullCode') {
+                urlString = "/master/c-articles-by-full-code/" + $('#txtFullCode').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",
