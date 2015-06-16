@@ -190,7 +190,7 @@
                                         <option value="">-Select Chemical Finish- </option>
                                         @if (Model.Attribute_Codes.Count > 0)
                                         {
-                                            foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Finish.ToString()))
+                                            foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Finish.ToString().Replace("_", " ")))
                                             {
                                                 if (Model.PArticle.Chemical_Finish_Id == item.Attribute_Code_Id)
                                                 {
@@ -242,7 +242,7 @@
                                         <option value="">-Select Mechanical Finish- </option>
                                         @if (Model.Attribute_Codes.Count > 0)
                                         {
-                                            foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Mechanical_Finish.ToString()))
+                                            foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Mechanical_Finish.ToString().Replace("_", " ")))
                                             {
                                                 if (Model.PArticle.Mechanical_Finish_Id == item.Attribute_Code_Id)
                                                 {
