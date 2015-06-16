@@ -33,6 +33,7 @@
 
             "Enquiry.Staggered_Order.Quantity":
                 {
+                    number: true,
                     required:true
                 },
             "Enquiry.Staggered_Order.Delivery_Date":
