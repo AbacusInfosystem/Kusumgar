@@ -42,6 +42,8 @@
 
         $('.fa-remove').trigger("click");
 
+        $('#hdfCurrentPage').val(0);
+
         $("#hdfEnquiry_Status_Id").val($(this).prop('id'));
 
         SearchEnquiry();

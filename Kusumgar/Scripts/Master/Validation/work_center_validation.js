@@ -20,11 +20,11 @@
         },
 
         rules: {
-            "Work_Center.Factory_Entity.Factory_Id":
+            "Work_Center.Factory_Id":
                 {
                     required: true
                 },
-            "Work_Center.Work_Station_Name":
+            "work_Center.Work_Station.Work_Station_Id":
                 {
                     required: true
                 },
@@ -68,11 +68,11 @@
         },
         messages: {
 
-            "Work_Center.Factory_Entity.Factory_Id":
+            "Work_Center.Factory_Id":
             {
                 required: "Factory name is required."
             },
-            "Work_Center.Work_Station_Name":
+            "work_Center.Work_Station.Work_Station_Id":
                 {
                     required: "Work station name is required"
                 },

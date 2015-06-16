@@ -289,6 +289,7 @@
     <Compile Include="Models\CRM\CustomerViewModel.cs" />
     <Compile Include="Models\Master\AjaxViewModel.cs" />
     <Compile Include="Models\Master\AttributeCodeViewModel.cs" />
+    <Compile Include="Models\Master\CArticleViewModel.cs" />
     <Compile Include="Models\Master\ConsumableViewModel.cs" />
     <Compile Include="Models\Master\CustomerQualityViewModel.cs" />
     <Compile Include="Models\Master\DefectTypeViewModel.cs" />
@@ -299,6 +300,7 @@
     <Compile Include="Models\Master\MaterialViewModel.cs" />
     <Compile Include="Models\Master\PArticleViewModel.cs" />
     <Compile Include="Models\Master\QualityViewModel.cs" />
+    <Compile Include="Models\Master\ProcessViewModel.cs" />
     <Compile Include="Models\Master\RoleViewModel.cs" />
     <Compile Include="Models\Master\TestUnitViewModel.cs" />
     <Compile Include="Models\Master\TestViewModel.cs" />
@@ -306,6 +308,7 @@
     <Compile Include="Models\Master\VendorContactViewModel.cs" />
     <Compile Include="Models\Master\VendorViewModel.cs" />
     <Compile Include="Models\Master\WorkCenterViewModel.cs" />
+    <Compile Include="Models\Master\WArticleViewModel.cs" />
     <Compile Include="Models\Master\YArticleViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
@@ -972,6 +975,8 @@
     <Content Include="Scripts\generic.dragdrop.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.multi.autocomplete.js" />
+    <Content Include="Scripts\Master\Event\carticle_event.js" />
+    <Content Include="Scripts\Master\Event\carticle_search_event.js" />
     <Content Include="Scripts\Master\Event\customer_quality_event.js" />
     <Content Include="Scripts\Master\Event\customer_quality_search_event.js" />
     <Content Include="Scripts\Master\Event\customer_specific_information_event.js" />
@@ -982,6 +987,8 @@
     <Content Include="Scripts\Master\Event\particle_listing_event.js" />
     <Content Include="Scripts\Master\Event\quality_event.js" />
     <Content Include="Scripts\Master\Event\quality_search_event.js" />
+    <Content Include="Scripts\Master\Event\process_event.js" />
+    <Content Include="Scripts\Master\Event\process_search_event.js" />
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
@@ -996,6 +1003,12 @@
     <Content Include="Scripts\Master\Method\particle_method.js" />
     <Content Include="Scripts\Master\Method\quality_method.js" />
     <Content Include="Scripts\Master\Method\quality_search_method.js" />
+    <Content Include="Scripts\Master\Event\warticle_event.js" />
+    <Content Include="Scripts\Master\Event\warticle_search_event.js" />
+    <Content Include="Scripts\Master\Method\carticle_method.js" />
+    <Content Include="Scripts\Master\Method\carticle_search_method.js" />
+    <Content Include="Scripts\Master\Method\process_method.js" />
+    <Content Include="Scripts\Master\Method\process_search_method.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -1050,6 +1063,8 @@
     <Content Include="Scripts\Master\Method\vendor_partial_method.js" />
     <Content Include="Scripts\Master\Method\work_center_listing_method.js" />
     <Content Include="Scripts\Master\Method\work_center_method.js" />
+    <Content Include="Scripts\Master\Method\warticle_method.js" />
+    <Content Include="Scripts\Master\Method\warticle_search_method.js" />
     <Content Include="Scripts\Master\Method\yarticle_listing_method.js" />
     <Content Include="Scripts\Master\Method\defect_method.js" />
     <Content Include="Scripts\Master\Method\defect_search_method.js" />
@@ -1079,6 +1094,7 @@
     <Content Include="Scripts\Master\user_search_method.js" />
     <Content Include="Scripts\Master\user_validation.js" />
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
+    <Content Include="Scripts\Master\Validation\carticle_validation.js" />
     <Content Include="Scripts\Master\Validation\consumable_validation.js" />
     <Content Include="Scripts\Master\Validation\customer_quality_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
@@ -1089,12 +1105,14 @@
     <Content Include="Scripts\Master\Validation\material_validation.js" />
     <Content Include="Scripts\Master\Validation\particle_validation.js" />
     <Content Include="Scripts\Master\Validation\quality_validation.js" />
+    <Content Include="Scripts\Master\Validation\process_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_partial_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_validation.js" />
     <Content Include="Scripts\Master\Validation\work_center_validation.js" />
+    <Content Include="Scripts\Master\Validation\warticle_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Sales\Event\enquiry_events.js" />
@@ -1152,6 +1170,7 @@
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\SystemConfig\" />
     <Folder Include="uploads\" />
+    <Folder Include="Views\PostLogin\Master\ConsumableMaster\" />
     <Folder Include="Views\PostLogin\Planning\" />
     <Folder Include="Views\PostLogin\SystemConfig\" />
   </ItemGroup>

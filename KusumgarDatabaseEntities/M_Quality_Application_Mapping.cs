@@ -15,11 +15,11 @@ namespace KusumgarDatabaseEntities
     public partial class M_Quality_Application_Mapping
     {
         public int Quality_Application_Id { get; set; }
-        public int Quality_Id { get; set; }
         public int Application_Name_Id { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int UpdatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
+        public int Quality_Id { get; set; }
     }
 }

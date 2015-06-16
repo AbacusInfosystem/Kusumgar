@@ -60,6 +60,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Master\AttributeCodeInfo.cs" />
+    <Compile Include="Master\CArticleInfo.cs" />
     <Compile Include="Master\ConsumableInfo.cs" />
     <Compile Include="Master\ConsumableVendorInfo.cs" />
     <Compile Include="Master\CustomerQualityInfo.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Master\MaterialInfo.cs" />
     <Compile Include="Master\MaterialSubCategoryInfo.cs" />
     <Compile Include="Master\PArticleInfo.cs" />
-    <Compile Include="Master\ProcessInfo.cs" />
     <Compile Include="Master\QualityApplicationMappingInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +91,7 @@
     <Compile Include="Master\QualityMarketSegmentMappingInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Master\ProcessInfo.cs" />
     <Compile Include="Master\RoleAccessInfo.cs" />
     <Compile Include="Master\RoleInfo.cs" />
     <Compile Include="Master\SampleInfo.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Master\VendorContactCustomFieldsInfo.cs" />
     <Compile Include="Master\VendorContactInfo.cs" />
     <Compile Include="Master\VendorInfo.cs" />
+    <Compile Include="Master\WArticleInfo.cs" />
     <Compile Include="Master\WorkCenterInfo.cs" />
     <Compile Include="Master\WorkCenterProcessInfo.cs" />
     <Compile Include="Master\WorkStationInfo.cs" />

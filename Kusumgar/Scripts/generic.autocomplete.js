@@ -87,8 +87,8 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/search-role-by-name//" + $('#txtRole_Name').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtFull_Code') {
-                urlString = "/master/y-articles-by-full-code/" + $('#txtFull_Code').val();
+            if ($(elementObject).attr("id") == 'txtYArticle_Full_Code') {
+                urlString = "/master/y-articles-by-full-code/" + $('#txtYArticle_Full_Code').val();
             }
 
             if ($(elementObject).attr("id") == 'txtWork_Station') {
@@ -124,8 +124,8 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/sales/quality-autocomplete/" + $('#txtQuality_No').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtFull_Code') {
-                urlString = "/master/p-articles-by-full-code/" + $('#txtFull_Code').val();
+            if ($(elementObject).attr("id") == 'txtPArticle_Full_Code') {
+                urlString = "/master/p-articles-by-full-code/" + $('#txtPArticle_Full_Code').val();
             }
 
             if ($(elementObject).attr("id") == 'txtCustomer_Sample_No') {
@@ -133,8 +133,20 @@ var InitializeAutoComplete = function (elementObject) {
             }
 
 
-            if ($(elementObject).attr("id") == 'txtFull_Code') {
-                urlString = "/master/g-articles-by-full-code/" + $('#txtFull_Code').val();
+            if ($(elementObject).attr("id") == 'txtGArticle_Full_Code') {
+                urlString = "/master/g-articles-by-full-code/" + $('#txtGArticle_Full_Code').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtProcessName') {
+                urlString = "/master/get-process-id-by-process-name/" + $('#txtProcessName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWArticle_FullCode') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWArticle_FullCode').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtCArticle_FullCode') {
+                urlString = "/master/c-articles-by-full-code/" + $('#txtCArticle_FullCode').val();
             }
 
             $.ajax({

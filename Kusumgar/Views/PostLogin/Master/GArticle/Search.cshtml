@@ -40,7 +40,7 @@
                                     <div class="form-group">
                                         <label for="txtFullCode">Full Code</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtFull_Code" placeholder="Enter Full Code" />
+                                            <input type="text" class="form-control input-sm" id="txtGArticle_Full_Code" placeholder="Enter Full Code" />
                                             <input type="hidden" name="Filter.Full_Code" id="hdnFull_Code" value="@Model.Filter.Full_Code" class="auto-complete-label" />
                                             <input type="hidden" id="hdfG_Article_Id" value="@Model.Filter.G_Article_Id" name="Filter.G_Article_Id" class="auto-complete-value" />
                                         </div>
@@ -49,10 +49,10 @@
                                     <div class="form-group">
                                         <label for="txtFullCode">Yarn Type</label>
                                         <select id="drpYarn_type" class="form-control input-sm">
-                                            <option>Select Yarn type</option>
+                                            <option>Select Yarn Type</option>
                                             @if (Model.Attribute_Codes.Count > 0)
                                             {
-                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_"," ")))
                                                 {
                                                     if (Model.G_Article.Yarn_Type_Id == item.Attribute_Code_Id)
                                                     {
@@ -73,12 +73,12 @@
                                     <div class="col-md-6">
                                         <div class="btn-group pull-left">
                                             <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
-                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","GArticle")" role="button">Create G Article</a>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","GArticle")" role="button">Create </a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="btn-group pull-right">
-                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit G Article</button>
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning">Edit </button>
                                         </div>
                                     </div>
                                 </div>

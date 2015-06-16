@@ -7,8 +7,18 @@ using KusumgarDatabaseEntities;
 
 namespace KusumgarBusinessEntities
 {
-  public  class MarketSegmentInfo : M_Market_Segment
+  public  class MarketSegmentInfo 
     {
+        public int Market_Segment_Id { get; set; }
 
+        public string Market_Segment_Name { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public int CreatedBy { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
+
+        public int UpdatedBy { get; set; }
     }
 }

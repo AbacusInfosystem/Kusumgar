@@ -62,7 +62,7 @@
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
                                 <select id="drpYarn_type" class="form-control input-sm attribute-name" name="G_Article.Yarn_Type_Id">
-                                    <option value="">-Select Yarn type- </option>
+                                    <option value="">-Select Yarn Type- </option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
                                         foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_"," ")))
@@ -504,10 +504,9 @@
 
     </div>
 
-    <div class="box-footer">
+    <div class="btn-group box-footer">
         <button type="button" id="btnSave_G_Article" class="btn btn-success btn-sm">Save</button>
-        <a href="@Url.Action("Search", "GArticle")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
-
+        <a href="@Url.Action("Search", "GArticle")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
     </div>
 
 </form>

@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attachment.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Bank_Details.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -63,6 +66,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Customer_Addresss.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enquiry.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="KusumgarEntities.Context.cs">
@@ -98,6 +104,12 @@
     <Compile Include="M_Consumable_Vendors.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_Customer_Quality.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_C_Article.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Defect.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -108,6 +120,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Factory.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_G_Article.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Industrial.cs">
@@ -200,10 +215,31 @@
     <Compile Include="M_Work_Station.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="M_W_Article.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="M_Y_Article.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staggered_Order.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supporting_Details.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="System_Default.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Temp_Customer_Quality_Details.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Temp_Functional_Parameters.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Temp_Visual_Parameters.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="KusumgarEntities.edmx">
