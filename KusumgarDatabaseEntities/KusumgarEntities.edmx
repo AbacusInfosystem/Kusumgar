@@ -160,6 +160,29 @@
           <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_C_Article">
+          <Key>
+            <PropertyRef Name="C_Article_Id" />
+          </Key>
+          <Property Name="C_Article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Weave_Id" Type="int" Nullable="false" />
+          <Property Name="Shade_Id" Type="int" Nullable="false" />
+          <Property Name="Chemical_Finish_Id" Type="int" Nullable="false" />
+          <Property Name="Mechanical_Finish_Id" Type="int" Nullable="false" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+          <Property Name="C_Finish_Width" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Coat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_gsm" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Full_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -407,6 +430,25 @@
           <Property Name="Inspection_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Testing_Facility" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="M_Quality">
+          <Key>
+            <PropertyRef Name="Quality_Id" />
+          </Key>
+          <Property Name="Quality_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Reed" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pick" Type="nvarchar" MaxLength="100" />
+          <Property Name="Weave" Type="int" Nullable="false" />
+          <Property Name="Minimum_Order_Size" Type="int" />
+          <Property Name="Ideal_Roll_Length" Type="int" />
+          <Property Name="Our_Sample_No" Type="int" />
+          <Property Name="Quality_No" Type="int" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Role">
           <Key>
             <PropertyRef Name="Role_Id" />
@@ -580,6 +622,23 @@
           <Property Name="Product_Category" Type="int" Nullable="false" />
           <Property Name="Code" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="M_W_Article">
+          <Key>
+            <PropertyRef Name="W_Article_Id" />
+          </Key>
+          <Property Name="W_Article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quality_Id" Type="int" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Reed_Space_Inch" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_No_Of_Ends" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Full_Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ideal_Beam" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="M_Work_Center">
           <Key>
             <PropertyRef Name="Work_Center_Id" />
@@ -665,6 +724,7 @@
           <EntitySet Name="Customer_Addresss" EntityType="Self.Customer_Addresss" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Access_Function" EntityType="Self.M_Access_Function" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Attribute_Code" EntityType="Self.M_Attribute_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_C_Article" EntityType="Self.M_C_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Category" EntityType="Self.M_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Consumable" EntityType="Self.M_Consumable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Consumable_Vendors" EntityType="Self.M_Consumable_Vendors" Schema="dbo" store:Type="Tables" />
@@ -684,6 +744,7 @@
           <EntitySet Name="M_Payment_Terms" EntityType="Self.M_Payment_Terms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Process" EntityType="Self.M_Process" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Product_Vendors" EntityType="Self.M_Product_Vendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Quality" EntityType="Self.M_Quality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Role_Access_Function_Mapping" EntityType="Self.M_Role_Access_Function_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_State" EntityType="Self.M_State" Schema="dbo" store:Type="Tables" />
@@ -693,6 +754,7 @@
           <EntitySet Name="M_User" EntityType="Self.M_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_User_Role_Mapping" EntityType="Self.M_User_Role_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Vendor" EntityType="Self.M_Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_W_Article" EntityType="Self.M_W_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Center" EntityType="Self.M_Work_Center" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Center_Process" EntityType="Self.M_Work_Center_Process" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Work_Station" EntityType="Self.M_Work_Station" Schema="dbo" store:Type="Tables" />
@@ -743,6 +805,9 @@
           <EntitySet Name="M_Work_Center_Process" EntityType="KusumgarModel.M_Work_Center_Process" />
           <EntitySet Name="M_Work_Station" EntityType="KusumgarModel.M_Work_Station" />
           <EntitySet Name="M_Y_Article" EntityType="KusumgarModel.M_Y_Article" />
+          <EntitySet Name="M_Quality" EntityType="KusumgarModel.M_Quality" />
+          <EntitySet Name="M_W_Article" EntityType="KusumgarModel.M_W_Article" />
+          <EntitySet Name="M_C_Article" EntityType="KusumgarModel.M_C_Article" />
         </EntityContainer>
         <EntityType Name="Bank_Details">
           <Key>
@@ -1389,6 +1454,65 @@
           <Property Name="Developed_Under_Id" Type="Int32" Nullable="false" />
           <Property Name="Lead_Time_To_Purchase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Work_Station_Id" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_Quality">
+          <Key>
+            <PropertyRef Name="Quality_Id" />
+          </Key>
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Reed" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Weave" Type="Int32" Nullable="false" />
+          <Property Name="Minimum_Order_Size" Type="Int32" />
+          <Property Name="Ideal_Roll_Length" Type="Int32" />
+          <Property Name="Our_Sample_No" Type="Int32" />
+          <Property Name="Quality_No" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_W_Article">
+          <Key>
+            <PropertyRef Name="W_Article_Id" />
+          </Key>
+          <Property Name="W_Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Reed_Space_Inch" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total_No_Of_Ends" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Full_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ideal_Beam" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_C_Article">
+          <Key>
+            <PropertyRef Name="C_Article_Id" />
+          </Key>
+          <Property Name="C_Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quality_Id" Type="Int32" Nullable="false" />
+          <Property Name="Yarn_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Weave_Id" Type="Int32" Nullable="false" />
+          <Property Name="Shade_Id" Type="Int32" Nullable="false" />
+          <Property Name="Chemical_Finish_Id" Type="Int32" Nullable="false" />
+          <Property Name="Mechanical_Finish_Id" Type="Int32" Nullable="false" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="C_Finish_Width" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Coat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_gsm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Is_Active" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
@@ -2089,6 +2213,68 @@
                 <ScalarProperty Name="Twist_Mingle_Id" ColumnName="Twist_Mingle_Id" />
                 <ScalarProperty Name="Denier_Id" ColumnName="Denier_Id" />
                 <ScalarProperty Name="Y_Article_Id" ColumnName="Y_Article_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Quality">
+            <EntityTypeMapping TypeName="KusumgarModel.M_Quality">
+              <MappingFragment StoreEntitySet="M_Quality">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Quality_No" ColumnName="Quality_No" />
+                <ScalarProperty Name="Our_Sample_No" ColumnName="Our_Sample_No" />
+                <ScalarProperty Name="Ideal_Roll_Length" ColumnName="Ideal_Roll_Length" />
+                <ScalarProperty Name="Minimum_Order_Size" ColumnName="Minimum_Order_Size" />
+                <ScalarProperty Name="Weave" ColumnName="Weave" />
+                <ScalarProperty Name="Pick" ColumnName="Pick" />
+                <ScalarProperty Name="Reed" ColumnName="Reed" />
+                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_W_Article">
+            <EntityTypeMapping TypeName="KusumgarModel.M_W_Article">
+              <MappingFragment StoreEntitySet="M_W_Article">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Ideal_Beam" ColumnName="Ideal_Beam" />
+                <ScalarProperty Name="Full_Code" ColumnName="Full_Code" />
+                <ScalarProperty Name="Total_No_Of_Ends" ColumnName="Total_No_Of_Ends" />
+                <ScalarProperty Name="Reed_Space_Inch" ColumnName="Reed_Space_Inch" />
+                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="W_Article_Id" ColumnName="W_Article_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_C_Article">
+            <EntityTypeMapping TypeName="KusumgarModel.M_C_Article">
+              <MappingFragment StoreEntitySet="M_C_Article">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="Full_Code" ColumnName="Full_Code" />
+                <ScalarProperty Name="C_gsm" ColumnName="C_gsm" />
+                <ScalarProperty Name="Coat" ColumnName="Coat" />
+                <ScalarProperty Name="C_Finish_Width" ColumnName="C_Finish_Width" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Mechanical_Finish_Id" ColumnName="Mechanical_Finish_Id" />
+                <ScalarProperty Name="Chemical_Finish_Id" ColumnName="Chemical_Finish_Id" />
+                <ScalarProperty Name="Shade_Id" ColumnName="Shade_Id" />
+                <ScalarProperty Name="Weave_Id" ColumnName="Weave_Id" />
+                <ScalarProperty Name="Yarn_Type_Id" ColumnName="Yarn_Type_Id" />
+                <ScalarProperty Name="Quality_Id" ColumnName="Quality_Id" />
+                <ScalarProperty Name="C_Article_Id" ColumnName="C_Article_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

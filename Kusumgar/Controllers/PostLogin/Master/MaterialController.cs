@@ -61,6 +61,10 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                mViewModel.Material.Material_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                mViewModel.Material.Material_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                mViewModel.Material.Material_Entity.CreatedOn = DateTime.Now;
+                mViewModel.Material.Material_Entity.UpdatedOn = DateTime.Now;
                 mViewModel.Material.Material_Entity.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
                 mViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
             }
@@ -75,6 +79,8 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                mViewModel.Material.Material_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                mViewModel.Material.Material_Entity.UpdatedOn = DateTime.Now;
                 _materialMan.Update_Material(mViewModel.Material);
                 mViewModel.Friendly_Message.Add(MessageStore.Get("P002"));
             }

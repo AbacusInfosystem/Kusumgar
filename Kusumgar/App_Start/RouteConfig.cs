@@ -466,6 +466,36 @@ namespace Kusumgar
             defaults: new { controller = "Process", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "process-2",
+            url: "master/edit-process",
+            defaults: new { controller = "Process", action = "Get_Process_By_Process_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "process-3",
+            url: "master/insert-process",
+            defaults: new { controller = "Process", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "process-4",
+            url: "master/update-process",
+            defaults: new { controller = "Process", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "process-5",
+            url: "master/search-process",
+            defaults: new { controller = "Process", action = "Get_Process", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "process-6",
+            url: "master/get-process-id-by-process-name/{process_Name}",
+            defaults: new { controller = "Process", action = "Get_Process_By_Name_Autocomplete", process_Name = UrlParameter.Optional }
+            );
+
             #endregion
 
             #region Process Route Code
@@ -634,6 +664,42 @@ namespace Kusumgar
             defaults: new { controller = "WArticle", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "w-article-2",
+            url: "master/partial-w-article",
+            defaults: new { controller = "WArticle", action = "Load_WArticle", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-3",
+            url: "master/w-article/get-by-id",
+            defaults: new { controller = "WArticle", action = "Get_WArticle_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-4",
+            url: "master/w-article/insert",
+            defaults: new { controller = "WArticle", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-5",
+            url: "master/w-article/update",
+            defaults: new { controller = "WArticle", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-6",
+            url: "master/w-articles/search",
+            defaults: new { controller = "WArticle", action = "Get_WArticles", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-7",
+            url: "master/w-articles-by-full-code/{full_Code}",
+            defaults: new { controller = "WArticle", action = "Get_WArticles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region G Article
@@ -659,10 +725,46 @@ namespace Kusumgar
             #region C Article
 
             routes.MapRoute(
-           name: "c-article-1",
-           url: "master/c-article",
-           defaults: new { controller = "CArticle", action = "Index", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "c-article-1",
+            url: "master/c-article",
+            defaults: new { controller = "CArticle", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-2",
+            url: "master/partial-c-article",
+            defaults: new { controller = "CArticle", action = "Load_CArticle", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-3",
+            url: "master/c-article/get-by-id",
+            defaults: new { controller = "CArticle", action = "Get_CArticle_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-4",
+            url: "master/c-article/insert",
+            defaults: new { controller = "CArticle", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-5",
+            url: "master/c-article/update",
+            defaults: new { controller = "CArticle", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-6",
+            url: "master/c-articles/search",
+            defaults: new { controller = "CArticle", action = "Get_CArticles", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-7",
+            url: "master/c-articles-by-full-code/{full_Code}",
+            defaults: new { controller = "CArticle", action = "Get_CArticles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

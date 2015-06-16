@@ -99,6 +99,18 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/get-material-by-material-name/" + $('#txtMaterialName').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtProcessName') {
+                urlString = "/master/get-process-id-by-process-name/" + $('#txtProcessName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFullCode') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtFullCode').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFullCode') {
+                urlString = "/master/c-articles-by-full-code/" + $('#txtFullCode').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",
@@ -232,7 +244,7 @@ var InitializeAutoComplete = function (elementObject) {
             $('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
-                $(this).parents('.form-group').find('auto-complete-value').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
                 $(this).parents('.form-group').find('.todo-list').remove();
 

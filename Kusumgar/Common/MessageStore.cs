@@ -226,6 +226,26 @@ namespace Kusumgar
 
             #endregion
 
+            #region WArticle
+
+            FriendlyMessageInfo WA001 = new FriendlyMessageInfo("WA001", MessageType.Success, "W Article has been added successfully.");
+            hash.Add("WA001", WA001);
+
+            FriendlyMessageInfo WA002 = new FriendlyMessageInfo("WA002", MessageType.Success, "W Article has been updated successfully.");
+            hash.Add("WA002", WA002);
+
+            #endregion
+
+            #region CArticle
+
+            FriendlyMessageInfo CA001 = new FriendlyMessageInfo("CA001", MessageType.Success, "C Article has been added successfully.");
+            hash.Add("CA001", CA001);
+
+            FriendlyMessageInfo CA002 = new FriendlyMessageInfo("CA002", MessageType.Success, "C Article has been updated successfully.");
+            hash.Add("CA002", CA002);
+
+            #endregion
+
             #endregion
 
             #region CRM

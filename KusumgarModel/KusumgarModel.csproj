@@ -61,11 +61,13 @@
     <Compile Include="Master\AjaxManager.cs" />
     <Compile Include="Master\AttributeCodeManager.cs" />
     <Compile Include="CRM\CustomerManager.cs" />
+    <Compile Include="Master\CArticleManager.cs" />
     <Compile Include="Master\ConsumableManager.cs" />
     <Compile Include="Master\DefectManager.cs" />
     <Compile Include="Master\DefectTypeManager.cs" />
     <Compile Include="Master\IndustrialManager.cs" />
     <Compile Include="Master\NationManager.cs" />
+    <Compile Include="Master\ProcessManager.cs" />
     <Compile Include="Master\ProductVendorManager.cs" />
     <Compile Include="Master\MaterialManager.cs" />
     <Compile Include="Master\RoleAccessManager.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Master\UserManager.cs" />
     <Compile Include="Master\VendorContactManager.cs" />
     <Compile Include="Master\VendorManager.cs" />
+    <Compile Include="Master\WArticleManager.cs" />
     <Compile Include="Master\YArticleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

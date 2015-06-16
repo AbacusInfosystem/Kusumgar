@@ -1,11 +1,6 @@
-﻿    
+﻿$(function () {
+
     InitializeAutoComplete($('#txtCustName'));
-
-
-$(function () {
-
-    //InitializeAutoComplete($('#txtCustName'));
-    InitializeAutoComplete($("#txtCustomer_Name"));
 
     $('#hdfCurrentPage').val(0);
 

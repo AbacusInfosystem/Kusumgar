@@ -44,9 +44,10 @@
                                             <div class="form-group">
                                                 <label for="txtCustName" style="color: #333">Customer Name</label>
                                                 <div class="auto-complete">
-                                                    <input type="text" class="form-control input-sm" name="Complaint.Customer_Name" id="txtCustName" placeholder="Enter Customer Name" value="@Model.Complaint.Customer_Name">
-                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Complaint_Entity.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" />
-                                            </div>
+                                                    <input type="text" class="form-control input-sm" id="txtCustName" placeholder="Enter Customer Name" value="">
+                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Complaint_Entity.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" class="auto-complete-value" />
+                                                    <input type="hidden" id="hdnCustomer_Name" value="@Model.Complaint.Customer_Name" name="Complaint.Customer_Name" class="auto-complete-label">
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtOrdId" style="color: #333">Order Id</label>

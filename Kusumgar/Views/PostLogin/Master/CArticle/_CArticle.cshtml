@@ -1,7 +1,13 @@
-﻿<form>
-
+﻿@model Kusumgar.Models.CArticleViewModel
+@using KusumgarBusinessEntities.Common
+<script src="/Scripts/Master/Event/carticle_event.js"></script>
+<script src="/Scripts/Master/Method/carticle_method.js"></script>
+<script src="/Scripts/Master/Validation/carticle_validation.js"></script>
+<form id="frmCArticle">
     <div class="row">
 
+        <input type="hidden" id="hdnCArticle_Id" value="@Model.CArticle.C_Article_Id">
+        <input type="hidden" id="hdnIs_Primary" value="@Model.Is_Primary">
         <div class="col-md-6">
 
             <div class="box-header with-border">
@@ -11,192 +17,381 @@
             <div class="box-body">
 
                 <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <label>Attributes</label>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>Code</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <select id="drpQualityNo" class="form-control input-sm">
-                                    <option>-Select Quality No-</option>
-                                    <option>4042</option>
-                                    <option>4041</option>
-                                    <option>4043</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>4042</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <div class="input-group margin" style="margin: 0px;">
-                                    <div class="input-group-btn" style="padding-right: 10px;">
-                                        <input type="radio" name="rdbYarnType_Finish" id="rdYarn_Type" checked />
-                                    </div>
-                                    <!-- /btn-group -->
-
-                                    <select id="drpYarn_type" class="form-control input-sm">
-                                        <option>-Select Yarn type-</option>
-                                        <option>Polyster texturised</option>
-                                        <option>Air texturised Nylon</option>
-                                        <option>Viscose Staple</option>
-                                        <option>Polyster Cotton Mix</option>
-                                        <option>Meta aramide</option>
-                                    </select>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>0PES</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <div class="input-group margin" style="margin: 0px;">
-                                    <div class="input-group-btn" style="padding-right: 10px;">
-                                        <input type="radio" name="rdbYarnType_Finish" id="rdC_Finish_width" />
-                                    </div>
-                                    <!-- /btn-group -->
-                                    <input type="text" class="form-control input-sm" id="txtC_Finish_width" placeholder="Enter C Finish width" disabled />
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>062.00</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <select id="drpWavae" class="form-control input-sm">
-                                    <option>-Select Weave-</option>
-                                    <option>Plain</option>
-                                    <option>RIBSTOP</option>
-                                    <option>TWILL</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>PL</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-
-                                <select id="drpShades" class="form-control input-sm">
-                                    <option>-Select Shades-</option>
-                                    <option>Violet</option>
-                                    <option>Indigo</option>
-                                    <option>Blue</option>
-                                    <option>Green</option>
-                                </select>
-
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>BL</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <div class="input-group margin" style="margin: 0px;">
-                                    <div class="input-group-btn" style="padding-right: 10px;">
-                                        <input type="radio" name="rdbChemicalFinish_MechanicalFinish" id="rdChemical_Finish" checked />
-                                    </div>
-                                    <!-- /btn-group -->
-
-                                    <select id="drpChemical_Finish" class="form-control input-sm">
-                                        <option>-Select Chemical Finish-</option>
-                                        <option>No finish</option>
-                                        <option>Water repellent finish</option>
-                                        <option>silicon finish</option>
-                                        <option>Flame retardant finish</option>
-                                    </select>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>SI</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <div class="input-group margin" style="margin: 0px;">
-                                    <div class="input-group-btn" style="padding-right: 10px;">
-                                        <input type="radio" name="rdbChemicalFinish_MechanicalFinish" id="rdMechanical_Finish" />
-                                    </div>
-                                    <!-- /btn-group -->
-                                    <select id="drpMechanical_Finish" class="form-control input-sm" disabled>
-                                        <option>-Select Mechanical Finish-</option>
-                                        <option>Calandaring</option>
-                                    </select>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>CL</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-
-                                <select id="drpType" class="form-control input-sm">
-                                    <option>-Select Type-</option>
-                                    <option>DYED</option>
-                                    <option>UD</option>
-                                    <option>DYED AND PRINT</option>
-                                    <option>UD AND PRINT</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>DY</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-8 col-xs-8">
-                                <input type="text" class="form-control input-sm" id="txtCoat_C_gsm" placeholder="Enter Coat / C gsm" />
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <label>062.00</label>
-                            </div>
-                        </div>
-                        <br />
+                    <div class="col-md-6">
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="well text-center">
-                                    <label>0PES  PLN155  100</label>
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <label style="color: #333">Attributes</label>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label style="color: #333">Code</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <select id="drpQualityNo" class="form-control input-sm attribute-name" name="CArticle.Quality_Id">
+                                            <option value="">-Select Quality No-</option>
+                                            @if (Model.Quality_List.Count > 0)
+                                            {
+                                                foreach (var item in Model.Quality_List)
+                                                {
+                                                    if (Model.CArticle.Quality_Id == item.Quality_Id)
+                                                    {
+                                                        <option value="@(item.Quality_Id +"_"+ item.Quality_No)" selected="selected">@item.Quality_No</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.Quality_Id +"_"+ item.Quality_No)">@item.Quality_No</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="input-group margin" style="margin: 0px;">
+                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                @if (Model.CArticle.Yarn_Type_Id != 0)
+                                                { 
+                                                    <input type="radio" name="rdbYarnType_Finish" id="rdYarn_Type" checked />
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" name="rdbYarnType_Finish" id="rdYarn_Type" />
+                                                }
+                                            </div>
+                                            <select id="drpYarnType" class="form-control input-sm attribute-name" name="CArticle.Yarn_Type_Id">
+                                                <option value="">-Select Yarn Type-</option>
+                                                @if (Model.Attribute_Codes.Count > 0)
+                                                {
+                                                    foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                                    {
+                                                        if (Model.CArticle.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                        {
+                                                            <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        }
+                                                    }
+                                                }
+                                                @if (Model.CArticle.Yarn_Type_Id == 0 && Model.CArticle.C_Article_Id != 0)
+                                                {
+                                                    <option value="0_" selected="selected">none</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0_">none</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label id="lblYarnType" class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="input-group margin" style="margin: 0px;">
+                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                @if (Model.CArticle.C_Finish_Width != 0)
+                                                {
+                                                    <input type="radio" name="rdbYarnType_Finish" id="rdC_Finish_width" checked />
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" name="rdbYarnType_Finish" id="rdC_Finish_width" />
+                                                }
+                                            </div>
+                                            @if (Model.CArticle.C_Article_Id == 0 || Model.CArticle.C_Finish_Width == 0)
+                                            {
+                                                <input type="text" class="form-control input-sm" id="txtC_Finish_Width" disabled placeholder="Enter C Finish Width" name="CArticle.C_Finish_Width" value="">
+                                            }
+                                            else
+                                            {                                                                                                 
+                                                <input type="text" class="form-control input-sm" id="txtC_Finish_Width" disabled placeholder="Enter C Finish Width" name="CArticle.C_Finish_Width" value="@Model.CArticle.C_Finish_Width">                                                
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        @if (Model.CArticle.C_Article_Id == 0 || Model.CArticle.C_Finish_Width == 0)
+                                        {
+                                            <label id="lblCFinishWidth" class="attribute-code">-</label>
+                                        }
+                                        else
+                                        {
+
+                                            <label id="lblCFinishWidth" class="attribute-code">@Model.CArticle.C_Finish_Width</label>
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <select id="drpWeave" class="form-control input-sm attribute-name" name="CArticle.Weave_Id">
+                                            <option value="">-Select Weave-</option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Weave.ToString()))
+                                                {
+                                                    if (Model.CArticle.Weave_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                            @if (Model.CArticle.Weave_Id == 0 && Model.CArticle.C_Article_Id != 0)
+                                            {
+                                                <option value="0_" selected="selected">none</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0_">none</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <select id="drpShade" class="form-control input-sm attribute-name" name="CArticle.Shade_Id">
+                                            <option value="">-Select Shade-</option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Shade.ToString()))
+                                                {
+                                                    if (Model.CArticle.Shade_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                            @if (Model.CArticle.Shade_Id == 0 && Model.CArticle.C_Article_Id != 0)
+                                            {
+                                                <option value="0_" selected="selected">none</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0_">none</option>
+                                            }
+                                        </select>                                        
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+                                
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="input-group margin" style="margin: 0px;">
+                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                @if (Model.CArticle.Chemical_Finish_Id != 0)
+                                                { 
+                                                    <input type="radio" name="rdbChemicalFinish_MechanicalFinish" id="rdChemical_Finish" checked />
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" name="rdbChemicalFinish_MechanicalFinish" id="rdChemical_Finish" />
+                                                }
+                                            </div>
+                                            <select id="drpChemicalFinish" class="form-control input-sm attribute-name" name="CArticle.Chemical_Finish_Id">
+                                                <option value="">-Select Chemical Finish- </option>
+                                                @if (Model.Attribute_Codes.Count > 0)
+                                                {
+                                                    foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Finish.ToString()))
+                                                    {
+                                                        if (Model.CArticle.Chemical_Finish_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                        {
+                                                            <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        }
+                                                    }
+                                                }
+                                                @if (Model.CArticle.Chemical_Finish_Id == 0 && Model.CArticle.C_Article_Id != 0)
+                                                {
+                                                    <option value="0_" selected="selected">none</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0_">none</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label id="lblCFinish" class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="input-group margin" style="margin: 0px">
+                                            <div class="input-group-btn" style="padding-right: 10px;">
+                                                @if (Model.CArticle.Mechanical_Finish_Id != 0)
+                                                {
+                                                    <input type="radio" name="rdbChemicalFinish_MechanicalFinish" id="rdMechanical_Finish" checked />
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" name="rdbChemicalFinish_MechanicalFinish" id="rdMechanical_Finish" />
+                                                }
+                                            </div>                                            
+                                            <select id="drpMechanicalFinish" class="form-control input-sm attribute-name" disabled name="CArticle.Mechanical_Finish_Id">
+                                                <option value="">-Select Mechanical Finish- </option>
+                                                @if (Model.Attribute_Codes.Count > 0)
+                                                {
+                                                    foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Mechanical_Finish.ToString()))
+                                                    {
+                                                        if (Model.CArticle.Mechanical_Finish_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                        {
+                                                            <option value="@(item.AttributeCodeEntity.Attribute_Code_Id + " _" + item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@(item.AttributeCodeEntity.Attribute_Code_Id + " _" + item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                        }
+                                                    }
+                                                }
+                                                @if (Model.CArticle.Mechanical_Finish_Id == 0 && Model.CArticle.C_Article_Id != 0)
+                                                {
+                                                    <option value="0_" selected="selected">none</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0_">none</option>
+                                                }
+                                            </select>
+
+                                        </div>
+                                        <!-- /input-group -->
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label id="lblMFinish" class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+                                
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <select id="drpType" class="form-control input-sm attribute-name" name="CArticle.Type_Id">
+                                            <option value="">-Select Type-</option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Type.ToString()))
+                                                {
+                                                    if (Model.CArticle.Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                            @if (Model.CArticle.Type_Id == 0 && Model.CArticle.C_Article_Id != 0)
+                                            {
+                                                <option value="0_" selected="selected">none</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0_">none</option>
+                                            }
+                                        </select>                                        
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />                                                                                                                                                              
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <input type="text" class="form-control input-sm" id="txtCoat" placeholder="Enter Coat" name="CArticle.Coat" value="@Model.CArticle.Coat" />
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        @if (Model.CArticle.C_Article_Id == 0)
+                                        {
+                                            <label class="attribute-code">-</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="attribute-code">@Model.CArticle.Coat</label>
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <input type="text" class="form-control input-sm" id="txtC_gsm" placeholder="Enter C gsm" name="CArticle.C_gsm" value="@Model.CArticle.C_gsm" />
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        @if (Model.CArticle.C_Article_Id == 0)
+                                        {
+                                            <label class="attribute-code">-</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="attribute-code">@Model.CArticle.C_gsm</label>
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="well text-center">
+                                            @if (Model.CArticle.C_Article_Id == 0)
+                                            {
+                                                <label class="full-code">- - - -</label>
+                                            }
+                                            else
+                                            {
+                                                <label class="full-code">@Model.CArticle.Full_Code</label>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
 
             <div class="box-header with-border">
                 <h3 class="box-title">Other Information</h3>
@@ -207,66 +402,38 @@
                     <div class="col-md-12">
 
                         <div class="form-group">
-                            <label for="txtBatch">Batch</label>
-                            <input type="text" class="form-control input-sm" id="txtBatch" placeholder="Enter Batch" />
+                            <label style="color: #333" for="txtBatch">Batch</label>
+                            <input type="text" class="form-control input-sm" id="txtBatch" placeholder="Enter Batch" name="CArticle.Batch" value="@Model.CArticle.Batch" />
                         </div>
 
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" name="chkStatus" checked />
+                                @if (Model.CArticle.Is_Active == true)
+                                {
+                                    <input type="checkbox" name="chkIsActive" id="chkIsActive" value="false" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="chkIsActive" id="chkIsActive" value="true" />
+                                }
                                 &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="CArticle.Is_Active" value="@Model.CArticle.Is_Active.ToString()">
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="box-footer">
-        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-        <a href="@Url.Action("Search", "CArticle")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-
+        <div class="row">
+            <div class="col-md-4">
+                <div class="btn-group">
+                    <button type="button" id="btnSave_CArticle" class="btn btn-success btn-sm">Save</button>
+                    <a href="@Url.Action("Search", "CArticle")" id="btnCancel_CArticle" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                </div>
+            </div>
+        </div>
     </div>
-
 </form>
-
-
-
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('[name="rdbChemicalFinish_MechanicalFinish"]').on('ifChanged', function (event) {
-            var id = this.id;
-            if ($("#" + id).prop('checked')) {
-                if (id == 'rdChemical_Finish') {
-                    $("#drpMechanical_Finish").attr('disabled', 'disabled');
-                    $("#drpChemical_Finish").removeAttr('disabled', 'disabled');
-                }
-                else {
-                    $("#drpMechanical_Finish").removeAttr('disabled', 'disabled');
-                    $("#drpChemical_Finish").attr('disabled', 'disabled');
-                }
-            }
-        });
-
-
-        $('[name="rdbYarnType_Finish"]').on('ifChanged', function (event) {
-            var id = this.id;
-            if ($("#" + id).prop('checked')) {
-                if (id == 'rdYarn_Type') {
-                    $("#drpYarn_type").removeAttr('disabled', 'disabled');
-                    $("#txtC_Finish_width").attr('disabled', 'disabled');
-                }
-                else {
-                    $("#drpYarn_type").attr('disabled', 'disabled');
-                    $("#txtC_Finish_width").removeAttr('disabled', 'disabled');
-                }
-
-            }
-        });
-    });
-</script>
