@@ -128,18 +128,39 @@ namespace KusumgarDataAccess
         {
             WArticleInfo wArticle = new WArticleInfo();
             wArticle.W_Article_Id = Convert.ToInt32(dr["W_Article_Id"]);
-            wArticle.Quality_Id = Convert.ToInt32(dr["Quality_Id"]);
-            wArticle.Yarn_Type_Id = Convert.ToInt32(dr["Yarn_Type_Id"]);
-            wArticle.Reed_Space_Inch = Convert.ToDecimal(dr["Reed_Space_Inch"]);
-            wArticle.Total_No_Of_Ends = Convert.ToDecimal(dr["Total_No_Of_Ends"]);
+            if (DBNull.Value != dr["Quality_Id"])
+            {
+                wArticle.Quality_Id = Convert.ToInt32(dr["Quality_Id"]);
+            }
+            if (DBNull.Value != dr["Yarn_Type_Id"])
+            {
+                wArticle.Yarn_Type_Id = Convert.ToInt32(dr["Yarn_Type_Id"]);
+            }
+
+            if (DBNull.Value != dr["Reed_Space_Inch"])
+            {
+                wArticle.Reed_Space_Inch = Convert.ToDecimal(dr["Reed_Space_Inch"]);
+            }
+
+            if (DBNull.Value != dr["Total_No_Of_Ends"])
+            {
+                wArticle.Total_No_Of_Ends = Convert.ToDecimal(dr["Total_No_Of_Ends"]);
+            }
+
             wArticle.Full_Code = Convert.ToString(dr["Full_Code"]);
             wArticle.Ideal_Beam = Convert.ToString(dr["Ideal_Beam"]);
-            wArticle.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            if (DBNull.Value != dr["Is_Active"])
+            {
+                wArticle.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            }
             wArticle.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
             wArticle.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             wArticle.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             wArticle.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            wArticle.Quality_No = Convert.ToInt32(dr["Quality_No"]);
+            if (DBNull.Value != dr["Quality_No"])
+            {
+                wArticle.Quality_No = Convert.ToInt32(dr["Quality_No"]);
+            }
             wArticle.Yarn_Type_Name = Convert.ToString(dr["Yarn_Type_Name"]);
             return wArticle;
         }
