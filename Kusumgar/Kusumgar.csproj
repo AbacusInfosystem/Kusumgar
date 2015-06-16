@@ -977,6 +977,11 @@
     <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\Master\Event\carticle_event.js" />
     <Content Include="Scripts\Master\Event\carticle_search_event.js" />
+    <Content Include="Scripts\Master\Event\customer_quality_event.js" />
+    <Content Include="Scripts\Master\Event\customer_quality_search_event.js" />
+    <Content Include="Scripts\Master\Event\customer_specific_information_event.js" />
+    <Content Include="Scripts\Master\Event\g_article_event.js" />
+    <Content Include="Scripts\Master\Event\g_article_listing_event.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
     <Content Include="Scripts\Master\Event\particle_event.js" />
     <Content Include="Scripts\Master\Event\particle_listing_event.js" />
@@ -989,6 +994,11 @@
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
     <Content Include="Scripts\Master\Event\work_center_event.js" />
     <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
+    <Content Include="Scripts\Master\Method\customer_quality_method.js" />
+    <Content Include="Scripts\Master\Method\customer_quality_search_method.js" />
+    <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
+    <Content Include="Scripts\Master\Method\g_article_listing_method.js" />
+    <Content Include="Scripts\Master\Method\g_article_method.js" />
     <Content Include="Scripts\Master\Method\particle_listing_method.js" />
     <Content Include="Scripts\Master\Method\particle_method.js" />
     <Content Include="Scripts\Master\Method\quality_method.js" />
@@ -1086,9 +1096,11 @@
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
     <Content Include="Scripts\Master\Validation\carticle_validation.js" />
     <Content Include="Scripts\Master\Validation\consumable_validation.js" />
+    <Content Include="Scripts\Master\Validation\customer_quality_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
+    <Content Include="Scripts\Master\Validation\g_article_validation.js" />
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\material_validation.js" />
     <Content Include="Scripts\Master\Validation\particle_validation.js" />
@@ -1150,6 +1162,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\PostLogin\Planning\" />
+    <Folder Include="Controllers\PostLogin\SystemConfig\" />
     <Folder Include="Models\CMS\" />
     <Folder Include="Models\Planning\" />
     <Folder Include="Models\SystemConfig\" />
@@ -1157,8 +1170,8 @@
     <Folder Include="Scripts\Planning\" />
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\SystemConfig\" />
-    <Folder Include="uploads\" />
     <Folder Include="Views\PostLogin\Master\ConsumableMaster\" />
+    <Folder Include="Views\PostLogin\Master\QualityCreation\" />
     <Folder Include="Views\PostLogin\Planning\" />
     <Folder Include="Views\PostLogin\SystemConfig\" />
   </ItemGroup>
@@ -1550,6 +1563,15 @@
     <Content Include="Views\PostLogin\Master\DefectType\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\DefectType\Search.cshtml" />
     <Content Include="Views\PostLogin\Sales\Enquiry\Index_Old.cshtml" />
+    <Content Include="uploads\Disaster Recovery Execution Plan.docx" />
+    <Content Include="uploads\Multiple Solr Instance - Copy.docx" />
+    <Content Include="uploads\Multiple Solr Instance.docx" />
+    <Content Include="uploads\STEPS FOR CREATING JOBS.docx" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
