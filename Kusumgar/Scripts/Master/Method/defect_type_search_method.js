@@ -100,8 +100,6 @@ function BindDefectTypeInGrid(data, mode) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-    
-
     if (data.DefectTypeGrid.length > 0) {
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 

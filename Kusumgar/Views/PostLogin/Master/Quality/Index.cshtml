@@ -1,8 +1,8 @@
-﻿@{
-    ViewBag.Title = "Quality Creation";
-}
+﻿@model Kusumgar.Models.QualityViewModel
+
 
 <div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -25,7 +25,8 @@
                 <!-- form start -->
                 <br />
                 <!-- Custom Tabs -->
-                @Html.Partial("~/Views/PostLogin/Master/QualityCreation/_Index.cshtml")
+
+                @{Html.RenderAction("Load_Quality", "Quality", Model);}
                 <!-- /.box-body -->
             </div>
             <!-- /.col -->

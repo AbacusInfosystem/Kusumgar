@@ -27,5 +27,15 @@
             SearchDefectTypeForTable();
         }
     });
+
+    $('[name="chkIsActive"]').on('ifChanged', function (event) {
+        if ($(this).prop('checked')) {
+
+            $("#hdnActive").val(true);
+        }
+        else {
+            $("#hdnActive").val(false);
+        }
+    });
   
 });

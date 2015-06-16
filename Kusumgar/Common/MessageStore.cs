@@ -236,6 +236,14 @@ namespace Kusumgar
 
             #endregion
 
+
+            #region QualityCreation
+
+            FriendlyMessageInfo Q011 = new FriendlyMessageInfo("Q011", MessageType.Success, "Quality has been added successfully.");
+            hash.Add("Q011", Q011);
+
+            FriendlyMessageInfo Q012 = new FriendlyMessageInfo("Q012", MessageType.Success, "Quality has been updated successfully.");
+            hash.Add("Q012", Q012);
             #region VendorContact
 
             FriendlyMessageInfo CQ001 = new FriendlyMessageInfo("CQ001", MessageType.Success, "Customer Quality has been added successfully.");
@@ -245,6 +253,17 @@ namespace Kusumgar
             hash.Add("CQ002", CQ002);
 
 
+            FriendlyMessageInfo QA011 = new FriendlyMessageInfo("QA011", MessageType.Success, "Quality Application has been added successfully.");
+            hash.Add("QA011", QA011);
+
+            FriendlyMessageInfo QA012 = new FriendlyMessageInfo("QA012", MessageType.Success, "Quality Application has been deleted successfully.");
+            hash.Add("QA012", QA012);
+
+            FriendlyMessageInfo QS011 = new FriendlyMessageInfo("QS011", MessageType.Success, "Quality Segment has been added successfully.");
+            hash.Add("QS011", QS011);
+
+            FriendlyMessageInfo QS012 = new FriendlyMessageInfo("QS012", MessageType.Success, "Quality Segment has been deleted successfully.");
+            hash.Add("QS012", QS012);
             #endregion
 
             #region GArticle
@@ -256,6 +275,21 @@ namespace Kusumgar
             hash.Add("GA002", GA002);
 
             #endregion
+
+            #endregion
+
+            #region P_Article
+
+            FriendlyMessageInfo PA011 = new FriendlyMessageInfo("PA011", MessageType.Success, "PArticle has been added successfully.");
+            hash.Add("PA011", PA011);
+
+            FriendlyMessageInfo PA012 = new FriendlyMessageInfo("PA012", MessageType.Success, "PArticle has been updated successfully.");
+            hash.Add("PA012", PA012);
+
+            #endregion
+
+
+
 
             #endregion
 

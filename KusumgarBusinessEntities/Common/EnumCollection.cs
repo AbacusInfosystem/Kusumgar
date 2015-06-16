@@ -303,6 +303,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
 
+
         // Y Article 
         Insert_Y_Article_sp,
         Update_Y_Article_sp,
@@ -374,6 +375,25 @@ namespace KusumgarBusinessEntities.Common
         Get_Work_Centers_By_Work_Center_Id_Sp,
         Insert_Work_Center_Process_sp,
         Delete_Work_Center_Process_By_Work_Center_Id_Sp,
+
+        //Quality
+
+        Insert_Quality_Sp,
+        Update_Quality_Sp,
+        Get_Quality_Sp,
+        Get_Quality_By_Id_Sp,
+        Get_Yarn_Types_sp,
+        Get_Quality_By_Yarn_Types_Sp,
+        Get_Weaves_Types_sp,
+        Get_Application_AutoComplete_sp,
+        Insert_Application_sp,
+        Delete_Quality_Application_By_Id,
+        Get_Quality_Application_sp,
+        Get_Quality_Market_Segment_sp,
+        Insert_Segment_sp,
+        Delete_Quality_Market_Segment_By_Id_sp,
+        Get_Segment_AutoComplete_sp,
+        Check_Existing_Quality_No_Sp,
         Get_Work_Center_Processes_Sp,
 
         //Customer Quality
@@ -394,6 +414,16 @@ namespace KusumgarBusinessEntities.Common
         Get_G_Articles_By_G_Article_Id_By_Yarn_Type_Id_Sp,
         Get_G_Articles_By_G_Article_Id_Sp,
 
+        //PArticle
+
+        Insert_P_Article_Sp,
+        Update_P_Article_Sp,
+        Get_P_Article_Sp,
+ 
+        Get_P_Article_By_Id_sp,
+        Get_P_Articles_By_Full_Code_sp,
+        Get_P_Articles_By_Yarn_Type_Id_sp,
+        Get_P_Articles_By_PArticle_Id_Yarn_Type_sp,
         // Enquiry
         Insert_Enquiry_Sp,
         Update_Enquiry_Sp,
@@ -425,7 +455,6 @@ namespace KusumgarBusinessEntities.Common
         Get_G_Articles_By_Full_Code_Sp,
 
 
-        Get_Quality_By_Id_Sp,
 
         // Attachments
         Insert_Attachment_Sp,
@@ -509,14 +538,13 @@ namespace KusumgarBusinessEntities.Common
         option5 = 5,
     }
    
-      public enum ProductVendor
+    public enum ProductVendor
       {
           ProductType=1,
           Service=2
       }
    
-      
-    public enum ShipmentMethod
+   public enum ShipmentMethod
     {
         method1=1,
         method2=2

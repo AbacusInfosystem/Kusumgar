@@ -120,7 +120,7 @@ namespace Kusumgar
             routes.MapRoute(
             name: "menu-18",
             url: "master/quality-creation/search",
-            defaults: new { controller = "QualityCreation", action = "Search", id = UrlParameter.Optional },
+            defaults: new { controller = "Quality", action = "Search", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -706,6 +706,35 @@ namespace Kusumgar
            defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+          name: "p-article-2",
+          url: "master/p-article/get-by-id",
+          defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "p-article-3",
+            url: "master/p-article/insert",
+            defaults: new { controller = "PArticle", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "p-article-4",
+            url: "master/p-article/update",
+            defaults: new { controller = "PArticle", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "p-article-5",
+            url: "master/p-articles/search",
+            defaults: new { controller = "PArticle", action = "Get_PArticles", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "p-article-6",
+            url: "master/p-articles-by-full-code/{full_Code}",
+            defaults: new { controller = "PArticle", action = "Get_PArticles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
             #endregion
 
             #region C Article
@@ -741,10 +770,59 @@ namespace Kusumgar
             #region Quality Creation
 
             routes.MapRoute(
-            name: "quality-creation-1",
+            name: "quality-1",
             url: "master/quality-creation",
-            defaults: new { controller = "QualityCreation", action = "Index", id = UrlParameter.Optional },
+            defaults: new { controller = "Quality", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "quality-2",
+            url: "master/insert-quality",
+            defaults: new { controller = "Quality", action = "Insert_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "quality-3",
+            url: "master/update-quality",
+            defaults: new { controller = "Quality", action = "Update_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "quality-4",
+            url: "master/get-quality-by-id",
+            defaults: new { controller = "Quality", action = "Get_Quality_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "quality-5",
+            url: "master/delete-quality_application",
+           defaults: new { controller = "Quality", action = "Delete_Quality_Application_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "quality-6",
+           url: "master/insert-quality-application",
+           defaults: new { controller = "Quality", action = "Insert_Application", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "quality-7",
+           url: "master/delete-quality_segment",
+           defaults: new { controller = "Quality", action = "Delete_Quality_Market_Segment_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "quality-8",
+           url: "master/insert-quality-segemnt",
+           defaults: new { controller = "Quality", action = "Insert_Segment", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "quality-9",
+           url: "master/check-quality-no",
+           defaults: new { controller = "Quality", action = "Check_Existing_Quality_No", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
 
             #endregion
 
@@ -1522,6 +1600,18 @@ namespace Kusumgar
 
            
 
+           routes.MapRoute(
+           name: "ajax-6",
+           url: "ajax/application-list/{applicationName}",
+           defaults: new { controller = "Quality", action = "Get_Application_Name_AutoComplete", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "ajax-7",
+           url: "ajax/segment-list/{segmentName}",
+           defaults: new { controller = "Quality", action = "Get_Segment_Name_AutoComplete", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+           
             #endregion
 
             #endregion

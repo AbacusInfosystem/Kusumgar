@@ -236,26 +236,27 @@
     <Compile Include="Common\FriendlyMessage.cs" />
     <Compile Include="Common\MessageStore.cs" />
     <Compile Include="Common\Startup.cs" />
+    <Compile Include="Controllers\PostLogin\AjaxController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\CustomerQualityController.cs" />
     <Compile Include="Controllers\PostLogin\Master\MaterialController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\QualityController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
-    <Compile Include="Controllers\PostLogin\Sales\SchedulerController.cs" />
     <Compile Include="Controllers\PostLogin\System\SystemController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\CustomerController.cs" />
     <Compile Include="Controllers\PostLogin\Dashboard\DashboardController.cs" />
-    <Compile Include="Controllers\PostLogin\AjaxController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ArticleProcessWorkcenterController.cs" />
     <Compile Include="Controllers\PostLogin\Master\AttributeCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ConsumableController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\CustomerQualityController.cs" />
     <Compile Include="Controllers\PostLogin\Master\GArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\IndustrialController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PArticleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\PegPlanController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProductVendorController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\QualityCreationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\RoleController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestController.cs" />
     <Compile Include="Controllers\PostLogin\Master\TestUnitController.cs" />
@@ -291,6 +292,8 @@
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
     <Compile Include="Models\Master\MaterialVendorViewModel.cs" />
     <Compile Include="Models\Master\MaterialViewModel.cs" />
+    <Compile Include="Models\Master\PArticleViewModel.cs" />
+    <Compile Include="Models\Master\QualityViewModel.cs" />
     <Compile Include="Models\Master\RoleViewModel.cs" />
     <Compile Include="Models\Master\TestUnitViewModel.cs" />
     <Compile Include="Models\Master\TestViewModel.cs" />
@@ -303,6 +306,11 @@
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
     <Compile Include="Models\Sales\SchedulerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap.css" />
@@ -956,25 +964,20 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
-    <Content Include="Scripts\Master\Event\customer_quality_event.js" />
-    <Content Include="Scripts\generic.dragdrop.js" />
-    <Content Include="Scripts\generic.iCheck.initialize.js" />
-    <Content Include="Scripts\generic.multi.autocomplete.js" />
-    <Content Include="Scripts\Master\Event\customer_quality_search_event.js" />
-    <Content Include="Scripts\Master\Event\customer_specific_information_event.js" />
-    <Content Include="Scripts\Master\Event\g_article_event.js" />
-    <Content Include="Scripts\Master\Event\g_article_listing_event.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\particle_event.js" />
+    <Content Include="Scripts\Master\Event\particle_listing_event.js" />
+    <Content Include="Scripts\Master\Event\quality_event.js" />
+    <Content Include="Scripts\Master\Event\quality_search_event.js" />
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
     <Content Include="Scripts\Master\Event\work_center_event.js" />
     <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
-    <Content Include="Scripts\Master\Method\customer_quality_method.js" />
-    <Content Include="Scripts\Master\Method\customer_quality_search_method.js" />
-    <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
-    <Content Include="Scripts\Master\Method\g_article_listing_method.js" />
-    <Content Include="Scripts\Master\Method\g_article_method.js" />
+    <Content Include="Scripts\Master\Method\particle_listing_method.js" />
+    <Content Include="Scripts\Master\Method\particle_method.js" />
+    <Content Include="Scripts\Master\Method\quality_method.js" />
+    <Content Include="Scripts\Master\Method\quality_search_method.js" />
     <Content Include="Scripts\Master\Method\vendor_listing_method.js" />
     <Content Include="Scripts\CRM\Validation\complaint_validation.js" />
     <Content Include="Scripts\CRM\Validation\contact_validation.js" />
@@ -1059,13 +1062,13 @@
     <Content Include="Scripts\Master\user_validation.js" />
     <Content Include="Scripts\Master\Validation\attribute_code_validation.js" />
     <Content Include="Scripts\Master\Validation\consumable_validation.js" />
-    <Content Include="Scripts\Master\Validation\customer_quality_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_search_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_type_validation.js" />
     <Content Include="Scripts\Master\Validation\defect_validation.js" />
-    <Content Include="Scripts\Master\Validation\g_article_validation.js" />
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\material_validation.js" />
+    <Content Include="Scripts\Master\Validation\particle_validation.js" />
+    <Content Include="Scripts\Master\Validation\quality_validation.js" />
     <Content Include="Scripts\Master\Validation\test_unit_validation.js" />
     <Content Include="Scripts\Master\Validation\test_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
@@ -1074,21 +1077,16 @@
     <Content Include="Scripts\Master\Validation\work_center_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Sales\Event\enquiry_events.js" />
-    <Content Include="Scripts\Sales\Event\enquiry_search_events.js" />
-    <Content Include="Scripts\Sales\Event\ppc_checkpoint_events.js" />
-    <Content Include="Scripts\Sales\Event\ppc_checkpoint_search_events.js" />
-    <Content Include="Scripts\Sales\Event\w_manager_checkpoint_search_events.js" />
-    <Content Include="Scripts\Sales\Method\enquiry_methods.js" />
-    <Content Include="Scripts\Sales\Method\enquiry_search_methods.js" />
-    <Content Include="Scripts\Sales\Method\ppc_checkpoint_methods.js" />
-    <Content Include="Scripts\Sales\Method\ppc_checkpoint_search_methods.js" />
-    <Content Include="Scripts\Sales\Method\w_manager_checkpoint_search_methods.js" />
-    <Content Include="Scripts\Sales\Validation\enquiry_validation.js" />
-    <Content Include="Scripts\Sales\Validation\ppc_checkpoint_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
     <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\Master\Quality\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\Master\Quality\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Quality\_Index.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml">
@@ -1119,6 +1117,7 @@
     <Folder Include="Models\SystemConfig\" />
     <Folder Include="Scripts\CMS\" />
     <Folder Include="Scripts\Planning\" />
+    <Folder Include="Scripts\Sales\" />
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\SystemConfig\" />
     <Folder Include="uploads\" />
@@ -1263,12 +1262,6 @@
     <Content Include="Views\PostLogin\CRM\Contact\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\DefectType\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\DefectType\Search.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PostLogin\Master\Defect\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1391,25 +1384,19 @@
     <Content Include="Views\PostLogin\Master\ProcessRouteCode\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\QualityCreation\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\QualityCreation\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\QualityCreation\_Segment.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_CustomerSpecificInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\QualityCreation\_Applications.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_Attachments.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQualityCreation\_SpecificFunctionalStandards.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\CArticle\Copy of Index.cshtml" />
@@ -1458,16 +1445,13 @@
     <Content Include="Views\PostLogin\Sales\Enquiry\Quality_Checkpoint.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\QualityCreation\_Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PostLogin\Sales\Enquiry\Search_PPC_Planning.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Enquiry\PPC_Planning.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Enquiry\_Schedular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\User\Index.cshtml" />
@@ -1522,6 +1506,12 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Kusumgar.pubxml" />
     <Content Include="Views\PostLogin\System\Error.cshtml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\PostLogin\Master\DefectType\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\DefectType\Search.cshtml" />
     <Content Include="Views\PostLogin\Sales\Enquiry\Index_Old.cshtml" />
   </ItemGroup>
   <PropertyGroup>

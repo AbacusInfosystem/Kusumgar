@@ -155,18 +155,19 @@
                                     <div class="form-group">
                                         <label>
                                             @if (Model.Test.Status == true)
-                                            {
-                                                @:<input type="checkbox" name="Test.Status" value="false" checked />
-                                                                                              
-                                            }
+                                        {
+
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                        }
                                         else
-                                             {
-                                                @:<input type="checkbox" name="Test.Status" value="true" />
-                                               }
-                                            &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
+                                        {
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                        }
+                                        &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 
                                         </label>
                                     </div>
+                                    <input type="hidden" id="hdnActive" name="Test.TestEntity.Status" value="@Model.Test.TestEntity.Status.ToString()">
 
                                 </div>
                             </div>
@@ -192,15 +193,3 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
