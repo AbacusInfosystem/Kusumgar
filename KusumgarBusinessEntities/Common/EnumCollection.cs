@@ -249,6 +249,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Fabric_Types_sp,
         Get_Test_By_Fabric_Type_sp,
         Get_Test_Unit_AutoComplete_sp,
+        Get_Test_By_Test_Name_sp,
 
         //AttributeCode
         Get_Attribute_Codes_sp,
@@ -302,6 +303,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
 
+
         // Y Article 
         Insert_Y_Article_sp,
         Update_Y_Article_sp,
@@ -352,7 +354,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Material_Vendors_By_Id_Sp,
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
-        Get_Material_SubCategory_By_CategoryId_Sp,
+Get_Material_SubCategory_By_CategoryId_Sp,
 
         // Work Center
 
@@ -373,6 +375,25 @@ namespace KusumgarBusinessEntities.Common
         Get_Work_Centers_By_Work_Center_Id_Sp,
         Insert_Work_Center_Process_sp,
         Delete_Work_Center_Process_By_Work_Center_Id_Sp,
+
+        //Quality
+
+        Insert_Quality_Sp,
+        Update_Quality_Sp,
+        Get_Quality_Sp,
+        Get_Quality_By_Id_Sp,
+        Get_Yarn_Types_sp,
+        Get_Quality_By_Yarn_Types_Sp,
+        Get_Weaves_Types_sp,
+        Get_Application_AutoComplete_sp,
+        Insert_Application_sp,
+        Delete_Quality_Application_By_Id,
+        Get_Quality_Application_sp,
+        Get_Quality_Market_Segment_sp,
+        Insert_Segment_sp,
+        Delete_Quality_Market_Segment_By_Id_sp,
+        Get_Segment_AutoComplete_sp,
+        Check_Existing_Quality_No_Sp,
         Get_Work_Center_Processes_Sp,
 
         //Customer Quality
@@ -393,21 +414,40 @@ namespace KusumgarBusinessEntities.Common
         Get_G_Articles_By_G_Article_Id_By_Yarn_Type_Id_Sp,
         Get_G_Articles_By_G_Article_Id_Sp,
 
+        //PArticle
+
+        Insert_P_Article_Sp,
+        Update_P_Article_Sp,
+        Get_P_Article_Sp,
+ 
+        Get_P_Article_By_Id_sp,
+        Get_P_Articles_By_Full_Code_sp,
+        Get_P_Articles_By_Yarn_Type_Id_sp,
+        Get_P_Articles_By_PArticle_Id_Yarn_Type_sp,
         // Enquiry
         Insert_Enquiry_Sp,
         Update_Enquiry_Sp,
         Get_Enquiries_Sp,
         Get_Enquiry_By_Id_Sp,
-        Insert_Stagged_Order_Sp,
-        Update_Stagged_Order_Sp,
-        Get_Stagged_Orders_Sp,
-        Get_Stagged_Order_By_Id_Sp,
-        Insert_Attachments_Sp,
+        Get_Enquiries_By_Status_Sp,
+        Insert_Staggered_Order_Sp,
+        Update_Staggered_Order_Sp,
+        Get_Staggered_Order_Sp,
+        Get_Staggered_Order_By_Id_Sp,
+        Get_Staggered_Order_By_Enquiry_Id_Sp,
+        Delete_Staggered_Order_By_Id,
         Insert_Temp_Customer_Quality_Details_Sp,
         Update_Temp_Customer_Quality_Details_Sp,
+        Get_Temp_Customer_Quality_Details_By_Id_Sp,
         Insert_Supporting_Details_Sp,
         Update_Supporting_Details_Sp,
         Get_Supporting_Details_Sp,
+        Get_Supporting_Details_By_Enquiry_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Quality_Id_Sp,
+        Get_Enquiries_By_Quality_Id_Sp,
+        Update_Enquiry_Quality_Id_Status_Sp,
+        Get_Enquiries_By_Status_Ids_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
@@ -415,6 +455,46 @@ namespace KusumgarBusinessEntities.Common
         Get_G_Articles_By_Full_Code_Sp,
 
 
+
+        // Attachments
+        Insert_Attachment_Sp,
+        Delete_Attachment_By_Id,
+        Get_Attachments_By_Ref_Type_Ref_Id_Sp,
+        Get_Attachments_By_Id_Sp,
+
+        // Temp Functional Visual Parameters
+        Insert_Temp_Functional_Parameters_Sp,
+        Insert_Temp_Visual_Parameters_Sp,
+        Get_Temp_Visual_Parameters_By_Enquiry_Id,
+        Get_Temp_Functional_Parameters_By_Enquiry_Id,
+        Delete_Temp_Functional_Parameters_By_Id,
+        Delete_Temp_Visual_Parameters_By_Id,
+
+
+        //Process
+        Insert_Process_Sp,
+        Update_Process_Sp,
+        Get_Process_Sp,
+        Get_Process_By_Id_Sp,
+        Get_Process_By_Process_Name_Sp,
+
+        //W Article
+        Insert_W_Article_Sp,
+        Update_W_Article_Sp,
+        Get_W_Articles_Sp,
+        Get_W_Article_By_Id_Sp,
+        Get_W_Articles_By_Full_Code_Sp,
+        Get_W_Articles_By_Yarn_Type_Id_Sp,
+        Get_W_Articles_By_WArticle_Id_Yarn_Type_Sp,
+        
+        //C Article
+        Insert_C_Article_Sp,
+        Update_C_Article_Sp,
+        Get_C_Articles_Sp,
+        Get_C_Article_By_Id_Sp,
+        Get_C_Articles_By_Full_Code_Sp,
+        Get_C_Articles_By_Yarn_Type_Id_Sp,
+        Get_C_Articles_By_CArticle_Id_Yarn_Type_Sp,
     }
 
     public enum GenderType
@@ -489,7 +569,6 @@ namespace KusumgarBusinessEntities.Common
           Service=2
       }
    
-      
     public enum ShipmentMethod
     {
         method1=1,
@@ -529,6 +608,17 @@ namespace KusumgarBusinessEntities.Common
         Temp_Quality_Set_Created = 6,
         Quality_Assigned = 7,
         Planned = 8
+    }
+
+    public enum OrderStatus
+    {
+        Order_Arrived = 1,
+        
+    }
+
+    public enum RefType
+    {
+        Enquiry = 1, 
     }
 
 }

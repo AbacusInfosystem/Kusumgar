@@ -8,8 +8,18 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class SampleInfo : M_Samples
+    public class SampleInfo 
     {
+        public int Sample_Id { get; set; }
 
+        public int Sample_No { get; set; }
+
+        public int CreatedBy { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public int UpdatedBy { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
     }
 }

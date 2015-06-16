@@ -47,17 +47,20 @@
                                     <div class="form-group">
                                         <label>
                                             @if (Model.DefectType.Status == true)
-                                            {
-                                                @:<input type="checkbox" name="DefectType.Status" value="false" checked />
-                                               }
-                                            else
-                                            {
-                                                @:<input type="checkbox" name="DefectType.Status" value="true" />
-                                               }
+                                        {
+
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                        }
                                         &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 
                                     </label>
                                 </div>
+                                    
+                                    <input type="hidden" id="hdnActive" name="DefectType.Status" value="@Model.DefectType.Status.ToString()">
 
                             </div>
                         </div>
@@ -86,14 +89,3 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>

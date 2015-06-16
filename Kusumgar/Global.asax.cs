@@ -33,45 +33,45 @@ namespace Kusumgar
             AuthConfig.RegisterAuth();
         }
 
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            Exception exception = Server.GetLastError();
-            Response.Clear();
+        //protected void Application_Error(object sender, EventArgs e)
+        //{
+        //    Exception exception = Server.GetLastError();
+        //    Response.Clear();
 
-            HttpException httpException = exception as HttpException;
+        //    HttpException httpException = exception as HttpException;
 
-            if (httpException != null)
-            {
-                string action;
+        //    if (httpException != null)
+        //    {
+        //        string action;
 
-                switch (httpException.GetHttpCode())
-                {
-                    case 404:
-                        // page not found
-                        action = "Error";
-                        break;
-                    case 500:
-                        // server error
-                        action = "Error";
-                        break;
-                    default:
-                        action = "Error";
-                        break;
-                }
+        //        switch (httpException.GetHttpCode())
+        //        {
+        //            case 404:
+        //                // page not found
+        //                action = "Error";
+        //                break;
+        //            case 500:
+        //                // server error
+        //                action = "Error";
+        //                break;
+        //            default:
+        //                action = "Error";
+        //                break;
+        //        }
 
-                // clear error on server
-                Server.ClearError();
+        //        // clear error on server
+        //        Server.ClearError();
 
-                Response.Redirect(String.Format("~/System/{0}/?message={1}", action, exception.Message));
-            }
-            else
-            {
+        //        Response.Redirect(String.Format("~/System/{0}/?message={1}", action, exception.Message));
+        //    }
+        //    else
+        //    {
 
-                // clear error on server
-                Server.ClearError();
+        //        // clear error on server
+        //        Server.ClearError();
 
-                Response.Redirect(String.Format("~/System/Error/?message="));
-            }
-        }
+        //        Response.Redirect(String.Format("~/System/Error/?message="));
+        //    }
+        //}
     }
 }

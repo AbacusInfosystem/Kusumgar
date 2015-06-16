@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "Verify Quality Set";
-}
+﻿@model Kusumgar.Models.EnquiryViewModel
+@using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -36,16 +35,27 @@
                                                 <tr>
                                                     <th colspan="2">PPC inputs</th>
                                                 </tr>
-
+                                                
                                                 <tr>
-                                                    <td>Quality #</td>
-                                                    <td>55665475</td>
+                                                    @if (Model.Enquiry.Quality_Id != 0)
+                                                    {
+                                                        <td>Quality #</td>
+                                                        <td>@Model.Enquiry.Quality_No</td>
+                                                    }
+                                                    else
+                                                    {
+
+                                                    }
                                                 </tr>
 
                                                 <tr>
-                                                    <td>Article Type to make
+                                                    <td>
+                                                        Article Type to make
                                                     </td>
-                                                    <td>P</td>
+                                                    @if (Model.Enquiry.PPC_Article_Type_Id != 0)
+                                                    {
+                                                        <td>@Model.Enquiry.Article_Type</td>
+                                                    }
                                                 </tr>
                                             </table>
                                         </div>
@@ -60,25 +70,25 @@
 
                                                 <tr>
                                                     <td>Width of Fabric</td>
-                                                    <td>20</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Width_Of_Fabric</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Shade
                                                     </td>
-                                                    <td>Bright Yarn</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Shade_Name</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Print
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Prints</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Coating
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Coating</td>
                                                 </tr>
 
                                                 <tr>
@@ -92,11 +102,11 @@
                                                     <td>
                                                         <ul class="todo-list ui-sortable">
                                                             <li>
-                                                                <span class="text">Sample1.jpg</span>
+                                                                <span class="text">@Model.Enquiry.Temp_Customer_Quality_Details.Sample_No</span>
                                                             </li>
-                                                            <li style="" class="">
+                                                            @*<li style="" class="">
                                                                 <span class="text">Sample2.jpg</span>
-                                                            </li>
+                                                            </li>*@
                                                         </ul>
 
                                                     </td>
@@ -105,25 +115,25 @@
                                                 <tr>
                                                     <td>Application
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Applications</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Market Segment
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Market_Segment</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Physical Appearance
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Physical_Appearance</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Label / Tagging
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Lable_Tagging</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -139,73 +149,56 @@
                                                 <tr>
                                                     <td>Rate
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Rate</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Customer Roll Length
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Customer_Roll_Length</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Packing
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Packing</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Dispatch
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Dispatch</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Additional Customer Property
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Additional_Customer_Prop</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Source of Enquiry
                                                     </td>
-                                                    <td>62</td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Source_Of_Enquiry</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Attached Emails
+                                                    <td>
+                                                        Attached Emails & Files
                                                     </td>
                                                     <td>
                                                         <ul class="todo-list ui-sortable">
-                                                            <li>
-                                                                <span class="text">Email1.pub</span>
-                                                            </li>
-                                                            <li style="" class="">
-                                                                <span class="text">Email2.pub</span>
-                                                            </li>
-                                                            <li style="" class="">
-                                                                <span class="text">Email3.pub</span>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Attached Files
-                                                    </td>
-                                                    <td>
-                                                        <ul class="todo-list ui-sortable">
-                                                            <li>
-                                                                <span class="text">1.doc</span>
-                                                            </li>
-                                                            <li style="" class="">
-                                                                <span class="text">1.xlxs</span>
-                                                            </li>
-                                                            <li style="" class="">
-                                                                <span class="text">1.jpg</span>
-                                                            </li>
-                                                        </ul>
+                                                            @foreach (var item in Model.Enquiry.Attachments)
+                                                            {
+                                                                <li>
+                                                                    <span class="text">@item.Document_Name</span>
+                                                                </li>
+                                                            }
 
+                                                        </ul>
                                                     </td>
                                                 </tr>
+
+                                               
 
                                             </table>
                                         </div>

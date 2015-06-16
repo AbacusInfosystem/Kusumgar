@@ -40,7 +40,7 @@
                                     <div class="form-group">
                                         <label for="txtFullCode">Full Code</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtFull_Code" placeholder="Enter Full Code" />
+                                            <input type="text" class="form-control input-sm" id="txtGArticle_Full_Code" placeholder="Enter Full Code" />
                                             <input type="hidden" name="Filter.Full_Code" id="hdnFull_Code" value="@Model.Filter.Full_Code" class="auto-complete-label" />
                                             <input type="hidden" id="hdfG_Article_Id" value="@Model.Filter.G_Article_Id" name="Filter.G_Article_Id" class="auto-complete-value" />
                                         </div>
@@ -52,7 +52,7 @@
                                             <option>Select Yarn Type</option>
                                             @if (Model.Attribute_Codes.Count > 0)
                                             {
-                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_", " ")))
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_"," ")))
                                                 {
                                                     if (Model.G_Article.Yarn_Type_Id == item.Attribute_Code_Id)
                                                     {

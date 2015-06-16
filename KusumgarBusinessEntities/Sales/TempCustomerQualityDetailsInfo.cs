@@ -16,7 +16,7 @@ namespace KusumgarBusinessEntities
 
         public string Applications { get; set; }
 
-        public string Physicla_Appearance { get; set; }
+        public string Physical_Appearance { get; set; }
 
         public int Shades { get; set; }
 
@@ -37,6 +37,14 @@ namespace KusumgarBusinessEntities
         public int UpdatedBy { get; set; }
 
         public DateTime UpdatedOn { get; set; }
+
+        #region Additional Fields
+
+        public string Sample_No { get; set; }
+
+        public string Shade_Name { get; set; }
+
+        #endregion
 
     }
 }

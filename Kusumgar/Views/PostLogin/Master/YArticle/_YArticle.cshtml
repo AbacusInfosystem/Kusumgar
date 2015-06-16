@@ -17,7 +17,7 @@
             <div class="box-body">
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6"> 
 
                         <div class="row">
                             <div class="col-md-8 col-xs-8">
@@ -105,7 +105,7 @@
                                     <option value="">-Select Twist Type- </option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Twist_type.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Twist_type.ToString().Replace('_',' ')))
                                         {
                                             if (Model.YArticle.Twist_Type_Id == item.Attribute_Code_Id)
                                             {
@@ -173,7 +173,7 @@
                                     <option  value="">-Select Yarn type- </option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace('_',' ')))
                                         {
                                             if (Model.YArticle.Yarn_Type_Id == item.Attribute_Code_Id)
                                             {
@@ -395,7 +395,7 @@
                                     <option  value="">-Select Chemical Treatment-</option>
                                     @if (Model.Attribute_Codes.Count > 0)
                                     {
-                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Treatment.ToString()))
+                                        foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Chemical_Treatment.ToString().Replace('_',' ')))
                                         {
                                             if (Model.YArticle.Chemical_Treatment_Id == item.Attribute_Code_Id)
                                             {

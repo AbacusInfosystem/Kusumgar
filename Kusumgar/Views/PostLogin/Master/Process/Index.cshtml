@@ -1,20 +1,23 @@
-﻿@{
-    ViewBag.Title = "Customer";
-}
+﻿@model Kusumgar.Models.ProcessViewModel
+@using KusumgarBusinessEntities.Common
 
-
+<script src="/Scripts/Master/Event/process_event.js"></script>
+<script src="/Scripts/Master/Method/process_method.js"></script>
+<script src="/Scripts/Master/Validation/process_validation.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Process
-           
+        <h1>
+            Process
+
             <small>Master</small>
         </h1>
+
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li>Master</li>
+            <li>Masters</li>
             <li class="active">Process</li>
         </ol>
     </section>
@@ -23,56 +26,55 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-
                 <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Process Information</h3>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
                     <!-- form start -->
                     <div class="box-body">
+                        <form id="frmProcess">
+                            <div class="row">
+                                <div class="col-md-4">
 
-                        <div class="row">
-                            <div class="col-md-4">
+                                    <input type="hidden" id="hdnProcess_Id" name="Process.Process_Id" value="@Model.Process.Process_Id">
 
-                                <div class="form-group">
-                                    <label for="txtProcessName">Process name</label>
-                                    <input type="text" class="form-control" id="txtProcessName" placeholder="Enter process name">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" name="chkIsApproved" checked />
-                                        &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
-                                   
-                                    </label>
-                                </div>
-
+                                    <div class="form-group">
+                                        <label for="txtProcessName" style="color: #333">Process Name</label>
+                                        <input type="text" class="form-control input-sm" name="Process.Process_Name" id="txtProcessName" placeholder="Enter Process Name" value="@Model.Process.Process_Name">
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label>
+                                            @if (Model.Process.Is_Active == true)
+                                            {
+                                                <input type="checkbox" name="chkIsActive" id="chkIsActive" value="false" checked />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" name="chkIsActive" id="chkIsActive" value="true" />
+                                            }
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Is Active
+                                            <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Process.Is_Active" value="@Model.Process.Is_Active.ToString()">
+                                        </label>
+                                    </div>
+                                </div>                                
                             </div>
-                        </div>
-
-                        <div class="box-footer">
-                            <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-                            <a href="@Url.Action("Search","Process")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-                            
-                        </div>
-
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="btn-group">
+                                            <button type="button" id="btnProcessSave" class="btn btn-success btn-sm">Save </button>
+                                            <a href="@Url.Action("Search", "Process")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <!-- /.box-body -->
-                </div>
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
+                </div>            
+            </div><!-- /.col -->
+        </div><!-- /.row -->        
     </section>
-    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>

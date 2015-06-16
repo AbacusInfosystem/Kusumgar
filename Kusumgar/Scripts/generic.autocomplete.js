@@ -87,8 +87,8 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/search-role-by-name//" + $('#txtRole_Name').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtFull_Code') {
-                urlString = "/master/y-articles-by-full-code/" + $('#txtFull_Code').val();
+            if ($(elementObject).attr("id") == 'txtYArticle_Full_Code') {
+                urlString = "/master/y-articles-by-full-code/" + $('#txtYArticle_Full_Code').val();
             }
 
             if ($(elementObject).attr("id") == 'txtWork_Station') {
@@ -108,20 +108,45 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/ajax/defect-list/" + $('#txtDefectName').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtApplicationName') {
+                urlString = "/ajax/application-list/" + $('#txtApplicationName').val();
+            }
+
             if ($(elementObject).attr("id") == 'txtTestUnitName') {
                 urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtMarketSegmentName') {
+                urlString = "/ajax/segment-list/" + $('#txtMarketSegmentName').val();
             }
 
             if ($(elementObject).attr("id") == 'txtQuality_No') {
                 urlString = "/sales/quality-autocomplete/" + $('#txtQuality_No').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtPArticle_Full_Code') {
+                urlString = "/master/p-articles-by-full-code/" + $('#txtPArticle_Full_Code').val();
+            }
+
             if ($(elementObject).attr("id") == 'txtCustomer_Sample_No') {
                 urlString = "/master/sample-no-list/" + $('#txtCustomer_Sample_No').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtFull_Code') {
-                urlString = "/master/g-articles-by-full-code/" + $('#txtFull_Code').val();
+
+            if ($(elementObject).attr("id") == 'txtGArticle_Full_Code') {
+                urlString = "/master/g-articles-by-full-code/" + $('#txtGArticle_Full_Code').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtProcessName') {
+                urlString = "/master/get-process-id-by-process-name/" + $('#txtProcessName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWArticle_FullCode') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWArticle_FullCode').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtCArticle_FullCode') {
+                urlString = "/master/c-articles-by-full-code/" + $('#txtCArticle_FullCode').val();
             }
 
             $.ajax({
@@ -176,6 +201,9 @@ var InitializeAutoComplete = function (elementObject) {
             $(this).parents('.form-group').find('.auto-complete-value').val(ui.item.value);
             $(this).parents('.form-group').find('.auto-complete-label').val(ui.item.label);
 
+            $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+            $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
+
             if ($(this).parents('.form-group').find(".todo-list")[0]) {
                 $(this).parents('.form-group').find('.todo-list').remove();
             }
@@ -190,11 +218,13 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').append(htmlText);
             }
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
             });
 
@@ -254,11 +284,13 @@ var InitializeAutoComplete = function (elementObject) {
 
             $(this).parents('.form-group').find('input[type=text]').val("");
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
 
             });

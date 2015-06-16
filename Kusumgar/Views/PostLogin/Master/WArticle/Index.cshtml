@@ -1,19 +1,20 @@
-﻿@{
-    ViewBag.Title = " W Article";
-}
+﻿@model Kusumgar.Models.WArticleViewModel
+@using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>W Article
+        <h1>
+            W Article
 
             <small>Master</small>
         </h1>
+
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li>Master</li>
+            <li>Masters</li>
             <li class="active">W Article</li>
         </ol>
     </section>
@@ -23,13 +24,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                     @Html.Partial("~/Views/PostLogin/Master/WArticle/_WArticle.cshtml")
+                    <div id="dvWArticle">
+                        @{Html.RenderAction("Load_WArticle", "WArticle", Model);}
+                        @*@Html.Partial("~/Views/PostLogin/Master/WArticle/_WArticle.cshtml")*@
+                    </div>
                 </div>
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
     </section>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->

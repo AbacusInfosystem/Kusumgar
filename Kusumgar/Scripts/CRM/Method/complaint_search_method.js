@@ -24,49 +24,52 @@ function BindCompGrid(data) {
     var htmlText = "";
 
     if (data.Complaints.length > 0) {
-        for (i = 0; i < data.Complaints.length; i++) {
 
-            htmlText += "<tr>";
+    for (i = 0; i < data.Complaints.length; i++) {
 
-            htmlText += "<td>";
+        htmlText += "<tr>";
+
+        htmlText += "<td>";
 
             htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Id + "' class='iradio_square-green'/>";
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Customer_Name;
+        htmlText += data.Complaints[i].Customer_Name;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
             htmlText += data.Complaints[i].Order_Id;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
             htmlText += data.Complaints[i].Order_Item_Id;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
             htmlText += data.Complaints[i].Challan_No;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "<td>";
+        htmlText += "<td>";
 
             htmlText += data.Complaints[i].CDescription;
 
-            htmlText += "</td>";
+        htmlText += "</td>";
 
-            htmlText += "</tr>";
-        }
+        htmlText += "</tr>";
     }
+
+    }
+
     else {
         htmlText += "<tr>";
 

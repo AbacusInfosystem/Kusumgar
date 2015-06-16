@@ -159,17 +159,27 @@ namespace Kusumgar.Controllers
         
        }
 
-        public JsonResult Get_Test_AutoComplete(string testUnitName)
+        public JsonResult Get_Test_Unit_AutoComplete(string testUnitName)
         {
             TestManager tMan = new TestManager();
 
             List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
 
-            testUnitNames = tMan.Get_Test_AutoComplete(testUnitName);
+            testUnitNames = tMan.Get_Test_Unit_AutoComplete(testUnitName);
 
             return Json(testUnitNames, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Get_Test_Autocomplete(string test_Name)
+        {
+            TestManager tMan = new TestManager();
+
+            List<AutocompleteInfo> test_Names = new List<AutocompleteInfo>();
+
+            test_Names = tMan.Get_Test_Autocomplete(test_Name);
+
+            return Json(test_Names, JsonRequestBehavior.AllowGet);
+        }
     }
  }
 

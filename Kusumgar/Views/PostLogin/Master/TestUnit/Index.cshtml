@@ -48,14 +48,13 @@
                                         <label>
 
                                             @if (Model.Test_Unit.Status == true)
-                                            {
-                                                @:<input type="checkbox" name="Test_Unit.Status" value="false" checked />
-                                                
-                                            }
-                                            else
-                                            
-                                            {
-                                                @:<input type="checkbox" name="Test_Unit.Status" value="true" />
+                                        {
+
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
 
                                             }
                                             
@@ -63,6 +62,7 @@
 
                                         </label>
                                     </div>
+                                    <input type="hidden" id="hdnActive" name="Test_Unit.Status" value="@Model.Test_Unit.Status.ToString()">
 
                                 </div>
                             </div>

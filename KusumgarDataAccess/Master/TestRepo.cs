@@ -154,7 +154,7 @@ namespace KusumgarDataAccess
          return retVal;
         }
 
-        public List<AutocompleteInfo> Get_Test_AutoComplete(string testUnitName)
+        public List<AutocompleteInfo> Get_Test_Unit_AutoComplete(string testUnitName)
         {
             List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
 
@@ -308,6 +308,37 @@ namespace KusumgarDataAccess
             tests.Test_Unit_Name10 = Convert.ToString(dr["Test_Unit_Name10"]);
 
             return tests;
+        }
+
+        public List<AutocompleteInfo> Get_Test_Autocomplete(string test_Name)
+        {
+            List<AutocompleteInfo> test_Names = new List<AutocompleteInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Test_Name", test_Name));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Test_Name_sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                foreach (DataRow dr in drList)
+                {
+                    AutocompleteInfo auto = new AutocompleteInfo();
+
+                    auto.Label = Convert.ToString(dr["Test_Name"]);
+
+                    auto.Value = Convert.ToInt32(dr["Test_Id"]);
+
+                    test_Names.Add(auto);
+                }
+            }
+
+            return test_Names;
         }
     }
 }

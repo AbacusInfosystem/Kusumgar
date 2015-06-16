@@ -229,5 +229,23 @@ namespace KusumgarBusinessEntities.Common
 
             return Get_Enquiry_Status;
         }
+
+        public static Dictionary<int, string> Get_Article_Types()
+        {
+            Dictionary<int, string> Get_Article_Types = new Dictionary<int, string>();
+
+            Get_Article_Types.Add(1, ArticleType.YArticle.ToString().Replace('_', ' ').ToString());
+
+            Get_Article_Types.Add(2, ArticleType.WArticle.ToString().Replace('_', ' ').ToString());
+
+            Get_Article_Types.Add(3, ArticleType.GArticle.ToString().Replace('_', ' ').ToString());
+
+            Get_Article_Types.Add(4, ArticleType.PArticle.ToString().Replace('_', ' ').ToString());
+
+            Get_Article_Types.Add(5, ArticleType.CArticle.ToString().Replace('_', ' ').ToString());
+
+            return Get_Article_Types;
+        }
+
     }
 }

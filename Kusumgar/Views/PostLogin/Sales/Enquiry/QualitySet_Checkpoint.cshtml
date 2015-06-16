@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "Create Article";
-}
+﻿@model Kusumgar.Models.EnquiryViewModel
+@using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -32,6 +31,198 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th colspan="2">PPC inputs</th>
+                                                </tr>
+
+                                                <tr>
+                                                    @if (Model.Enquiry.Quality_Id != 0)
+                                                    {
+                                                        <td>Quality #</td>
+                                                        <td>@Model.Enquiry.Quality_No</td>
+                                                    }
+                                                    else
+                                                    {
+
+                                                    }
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Article Type to make
+                                                    </td>
+                                                    @if (Model.Enquiry.PPC_Article_Type_Id != 0)
+                                                    {
+                                                        <td>@Model.Enquiry.Article_Type</td>
+                                                    }
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th colspan="2">Customer quality details</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Width of Fabric</td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Width_Of_Fabric</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Shade
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Shade_Name</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Print
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Prints</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Coating
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Coating</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Finish
+                                                    </td>
+                                                    <td>62</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Customer Approved Sample                                                            </td>
+                                                    <td>
+                                                        <ul class="todo-list ui-sortable">
+                                                            <li>
+                                                                <span class="text">@Model.Enquiry.Temp_Customer_Quality_Details.Sample_No</span>
+                                                            </li>
+                                                            @*<li style="" class="">
+                                            <span class="text">Sample2.jpg</span>
+                                        </li>*@
+                                                        </ul>
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Application
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Applications</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Market Segment
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Market_Segment</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Physical Appearance
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Physical_Appearance</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Label / Tagging
+                                                    </td>
+                                                    <td>@Model.Enquiry.Temp_Customer_Quality_Details.Lable_Tagging</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th colspan="2">Quality supportive details</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Rate
+                                                    </td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Rate</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Customer Roll Length
+                                                    </td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Customer_Roll_Length</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Packing
+                                                    </td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Packing</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Dispatch
+                                                    </td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Dispatch</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Additional Customer Property
+                                                    </td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Additional_Customer_Prop</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Source of Enquiry
+                                                    </td>
+                                                    <td>@Model.Enquiry.Supporting_Details.Source_Of_Enquiry</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Attached Emails & Files
+                                                    </td>
+                                                    <td>
+                                                        <ul class="todo-list ui-sortable">
+                                                            @foreach (var item in Model.Enquiry.Attachments)
+                                                            {
+                                                                <li>
+                                                                    <span class="text">@item.Document_Name</span>
+                                                                </li>
+                                                            }
+
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="box-body table-responsive no-padding">
@@ -214,7 +405,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
 
                         <div class="tab-pane" id="tab_2">

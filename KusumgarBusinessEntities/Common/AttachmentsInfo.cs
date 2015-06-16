@@ -8,13 +8,13 @@ namespace KusumgarBusinessEntities.Common
 {
     public class AttachmentsInfo
     {
-        public int Attachment_Id { get; set; }
-
-        public int Attachment_Type_Id { get; set; }
+        public long Attachment_Id { get; set; }
 
         public int Ref_Id { get; set; }
 
-        public bool Is_Active { get; set; }
+        public int Ref_Type { get; set; }
+
+        public string Document_Name { get; set; }
 
         public int CreatedBy { get; set; }
 
@@ -24,5 +24,44 @@ namespace KusumgarBusinessEntities.Common
 
         public DateTime UpdatedOn { get; set; }
 
+        #region Additional Fields
+
+        public string Label 
+        {
+            get
+            {
+                return Document_Name;
+            }
+            set
+            {
+                Label = value;
+            }
+        }
+
+        public long Value
+        {
+            get
+            {
+                return Attachment_Id;
+            }
+            set
+            {
+                Value = value;    
+            }
+        }
+
+        public string Ref_Type_Str
+        {
+            get
+            {
+                 return ((RefType)Ref_Type).ToString();
+            }
+            set
+            {
+                Ref_Type_Str = value;
+            }
+        }
+
+        #endregion
     }
 }

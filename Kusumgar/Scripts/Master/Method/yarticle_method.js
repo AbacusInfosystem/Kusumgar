@@ -1,9 +1,5 @@
-﻿
-
-function Get_Full_Code()
-{
-
-
+﻿function Get_Full_Code()
+{ 
     $(".full-code").text("");
 
     $('.attribute-name').each(function (i) {
