@@ -243,6 +243,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\PostLogin\Master\VendorContactController.cs" />
+    <Compile Include="Controllers\PostLogin\Sales\EnquiryController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\PostLogin\Sales\SchedulerController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\PostLogin\System\SystemController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ComplaintController.cs" />
     <Compile Include="Controllers\PostLogin\CRM\ContactController.cs" />
@@ -270,7 +276,6 @@
     <Compile Include="Controllers\PostLogin\Master\DefectTypeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\YarnCategoryCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\YArticleController.cs" />
-    <Compile Include="Controllers\PostLogin\Sales\EnquiryController.cs" />
     <Compile Include="Controllers\PreLogin\Demo1.cs" />
     <Compile Include="Controllers\PreLogin\HomeController.cs" />
     <Compile Include="Controllers\PreLogin\AuthenticationController.cs" />
@@ -964,6 +969,9 @@
     <Content Include="Scripts\CRM\Method\customer_method.js" />
     <Content Include="Scripts\CRM\Method\customer_shipping_details_method.js" />
     <Content Include="Scripts\CRM\Method\custom_field_method.js" />
+    <Content Include="Scripts\generic.dragdrop.js" />
+    <Content Include="Scripts\generic.iCheck.initialize.js" />
+    <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
     <Content Include="Scripts\Master\Event\particle_event.js" />
     <Content Include="Scripts\Master\Event\particle_listing_event.js" />
@@ -1077,6 +1085,18 @@
     <Content Include="Scripts\Master\Validation\work_center_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Sales\Event\enquiry_events.js" />
+    <Content Include="Scripts\Sales\Event\enquiry_search_events.js" />
+    <Content Include="Scripts\Sales\Event\ppc_checkpoint_events.js" />
+    <Content Include="Scripts\Sales\Event\ppc_checkpoint_search_events.js" />
+    <Content Include="Scripts\Sales\Event\w_manager_checkpoint_search_events.js" />
+    <Content Include="Scripts\Sales\Method\enquiry_methods.js" />
+    <Content Include="Scripts\Sales\Method\enquiry_search_methods.js" />
+    <Content Include="Scripts\Sales\Method\ppc_checkpoint_methods.js" />
+    <Content Include="Scripts\Sales\Method\ppc_checkpoint_search_methods.js" />
+    <Content Include="Scripts\Sales\Method\w_manager_checkpoint_search_methods.js" />
+    <Content Include="Scripts\Sales\Validation\enquiry_validation.js" />
+    <Content Include="Scripts\Sales\Validation\ppc_checkpoint_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
     <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
@@ -1117,7 +1137,6 @@
     <Folder Include="Models\SystemConfig\" />
     <Folder Include="Scripts\CMS\" />
     <Folder Include="Scripts\Planning\" />
-    <Folder Include="Scripts\Sales\" />
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\SystemConfig\" />
     <Folder Include="uploads\" />
