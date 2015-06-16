@@ -44,13 +44,13 @@
 
                                             @foreach (var item in Model.Yarn_Types)
                                         {
-                                            if (Model.Filter.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                            if (Model.Filter.Yarn_Type_Id == item.Attribute_Code_Id)
                                             {
-                                        <option value="@item.AttributeCodeEntity.Attribute_Code_Id" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                        <option value="@item.Attribute_Code_Id" selected="selected">@item.Attribute_Code_Name</option>
                                             }
                                             else
                                             {
-                                        <option value="@item.AttributeCodeEntity.Attribute_Code_Id">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                        <option value="@item.Attribute_Code_Id">@item.Attribute_Code_Name</option>
                                             }
 
                                         }

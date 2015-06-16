@@ -147,7 +147,7 @@ namespace KusumgarDataAccess
 
         public List<EnquiryInfo> Get_Enquiries_By_Customer_Id(int customer_Id, ref PaginationInfo pager)
         {
-             List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
+            List<EnquiryInfo> enquiries = new List<EnquiryInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
@@ -592,7 +592,7 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Temp_Functional_Parameters(TempFunctionalParametersInfo temp_Functional_Parameters)
         {
             List<SqlParameter> sqlParams = new List<SqlParameter>();
-           
+
             sqlParams.Add(new SqlParameter("@Enquiry_Id", temp_Functional_Parameters.Enquiry_Id));
             sqlParams.Add(new SqlParameter("@Test_Id", temp_Functional_Parameters.Test_Id));
             sqlParams.Add(new SqlParameter("@CreatedBy", temp_Functional_Parameters.CreatedBy));
