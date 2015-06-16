@@ -75,19 +75,19 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>
-                                            @if (Model.Defect.DefectEntity.Status == true)
-                                            {
-                                                @:<input type="checkbox" name="Defect.DefectEntity.Status" value="false" checked />
-                                                                                               }
-                                            else
-                                            {
-                                                @:<input type="checkbox" name="Defect.DefectEntity.Status" value="true" />
-                                               }
-                                            &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
+                                        @if (Model.Defect.DefectEntity.Status == true)
+                                        {
 
-                                        </label>
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                        }
+                                        &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
+
                                     </div>
+                                    <input type="hidden" id="hdnActive" name="Defect.DefectEntity.Status" value="@Model.Defect.DefectEntity.Status.ToString()">
                                     
                                 </div>
 

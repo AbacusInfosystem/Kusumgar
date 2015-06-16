@@ -1,7 +1,12 @@
-﻿@{
+﻿@model Kusumgar.Models.PArticleViewModel
+@using KusumgarBusinessEntities.Common
+
+@{
     ViewBag.Title = "Search P Article";
 }
 
+<script src="~/Scripts/Master/Method/particle_listing_method.js"></script>
+<script src="~/Scripts/Master/Event/particle_listing_event.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -19,56 +24,77 @@
             <li class="active"> P Article Search</li>
         </ol>
     </section>
+    <form id="frmSearchPArticle">
+        <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+        <input type="hidden" id="hdfPArticleId" name="PArticle.P_Article_Id" value="@Model.PArticle.P_Article_Id" />
 
+        <!-- Main content -->
+        <section class="content">
 
-    <!-- Main content -->
-    <section class="content">
-
-        <!-- P Article Search -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <!-- form start -->
-                    <div class="box-body">
-
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label for="txtFullCode">Full Code</label>
-
-                                    <input type="text" class="form-control" id="txtFullCode" placeholder="Enter Full Code" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txtFullCode">Yarn Type</label>
-                                    <select id="drpYarn_type" class="form-control input-sm" >
-                                        <option>Select Yarn type</option>
-                                        <option>Polyster texturised</option>
-                                        <option>Air texturised Nylon</option>
-                                        <option>Viscose Staple</option>
-                                        <option>Polyster Cotton Mix</option>
-                                        <option>Meta aramide</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="box-footer">
+            <!-- P Article Search -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <div class="box-body">
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 
-                                    <div class="btn-group pull-left">
-                                        <button type="submit" id="btnSearch" class="btn btn-success">Search</button>
-                                        <a class="btn btn-primary" href="@Url.Action("Index","PArticle")" role="button">Create P Article</a>
+                                    <div class="form-group">
+                                        <label for="txtFullCode">Full Code</label>
+
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtFull_Code" placeholder="Enter Full Code" />
+                                            <input type="hidden" name="Filter.Full_Code" id="hdnFull_Code" value="@Model.Filter.Full_Code" class="auto-complete-label" />
+                                            <input type="hidden" id="hdnPArticle_Id" value="@Model.Filter.PArticle_Id" name="Filter.PArticle_Id" class="auto-complete-value" />
+                                        </div>
+
                                     </div>
 
-                                </div>
-                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       
+                                        <select id="drpYarn_Type" class="form-control input-sm" name="Filter.Yarn_Type_Id">
+                                            <option value="">-Select Yarn type- </option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_type.ToString()))
+                                                {
+                                                    if (Model.PArticle.Yarn_Type_Id == item.AttributeCodeEntity.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)" selected="selected">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.AttributeCodeEntity.Attribute_Code_Id +"_"+ item.AttributeCodeEntity.Code)">@item.AttributeCodeEntity.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
 
-                                    <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-warning">Edit P Article</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-left btn-group-sm">
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","PArticle")" role="button">Create</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="btn-group pull-right btn-group-sm">
+
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -78,110 +104,50 @@
                         </div>
 
                     </div>
-
                 </div>
             </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-solid">
-                    <div class="box-body table-responsive no-padding">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-body table-responsive no-padding">
 
-                        <table class="table table-striped">
-                            <tr>
-                                <th style="width:50px;"></th>
-                                <th style="width:400px;">Full Code</th>
-                                <th style="width:200px;">Yarn Type</th>
-                                <th style="width:200px;">QualityNo</th>
-                                <th style="width:200px;">Weave</th>
-                                <th style="width:200px;">Shades</th>
-                            </tr>
+                            <table class="table table-striped" id="tblparticle">
 
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" checked />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Nylon 6</td>
-                                <td>4042</td>
-                                <td>Plain</td>
-                                <td>Bright Yarn</td>
-                            </tr>
+                                <tr>
+                                    <th style="width: 50px;"></th>
+                                    <th style="width: 300px;">Full Code</th>
+                                    <th style="width: 200px;">Yarn Type</th>
+                                    <th style="width: 200px;">Quality No</th>
+                                    <th style="width: 200px;">Weave</th>
+                                    <th style="width: 200px;">Shade</th>
+                                   
+                                <tr>
+                                   
+                          </table>
 
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1"  />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Polyster texturised</td>
-                                <td>4123</td>
-                                <td>Plain</td>
-                                <td>Semi Dull</td>
-                            </tr>
+                        </div>
 
+                        <div class="box-footer clearfix">
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                <ul></ul>
+                            </div>
+                        </div>
 
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1"  />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Spun Polyster</td>
-                                <td>4342</td>
-                                <td>Plain</td>
-                                <td>Full Dull</td>
-                            </tr>
+                        <div id="divSearchGridOverlay" class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
 
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Spun Polyster</td>
-                                <td>4342</td>
-                                <td>Plain</td>
-                                <td>Full Dull</td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <input type="radio" name="r1" />
-                                </td>
-                                <td>0PES  PLN155  100 </td>
-                                <td>Spun Polyster</td>
-                                <td>4342</td>
-                                <td>Plain</td>
-                                <td>Full Dull</td>
-                            </tr>
-
-                        </table>
 
                     </div>
-
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
-
-                    <div id="divSearchGridOverlay" class="overlay">
-                        <i class="fa fa-refresh fa-spin"></i>
-                    </div>
-
-
                 </div>
             </div>
-        </div>
 
-    </section>
-    <!-- /.content -->
+        </section>
+      
+         <!-- /.content -->
+        </form>
 </div>
 <!-- /.content-wrapper -->
 

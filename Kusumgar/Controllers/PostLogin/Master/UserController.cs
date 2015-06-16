@@ -174,7 +174,7 @@ namespace Kusumgar.Controllers
             return Json(check, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Roles_By_Name(string name)
+        public JsonResult Get_Users_By_Name(string name)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 

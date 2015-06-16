@@ -1,10 +1,9 @@
-﻿@{
-    ViewBag.Title = " P Article";
-}
+﻿@model Kusumgar.Models.PArticleViewModel
+@using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>P Article
@@ -23,7 +22,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    @Html.Partial("~/Views/PostLogin/Master/PArticle/_PArticle.cshtml")
+                      @{Html.RenderAction("Load_PArticle", "PArticle", Model);}
                 </div>
             </div>
             <!-- /.col -->

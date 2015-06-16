@@ -65,5 +65,12 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Work_Center_Process> M_Work_Center_Process { get; set; }
         public DbSet<M_Work_Station> M_Work_Station { get; set; }
         public DbSet<M_Y_Article> M_Y_Article { get; set; }
+        public DbSet<M_Samples> M_Samples { get; set; }
+        public DbSet<M_Application> M_Application { get; set; }
+        public DbSet<M_Quality> M_Quality { get; set; }
+        public DbSet<M_Quality_Application_Mapping> M_Quality_Application_Mapping { get; set; }
+        public DbSet<M_Market_Segment> M_Market_Segment { get; set; }
+        public DbSet<M_Quality_Market_Segment_Mapping> M_Quality_Market_Segment_Mapping { get; set; }
+        public DbSet<M_P_Article> M_P_Article { get; set; }
     }
 }

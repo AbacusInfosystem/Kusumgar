@@ -108,6 +108,19 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/ajax/defect-list/" + $('#txtDefectName').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtApplicationName') {
+                urlString = "/ajax/application-list/" + $('#txtApplicationName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtMarketSegmentName') {
+                urlString = "/ajax/segment-list/" + $('#txtMarketSegmentName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtFull_Code') {
+                urlString = "/master/p-articles-by-full-code/" + $('#txtFull_Code').val();
+            }
+
+
             $.ajax({
                 url: urlString,
                 dataType: "json",

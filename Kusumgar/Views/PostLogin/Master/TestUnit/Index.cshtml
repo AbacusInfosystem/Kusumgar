@@ -45,24 +45,19 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>
+                                        @if (Model.Test_Unit.TestUnitEntity.Status == true)
+                                        {
 
-                                            @if (Model.Test_Unit.TestUnitEntity.Status == true)
-                                            {
-                                                @:<input type="checkbox" name="Test_Unit.TestUnitEntity.Status" value="false" checked />
-                                                
-                                            }
-                                            else
-                                            
-                                            {
-                                                @:<input type="checkbox" name="Test_Unit.TestUnitEntity.Status" value="true" />
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                        }
+                                        &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 
-                                            }
-                                            
-                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-
-                                        </label>
                                     </div>
+                                    <input type="hidden" id="hdnActive" name="Test_Unit.TestUnitEntity.Status" value="@Model.Test_Unit.TestUnitEntity.Status.ToString()">
 
                                 </div>
                             </div>

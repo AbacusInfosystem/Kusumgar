@@ -39,9 +39,9 @@
                             <div class="row">
                                 <div class="col-md-4">
 
-                                   
+
                                     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                    
+
                                     <input type="hidden" id="hdfAttributeCodeId" name="Attribute_Code.AttributeCodeEntity.Attribute_Code_Id" value="@Model.Attribute_Code.AttributeCodeEntity.Attribute_Code_Id" />
 
                                     <div class="form-group">
@@ -74,19 +74,19 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>
-                                            @if (Model.Attribute_Code.AttributeCodeEntity.Status == true)
-                                        {
-                                        @:<input type="checkbox" name="Attribute_Code.AttributeCodeEntity.Status" value="false" checked />
-                                                                                               }
+                                        @if (Model.Attribute_Code.AttributeCodeEntity.Status == true)
+                                         {
+
+                                           <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                         }
                                         else
                                         {
-                                        @:<input type="checkbox" name="Attribute_Code.AttributeCodeEntity.Status" value="true" />
-                                               }
-                                            &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                         }
+                                         &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 
-                                        </label>
                                     </div>
+                                    <input type="hidden" id="hdnActive" name="Attribute_Code.AttributeCodeEntity.Status" value="@Model.Attribute_Code.AttributeCodeEntity.Status.ToString()">
 
                                 </div>
 
@@ -126,14 +126,3 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
