@@ -313,6 +313,7 @@
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
     <Compile Include="Models\Sales\EnquiryViewModel.cs" />
     <Compile Include="Models\Sales\SchedulerViewModel.cs" />
+    <Compile Include="Models\System\SystemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -868,6 +869,7 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\print.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\background\back-1.jpg" />
     <Content Include="Content\images\background\back-0.png" />
@@ -975,6 +977,7 @@
     <Content Include="Scripts\generic.dragdrop.js" />
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.multi.autocomplete.js" />
+    <Content Include="Scripts\generic.printable.view.js" />
     <Content Include="Scripts\Master\Event\carticle_event.js" />
     <Content Include="Scripts\Master\Event\carticle_search_event.js" />
     <Content Include="Scripts\Master\Event\customer_quality_event.js" />
@@ -1140,6 +1143,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\System\PrintableView.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Web.config">
@@ -1560,6 +1566,8 @@
     <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Contact\View.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Contact\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
