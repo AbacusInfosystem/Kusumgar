@@ -1132,6 +1132,12 @@
     <Content Include="Scripts\Sales\Validation\ppc_checkpoint_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
+    <Content Include="Views\PostLogin\CRM\Contact\View.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\CRM\Contact\_PrintableView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -1566,8 +1572,6 @@
     <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
-    <Content Include="Views\PostLogin\CRM\Contact\View.cshtml" />
-    <Content Include="Views\PostLogin\CRM\Contact\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
