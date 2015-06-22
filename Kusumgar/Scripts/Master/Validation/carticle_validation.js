@@ -9,7 +9,7 @@
             },
             "CArticle.Yarn_Type_Id":
             {
-                //required: true,
+                required: true,
                 full_code_validator: true
             },
             "CArticle.Weave":
@@ -24,12 +24,12 @@
             },
             "CArticle.Chemical_Finish":
             {
-                //required: true,
+                required: true,
                 full_code_validator: true
             },
             "CArticle.Mechanical_Finish":
             {
-                //required: true,
+                required: true,
                 full_code_validator: true
             },
             "CArticle.Type":
@@ -39,7 +39,7 @@
             },
             "CArticle.C_Finish_Width":
             {
-                //required: true,
+                required: true,
                 full_code_validator: true
             },
             "CArticle.Coat":
@@ -65,7 +65,7 @@
             },
             "CArticle.Yarn_Type_Id":
             {
-                //required: "Yarn Type is required."                
+                required: "Yarn Type is required."                
             },
             "CArticle.Weave":
             {
@@ -77,11 +77,11 @@
             },
             "CArticle.Chemical_Finish":
             {
-                //required: "Chemical Finish is required."
+                required: "Chemical Finish is required."
             },
             "CArticle.Chemical_Finish":
             {
-                //required: "Mechanical Finish is required."
+                required: "Mechanical Finish is required."
             },
             "CArticle.Type":
             {
@@ -89,7 +89,7 @@
             },
             "CArticle.C_Finish_Width":
             {
-                //required: "C Finish Width is required."
+                required: "C Finish Width is required."
             },
             "CArticle.Coat":
             {

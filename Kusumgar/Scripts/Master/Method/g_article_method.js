@@ -62,21 +62,21 @@ function Set_G_Article() {
 
                     Full_Code: $(".full-code").text(),
 
-                    Warp_1:1,    //Warp_1: $("#hdnWarp_1").val(),      
+                    Warp_1: $("#hdnWarp_1").val(),      
 
-                    Warp_2:1,    //Warp_2: $("#hdnWarp_2").val(),     
+                   Warp_2: $("#hdnWarp_2").val(),     
 
-                    Warp_3:1,    //Warp_3: $("#hdnWarp_3").val(),      
+                    Warp_3: $("#hdnWarp_3").val(),      
 
-                    Warp_4:1,    //Warp_4: $("#hdnWarp_4").val(),      
+                    Warp_4: $("#hdnWarp_4").val(),      
 
-                    Weft_1:2,    //Weft_1: $("#hdnWeft_1").val(),      
+                    Weft_1: $("#hdnWeft_1").val(),      
 
-                    Weft_2:2,    //Weft_2: $("#hdnWeft_2").val(),      
+                    Weft_2: $("#hdnWeft_2").val(),      
 
-                    Weft_3:2,    //Weft_3: $("#hdnWeft_3").val(),      
+                    Weft_3: $("#hdnWeft_3").val(),      
 
-                    Weft_4:2,    //Weft_4: $("#hdnWeft_4").val(),      
+                    Weft_4: $("#hdnWeft_4").val(),      
 
                     Reed: $("#txtReed").val(),
 

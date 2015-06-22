@@ -232,6 +232,12 @@ namespace Kusumgar
             defaults: new { controller = "System", action = "Error", returnURL = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "system-3",
+            url: "system/printable-view/{page_String}/{id}",
+            defaults: new { controller = "System", action = "PrintableView", page_String = UrlParameter.Optional, id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
 
@@ -391,6 +397,18 @@ namespace Kusumgar
             url: "crm/delete-contact-custom-field",
             defaults: new { controller = "Contact", action = "Delete_Contact_Custom_Fields", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "contact-9",
+           url: "crm/view-contact",
+           defaults: new { controller = "Contact", action = "View_Contact", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "contact-10",
+          url: "crm/print-view-contact",
+          defaults: new { controller = "Contact", action = "Printable_Contact", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
 
             #endregion
@@ -1690,6 +1708,12 @@ namespace Kusumgar
             url: "sales/get-enquiries-for-w-manager-chekck-point",
             defaults: new { controller = "Enquiry", action = "Get_Enquiries_For_W_Manager_Checkpoint", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "enquiry-38",
+           url: "sales/update-enquiry-ppc-checkpoint",
+           defaults: new { controller = "Enquiry", action = "Update_Enquiry_PPC_Checkpoint", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

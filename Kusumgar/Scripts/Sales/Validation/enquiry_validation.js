@@ -33,6 +33,7 @@
 
             "Enquiry.Staggered_Order.Quantity":
                 {
+                    number: true,
                     required:true
                 },
             "Enquiry.Staggered_Order.Delivery_Date":
@@ -82,6 +83,18 @@
             "Enquiry.Supporting_Details.Source_Of_Enquiry":
                 {
                     required: true
+                },
+            "Enquiry.Supporting_Details.Two_Part":
+                {
+                    number: true
+                },
+            "Enquiry.Supporting_Details.Piece_Length_Min":
+                {
+                    number: true
+                },
+            "Enquiry.Supporting_Details.Piece_Length_Max":
+                {
+                    number: true
                 }
 
         },
@@ -163,7 +176,25 @@
             "Enquiry.Temp_Customer_Quality_Details.Market_Segment":
                 {
                     required: true
-                }
+                },
+            "Enquiry.Temp_Customer_Quality_Details.Wrap_Count":
+            {
+                number:true
+            },
+
+            "Enquiry.Temp_Customer_Quality_Details.Weft_Count":
+            {
+                number:true
+            },
+
+            "Enquiry.Temp_Customer_Quality_Details.Ends_Per_Inch":
+            {
+                number:true
+            },
+            "Enquiry.Temp_Customer_Quality_Details.Pick_Per_Inch":
+            {
+                number:true
+            }
 
         },
         messages: {

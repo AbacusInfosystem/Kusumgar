@@ -35,6 +35,18 @@ function Customer_CallBack(data)
 
 function Set_Customer()
 {
+
+    var Is_Domistic = "";
+
+    if ($("#drpHead_Office_Nation option:selected").text().toLowerCase() == "india")
+    {
+        Is_Domistic = true;
+    }
+    else
+    {
+        Is_Domistic = false;
+    }
+
     var cViewModel =
         {
             Customer: 
@@ -84,8 +96,10 @@ function Set_Customer()
 
                             Block_Order: $("#hdnBlock_Order").val(),
 
-                            Is_Active: $("#hdnIs_Active").val()
-                        
+                            Is_Active: $("#hdnIs_Active").val(),
+                    
+                            Is_Domistic: Is_Domistic
+
                 }
         }
 

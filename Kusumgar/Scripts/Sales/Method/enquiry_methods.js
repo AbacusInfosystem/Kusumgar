@@ -54,7 +54,7 @@ function Bind_Quality_Details(data)
     htmlText += "</tr>";
     htmlText += "<tr>";
     htmlText += "<td>Yarn Type</td>";
-    htmlText += "<td>"+data.quality.Yarn_Type_Id+"</td>";
+    htmlText += "<td>" + data.quality.Yarn_Type_Name + "</td>";
     htmlText += "</tr>";
     htmlText += "<tr>";
     htmlText += "<td>";
@@ -72,7 +72,7 @@ function Bind_Quality_Details(data)
     htmlText += "<td>";
     htmlText += "Weave";
     htmlText += "</td>";
-    htmlText += "<td>"+data.quality.Weave+"</td>";
+    htmlText += "<td>" + data.quality.Weave_Name + "</td>";
     htmlText += "</tr>";
     htmlText += "<tr>";
     htmlText += "<td>";
@@ -432,13 +432,19 @@ function Set_Enquiry()
 
                         Packing: $("#txtPacking").val(),
 
-                        Dispatch: $("#txtDispatch").val(),
+                        Dispatch: $("#drpDispatch").val(),
 
                         Additional_Customer_Prop: $("#txtAdditional_Customer_Property").val(),
 
                         Source_Of_Enquiry: $("#txtSource_of_Inquiry").val(),
 
-                        Is_Active: $("#hdnStatus").val()
+                        Is_Active: $("#hdnStatus").val(),
+
+                        Piece_Length_Max: $("#txtPiece_Length_Max").val(),
+
+                        Piece_Length_Min: $("#txtPiece_Length_Min").val(),
+
+                        Two_Part: $("#txtTwo_Part").val()
                     },
 
                 Temp_Customer_Quality_Details:
@@ -463,7 +469,15 @@ function Set_Enquiry()
 
                         Market_Segment: $("#txtMarket_Segment").val(),
 
-                        Lable_Tagging: $("#txtLabel_Tagging").val()
+                        Lable_Tagging: $("#txtLabel_Tagging").val(),
+
+                        Wrap_Count: $("#txtWrap_Count").val(),
+
+                        Weft_Count: $("#txtWeft_Count").val(),
+
+                        Ends_Per_Inch: $("#txtEnds_Per_Inch").val(),
+
+                        Pick_Per_Inch: $("#txtPick_Per_Inch").val()
                     },
 
                 Temp_Functional_Parameters:

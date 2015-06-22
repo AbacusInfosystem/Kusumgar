@@ -77,6 +77,8 @@ namespace KusumgarBusinessEntities
 
         public int UpdatedBy { get; set; }
 
+        public bool Is_Domistic { get; set; }
+
         #region Additional Fields 
 
         public BankDetailsInfo Bank_Details { get; set; }

@@ -651,7 +651,7 @@ namespace Kusumgar.Controllers
 
                 pager = eViewModel.Pager;
 
-                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_By_Status_Ids(enquiry_Status_Ids, ref pager);
+                eViewModel.Enquiries = _enquiryMan.Get_Enquiries_For_PPC_Checkpoint(enquiry_Status_Ids, ref pager);
 
                 eViewModel.Pager = pager;
 
@@ -661,7 +661,7 @@ namespace Kusumgar.Controllers
             {
                 eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Enquiry Controller - Get_Enquiries_By_Status " + ex.ToString());
+                Logger.Error("Enquiry Controller - Get_Enquiries_For_PPC_Check_Point " + ex.ToString());
             }
 
             return Json(eViewModel, JsonRequestBehavior.AllowGet);
@@ -711,6 +711,28 @@ namespace Kusumgar.Controllers
             }
 
             return View(eViewModel);
+        }
+
+        public JsonResult Update_Enquiry_PPC_Checkpoint(EnquiryViewModel eViewModel)
+        {
+            try
+            {
+                eViewModel.Enquiry.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                eViewModel.Enquiry.UpdatedOn = DateTime.Now;
+
+                _enquiryMan.Update_Enquiry_PPC_Checkpoint(eViewModel.Enquiry);
+
+                eViewModel.Friendly_Message.Add(MessageStore.Get("EQ014"));
+            }
+            catch(Exception ex)
+            {
+                eViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Update_Enquiry_PPC_Checkpoint " + ex.ToString());
+            }
+
+            return Json(eViewModel, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

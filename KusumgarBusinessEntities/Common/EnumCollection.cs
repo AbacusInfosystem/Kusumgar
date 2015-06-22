@@ -465,6 +465,9 @@ namespace KusumgarBusinessEntities.Common
         Get_Enquiries_By_Quality_Id_Sp,
         Update_Enquiry_Quality_Id_Status_Sp,
         Get_Enquiries_By_Status_Ids_Sp,
+        Get_Enquiries_For_PPC_Checkpoint_Sp,
+        Get_Quality_Details_By_Id_Sp,
+        Update_Enquiry_PPC_Checkpoint_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
@@ -636,6 +639,13 @@ namespace KusumgarBusinessEntities.Common
     public enum RefType
     {
         Enquiry = 1, 
+    }
+
+    public enum DispatchType
+    {
+        By_Sea = 1,
+        By_Air = 2,
+        By_Route = 3,
     }
 
 }

@@ -247,5 +247,18 @@ namespace KusumgarBusinessEntities.Common
             return Get_Article_Types;
         }
 
+        public static Dictionary<int,string> Get_Dispatch_Type()
+        {
+            Dictionary<int, string> Get_Dispatch_Type = new Dictionary<int, string>();
+
+            Get_Dispatch_Type.Add(1, DispatchType.By_Sea.ToString().Replace('_', ' ').ToString());
+
+            Get_Dispatch_Type.Add(2, DispatchType.By_Air.ToString().Replace('_', ' ').ToString());
+
+            Get_Dispatch_Type.Add(3, DispatchType.By_Route.ToString().Replace('_', ' ').ToString());
+
+            return Get_Dispatch_Type;
+        }
+
     }
 }

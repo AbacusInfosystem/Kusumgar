@@ -71,6 +71,30 @@ namespace KusumgarBusinessEntities
 
         public string Customer_Name { get; set; }
 
+        public string DMU_Status_Influence_Str
+        {
+            get
+            {
+                return ((DMUStatusInfluence)DMU_Status_Influence).ToString();
+            }
+            set
+            {
+                DMU_Status_Influence_Str = value;
+            }
+        }
+
+        public string DMU_Status_Role_Str
+        {
+            get
+            {
+                return ((DMUStatusRole)DMU_Status_Role).ToString();
+            }
+            set
+            {
+                DMU_Status_Role_Str = value;
+            }
+        }
+
         #endregion
     }
 }
