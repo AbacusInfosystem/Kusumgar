@@ -348,6 +348,8 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@UpdatedBy", customer.UpdatedBy));
             sqlparam.Add(new SqlParameter("@UpdatedOn", customer.UpdatedOn));
 
+            sqlparam.Add(new SqlParameter("@Is_Domistic", customer.Is_Domistic));
+
             return sqlparam;
         }
 

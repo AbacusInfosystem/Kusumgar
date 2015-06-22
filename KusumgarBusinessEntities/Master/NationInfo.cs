@@ -31,5 +31,13 @@ namespace KusumgarBusinessEntities
         public DateTime UpdatedOn { get; set; }
 
         public int UpdatedBy { get; set; }
+
+        public string Currency_Code { get; set; }
+
+        public string Currency_Symbol { get; set; }
+
+        public string Nation_Flag { get; set; }
+
+        public string Currency { get; set; }
     }
 }
