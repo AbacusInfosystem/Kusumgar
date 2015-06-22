@@ -126,11 +126,11 @@
                                                             @if (Model.Enquiry.Is_Active)
                                                             {
                                                                 @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="false" checked />
-                                                        }
+                                                            }
                                                             else
                                                             {
                                                                 @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="true" />
-                                                        }
+                                                            }
 
                                                             Active &nbsp;&nbsp;&nbsp;
                                                             <input type="hidden" class="iCheck-hidden" id="hdnStatus" value="@((Model.Enquiry.Is_Active == null ? false : Model.Enquiry.Is_Active).ToString())">
@@ -262,6 +262,11 @@
                                                         <input type="text" id="txtPrint" placeholder="Enter Print" class="form-control input-sm" value="@Model.Enquiry.Temp_Customer_Quality_Details.Prints" name="Enquiry.Temp_Customer_Quality_Details.Prints" />
                                                     </div>
 
+                                                    <div class="form-group">
+                                                        <label for="txtWrap_Count" style="color: #333">Wrap Count</label>
+                                                        <input type="text" id="txtWrap_Count" placeholder="Enter wrap count" name="Enquiry.Temp_Customer_Quality_Details.Wrap_Count" class="form-control input-sm" value="@(Model.Enquiry.Temp_Customer_Quality_Details.Wrap_Count == 0 ? "" : Model.Enquiry.Temp_Customer_Quality_Details.Wrap_Count.ToString())">
+                                                    </div>
+
                                                 </div>
 
                                                 <div class="col-md-3">
@@ -285,6 +290,11 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group">
+                                                        <label for="txtWeft_Count" style="color: #333">Weft Count</label>
+                                                        <input type="text" id="txtWeft_Count" placeholder="Enter weft count" name="Enquiry.Temp_Customer_Quality_Details.Weft_Count" class="form-control input-sm" value="@(Model.Enquiry.Temp_Customer_Quality_Details.Weft_Count == 0 ? "" : Model.Enquiry.Temp_Customer_Quality_Details.Weft_Count.ToString())">
+                                                    </div>
+
                                                 </div>
 
                                                 <div class="col-md-3">
@@ -297,6 +307,12 @@
                                                         <label for="txtMarket_Segment" style="color: #333">Market segment</label>
                                                         <textarea id="txtMarket_Segment" placeholder="Enter market segment" class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Market_Segment">@Model.Enquiry.Temp_Customer_Quality_Details.Market_Segment</textarea>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtEnds_Per_Inch" style="color: #333">Ends Per Inch(EPI)</label>
+                                                        <input type="text" id="txtEnds_Per_Inch" placeholder="Enter ends per inch" name="Enquiry.Temp_Customer_Quality_Details.Ends_Per_Inch" class="form-control input-sm" value="@(Model.Enquiry.Temp_Customer_Quality_Details.Ends_Per_Inch == 0 ? "" : Model.Enquiry.Temp_Customer_Quality_Details.Ends_Per_Inch.ToString())">
+                                                    </div>
+
                                                 </div>
 
                                                 <div class="col-md-3">
@@ -310,6 +326,12 @@
                                                         <label for="txtLabel_Tagging" style="color: #333">Label / Tagging</label>
                                                         <textarea id="txtLabel_Tagging" placeholder="Enter label / tagging " class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Lable_Tagging">@Model.Enquiry.Temp_Customer_Quality_Details.Lable_Tagging</textarea>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtPick_Per_Inch" style="color: #333">Pick Per Inch(PPI)</label>
+                                                        <input type="text" id="txtPick_Per_Inch" placeholder="Enter pick per inch" class="form-control input-sm" name="Enquiry.Temp_Customer_Quality_Details.Pick_Per_Inch" value="@(Model.Enquiry.Temp_Customer_Quality_Details.Pick_Per_Inch == 0 ? "" : Model.Enquiry.Temp_Customer_Quality_Details.Pick_Per_Inch.ToString())">
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -348,8 +370,22 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="txtDispatch" style="color: #333">Dispatch</label>
-                                                        <input type="text" id="txtDispatch" placeholder="Enter Dispatch" class="form-control input-sm" name="Enquiry.Supporting_Details.Dispatch" value="@Model.Enquiry.Supporting_Details.Dispatch" />
+                                                        <label for="drpDispatch" style="color: #333">Dispatch</label>
+                                                        @*<input type="text" id="txtDispatch" placeholder="Enter Dispatch" class="form-control input-sm" name="Enquiry.Supporting_Details.Dispatch" value="@Model.Enquiry.Supporting_Details.Dispatch" />*@
+                                                        <select class="form-control" id="drpDispatch" name="Enquiry.Supporting_Details.Dispatch">
+                                                            <option value="">-Select Dispatch-</option>
+                                                            @foreach (var item in LookupInfo.Get_Dispatch_Type())
+                                                            {
+                                                                if (Model.Enquiry.Supporting_Details.Dispatch == item.Key)
+                                                                {
+                                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@item.Key">@item.Value</option>
+                                                                }
+                                                            }
+                                                        </select>
                                                     </div>
 
                                                     <div class="form-group">
@@ -366,28 +402,29 @@
 
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <label for="txtPiece_Length_Max" style="color: #333">Piece Length Max</label>
+                                                        <input type="text" id="txtPiece_Length_Max" class="form-control input-sm" placeholder="Enter piece length max " name="Enquiry.Supporting_Details.Piece_Length_Max" value="@(Model.Enquiry.Supporting_Details.Piece_Length_Max == 0 ? "" : Model.Enquiry.Supporting_Details.Piece_Length_Max.ToString())">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtPiece_Length_Min" style="color: #333">Piece Length Min</label>
+                                                        <input type="text" id="txtPiece_Length_Min" class="form-control input-sm" placeholder="Enter piece length min " name="Enquiry.Supporting_Details.Piece_Length_Min" value="@(Model.Enquiry.Supporting_Details.Piece_Length_Min==0?"":Model.Enquiry.Supporting_Details.Piece_Length_Min.ToString())">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtTwo_Part" style="color: #333">Two Part</label>
+                                                        <input type="text" id="txtTwo_Part" placeholder="Enter two part" class="form-control input-sm" name="Enquiry.Supporting_Details.Two_Part" value="@(Model.Enquiry.Supporting_Details.Two_Part == 0 ?"":Model.Enquiry.Supporting_Details.Two_Part.ToString())">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <label for="Enquiry_Attach_Emails_Files" style="color: #333">Attach Emails and Files</label>
                                                         <div class="div-drag-drop" id="Enquiry_Attach_Emails_Files">drag and drop here.</div>
                                                         <br>
                                                         <div class="multiple-list"></div>
                                                     </div>
-                                                    </div>
-                                                    
-
-                                                @*<div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="Attach_Files" style="color: #333">Attach Files</label>
-                                                        <div class="div-drag-drop" id="Attach_Files">drag and drop here.</div>
-                                                    </div>
-                                                    <ul class="todo-list ui-sortable">
-                                                        <li>
-                                                            <span class="text">Files 1</span>
-                                                            <div class="tools">
-                                                                <i class="fa fa-remove"></i>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>*@
+                                                </div>
                                             </div>
                                         </div>
 

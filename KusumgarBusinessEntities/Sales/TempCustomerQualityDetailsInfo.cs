@@ -38,6 +38,14 @@ namespace KusumgarBusinessEntities
 
         public DateTime UpdatedOn { get; set; }
 
+        public decimal Wrap_Count { get; set; }
+
+        public decimal Weft_Count { get; set; }
+
+        public decimal Ends_Per_Inch { get; set; }
+
+        public decimal Pick_Per_Inch { get; set; }
+
         #region Additional Fields
 
         public string Sample_No { get; set; }

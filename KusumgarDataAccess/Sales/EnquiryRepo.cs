@@ -401,6 +401,10 @@ namespace KusumgarDataAccess
             }
             sqlParams.Add(new SqlParameter("@UpdatedBy", supporting_Details.UpdatedBy));
             sqlParams.Add(new SqlParameter("@UpdatedOn", supporting_Details.UpdatedOn));
+            sqlParams.Add(new SqlParameter("@Piece_Length_Max", supporting_Details.Piece_Length_Max));
+            sqlParams.Add(new SqlParameter("@Piece_Length_Min", supporting_Details.Piece_Length_Min));
+            sqlParams.Add(new SqlParameter("@Two_Part", supporting_Details.Two_Part));
+
             return sqlParams;
         }
 
@@ -412,8 +416,8 @@ namespace KusumgarDataAccess
             supportingdetails.Enquiry_Id = Convert.ToInt32(dr["Enquiry_Id"]);
             supportingdetails.Rate = Convert.ToInt32(dr["Rate"]);
             supportingdetails.Customer_Roll_Length = Convert.ToInt32(dr["Customer_Roll_Length"]);
-            supportingdetails.Packing = Convert.ToString(dr["Packing"]);
-            supportingdetails.Dispatch = Convert.ToString(dr["Dispatch"]);
+            supportingdetails.Packing = Convert.ToInt32(dr["Packing"]);
+            supportingdetails.Dispatch = Convert.ToInt32(dr["Dispatch"]);
             supportingdetails.Additional_Customer_Prop = Convert.ToString(dr["Additional_Customer_Prop"]);
             supportingdetails.Source_Of_Enquiry = Convert.ToString(dr["Source_Of_Enquiry"]);
             supportingdetails.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
@@ -421,6 +425,21 @@ namespace KusumgarDataAccess
             supportingdetails.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             supportingdetails.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             supportingdetails.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            if (DBNull.Value != dr["Piece_Length_Max"])
+            {
+                supportingdetails.Piece_Length_Max = Convert.ToDecimal(dr["Piece_Length_Max"]);
+            }
+
+            if (DBNull.Value != dr["Piece_Length_Min"])
+            {
+                supportingdetails.Piece_Length_Min = Convert.ToDecimal(dr["Piece_Length_Min"]);
+            }
+
+            if (DBNull.Value != dr["Two_Part"])
+            {
+                supportingdetails.Two_Part = Convert.ToDecimal(dr["Two_Part"]);
+            }
             return supportingdetails;
         }
 
@@ -479,6 +498,10 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Lable_Tagging", tempcustomerqualitydetails.Lable_Tagging));
             sqlParams.Add(new SqlParameter("@CreatedBy", tempcustomerqualitydetails.CreatedBy));
             sqlParams.Add(new SqlParameter("@CreatedOn", tempcustomerqualitydetails.CreatedOn));
+            sqlParams.Add(new SqlParameter("@Wrap_Count", tempcustomerqualitydetails.Wrap_Count));
+            sqlParams.Add(new SqlParameter("@Weft_Count", tempcustomerqualitydetails.Weft_Count));
+            sqlParams.Add(new SqlParameter("@Ends_Per_Inch", tempcustomerqualitydetails.Ends_Per_Inch));
+            sqlParams.Add(new SqlParameter("@Pick_Per_Inch", tempcustomerqualitydetails.Pick_Per_Inch));
             if (mode != "update")
             {
                 sqlParams.Add(new SqlParameter("@UpdatedBy", tempcustomerqualitydetails.UpdatedBy));
@@ -507,8 +530,29 @@ namespace KusumgarDataAccess
             tempcustomerqualitydetails.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             tempcustomerqualitydetails.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
+            if (DBNull.Value != dr["Wrap_Count"])
+            {
+                tempcustomerqualitydetails.Wrap_Count = Convert.ToDecimal(dr["Wrap_Count"]);
+            }
+
+            if (DBNull.Value != dr["Weft_Count"])
+            {
+                tempcustomerqualitydetails.Weft_Count = Convert.ToDecimal(dr["Weft_Count"]);
+            }
+
+            if (DBNull.Value != dr["Ends_Per_Inch"])
+            {
+                tempcustomerqualitydetails.Ends_Per_Inch = Convert.ToDecimal(dr["Ends_Per_Inch"]);
+            }
+
+            if (DBNull.Value != dr["Pick_Per_Inch"])
+            {
+                tempcustomerqualitydetails.Pick_Per_Inch = Convert.ToDecimal(dr["Pick_Per_Inch"]);
+            }
+
             tempcustomerqualitydetails.Sample_No = Convert.ToString(dr["Sample_No"]);
             tempcustomerqualitydetails.Shade_Name = Convert.ToString(dr["Shade_Name"]);
+
             return tempcustomerqualitydetails;
         }
 

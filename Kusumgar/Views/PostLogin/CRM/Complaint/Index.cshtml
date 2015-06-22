@@ -45,7 +45,7 @@
                                                 <label for="txtCustName" style="color: #333">Customer Name</label>
                                                 <div class="auto-complete">
                                                     <input type="text" class="form-control input-sm" id="txtCustName" placeholder="Enter Customer Name" value="">
-                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Complaint_Entity.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" class="auto-complete-value" />
+                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" class="auto-complete-value" />
                                                     <input type="hidden" id="hdnCustomer_Name" value="@Model.Complaint.Customer_Name" name="Complaint.Customer_Name" class="auto-complete-label">
                                             </div>
                                             </div>
@@ -76,7 +76,7 @@
                                 <div class="col-md-4">
                                     <div class="btn-group">
                                         <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
-                                        <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel and Open Search</a>
+                                        <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
                                     </div>
                                 </div>
                             </div>

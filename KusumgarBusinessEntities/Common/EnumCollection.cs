@@ -624,4 +624,11 @@ Get_Material_SubCategory_By_CategoryId_Sp,
         Enquiry = 1, 
     }
 
+    public enum DispatchType
+    {
+        By_Sea = 1,
+        By_Air = 2,
+        By_Route = 3,
+    }
+
 }
