@@ -99,7 +99,7 @@ namespace KusumgarDataAccess
                  customer.Customer_Address_List = Get_Customer_Addresses(dt2);// to bind customer addresses
              }
 
-             return customer;//Write method for autocomplete for segment also add grid for both,resoved error in application and segment pager;
+             return customer;
          }
 
          private CustomerInfo Get_Customer_Values(DataRow dr)
@@ -158,7 +158,7 @@ namespace KusumgarDataAccess
              {
                  customer.Expiration_Date_Of_Contract = Convert.ToDateTime(dr["Expiration_Date_Of_Contract"]);
              }
-//Write method for autocomplete for segment also add grid for both,resoved error in application and segment page
+
              if (dr["Credit_limit"] != DBNull.Value)
              {
                  customer.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
@@ -232,7 +232,7 @@ namespace KusumgarDataAccess
             bank_details.Vat = Convert.ToString(dr["Vat"]);
             if (dr["Currency_Id"] != DBNull.Value)
             {
-                //bank_details.Write method for autocomplete for segment also add grid for both,resoved error in application and segment pageCurrency_Id = Convert.ToInt32(dr["Currency_Id"]);
+                bank_details.Currency_Id = Convert.ToInt32(dr["Currency_Id"]);
             }
             if (dr["Payment_Term_Id"] != DBNull.Value)
             {
