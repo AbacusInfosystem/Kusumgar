@@ -139,6 +139,7 @@ function Bind_Enquiry_Grid(data) {
         if ($(this).prop('checked')) {
             $("#hdnEnquiry_Id").val(this.id.replace("r1_", ""));
             $("#btnEdit").show();
+            $("#btnView").show();
         }
     });
 
@@ -147,6 +148,8 @@ function Bind_Enquiry_Grid(data) {
 function PageMore(Id) {
 
     $("#btnEdit").hide();
+
+    $("#btnView").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

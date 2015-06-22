@@ -417,7 +417,8 @@ namespace Kusumgar
             FriendlyMessageInfo EQ013 = new FriendlyMessageInfo("EQ013", MessageType.Success, "Visual parameter has been deleted successfully.");
             hash.Add("EQ013", EQ013);
 
-
+            FriendlyMessageInfo EQ014 = new FriendlyMessageInfo("EQ014", MessageType.Success, "PPC Check Point has been updated successfully.");
+            hash.Add("EQ014", EQ014);
 
 
             #endregion

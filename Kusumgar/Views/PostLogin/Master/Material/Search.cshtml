@@ -6,8 +6,9 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-    @*@{Html.RenderPartial("_ServerMessage");}*@
+    
+    
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -24,6 +25,12 @@
     </section>
     <form id="frmSearch_Prod">
         <input type="hidden" id="hdnMaterial_Id" name="Material_Id">
+        <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+        <input type="hidden" id="hdMaterial_Id" name="Filter.Material_Id" />
+        <input type="hidden" id="hdfMaterial_Name" name="Filter.Material_Name" />
+
+        <input type="hidden" id="hdVendor_Id" name="Filter.Vendor_Id" />
+        
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -40,7 +47,15 @@
                                             <input type="hidden" id="hdfMaterial_Id" value="@Model.Filter.Material_Id" name="Filter.Material_Id" class="auto-complete-value">
                                             <input type="hidden" id="hdnMaterial_Name" value="@Model.Filter.Material_Name" name="Filter.Material_Name" class="auto-complete-label">
                                         </div>
-                                    </div>                                    
+                                    </div>  
+                                    <div class="form-group">
+                                        <label for="txtVendorName">Vendor Name</label>
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtVendorName" placeholder="Enter vendor name">
+                                            <input type="hidden" id="hdfVendor_Id" value="@Model.Filter.Vendor_Id" name="Filter.Vendor_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdnVendor_Name" value="@Model.Filter.Vendor_Name" name="Filter.Vendor_Name" class="auto-complete-label">
+                                        </div>
+                                    </div>                                   
                                 </div>
                             </div>
 
@@ -57,6 +72,7 @@
                                     <div class="col-md-6">
                                         <div class="btn-group pull-right btn-group-sm">
                                             <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
+                                            <button type="button" id="btnView_Vendor" style="display:none;" class="btn btn-primary btn-sm">View Vendor </button>
                                         </div>
                                     </div>
                                 </div>

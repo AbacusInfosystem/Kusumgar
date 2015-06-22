@@ -1,10 +1,13 @@
 ﻿function SearchMaterial() {
-
+   
     var mViewModel =
         {
             Filter: {
                 Material_Name: $('#txtMaterialName').val(),
-                Material_Id: $('#hdfMaterial_Id').val()
+                Material_Id: $('#hdfMaterial_Id').val(),
+                Vendor_Name: $('#txtVendorName').val(),
+                Vendor_Id: $('#hdfVendor_Id').val()
+                
             },
             Pager: {
                 CurrentPage: $('#hdfCurrentPage').val(),
@@ -31,7 +34,9 @@ function Bind_Material_Grid(data) {
         
         htmlText += "</td>";
 
-        htmlText += "<td>";
+        //htmlText += "<td>";
+
+        htmlText += "<td id='Material_" + data.Materials[i].Material_Id + "'>";     //
 
         htmlText += data.Materials[i].Material_Code;
 
@@ -83,7 +88,13 @@ function Bind_Material_Grid(data) {
     $('[name="r1"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnMaterial_Id").val(this.id.replace("r1_", ""));
+
+            $("#hdMaterial_Id").val(this.id.replace("r1_", ""));
+            $("#hdfMaterial_Name").val($("#Material_" + this.id.replace("r1_", "")).text());
+
+           
             $("#btnEdit").show();
+            $("#btnView_Vendor").show();
         }
     });
 

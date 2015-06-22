@@ -10,6 +10,32 @@
 
     SearchCustomer();
 
+    $("#hdfCustomer_Status_Id").val(0);
+
+    $("#drpNation_Id").change(function () {
+
+        if ($("#drpNation_Id").val() != "") {
+
+            $.ajax({
+                url: '/crm/states-by-nation',
+                data: { nation_Id: $("#drpNation_Id").val() },
+                method: 'GET',
+                async: false,
+                success: function (data) {
+                    if (data != null) {
+                        Bind_States(data);
+                    }
+                }
+            });
+
+        }
+        else
+        {
+            Remove_Bind_States();
+        }
+
+    });
+    
     $("#btnEdit").click(function () {
 
         $("#frmSearch_customer").attr("action", "/crm/edit-customer");
@@ -42,6 +68,19 @@
         $("#frmSearch_customer").attr("method", "POST");
 
         $("#frmSearch_customer").submit();
+    });
+
+
+    $(".dropdown-menu").find('li a').click(function () {
+
+        $('.fa-remove').trigger("click");
+
+        $('#hdfCurrentPage').val(0);
+
+        $("#hdfCustomer_Status_Id").val($(this).prop('id'));
+
+        SearchCustomerByStatus();
+
     });
 
 

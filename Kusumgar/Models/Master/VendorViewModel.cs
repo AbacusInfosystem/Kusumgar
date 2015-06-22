@@ -71,7 +71,12 @@ namespace Kusumgar.Models
     public class Vendor_Filter
     {
         public string Vendor_Name { get; set; }
+
         public int Vendor_Id { get; set; }
+
+        public string Material_Name { get; set; }
+
+        public int Material_Id { get; set; }
   
     }
 

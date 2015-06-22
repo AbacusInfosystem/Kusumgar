@@ -84,6 +84,42 @@ namespace KusumgarDataAccess
             return Materials;
         }
 
+        public List<MaterialInfo> Get_Materials_By_Material_Id_Vendor_Id(int material_Id, int vendor_Id, ref PaginationInfo pager)
+        {
+            List<MaterialInfo> Materials = new List<MaterialInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Material_Id", material_Id));
+
+            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Materials_By_Material_Id_Vendor_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                Materials.Add(Get_Material_Values(dr));
+            }
+            return Materials;
+        }
+
+        public List<MaterialInfo> Get_Materials_By_Vendor_Id(int vendor_Id, ref PaginationInfo pager)
+        {
+            List<MaterialInfo> Materials = new List<MaterialInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Materials_By_Vendor_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                Materials.Add(Get_Material_Values(dr));
+            }
+            return Materials;
+        }
+
         private MaterialInfo Get_Material_Values(DataRow dr)
         {
             MaterialInfo Material = new MaterialInfo();

@@ -206,9 +206,17 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 pager = vViewModel.Pager;
 
-                if (vViewModel.Filter.Vendor_Id != 0)
+                if (vViewModel.Filter.Vendor_Id != 0 && vViewModel.Filter.Material_Id != 0)
+                {
+                    vViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Vendor_Id_Material_Id(vViewModel.Filter.Vendor_Id, vViewModel.Filter.Material_Id, ref  pager);
+                }
+                else if (vViewModel.Filter.Vendor_Id != 0)
                 {
                     vViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Id(vViewModel.Filter.Vendor_Id, ref  pager);
+                }
+                else if (vViewModel.Filter.Material_Id != 0)
+                {
+                    vViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Material_Id(vViewModel.Filter.Material_Id, ref  pager);
                 }
                 else
                 {

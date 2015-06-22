@@ -44,6 +44,7 @@ namespace KusumgarBusinessEntities.Common
         Vendor_Create,
         Vendor_Edit,
 
+
         // Vendor Contact
         Vendor_Contact_Search,
         Vendor_Contact_Create,
@@ -186,6 +187,17 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Customer_Id_Sp,
         Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
         Get_Customer_By_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Status_Sp,
+        //
+        Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_State_Id_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Sp,
+        Get_Customers_by_Nation_Id_Pin_Code_Sp,
+        Get_Customers_By_State_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Sp,
+        Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
+
 
 
         Update_Customer_Block_Order_Sp,
@@ -330,6 +342,9 @@ namespace KusumgarBusinessEntities.Common
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
         Check_Existing_Vendor_Sp,
+        Get_Vendors_By_Vendor_Id_Material_Id_Sp,
+        Get_Vendors_By_Material_Id_Sp,
+
         
         Update_Attribute_Code_Name_sp,
 
@@ -358,6 +373,8 @@ namespace KusumgarBusinessEntities.Common
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
         Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Materials_By_Material_Id_Vendor_Id_Sp,
+        Get_Materials_By_Vendor_Id_Sp,
 
         // Work Center
 
@@ -451,6 +468,9 @@ namespace KusumgarBusinessEntities.Common
         Get_Enquiries_By_Quality_Id_Sp,
         Update_Enquiry_Quality_Id_Status_Sp,
         Get_Enquiries_By_Status_Ids_Sp,
+        Get_Enquiries_For_PPC_Checkpoint_Sp,
+        Get_Quality_Details_By_Id_Sp,
+        Update_Enquiry_PPC_Checkpoint_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
@@ -622,6 +642,13 @@ namespace KusumgarBusinessEntities.Common
     public enum RefType
     {
         Enquiry = 1, 
+    }
+
+    public enum DispatchType
+    {
+        By_Sea = 1,
+        By_Air = 2,
+        By_Route = 3,
     }
 
 }

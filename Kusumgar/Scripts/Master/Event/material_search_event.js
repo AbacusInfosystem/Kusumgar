@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    InitializeAutoComplete($('#txtVendorName'));
+
     $('#hdfCurrentPage').val(0);
 
     SearchMaterial();
@@ -36,6 +38,15 @@
         $('#hdfCurrentPage').val(0);
         SearchMaterial();
 
+    });
+
+    $("#btnView_Vendor").click(function () {
+
+        $("#frmSearch_Prod").attr("action", "/master/vendor/search");
+
+        $("#frmSearch_Prod").attr("method", "POST");
+
+        $("#frmSearch_Prod").submit();
     });
 
 
