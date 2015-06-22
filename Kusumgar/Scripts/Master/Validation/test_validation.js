@@ -20,7 +20,7 @@
             }
         },
         rules: {
-            "Test.Fabric_Type_Id":
+            "Test.Process_Id":
             {
                 required: true
             },
@@ -88,9 +88,9 @@
 
         messages: {
 
-            "Test.Fabric_Type_Id":
+            "Test.Process_Id":
                 {
-                    required: "Enter Fabric Type.."
+                    required: "Select Process.."
 
                 },
 

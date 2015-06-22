@@ -15,8 +15,9 @@ namespace KusumgarDatabaseEntities
     public partial class M_Defect
     {
         public int Defect_Id { get; set; }
-        public int Defect_Type_Id { get; set; }
-        public string Defect_Code { get; set; }
+        public int Process_Id { get; set; }
+        public string Defect_Major { get; set; }
+        public string Defect_Minor { get; set; }
         public string Defect_Name { get; set; }
         public bool Status { get; set; }
         public System.DateTime CreatedOn { get; set; }

@@ -30,9 +30,6 @@ function Customer_CallBack(data)
     Friendly_Message(data);
 }
 
-
-
-
 function Set_Customer()
 {
     var cViewModel =

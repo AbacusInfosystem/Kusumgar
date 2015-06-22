@@ -714,6 +714,28 @@ namespace KusumgarDataAccess
             }
 
             return customer_List;
-        }        
+        }
+
+        public void Update_Customer_Block_Order(CustomerInfo customer)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_For_Block_Order(customer), StoredProcedures.Update_Customer_Block_Order_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        private List<SqlParameter> Set_Values_In_Customer_For_Block_Order(CustomerInfo customer)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+           
+            
+            sqlparam.Add(new SqlParameter("@Customer_Id", customer.Customer_Id));
+          
+           
+            sqlparam.Add(new SqlParameter("@Block_Order", customer.Block_Order));
+           
+            //sqlparam.Add(new SqlParameter("@UpdatedBy", customer.UpdatedBy));
+            //sqlparam.Add(new SqlParameter("@UpdatedOn", customer.UpdatedOn));
+
+            return sqlparam;
+        }
     }
 }

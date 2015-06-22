@@ -447,5 +447,31 @@ namespace Kusumgar.Controllers
             return Json(Customer_List, JsonRequestBehavior.AllowGet);
         }
 
+
+
+        public JsonResult Update_Customer_Block_Order(CustomerViewModel cViewModel)
+        {
+            try
+            {
+                _customerMan.Update_Customer_Block_Order(cViewModel.Customer);
+
+                if (cViewModel.Customer.Block_Order == true)
+                {
+                    cViewModel.Friendly_Message.Add(MessageStore.Get("CU008"));
+                }
+                else
+                {
+                    cViewModel.Friendly_Message.Add(MessageStore.Get("CU009"));
+                }
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Update_Customer_Block_Order " + ex.ToString());
+            }
+
+            return Json(cViewModel);
+        }
     }
 }

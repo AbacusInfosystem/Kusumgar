@@ -315,6 +315,12 @@ namespace Kusumgar
             defaults: new { controller = "Customer", action = "Get_Customer_AutoComplete", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "customer-14",
+            url: "customer/block-order",
+            defaults: new { controller = "Customer", action = "Update_Customer_Block_Order", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Contact

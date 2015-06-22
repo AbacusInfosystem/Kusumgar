@@ -46,7 +46,6 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Category> M_Category { get; set; }
         public DbSet<M_Consumable> M_Consumable { get; set; }
         public DbSet<M_Consumable_Vendors> M_Consumable_Vendors { get; set; }
-        public DbSet<M_Defect> M_Defect { get; set; }
         public DbSet<M_Defect_Type> M_Defect_Type { get; set; }
         public DbSet<M_Fabric_Type> M_Fabric_Type { get; set; }
         public DbSet<M_Factory> M_Factory { get; set; }
@@ -69,7 +68,6 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Role_Access_Function_Mapping> M_Role_Access_Function_Mapping { get; set; }
         public DbSet<M_State> M_State { get; set; }
         public DbSet<M_SubCategory> M_SubCategory { get; set; }
-        public DbSet<M_Test> M_Test { get; set; }
         public DbSet<M_Test_Unit> M_Test_Unit { get; set; }
         public DbSet<M_User> M_User { get; set; }
         public DbSet<M_User_Role_Mapping> M_User_Role_Mapping { get; set; }
@@ -81,8 +79,10 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Y_Article> M_Y_Article { get; set; }
         public DbSet<Staggered_Order> Staggered_Order { get; set; }
         public DbSet<System_Default> System_Default { get; set; }
-        public DbSet<Temp_Functional_Parameters> Temp_Functional_Parameters { get; set; }
         public DbSet<Temp_Visual_Parameters> Temp_Visual_Parameters { get; set; }
         public DbSet<M_Market_Segment> M_Market_Segment { get; set; }
+        public DbSet<M_Defect> M_Defect { get; set; }
+        public DbSet<M_Test> M_Test { get; set; }
+        public DbSet<Temp_Functional_Parameters> Temp_Functional_Parameters { get; set; }
     }
 }

@@ -139,5 +139,15 @@ namespace KusumgarModel
          {
              return _customerRepo.Get_Customer_AutoComplete(Customer_Name);
          }
+
+
+
+
+
+
+         public void Update_Customer_Block_Order(CustomerInfo customer)
+         {
+             _customerRepo.Update_Customer_Block_Order(customer);
+         }
     }
 }

@@ -21,7 +21,7 @@ namespace Kusumgar.Controllers.PostLogin
 
             DefectManager dMan = new DefectManager();
 
-            dViewModel.DefectType = dMan.Get_Defect_Types();
+            dViewModel.Processes = dMan.Get_Processes();
 
             return View(dViewModel);
         }
@@ -35,7 +35,7 @@ namespace Kusumgar.Controllers.PostLogin
 
             if (TempData["DefectTypeId"] != null)
             {
-                dViewModel.Filter.Defect_Type_Id = Convert.ToInt32(TempData["DefectTypeId"]);
+                dViewModel.Filter.Process_Id = Convert.ToInt32(TempData["ProcessId"]);
             }
 
             if (TempData["dViewModel"] != null)
@@ -43,7 +43,7 @@ namespace Kusumgar.Controllers.PostLogin
                 dViewModel = (DefectViewModel)TempData["dViewModel"];
             }
 
-            dViewModel.DefectType = dMan.Get_Defect_Types();
+            dViewModel.Processes = dMan.Get_Processes();
 
             return View("Search", dViewModel);
         }
@@ -91,6 +91,8 @@ namespace Kusumgar.Controllers.PostLogin
                 DefectManager dMan = new DefectManager();
 
                 dMan.Update(dViewModel.Defect);
+
+                dViewModel.Defect.Process_Id = 0;
                 
                 dViewModel.Friendly_Message.Add(MessageStore.Get("D012"));
             }
@@ -115,7 +117,7 @@ namespace Kusumgar.Controllers.PostLogin
 
                 dViewModel.Defect = dMan.Get_Defect_By_Id(dViewModel.EditMode.Defect_Id);
 
-                dViewModel.DefectType = dMan.Get_Defect_Types();
+                dViewModel.Processes = dMan.Get_Processes();
              }
 
             catch (Exception ex)
@@ -136,13 +138,13 @@ namespace Kusumgar.Controllers.PostLogin
             {
                 pager = dViewModel.Pager;
 
-                if ((dViewModel.Filter.Defect_Id != 0) && (dViewModel.Filter.Defect_Type_Id > 0))
+                if ((dViewModel.Filter.Defect_Id != 0) && (dViewModel.Filter.Process_Id > 0))
                 {
-                    dViewModel.DefectGrid = dMan.Get_Defect_By_Type_By_Name(dViewModel.Filter.Defect_Type_Id, dViewModel.Filter.Defect_Id, ref pager);
+                    dViewModel.DefectGrid = dMan.Get_Defect_By_Defect_Id_By_Process_Id(dViewModel.Filter.Process_Id, dViewModel.Filter.Defect_Id, ref pager);
                 }
-                else if (dViewModel.Filter.Defect_Type_Id > 0)
+                else if (dViewModel.Filter.Process_Id > 0)
                 {
-                    dViewModel.DefectGrid = dMan.Get_Defect_By_Type(dViewModel.Filter.Defect_Type_Id, ref pager);
+                    dViewModel.DefectGrid = dMan.Get_Defect_By_Process_Id(dViewModel.Filter.Process_Id, ref pager);
                 }
 
                 else if (dViewModel.Filter.Defect_Id != 0)
@@ -172,7 +174,7 @@ namespace Kusumgar.Controllers.PostLogin
             return Json(dViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Grid_By_Defect_Type(DefectViewModel dViewModel)
+        public JsonResult Get_Grid_By_Process_Id(DefectViewModel dViewModel)
         {
             DefectManager dMan = new DefectManager();
 
@@ -180,9 +182,9 @@ namespace Kusumgar.Controllers.PostLogin
 
             Pager.IsPagingRequired = false;
 
-            if (dViewModel.Filter.Defect_Type_Id > 0)
+            if (dViewModel.Filter.Process_Id > 0)
             {
-                dViewModel.DefectGrid = dMan.Get_Grid_By_Defect_Type(dViewModel.Filter.Defect_Type_Id);
+                dViewModel.DefectGrid = dMan.Get_Grid_By_Process_Id(dViewModel.Filter.Process_Id);
             }
            
             return Json(dViewModel, JsonRequestBehavior.AllowGet);

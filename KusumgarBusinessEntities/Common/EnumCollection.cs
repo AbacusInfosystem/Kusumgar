@@ -187,6 +187,9 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
         Get_Customer_By_Customer_Id_Nation_Id_Sp,
 
+
+        Update_Customer_Block_Order_Sp,
+
         // Customer Address 
         Insert_Customer_Address,
         Update_Customer_Address,
@@ -225,13 +228,12 @@ namespace KusumgarBusinessEntities.Common
 
         //Defect
         Get_Defects_sp,
-        List_Defect_Types_sp,
         Get_Defect_By_Id_sp,
-        Get_Defect_By_Name_By_Type_sp,
+        Get_Defect_By_Defect_Name_By_Process_Name_sp,
         Get_Defect_By_Name_sp,
-        Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_By_Process_Id_sp,
         Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
@@ -246,8 +248,9 @@ namespace KusumgarBusinessEntities.Common
         Insert_Test_sp,
         Update_Test_sp,
         Get_Test_By_Id_sp,
-        Get_Fabric_Types_sp,
-        Get_Test_By_Fabric_Type_sp,
+        //Get_Fabric_Types_sp,
+        //Get_Test_By_Fabric_Type_sp,
+        Get_Test_By_Process_Id_sp,
         Get_Test_Unit_AutoComplete_sp,
         Get_Test_By_Test_Name_sp,
 
@@ -354,7 +357,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Material_Vendors_By_Id_Sp,
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
-Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Material_SubCategory_By_CategoryId_Sp,
 
         // Work Center
 

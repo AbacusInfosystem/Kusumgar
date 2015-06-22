@@ -338,6 +338,13 @@ namespace Kusumgar
             FriendlyMessageInfo CU007 = new FriendlyMessageInfo("CU007", MessageType.Success, "Customer Address Deleted successfully.");
             hash.Add("CU007", CU007);
 
+            FriendlyMessageInfo CU008 = new FriendlyMessageInfo("CU008", MessageType.Success, "Customer has been block successfully.");
+            hash.Add("CU008", CU008);
+
+            FriendlyMessageInfo CU009 = new FriendlyMessageInfo("CU009", MessageType.Success, "Customer has been unblock successfully.");
+            hash.Add("CU009", CU009);
+
+
             #endregion
 
             #region Contact

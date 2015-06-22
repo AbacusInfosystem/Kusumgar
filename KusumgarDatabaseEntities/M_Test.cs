@@ -15,7 +15,7 @@ namespace KusumgarDatabaseEntities
     public partial class M_Test
     {
         public int Test_Id { get; set; }
-        public int Fabric_Type_Id { get; set; }
+        public int Process_Id { get; set; }
         public string Test_Name { get; set; }
         public Nullable<int> Test_Unit1 { get; set; }
         public Nullable<int> Test_Unit2 { get; set; }

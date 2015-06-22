@@ -22,8 +22,6 @@ function SearchCustomer()
     CallAjax("/crm/search-customer", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
 }
 
-
-
 function Bind_Customer_Grid(data) {
 
 
@@ -50,7 +48,6 @@ function Bind_Customer_Grid(data) {
             htmlText += "</td>";
 
 
-
             htmlText += "<td>";
 
             htmlText += data.Customers[i].Company_Email == null ? "" : data.Customers[i].Company_Email;
@@ -74,6 +71,8 @@ function Bind_Customer_Grid(data) {
             htmlText += data.Customers[i].Company_Turnover;
 
             htmlText += "</td>";
+
+            htmlText += "<input type='hidden' id='btnBlock_Unblock_" + data.Customers[i].Customer_Id + "' class='Block_Unblock' value='" + data.Customers[i].Block_Order + "'>";
 
             htmlText += "</tr>";
         }
@@ -124,7 +123,25 @@ function Bind_Customer_Grid(data) {
                 $("#btnEdit").show();
                 $("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();
-            }
+
+               // alert("ïd "+ ($('#btnBlock_Unblock_'+ $("#hdfCustomer_Id").val()).val() == "true"));
+
+                if ($('#btnBlock_Unblock_' + $("#hdfCustomer_Id").val()).val() == "true") {
+
+                    $("#btnUnblock").show();
+                    $("#btnBlock").hide();
+                     
+                    }
+                if ($('#btnBlock_Unblock_' + $("#hdfCustomer_Id").val()).val() == "false")
+                    {
+                    $("#btnBlock").show();
+                    $("#btnUnblock").hide();
+                  
+                }
+              
+                }
+          
+           
         });
     
 }
@@ -134,6 +151,8 @@ function PageMore(Id) {
     $("#btnEdit").hide();
     $("#btnViewContact").hide();
     $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
@@ -141,4 +160,41 @@ function PageMore(Id) {
 
 
         SearchCustomer();
+}
+
+function Save_Customer_Order() {
+
+    var cViewModel = Set_Customer_Order();
+
+    if ($("#hdfCustomer_Id").val() != 0) {
+
+        CallAjax("/customer/block-order/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
+    }
+
+}
+
+function Customer_CallBack(data) {
+   
+    $("#hdfCustomer_Id").val(data.Customer.Customer_Id);
+
+    $("#btnBlock_Unblock_" + data.Customer.Customer_Id).val(data.Customer.Block_Order);
+
+    Friendly_Message(data);
+
+}
+
+function Set_Customer_Order() {
+    var cViewModel =
+        {
+            Customer:
+                {
+
+                    Customer_Id: $("#hdfCustomer_Id").val(),
+
+                    Block_Order: $("#hdfBlockOrder").val(),
+
+                }
+        }
+
+    return cViewModel;
 }

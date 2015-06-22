@@ -44,18 +44,18 @@
                                      <input type="hidden" id="hdfDefectId" name="Defect.Defect_Id" value="@Model.Defect.Defect_Id" />
                                     
                                     <div class="form-group">
-                                        <label style="color: #333">Defect - Type</label>
-                                        <select class="form-control input-sm" id="drpDefectTypeName" name="Defect.Defect_Type_Id">
-                                            <option value="">Select Defect-Type</option>
-                                            @foreach (var item in Model.DefectType)
+                                        <label style="color: #333">Process </label>
+                                        <select class="form-control input-sm" id="drpProcessName" name="Defect.Process_Id">
+                                            <option value="">Select Process </option>
+                                            @foreach (var item in Model.Processes)
                                             {
-                                                if (Model.Defect.Defect_Type_Id == item.Defect_Type_Id)
+                                                if (Model.Defect.Process_Id == item.Process_Id)
                                                 {
-                                                    <option value="@item.Defect_Type_Id" selected="selected">@item.Defect_Type_Name</option>
+                                                    <option value="@item.Process_Id" selected="selected">@item.Process_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Defect_Type_Id">@item.Defect_Type_Name</option>
+                                                    <option value="@item.Process_Id">@item.Process_Name</option>
                                                 }
                                             }
                                         </select>
@@ -63,10 +63,17 @@
                                     </div>
                                  
                                     <div class="form-group">
-                                        <label for="txtDefectCode" style="color: #333">Defect Code</label>
-                                        <input type="text" class="form-control  input-sm" id="txtDefectCode" name="Defect.Defect_Code" value="@Model.Defect.Defect_Code" placeholder="Enter defect code">
-                                        
+                                        <label for="txtDefectCode" style="color: #333">Defect Major</label>
+                                        <input type="text" class="form-control  input-sm" id="txtDefectMajor" name="Defect.Defect_Major" value="@Model.Defect.Defect_Major" placeholder="Enter defect major">
+
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="txtDefectCode" style="color: #333">Defect Minor</label>
+                                        <input type="text" class="form-control  input-sm" id="txtDefectMinor" name="Defect.Defect_Minor" value="@Model.Defect.Defect_Minor" placeholder="Enter defect minor">
+
+                                    </div>
+
 
                                     <div class="form-group">
                                         <label for="txtDefectName" style="color: #333">Defect Name</label>
@@ -97,11 +104,13 @@
                                     <div class="box-body table-responsive no-padding">
                                         <table class="table table-striped" id="tblSearchDefect" style="display:none;">
                                             <tr>
-
-                                                <th>Defect Type</th>
-                                                <th>DefectCode</th>
+                                                <th>Process</th>
+                                                <th>DefectMajor</th>
+                                                <th>DefectMinor</th>
                                                 <th>DefectName</th>
                                                 <th style="width:100px;">Status</th>
+                                                
+
                                             </tr>
                                         </table>
                                     </div>

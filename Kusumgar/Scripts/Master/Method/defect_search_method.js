@@ -6,7 +6,7 @@
 
              Defect_Id: $('#hdnDefectId').val(),
 
-             Defect_Type_Id: $("#hdfDefectTypeId").val(),
+             Process_Id: $("#hdfProcessId").val(),
    
                },
 
@@ -27,12 +27,13 @@ function GetAllDefects() {
 
         Filter: {
 
-            Defect_Type_Id: $("#hdfDefectTypeId").val()
+            Defect_Id :"",
+            Process_Id: ""
         },
 
         Pager: {
 
-            CurrentPage: $('#hdfCurrentPage').val(),
+            CurrentPage: $('#hdfCurrentPage').val()
             },
     };
 
@@ -61,13 +62,19 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].Defect_Type_Name;
+            htmlText += data.DefectGrid[i].Process_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].Defect_Code;
+            htmlText += data.DefectGrid[i].Defect_Major;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.DefectGrid[i].Defect_Minor;
 
             htmlText += "</td>";
 
@@ -158,7 +165,7 @@ function PageMore(Id) {
 
             Defect_Id: $('#hdnDefectId').val(),
 
-            Defect_Type_Id: $("#hdfDefectTypeId").val(),
+            Process_Id: $("#hdfProcessId").val(),
 
         },
 

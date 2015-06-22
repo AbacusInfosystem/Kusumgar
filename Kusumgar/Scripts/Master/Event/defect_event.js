@@ -17,7 +17,7 @@
         $('#frmDefect').submit();
     });
 
-    $("#drpDefectTypeName").change(function () {
+    $("#drpProcessName").change(function () {
         
         if ($(this).val() == "") {
             $('#tblSearchDefect').hide();
@@ -28,7 +28,7 @@
         }
     });
 
-    if ($("drpDefectTypeName").val() == "") {
+    if ($("drpProcessName").val() == "") {
         $('#tblSearchDefect').hide();
     }
     else {
