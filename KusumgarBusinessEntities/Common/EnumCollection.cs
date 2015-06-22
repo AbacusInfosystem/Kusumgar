@@ -44,6 +44,7 @@ namespace KusumgarBusinessEntities.Common
         Vendor_Create,
         Vendor_Edit,
 
+
         // Vendor Contact
         Vendor_Contact_Search,
         Vendor_Contact_Create,
@@ -186,6 +187,17 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Customer_Id_Sp,
         Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
         Get_Customer_By_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Status_Sp,
+        //
+        Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_State_Id_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Sp,
+        Get_Customers_by_Nation_Id_Pin_Code_Sp,
+        Get_Customers_By_State_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Sp,
+        Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
+
 
         // Customer Address 
         Insert_Customer_Address,
@@ -327,6 +339,9 @@ namespace KusumgarBusinessEntities.Common
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
         Check_Existing_Vendor_Sp,
+        Get_Vendors_By_Vendor_Id_Material_Id_Sp,
+        Get_Vendors_By_Material_Id_Sp,
+
         
         Update_Attribute_Code_Name_sp,
 
@@ -354,7 +369,9 @@ namespace KusumgarBusinessEntities.Common
         Get_Material_Vendors_By_Id_Sp,
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
-Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Materials_By_Material_Id_Vendor_Id_Sp,
+        Get_Materials_By_Vendor_Id_Sp,
 
         // Work Center
 

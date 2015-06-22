@@ -15,18 +15,22 @@ namespace KusumgarDatabaseEntities
 using System;
     using System.Collections.Generic;
     
-public partial class M_Work_Center_Process
+public partial class System_Default
 {
 
-    public int Work_Center_Process_Id { get; set; }
+    public int System_Default_Id { get; set; }
 
-    public int Work_Center_Id { get; set; }
+    public string System_Default_Name { get; set; }
 
-    public int Process_Id { get; set; }
+    public string Value { get; set; }
 
-    public System.DateTime CreatedOn { get; set; }
+    public Nullable<int> Created_By { get; set; }
 
-    public int CreatedBy { get; set; }
+    public Nullable<System.DateTime> Created_Dt { get; set; }
+
+    public Nullable<int> Updated_By { get; set; }
+
+    public Nullable<System.DateTime> Updated_Dt { get; set; }
 
 }
 

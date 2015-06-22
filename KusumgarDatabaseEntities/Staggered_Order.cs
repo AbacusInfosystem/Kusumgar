@@ -15,18 +15,30 @@ namespace KusumgarDatabaseEntities
 using System;
     using System.Collections.Generic;
     
-public partial class M_Work_Center_Process
+public partial class Staggered_Order
 {
 
-    public int Work_Center_Process_Id { get; set; }
+    public int Staggered_Order_Id { get; set; }
 
-    public int Work_Center_Id { get; set; }
+    public int Enquiry_Id { get; set; }
 
-    public int Process_Id { get; set; }
+    public string Order_No { get; set; }
+
+    public int Order_Status { get; set; }
+
+    public int Quantity { get; set; }
+
+    public System.DateTime Delivery_Date { get; set; }
+
+    public bool Is_Active { get; set; }
+
+    public int CreatedBy { get; set; }
 
     public System.DateTime CreatedOn { get; set; }
 
-    public int CreatedBy { get; set; }
+    public int UpdatedBy { get; set; }
+
+    public System.DateTime UpdatedOn { get; set; }
 
 }
 

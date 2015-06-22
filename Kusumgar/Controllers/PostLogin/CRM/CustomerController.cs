@@ -301,33 +301,85 @@ namespace Kusumgar.Controllers
                 //    cViewModel.Customers = _customerMan.Get_Customers(cViewModel.Pager);
                 //}
 
+                
+
+                //if (!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover_Customer_Id_Nation_Id(cViewModel.Filter.Turnover, cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
+                //}
+                //else if( cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_By_Customer_Id_Nation_Id(cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Customer_Id != 0)
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover_Customer_Id(cViewModel.Filter.Turnover, cViewModel.Filter.Customer_Id, ref pager);
+                //}
+                //else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Nation_Id != 0)
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id_Turnover(cViewModel.Filter.Turnover, cViewModel.Filter.Nation_Id, ref pager);
+                //}
+                //else if (cViewModel.Filter.Nation_Id != 0)
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id(cViewModel.Filter.Nation_Id, ref pager);
+                //}
+                //else if (!string.IsNullOrEmpty(cViewModel.Filter.Turnover))
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover(cViewModel.Filter.Turnover, ref  pager);
+                //}
+                //else if (cViewModel.Filter.Customer_Id != 0)
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers_By_Id(cViewModel.Filter.Customer_Id, ref  pager);
+
+                //}
+                //else
+                //{
+                //    cViewModel.Customers = _customerMan.Get_Customers(ref pager);
+                //}
+
                 pager = cViewModel.Pager;
 
-                if (!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
+                if (!string.IsNullOrEmpty(cViewModel.Filter.Pin_Code) && cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.State_Id != 0 && cViewModel.Filter.Customer_Id != 0)
                 {
-                    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover_Customer_Id_Nation_Id(cViewModel.Filter.Turnover, cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id(cViewModel.Filter.Pin_Code, cViewModel.Filter.Nation_Id, cViewModel.Filter.State_Id, cViewModel.Filter.Customer_Id, ref pager);
                 }
-                else if( cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Pin_Code) && cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
+                {
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Pin_Code_Customer_Id_Nation_Id(cViewModel.Filter.Pin_Code, cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
+                }
+                else if (cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.State_Id != 0 && cViewModel.Filter.Customer_Id != 0)
+                {
+                    cViewModel.Customers = _customerMan.Get_Customers_By_State_Id_Customer_Id_Nation_Id(cViewModel.Filter.Nation_Id, cViewModel.Filter.State_Id, cViewModel.Filter.Customer_Id, ref pager);
+                }
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Pin_Code) && cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.State_Id != 0)
+                {
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Pin_Cide_Nation_Id_State_Id(cViewModel.Filter.Pin_Code, cViewModel.Filter.Nation_Id, cViewModel.Filter.State_Id, ref pager);
+                }
+                else if (cViewModel.Filter.Nation_Id != 0 && cViewModel.Filter.Customer_Id != 0)
                 {
                     cViewModel.Customers = _customerMan.Get_Customers_By_Customer_Id_Nation_Id(cViewModel.Filter.Nation_Id, cViewModel.Filter.Customer_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Customer_Id != 0)
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Pin_Code) && cViewModel.Filter.Customer_Id != 0)
                 {
-                    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover_Customer_Id(cViewModel.Filter.Turnover, cViewModel.Filter.Customer_Id, ref pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Pin_Code_Customer_Id(cViewModel.Filter.Pin_Code, cViewModel.Filter.Customer_Id, ref pager);
                 }
-                else if(!string.IsNullOrEmpty(cViewModel.Filter.Turnover) && cViewModel.Filter.Nation_Id != 0)
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Pin_Code) && cViewModel.Filter.Nation_Id != 0)
                 {
-                    cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id_Turnover(cViewModel.Filter.Turnover, cViewModel.Filter.Nation_Id, ref pager);
+                    cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id_Pin_Code(cViewModel.Filter.Pin_Code, cViewModel.Filter.Nation_Id, ref pager);
+                }
+                else if (cViewModel.Filter.State_Id != 0 && cViewModel.Filter.Nation_Id != 0 )
+                {
+                    cViewModel.Customers = _customerMan.Get_Customers_By_State_Id_Nation_Id(cViewModel.Filter.Nation_Id, cViewModel.Filter.State_Id, ref pager);
+                }
+                else if (!string.IsNullOrEmpty(cViewModel.Filter.Pin_Code))
+                {
+                    cViewModel.Customers = _customerMan.Get_Customers_By_Pin_Code(cViewModel.Filter.Pin_Code, ref  pager);
                 }
                 else if (cViewModel.Filter.Nation_Id != 0)
                 {
                     cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id(cViewModel.Filter.Nation_Id, ref pager);
                 }
-                else if (!string.IsNullOrEmpty(cViewModel.Filter.Turnover))
-                {
-                    cViewModel.Customers = _customerMan.Get_Customers_By_Turnover(cViewModel.Filter.Turnover, ref  pager);
-                }
-                else if (cViewModel.Filter.Customer_Id != 0)
+                 else if (cViewModel.Filter.Customer_Id != 0)
                 {
                     cViewModel.Customers = _customerMan.Get_Customers_By_Id(cViewModel.Filter.Customer_Id, ref  pager);
 
@@ -446,6 +498,52 @@ namespace Kusumgar.Controllers
             }
             return Json(Customer_List, JsonRequestBehavior.AllowGet);
         }
+
+
+        //Get_Customers_By_Status
+        public ActionResult Get_Customers_By_Status(CustomerViewModel cViewModel)
+        {
+            PaginationInfo pager = new PaginationInfo();
+
+
+            try
+            {
+                pager = cViewModel.Pager;
+
+                cViewModel.Customers = _customerMan.Get_Customers_By_Status(ref pager, cViewModel.Filter.Status_Id);
+
+                cViewModel.Pager = pager;
+
+                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMoreByStatus({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Enquiry Controller - Get_Enquiries_By_Status " + ex.ToString());
+            }
+
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Get_States_By_Nation(int nation_Id, CustomerViewModel cViewModel)
+        {
+
+            try
+            {
+                PaginationInfo pager = new PaginationInfo();
+
+                pager.IsPagingRequired = false;
+
+                cViewModel.States = _stateMan.Get_States(nation_Id, ref pager);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Enquiry Controller - Get_States_By_Nation " + ex.ToString());
+            }
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

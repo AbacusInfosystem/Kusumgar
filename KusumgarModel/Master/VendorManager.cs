@@ -108,6 +108,21 @@ namespace KusumgarModel
 
             return vRepo.Insert_Attribute_Code(attributeCode);
         }
+
+        //
+        public List<VendorInfo> Get_Vendors_By_Vendor_Id_Material_Id(int vendor_Id, int material_Id, ref PaginationInfo pager)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            return vRepo.Get_Vendors_By_Vendor_Id_Material_Id(vendor_Id, material_Id, ref pager);
+        }
+
+        public List<VendorInfo> Get_Vendors_By_Material_Id(int material_Id, ref PaginationInfo pager)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            return vRepo.Get_Vendors_By_Material_Id(material_Id, ref pager);
+        }
      }
 }
 

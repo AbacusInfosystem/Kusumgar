@@ -15,18 +15,22 @@ namespace KusumgarDatabaseEntities
 using System;
     using System.Collections.Generic;
     
-public partial class M_Work_Center_Process
+public partial class Temp_Functional_Parameters
 {
 
-    public int Work_Center_Process_Id { get; set; }
+    public int Temp_Functional_Parameters_Id { get; set; }
 
-    public int Work_Center_Id { get; set; }
+    public int Enquiry_Id { get; set; }
 
-    public int Process_Id { get; set; }
+    public int Test_Id { get; set; }
+
+    public int CreatedBy { get; set; }
 
     public System.DateTime CreatedOn { get; set; }
 
-    public int CreatedBy { get; set; }
+    public int UpdatedBy { get; set; }
+
+    public System.DateTime UpdatedOn { get; set; }
 
 }
 

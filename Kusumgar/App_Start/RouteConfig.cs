@@ -201,6 +201,19 @@ namespace Kusumgar
          url: "master/material/search",
          defaults: new { controller = "Material", action = "Search", id = UrlParameter.Optional },
          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "menu-32",
+            url: "master/vendor/search",
+            defaults: new { controller = "Vendor", action = "Search", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "menu-33",
+            url: "master/material/search",
+            defaults: new { controller = "Material", action = "Search", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region PostLogin
@@ -313,6 +326,18 @@ namespace Kusumgar
             name: "customer-13",
             url: "customer/customer-list/{Customer_Name}",
             defaults: new { controller = "Customer", action = "Get_Customer_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-14",
+            url: "crm/search-customers-by-status",
+            defaults: new { controller = "Customer", action = "Get_Customers_By_Status", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-15",
+            url: "crm/states-by-nation",
+            defaults: new { controller = "Customer", action = "Get_States_By_Nation", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

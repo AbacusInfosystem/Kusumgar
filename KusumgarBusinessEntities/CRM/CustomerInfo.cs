@@ -85,6 +85,8 @@ namespace KusumgarBusinessEntities
 
         public CustomerAddressInfo Customer_Address { get; set; }
 
+        public string Nation_Name { get; set; }
+
         #endregion
     }
 }

@@ -1,4 +1,32 @@
 ﻿
+function Bind_States(data) {
+
+    $("#drpState_Id").html("");
+
+    var htmltext = "";
+
+    htmltext += "<option>-Select States-</option>";
+
+    if (data.States.length > 0) {
+        for (var i = 0; i < data.States.length ; i++) {
+
+            htmltext += "<option value='" + data.States[i].StateId + "'>" + data.States[i].StateName + "</option>";
+        }
+    }
+    $("#drpState_Id").html(htmltext);
+}
+
+function Remove_Bind_States() {
+   
+    $("#drpState_Id").html("");
+
+    var htmltext = "";
+
+    htmltext += "<option >-Select States-</option>";
+
+    $("#drpState_Id").html(htmltext);
+}
+
 function SearchCustomer()
 {
     var cViewModel =
@@ -7,8 +35,30 @@ function SearchCustomer()
                 {
                     Customer_Name: $("#txtCustomer_Name").val(),
                     Customer_Id: $("#hdnCustomer_Id").val(),
-                    Turnover: $("#txtTurnover").val(),
-                    Nation_Id: $("#drpNation_Id").val()
+                    //Turnover: $("#txtTurnover").val(),
+                    Nation_Id: $("#drpNation_Id").val(),
+                    Pin_Code: $("#txtPin_Code").val(),
+                    State_Id: $("#drpState_Id").val()
+
+                },
+
+            Pager: {
+                CurrentPage: $('#hdfCurrentPage').val(),
+            },
+        }
+    
+    $("#divSearchGridOverlay").show();
+   
+      CallAjax("/crm/search-customer", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
+    
+}
+
+function SearchCustomerByStatus() {
+    var cViewModel =
+        {
+            Filter:
+                {
+                    Status_Id: $("#hdfCustomer_Status_Id").val()
                 },
 
             Pager: {
@@ -17,11 +67,10 @@ function SearchCustomer()
         }
 
     $("#divSearchGridOverlay").show();
-   
 
-    CallAjax("/crm/search-customer", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
+       CallAjax("/crm/search-customers-by-status", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
+    
 }
-
 
 
 function Bind_Customer_Grid(data) {
@@ -49,8 +98,6 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "</td>";
 
-
-
             htmlText += "<td>";
 
             htmlText += data.Customers[i].Company_Email == null ? "" : data.Customers[i].Company_Email;
@@ -59,19 +106,25 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Head_Office_Landline1 == null ? "" : data.Customers[i].Head_Office_Landline1;
+            htmlText += data.Customers[i].Nation_Name == null ? "" : data.Customers[i].Nation_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Head_Office_Landline2 == null ? "" : data.Customers[i].Head_Office_Landline2;
-
-            htmlText += "</td>";
-
-            htmlText += "<td>";
-
-            htmlText += data.Customers[i].Company_Turnover;
+            //htmlText += data.Customers[i].Is_Active == null ? "" : data.Customers[i].Is_Active;
+            if (data.Customers[i].Is_Active == null)
+            {
+                htmlText += " ";
+            }
+            else if (data.Customers[i].Is_Active == true)
+            {
+            htmlText += "Active";
+            }
+            else
+            {
+                htmlText += "In Active";
+            }
 
             htmlText += "</td>";
 
@@ -139,6 +192,22 @@ function PageMore(Id) {
 
     $(".selectAll").prop("checked", false);
 
+    
+    SearchCustomer();
+    //SearchCustomerByStatus();
+    
+}
 
-        SearchCustomer();
+function PageMoreByStatus(Id) {
+
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+     SearchCustomerByStatus();
+
 }

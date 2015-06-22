@@ -193,6 +193,10 @@ namespace KusumgarDataAccess
              {
                  customer.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
              }
+             if (dr["Nation_Name"] != DBNull.Value)
+             {
+                 customer.Nation_Name = Convert.ToString(dr["Nation_Name"]);
+             }
 
              return customer;
          }
@@ -449,6 +453,7 @@ namespace KusumgarDataAccess
             return check;
         }
 
+        
         public List<CustomerInfo> Get_Customers_By_Email(string email, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -485,6 +490,7 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
+        
         public List<CustomerInfo> Get_Customers_By_Turnover_Email(string turnover,string email, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -504,7 +510,7 @@ namespace KusumgarDataAccess
 
             return CustomerList;
         }
-
+        
         public List<CustomerInfo> Get_Customers_By_Turnover_Name(string turnover, string customer_Name, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -524,7 +530,7 @@ namespace KusumgarDataAccess
 
             return CustomerList;
         }
-
+       
         public List<CustomerInfo> Get_Customers_By_Email_Name(string email, string customer_Name, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -544,7 +550,7 @@ namespace KusumgarDataAccess
 
             return CustomerList;
         }
-
+        
         public List<CustomerInfo> Get_Customers_By_Email_Name_Turnover(string email, string customer_Name,string turnover, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -714,6 +720,194 @@ namespace KusumgarDataAccess
             }
 
             return customer_List;
-        }        
+        }
+
+        //by Status
+        public List<CustomerInfo> Get_Customers_By_Status(ref PaginationInfo pager, int customer_Status_Id)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Customer_Status_Id", customer_Status_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_Status_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+            return CustomerList;
+        }
+
+        //Advance Search
+        public List<CustomerInfo> Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id(string pin_Code, int nation_Id, int state_Id, int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Pin_Code", pin_Code));
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@State_Id", state_Id));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Pin_Code_Customer_Id_Nation_Id(string pin_Code, int nation_Id, int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Pin_Code", pin_Code));
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_Pin_Code_Customer_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_State_Id_Customer_Id_Nation_Id(int nation_Id, int state_Id, int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@State_Id", state_Id));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_State_Id_Customer_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Pin_Cide_Nation_Id_State_Id(string pin_Code, int nation_Id, int state_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Pin_Code", pin_Code));
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@State_Id", state_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Pin_Code_Customer_Id(string pin_Code, int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Pin_Code", pin_Code));
+
+            sqlParams.Add(new SqlParameter("@Customer_Id", customer_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_Pin_Code_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_by_Nation_Id_Pin_Code(string pin_Code, int nation_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Pin_Code", pin_Code));
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_by_Nation_Id_Pin_Code_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_State_Id_Nation_Id(int nation_Id, int state_Id, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Nation_Id", nation_Id));
+
+            sqlParams.Add(new SqlParameter("@State_Id", state_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_State_Id_Nation_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
+        public List<CustomerInfo> Get_Customers_By_Pin_Code(string pin_Code, ref PaginationInfo pager)
+        {
+            List<CustomerInfo> CustomerList = new List<CustomerInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Pin_Code", pin_Code));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customers_By_Pin_Code_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                CustomerList.Add(Get_Customer_Values(dr));
+            }
+
+            return CustomerList;
+        }
+
     }
 }
