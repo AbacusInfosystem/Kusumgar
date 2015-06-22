@@ -98,6 +98,40 @@ function Bind_Quality_Details(data)
     alert(Quality_Id);
 }
 
+function Get_Nation_Details(Customer_Id)
+{
+    $.ajax({
+        url: '/sales/get-nation-by-customer-id',
+        data: { customer_Id: $("#hdnCustomer_Id").val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            Bind_Nation_Details(data);
+        }
+    });
+}
+
+function  Bind_Nation_Details(data)
+{
+    var Nation_Id = "";
+
+    var Text = "";
+
+   
+
+        if (data[0].NationName.trim(" ") == "india") {
+
+            $("#dvIs_Dosmistic").html("<h4><span class='label label-default'> <span class='flag-icon " + data[0].Nation_Flag + "'> </span> Domistic  <i class='fa " + data[0].Currency_Symbol + "'></i></span></h4>");
+        }
+        else {
+
+            $("#dvIs_Dosmistic").html("<h4><span class='label label-default'> <span class='flag-icon " + data[0].Nation_Flag + "'> </span> Domistic  <i class='fa " + data[0].Currency_Symbol + "'></i></span></h4>");
+        }
+    
+}
+
+
 // End : Enquiry 
 
 

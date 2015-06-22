@@ -213,6 +213,7 @@ namespace KusumgarBusinessEntities.Common
 
         //Nation
         Get_Nation_Sp,
+        Get_Nation_By_Customer_Id_Sp,
 
         //State
         Get_State_By_Nation_Id_Sp,

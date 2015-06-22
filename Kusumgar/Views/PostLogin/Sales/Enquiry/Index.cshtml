@@ -1,6 +1,9 @@
 ﻿@model Kusumgar.Models.EnquiryViewModel
 @using KusumgarBusinessEntities.Common
 
+
+<link href="/Content/flag/css/flag-icon.css" rel="stylesheet" />
+<link href="/Content/flag/assets/docs.css" rel="stylesheet" />
 <!-- daterange picker -->
 <link href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 <!-- InputMask -->
@@ -103,6 +106,10 @@
                                                                 <input type="hidden" id="hdnCustomer_Id" value="@(Model.Enquiry.Customer_Id == 0 ? "" : Model.Enquiry.Customer_Id.ToString())" name="Enquiry.Customer_Id" class="auto-complete-value">
                                                                 <input type="hidden" id="hdnCustomer_Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name" class="auto-complete-label">
                                                             </div>
+                                                        </div>
+
+                                                        <div class="form-group" id="dvIs_Dosmistic">
+
                                                         </div>
 
                                                         <div class="form-group">
