@@ -149,6 +149,45 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/c-articles-by-full-code/" + $('#txtCArticle_FullCode').val();
             }
 
+            //
+            if ($(elementObject).attr("id") == 'txtWarp_1') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_1').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWarp_2') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_2').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWarp_3') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_3').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWarp_4') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_4').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_1') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_1').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_2') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_2').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_3') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_3').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_4') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_4').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtCustomer_Approved_Sample') {
+                urlString = "/master/sample-no-list/" + $('#txtCustomer_Approved_Sample').val();
+            }
+            //
+
+
             if ($(elementObject).attr("id") == 'txtPackingName') {
                 urlString = "/master/get-packing-id-by-packing-name/" + $('#txtPackingName').val();
             }

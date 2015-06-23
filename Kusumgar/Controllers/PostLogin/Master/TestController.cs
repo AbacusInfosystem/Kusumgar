@@ -19,8 +19,8 @@ namespace Kusumgar.Controllers
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
             TestManager tMan = new TestManager();
-           
-            tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
+
+            tViewModel.Processes = tMan.Get_Processes();
             
             return View(tViewModel);
         }
@@ -35,8 +35,8 @@ namespace Kusumgar.Controllers
             {
                 tViewModel = (TestViewModel)TempData["tViewModel"];
             }
-            
-            tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
+
+            tViewModel.Processes = tMan.Get_Processes();
 
             return View("Search", tViewModel);
         }
@@ -108,7 +108,7 @@ namespace Kusumgar.Controllers
 
                 tViewModel.Test = tMan.Get_Test_By_Id(tViewModel.Edit_Mode.Test_Id);
 
-                tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
+                tViewModel.Processes = tMan.Get_Processes();
             }
 
             catch (Exception ex)
@@ -130,9 +130,9 @@ namespace Kusumgar.Controllers
             {
                 pager = tViewModel.Pager;
 
-                if (tViewModel.Filter.Fabric_Type_Id > 0)
+                if (tViewModel.Filter.Process_Id > 0)
                 {
-                    tViewModel.Test_Grid = tMan.Get_Test_By_Fabric_Type(tViewModel.Filter.Fabric_Type_Id, ref pager);
+                    tViewModel.Test_Grid = tMan.Get_Test_By_Process_Id(tViewModel.Filter.Process_Id, ref pager);
                 }
                 else
                 {

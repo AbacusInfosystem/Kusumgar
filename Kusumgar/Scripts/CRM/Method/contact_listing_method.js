@@ -135,6 +135,7 @@ function Bind_Contact_Grid(data) {
             $("#btnEdit").show();
             $("#btnViewCompany").show();
             $("#btnSellProduct").show();
+            $("#btnView").show();
             $("#hdCustomer_Id").val($("#hdnCust_"+ $("#hdfContact_Id").val()).val());
         }
     });
@@ -146,7 +147,7 @@ function PageMore(Id) {
     $("#btnEdit").hide();
     $("#btnViewCompany").hide();
     $("#btnSellProduct").hide();
-
+    $("#btnView").hide();
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
     $(".selectAll").prop("checked", false);

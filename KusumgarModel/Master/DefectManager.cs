@@ -58,46 +58,46 @@ namespace KusumgarModel
             return defectTypes;
          }
 
-        public List<DefectInfo> Get_Defect_By_Type(int Defect_Type_Id, ref PaginationInfo pager)
+        public List<DefectInfo> Get_Defect_By_Process_Id(int Process_Id, ref PaginationInfo pager)
         {
              List<DefectInfo> defectTypes = new List<DefectInfo>();
              
              DefectRepo dRepo = new DefectRepo();
-             
-             defectTypes = dRepo.Get_Defect_By_Type(Defect_Type_Id,ref pager);
+
+             defectTypes = dRepo.Get_Defect_By_Process_Id(Process_Id, ref pager);
             
              return defectTypes;
          }
 
-        public List<DefectInfo> Get_Defect_By_Type_By_Name(int Defect_Type_Id, int Defect_Id,ref PaginationInfo pager)
+        public List<DefectInfo> Get_Defect_By_Defect_Id_By_Process_Id(int Process_Id, int Defect_Id, ref PaginationInfo pager)
         {
             List<DefectInfo> defectTypes = new List<DefectInfo>();
             
             DefectRepo dRepo = new DefectRepo();
-            
-            defectTypes = dRepo.Get_Defect_By_Type_By_Name(Defect_Type_Id, Defect_Id,ref pager);
+
+            defectTypes = dRepo.Get_Defect_By_Defect_Id_By_Process_Id(Process_Id, Defect_Id, ref pager);
             
             return defectTypes;
         }
 
-        public List<DefectTypeInfo> Get_Defect_Types()
+        public List<ProcessInfo> Get_Processes()
         {
-            List<DefectTypeInfo> defectTypes = new List<DefectTypeInfo>();
-            
-            DefectRepo dRepo = new DefectRepo();
-            
-            defectTypes = dRepo.Get_Defect_Type();
-            
-            return defectTypes;
-        }
+            List<ProcessInfo> processes = new List<ProcessInfo>();
 
-        public List<DefectInfo> Get_Grid_By_Defect_Type(int Defect_Type_Id)
+            DefectRepo dRepo = new DefectRepo();
+
+            processes = dRepo.Get_Processes();
+ 
+           return processes;
+       }
+
+        public List<DefectInfo> Get_Grid_By_Process_Id(int Process_Id)
         {
             List<DefectInfo> defectTypes = new List<DefectInfo>();
 
              DefectRepo dRepo = new DefectRepo();
-            
-            defectTypes=dRepo.Get_Grid_By_Defect_Type(Defect_Type_Id);
+
+             defectTypes = dRepo.Get_Grid_By_Process_Id(Process_Id);
    
             return defectTypes;
         }

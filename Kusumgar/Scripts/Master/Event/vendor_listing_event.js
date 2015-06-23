@@ -2,6 +2,8 @@
 
     InitializeAutoComplete($('#txtVendorName'));
 
+    InitializeAutoComplete($('#txtMaterialName'));
+
     GetAllVendors();
 
     $("#btnSearch").click(function () {
@@ -16,6 +18,16 @@
 
         $("#frmVendorSearch").submit();
     });
+
+    $('#btnView_Material').click(function () {
+
+        $("#frmVendorSearch").attr("action", "/master/material/search");
+
+        $("#frmVendorSearch").attr("method", "post");
+
+        $("#frmVendorSearch").submit();
+    });
+
 
     $("#divSearchGridOverlay").hide();
 

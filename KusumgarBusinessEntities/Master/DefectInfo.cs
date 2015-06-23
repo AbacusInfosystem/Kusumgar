@@ -18,10 +18,12 @@ namespace KusumgarBusinessEntities
 
         public int Defect_Id { get; set; }
 
-        public int Defect_Type_Id { get; set; }
+        public int Process_Id { get; set; }
 
-        public string Defect_Code { get; set; }
+        public string Defect_Major { get; set; }
 
+        public string Defect_Minor { get; set; }
+        
         public string Defect_Name { get; set; }
 
         public bool Status { get; set; }
@@ -36,7 +38,7 @@ namespace KusumgarBusinessEntities
 
         #region Additional Fields
 
-        public string Defect_Type_Name { get; set; }
+        public string Process_Name { get; set; }
 
         #endregion
     }

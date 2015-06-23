@@ -305,6 +305,44 @@ namespace KusumgarDataAccess
             return vendors;
         }
 
+        public List<VendorInfo> Get_Vendors_By_Vendor_Id_Material_Id(int vendor_Id, int material_Id, ref PaginationInfo pager)
+        {
+            List<VendorInfo> vendors = new List<VendorInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Vendor_Id", vendor_Id)); ;
+
+            sqlParams.Add(new SqlParameter("@Material_Id", material_Id)); ;
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Vendors_By_Vendor_Id_Material_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                vendors.Add(Get_Vendor_Values(dr));
+            }
+
+            return vendors;
+        }
+
+        public List<VendorInfo> Get_Vendors_By_Material_Id(int material_Id, ref PaginationInfo pager)
+        {
+            List<VendorInfo> vendors = new List<VendorInfo>();
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Material_Id", material_Id)); ;
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Vendors_By_Material_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                vendors.Add(Get_Vendor_Values(dr));
+            }
+
+            return vendors;
+        }
+
         //public void Delete_Product_Service_By_Id(int product_Vendor_Id)
         //{
         //    List<SqlParameter> sqlparam = new List<SqlParameter>();

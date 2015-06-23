@@ -54,6 +54,7 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
+                                        <label for="txtDefectName" style="color: #333">Defect Name</label>
                                         <div class="auto-complete">
                                             <input type="text" class="form-control input-sm" id="txtDefectName" placeholder="Enter Defect -Name" value="">
                                             <input type="hidden" id="hdnDefectId" value="@Model.Filter.Defect_Id" name="Filter.Defect_Id" class="auto-complete-value">
@@ -62,22 +63,22 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Defect - Type</label>
-                                        <select class="form-control input-sm" id="drpDefectTypeName">
-                                            <option value="">Select defect-type</option>
-                                            @foreach (var item in Model.DefectType)
+                                        <label>Process</label>
+                                        <select class="form-control input-sm" id="drpProcessName">
+                                            <option value="">Select Process</option>
+                                            @foreach (var item in Model.Processes)
                                             {
-                                                if (Model.Filter.Defect_Type_Id == item.Defect_Type_Id)
+                                                if (Model.Defect.Process_Id == item.Process_Id)
                                                 {
-                                                    <option value="@item.Defect_Type_Id" selected="selected">@item.Defect_Type_Name</option>
+                                                    <option value="@item.Process_Id" selected="selected">@item.Process_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Defect_Type_Id">@item.Defect_Type_Name</option>
+                                                    <option value="@item.Process_Id">@item.Process_Name</option>
                                                 }
                                             }
                                         </select>
-                                        <input type="hidden" id="hdfDefectTypeId" name="Filter.Defect_Type_Id" value="@Model.Filter.Defect_Type_Id" />
+                                        <input type="hidden" id="hdfProcessId" name="Filter.Process_Id" value="@Model.Filter.Process_Id" />
                                     </div>
  
                                 </div>
@@ -127,11 +128,14 @@
 
                             <table class="table table-striped" id="tblSearchDefect">
                                 <tr>
-                                    <th style="width:50px;"></th>
-                                    <th>Defect Type</th>
-                                    <th>DefectCode</th>
-                                    <th>DefectName</th>
-                                    <th style="width:100px;">Status</th>
+                                  
+                                    <th style="width: 50px;"></th>
+                                    <th style="width: 300px;">Process</th>
+                                    <th style="width: 200px;">DefectMajor</th>
+                                    <th style="width: 200px;">DefectMinor</th>
+                                    <th style="width: 200px;">DefectName</th>
+                                    <th style="width: 200px;">Status</th>
+
                                 </tr>
                             </table>
 

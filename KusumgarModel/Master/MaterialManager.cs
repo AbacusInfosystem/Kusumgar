@@ -78,5 +78,16 @@ namespace KusumgarModel
         {
             return _materialRepo.Get_Vendor_Autocomplete(vendor_Name);
         }
+
+        //search
+        public List<MaterialInfo> Get_Materials_By_Material_Id_Vendor_Id(int material_Id, int vendor_Id, ref PaginationInfo pager)
+        {
+            return _materialRepo.Get_Materials_By_Material_Id_Vendor_Id(material_Id, vendor_Id, ref pager);
+        }
+
+        public List<MaterialInfo> Get_Materials_By_Vendor_Id(int vendor_Id, ref PaginationInfo pager)
+        {
+            return _materialRepo.Get_Materials_By_Vendor_Id(vendor_Id, ref pager);
+        }
     }
 }

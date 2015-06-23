@@ -135,10 +135,65 @@ namespace KusumgarModel
             return _customerRepo.Get_Customers_By_Turnover_Customer_Id_Nation_Id(turnover, nation_Id, customer_Id,ref  pager);
         }
 
-        public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
-        {
-            return _customerRepo.Get_Customer_AutoComplete(Customer_Name);
-        }
+         public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
+         {
+             return _customerRepo.Get_Customer_AutoComplete(Customer_Name);
+         }
+
+
+
+
+
+         public List<CustomerInfo> Get_Customers_By_Status(ref PaginationInfo pager, int customer_Status_Id)
+         {
+             return _customerRepo.Get_Customers_By_Status(ref pager, customer_Status_Id);
+         }
+
+         public void Update_Customer_Block_Order(CustomerInfo customer)
+         {
+             _customerRepo.Update_Customer_Block_Order(customer);
+         }
+        //Advance Search
+         public List<CustomerInfo> Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id(string pin_Code, int nation_Id, int state_Id, int customer_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id(pin_Code, nation_Id, state_Id, customer_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_By_Pin_Code_Customer_Id_Nation_Id(string pin_Code, int nation_Id, int customer_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_Pin_Code_Customer_Id_Nation_Id(pin_Code, nation_Id, customer_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_By_State_Id_Customer_Id_Nation_Id(int nation_Id, int state_Id, int customer_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_State_Id_Customer_Id_Nation_Id(nation_Id, state_Id, customer_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_By_Pin_Cide_Nation_Id_State_Id(string pin_Code, int nation_Id, int state_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_Pin_Cide_Nation_Id_State_Id(pin_Code, nation_Id, state_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_By_Pin_Code_Customer_Id(string pin_Code, int customer_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_Pin_Code_Customer_Id(pin_Code, customer_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_by_Nation_Id_Pin_Code(string pin_Code, int nation_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_by_Nation_Id_Pin_Code(pin_Code, nation_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_By_State_Id_Nation_Id(int nation_Id, int state_Id, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_State_Id_Nation_Id(nation_Id, state_Id, ref  pager);
+         }
+
+         public List<CustomerInfo> Get_Customers_By_Pin_Code(string pin_Code, ref PaginationInfo pager)
+         {
+             return _customerRepo.Get_Customers_By_Pin_Code(pin_Code, ref  pager);
+         }
+    
 
         public void Insert_Customer_Contact_Type(CustomerContactTypeInfo CustomerContactType)
         {

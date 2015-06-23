@@ -44,6 +44,7 @@ namespace KusumgarBusinessEntities.Common
         Vendor_Create,
         Vendor_Edit,
 
+
         // Vendor Contact
         Vendor_Contact_Search,
         Vendor_Contact_Create,
@@ -185,7 +186,21 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_by_Nation_Id_Turnover_Sp,
         Get_Customer_By_Turnover_Customer_Id_Sp,
         Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
-        Get_Customer_By_Customer_Id_Nation_Id_Sp,        
+        Get_Customer_By_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Status_Sp,
+        //
+        Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_State_Id_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Sp,
+        Get_Customers_by_Nation_Id_Pin_Code_Sp,
+        Get_Customers_By_State_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Sp,
+        Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
+
+
+
+        Update_Customer_Block_Order_Sp,
 
         // Customer Address 
         Insert_Customer_Address,
@@ -230,13 +245,12 @@ namespace KusumgarBusinessEntities.Common
 
         //Defect
         Get_Defects_sp,
-        List_Defect_Types_sp,
         Get_Defect_By_Id_sp,
-        Get_Defect_By_Name_By_Type_sp,
+        Get_Defect_By_Defect_Name_By_Process_Name_sp,
         Get_Defect_By_Name_sp,
-        Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_By_Process_Id_sp,
         Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
@@ -251,8 +265,9 @@ namespace KusumgarBusinessEntities.Common
         Insert_Test_sp,
         Update_Test_sp,
         Get_Test_By_Id_sp,
-        Get_Fabric_Types_sp,
-        Get_Test_By_Fabric_Type_sp,
+        //Get_Fabric_Types_sp,
+        //Get_Test_By_Fabric_Type_sp,
+        Get_Test_By_Process_Id_sp,
         Get_Test_Unit_AutoComplete_sp,
         Get_Test_By_Test_Name_sp,
 
@@ -332,6 +347,9 @@ namespace KusumgarBusinessEntities.Common
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
         Check_Existing_Vendor_Sp,
+        Get_Vendors_By_Vendor_Id_Material_Id_Sp,
+        Get_Vendors_By_Material_Id_Sp,
+
         
         Update_Attribute_Code_Name_sp,
 
@@ -360,6 +378,8 @@ namespace KusumgarBusinessEntities.Common
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
 Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Materials_By_Material_Id_Vendor_Id_Sp,
+        Get_Materials_By_Vendor_Id_Sp,
 
         // Work Center
 
@@ -453,6 +473,9 @@ Get_Material_SubCategory_By_CategoryId_Sp,
         Get_Enquiries_By_Quality_Id_Sp,
         Update_Enquiry_Quality_Id_Status_Sp,
         Get_Enquiries_By_Status_Ids_Sp,
+        Get_Enquiries_For_PPC_Checkpoint_Sp,
+        Get_Quality_Details_By_Id_Sp,
+        Update_Enquiry_PPC_Checkpoint_Sp,
 
         // Quality 
         Get_Quality_Autocomplete,
@@ -633,6 +656,13 @@ Get_Material_SubCategory_By_CategoryId_Sp,
     public enum RefType
     {
         Enquiry = 1, 
+    }
+
+    public enum DispatchType
+    {
+        By_Sea = 1,
+        By_Air = 2,
+        By_Route = 3,
     }
 
 }

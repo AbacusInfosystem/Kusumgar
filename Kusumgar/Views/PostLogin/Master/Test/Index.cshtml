@@ -44,20 +44,20 @@
                                     <input type="hidden" id="hdfTestId" name="Test.Test_Id" value="@Model.Test.Test_Id" />
 
                                     <div class="form-group">
-                                        <label style="color: #333">Fabric Type</label>
-                                        <select class="form-control input-sm" id="drpFabricTypeName" name="Test.Fabric_Type_Id">
-                                            <option value="">Select Fabric Type </option>
+                                        <label style="color: #333">Process</label>
+                                        <select class="form-control input-sm" id="drpProcesssId" name="Test.Process_Id">
+                                            <option value="">Select Process </option>
 
 
-                                            @foreach (var item in Model.Fabric_Type)
+                                            @foreach (var item in Model.Processes)
                                             {
-                                                if (Model.Test.Fabric_Type_Id == item.Fabric_Type_Id)
+                                                if (Model.Test.Process_Id == item.Process_Id)
                                                 {
-                                                    <option value="@item.Fabric_Type_Id" selected="selected">@item.Fabric_Type_Name</option>
+                                                    <option value="@item.Process_Id" selected="selected">@item.Process_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Fabric_Type_Id">@item.Fabric_Type_Name</option>
+                                                    <option value="@item.Process_Id">@item.Process_Name</option>
                                                 }
 
                                             }

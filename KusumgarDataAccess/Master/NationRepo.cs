@@ -59,6 +59,13 @@ namespace KusumgarDataAccess
 
             nation.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
+            nation.Currency_Code = Convert.ToString(dr["Currency_Code"]);
+
+            nation.Currency_Symbol = Convert.ToString(dr["Currency_Symbol"]);
+
+            nation.Nation_Flag = Convert.ToString(dr["Nation_Flag"]);
+
+            nation.Currency = Convert.ToString(dr["Currency"]);
 
             return nation;
         }

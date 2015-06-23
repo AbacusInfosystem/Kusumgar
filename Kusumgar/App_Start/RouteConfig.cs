@@ -201,6 +201,19 @@ namespace Kusumgar
          url: "master/material/search",
          defaults: new { controller = "Material", action = "Search", id = UrlParameter.Optional },
          namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "menu-32",
+            url: "master/vendor/search",
+            defaults: new { controller = "Vendor", action = "Search", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "menu-33",
+            url: "master/material/search",
+            defaults: new { controller = "Material", action = "Search", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region PostLogin
@@ -217,6 +230,12 @@ namespace Kusumgar
             name: "system-2",
             url: "system/error",
             defaults: new { controller = "System", action = "Error", returnURL = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "system-3",
+            url: "system/printable-view/{page_String}/{id}",
+            defaults: new { controller = "System", action = "PrintableView", page_String = UrlParameter.Optional, id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -317,12 +336,30 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "customer-14",
+            url: "customer/block-order",
+            defaults: new { controller = "Customer", action = "Update_Customer_Block_Order", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-15",
+            url: "crm/states-by-nation",
+            defaults: new { controller = "Customer", action = "Get_States_By_Nation", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+             name: "customer-16",
+            url: "crm/search-customers-by-status",
+            defaults: new { controller = "Customer", action = "Get_Customers_By_Status", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-17",
             url: "master/insert-customer-contact-type",
             defaults: new { controller = "Customer", action = "Insert_Customer_Contact_Type", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "customer-15",
+            name: "customer-18",
             url: "master/delete-customer-contact-type",
             defaults: new { controller = "Customer", action = "Delete_Customer_Contact_Type_By_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
@@ -380,10 +417,21 @@ namespace Kusumgar
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "contact-9",
+           name: "contact-9",
+           url: "crm/view-contact",
+           defaults: new { controller = "Contact", action = "View_Contact", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "contact-10",
             url: "crm/contact-type-by-customer-id",
             defaults: new { controller = "Contact", action = "Get_Contact_Type_By_Customer_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+          name: "contact-11",
+          url: "crm/print-view-contact",
+          defaults: new { controller = "Contact", action = "Printable_Contact", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
 
             #endregion
@@ -1723,6 +1771,12 @@ namespace Kusumgar
             url: "sales/get-enquiries-for-w-manager-chekck-point",
             defaults: new { controller = "Enquiry", action = "Get_Enquiries_For_W_Manager_Checkpoint", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "enquiry-38",
+           url: "sales/update-enquiry-ppc-checkpoint",
+           defaults: new { controller = "Enquiry", action = "Update_Enquiry_PPC_Checkpoint", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

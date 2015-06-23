@@ -20,8 +20,9 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-   
-     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+    
+
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -40,6 +41,11 @@
     <section class="content">
 
         <form id="frmVendorSearch">
+            <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+            <input type="hidden" id="hdVendor_Id" name="Filter.Vendor_Id" />
+            <input type="hidden" id="hdfVendor_Name" name="Filter.Vendor_Name" />
+
+            <input type="hidden" id="hdMaterial_Id" name="Filter.Material_Id" />
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -60,6 +66,14 @@
                                             <input type="hidden" id="txtVendorName" value="@Model.Filter.Vendor_Name" name="Filter.Vendor_Name" class="auto-complete-label">
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="txtMaterialName">Material Name</label>
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtMaterialName" placeholder="Enter material name">
+                                            <input type="hidden" id="hdfMaterial_Id" value="@Model.Filter.Material_Id" name="Filter.Material_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdnMaterial_Name" value="@Model.Filter.Material_Name" name="Filter.Material_Name" class="auto-complete-label">
+                                        </div>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -81,6 +95,7 @@
                                         <input type="hidden" id="hdfVendorId" name="Vendor.Vendor_Id" />
                                         
                                         <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit Vendor</button>
+                                        <button type="button" id="btnView_Material" class="btn btn-primary btn-sm" style="display:none;">View Material</button>
                                     </div>
                                 </div>
                             </div>

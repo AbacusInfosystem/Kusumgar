@@ -183,6 +183,20 @@ namespace KusumgarModel
             return _enquiryRepo.Get_Quality_By_Id(quality_Id);
         }
 
-        
+        #region PPC Check Point
+
+        public List<EnquiryInfo> Get_Enquiries_For_PPC_Checkpoint(string enquiry_Status_Ids, ref PaginationInfo pager)
+        {
+            return _enquiryRepo.Get_Enquiries_For_PPC_Checkpoint(enquiry_Status_Ids,ref pager);
+        }
+
+        public void Update_Enquiry_PPC_Checkpoint(EnquiryInfo enquiry)
+        {
+            _enquiryRepo.Update_Enquiry_PPC_Checkpoint(enquiry);
+        }
+
+        #endregion
+
+
     }
 }

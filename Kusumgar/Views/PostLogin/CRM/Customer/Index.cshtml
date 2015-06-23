@@ -5,6 +5,8 @@
 <script src="/Scripts/CRM/Event/customer_event.js"></script>
 <script src="/Scripts/CRM/Method/customer_method.js"></script>
 <script src="/Scripts/CRM/Validation/customer_validation.js"></script>
+<link href="/Content/flag/css/flag-icon.css" rel="stylesheet" />
+<link href="/Content/flag/assets/docs.css" rel="stylesheet" />
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     @{Html.RenderPartial("_ServerMessage");}
@@ -68,18 +70,18 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label style="color: #333">Nation</label>
+                                            <label style="color: #333">Nation </label> 
                                             <select class="form-control input-sm" id="drpHead_Office_Nation" name="Customer.Head_Office_Nation">
                                                 <option value="">- Select Nation -</option>
                                                 @foreach (var item in Model.Nations)
                                                 {
                                                     if (Model.Customer.Head_Office_Nation == item.NationId)
                                                     {
-                                                        <option value="@item.NationId" selected="selected">@item.NationName</option>
+                                                       <option value="@item.NationId" selected="selected">@item.NationName </option><p class="flag-icon @item.Nation_Flag pull-right"></p>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.NationId">@item.NationName</option>
+                                                        <option value="@item.NationId">@item.NationName </option><p class="flag-icon @item.Nation_Flag pull-right"></p>
                                                     }
                                                 }
                                             </select>

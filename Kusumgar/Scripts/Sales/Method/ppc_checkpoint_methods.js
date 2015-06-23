@@ -69,7 +69,7 @@ function Save_Enquiry() {
 
     var eViewModel = Set_Enquiry();
 
-        CallAjax("/sales/update-enquiry/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Enquiry_CallBack, "", null);
+    CallAjax("/sales/update-enquiry-ppc-checkpoint/", "json", JSON.stringify(eViewModel), "POST", "application/json", false, Enquiry_CallBack, "", null);
     
 }
 

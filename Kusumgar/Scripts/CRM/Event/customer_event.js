@@ -110,8 +110,9 @@ $(function () {
         }
     });
 
-
     $("#drpHead_Office_Nation").change(function () {
+
+        
        
         $.ajax({
             url: '/crm/state-by-nation-id',

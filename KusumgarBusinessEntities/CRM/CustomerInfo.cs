@@ -81,6 +81,8 @@ namespace KusumgarBusinessEntities
 
         public int UpdatedBy { get; set; }
 
+        public bool Is_Domistic { get; set; }
+
         #region Additional Fields 
 
         public BankDetailsInfo Bank_Details { get; set; }
@@ -88,6 +90,8 @@ namespace KusumgarBusinessEntities
         public List<CustomerAddressInfo> Customer_Address_List { get; set; }
 
         public CustomerAddressInfo Customer_Address { get; set; }
+
+        public string Nation_Name { get; set; }
 
         public List<CustomerContactTypeInfo> Customer_Contact_Types { get; set; }
 

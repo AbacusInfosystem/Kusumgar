@@ -40,5 +40,8 @@ namespace Kusumgar.Models
     {
         public string Material_Name { get; set; }
         public int Material_Id { get; set; }
+
+        public string Vendor_Name { get; set; }
+        public int Vendor_Id { get; set; }
     }
 }

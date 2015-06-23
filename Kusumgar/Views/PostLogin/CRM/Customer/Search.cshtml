@@ -22,10 +22,16 @@
     <form id="frmSearch_customer">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        @{Html.RenderPartial("_ServerMessage");}
         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
         <input type="hidden" id="hdfCustomer_Id" name="Customer.Customer_Id" />
         <input type="hidden" id="hdCustomer_Id" name="Filter.Customer_Id" />
         <input type="hidden" id="hdfCustomer_Name" name="Filter.Customer_Name" />
+
+        <input type="hidden" id="hdfCustomer_Status_Id" value="@Model.Filter.Status_Id" name="Filter.Status_Id">
+        <input type="hidden" id="hdfBlockOrder" name="Customer.Block_Order" value="@((Model.Customer.Block_Order== null ? false :Model.Customer.Block_Order).ToString())">
+      
+       
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -72,12 +78,34 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
-                                       
+                                    @*<div class="col-md-7">
+
                                         <div class="btn-group pull-right btn-group-sm">
                                             <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit </button>
+                                            <button type="button" id="btnBlock" class="btn btn-warning btn-sm" style="display:none;">Block</button>
+                                            <button type="button" id="btnUnblock" class="btn btn-warning btn-sm" style="display:none;">UnBlock</button>
                                             <button type="button" id="btnViewContact" class="btn btn-primary btn-sm" style="display:none;">View contacts</button>
                                             <button type="button" id="btnPurchaseHistory" class="btn btn-primary btn-sm " style="display:none;">Purchase history</button>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-7">
+                                       
+                                        <div class="btn-group pull-right">
+                                            <button type="button" class="btn btn-warning btn-sm" id="btnEdit" style="display:none">Edit</button>
+                                            <button type="button" id="btnViewContact" class="btn btn-primary btn-sm" style="display:none;">View contacts</button>
+                                            <button type="button" id="btnPurchaseHistory" class="btn btn-primary btn-sm " style="display:none;">Purchase history</button>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-warning btn-sm">Filter by Status</button>
+                                                <button type="button" class="btn btn-warning dropdown-toggle btn-sm" data-toggle="dropdown">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#" id="1">Active</a></li>
+                                                    <li><a href="#" id="0">In Active</a></li>
+
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -98,9 +126,9 @@
                                     <th></th>
                                     <th>Customer name</th>
                                     <th>Company email</th>
-                                    <th>Office landline 1</th>
-                                    <th>Office landline 2</th>
-                                    <th>Turnover</th>
+                                    <th>Nation</th>
+                                    <th> Status </th>
+                                    @*<th>Turnover</th>*@
                                 </tr>
                             </table>
                         </div>
@@ -159,9 +187,22 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label for="txtTurnover" style="color: #333">Turnover greater than</label>
                                 <input type="text" class="form-control input-sm" name="Turnover" id="txtTurnover" placeholder="Enter Turnover" value="@Model.Filter.Turnover" />
+                            </div>*@
+
+                            <div class="form-group">
+                                <label style="color: #333">State</label>
+                                <select class="form-control input-sm" id="drpState_Id" name="Filter.State_Id">
+                                    <option value="">- Select State -</option>
+                                   
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtPin_Code" style="color: #333">Pin Code</label>
+                                <input type="text" class="form-control input-sm" name="Pin_Code" id="txtPin_Code" placeholder="Enter Pin code" value="@Model.Filter.Pin_Code" />
                             </div>
                         </div>
                         <div class="modal-footer">

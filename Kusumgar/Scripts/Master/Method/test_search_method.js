@@ -4,7 +4,7 @@
 
         Filter: {  
 
-            Fabric_Type_Id: $('#hdfFabricTypeId').val()
+            Process_Id: $('#hdfProcessId').val()
         },
     
         Pager: {
@@ -24,7 +24,7 @@ function GetAllTests() {
 
         Filter: {
 
-            Fabric_Type_Id: ""
+            Process_Id: ""
         },
 
         Pager: {
@@ -59,7 +59,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.Test_Grid[i].Fabric_Type_Name;
+            htmlText += data.Test_Grid[i].Process_Name;
 
             htmlText += "</td>";
 
@@ -210,7 +210,7 @@ function PageMore(Id) {
 
         Filter: {
 
-            Fabric_Type_Id: $('#hdfFabricTypeId').val()
+            Process_Id: $('#hdfProcessId').val()
         },
 
         Pager: {
@@ -224,5 +224,4 @@ function PageMore(Id) {
     $("#divSearchGridOverlay").show();
 
     CallAjax("/Test/Get_Tests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
-
 }

@@ -358,11 +358,18 @@ namespace Kusumgar
             FriendlyMessageInfo CU007 = new FriendlyMessageInfo("CU007", MessageType.Success, "Customer Address Deleted successfully.");
             hash.Add("CU007", CU007);
 
-            FriendlyMessageInfo CU008 = new FriendlyMessageInfo("CU008", MessageType.Success, "Customer Contact Type has been added successfully.");
+            FriendlyMessageInfo CU008 = new FriendlyMessageInfo("CU008", MessageType.Success, "Customer has been block successfully.");
             hash.Add("CU008", CU008);
 
-            FriendlyMessageInfo CU009 = new FriendlyMessageInfo("CU009", MessageType.Success, "Customer Contact Type has been deleted successfully.");
+            FriendlyMessageInfo CU009 = new FriendlyMessageInfo("CU009", MessageType.Success, "Customer has been unblock successfully.");
             hash.Add("CU009", CU009);
+
+
+            FriendlyMessageInfo CU010 = new FriendlyMessageInfo("CU010", MessageType.Success, "Customer Contact Type has been added successfully.");
+            hash.Add("CU010", CU010);
+
+            FriendlyMessageInfo CU011 = new FriendlyMessageInfo("CU011", MessageType.Success, "Customer Contact Type has been deleted successfully.");
+            hash.Add("CU011", CU011);
 
             #endregion
 
@@ -436,7 +443,8 @@ namespace Kusumgar
             FriendlyMessageInfo EQ013 = new FriendlyMessageInfo("EQ013", MessageType.Success, "Visual parameter has been deleted successfully.");
             hash.Add("EQ013", EQ013);
 
-
+            FriendlyMessageInfo EQ014 = new FriendlyMessageInfo("EQ014", MessageType.Success, "PPC Check Point has been updated successfully.");
+            hash.Add("EQ014", EQ014);
 
 
             #endregion

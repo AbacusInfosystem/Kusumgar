@@ -270,5 +270,45 @@ namespace Kusumgar.Controllers
 
             return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult View_Contact(ContactViewModel cViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Contact_Id);
+            }
+            catch(Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Search " + ex.ToString());
+            }
+
+            return View("View",cViewModel);
+        }
+     
+        public PartialViewResult Printable_Contact(int contact_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            ContactViewModel cViewModel = new ContactViewModel();
+
+            cViewModel.Contact.Contact_Id = contact_Id;
+
+            try
+            {
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Contact_Id);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Search " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", cViewModel);
+        }
     }
 }

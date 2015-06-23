@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+//using System.Web;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -20,8 +20,8 @@ namespace Kusumgar.Models
             Edit_Mode = new Test_Edit_Mode();
             
             Filter = new Test_Filter();
-            
-            Fabric_Type = new List<FabricTypeInfo>();
+
+            Processes = new List<ProcessInfo>();
             
             Pager = new PaginationInfo();
             
@@ -32,7 +32,7 @@ namespace Kusumgar.Models
 
         public List<TestInfo> Test_Grid { get; set; }
 
-        public List<FabricTypeInfo> Fabric_Type { get; set; }
+        public List<ProcessInfo> Processes{ get; set; }
 
         public Test_Edit_Mode Edit_Mode { get; set; }
        
@@ -50,7 +50,7 @@ namespace Kusumgar.Models
 
         public class Test_Filter
         {
-            public int Fabric_Type_Id{ get; set; }
+            public int Process_Id{ get; set; }
 
         }
 

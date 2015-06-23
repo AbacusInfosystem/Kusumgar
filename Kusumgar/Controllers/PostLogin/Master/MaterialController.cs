@@ -99,9 +99,17 @@ namespace Kusumgar.Controllers
             pager = mViewModel.Pager;
             try
             {
-                if (mViewModel.Filter.Material_Id != 0)
+                if (mViewModel.Filter.Material_Id != 0 && mViewModel.Filter.Vendor_Id != 0)
+                {
+                    mViewModel.Materials = _materialMan.Get_Materials_By_Material_Id_Vendor_Id(mViewModel.Filter.Material_Id, mViewModel.Filter.Vendor_Id, ref pager);
+                }
+                else if (mViewModel.Filter.Material_Id != 0)
                 {
                     mViewModel.Materials = _materialMan.Get_Materials_By_Material_Id(mViewModel.Filter.Material_Id, ref pager);
+                }
+                else if (mViewModel.Filter.Vendor_Id != 0)
+                {
+                    mViewModel.Materials = _materialMan.Get_Materials_By_Vendor_Id(mViewModel.Filter.Vendor_Id, ref pager);
                 }
                 else
                 {
@@ -191,5 +199,24 @@ namespace Kusumgar.Controllers
             autoList = _materialMan.Get_Vendor_Autocomplete(vendor_Name);
             return Json(autoList, JsonRequestBehavior.AllowGet);
         }
+
+        //
+        //public ActionResult Get_Materials_By_Vendor_Id(MaterialViewModel mViewModel)
+        //{
+        //    PaginationInfo pager = new PaginationInfo();
+        //    try
+        //    {
+        //        //mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
+
+        //        //mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //    }
+        //    return Index(mViewModel);
+        //}
+
+
     }
 }

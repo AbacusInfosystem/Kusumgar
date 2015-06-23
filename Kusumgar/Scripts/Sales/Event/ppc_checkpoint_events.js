@@ -14,7 +14,11 @@
                 $('.Customer_Quality').hide();
                 if ($("#hdnQuality_Id").val() == 0) {
                     $("#hdnQuality_Id").val("");
+
+                    $("#rdbPPCCheckpoint").attr('disabled', 'disabled');
+                    $("#rdbQualityNo").removeAttr('disabled', 'disabled');
                 }
+               
             }
             else {
                 $("#drpArticleType").removeAttr('disabled', 'disabled');
@@ -25,7 +29,10 @@
                 $('.Customer_Quality').show();
                 if ($("#hdnQuality_Id").val() == "") {
                     $("#hdnQuality_Id").val(0);
+                    $("#rdbQualityNo").attr('disabled', 'disabled');
+                    $("#rdbPPCCheckpoint").removeAttr('disabled', 'disabled');
                 }
+               
             }
         }
     });
