@@ -1,16 +1,16 @@
-﻿@model Kusumgar.Models.ProcessViewModel
+﻿@model Kusumgar.Models.PackingViewModel
 @using KusumgarBusinessEntities.Common
 
-<script src="/Scripts/Master/Event/process_search_event.js"></script>
-<script src="/Scripts/Master/Method/process_search_method.js"></script>
+<script src="/Scripts/Master/Event/packing_search_event.js"></script>
+<script src="/Scripts/Master/Method/packing_search_method.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-    @*@{Html.RenderPartial("_ServerMessage");}*@
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Process
+            Packing
 
             <small>Search</small>
         </h1>
@@ -18,11 +18,11 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>Masters</li>
-            <li class="active">Process Search</li>
+            <li class="active">Packing Search</li>
         </ol>
     </section>
-    <form id="frmSearch_Proc">
-        <input type="hidden" id="hdnProcess_Id" name="Process_Id">
+    <form id="frmSearch_Pack">
+        <input type="hidden" id="hdnPacking_Id" name="Packing_Id">
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -33,11 +33,11 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="txtProcessName">Process Name</label>
+                                        <label for="txtPackingName">Packing Name</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtProcessName" placeholder="Enter Process Name" name="Filter.Process_Name" value="@Model.Filter.Process_Name">
-                                            <input type="hidden" id="hdfProcess_Id" value="@Model.Filter.Process_Id" name="Filter.Process_Id" class="auto-complete-value">
-                                            <input type="hidden" id="hdfProcess_Name" value="@Model.Filter.Process_Name" name="Filter.Process_Name" class="auto-complete-label">
+                                            <input type="text" class="form-control input-sm" id="txtPackingName" placeholder="Enter Packing Name" name="Filter.Packing_Name" value="@Model.Filter.Packing_Name">
+                                            <input type="hidden" id="hdfPacking_Id" value="@Model.Filter.Packing_Id" name="Filter.Packing_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdfPacking_Name" value="@Model.Filter.Packing_Name" name="Filter.Packing_Name" class="auto-complete-label">
                                         </div>
                                     </div>
                                 </div>
@@ -49,13 +49,13 @@
                                         <div class="form-group">
                                             <div class="btn-group pull-left btn-group-sm">
                                                 <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
-                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Process")" role="button">Create </a>
+                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Packing")" role="button">Create </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="btn-group pull-right btn-group-sm">
-                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>                                            
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,11 +70,11 @@
                 <div class="col-md-12">
                     <div class="box box-solid">
                         <div class="box-body table-responsive no-padding">
-                            <table class="table table-striped" id="tblProcGrid">
+                            <table class="table table-striped" id="tblPackGrid">
                                 <tr id="subhead">
                                     <th></th>
-                                    <th>Process Name</th>
-                                    <th>Is Active</th>                                    
+                                    <th>Packing Name</th>
+                                    <th>Is Active</th>
                                 </tr>
                             </table>
                         </div>

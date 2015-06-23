@@ -714,6 +714,52 @@ namespace KusumgarDataAccess
             }
 
             return customer_List;
+        }
+
+        public void Insert_Customer_Contact_Type(CustomerContactTypeInfo CustomerContactType)
+        {            
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Contact_Type(CustomerContactType), StoredProcedures.Insert_Customer_Contact_Type_Sp.ToString(), CommandType.StoredProcedure);
         }        
+
+        private List<SqlParameter> Set_Values_In_Customer_Contact_Type(CustomerContactTypeInfo CustomerContactType)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();            
+            sqlParams.Add(new SqlParameter("@Customer_Id", CustomerContactType.Customer_Id));
+            sqlParams.Add(new SqlParameter("@Contact_Type", CustomerContactType.Contact_Type));
+            sqlParams.Add(new SqlParameter("@CreatedOn", CustomerContactType.CreatedOn));
+            sqlParams.Add(new SqlParameter("@CreatedBy", CustomerContactType.CreatedBy));
+            return sqlParams;
+        }
+
+        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerContactTypeInfo> customerContactTypes = new List<CustomerContactTypeInfo>();
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+            sqlParam.Add(new SqlParameter("@Customer_Id", customer_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Customer_Contact_Type_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                customerContactTypes.Add(Get_Customer_Contact_Type_Values(dr));
+            }
+            return customerContactTypes;
+        }
+
+        private CustomerContactTypeInfo Get_Customer_Contact_Type_Values(DataRow dr)
+        {
+            CustomerContactTypeInfo customerContactType = new CustomerContactTypeInfo();
+            customerContactType.Customer_Contact_Type_Id = Convert.ToInt32(dr["Customer_Contact_Type_Id"]);
+            customerContactType.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+            customerContactType.Contact_Type = Convert.ToString(dr["Contact_Type"]);
+            customerContactType.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            customerContactType.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            return customerContactType;
+        }
+
+        public void Delete_Customer_Contact_Type_By_Id(int customer_Contact_Type_Id)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Customer_Contact_Type_Id", customer_Contact_Type_Id));
+            _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Customer_Contact_Type_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+        }
     }
 }

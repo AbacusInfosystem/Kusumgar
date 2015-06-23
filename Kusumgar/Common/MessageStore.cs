@@ -212,17 +212,17 @@ namespace Kusumgar
 
             #region Material
 
-            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Material has been added successfully.");
-            hash.Add("P001", P001);
+            FriendlyMessageInfo M001 = new FriendlyMessageInfo("M001", MessageType.Success, "Material has been added successfully.");
+            hash.Add("M001", M001);
 
-            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Material has been updated successfully.");
-            hash.Add("P002", P002);
+            FriendlyMessageInfo M002 = new FriendlyMessageInfo("M002", MessageType.Success, "Material has been updated successfully.");
+            hash.Add("M002", M002);
 
-            FriendlyMessageInfo P003 = new FriendlyMessageInfo("P003", MessageType.Success, "Material Vendor has been added successfully.");
-            hash.Add("P003", P003);
+            FriendlyMessageInfo M003 = new FriendlyMessageInfo("M003", MessageType.Success, "Material Vendor has been added successfully.");
+            hash.Add("M003", M003);
 
-            FriendlyMessageInfo P004 = new FriendlyMessageInfo("P004", MessageType.Success, "Material Vendor has been deleted successfully.");
-            hash.Add("P004", P004);
+            FriendlyMessageInfo M004 = new FriendlyMessageInfo("M004", MessageType.Success, "Material Vendor has been deleted successfully.");
+            hash.Add("M004", M004);
 
             #endregion
 
@@ -311,6 +311,26 @@ namespace Kusumgar
 
             #endregion
 
+            #region Process
+
+            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Process has been added successfully.");
+            hash.Add("P001", P001);
+
+            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Process has been updated successfully.");
+            hash.Add("P002", P002);
+
+            #endregion 
+
+            #region Packing
+
+            FriendlyMessageInfo PC001 = new FriendlyMessageInfo("PC001", MessageType.Success, "Packing has been added successfully.");
+            hash.Add("PC001", PC001);
+
+            FriendlyMessageInfo PC002 = new FriendlyMessageInfo("PC002", MessageType.Success, "Packing has been updated successfully.");
+            hash.Add("PC002", PC002);
+
+            #endregion
+
             #endregion
 
             #region CRM
@@ -337,6 +357,12 @@ namespace Kusumgar
 
             FriendlyMessageInfo CU007 = new FriendlyMessageInfo("CU007", MessageType.Success, "Customer Address Deleted successfully.");
             hash.Add("CU007", CU007);
+
+            FriendlyMessageInfo CU008 = new FriendlyMessageInfo("CU008", MessageType.Success, "Customer Contact Type has been added successfully.");
+            hash.Add("CU008", CU008);
+
+            FriendlyMessageInfo CU009 = new FriendlyMessageInfo("CU009", MessageType.Success, "Customer Contact Type has been deleted successfully.");
+            hash.Add("CU009", CU009);
 
             #endregion
 

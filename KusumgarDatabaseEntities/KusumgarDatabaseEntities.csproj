@@ -68,6 +68,9 @@
     <Compile Include="Customer_Addresss.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Customer_Contact_Type.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enquiry.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
@@ -153,6 +156,9 @@
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Nation.cs">
+      <DependentUpon>KusumgarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Packing.cs">
       <DependentUpon>KusumgarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="M_Payment_Terms.cs">

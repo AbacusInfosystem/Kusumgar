@@ -35,5 +35,6 @@ namespace KusumgarDatabaseEntities
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
         public int UpdatedBy { get; set; }
+        public int Customer_Contact_Type_Id { get; set; }
     }
 }

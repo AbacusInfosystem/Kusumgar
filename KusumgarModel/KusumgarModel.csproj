@@ -69,6 +69,7 @@
     <Compile Include="Master\GArticleManager.cs" />
     <Compile Include="Master\IndustrialManager.cs" />
     <Compile Include="Master\NationManager.cs" />
+    <Compile Include="Master\PackingManager.cs" />
     <Compile Include="Master\ProcessManager.cs" />
     <Compile Include="Master\PArticleManager.cs" />
     <Compile Include="Master\ProductVendorManager.cs" />

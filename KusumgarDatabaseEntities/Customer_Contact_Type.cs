@@ -12,18 +12,12 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Nation
+    public partial class Customer_Contact_Type
     {
-        public int NationId { get; set; }
-        public string NationName { get; set; }
-        public bool Is_Active { get; set; }
+        public int Customer_Contact_Type_Id { get; set; }
+        public int Customer_Id { get; set; }
+        public string Contact_Type { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
-        public System.DateTime UpdatedOn { get; set; }
-        public int UpdatedBy { get; set; }
-        public string Currency_Code { get; set; }
-        public string Currency_Symbol { get; set; }
-        public string Nation_Flag { get; set; }
-        public string Currency { get; set; }
     }
 }

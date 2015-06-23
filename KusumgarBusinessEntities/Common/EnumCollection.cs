@@ -185,12 +185,17 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_by_Nation_Id_Turnover_Sp,
         Get_Customer_By_Turnover_Customer_Id_Sp,
         Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
-        Get_Customer_By_Customer_Id_Nation_Id_Sp,
+        Get_Customer_By_Customer_Id_Nation_Id_Sp,        
 
         // Customer Address 
         Insert_Customer_Address,
         Update_Customer_Address,
         Delete_Customer_Address_By_Id,
+
+        // Customer Contact Type
+        Insert_Customer_Contact_Type_Sp,
+        Delete_Customer_Contact_Type_By_Id_Sp,
+        Get_Customer_Contact_Type_By_Id_Sp,
 
         // Financial Details
         Insert_Bank_Details_Sp,
@@ -495,6 +500,13 @@ Get_Material_SubCategory_By_CategoryId_Sp,
         Get_C_Articles_By_Full_Code_Sp,
         Get_C_Articles_By_Yarn_Type_Id_Sp,
         Get_C_Articles_By_CArticle_Id_Yarn_Type_Sp,
+
+        //Packing
+        Insert_Packing_Sp,
+        Update_Packing_Sp,
+        Get_Packing_Sp,
+        Get_Packing_By_Id_Sp,
+        Get_Packing_By_Packing_Name_Sp,
     }
 
     public enum GenderType
@@ -547,11 +559,13 @@ Get_Material_SubCategory_By_CategoryId_Sp,
 
     public enum DMUStatusRole
     {
-        option1 = 1,
-        option2 = 2,
-        option3 = 3,
-        option4 = 4,
-        option5 = 5,
+        Initiator = 1,
+        Decider = 2,
+        Influencer = 3,
+        User = 4,
+        Gatekeeper = 5,
+        Champion = 6,
+        Coach = 7,
     }
 
     public enum DMUStatusInfluence

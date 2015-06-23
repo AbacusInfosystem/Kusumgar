@@ -68,7 +68,7 @@ namespace Kusumgar.Controllers
                 mViewModel.Material.CreatedOn = DateTime.Now;
                 mViewModel.Material.UpdatedOn = DateTime.Now;
                 mViewModel.Material.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M001"));
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace Kusumgar.Controllers
                 mViewModel.Material.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 mViewModel.Material.UpdatedOn = DateTime.Now;
                 _materialMan.Update_Material(mViewModel.Material);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P002"));
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M002"));
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace Kusumgar.Controllers
             try
             {
                 mViewModel.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id = _materialMan.Insert_Material_Vendor(mViewModel.Material_Vendor);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P003"));
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M003"));
                 mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Vendor.Material_Vendor_Entity.Material_Id, ref pager);
                 mViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", mViewModel.Pager.TotalRecords, mViewModel.Pager.CurrentPage + 1, mViewModel.Pager.PageSize, 10, true);
             }
@@ -176,7 +176,7 @@ namespace Kusumgar.Controllers
             try
             {
                 _materialMan.Delete_Material_Vendor_By_Id(Material_Vendor_Id);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P004"));
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M004"));
             }
             catch (Exception ex)
             {

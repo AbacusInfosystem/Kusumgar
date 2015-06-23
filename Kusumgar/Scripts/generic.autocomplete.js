@@ -149,6 +149,10 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/c-articles-by-full-code/" + $('#txtCArticle_FullCode').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtPackingName') {
+                urlString = "/master/get-packing-id-by-packing-name/" + $('#txtPackingName').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",

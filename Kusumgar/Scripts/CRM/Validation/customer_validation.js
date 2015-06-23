@@ -103,6 +103,23 @@
         }
     });
 
+    $("#frmContact").validate({
+
+        rules: {
+            "Customer.Customer_Contact_Type.Contact_Type":
+            {
+                required: true,
+            },
+        },
+        messages: {
+
+            "Customer.Customer_Contact_Type.Contact_Type":
+             {
+                 required: "Contact Type is required."
+             },
+        }
+    });
+
 
     jQuery.validator.addMethod("check_customer_exists", function (value, element) {
         var result = true;

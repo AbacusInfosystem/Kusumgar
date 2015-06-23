@@ -12,6 +12,7 @@ $(function () {
         $("#tabBilling").hide();
         $("#tabShipping").hide();
         $("#tabOther").hide();
+        $("#tabContactType").hide();
     }
 
     $("#btn_Save").click(function () {
@@ -123,6 +124,14 @@ $(function () {
                 }
             }
         });
+    });
+
+    $("#btnSaveContact").click(function () {
+
+        if ($("#frmContact").valid()) {
+
+            Save_Customer_Contact_Type();
+        }
     });
 
 

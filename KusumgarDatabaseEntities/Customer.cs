@@ -41,5 +41,6 @@ namespace KusumgarDatabaseEntities
         public int CreatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
         public int UpdatedBy { get; set; }
+        public Nullable<bool> Is_Domistic { get; set; }
     }
 }

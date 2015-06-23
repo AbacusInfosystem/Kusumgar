@@ -27,5 +27,8 @@ namespace KusumgarDatabaseEntities
         public System.DateTime CreatedOn { get; set; }
         public int UpdatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
+        public Nullable<decimal> Piece_Length_Max { get; set; }
+        public Nullable<decimal> Piece_Length_Min { get; set; }
+        public Nullable<decimal> Two_Part { get; set; }
     }
 }

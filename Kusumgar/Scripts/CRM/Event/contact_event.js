@@ -35,6 +35,23 @@ $(function () {
         }
     });
 
+    $("#hdnCustomer_Id").change(function () {
+        //alert("hit");
+        if ($("#hdnCustomer_Id").val() != "") {
+
+            var Customer_Id = $("#hdnCustomer_Id").val();
+
+            Get_Contact_Types(Customer_Id);
+        }
+        else
+        {
+            $("#drpContactType").html("<option>-Select Contact Type-</option>");
+        }
+
+    });
+
+    $("#hdnCustomer_Id").trigger("change");
+
     //$('form input[type="text"]').each(function () {
     //    var val = $(this).val();
 

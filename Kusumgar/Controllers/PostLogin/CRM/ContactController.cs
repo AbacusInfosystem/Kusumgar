@@ -21,10 +21,12 @@ namespace Kusumgar.Controllers
         // GET: /Customer/
 
         public ContactManager _contactMan;
+        public CustomerManager _customerMan;
 
         public ContactController()
         {
             _contactMan = new ContactManager();
+            _customerMan = new CustomerManager();
         }
 
         [AuthorizeUser(AppFunction.Customer_Contact_Create)]
@@ -32,10 +34,10 @@ namespace Kusumgar.Controllers
         public ActionResult Index(ContactViewModel cViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
-
+            PaginationInfo pager = new PaginationInfo();
             try
             {
-
+                cViewModel.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Contact.Customer_Id, ref pager);
             }
             catch (Exception ex)
             {
@@ -229,6 +231,22 @@ namespace Kusumgar.Controllers
             }
 
             return Index(cViewModel);
+        }
+
+        public JsonResult Get_Contact_Type_By_Customer_Id(int customer_Id)
+        {
+            List<CustomerContactTypeInfo> Customer_Contact_Types = new List<CustomerContactTypeInfo>();
+            try
+            {
+                PaginationInfo pager = new PaginationInfo();
+                pager.IsPagingRequired = false;
+                Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(customer_Id, ref pager);
+            }
+            catch (Exception ex)
+            {                
+                Logger.Error("Contact Controller - Get_Contact_Type_By_Customer_Id " + ex.ToString());
+            }
+            return Json(Customer_Contact_Types, JsonRequestBehavior.AllowGet);
         }
 
         [AuthorizeUser(AppFunction.Customer_Contact_Edit)]

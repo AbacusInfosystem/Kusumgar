@@ -135,9 +135,24 @@ namespace KusumgarModel
             return _customerRepo.Get_Customers_By_Turnover_Customer_Id_Nation_Id(turnover, nation_Id, customer_Id,ref  pager);
         }
 
-         public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
-         {
-             return _customerRepo.Get_Customer_AutoComplete(Customer_Name);
-         }
+        public List<AutocompleteInfo> Get_Customer_AutoComplete(string Customer_Name)
+        {
+            return _customerRepo.Get_Customer_AutoComplete(Customer_Name);
+        }
+
+        public void Insert_Customer_Contact_Type(CustomerContactTypeInfo CustomerContactType)
+        {
+            _customerRepo.Insert_Customer_Contact_Type(CustomerContactType);
+        }
+
+        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id, ref PaginationInfo pager)
+        {
+            return _customerRepo.Get_Customer_Contact_Type_By_Id(customer_Id, ref pager);
+        }
+
+        public void Delete_Customer_Contact_Type_By_Id(int customer_Contact_Type_Id)
+        {
+            _customerRepo.Delete_Customer_Contact_Type_By_Id(customer_Contact_Type_Id);
+        }
     }
 }

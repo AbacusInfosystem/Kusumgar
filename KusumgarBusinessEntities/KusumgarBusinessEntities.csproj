@@ -50,6 +50,7 @@
     <Compile Include="CRM\ContactCustomFieldsInfo.cs" />
     <Compile Include="CRM\ContactInfo.cs" />
     <Compile Include="CRM\CustomerAddressInfo.cs" />
+    <Compile Include="CRM\CustomerContactTypeInfo.cs" />
     <Compile Include="CRM\CustomerInfo.cs" />
     <Compile Include="Common\EnumCollection.cs" />
     <Compile Include="CRM\EmployeeInfo.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Master\MaterialCategoryInfo.cs" />
     <Compile Include="Master\MaterialInfo.cs" />
     <Compile Include="Master\MaterialSubCategoryInfo.cs" />
+    <Compile Include="Master\PackingInfo.cs" />
     <Compile Include="Master\PArticleInfo.cs" />
     <Compile Include="Master\QualityApplicationMappingInfo.cs">
       <SubType>Code</SubType>

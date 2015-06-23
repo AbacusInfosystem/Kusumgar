@@ -25,6 +25,7 @@ function Customer_CallBack(data)
     $("#tabBilling").show();
     $("#tabShipping").show();
     $("#tabOther").show();
+    $("#tabContactType").show();
     $("#hdnCustomer_Name").val($("#txtCustomer_Name").val());
 
     Friendly_Message(data);
@@ -110,4 +111,91 @@ function Bind_States(data)
     }
     $("#drpHead_Office_State").html(htmltext);
 
+}
+
+function Save_Customer_Contact_Type() {
+    var cViewModel = Set_Customer_Contact_Type();
+
+    if ($("#hdnCustomer_Contact_Type_Id").val() == 0) {
+        CallAjax("/master/insert-customer-contact-type/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Contact_Type_Data_Callback, "", null);
+    }    
+}
+
+function Bind_Customer_Contact_Type_Data_Callback(data) {
+        
+    var htmlText = "";
+
+    for (i = 0; i < data.Customer.Customer_Contact_Types.length; i++) {
+
+        htmlText += "<tr id='tr_ctype_" + data.Customer.Customer_Contact_Types[i].Customer_Contact_Type_Id + "'>";
+
+        htmlText += "<td>";
+
+        htmlText += data.Customer.Customer_Contact_Types[i].Contact_Type;
+
+        htmlText += "</td>";        
+
+        htmlText += "<td>";
+
+        htmlText += "<div class='btn-group pull-right'>";
+
+        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveContactType(" + data.Customer.Customer_Contact_Types[i].Customer_Contact_Type_Id + ")'><i class='fa fa-times'></i></button>";
+
+        htmlText += "</td>";
+
+        htmlText += "</tr>";
+    }
+    $("#tblConTypeGrid").find("tr:gt(0)").remove();
+
+    $('#tblConTypeGrid tr:first').after(htmlText);
+
+    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+
+    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+
+        $('.pagination').html(data.Pager.PageHtmlString);
+    }
+
+    $("#divSearchGridOverlay").hide();
+
+    $("#hdnCustomer_Contact_Type_Id").val(0);
+
+    $("#txtContactType").val("");    
+
+    Friendly_Message(data);
+}
+
+function Set_Customer_Contact_Type() {
+    var cViewModel =
+        {
+            Customer:
+            {
+                Customer_Contact_Type:
+                {
+
+                    Customer_Contact_Type_Id: $("#hdnCustomer_Contact_Type_Id").val(),
+
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+
+                    Contact_Type: $("#txtContactType").val(),                    
+
+                }
+            }
+        }
+    return cViewModel;
+}
+
+function RemoveContactType(id) {
+
+    $.ajax({
+        url: '/master/delete-customer-contact-type',
+        data: { customer_Contact_Type_Id: id },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            $("#tr_ctype_" + id).html("");
+            Friendly_Message(data);
+        }
+    });
 }
