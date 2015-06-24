@@ -2089,6 +2089,8 @@
     <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\Quality\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\Quality\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

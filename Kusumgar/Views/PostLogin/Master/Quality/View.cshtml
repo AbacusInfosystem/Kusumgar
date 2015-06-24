@@ -1,9 +1,9 @@
-﻿@model Kusumgar.Models.ContactViewModel
+﻿@model Kusumgar.Models.QualityViewModel
 @using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  
+
     <section class="content">
         <div class="row ">
             <div class="col-md-12 ">
@@ -12,8 +12,8 @@
                 </div>
             </div>
         </div>
-                @{Html.RenderPartial("_PrintableView", Model);}
-</section>
+        @{Html.RenderPartial("_PrintableView", Model);}
+    </section>
 
 </div>
 <!-- /.content-wrapper -->
@@ -22,13 +22,13 @@
 
         $("#btnPrintable_View").click(function () {
 
-            $("#frmPrintable_Contact").attr("action", "/system/printable-view/Contact/" + $("#hdfContact_Id").val());
+            $("#frmPrintable_Quality").attr("action", "/system/printable-view/Quality/" + $("#hdfQuality_Id").val());
 
-            $("#frmPrintable_Contact").attr("method", "POST");
+            $("#frmPrintable_Quality").attr("method", "POST");
 
-            $("#frmPrintable_Contact").attr("target", "_blank");
+            $("#frmPrintable_Quality").attr("target", "_blank");
 
-            $("#frmPrintable_Contact").submit();
+            $("#frmPrintable_Quality").submit();
 
         });
     });

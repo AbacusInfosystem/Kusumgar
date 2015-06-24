@@ -4,4 +4,8 @@
     {
         $("#dvLoad_Printabel_View").load("/crm/print-view-contact",  {Contact_Id: $("#hdfId").val() },null );
     }
+
+    if ($("#hdfpage_String").val() == "Quality") {
+        $("#dvLoad_Printabel_View").load("/master/print-view-quality", { Quality_Id: $("#hdfId").val() }, null);
+    }
 });

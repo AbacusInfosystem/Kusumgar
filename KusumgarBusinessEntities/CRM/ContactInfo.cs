@@ -91,7 +91,14 @@ namespace KusumgarBusinessEntities
         {
             get
             {
-                return ((DMUStatusRole)DMU_Status_Role).ToString();
+                if (DMU_Status_Role != 0)
+                {
+                    return ((DMUStatusRole)DMU_Status_Role).ToString();
+                }
+                else
+                {
+                    return "";
+                }
             }
             set
             {

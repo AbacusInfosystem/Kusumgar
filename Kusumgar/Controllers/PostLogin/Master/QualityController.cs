@@ -284,5 +284,45 @@ namespace Kusumgar.Controllers
         {
             return PartialView("_Index",  qViewModel);
         }
+
+        public ActionResult View_Quality(QualityViewModel qViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                qViewModel.Quality = _qualityMan.Get_Quality_By_Id(qViewModel.Quality.Quality_Id);
+            }
+            catch (Exception ex)
+            {
+                qViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Quality Controller - Search " + ex.ToString());
+            }
+
+            return View("View", qViewModel);
+        }
+        
+        public PartialViewResult Printable_Quality(int quality_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            QualityViewModel qViewModel = new QualityViewModel();
+
+            qViewModel.Quality.Quality_Id = quality_Id;
+
+            try
+            {
+                qViewModel.Quality = _qualityMan.Get_Quality_By_Id(qViewModel.Quality.Quality_Id);
+            }
+            catch (Exception ex)
+            {
+                qViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Quality Controller - Search " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", qViewModel);
+        }
     }
 }

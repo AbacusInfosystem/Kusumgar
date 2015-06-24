@@ -1,0 +1,99 @@
+﻿@model Kusumgar.Models.QualityViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Quality">
+    <input type="hidden" id="hdfQuality_Id" name="Quality.Quality_Id" value="@Model.Quality.Quality_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-primary">
+            <div class="box-header">
+
+                <div class="box-title">
+                    Quality Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @* Hidden Fields *@
+                    <input type="hidden" id="hdnQuality_Id" name="" value="@Model.Quality.Quality_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Quality No : </label> @Model.Quality.Quality_No
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Yarn Type Name : </label> @Model.Quality.Yarn_Type_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Reed : </label> @Model.Quality.Reed
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Pick : </label> @Model.Quality.Pick
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Weave : </label> @Model.Quality.Weave
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Minimum Order Size : </label> @Model.Quality.Minimum_Order_Size
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Ideal Roll Length : </label> @Model.Quality.Ideal_Roll_Length
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Our Sample No : </label> @Model.Quality.Our_Sample_No
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Applications
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var item in Model.Quality_Application_Mapping_Grid)
+                            {
+                                <div class="col-md-4">
+                                    @item.Application_Name
+                                </div>
+                            }
+                        </div>
+
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Segment
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var item in Model.Quality_Market_Segment_Mapping_Grid)
+                            {
+                                <div class="col-md-4">
+                                    @item.Segment_Name
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+    </div>
+
+    <!-- /.content -->
+</form>
