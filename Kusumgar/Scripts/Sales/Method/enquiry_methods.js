@@ -464,7 +464,7 @@ function Set_Enquiry()
 
                         Customer_Roll_Length: $("#txtCustomer_Roll_Length").val(),
 
-                        Packing: $("#txtPacking").val(),
+                        Packing: $("#drpPacking").val(),
 
                         Dispatch: $("#drpDispatch").val(),
 
