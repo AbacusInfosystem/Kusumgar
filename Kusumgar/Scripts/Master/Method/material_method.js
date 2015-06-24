@@ -79,12 +79,12 @@ function Save_Material_Vendor()
 
 function Bind_Material_Vendor_Data_Callback(data)
 {
-    //$("#hdnMaterial_Vendor_Id").val(data.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id);    
+    //$("#hdnMaterial_Vendor_Id").val(data.Material_Vendor.Material_Vendor_Id);    
     var htmlText = "";
     
     for (i = 0; i < data.Material_Vendors.length; i++) {
         
-        htmlText += "<tr id='tr_pvendor_" + data.Material_Vendors[i].Material_Vendor_Entity.Material_Vendor_Id + "'>";
+        htmlText += "<tr id='tr_pvendor_" + data.Material_Vendors[i].Material_Vendor_Id + "'>";
         
         htmlText += "<td>";
 
@@ -94,7 +94,7 @@ function Bind_Material_Vendor_Data_Callback(data)
 
         htmlText += "<td>";
 
-        htmlText += data.Material_Vendors[i].Material_Vendor_Entity.Priority_Order;
+        htmlText += data.Material_Vendors[i].Priority_Order;
         
         htmlText += "</td>";        
 
@@ -102,7 +102,7 @@ function Bind_Material_Vendor_Data_Callback(data)
 
         htmlText += "<div class='btn-group pull-right'>";
 
-        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Material_Vendors[i].Material_Vendor_Entity.Material_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
+        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Material_Vendors[i].Material_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
 
         htmlText += "</td>";
 

@@ -12,14 +12,17 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Test_Unit
+    public partial class Attachment
     {
-        public int Test_Unit_Id { get; set; }
-        public string Test_Unit_Name { get; set; }
-        public bool Status { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        public int Attachment_Id { get; set; }
+        public int Attachment_Type_Id { get; set; }
+        public int Ref_Id { get; set; }
+        public bool Is_Active { get; set; }
         public int CreatedBy { get; set; }
-        public System.DateTime UpdatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public int UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public int Ref_Type { get; set; }
+        public string Document_Name { get; set; }
     }
 }

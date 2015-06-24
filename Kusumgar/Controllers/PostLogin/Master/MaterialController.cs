@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models; 
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -167,9 +167,9 @@ namespace Kusumgar.Controllers
             PaginationInfo pager = new PaginationInfo();
             try
             {
-                mViewModel.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id = _materialMan.Insert_Material_Vendor(mViewModel.Material_Vendor);
+                mViewModel.Material_Vendor.Material_Vendor_Id = _materialMan.Insert_Material_Vendor(mViewModel.Material_Vendor);
                 mViewModel.Friendly_Message.Add(MessageStore.Get("M003"));
-                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Vendor.Material_Vendor_Entity.Material_Id, ref pager);
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Vendor.Material_Id, ref pager);
                 mViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", mViewModel.Pager.TotalRecords, mViewModel.Pager.CurrentPage + 1, mViewModel.Pager.PageSize, 10, true);
             }
             catch (Exception ex)

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -83,13 +83,13 @@ namespace KusumgarDataAccess
             contact.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             contact.Customer_Name = Convert.ToString(dr["Customer_Name"]);
             contact.Customer_Contact_Type = Convert.ToString(dr["Customer_Contact_Type"]);
-            foreach (var item in LookupInfo.Get_DMU_Status_Role())
-            {
-                if (contact.DMU_Status_Role == item.Key)
-                {
-                    contact.DMU_Status_Role_Str = item.Value;
-                }
-            }
+            //foreach (var item in LookupInfo.Get_DMU_Status_Role())
+            //{
+            //    if (contact.DMU_Status_Role == item.Key)
+            //    {
+            //        contact.DMU_Status_Role_Str = item.Value;
+            //    }
+            //}
             return contact;
         }
        
