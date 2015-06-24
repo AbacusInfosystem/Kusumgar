@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -268,16 +268,16 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Material_Vendor(MaterialVendorInfo MaterialVendorInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if (MaterialVendorInfo.Material_Vendor_Entity.Material_Vendor_Id != 0)
+            if (MaterialVendorInfo.Material_Vendor_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Material_Vendor_Id", MaterialVendorInfo.Material_Vendor_Entity.Material_Vendor_Id));
+                sqlParamList.Add(new SqlParameter("@Material_Vendor_Id", MaterialVendorInfo.Material_Vendor_Id));
             }
-            sqlParamList.Add(new SqlParameter("@Material_Id", MaterialVendorInfo.Material_Vendor_Entity.Material_Id));
-            sqlParamList.Add(new SqlParameter("@Vendor_Id", MaterialVendorInfo.Material_Vendor_Entity.Vendor_Id));
-            sqlParamList.Add(new SqlParameter("@Priority_Order", MaterialVendorInfo.Material_Vendor_Entity.Priority_Order));
-            if (MaterialVendorInfo.Material_Vendor_Entity.Material_Vendor_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Material_Id", MaterialVendorInfo.Material_Id));
+            sqlParamList.Add(new SqlParameter("@Vendor_Id", MaterialVendorInfo.Vendor_Id));
+            sqlParamList.Add(new SqlParameter("@Priority_Order", MaterialVendorInfo.Priority_Order));
+            if (MaterialVendorInfo.Material_Vendor_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", MaterialVendorInfo.Material_Vendor_Entity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", MaterialVendorInfo.CreatedBy));
             }            
             return sqlParamList;
         }
@@ -300,11 +300,11 @@ namespace KusumgarDataAccess
         private MaterialVendorInfo Get_Material_Vendor_Values(DataRow dr)
         {
             MaterialVendorInfo Material_vendor = new MaterialVendorInfo();
-            Material_vendor.Material_Vendor_Entity.Material_Vendor_Id = Convert.ToInt32(dr["Material_Vendor_Id"]);
-            Material_vendor.Material_Vendor_Entity.Material_Id = Convert.ToInt32(dr["Material_Id"]);
-            Material_vendor.Material_Vendor_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+            Material_vendor.Material_Vendor_Id = Convert.ToInt32(dr["Material_Vendor_Id"]);
+            Material_vendor.Material_Id = Convert.ToInt32(dr["Material_Id"]);
+            Material_vendor.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
             Material_vendor.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
-            Material_vendor.Material_Vendor_Entity.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
+            Material_vendor.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
             return Material_vendor;
         }
 

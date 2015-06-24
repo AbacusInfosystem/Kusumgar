@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;

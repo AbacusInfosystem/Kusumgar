@@ -35,6 +35,10 @@
         $("#hdfEnquiry_Status_Id").val(0);
 
         SearchEnquiry();
+
+        $("#btnEdit").hide();
+
+        $("#btnView").hide();
     });
 
 

@@ -1459,6 +1459,7 @@
     <Content Include="Scripts\bluimp\tmpl.js" />
     <Content Include="Scripts\bluimp\vendor\jquery.ui.widget.js" />
     <Content Include="Scripts\CRM\Event\complaint_event.js" />
+    <Content Include="Scripts\CRM\Event\complaint_pre_login_event.js" />
     <Content Include="Scripts\CRM\Event\complaint_search_event.js" />
     <Content Include="Scripts\CRM\Event\contact_event.js" />
     <Content Include="Scripts\CRM\Event\contact_listing_event.js" />
@@ -1641,6 +1642,12 @@
     <Content Include="Scripts\Sales\Validation\ppc_checkpoint_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
+    <Content Include="Views\PostLogin\CRM\Complaint\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\CRM\Complaint\PreLoginComplaint.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\PostLogin\CRM\Contact\View.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -1650,6 +1657,11 @@
     <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -2025,7 +2037,6 @@
     <Content Include="Views\PostLogin\CRM\Contact\_CustomFields.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\CRM\Complaint\Index.cshtml" />
     <Content Include="Views\PostLogin\CRM\Complaint\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2079,9 +2090,6 @@
     <Content Include="uploads\Multiple Solr Instance - Copy.docx" />
     <Content Include="uploads\Multiple Solr Instance.docx" />
     <Content Include="uploads\STEPS FOR CREATING JOBS.docx" />
-    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
-    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
-    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
@@ -2089,6 +2097,7 @@
     <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Index.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Complaint\_InsertComplaint.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\View.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\_PrintableView.cshtml" />
   </ItemGroup>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -34,7 +34,7 @@ namespace Kusumgar.Controllers
             {
                 pager.IsPagingRequired = false;
                 iViewModel.Industrial_Categories = _industrialMan.Get_Industrial_Categories(ref pager);
-                iViewModel.Industrial_Groups = _industrialMan.Get_Industrial_Groups(iViewModel.Industrial.Industrial_Entity.Industrial_Category_Id, ref pager);
+                iViewModel.Industrial_Groups = _industrialMan.Get_Industrial_Groups(iViewModel.Industrial.Industrial_Category_Id, ref pager);
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Kusumgar.Controllers
             }
             pager = iViewModel.Pager;
             iViewModel.Industrial_Categories = _industrialMan.Get_Industrial_Categories(ref pager);
-            iViewModel.Industrial_Groups = _industrialMan.Get_Industrial_Groups(iViewModel.Industrial.Industrial_Entity.Industrial_Category_Id, ref pager);          
+            iViewModel.Industrial_Groups = _industrialMan.Get_Industrial_Groups(iViewModel.Industrial.Industrial_Category_Id, ref pager);          
             return View("Search", iViewModel);
         }
 
@@ -62,12 +62,12 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                iViewModel.Industrial.Industrial_Entity.CreatedBy = ((UserInfo)Session["User"]).UserId;
-                iViewModel.Industrial.Industrial_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
-                iViewModel.Industrial.Industrial_Entity.CreatedDtm = DateTime.Now;
-                iViewModel.Industrial.Industrial_Entity.UpdatedDtm = DateTime.Now;
+                iViewModel.Industrial.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                iViewModel.Industrial.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                iViewModel.Industrial.CreatedDtm = DateTime.Now;
+                iViewModel.Industrial.UpdatedDtm = DateTime.Now;
 
-                iViewModel.Industrial.Industrial_Entity.Industrial_Master_Id = _industrialMan.Insert_Industrial(iViewModel.Industrial);
+                iViewModel.Industrial.Industrial_Master_Id = _industrialMan.Insert_Industrial(iViewModel.Industrial);
 
                 iViewModel.Friendly_Message.Add(MessageStore.Get("IND001"));
             }
@@ -82,8 +82,8 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                iViewModel.Industrial.Industrial_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserId;
-                iViewModel.Industrial.Industrial_Entity.UpdatedDtm = DateTime.Now;
+                iViewModel.Industrial.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                iViewModel.Industrial.UpdatedDtm = DateTime.Now;
                 _industrialMan.Update_Industrial(iViewModel.Industrial);
                 iViewModel.Friendly_Message.Add(MessageStore.Get("IND002"));
             }
@@ -157,9 +157,9 @@ namespace Kusumgar.Controllers
             PaginationInfo pager = new PaginationInfo();
             try
             {
-                iViewModel.Industrial_Vendor.Industrial_Vendor_Entity.Industrial_Vendor_Id = _industrialMan.Insert_Industrial_Vendor(iViewModel.Industrial_Vendor);                 
+                iViewModel.Industrial_Vendor.Industrial_Vendor_Id = _industrialMan.Insert_Industrial_Vendor(iViewModel.Industrial_Vendor);                 
                 iViewModel.Friendly_Message.Add(MessageStore.Get("IND003"));
-                iViewModel.Industrial_Vendors = _industrialMan.Get_Industrial_Vendors_By_Id(iViewModel.Industrial_Vendor.Industrial_Vendor_Entity.Industrial_Master_Id, ref pager);
+                iViewModel.Industrial_Vendors = _industrialMan.Get_Industrial_Vendors_By_Id(iViewModel.Industrial_Vendor.Industrial_Master_Id, ref pager);
                 iViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", iViewModel.Pager.TotalRecords, iViewModel.Pager.CurrentPage + 1, iViewModel.Pager.PageSize, 10, true);
             }
             catch (Exception ex)

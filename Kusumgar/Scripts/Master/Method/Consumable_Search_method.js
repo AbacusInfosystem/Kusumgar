@@ -36,43 +36,43 @@ function BindConsumableGrid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Consumables[i].Consumable_Entity.Consumable_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Consumables[i].Consumable_Id + "' class='iradio_square-green'/>";
 
             htmlText += "</td>";
 
             //htmlText += "<td>";
 
-            //htmlText += data.Consumables[i].Consumable_Entity.Consumable_Id;
+            //htmlText += data.Consumables[i].Consumable_Id;
 
             //htmlText += "</td>";
 
             htmlText += "<td>";
 
-            //htmlText += data.Consumables[i].Consumable_Entity.Category_Id;
+            //htmlText += data.Consumables[i].Category_Id;
             htmlText += data.Consumables[i].Category_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            //htmlText += data.Consumables[i].Consumable_Entity.SubCategory_Id;
+            //htmlText += data.Consumables[i].SubCategory_Id;
             htmlText += data.Consumables[i].SubCategory_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Consumables[i].Consumable_Entity.Material_Name;
+            htmlText += data.Consumables[i].Material_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Consumables[i].Consumable_Entity.Material_Code;
+            htmlText += data.Consumables[i].Material_Code;
 
             htmlText += "</td>";
 
-            if (data.Consumables[i].Consumable_Entity.IsActive == true)
+            if (data.Consumables[i].IsActive == true)
             {
                 htmlText += "<td>";
 

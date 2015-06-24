@@ -12,18 +12,17 @@ namespace KusumgarDatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class M_Nation
+    public partial class Attachment
     {
-        public int NationId { get; set; }
-        public string NationName { get; set; }
+        public int Attachment_Id { get; set; }
+        public int Attachment_Type_Id { get; set; }
+        public int Ref_Id { get; set; }
         public bool Is_Active { get; set; }
-        public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
-        public System.DateTime UpdatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public int UpdatedBy { get; set; }
-        public string Currency_Code { get; set; }
-        public string Currency_Symbol { get; set; }
-        public string Nation_Flag { get; set; }
-        public string Currency { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public int Ref_Type { get; set; }
+        public string Document_Name { get; set; }
     }
 }

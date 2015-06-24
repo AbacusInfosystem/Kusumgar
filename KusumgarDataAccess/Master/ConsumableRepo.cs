@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 
 namespace KusumgarDataAccess
 {
@@ -83,21 +83,21 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            if (consumable.Consumable_Entity.Consumable_Id != 0)
+            if (consumable.Consumable_Id != 0)
             {
-                sqlParams.Add(new SqlParameter("@Consumable_Id", consumable.Consumable_Entity.Consumable_Id));
+                sqlParams.Add(new SqlParameter("@Consumable_Id", consumable.Consumable_Id));
             }
             sqlParams.Add(new SqlParameter("@Category_Id", consumable.Category_Id));
             sqlParams.Add(new SqlParameter("@SubCategory_Id", consumable.SubCategory_Id));
-            sqlParams.Add(new SqlParameter("@Material_Name", consumable.Consumable_Entity.Material_Name));
-            sqlParams.Add(new SqlParameter("@Material_Code", consumable.Consumable_Entity.Material_Code));
-            sqlParams.Add(new SqlParameter("@IsActive", consumable.Consumable_Entity.IsActive));
+            sqlParams.Add(new SqlParameter("@Material_Name", consumable.Material_Name));
+            sqlParams.Add(new SqlParameter("@Material_Code", consumable.Material_Code));
+            sqlParams.Add(new SqlParameter("@IsActive", consumable.IsActive));
 
-            if (consumable.Consumable_Entity.Consumable_Id == 0)
+            if (consumable.Consumable_Id == 0)
             {
-                sqlParams.Add(new SqlParameter("@CreatedBy", consumable.Consumable_Entity.CreatedBy));
+                sqlParams.Add(new SqlParameter("@CreatedBy", consumable.CreatedBy));
             }
-            sqlParams.Add(new SqlParameter("@UpdatedBy", consumable.Consumable_Entity.UpdatedBy));
+            sqlParams.Add(new SqlParameter("@UpdatedBy", consumable.UpdatedBy));
 
             return sqlParams;
         }
@@ -124,17 +124,17 @@ namespace KusumgarDataAccess
         {
             ConsumableInfo consumable = new ConsumableInfo();
 
-            consumable.Consumable_Entity.Consumable_Id = Convert.ToInt32(dr["Consumable_Id"]);
-            consumable.Consumable_Entity.Category_Id = Convert.ToInt32(dr["Category_Id"]); 
-            consumable.Consumable_Entity.SubCategory_Id = Convert.ToInt32(dr["SubCategory_Id"]);  
-            consumable.Consumable_Entity.Material_Name = Convert.ToString(dr["Material_Name"]);
-            consumable.Consumable_Entity.Material_Code = Convert.ToString(dr["Material_Code"]);
-            consumable.Consumable_Entity.IsActive = Convert.ToBoolean(dr["IsActive"]);
+            consumable.Consumable_Id = Convert.ToInt32(dr["Consumable_Id"]);
+            consumable.Category_Id = Convert.ToInt32(dr["Category_Id"]); 
+            consumable.SubCategory_Id = Convert.ToInt32(dr["SubCategory_Id"]);  
+            consumable.Material_Name = Convert.ToString(dr["Material_Name"]);
+            consumable.Material_Code = Convert.ToString(dr["Material_Code"]);
+            consumable.IsActive = Convert.ToBoolean(dr["IsActive"]);
 
-            consumable.Consumable_Entity.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
-            consumable.Consumable_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            consumable.Consumable_Entity.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
-            consumable.Consumable_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            consumable.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
+            consumable.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            consumable.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
+            consumable.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
             consumable.Category_Name = Convert.ToString(dr["CategoryName"]);
             consumable.SubCategory_Name = Convert.ToString(dr["SubCategoryName"]);
@@ -155,19 +155,19 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id != 0)
+            if (consumable.Consumable_Vendor.Consumable_Vendor_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Consumable_Vendor_Id", consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id));
+                sqlparam.Add(new SqlParameter("@Consumable_Vendor_Id", consumable.Consumable_Vendor.Consumable_Vendor_Id));
             }
-            sqlparam.Add(new SqlParameter("@Vendor_Id", consumable.Consumable_Vendor.Consumable_Vendor_Entity.Vendor_Id));
-            sqlparam.Add(new SqlParameter("@Consumable_Id", consumable.Consumable_Entity.Consumable_Id));
-            sqlparam.Add(new SqlParameter("@Priority_Order", consumable.Consumable_Vendor.Consumable_Vendor_Entity.Priority_Order));
+            sqlparam.Add(new SqlParameter("@Vendor_Id", consumable.Consumable_Vendor.Vendor_Id));
+            sqlparam.Add(new SqlParameter("@Consumable_Id", consumable.Consumable_Id));
+            sqlparam.Add(new SqlParameter("@Priority_Order", consumable.Consumable_Vendor.Priority_Order));
 
-            if (consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id == 0)
+            if (consumable.Consumable_Vendor.Consumable_Vendor_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", consumable.Consumable_Vendor.Consumable_Vendor_Entity.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedBy", consumable.Consumable_Vendor.CreatedBy));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", consumable.Consumable_Vendor.Consumable_Vendor_Entity.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", consumable.Consumable_Vendor.UpdatedBy));
 
             return sqlparam;
         }
@@ -196,10 +196,10 @@ namespace KusumgarDataAccess
                  
                     ConsumableVendorInfo ConsumableVendor = new ConsumableVendorInfo();
 
-                    ConsumableVendor.Consumable_Vendor_Entity.Consumable_Vendor_Id = Convert.ToInt32(dr["Consumable_Vendor_Id"]);
-                    ConsumableVendor.Consumable_Vendor_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
-                    ConsumableVendor.Consumable_Vendor_Entity.Consumable_Id = Convert.ToInt32(dr["Consumable_Id"]);
-                    ConsumableVendor.Consumable_Vendor_Entity.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
+                    ConsumableVendor.Consumable_Vendor_Id = Convert.ToInt32(dr["Consumable_Vendor_Id"]);
+                    ConsumableVendor.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+                    ConsumableVendor.Consumable_Id = Convert.ToInt32(dr["Consumable_Id"]);
+                    ConsumableVendor.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
                     ConsumableVendor.Vendor_Entity.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
 
                     consumable_vendors.Add(ConsumableVendor);
@@ -239,12 +239,12 @@ namespace KusumgarDataAccess
                 foreach (DataRow dr in drList)
                 {
 
-                    consumable.Consumable_Entity.Consumable_Id = Convert.ToInt32(dr["Consumable_Id"]);
+                    consumable.Consumable_Id = Convert.ToInt32(dr["Consumable_Id"]);
                     consumable.Category_Id = Convert.ToInt32(dr["Category_Id"]);
                     consumable.SubCategory_Id = Convert.ToInt32(dr["SubCategory_Id"]);
-                    consumable.Consumable_Entity.Material_Name = Convert.ToString(dr["Material_Name"]);
-                    consumable.Consumable_Entity.Material_Code = Convert.ToString(dr["Material_Code"]);
-                    consumable.Consumable_Entity.IsActive = Convert.ToBoolean(dr["IsActive"]);
+                    consumable.Material_Name = Convert.ToString(dr["Material_Name"]);
+                    consumable.Material_Code = Convert.ToString(dr["Material_Code"]);
+                    consumable.IsActive = Convert.ToBoolean(dr["IsActive"]);
 
                 }
             }

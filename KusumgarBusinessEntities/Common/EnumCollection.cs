@@ -90,6 +90,7 @@ namespace KusumgarBusinessEntities.Common
         Complaint_Create,
         Complaint_Edit,
 
+
         // YArticle
         YArticle_Search,
         YArticle_Create,
@@ -218,6 +219,7 @@ namespace KusumgarBusinessEntities.Common
 
         //Nation
         Get_Nation_Sp,
+        Get_Nation_By_Customer_Id_Sp,
 
         //State
         Get_State_By_Nation_Id_Sp,
@@ -284,6 +286,8 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
         Get_Complaint_By_Cust_Id_Sp,
+        Insert_Complaint_Lot_Mapping_Sp,
+        Get_Complaint_Lot_Mapping_By_Complaint_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,
@@ -664,5 +668,35 @@ Get_Material_SubCategory_By_CategoryId_Sp,
         By_Air = 2,
         By_Route = 3,
     }
+
+    // Temp Enums
+    public enum Order
+    {
+        ord0001 = 1,
+        ord0002 = 2,
+        ord0003 = 3,
+        ord0004 = 4,
+        ord0005 = 5,
+    }
+
+    public enum Challan_No
+    {
+        cha001 = 1,
+        cha002 = 2,
+        cha003 = 3,
+        cha004 = 4,
+        cha005 = 5,
+    }
+
+    public enum Lot_No
+    {
+        lot001 = 1,
+        lot002 = 2,
+        lot003 = 3,
+        lot004 = 4,
+        lot005 = 5,
+    }
+
+    // 
 
 }

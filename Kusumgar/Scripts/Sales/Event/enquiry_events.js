@@ -53,7 +53,23 @@ $(function () {
       
     });
 
+    $("#hdnCustomer_Id").change(function () {
+
+        if ($("#hdnCustomer_Id").val() != "") {
+
+            var Customer_Id = $("#hdnCustomer_Id").val();
+
+            Get_Nation_Details(Customer_Id);
+        }
+        else {
+            $("#dvIs_Dosmistic").html("");
+        }
+
+    });
+
     $("#hdnQuality_Id").trigger("change");
+
+    $("#hdnCustomer_Id").trigger("change");
 
     // End : Enquiry 
 

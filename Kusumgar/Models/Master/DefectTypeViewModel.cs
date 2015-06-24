@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 
 namespace Kusumgar.Models
 {

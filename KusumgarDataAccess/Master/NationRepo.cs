@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -49,13 +49,26 @@ namespace KusumgarDataAccess
 
             nation.NationName = Convert.ToString(dr["NationName"]);
 
-            nation.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            if (dr["CreatedBy"] != DBNull.Value)
+            {
 
-            nation.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+                nation.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            }
 
-            nation.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            if (dr["CreatedOn"] != DBNull.Value)
+            {
+                nation.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            }
 
-            nation.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            if (dr["UpdatedBy"] != DBNull.Value)
+            {
+                nation.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            }
+
+            if (dr["UpdatedOn"] != DBNull.Value)
+            {
+                nation.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            }
 
             nation.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
@@ -69,7 +82,27 @@ namespace KusumgarDataAccess
 
             return nation;
         }
-        
+
+        public List<NationInfo> Get_Nations_By_Customer_Id(int Customer_Id,ref PaginationInfo pager)
+        {
+            List<NationInfo> Nations = new List<NationInfo>();
+
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+
+            sqlParam.Add(new SqlParameter("@Customer_Id", Customer_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Nation_By_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+                {
+                    Nations.Add(Get_Nation_Values(dr));
+                }
+            }
+
+            return Nations;
+        }
 
     }
 }

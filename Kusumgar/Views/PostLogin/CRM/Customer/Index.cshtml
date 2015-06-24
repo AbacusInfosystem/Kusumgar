@@ -75,45 +75,51 @@
                                                 <option value="">- Select Nation -</option>
                                                 @foreach (var item in Model.Nations)
                                                 {
+                                                    string Nation_Val = item.NationId + "_" +item.Currency_Symbol +"_"+ item.Nation_Flag;
+                                                    
                                                     if (Model.Customer.Head_Office_Nation == item.NationId)
                                                     {
-                                                       <option value="@item.NationId" selected="selected">@item.NationName </option><p class="flag-icon @item.Nation_Flag pull-right"></p>
+                                                        <option value="@Nation_Val" selected="selected" >@item.NationName </option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.NationId">@item.NationName </option><p class="flag-icon @item.Nation_Flag pull-right"></p>
+                                                        <option value="@Nation_Val" >@item.NationName </option>
                                                     }
                                                 }
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label style="color: #333">State</label>
-                                            <select class="form-control input-sm" id="drpHead_Office_State" name="Customer.Head_Office_State">
-                                                <option value="">- Select State-</option>
-                                                @foreach (var item in Model.States)
-                                                {
-                                                    if (Model.Customer.Head_Office_State == item.StateId)
-                                                    {
-                                                        <option value="@item.StateId" selected="selected">@item.StateName</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@item.StateId">@item.StateName</option>
-                                                    }
-                                                }
-                                            </select>
+                                        <div class="form-group" id="dvIs_Dosmistic">
+                                            
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="txtHeadOfficeZipCode" style="color: #333">Zipcode</label>
+                                            <div class="form-group">
+                                                <label style="color: #333">State</label>
+                                                <select class="form-control input-sm" id="drpHead_Office_State" name="Customer.Head_Office_State">
+                                                    <option value="">- Select State-</option>
+                                                    @foreach (var item in Model.States)
+                                                    {
+                                                        if (Model.Customer.Head_Office_State == item.StateId)
+                                                        {
+                                                            <option value="@item.StateId" selected="selected">@item.StateName</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.StateId">@item.StateName</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
 
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                                                <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6">
+                                            <div class="form-group">
+                                                <label for="txtHeadOfficeZipCode" style="color: #333">Zipcode</label>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
+                                                    <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
                                     <div class="col-md-4">
                                         <!-- Head Office Phone -->
