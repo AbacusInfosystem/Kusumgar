@@ -982,33 +982,44 @@ namespace Kusumgar
             routes.MapRoute(
             name: "quality-5",
             url: "master/delete-quality_application",
-           defaults: new { controller = "Quality", action = "Delete_Quality_Application_By_Id", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            defaults: new { controller = "Quality", action = "Delete_Quality_Application_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "quality-6",
-           url: "master/insert-quality-application",
-           defaults: new { controller = "Quality", action = "Insert_Application", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "quality-6",
+            url: "master/insert-quality-application",
+            defaults: new { controller = "Quality", action = "Insert_Application", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "quality-7",
-           url: "master/delete-quality_segment",
-           defaults: new { controller = "Quality", action = "Delete_Quality_Market_Segment_By_Id", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "quality-7",
+            url: "master/delete-quality_segment",
+            defaults: new { controller = "Quality", action = "Delete_Quality_Market_Segment_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "quality-8",
-           url: "master/insert-quality-segemnt",
-           defaults: new { controller = "Quality", action = "Insert_Segment", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "quality-8",
+            url: "master/insert-quality-segemnt",
+            defaults: new { controller = "Quality", action = "Insert_Segment", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "quality-9",
-           url: "master/check-quality-no",
-           defaults: new { controller = "Quality", action = "Check_Existing_Quality_No", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "quality-9",
+            url: "master/check-quality-no",
+            defaults: new { controller = "Quality", action = "Check_Existing_Quality_No", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "quality-10",
+            url: "master/view-quality",
+            defaults: new { controller = "Quality", action = "View_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "quality-11",
+            url: "master/print-view-quality",
+            defaults: new { controller = "Quality", action = "Printable_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

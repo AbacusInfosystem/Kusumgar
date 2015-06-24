@@ -36,7 +36,7 @@ $(function () {
     });
 
     $("#hdnCustomer_Id").change(function () {
-        //alert("hit");
+        
         if ($("#hdnCustomer_Id").val() != "") {
 
             var Customer_Id = $("#hdnCustomer_Id").val();
