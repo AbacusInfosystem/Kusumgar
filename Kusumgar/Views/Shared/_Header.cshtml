@@ -1,5 +1,5 @@
 ﻿@using KusumgarBusinessEntities
-<header class="main-header">
+<header class="main-header hidden-print">
     <!-- Logo -->
     <a href="index2.html" class="logo"><b> K C P L </b></a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -213,22 +213,22 @@
                         <li class="user-header">
                             <img src="~/Content/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                             <p>
-                              @( ((UserInfo)Session["User"]).First_Name + " " + ((UserInfo)Session["User"]).Last_Name) - Web Developer
+                                @( ((UserInfo)Session["User"]).First_Name + " " + ((UserInfo)Session["User"]).Last_Name) - Web Developer
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
-                       @* <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </li>*@
+                        @* <li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Sales</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </li>*@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
