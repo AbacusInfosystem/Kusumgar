@@ -33,10 +33,10 @@ namespace KusumgarModel
         {
             return _cRepo.Get_Complaint_By_Id(complaint_Id);
         }
-        
-        public void Insert_Complaint(ComplaintInfo complaintInfo)
+
+        public int Insert_Complaint(ComplaintInfo complaintInfo)
         {
-            _cRepo.Insert_Complaint(complaintInfo);
+            return _cRepo.Insert_Complaint(complaintInfo);
         }
 
         public void Update_Complaint(ComplaintInfo complaintInfo)
@@ -49,6 +49,16 @@ namespace KusumgarModel
             List<AutocompleteInfo> auto_List = new List<AutocompleteInfo>();            
             auto_List = _cRepo.Get_Customer_Id(customer_Name);
             return auto_List;
+        }
+
+        public void Insert_Complaint_Lot_Mapping(ComplaintLotMappingInfo complaint_Lot_Mapping)
+        {
+            _cRepo.Insert_Complaint_Lot_Mapping(complaint_Lot_Mapping);
+        }
+
+        public List<ComplaintLotMappingInfo> Get_Complaint_Lot_Mappings(int complaint_Id)
+        {
+            return _cRepo.Get_Complaint_Lot_Mappings(complaint_Id);
         }
     }
 }

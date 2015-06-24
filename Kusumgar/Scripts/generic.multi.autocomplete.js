@@ -15,6 +15,10 @@ var InitializeMultiAutoComplete = function (elementObject) {
                 urlString = "/ajax/defect-list/" + $('#txtVisual_Parameters').val();
             }
 
+            if ($(elementObject).attr("id") == 'txtLot_No') {
+                urlString = "/crm/get-lot-no/" + $('#txtLot_No').val();
+            }
+
 
             $.ajax({
                 url: urlString,

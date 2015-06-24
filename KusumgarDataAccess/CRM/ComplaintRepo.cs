@@ -23,10 +23,13 @@ namespace KusumgarDataAccess
             _sqlRepo = new SQLHelperRepo();
         }        
 
-        public void Insert_Complaint(ComplaintInfo complaintInfo)
+        public int Insert_Complaint(ComplaintInfo complaintInfo)
         {
             int complaint_Id = 0;
+
             complaint_Id = Convert.ToInt32(_sqlRepo.ExecuteScalerObj(Set_Values_In_Complaint(complaintInfo), StoredProcedures.Insert_Complaint_Sp.ToString(), CommandType.StoredProcedure));
+
+            return complaint_Id;
         }
         
         public void Update_Complaint(ComplaintInfo complaintInfo)
@@ -43,7 +46,6 @@ namespace KusumgarDataAccess
             }
             sqlParamList.Add(new SqlParameter("@Customer_Id", complaintInfo.Customer_Id));
             sqlParamList.Add(new SqlParameter("@Order_Id", complaintInfo.Order_Id));
-            sqlParamList.Add(new SqlParameter("@Order_Item_Id", complaintInfo.Order_Item_Id));
             sqlParamList.Add(new SqlParameter("@Challan_No", complaintInfo.Challan_No));
             sqlParamList.Add(new SqlParameter("@Description", complaintInfo.CDescription));
             if (complaintInfo.Complaint_Id == 0)
@@ -64,18 +66,17 @@ namespace KusumgarDataAccess
             }
             return complaints;
         }
-                
+
         private ComplaintInfo Get_Complaint_Values(DataRow dr)
-                {
+        {
             ComplaintInfo complaint = new ComplaintInfo();
             complaint.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
             complaint.Customer_Name = Convert.ToString(dr["Customer_Name"]);
-            complaint.Order_Id = Convert.ToString(dr["Order_Id"]);
-            complaint.Order_Item_Id = Convert.ToString(dr["Order_Item_Id"]);
-            complaint.Challan_No = Convert.ToString(dr["Challan_No"]);
+            complaint.Order_Id = Convert.ToInt32(dr["Order_Id"]);
+            complaint.Challan_No = Convert.ToInt32(dr["Challan_No"]);
             complaint.CDescription = Convert.ToString(dr["CDescription"]);
             return complaint;
-                }
+        }
 
         public List<ComplaintInfo> Get_Complaints_By_Cust_Id(int customer_Id, ref PaginationInfo pager)
                 {
@@ -114,14 +115,13 @@ namespace KusumgarDataAccess
                 }
 
         private ComplaintInfo Get_All_Complaint_Values(DataRow dr)
-                {
-                    ComplaintInfo complaint = new ComplaintInfo();
+        {
+            ComplaintInfo complaint = new ComplaintInfo();
             complaint.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
             complaint.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             complaint.Customer_Name = Convert.ToString(dr["Customer_Name"]);
-            complaint.Order_Id = Convert.ToString(dr["Order_Id"]);
-            complaint.Order_Item_Id = Convert.ToString(dr["Order_Item_Id"]);
-            complaint.Challan_No = Convert.ToString(dr["Challan_No"]);
+            complaint.Order_Id = Convert.ToInt32(dr["Order_Id"]);
+            complaint.Challan_No = Convert.ToInt32(dr["Challan_No"]);
             complaint.CDescription = Convert.ToString(dr["CDescription"]);
             return complaint;
         }
@@ -146,6 +146,72 @@ namespace KusumgarDataAccess
                 }
             }
             return auto_List;
+        }
+
+        public void Insert_Complaint_Lot_Mapping(ComplaintLotMappingInfo complaint_Lot_Mapping)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Complaint_Lot_Mapping(complaint_Lot_Mapping), StoredProcedures.Insert_Complaint_Lot_Mapping_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public List<ComplaintLotMappingInfo> Get_Complaint_Lot_Mappings(int complaint_Id)
+        {
+            List<ComplaintLotMappingInfo> complaintlotmappings = new List<ComplaintLotMappingInfo>();
+
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+            sqlparam.Add(new SqlParameter("@Complaint_Id", complaint_Id));
+
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Complaint_Lot_Mapping_By_Complaint_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            List<DataRow> drList = new List<DataRow>();
+
+            drList = dt.AsEnumerable().ToList();
+
+            foreach (DataRow dr in drList)
+            {
+                complaintlotmappings.Add(Get_Complaint_Lot_Mapping_Values(dr));
+            }
+            return complaintlotmappings;
+        }
+
+        private List<SqlParameter> Set_Values_In_Complaint_Lot_Mapping(ComplaintLotMappingInfo complaint_Lot_Mapping)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@Complaint_Id", complaint_Lot_Mapping.Complaint_Id));
+
+            sqlParams.Add(new SqlParameter("@Lot_No", complaint_Lot_Mapping.Lot_No));
+
+            sqlParams.Add(new SqlParameter("@CreatedOn", complaint_Lot_Mapping.CreatedOn));
+
+            sqlParams.Add(new SqlParameter("@CreatedBy", complaint_Lot_Mapping.CreatedBy));
+
+            sqlParams.Add(new SqlParameter("@UpdatedOn", complaint_Lot_Mapping.UpdatedOn));
+
+            sqlParams.Add(new SqlParameter("@UpdatedBy", complaint_Lot_Mapping.UpdatedBy));
+
+            return sqlParams;
+        }
+
+        private ComplaintLotMappingInfo Get_Complaint_Lot_Mapping_Values(DataRow dr)
+        {
+            ComplaintLotMappingInfo complaint_Lot_Mapping = new ComplaintLotMappingInfo();
+
+            complaint_Lot_Mapping.Complaint_Lot_Id = Convert.ToInt32(dr["Complaint_Lot_Id"]);
+
+            complaint_Lot_Mapping.Complaint_Id = Convert.ToInt32(dr["Complaint_Id"]);
+
+            complaint_Lot_Mapping.Lot_No = Convert.ToInt32(dr["Lot_No"]);
+
+            complaint_Lot_Mapping.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+
+            complaint_Lot_Mapping.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+
+            complaint_Lot_Mapping.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            complaint_Lot_Mapping.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+            return complaint_Lot_Mapping;
         }
     }
 }

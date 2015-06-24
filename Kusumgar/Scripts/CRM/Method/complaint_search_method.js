@@ -31,7 +31,7 @@ function BindCompGrid(data) {
 
         htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Id + "' class='iradio_square-green'/>";
 
         htmlText += "</td>";
 
@@ -43,25 +43,19 @@ function BindCompGrid(data) {
 
         htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Order_Id;
+        htmlText += data.Complaints[i].Order_No;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Order_Item_Id;
+        htmlText += data.Complaints[i].Challan_No_Str;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-            htmlText += data.Complaints[i].Challan_No;
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-            htmlText += data.Complaints[i].CDescription;
+        htmlText += data.Complaints[i].CDescription;
 
         htmlText += "</td>";
 

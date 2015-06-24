@@ -159,10 +159,10 @@ namespace KusumgarDataAccess
                  customer.Expiration_Date_Of_Contract = Convert.ToDateTime(dr["Expiration_Date_Of_Contract"]);
              }
 
-             if (dr["Credit_limit"] != DBNull.Value)
-             {
-                 customer.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
-             }
+             //if (dr["Credit_limit"] != DBNull.Value)
+             //{
+             //    customer.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
+             //}
 
              if (dr["Auto_Mail_Delivery"] != DBNull.Value)
              {

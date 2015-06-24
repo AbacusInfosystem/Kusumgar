@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="83916aa3226344bf8e42d473fd82098a" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="KusumgarModel.M_C_Article" Width="1.5" PointX="5.375" PointY="19.75" />
-        <EntityTypeShape EntityType="KusumgarModel.Bank_Details" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.Complaint" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.Contact" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="KusumgarModel.Contact_Custom_Fields" Width="1.5" PointX="6.75" PointY="0.75" />

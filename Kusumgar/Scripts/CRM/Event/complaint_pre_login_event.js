@@ -1,7 +1,8 @@
-﻿$(document).ready(function () {
-    
-    InitializeAutoComplete($('#txtCustName'));
+﻿
 
+$(document).ready(function () {
+
+    $("#btnCancel").hide();
 
     $("#btnSave").click(function () {
 
@@ -17,22 +18,12 @@
 
         if ($("#frmComp").valid()) {
 
-            if ($("#hdnComplaint_Id").val() == 0) {
-
-                $("#frmComp").attr("action", "/crm/insert-complaint");
+                $("#frmComp").attr("action", "/crm/insert-complaint-pre-login");
 
                 $("#frmComp").attr("method", "POST");
 
                 $("#frmComp").submit();
-            }
-            else {                
-
-                $("#frmComp").attr("action", "/crm/update-complaint");
-
-                $("#frmComp").attr("method", "POST");
-
-                $("#frmComp").submit();
-            }
+           
         }
     });
 
@@ -71,7 +62,7 @@
             label.push($(this).text());
             value.push($(this).val());
             $(this).remove();
-          
+
         });
 
         html = Get_Lot_No(label, value);
@@ -92,4 +83,3 @@
 
     $("#btnAdd_Lot_No").trigger("click");
 });
-

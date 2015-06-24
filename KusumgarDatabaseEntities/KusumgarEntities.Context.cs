@@ -34,7 +34,6 @@ namespace KusumgarDatabaseEntities
         public DbSet<Temp_Customer_Quality_Details> Temp_Customer_Quality_Details { get; set; }
         public DbSet<M_Customer_Quality> M_Customer_Quality { get; set; }
         public DbSet<M_G_Article> M_G_Article { get; set; }
-        public DbSet<Bank_Details> Bank_Details { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Contact_Custom_Fields> Contact_Custom_Fields { get; set; }

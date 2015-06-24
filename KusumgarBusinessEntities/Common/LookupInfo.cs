@@ -260,5 +260,58 @@ namespace KusumgarBusinessEntities.Common
             return Get_Dispatch_Type;
         }
 
+        // Temp Lookups
+
+        public static Dictionary<int, string> Get_Order()
+        {
+            Dictionary<int, string> Get_Order = new Dictionary<int, string>();
+
+            Get_Order.Add(1, Order.ord0001.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(2, Order.ord0002.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(3, Order.ord0003.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(4, Order.ord0004.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(5, Order.ord0005.ToString().Replace('_', ' ').ToString());
+
+            return Get_Order;
+        }
+
+        public static Dictionary<int, string> Get_Challan_No()
+        {
+            Dictionary<int, string> Get_Challan_No = new Dictionary<int, string>();
+
+            Get_Challan_No.Add(1, Challan_No.cha001.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(2, Challan_No.cha002.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(3, Challan_No.cha003.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(4, Challan_No.cha004.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(5, Challan_No.cha005.ToString().Replace('_', ' ').ToString());
+
+            return Get_Challan_No;
+        }
+
+        public static Dictionary<int, string> Get_Lot_No()
+        {
+            Dictionary<int, string> Get_Lot_No = new Dictionary<int, string>();
+
+            Get_Lot_No.Add(1, Lot_No.lot001.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(2, Lot_No.lot002.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(3, Lot_No.lot003.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(4, Lot_No.lot004.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(5, Lot_No.lot005.ToString().Replace('_', ' ').ToString());
+
+            return Get_Lot_No;
+        }
+
     }
 }

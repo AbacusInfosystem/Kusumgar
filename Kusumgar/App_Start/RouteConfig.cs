@@ -457,6 +457,24 @@ namespace Kusumgar
             defaults: new { controller = "Complaint", action = "Get_Customer_Id", customer_Name = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+           name: "complaint-7",
+           url: "crm/get-complaint/{customer_Id}",
+           defaults: new { controller = "Complaint", action = "Get_Complaint_Pre_Login", customer_Id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+         name: "complaint-8",
+         url: "crm/insert-complaint-pre-login/",
+         defaults: new { controller = "Complaint", action = "Insert_Complaint_Pre_Login", id = UrlParameter.Optional }
+         );
+
+            routes.MapRoute(
+         name: "complaint-9",
+         url: "crm/get-lot-no/{lot_No}",
+         defaults: new { controller = "Complaint", action = "Get_Lot_No", lot_No = UrlParameter.Optional }
+         );
+
             #endregion
 
             #endregion

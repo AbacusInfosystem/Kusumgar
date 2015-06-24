@@ -1,0 +1,146 @@
+﻿@model Kusumgar.Models.ComplaintViewModel
+@using KusumgarBusinessEntities.Common
+
+<form id="frmComp">
+    <input type="hidden" class="form-control input-sm" name="Complaint.Complaint_Id" id="hdnComplaint_Id" value="@Model.Complaint.Complaint_Id">
+
+    <input type="hidden" id="hdnLot_Nos" value="@Model.Lot_No" name="Lot_No">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Complaint Information</h3>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @if(Model.Complaint.Customer_Id == 0)
+                                            { 
+                                            <label for="txtCustName" style="color: #333">Customer Name</label>
+                                            <div class="auto-complete">
+                                                <input type="text" class="form-control input-sm" id="txtCustName" placeholder="Enter Customer Name" value="">
+                                                <input type="hidden" id="hdnCustId" value="@Model.Complaint.Customer_Id" name="Complaint.Customer_Id" class="auto-complete-value" />
+                                                <input type="hidden" id="hdnCustomer_Name" value="@Model.Complaint.Customer_Name" name="Complaint.Customer_Name" class="auto-complete-label">
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                                 <label for="txtCustName" style="color: #333">Customer Name : </label>@Model.Complaint.Customer_Name
+                                                <input type="hidden" id="hdnCustId" value="@Model.Complaint.Customer_Id" name="Complaint.Customer_Id"  />
+                                            <input type="hidden" id="hdnCustomer_Name" value="@Model.Complaint.Customer_Name" name="Complaint.Customer_Name" >
+                                            }
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtOrdId" style="color: #333">Order Id</label>
+                                            @*<input type="text" class="form-control input-sm" name="Complaint.Order_Id" id="txtOrdId" placeholder="Enter Order Id" value="@Model.Complaint.Order_Id">*@
+                                            <select class="form-control input-sm" id="drpOrder_Id" name="Complaint.Order_Id">
+                                                <option value="">-Select Order-</option>
+                                                @foreach (var item in LookupInfo.Get_Order())
+                                                {
+                                                    if (Model.Complaint.Order_Id == item.Key)
+                                                    {
+                                                        <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtChallanNo" style="color: #333">Challan No</label>
+                                            @*<input type="text" class="form-control input-sm" name="Complaint.Challan_No" id="txtChallanNo" placeholder="Enter Challan No" value="@Model.Complaint.Challan_No">*@
+                                            <select class="form-control input-sm" id="drpOrder_Id" name="Complaint.Challan_No">
+                                                <option value="">-Select Order-</option>
+                                                @foreach (var item in LookupInfo.Get_Challan_No())
+                                                {
+                                                    if (Model.Complaint.Challan_No == item.Key)
+                                                    {
+                                                        <option value="@item.Key" selected="selected">@item.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+
+                                        @*<div class="form-group">
+                                            <label for="txtLot_No" style="color: #333">Lot No</label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="text" class="form-control" id="txtLot_No">
+                                                <input type="hidden" id="hdnLot_No" name="Lot_No">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-success btn-flat" type="button" id="btnAdd_Lot_No">Add</button>
+                                                </span>
+                                            </div>
+                                            <br>
+                                            <div class="multiple-list">
+                                                <ul class='todo-list ui-sortable'></ul>
+                                            </div>
+                                        </div>*@
+
+                                        <div class="form-group">
+                                            <label for="txtLot_No" style="color: #333">Lot No</label>
+                                            <select multiple="multiple" id="lst_Available_Lot_No" name="Available_Lot_No" class="form-control">
+                                                @foreach (var item in LookupInfo.Get_Lot_No())
+                                                {
+                                                    if (Model.Complaint.ComplaintLots.Where(a=> a.Lot_No == item.Key).Count() > 0)
+                                                    { 
+                                                    
+                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                }
+                                                else
+                                                    {
+                                                          <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <br>
+                                            <button class="btn btn-success btn-flat" type="button" id="btnAdd_Lot_No">Add</button>
+                                            <br>
+                                            <div class="multiple-list">
+                                                <ul class='todo-list ui-sortable'></ul>
+                                            </div>
+                                        </div>
+
+
+                                            <div class="form-group">
+                                                <label for="txtDescription" style="color: #333">Description</label>
+                                                <textarea class="form-control input-sm" id="txtDescription" placeholder="Enter Complaint Description" name="Complaint.CDescription">@Model.Complaint.CDescription</textarea>
+                                            </div>
+
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="btn-group">
+                                    <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
+                                    <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</form>
