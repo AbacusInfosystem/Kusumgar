@@ -62,6 +62,7 @@ namespace KusumgarDataAccess
             contact.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
             contact.Contact_Type = Convert.ToInt32(dr["Contact_Type"]);
             contact.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+            contact.Customer_Contact_Type_Id = Convert.ToInt32(dr["Customer_Contact_Type_Id"]);
             contact.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
             contact.Contact_Name = Convert.ToString(dr["Contact_Name"]);
             contact.Designation = Convert.ToString(dr["Designation"]);
@@ -81,7 +82,14 @@ namespace KusumgarDataAccess
             contact.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
             contact.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             contact.Customer_Name = Convert.ToString(dr["Customer_Name"]);
-
+            contact.Customer_Contact_Type = Convert.ToString(dr["Customer_Contact_Type"]);
+            foreach (var item in LookupInfo.Get_DMU_Status_Role())
+            {
+                if (contact.DMU_Status_Role == item.Key)
+                {
+                    contact.DMU_Status_Role_Str = item.Value;
+                }
+            }
             return contact;
         }
        
@@ -167,6 +175,7 @@ namespace KusumgarDataAccess
             }
             sqlparam.Add(new SqlParameter("@Contact_Type",contact.Contact_Type));
             sqlparam.Add(new SqlParameter("@Customer_Id",contact.Customer_Id));
+            sqlparam.Add(new SqlParameter("@Customer_Contact_Type_Id", contact.Customer_Contact_Type_Id));
             sqlparam.Add(new SqlParameter("@Vendor_Id", contact.Vendor_Id));
             sqlparam.Add(new SqlParameter("@Contact_Name",contact.Contact_Name ));
             sqlparam.Add(new SqlParameter("@Designation",contact.Designation ));

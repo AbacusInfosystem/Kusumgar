@@ -36,6 +36,7 @@
                         <li><a href="#tab_3" id="tabBilling" data-toggle="tab">Billing</a></li>
                         <li><a href="#tab_4" id="tabShipping" data-toggle="tab">Shipping</a></li>
                         <li><a href="#tab_5" id="tabOther" data-toggle="tab">Other</a></li>
+                        <li><a href="#tab_6" id="tabContactType" data-toggle="tab">Contact Type</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">
@@ -447,6 +448,47 @@
                                     <div class="btn-group">
                                         <button type="button" id="btnSaveOther" class="btn btn-success btn-sm">Save other</button>
                                         <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_6">
+                            <br />
+                            <form id="frmContact">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="hidden" id="hdnCustomer_Contact_Type_Id" value="@Model.Customer.Customer_Contact_Type.Customer_Contact_Type_Id">
+                                        <div class="form-group">
+                                            <label for="txtContactType" style="color: #333">Contact Type</label>
+                                            <input type="text" class="form-control input-sm" id="txtContactType" placeholder="Enter Contact Type" name="Customer.Customer_Contact_Type.Contact_Type" value="@Model.Customer.Customer_Contact_Type.Contact_Type">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-striped" id="tblConTypeGrid">
+                                                <tr>
+                                                    <th>Contact Type</th>                                                    
+                                                    <th></th>
+                                                </tr>
+                                                @foreach (var item in Model.Customer.Customer_Contact_Types)
+                                                {
+                                                    <tr id="tr_ctype_@item.Customer_Contact_Type_Id">
+                                                        <td>@item.Contact_Type</td>                                                        
+                                                        <td>
+                                                            <div class="btn-group pull-right">
+                                                                <button type="button" id="btnRemove" class="btn btn-danger btn-xs" onclick="RemoveContactType(@item.Customer_Contact_Type_Id)"><i class='fa fa-times'></i></button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="btn-group">
+                                        <button type="button" id="btnSaveContact" class="btn btn-success btn-sm">Save Contact Type</button>
+                                        <a href="@Url.Action("Search","Customer")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
                                     </div>
                                 </div>
                             </form>

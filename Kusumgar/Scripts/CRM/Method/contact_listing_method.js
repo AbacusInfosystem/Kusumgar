@@ -70,6 +70,24 @@ function Bind_Contact_Grid(data) {
 
             htmlText += "</td>";
 
+            htmlText += "<td>";
+
+            htmlText += data.Contacts[i].Mobile1 == null ? "" : data.Contacts[i].Mobile1;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Contacts[i].Mobile2 == null ? "" : data.Contacts[i].Mobile2;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Contacts[i].DMU_Status_Role_Str == null ? "" : data.Contacts[i].DMU_Status_Role_Str;
+
+            htmlText += "</td>";
+
             htmlText += "</tr>";
         }
     }

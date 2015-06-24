@@ -352,6 +352,18 @@ namespace Kusumgar
             defaults: new { controller = "Customer", action = "Get_Customers_By_Status", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "customer-17",
+            url: "master/insert-customer-contact-type",
+            defaults: new { controller = "Customer", action = "Insert_Customer_Contact_Type", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-18",
+            url: "master/delete-customer-contact-type",
+            defaults: new { controller = "Customer", action = "Delete_Customer_Contact_Type_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Contact
@@ -409,9 +421,14 @@ namespace Kusumgar
            url: "crm/view-contact",
            defaults: new { controller = "Contact", action = "View_Contact", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "contact-10",
+            url: "crm/contact-type-by-customer-id",
+            defaults: new { controller = "Contact", action = "Get_Contact_Type_By_Customer_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-          name: "contact-10",
+          name: "contact-11",
           url: "crm/print-view-contact",
           defaults: new { controller = "Contact", action = "Printable_Contact", id = UrlParameter.Optional },
           namespaces: new string[] { "Kusumgar.Controllers" });
@@ -1499,6 +1516,46 @@ namespace Kusumgar
             url: "master/update-work-center",
             defaults: new { controller = "WorkCenter", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            #endregion
+
+            #region Packing
+
+            routes.MapRoute(
+            name: "packing-1",
+            url: "master/packing",
+            defaults: new { controller = "Packing", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "packing-2",
+            url: "master/edit-packing",
+            defaults: new { controller = "Packing", action = "Get_Packing_By_Packing_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "packing-3",
+            url: "master/insert-packing",
+            defaults: new { controller = "Packing", action = "Insert", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "packing-4",
+            url: "master/update-packing",
+            defaults: new { controller = "Packing", action = "Update", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "packing-5",
+            url: "master/search-packing",
+            defaults: new { controller = "Packing", action = "Get_Packing", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "packing-6",
+            url: "master/get-packing-id-by-packing-name/{packing_Name}",
+            defaults: new { controller = "Packing", action = "Get_Packing_By_Name_Autocomplete", packing_Name = UrlParameter.Optional }
+            );
 
             #endregion
 

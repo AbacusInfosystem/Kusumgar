@@ -239,6 +239,7 @@
     <Compile Include="Controllers\PostLogin\AjaxController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CustomerQualityController.cs" />
     <Compile Include="Controllers\PostLogin\Master\MaterialController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\PackingController.cs" />
     <Compile Include="Controllers\PostLogin\Master\QualityController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -298,6 +299,7 @@
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
     <Compile Include="Models\Master\MaterialVendorViewModel.cs" />
     <Compile Include="Models\Master\MaterialViewModel.cs" />
+    <Compile Include="Models\Master\PackingViewModel.cs" />
     <Compile Include="Models\Master\PArticleViewModel.cs" />
     <Compile Include="Models\Master\QualityViewModel.cs" />
     <Compile Include="Models\Master\ProcessViewModel.cs" />
@@ -1489,6 +1491,8 @@
     <Content Include="Scripts\Master\Event\g_article_event.js" />
     <Content Include="Scripts\Master\Event\g_article_listing_event.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\packing_event.js" />
+    <Content Include="Scripts\Master\Event\packing_search_event.js" />
     <Content Include="Scripts\Master\Event\particle_event.js" />
     <Content Include="Scripts\Master\Event\particle_listing_event.js" />
     <Content Include="Scripts\Master\Event\quality_event.js" />
@@ -1505,6 +1509,8 @@
     <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
     <Content Include="Scripts\Master\Method\g_article_listing_method.js" />
     <Content Include="Scripts\Master\Method\g_article_method.js" />
+    <Content Include="Scripts\Master\Method\packing_method.js" />
+    <Content Include="Scripts\Master\Method\packing_search_method.js" />
     <Content Include="Scripts\Master\Method\particle_listing_method.js" />
     <Content Include="Scripts\Master\Method\particle_method.js" />
     <Content Include="Scripts\Master\Method\quality_method.js" />
@@ -1609,6 +1615,7 @@
     <Content Include="Scripts\Master\Validation\g_article_validation.js" />
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\material_validation.js" />
+    <Content Include="Scripts\Master\Validation\packing_validation.js" />
     <Content Include="Scripts\Master\Validation\particle_validation.js" />
     <Content Include="Scripts\Master\Validation\quality_validation.js" />
     <Content Include="Scripts\Master\Validation\process_validation.js" />
@@ -2085,6 +2092,11 @@
     <Content Include="uploads\STEPS FOR CREATING JOBS.docx" />
     <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
+    <Content Include="Views\PostLogin\Master\Packing\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Packing\Index.cshtml" />
     <Content Include="Views\PostLogin\CRM\Complaint\_InsertComplaint.cshtml" />
   </ItemGroup>
   <PropertyGroup>

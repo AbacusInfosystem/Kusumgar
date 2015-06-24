@@ -379,7 +379,7 @@ namespace Kusumgar.Controllers
                 {
                     cViewModel.Customers = _customerMan.Get_Customers_by_Nation_Id(cViewModel.Filter.Nation_Id, ref pager);
                 }
-                 else if (cViewModel.Filter.Customer_Id != 0)
+                else if (cViewModel.Filter.Customer_Id != 0)
                 {
                     cViewModel.Customers = _customerMan.Get_Customers_By_Id(cViewModel.Filter.Customer_Id, ref  pager);
 
@@ -411,9 +411,11 @@ namespace Kusumgar.Controllers
 
         public ActionResult Get_Customer_By_Id(CustomerViewModel cViewModel)
         {
+            PaginationInfo pager = new PaginationInfo();
             try
             {
                 cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
+                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id, ref pager);
             }
             catch(Exception ex)
             {
@@ -571,5 +573,40 @@ namespace Kusumgar.Controllers
 
             return Json(cViewModel);
         }
+        public JsonResult Insert_Customer_Contact_Type(CustomerViewModel cViewModel)
+        {
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                cViewModel.Customer.Customer_Contact_Type.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cViewModel.Customer.Customer_Contact_Type.CreatedOn = DateTime.Now;                
+                _customerMan.Insert_Customer_Contact_Type(cViewModel.Customer.Customer_Contact_Type);
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU010"));
+                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Contact_Type.Customer_Id, ref pager);
+                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                Logger.Error("Customer Controller - Insert_Customer_Contact_Type " + ex.ToString());
+            }
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Delete_Customer_Contact_Type_By_Id(int customer_Contact_Type_Id, CustomerViewModel cViewModel)
+        {
+            try
+            {
+                _customerMan.Delete_Customer_Contact_Type_By_Id(customer_Contact_Type_Id);
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU011"));
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                Logger.Error("Customer Controller - Delete_Customer_Contact_Type " + ex.ToString());
+            }
+            return Json(cViewModel, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

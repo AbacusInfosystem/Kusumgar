@@ -35,6 +35,8 @@ function Set_Contact()
 
                             Customer_Id: $("#hdnCustomer_Id").val(),
 
+                            Customer_Contact_Type_Id: $("#drpContactType").val(),
+
                             Designation: $("#txtDesignation").val(),
 
                             DMU_Status_Influence: $("#drpDMU_Status_Influence").val(),
@@ -66,4 +68,43 @@ function Set_Contact()
         }
 
     return cViewModel;
+}
+
+function Get_Contact_Types(Customer_Id)
+{
+    $.ajax({
+        url: '/crm/contact-type-by-customer-id',
+        data: { customer_Id: $("#hdnCustomer_Id").val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            if (data != null) {
+                Bind_Contact_Types(data);
+            }
+        }
+    });
+}
+
+function Bind_Contact_Types(data) {
+    $("#drpContactType").html("");
+
+    var htmltext = "";
+
+    htmltext += "<option>-Select Contact Type-</option>";
+
+    if (data.length > 0) {
+        for (var i = 0; i < data.length ; i++) {
+            var id = $("#hdnContact_Type_Id").val();
+            if (id == data[i].Customer_Contact_Type_Id)
+            {
+                htmltext += "<option value='" + data[i].Customer_Contact_Type_Id + "' selected='selected'>" + data[i].Contact_Type + "</option>";
+            }
+            else
+            {
+                htmltext += "<option value='" + data[i].Customer_Contact_Type_Id + "'>" + data[i].Contact_Type + "</option>";
+            }            
+        }
+    }
+    $("#drpContactType").html(htmltext);
 }

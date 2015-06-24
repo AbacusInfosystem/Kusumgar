@@ -27,6 +27,8 @@ namespace KusumgarBusinessEntities
 
         public int Customer_Id { get; set; }
 
+        public int Customer_Contact_Type_Id { get; set; }
+
         public int Vendor_Id { get; set; }
 
         public string Contact_Name { get; set; }
@@ -63,6 +65,8 @@ namespace KusumgarBusinessEntities
 
         public int UpdatedBy { get; set; }
 
+        
+
         #region Additional Fields
 
         public List<ContactCustomFieldsInfo> Contact_Custom_Fields_List { get; set; }
@@ -94,6 +98,8 @@ namespace KusumgarBusinessEntities
                 DMU_Status_Role_Str = value;
             }
         }
+
+        public string Customer_Contact_Type { get; set; }
 
         #endregion
     }

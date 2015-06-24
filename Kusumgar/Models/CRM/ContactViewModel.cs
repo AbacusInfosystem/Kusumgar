@@ -17,6 +17,8 @@ namespace Kusumgar.Models
 
             Contact = new ContactInfo();
 
+            Customer_Contact_Types = new List<CustomerContactTypeInfo>();
+
             Friendly_Message = new List<FriendlyMessageInfo>();
 
             Pager = new PaginationInfo();
@@ -27,6 +29,8 @@ namespace Kusumgar.Models
         public List<ContactInfo> Contacts{ get; set; }
 
         public ContactInfo Contact { get; set; }
+
+        public List<CustomerContactTypeInfo> Customer_Contact_Types { get; set; }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
 

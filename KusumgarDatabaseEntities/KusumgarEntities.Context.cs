@@ -39,6 +39,7 @@ namespace KusumgarDatabaseEntities
         public DbSet<Contact_Custom_Fields> Contact_Custom_Fields { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Customer_Addresss> Customer_Addresss { get; set; }
+        public DbSet<Customer_Contact_Type> Customer_Contact_Type { get; set; }
         public DbSet<M_Access_Function> M_Access_Function { get; set; }
         public DbSet<M_Attribute_Code> M_Attribute_Code { get; set; }
         public DbSet<M_C_Article> M_C_Article { get; set; }
@@ -58,6 +59,7 @@ namespace KusumgarDatabaseEntities
         public DbSet<M_Material_Vendor> M_Material_Vendor { get; set; }
         public DbSet<M_Nation> M_Nation { get; set; }
         public DbSet<M_P_Article> M_P_Article { get; set; }
+        public DbSet<M_Packing> M_Packing { get; set; }
         public DbSet<M_Payment_Terms> M_Payment_Terms { get; set; }
         public DbSet<M_Process> M_Process { get; set; }
         public DbSet<M_Product_Vendors> M_Product_Vendors { get; set; }
