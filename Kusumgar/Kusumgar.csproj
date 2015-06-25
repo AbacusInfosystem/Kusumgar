@@ -2014,9 +2014,6 @@
     <Content Include="Views\PostLogin\Sales\Enquiry\Search_PPC_Planning.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Sales\Enquiry\_Schedular.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PostLogin\Master\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
