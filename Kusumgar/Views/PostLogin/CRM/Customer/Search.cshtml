@@ -22,11 +22,16 @@
     <form id="frmSearch_customer">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        @{Html.RenderPartial("_ServerMessage");}
         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
         <input type="hidden" id="hdfCustomer_Id" name="Customer.Customer_Id" />
         <input type="hidden" id="hdCustomer_Id" name="Filter.Customer_Id" />
         <input type="hidden" id="hdfCustomer_Name" name="Filter.Customer_Name" />
+
         <input type="hidden" id="hdfCustomer_Status_Id" value="@Model.Filter.Status_Id" name="Filter.Status_Id">
+        <input type="hidden" id="hdfBlockOrder" name="Customer.Block_Order" value="@((Model.Customer.Block_Order== null ? false :Model.Customer.Block_Order).ToString())">
+      
+       
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -77,6 +82,8 @@
 
                                         <div class="btn-group pull-right btn-group-sm">
                                             <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit </button>
+                                            <button type="button" id="btnBlock" class="btn btn-warning btn-sm" style="display:none;">Block</button>
+                                            <button type="button" id="btnUnblock" class="btn btn-warning btn-sm" style="display:none;">UnBlock</button>
                                             <button type="button" id="btnViewContact" class="btn btn-primary btn-sm" style="display:none;">View contacts</button>
                                             <button type="button" id="btnPurchaseHistory" class="btn btn-primary btn-sm " style="display:none;">Purchase history</button>
                                         </div>
@@ -85,8 +92,11 @@
                                        
                                         <div class="btn-group pull-right">
                                             <button type="button" class="btn btn-warning btn-sm" id="btnEdit" style="display:none">Edit</button>
+                                            <button type="button" id="btnBlock" class="btn btn-warning btn-sm" style="display:none;">Block</button>
+                                            <button type="button" id="btnUnblock" class="btn btn-warning btn-sm" style="display:none;">UnBlock</button>
                                             <button type="button" id="btnViewContact" class="btn btn-primary btn-sm" style="display:none;">View contacts</button>
                                             <button type="button" id="btnPurchaseHistory" class="btn btn-primary btn-sm " style="display:none;">Purchase history</button>
+                                           
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-warning btn-sm">Filter by Status</button>
                                                 <button type="button" class="btn btn-warning dropdown-toggle btn-sm" data-toggle="dropdown">

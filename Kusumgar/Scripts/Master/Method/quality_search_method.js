@@ -120,7 +120,7 @@ function BindQualityInGrid(data, mode) {
             //alert("ID " + $(this).parents('tr').find('input[id^=hdfQualityId]').val())
 
             $("#hdfQualityId").val($(this).parents('tr').find('input[id^=hdfQualityId]').val());
-
+            $("#btnView").show();
             $('#btnEdit').show();
         }
     });
@@ -130,6 +130,8 @@ function BindQualityInGrid(data, mode) {
 }
 
  function PageMore(Id) {
+
+     $("#btnView").hide();
 
      $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

@@ -90,6 +90,7 @@ namespace KusumgarBusinessEntities.Common
         Complaint_Create,
         Complaint_Edit,
 
+
         // YArticle
         YArticle_Search,
         YArticle_Create,
@@ -199,10 +200,18 @@ namespace KusumgarBusinessEntities.Common
         Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
 
 
+
+        Update_Customer_Block_Order_Sp,
+
         // Customer Address 
         Insert_Customer_Address,
         Update_Customer_Address,
         Delete_Customer_Address_By_Id,
+
+        // Customer Contact Type
+        Insert_Customer_Contact_Type_Sp,
+        Delete_Customer_Contact_Type_By_Id_Sp,
+        Get_Customer_Contact_Type_By_Id_Sp,
 
         // Financial Details
         Insert_Bank_Details_Sp,
@@ -210,6 +219,7 @@ namespace KusumgarBusinessEntities.Common
 
         //Nation
         Get_Nation_Sp,
+        Get_Nation_By_Customer_Id_Sp,
 
         //State
         Get_State_By_Nation_Id_Sp,
@@ -237,13 +247,12 @@ namespace KusumgarBusinessEntities.Common
 
         //Defect
         Get_Defects_sp,
-        List_Defect_Types_sp,
         Get_Defect_By_Id_sp,
-        Get_Defect_By_Name_By_Type_sp,
+        Get_Defect_By_Defect_Name_By_Process_Name_sp,
         Get_Defect_By_Name_sp,
-        Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_By_Process_Id_sp,
         Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
@@ -258,8 +267,9 @@ namespace KusumgarBusinessEntities.Common
         Insert_Test_sp,
         Update_Test_sp,
         Get_Test_By_Id_sp,
-        Get_Fabric_Types_sp,
-        Get_Test_By_Fabric_Type_sp,
+        //Get_Fabric_Types_sp,
+        //Get_Test_By_Fabric_Type_sp,
+        Get_Test_By_Process_Id_sp,
         Get_Test_Unit_AutoComplete_sp,
         Get_Test_By_Test_Name_sp,
 
@@ -276,6 +286,8 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
         Get_Complaint_By_Cust_Id_Sp,
+        Insert_Complaint_Lot_Mapping_Sp,
+        Get_Complaint_Lot_Mapping_By_Complaint_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,
@@ -369,7 +381,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Material_Vendors_By_Id_Sp,
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
-        Get_Material_SubCategory_By_CategoryId_Sp,
+Get_Material_SubCategory_By_CategoryId_Sp,
         Get_Materials_By_Material_Id_Vendor_Id_Sp,
         Get_Materials_By_Vendor_Id_Sp,
 
@@ -515,6 +527,13 @@ namespace KusumgarBusinessEntities.Common
         Get_C_Articles_By_Full_Code_Sp,
         Get_C_Articles_By_Yarn_Type_Id_Sp,
         Get_C_Articles_By_CArticle_Id_Yarn_Type_Sp,
+
+        //Packing
+        Insert_Packing_Sp,
+        Update_Packing_Sp,
+        Get_Packing_Sp,
+        Get_Packing_By_Id_Sp,
+        Get_Packing_By_Packing_Name_Sp,
     }
 
     public enum GenderType
@@ -567,11 +586,13 @@ namespace KusumgarBusinessEntities.Common
 
     public enum DMUStatusRole
     {
-        option1 = 1,
-        option2 = 2,
-        option3 = 3,
-        option4 = 4,
-        option5 = 5,
+        Initiator = 1,
+        Decider = 2,
+        Influencer = 3,
+        User = 4,
+        Gatekeeper = 5,
+        Champion = 6,
+        Coach = 7,
     }
 
     public enum DMUStatusInfluence
@@ -647,5 +668,35 @@ namespace KusumgarBusinessEntities.Common
         By_Air = 2,
         By_Route = 3,
     }
+
+    // Temp Enums
+    public enum Order
+    {
+        ord0001 = 1,
+        ord0002 = 2,
+        ord0003 = 3,
+        ord0004 = 4,
+        ord0005 = 5,
+    }
+
+    public enum Challan_No
+    {
+        cha001 = 1,
+        cha002 = 2,
+        cha003 = 3,
+        cha004 = 4,
+        cha005 = 5,
+    }
+
+    public enum Lot_No
+    {
+        lot001 = 1,
+        lot002 = 2,
+        lot003 = 3,
+        lot004 = 4,
+        lot005 = 5,
+    }
+
+    // 
 
 }

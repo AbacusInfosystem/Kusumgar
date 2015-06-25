@@ -170,7 +170,7 @@
                             <form id="frmMaterial_Vendors">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <input type="hidden" id="hdnMaterial_Vendor_Id" value="@Model.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id">
+                                        <input type="hidden" id="hdnMaterial_Vendor_Id" value="@Model.Material_Vendor.Material_Vendor_Id">
                                         <div class="form-group">
                                             <label for="txt_auto_Vendor_Name" style="color: #333">Vendor Name</label>
                                             <div class="auto-complete">
@@ -178,7 +178,7 @@
                                                     <input type="text" class="form-control input-sm"  id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name" >
                                                     <button type="button" id="btnNew" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">New Vendor</button>
                                                 </div>
-                                                <input type="hidden" id="hdnVendor_Id" name="Material_Vendor.Material_Vendor_Entity.Vendor_Id" class="auto-complete-value">
+                                                <input type="hidden" id="hdnVendor_Id" name="Material_Vendor.Vendor_Id" class="auto-complete-value">
                                                 <input type="hidden" id="hdnVendor_Name" value="@Model.Material_Vendor.Vendor_Name" name="Material_Vendor.Vendor_Name" class="auto-complete-label">
                                             </div>
                                             <br />
@@ -186,11 +186,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="drpPriorityOrder" style="color: #333">Priority Order</label>
-                                            <select class="form-control input-sm" id="drpPriorityOrder" name="Material_Vendor.Material_Vendor_Entity.Priority_Order">
+                                            <select class="form-control input-sm" id="drpPriorityOrder" name="Material_Vendor.Priority_Order">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in LookupInfo.Get_Priority_Orders())
                                             {
-                                                if (Model.Material_Vendor.Material_Vendor_Entity.Priority_Order == item.Key)
+                                                if (Model.Material_Vendor.Priority_Order == item.Key)
                                                 {
                                             <option value="@item.Key" selected="selected">@item.Value</option>
                                                 }
@@ -213,12 +213,12 @@
                                                 </tr>
                                                 @foreach (var item in Model.Material_Vendors)
                                             {
-                                            <tr id="tr_pvendor_@item.Material_Vendor_Entity.Material_Vendor_Id">
+                                            <tr id="tr_pvendor_@item.Material_Vendor_Id">
                                                 <td>@item.Vendor_Name</td>
-                                                <td>@item.Material_Vendor_Entity.Priority_Order</td>
+                                                <td>@item.Priority_Order</td>
                                                 <td>
                                                     <div class="btn-group pull-right">
-                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-xs" onclick="RemoveVendor(@item.Material_Vendor_Entity.Material_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-xs" onclick="RemoveVendor(@item.Material_Vendor_Id)"><i class='fa fa-times'></i></button>
                                                     </div>
                                                 </td>
                                             </tr>

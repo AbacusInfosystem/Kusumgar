@@ -12,6 +12,7 @@ $(function () {
         $("#tabBilling").hide();
         $("#tabShipping").hide();
         $("#tabOther").hide();
+        $("#tabContactType").hide();
     }
 
     $("#btn_Save").click(function () {
@@ -109,14 +110,31 @@ $(function () {
         }
     });
 
-
     $("#drpHead_Office_Nation").change(function () {
        
+        var Nation_Id = "";
+
+        var Text = "";
+
+        if ($("#drpHead_Office_Nation").val() != "")
+        {
+            Nation_Id = $("#drpHead_Office_Nation").val().split("_")[0];
+            
+            Text = "";
+
+            if ($("#drpHead_Office_Nation option:selected").text().toLowerCase().trim(" ") == "india") {
         
+                $("#dvIs_Dosmistic").html("<h4><span class='label label-default'> <span class='flag-icon " + $("#drpHead_Office_Nation").val().split("_")[2] + "'> </span> Domistic  <i class='fa " + $("#drpHead_Office_Nation").val().split("_")[1] + "'></i></span></h4>");
+            }
+            else {
+
+                $("#dvIs_Dosmistic").html("<h4><span class='label label-default'>  <span class='flag-icon " + $("#drpHead_Office_Nation").val().split("_")[2] + "'> </span> International   <i class='fa " + $("#drpHead_Office_Nation").val().split("_")[1] + "'></i></span></h4>");
+            }
+        }
 
         $.ajax({
             url: '/crm/state-by-nation-id',
-            data: { nation_Id: $("#drpHead_Office_Nation").val() },
+            data: { nation_Id: Nation_Id },
             method: 'GET',
             async: false,
             success: function (data) {
@@ -127,5 +145,15 @@ $(function () {
         });
     });
 
+    $("#btnSaveContact").click(function () {
+
+        if ($("#frmContact").valid()) {
+
+            Save_Customer_Contact_Type();
+        }
+    });
+
+
+    $("#drpHead_Office_Nation").trigger("change");
 
 });

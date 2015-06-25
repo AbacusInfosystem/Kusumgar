@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+
     InitializeAutoComplete($('#txtDefectName'));
 
     GetAllDefects();
@@ -18,14 +19,14 @@
 
     $("#divSearchGridOverlay").hide();
 
-    $('#drpDefectTypeName').change(function () {
+    $('#drpProcessName').change(function () {
 
-        $('#hdfDefectTypeId').val($('#drpDefectTypeName :selected').val());
+        $('#hdfProcessId').val($('#drpProcessName :selected').val());
     })
  
-    if ($("#hdfDefectTypeId").val() != 0) {
+    if ($("#hdfProcessId").val() != 0) {
         
-        $('#drpDefectTypeName').val($("#hdfDefectTypeId").val());
+        $('#hdfProcessId').val($("#hdfProcessId").val());
                                           }
     });
 

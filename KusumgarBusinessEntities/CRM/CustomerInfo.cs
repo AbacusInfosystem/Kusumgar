@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
@@ -19,6 +19,10 @@ namespace KusumgarBusinessEntities
             Customer_Address_List = new List<CustomerAddressInfo>();
 
             Customer_Address = new CustomerAddressInfo();
+
+            Customer_Contact_Types = new List<CustomerContactTypeInfo>();
+
+            Customer_Contact_Type = new CustomerContactTypeInfo();
         }
 
       //  public Customer Customer_Entity { get; set; }
@@ -88,6 +92,10 @@ namespace KusumgarBusinessEntities
         public CustomerAddressInfo Customer_Address { get; set; }
 
         public string Nation_Name { get; set; }
+
+        public List<CustomerContactTypeInfo> Customer_Contact_Types { get; set; }
+
+        public CustomerContactTypeInfo Customer_Contact_Type { get; set; }
 
         #endregion
     }

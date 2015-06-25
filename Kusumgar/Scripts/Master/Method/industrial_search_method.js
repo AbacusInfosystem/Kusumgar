@@ -27,7 +27,7 @@ function Bind_Industrial_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Industrials[i].Industrial_Entity.Industrial_Master_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Industrials[i].Industrial_Master_Id + "' class='iradio_square-green'/>";
 
         htmlText += "</td>";
 
@@ -45,19 +45,19 @@ function Bind_Industrial_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += data.Industrials[i].Industrial_Entity.Industrial_SubGrp_Name;
+        htmlText += data.Industrials[i].Industrial_SubGrp_Name;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Industrials[i].Industrial_Entity.Size;
+        htmlText += data.Industrials[i].Size;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Industrials[i].Industrial_Entity.COD;
+        htmlText += data.Industrials[i].COD;
 
         htmlText += "</td>";
 
@@ -114,7 +114,7 @@ function Bind_Groups(data) {
 
     if (data.length > 0) {
         for (var i = 0; i < data.length ; i++) {
-            htmltext += "<option value='" + data[i].Industrial_Group_Entity.Industrial_Group_Id + "'>" + data[i].Industrial_Group_Entity.Industrial_Group_Name + "</option>";
+            htmltext += "<option value='" + data[i].Industrial_Group_Id + "'>" + data[i].Industrial_Group_Name + "</option>";
         }
     }
     $("#drpIndGroupName").html(htmltext);

@@ -4,7 +4,7 @@
         rules: {
             "Complaint.Customer_Id":
             {
-                customer_required: true,                
+                required: true,
             },
             "Complaint.Order_Id":
             {
@@ -28,7 +28,7 @@
 
             "Complaint.Customer_Id":
             {
-                
+                required: " Customer Name is required."
             },
             "Complaint.Order_Id":
             {

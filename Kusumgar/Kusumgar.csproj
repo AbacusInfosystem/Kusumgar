@@ -239,6 +239,7 @@
     <Compile Include="Controllers\PostLogin\AjaxController.cs" />
     <Compile Include="Controllers\PostLogin\Master\CustomerQualityController.cs" />
     <Compile Include="Controllers\PostLogin\Master\MaterialController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\PackingController.cs" />
     <Compile Include="Controllers\PostLogin\Master\QualityController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -298,6 +299,7 @@
     <Compile Include="Models\Master\IndustrialViewModel.cs" />
     <Compile Include="Models\Master\MaterialVendorViewModel.cs" />
     <Compile Include="Models\Master\MaterialViewModel.cs" />
+    <Compile Include="Models\Master\PackingViewModel.cs" />
     <Compile Include="Models\Master\PArticleViewModel.cs" />
     <Compile Include="Models\Master\QualityViewModel.cs" />
     <Compile Include="Models\Master\ProcessViewModel.cs" />
@@ -1457,6 +1459,7 @@
     <Content Include="Scripts\bluimp\tmpl.js" />
     <Content Include="Scripts\bluimp\vendor\jquery.ui.widget.js" />
     <Content Include="Scripts\CRM\Event\complaint_event.js" />
+    <Content Include="Scripts\CRM\Event\complaint_pre_login_event.js" />
     <Content Include="Scripts\CRM\Event\complaint_search_event.js" />
     <Content Include="Scripts\CRM\Event\contact_event.js" />
     <Content Include="Scripts\CRM\Event\contact_listing_event.js" />
@@ -1488,6 +1491,8 @@
     <Content Include="Scripts\Master\Event\g_article_event.js" />
     <Content Include="Scripts\Master\Event\g_article_listing_event.js" />
     <Content Include="Scripts\Master\Event\industrial_event.js" />
+    <Content Include="Scripts\Master\Event\packing_event.js" />
+    <Content Include="Scripts\Master\Event\packing_search_event.js" />
     <Content Include="Scripts\Master\Event\particle_event.js" />
     <Content Include="Scripts\Master\Event\particle_listing_event.js" />
     <Content Include="Scripts\Master\Event\quality_event.js" />
@@ -1504,6 +1509,8 @@
     <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
     <Content Include="Scripts\Master\Method\g_article_listing_method.js" />
     <Content Include="Scripts\Master\Method\g_article_method.js" />
+    <Content Include="Scripts\Master\Method\packing_method.js" />
+    <Content Include="Scripts\Master\Method\packing_search_method.js" />
     <Content Include="Scripts\Master\Method\particle_listing_method.js" />
     <Content Include="Scripts\Master\Method\particle_method.js" />
     <Content Include="Scripts\Master\Method\quality_method.js" />
@@ -1608,6 +1615,7 @@
     <Content Include="Scripts\Master\Validation\g_article_validation.js" />
     <Content Include="Scripts\Master\Validation\industrial_validation.js" />
     <Content Include="Scripts\Master\Validation\material_validation.js" />
+    <Content Include="Scripts\Master\Validation\packing_validation.js" />
     <Content Include="Scripts\Master\Validation\particle_validation.js" />
     <Content Include="Scripts\Master\Validation\quality_validation.js" />
     <Content Include="Scripts\Master\Validation\process_validation.js" />
@@ -1634,6 +1642,12 @@
     <Content Include="Scripts\Sales\Validation\ppc_checkpoint_validation.js" />
     <Content Include="Scripts\ServerSideJs\daypilot-all.min.js" />
     <Content Include="Scripts\ServerSideJs\raphael-min.js" />
+    <Content Include="Views\PostLogin\CRM\Complaint\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\CRM\Complaint\PreLoginComplaint.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\PostLogin\CRM\Contact\View.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -1643,6 +1657,11 @@
     <Content Include="Views\PostLogin\Master\Consumable\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -2018,7 +2037,6 @@
     <Content Include="Views\PostLogin\CRM\Contact\_CustomFields.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\CRM\Complaint\Index.cshtml" />
     <Content Include="Views\PostLogin\CRM\Complaint\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2085,6 +2103,11 @@
     <Content Include="Views\PostLogin\Master\Material\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\Master\Workcenter\View.cshtml" />
     <Content Include="Views\PostLogin\Master\Workcenter\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\Packing\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\Packing\Index.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Complaint\_InsertComplaint.cshtml" />
+    <Content Include="Views\PostLogin\Master\Quality\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\Quality\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\Master\GArticle\View.cshtml" />
     <Content Include="Views\PostLogin\Master\GArticle\_PrintableView.cshtml" />
   </ItemGroup>

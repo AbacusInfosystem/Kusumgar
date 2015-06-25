@@ -188,6 +188,10 @@ var InitializeAutoComplete = function (elementObject) {
             //
 
 
+            if ($(elementObject).attr("id") == 'txtPackingName') {
+                urlString = "/master/get-packing-id-by-packing-name/" + $('#txtPackingName').val();
+            }
+
             $.ajax({
                 url: urlString,
                 dataType: "json",

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -33,9 +33,15 @@ namespace Kusumgar.Controllers
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
+            PackingManager pMan = new PackingManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
             try
             {
-
+                eViewModel.Packing = pMan.Get_Packings(ref pager);
             }
             catch (Exception ex)
             {
@@ -821,6 +827,28 @@ namespace Kusumgar.Controllers
         }
 
         #endregion
+
+        public JsonResult Get_Nations_By_Customer_Id(int customer_Id)
+        {
+            List<NationInfo> Nations = new List<NationInfo>();
+
+            NationManager nMan = new NationManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                Nations = nMan.Get_Nations_By_Customer_Id(customer_Id, ref pager);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("Enquiry Controller - Get_Nations_By_Customer_Id " + ex.ToString());
+            }
+
+            return Json( Nations , JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Search_P_Manager_Checkpoint()
         {

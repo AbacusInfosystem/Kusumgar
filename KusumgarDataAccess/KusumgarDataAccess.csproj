@@ -66,6 +66,7 @@
     <Compile Include="Master\GArticleRepo.cs" />
     <Compile Include="Master\IndustrialRepo.cs" />
     <Compile Include="Master\NationRepo.cs" />
+    <Compile Include="Master\PackingRepo.cs" />
     <Compile Include="Master\PArticleRepo.cs" />
     <Compile Include="Master\ProcessRepo.cs" />
     <Compile Include="Master\ProductVendorRepo.cs" />

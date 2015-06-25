@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+//using System.Web;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
 
@@ -19,7 +19,7 @@ namespace Kusumgar.Models
            
             Filter = new DefectFilter();
 
-            DefectType = new List<DefectTypeInfo>();
+            Processes = new List<ProcessInfo>();
             
             Pager = new PaginationInfo();
 
@@ -30,7 +30,7 @@ namespace Kusumgar.Models
 
         public List<DefectInfo> DefectGrid { get; set; }
 
-        public List<DefectTypeInfo> DefectType { get; set; }
+        public List<ProcessInfo> Processes { get; set; }
 
         public PaginationInfo Pager { get; set; }
 
@@ -48,7 +48,8 @@ namespace Kusumgar.Models
 
         public class DefectFilter
         {
-            public int Defect_Type_Id { get; set; }
+            public int Process_Id { get; set; }
+           
             public string Defect_Name{get;set;}
 
             public int Defect_Id { get; set; }

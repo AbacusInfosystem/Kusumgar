@@ -43,7 +43,7 @@
             {
                 required: true,
             },
-            "Material_Vendor.Material_Vendor_Entity.Priority_Order":
+            "Material_Vendor.Priority_Order":
             {
                 required: true,
             },
@@ -90,7 +90,7 @@
             {
                 required: "Vendor name is required."
             },
-            "Material_Vendor.Material_Vendor_Entity.Priority_Order":
+            "Material_Vendor.Priority_Order":
             {
                 required: "Priority order is required."
             },
@@ -102,22 +102,22 @@
 
 
         rules: {
-            "Material_Vendor.Material_Vendor_Entity.Vendor_Id":
+            "Material_Vendor.Vendor_Id":
             {
                 required: true,
             },
-            "Material_Vendor.Material_Vendor_Entity.Priority_Order":
+            "Material_Vendor.Priority_Order":
                 {
                     required: true,
                 }
         },
         messages: {
 
-            "Material_Vendor.Material_Vendor_Entity.Vendor_Id":
+            "Material_Vendor.Vendor_Id":
             {
                 required: "Vendor is required."
             },
-            "Material_Vendor.Material_Vendor_Entity.Priority_Order":
+            "Material_Vendor.Priority_Order":
                 {
                     required :"Priority order is required"
                 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data.SqlClient;
 using System.Data;
 
@@ -49,7 +49,7 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
 
-            sqlParamList.Add(new SqlParameter("@Fabric_Type_Id", testInfo.Fabric_Type_Id));
+            sqlParamList.Add(new SqlParameter("@Process_Id", testInfo.Process_Id));
             sqlParamList.Add(new SqlParameter("@Status", testInfo.Status));
             sqlParamList.Add(new SqlParameter("@Test_Name", testInfo.Test_Name));
             sqlParamList.Add(new SqlParameter("@Test_Unit1", testInfo.Test_Unit1));
@@ -108,15 +108,16 @@ namespace KusumgarDataAccess
             return retVal;
         }
 
-        public List<FabricTypeInfo> Get_Fabric_Types()
+        public List<ProcessInfo> Get_Processes()
         {
-            List<FabricTypeInfo> retVal = new List<FabricTypeInfo>();
+            List<ProcessInfo> retVal = new List<ProcessInfo>();
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Fabric_Types_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Processes_Sp.ToString(), CommandType.StoredProcedure);
 
             if (dt != null && dt.Rows.Count > 0)
             {
                 int count = 0;
+
                 List<DataRow> drList = new List<DataRow>();
 
                 drList = dt.AsEnumerable().ToList();
@@ -125,26 +126,28 @@ namespace KusumgarDataAccess
 
                 foreach (DataRow dr in drList)
                 {
-                    FabricTypeInfo fabricTypes = new FabricTypeInfo();
-                    fabricTypes.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
-                    fabricTypes.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
-                    retVal.Add(fabricTypes);
-                }
+                    ProcessInfo process = new ProcessInfo();
 
+                    process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
+
+                    process.Process_Name = Convert.ToString(dr["Process_Name"]);
+
+                    retVal.Add(process);
+                }
             }
 
             return retVal;
         }
-
-        public List<TestInfo> Get_Test_By_Fabric_Type(int fabricTypeId,ref PaginationInfo pager)
+       
+       public List<TestInfo> Get_Test_By_Process_Id(int processId,ref PaginationInfo pager)
         {
             List<TestInfo> retVal = new List<TestInfo>();
 
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            sqlParams.Add(new SqlParameter("@Fabric_Type_Id",fabricTypeId));
+            sqlParams.Add(new SqlParameter("@Process_Id",processId));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Fabric_Type_sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Test_By_Process_Id_sp.ToString(), CommandType.StoredProcedure);
 
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
                 {
@@ -191,7 +194,7 @@ namespace KusumgarDataAccess
 
             tests.Test_Id = Convert.ToInt32(dr["Test_Id"]);
 
-            tests.Fabric_Type_Id = Convert.ToInt32(dr["Fabric_Type_Id"]);
+            tests.Process_Id = Convert.ToInt32(dr["Process_Id"]);
 
             tests.Status = Convert.ToBoolean(dr["Status"]);
 
@@ -295,7 +298,7 @@ namespace KusumgarDataAccess
                 tests.Test_Unit10 = 0;
             }
 
-            tests.Fabric_Type_Name = Convert.ToString(dr["Fabric_Type_Name"]);
+            tests.Process_Name = Convert.ToString(dr["Process_Name"]);
             tests.Test_Unit_Name1 = Convert.ToString(dr["Test_Unit_Name1"]);
             tests.Test_Unit_Name2 = Convert.ToString(dr["Test_Unit_Name2"]);
             tests.Test_Unit_Name3 = Convert.ToString(dr["Test_Unit_Name3"]);

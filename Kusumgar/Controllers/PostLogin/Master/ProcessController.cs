@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -57,7 +57,7 @@ namespace Kusumgar.Controllers
                 pViewModel.Process.CreatedOn = DateTime.Now;
                 pViewModel.Process.UpdatedOn = DateTime.Now;
                 _processMan.Insert_Process(pViewModel.Process);
-
+                pViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace Kusumgar.Controllers
                 pViewModel.Process.UpdatedBy = ((UserInfo)Session["User"]).UserId;
                 pViewModel.Process.UpdatedOn = DateTime.Now;
                 _processMan.Update_Process(pViewModel.Process);
-
+                pViewModel.Friendly_Message.Add(MessageStore.Get("P002"));
             }
             catch (Exception ex)
             {

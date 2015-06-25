@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -90,7 +90,27 @@ namespace KusumgarDataAccess
 
             return nation;
         }
-        
+
+        public List<NationInfo> Get_Nations_By_Customer_Id(int Customer_Id,ref PaginationInfo pager)
+        {
+            List<NationInfo> Nations = new List<NationInfo>();
+
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+
+            sqlParam.Add(new SqlParameter("@Customer_Id", Customer_Id));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Nation_By_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+                {
+                    Nations.Add(Get_Nation_Values(dr));
+                }
+            }
+
+            return Nations;
+        }
 
     }
 }

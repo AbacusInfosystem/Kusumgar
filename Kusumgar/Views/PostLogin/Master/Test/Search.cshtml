@@ -53,26 +53,25 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <label>Fabric Type</label>
-                                        <select class="form-control input-sm" id="drpFabricTypeName">
-                                            <option value="">Select Fabric Type </option>
+                                        <label>Process</label>
+                                        <select class="form-control input-sm" id="drpProcesssId" name="Test.Process_Id">
+                                            <option value="">Select Process </option>
 
-
-                                            @foreach (var item in Model.Fabric_Type)
+                                            @foreach (var item in Model.Processes)
                                             {
-                                                if (Model.Filter.Fabric_Type_Id == item.Fabric_Type_Id)
+                                                if (Model.Filter.Process_Id == item.Process_Id)
                                                 {
-                                                    <option value="@item.Fabric_Type_Id" selected="selected">@item.Fabric_Type_Name</option>
+                                                    <option value="@item.Process_Id" selected="selected">@item.Process_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Fabric_Type_Id">@item.Fabric_Type_Name</option>
+                                                    <option value="@item.Process_Id">@item.Process_Name</option>
                                                 }
 
                                             }
 
                                         </select>
-                                        <input type="hidden" id="hdfFabricTypeId" name="Filter.Fabric_Type_Id" value="@Model.Filter.Fabric_Type_Id" />
+                                        <input type="hidden" id="hdfProcessId" name="Filter.Process_Id" value="@Model.Filter.Process_Id" />
                                     </div>
 
                                 </div>
@@ -122,7 +121,7 @@
                         <table class="table table-striped" id="tblSearchTest">
                             <tr>
                                 <th style="width:50px;"></th>
-                                <th>Fabric Type</th>
+                                <th>Process</th>
                                 <th>Test Name</th>
                                 <th>TestUnit1</th>
                                 <th>TestUnit2</th>

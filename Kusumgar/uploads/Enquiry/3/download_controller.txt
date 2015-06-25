@@ -1,0 +1,15 @@
+        public void DownloadFile(string fileName)
+        {
+            try
+            {
+                ContactManager cMan=new ContactManager();
+
+                cMan.DownloadFile(fileName);
+                
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("ContactController - DownloadFile " +ex.ToString());
+
+            }
+        }

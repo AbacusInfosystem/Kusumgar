@@ -138,15 +138,19 @@ namespace KusumgarBusinessEntities.Common
         {
             Dictionary<int, string> Get_DMU_Status_Role = new Dictionary<int, string>();
 
-            Get_DMU_Status_Role.Add(1, DMUStatusRole.option1.ToString().Replace('_', ' ').ToString());
+            Get_DMU_Status_Role.Add(1, DMUStatusRole.Initiator.ToString().Replace('_', ' ').ToString());
 
-            Get_DMU_Status_Role.Add(2, DMUStatusRole.option2.ToString().Replace('_', ' ').ToString());
+            Get_DMU_Status_Role.Add(2, DMUStatusRole.Decider.ToString().Replace('_', ' ').ToString());
 
-            Get_DMU_Status_Role.Add(3, DMUStatusRole.option3.ToString().Replace('_', ' ').ToString());
+            Get_DMU_Status_Role.Add(3, DMUStatusRole.Influencer.ToString().Replace('_', ' ').ToString());
 
-            Get_DMU_Status_Role.Add(4, DMUStatusRole.option4.ToString().Replace('_', ' ').ToString());
+            Get_DMU_Status_Role.Add(4, DMUStatusRole.User.ToString().Replace('_', ' ').ToString());
 
-            Get_DMU_Status_Role.Add(5, DMUStatusRole.option5.ToString().Replace('_', ' ').ToString());
+            Get_DMU_Status_Role.Add(5, DMUStatusRole.Gatekeeper.ToString().Replace('_', ' ').ToString());
+
+            Get_DMU_Status_Role.Add(6, DMUStatusRole.Champion.ToString().Replace('_', ' ').ToString());
+
+            Get_DMU_Status_Role.Add(7, DMUStatusRole.Coach.ToString().Replace('_', ' ').ToString());
 
             return Get_DMU_Status_Role;
         }
@@ -258,6 +262,59 @@ namespace KusumgarBusinessEntities.Common
             Get_Dispatch_Type.Add(3, DispatchType.By_Route.ToString().Replace('_', ' ').ToString());
 
             return Get_Dispatch_Type;
+        }
+
+        // Temp Lookups
+
+        public static Dictionary<int, string> Get_Order()
+        {
+            Dictionary<int, string> Get_Order = new Dictionary<int, string>();
+
+            Get_Order.Add(1, Order.ord0001.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(2, Order.ord0002.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(3, Order.ord0003.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(4, Order.ord0004.ToString().Replace('_', ' ').ToString());
+
+            Get_Order.Add(5, Order.ord0005.ToString().Replace('_', ' ').ToString());
+
+            return Get_Order;
+        }
+
+        public static Dictionary<int, string> Get_Challan_No()
+        {
+            Dictionary<int, string> Get_Challan_No = new Dictionary<int, string>();
+
+            Get_Challan_No.Add(1, Challan_No.cha001.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(2, Challan_No.cha002.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(3, Challan_No.cha003.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(4, Challan_No.cha004.ToString().Replace('_', ' ').ToString());
+
+            Get_Challan_No.Add(5, Challan_No.cha005.ToString().Replace('_', ' ').ToString());
+
+            return Get_Challan_No;
+        }
+
+        public static Dictionary<int, string> Get_Lot_No()
+        {
+            Dictionary<int, string> Get_Lot_No = new Dictionary<int, string>();
+
+            Get_Lot_No.Add(1, Lot_No.lot001.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(2, Lot_No.lot002.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(3, Lot_No.lot003.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(4, Lot_No.lot004.ToString().Replace('_', ' ').ToString());
+
+            Get_Lot_No.Add(5, Lot_No.lot005.ToString().Replace('_', ' ').ToString());
+
+            return Get_Lot_No;
         }
 
     }

@@ -15,6 +15,15 @@
         $("#frmQualitySearch").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmQualitySearch").attr("action", "/master/view-quality");
+
+        $("#frmQualitySearch").attr("method", "POST");
+
+        $("#frmQualitySearch").submit();
+    });
+
     $("#divSearchGridOverlay").hide();
 
 });

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -174,10 +174,7 @@ namespace KusumgarDataAccess
                  customer.Order_Minimum_Value = Convert.ToInt32(dr["Order_Minimum_Value"]);
              }
 
-             if (dr["Order_Maximum_Value"] != DBNull.Value)
-             {
-                 customer.Order_Maximum_Value = Convert.ToInt32(dr["Order_Maximum_Value"]);
-             }
+
 
              if (dr["Is_Approved_By_Director"] != DBNull.Value)
              {
@@ -217,7 +214,7 @@ namespace KusumgarDataAccess
                 bank_details.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             }
 
-            bank_details.Bank_Name = Convert.ToString(dr["Bank_Name"]);
+           // bank_details.BanWrite method for autocomplete for segment also add grid for both,resoved error in application and segment pagek_Name = Convert.ToString(dr["Bank_Name"]);
             bank_details.Bank_Account_No = Convert.ToString(dr["Bank_Account_No"]);
             bank_details.Branch_Name = Convert.ToString(dr["Branch_Name"]);
             bank_details.Ifsc_Code = Convert.ToString(dr["Ifsc_Code"]);
@@ -518,7 +515,7 @@ namespace KusumgarDataAccess
 
             return CustomerList;
         }
-        
+
         public List<CustomerInfo> Get_Customers_By_Turnover_Name(string turnover, string customer_Name, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -538,7 +535,7 @@ namespace KusumgarDataAccess
 
             return CustomerList;
         }
-       
+
         public List<CustomerInfo> Get_Customers_By_Email_Name(string email, string customer_Name, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -558,7 +555,7 @@ namespace KusumgarDataAccess
 
             return CustomerList;
         }
-        
+
         public List<CustomerInfo> Get_Customers_By_Email_Name_Turnover(string email, string customer_Name,string turnover, ref PaginationInfo pager)
         {
             List<CustomerInfo> CustomerList = new List<CustomerInfo>();
@@ -728,8 +725,31 @@ namespace KusumgarDataAccess
             }
 
             return customer_List;
+        }        
+
+        public void Update_Customer_Block_Order(CustomerInfo customer)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_For_Block_Order(customer), StoredProcedures.Update_Customer_Block_Order_Sp.ToString(), CommandType.StoredProcedure);
         }
 
+        private List<SqlParameter> Set_Values_In_Customer_For_Block_Order(CustomerInfo customer)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+           
+            
+            sqlparam.Add(new SqlParameter("@Customer_Id", customer.Customer_Id));
+          
+           
+            sqlparam.Add(new SqlParameter("@Block_Order", customer.Block_Order));
+           
+            //sqlparam.Add(new SqlParameter("@UpdatedBy", customer.UpdatedBy));
+            //sqlparam.Add(new SqlParameter("@UpdatedOn", customer.UpdatedOn));
+
+            return sqlparam;
+        }
+        
+        
         //by Status
         public List<CustomerInfo> Get_Customers_By_Status(ref PaginationInfo pager, int customer_Status_Id)
         {
@@ -747,7 +767,7 @@ namespace KusumgarDataAccess
             }
             return CustomerList;
         }
-
+        
         //Advance Search
         public List<CustomerInfo> Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id(string pin_Code, int nation_Id, int state_Id, int customer_Id, ref PaginationInfo pager)
         {
@@ -917,5 +937,51 @@ namespace KusumgarDataAccess
             return CustomerList;
         }
 
+
+        public void Insert_Customer_Contact_Type(CustomerContactTypeInfo CustomerContactType)
+        {            
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Contact_Type(CustomerContactType), StoredProcedures.Insert_Customer_Contact_Type_Sp.ToString(), CommandType.StoredProcedure);
+        }        
+
+        private List<SqlParameter> Set_Values_In_Customer_Contact_Type(CustomerContactTypeInfo CustomerContactType)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();            
+            sqlParams.Add(new SqlParameter("@Customer_Id", CustomerContactType.Customer_Id));
+            sqlParams.Add(new SqlParameter("@Contact_Type", CustomerContactType.Contact_Type));
+            sqlParams.Add(new SqlParameter("@CreatedOn", CustomerContactType.CreatedOn));
+            sqlParams.Add(new SqlParameter("@CreatedBy", CustomerContactType.CreatedBy));
+            return sqlParams;
+        }
+
+        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id, ref PaginationInfo pager)
+        {
+            List<CustomerContactTypeInfo> customerContactTypes = new List<CustomerContactTypeInfo>();
+            List<SqlParameter> sqlParam = new List<SqlParameter>();
+            sqlParam.Add(new SqlParameter("@Customer_Id", customer_Id));
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Customer_Contact_Type_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            {
+                customerContactTypes.Add(Get_Customer_Contact_Type_Values(dr));
+            }
+            return customerContactTypes;
+        }
+
+        private CustomerContactTypeInfo Get_Customer_Contact_Type_Values(DataRow dr)
+        {
+            CustomerContactTypeInfo customerContactType = new CustomerContactTypeInfo();
+            customerContactType.Customer_Contact_Type_Id = Convert.ToInt32(dr["Customer_Contact_Type_Id"]);
+            customerContactType.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+            customerContactType.Contact_Type = Convert.ToString(dr["Contact_Type"]);
+            customerContactType.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            customerContactType.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            return customerContactType;
+        }
+
+        public void Delete_Customer_Contact_Type_By_Id(int customer_Contact_Type_Id)
+        {
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+            sqlParams.Add(new SqlParameter("@Customer_Contact_Type_Id", customer_Contact_Type_Id));
+            _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Customer_Contact_Type_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+        }
     }
 }

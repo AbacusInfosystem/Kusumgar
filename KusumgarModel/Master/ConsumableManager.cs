@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarDataAccess;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 namespace KusumgarModel

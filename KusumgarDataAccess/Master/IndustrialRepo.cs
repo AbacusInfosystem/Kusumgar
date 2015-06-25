@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -38,20 +38,20 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Industrial(IndustrialInfo industrialInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if (industrialInfo.Industrial_Entity.Industrial_Master_Id != 0)
+            if (industrialInfo.Industrial_Master_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Industrial_Master_Id", industrialInfo.Industrial_Entity.Industrial_Master_Id));
+                sqlParamList.Add(new SqlParameter("@Industrial_Master_Id", industrialInfo.Industrial_Master_Id));
             }
-            sqlParamList.Add(new SqlParameter("@Industrial_Category_Id", industrialInfo.Industrial_Entity.Industrial_Category_Id));
-            sqlParamList.Add(new SqlParameter("@Industrial_Group_Id", industrialInfo.Industrial_Entity.Industrial_Group_Id));
-            sqlParamList.Add(new SqlParameter("@Industrial_SubGroup_Name", industrialInfo.Industrial_Entity.Industrial_SubGrp_Name));
-            sqlParamList.Add(new SqlParameter("@Size", industrialInfo.Industrial_Entity.Size));
-            sqlParamList.Add(new SqlParameter("@COD", industrialInfo.Industrial_Entity.COD));
-            if (industrialInfo.Industrial_Entity.Industrial_Master_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Industrial_Category_Id", industrialInfo.Industrial_Category_Id));
+            sqlParamList.Add(new SqlParameter("@Industrial_Group_Id", industrialInfo.Industrial_Group_Id));
+            sqlParamList.Add(new SqlParameter("@Industrial_SubGroup_Name", industrialInfo.Industrial_SubGrp_Name));
+            sqlParamList.Add(new SqlParameter("@Size", industrialInfo.Size));
+            sqlParamList.Add(new SqlParameter("@COD", industrialInfo.COD));
+            if (industrialInfo.Industrial_Master_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialInfo.Industrial_Entity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialInfo.CreatedBy));
             }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialInfo.Industrial_Entity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialInfo.UpdatedBy));
             return sqlParamList;
         }
 
@@ -102,12 +102,12 @@ namespace KusumgarDataAccess
         private IndustrialInfo Get_Industrial_Values(DataRow dr)
         {
             IndustrialInfo industrial = new IndustrialInfo();
-            industrial.Industrial_Entity.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
+            industrial.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
             industrial.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
             industrial.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
-            industrial.Industrial_Entity.Industrial_SubGrp_Name = Convert.ToString(dr["Industrial_SubGrp_Name"]);
-            industrial.Industrial_Entity.Size = Convert.ToString(dr["Size"]);
-            industrial.Industrial_Entity.COD = Convert.ToString(dr["COD"]);
+            industrial.Industrial_SubGrp_Name = Convert.ToString(dr["Industrial_SubGrp_Name"]);
+            industrial.Size = Convert.ToString(dr["Size"]);
+            industrial.COD = Convert.ToString(dr["COD"]);
             return industrial;
         }
 
@@ -137,14 +137,14 @@ namespace KusumgarDataAccess
         private IndustrialInfo Get_Industrial_Values_By_Id(DataRow dr)
         {
             IndustrialInfo industrial = new IndustrialInfo();
-            industrial.Industrial_Entity.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
-            industrial.Industrial_Entity.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
-            industrial.Industrial_Entity.Industrial_Group_Id = Convert.ToInt32(dr["Industrial_Group_Id"]);
+            industrial.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
+            industrial.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
+            industrial.Industrial_Group_Id = Convert.ToInt32(dr["Industrial_Group_Id"]);
             industrial.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
             industrial.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
-            industrial.Industrial_Entity.Industrial_SubGrp_Name = Convert.ToString(dr["Industrial_SubGrp_Name"]);
-            industrial.Industrial_Entity.Size = Convert.ToString(dr["Size"]);
-            industrial.Industrial_Entity.COD = Convert.ToString(dr["COD"]);
+            industrial.Industrial_SubGrp_Name = Convert.ToString(dr["Industrial_SubGrp_Name"]);
+            industrial.Size = Convert.ToString(dr["Size"]);
+            industrial.COD = Convert.ToString(dr["COD"]);
             return industrial;
         }
 
@@ -163,12 +163,12 @@ namespace KusumgarDataAccess
         private IndustrialCategoryInfo Get_Industrial_Category_Values(DataRow dr)
         {
             IndustrialCategoryInfo industrial_category = new IndustrialCategoryInfo();
-            industrial_category.Industrial_Category_Entity.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
-            industrial_category.Industrial_Category_Entity.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
-            industrial_category.Industrial_Category_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            industrial_category.Industrial_Category_Entity.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
-            industrial_category.Industrial_Category_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-            industrial_category.Industrial_Category_Entity.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
+            industrial_category.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
+            industrial_category.Industrial_Category_Name = Convert.ToString(dr["Industrial_Category_Name"]);
+            industrial_category.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            industrial_category.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
+            industrial_category.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            industrial_category.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
             return industrial_category;
         }
 
@@ -189,13 +189,13 @@ namespace KusumgarDataAccess
         private IndustrialGroupInfo Get_Industrial_Group_Values(DataRow dr)
         {
             IndustrialGroupInfo industrial_group = new IndustrialGroupInfo();
-            industrial_group.Industrial_Group_Entity.Industrial_Group_Id = Convert.ToInt32(dr["Industrial_Group_Id"]);
-            industrial_group.Industrial_Group_Entity.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
-            industrial_group.Industrial_Group_Entity.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
-            industrial_group.Industrial_Group_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            industrial_group.Industrial_Group_Entity.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
-            industrial_group.Industrial_Group_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
-            industrial_group.Industrial_Group_Entity.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
+            industrial_group.Industrial_Group_Id = Convert.ToInt32(dr["Industrial_Group_Id"]);
+            industrial_group.Industrial_Group_Name = Convert.ToString(dr["Industrial_Group_Name"]);
+            industrial_group.Industrial_Category_Id = Convert.ToInt32(dr["Industrial_Category_Id"]);
+            industrial_group.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            industrial_group.CreatedDtm = Convert.ToDateTime(dr["CreatedDtm"]);
+            industrial_group.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            industrial_group.UpdatedDtm = Convert.ToDateTime(dr["UpdatedDtm"]);
             return industrial_group;
         }
 
@@ -221,18 +221,18 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Industrial_Vendor(IndustrialVendorInfo industrialVendorInfo)
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
-            if(industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Vendor_Id != 0)
+            if(industrialVendorInfo.Industrial_Vendor_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Industrial_Vendor_Id", industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Vendor_Id));
+                sqlParamList.Add(new SqlParameter("@Industrial_Vendor_Id", industrialVendorInfo.Industrial_Vendor_Id));
             }
-            sqlParamList.Add(new SqlParameter("@Industrial_Master_Id", industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Master_Id));
-            sqlParamList.Add(new SqlParameter("@Vendor_Id", industrialVendorInfo.Industrial_Vendor_Entity.Vendor_Id));
-            sqlParamList.Add(new SqlParameter("@Priority_Order", industrialVendorInfo.Industrial_Vendor_Entity.Priority_Order));
-            if (industrialVendorInfo.Industrial_Vendor_Entity.Industrial_Vendor_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Industrial_Master_Id", industrialVendorInfo.Industrial_Master_Id));
+            sqlParamList.Add(new SqlParameter("@Vendor_Id", industrialVendorInfo.Vendor_Id));
+            sqlParamList.Add(new SqlParameter("@Priority_Order", industrialVendorInfo.Priority_Order));
+            if (industrialVendorInfo.Industrial_Vendor_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialVendorInfo.Industrial_Vendor_Entity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", industrialVendorInfo.CreatedBy));
             }
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialVendorInfo.Industrial_Vendor_Entity.UpdatedBy));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", industrialVendorInfo.UpdatedBy));
             return sqlParamList;
         }
 
@@ -254,11 +254,11 @@ namespace KusumgarDataAccess
         private IndustrialVendorInfo Get_Industrial_Vendor_Values(DataRow dr)
         {
             IndustrialVendorInfo industrial_vendor = new IndustrialVendorInfo();
-            industrial_vendor.Industrial_Vendor_Entity.Industrial_Vendor_Id = Convert.ToInt32(dr["Industrial_Vendor_Id"]);
-            industrial_vendor.Industrial_Vendor_Entity.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
-            industrial_vendor.Industrial_Vendor_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+            industrial_vendor.Industrial_Vendor_Id = Convert.ToInt32(dr["Industrial_Vendor_Id"]);
+            industrial_vendor.Industrial_Master_Id = Convert.ToInt32(dr["Industrial_Master_Id"]);
+            industrial_vendor.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
             industrial_vendor.Vendor_Name = Convert.ToString(dr["Vendor_Name"]);
-            industrial_vendor.Industrial_Vendor_Entity.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
+            industrial_vendor.Priority_Order = Convert.ToInt32(dr["Priority_Order"]);
             return industrial_vendor;
         }
     }

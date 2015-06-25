@@ -11,11 +11,11 @@
                 {
                     required: true
                 },
-            "Consumable.Consumable_Entity.Material_Name":
+            "Consumable.Material_Name":
                 {
                     required: true
                 },
-            "Consumable.Consumable_Entity.Material_Code":
+            "Consumable.Material_Code":
                 {
                     required: true
                 }
@@ -31,11 +31,11 @@
                 {
                     required: "Please select subcategory Name "
                 },
-            "Consumable.Consumable_Entity.Material_Name":
+            "Consumable.Material_Name":
                 {
                     required: " Material name is required"
                 },
-            "Consumable.Consumable_Entity.Material_Code":
+            "Consumable.Material_Code":
                 {
                     required: "Material code is required"
                 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
@@ -26,6 +26,8 @@ namespace KusumgarBusinessEntities
         public int Contact_Type { get; set; }
 
         public int Customer_Id { get; set; }
+
+        public int Customer_Contact_Type_Id { get; set; }
 
         public int Vendor_Id { get; set; }
 
@@ -63,6 +65,8 @@ namespace KusumgarBusinessEntities
 
         public int UpdatedBy { get; set; }
 
+        
+
         #region Additional Fields
 
         public List<ContactCustomFieldsInfo> Contact_Custom_Fields_List { get; set; }
@@ -87,13 +91,22 @@ namespace KusumgarBusinessEntities
         {
             get
             {
-                return ((DMUStatusRole)DMU_Status_Role).ToString();
+                if (DMU_Status_Role != 0)
+                {
+                    return ((DMUStatusRole)DMU_Status_Role).ToString();
+                }
+                else
+                {
+                    return "";
+                }
             }
             set
             {
                 DMU_Status_Role_Str = value;
             }
         }
+
+        public string Customer_Contact_Type { get; set; }
 
         #endregion
     }

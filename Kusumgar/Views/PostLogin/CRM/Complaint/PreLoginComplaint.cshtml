@@ -1,0 +1,62 @@
+﻿@model Kusumgar.Models.ComplaintViewModel
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Kusumgar Corporates Private Limited | Log in</title>
+
+    <script src="~/Scripts/jquery-1.11.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/generic.autocomplete.js"></script>
+    <script src="~/Scripts/generic.custom.validation.js"></script>
+    <script src="~/Scripts/CRM/Event/complaint_pre_login_event.js"></script>
+    <script src="/Scripts/CRM/Method/complaint_method.js"></script>
+    <script src="/Scripts/CRM/Validation/complaint_validation.js"></script>
+
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+
+    @*<!-- Bootstrap 3.3.2 -->
+    <link href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- FontAwesome 4.3.0 -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="Content/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />*@
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+
+
+
+
+@*<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />*@
+<!-- Content Wrapper. Contains page content -->
+<body class="login-page">
+    <div class="content-wrapper">
+        @{Html.RenderPartial("_ServerMessage");}
+        <div id="Load_Complaint">
+            @{Html.RenderPartial("_InsertComplaint", Model); }
+        </div>
+    </div>
+</body>
+    <!-- /.content-wrapper -->
+
+

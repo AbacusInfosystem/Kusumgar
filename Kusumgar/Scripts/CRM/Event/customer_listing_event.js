@@ -84,4 +84,25 @@
     });
 
 
+    $("#btnBlock").click(function () {
+       
+        $('#hdfBlockOrder').val(true);
+
+       // alert($('#hdfBlockOrder').val());
+        Save_Customer_Order();
+        $("#btnBlock").hide();
+        $("#btnUnblock").show();
+       
+        
+    });
+
+    $("#btnUnblock").click(function () {
+       
+        $('#hdfBlockOrder').val(false);
+        Save_Customer_Order();
+        $("#btnUnblock").hide();
+        $("#btnBlock").show();
+      
+    });
+
 });

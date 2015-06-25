@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
@@ -19,7 +19,7 @@ namespace KusumgarBusinessEntities
 
         public int Test_Id { get; set; }
 
-        public int Fabric_Type_Id { get; set; }
+        public int Process_Id { get; set; }
 
         public string Test_Name { get; set; }
 
@@ -55,7 +55,7 @@ namespace KusumgarBusinessEntities
 
         #region Additional Fields
 
-        public string Fabric_Type_Name { get; set; }
+        public string Process_Name { get; set; }
         
         public int Test_Unit_Id { get; set; }
         

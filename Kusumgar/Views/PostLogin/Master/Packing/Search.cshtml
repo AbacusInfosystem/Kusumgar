@@ -1,0 +1,95 @@
+﻿@model Kusumgar.Models.PackingViewModel
+@using KusumgarBusinessEntities.Common
+
+<script src="/Scripts/Master/Event/packing_search_event.js"></script>
+<script src="/Scripts/Master/Method/packing_search_method.js"></script>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Packing
+
+            <small>Search</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Masters</li>
+            <li class="active">Packing Search</li>
+        </ol>
+    </section>
+    <form id="frmSearch_Pack">
+        <input type="hidden" id="hdnPacking_Id" name="Packing_Id">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="txtPackingName">Packing Name</label>
+                                        <div class="auto-complete">
+                                            <input type="text" class="form-control input-sm" id="txtPackingName" placeholder="Enter Packing Name" name="Filter.Packing_Name" value="@Model.Filter.Packing_Name">
+                                            <input type="hidden" id="hdfPacking_Id" value="@Model.Filter.Packing_Id" name="Filter.Packing_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdfPacking_Name" value="@Model.Filter.Packing_Name" name="Filter.Packing_Name" class="auto-complete-label">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="btn-group pull-left btn-group-sm">
+                                                <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                                <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Packing")" role="button">Create </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="btn-group pull-right btn-group-sm">
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.content -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-striped" id="tblPackGrid">
+                                <tr id="subhead">
+                                    <th></th>
+                                    <th>Packing Name</th>
+                                    <th>Is Active</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="box-footer clearfix">
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                <ul></ul>
+                            </div>
+                            <div id="divSearchGridOverlay" class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+<!-- /.content-wrapper -->
