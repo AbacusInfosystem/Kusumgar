@@ -9,6 +9,7 @@ using KusumgarBusinessEntities;
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -217,6 +218,58 @@ namespace Kusumgar.Controllers
         //    return Index(mViewModel);
         //}
 
+
+        public ActionResult View_Material(MaterialViewModel mViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
+
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+
+                VendorManager _vendorMan = new VendorManager();
+
+                mViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Material_Id(mViewModel.Material_Id, ref  pager);
+
+            }
+            catch (Exception ex)
+            {
+                mViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Material Controller - View_Material " + ex.ToString());
+            }
+
+            return View("View", mViewModel);
+        }
+
+        public PartialViewResult Printable_Material(MaterialViewModel mViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
+
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+
+                VendorManager _vendorMan = new VendorManager();
+
+                mViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Material_Id(mViewModel.Material_Id, ref  pager);
+            }
+            catch (Exception ex)
+            {
+                mViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Material Controller - Printable_Material " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", mViewModel);
+        }
 
     }
 }

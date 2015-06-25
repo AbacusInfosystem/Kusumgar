@@ -2090,16 +2090,26 @@
     <Content Include="uploads\Multiple Solr Instance - Copy.docx" />
     <Content Include="uploads\Multiple Solr Instance.docx" />
     <Content Include="uploads\STEPS FOR CREATING JOBS.docx" />
-    <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
-    <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
+    <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
+    <Content Include="Views\PostLogin\Master\VendorContact\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\VendorContact\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\Vendor\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\Material\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\Material\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\Workcenter\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\Workcenter\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Index.cshtml" />
     <Content Include="Views\PostLogin\CRM\Complaint\_InsertComplaint.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\View.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\GArticle\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\GArticle\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

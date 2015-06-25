@@ -42,6 +42,7 @@ namespace Kusumgar.Models
 
         public Work_Center_Filter Filter { get; set; }
 
+        public string Process_Names { get; set; }
         
     }
 

@@ -49,7 +49,9 @@ function Get_Bank_Details_Values() {
 
                                     Currency_Id: $("#drpCurrency").val(),
 
-                                    Payment_Term_Id: $("#drpPaymentTerms").val()
+                                    Payment_Term_Id: $("#drpPaymentTerms").val(),
+
+                                    Credit_limit: $("#txtCredit_Limit").val()
                                 
                         }
                 }

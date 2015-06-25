@@ -1,0 +1,35 @@
+﻿@model Kusumgar.Models.WorkCenterViewModel
+@using KusumgarBusinessEntities.Common
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <section class="content">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="btn-group pull-right">
+                    <button class="btn-primary btn-sm btn-success" type="button" value="Printable View" id="btnPrintable_View">Printable View</button>
+                </div>
+            </div>
+        </div>
+        @{Html.RenderPartial("_PrintableView", Model);}
+    </section>
+
+</div>
+<!-- /.content-wrapper -->
+<script>
+    $(function () {
+
+        $("#btnPrintable_View").click(function () {
+
+            $("#frmPrintable_Work_Center").attr("target", "_blank");     //for open page on new browser tab
+
+            $("#frmPrintable_Work_Center").attr("action", "/system/printable-view/Work_Center/" + $("#hdfWork_Center_Id").val());
+
+            $("#frmPrintable_Work_Center").attr("method", "POST");
+
+            $("#frmPrintable_Work_Center").submit();
+
+        });
+    });
+</script>

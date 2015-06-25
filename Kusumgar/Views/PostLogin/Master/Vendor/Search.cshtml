@@ -46,6 +46,7 @@
             <input type="hidden" id="hdfVendor_Name" name="Filter.Vendor_Name" />
 
             <input type="hidden" id="hdMaterial_Id" name="Filter.Material_Id" />
+            @*<input type="hidden" id="hdnMaterial_Id" name="Vendor.Material_Id" />*@
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
@@ -94,7 +95,8 @@
                                        @*<input type="hidden" id="hdfVendorId" name="EditMode.Vendor_Id" />*@
                                         
                                         <input type="hidden" id="hdfVendorId" name="Vendor.Vendor_Id" />
-                                        
+
+                                        <button type="button" id="btnView" style="display:none;" class="btn btn-success btn-sm">View</button>
                                         <button type="button" id="btnEdit" class="btn btn-warning btn-sm" style="display:none;">Edit Vendor</button>
                                         <button type="button" id="btnView_Material" class="btn btn-primary btn-sm" style="display:none;">View Material</button>
                                     </div>

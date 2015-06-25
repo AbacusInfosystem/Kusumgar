@@ -111,6 +111,7 @@ function Bind_Vendor_Contact_Grid(data) {
 
             $("#hdfContact_Id").val(this.id.replace("r1_", ""));
             $("#btnEdit").show();
+            $("#btnView").show();
             
         }
     });
@@ -119,7 +120,8 @@ function Bind_Vendor_Contact_Grid(data) {
 
 function PageMore(Id) {
 
-    $("#btnEdit").hide(); 
+    $("#btnEdit").hide();
+    $("#btnView").hide();
     $('#hdfCurrent_Page').val((parseInt(Id) - 1));
     $(".selectAll").prop("checked", false);
 

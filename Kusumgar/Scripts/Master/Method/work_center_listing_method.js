@@ -168,6 +168,7 @@ function Bind_Work_Center_Grid(data) {
         if ($(this).prop('checked')) {
 
             $("#hdnWork_Center_Id").val(this.id.replace("r1_", ""));
+            $('#btnView').show();
             $("#btnEdit").show();
 
         }

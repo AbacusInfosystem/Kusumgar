@@ -241,6 +241,11 @@ namespace KusumgarDataAccess
 
             bank_details.Tax_Excemption_Code = Convert.ToString(dr["Tax_Excemption_Code"]);
 
+            if (dr["Credit_limit"] != DBNull.Value)
+            {
+                bank_details.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
+            }
+
             return bank_details;
         }
 
@@ -334,7 +339,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Proprietary_Private_Limited));
             sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Progressive_Stable_Turmoil));
             sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
-            sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
+            //sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
             sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Auto_Mail_Delivery));
             sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Order_Minimum_Value));
             sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Order_Maximum_Value));
@@ -385,6 +390,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Currency_Id", bank_Details.Currency_Id));
             sqlparam.Add(new SqlParameter("@Payment_Term_Id", bank_Details.Payment_Term_Id));
             sqlparam.Add(new SqlParameter("@Tax_Excemption_Code", bank_Details.Tax_Excemption_Code));
+            sqlparam.Add(new SqlParameter("@Credit_limit", bank_Details.Credit_limit));
             sqlparam.Add(new SqlParameter("@UpdatedBy", bank_Details.UpdatedBy));
 
             return sqlparam;

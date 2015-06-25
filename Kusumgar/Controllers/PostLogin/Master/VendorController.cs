@@ -299,6 +299,59 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             return PartialView("_Vendor", vViewModel);
         }
+
+        //View_Vendor
+        public ActionResult View_Vendor(VendorViewModel vViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
+
+                MaterialManager _materialMan = new MaterialManager();
+
+                vViewModel.Materials = _materialMan.Get_Materials_By_Vendor_Id(vViewModel.Vendor.Vendor_Id, ref pager);
+
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - View_Vendor " + ex.ToString());
+            }
+
+            return View("View", vViewModel);
+        }
+
+        public PartialViewResult Printable_Vendor(int vendor_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            VendorViewModel vViewModel = new VendorViewModel();
+
+            vViewModel.Vendor.Vendor_Id = vendor_Id;
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
+
+                MaterialManager _materialMan = new MaterialManager();
+
+                vViewModel.Materials = _materialMan.Get_Materials_By_Vendor_Id(vViewModel.Vendor.Vendor_Id, ref pager);
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Printable_Vendor " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", vViewModel);
+        }
+
     }
 }
 
