@@ -92,7 +92,7 @@ function Bind_Material_Grid(data) {
             $("#hdMaterial_Id").val(this.id.replace("r1_", ""));
             $("#hdfMaterial_Name").val($("#Material_" + this.id.replace("r1_", "")).text());
 
-           
+            $("#btnView").show();
             $("#btnEdit").show();
             $("#btnView_Vendor").show();
         }

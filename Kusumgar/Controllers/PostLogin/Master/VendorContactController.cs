@@ -225,7 +225,6 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(vcViewModel);
         }
 
-
         public ActionResult Delete_Vendor_Contact_Custom_Field(int contact_Custom_Field_Id)
         {
             List<FriendlyMessageInfo> friendly_Message = new List<FriendlyMessageInfo>();
@@ -247,6 +246,46 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(new { Friendly_Message = friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult View_Vendor_Contact(VendorContactViewModel vcViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Id);
+            }
+            catch (Exception ex)
+            {
+                vcViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Contact Controller - Search " + ex.ToString());
+            }
+
+            return View("View", vcViewModel);
+        }
+
+        public PartialViewResult Printable_Vendor_Contact(int contact_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            VendorContactViewModel vcViewModel = new VendorContactViewModel();
+
+            vcViewModel.Vendor_Contact.Contact_Id = contact_Id;
+
+            try
+            {
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Id);
+            }
+            catch (Exception ex)
+            {
+                vcViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Contact Controller - Printable_Vendor_Contact " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", vcViewModel);
+        }
 
     }
 }

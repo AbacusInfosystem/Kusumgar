@@ -1,16 +1,12 @@
 ﻿@model Kusumgar.Models.CustomerQualityViewModel
 @using KusumgarBusinessEntities.Common
 
-@*<script src="~/Scripts/Master/Event/customer_specific_information_event.js"></script>
-<script src="~/Scripts/Master/Method/customer_specific_information_method.js"></script>*@
 
 <script src="~/Scripts/Master/Event/customer_quality_event.js"></script>
     <script src="~/Scripts/Master/Method/customer_quality_method.js"></script>
     <script src="~/Scripts/Master/Validation/customer_quality_validation.js"></script>
 
 
-<div class="row">
-    <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
@@ -40,47 +36,52 @@
                                     <select id="drpQuality_No" class="form-control input-sm" name="Customer_Quality.Quality.Quality_No">
                                         <option value="">--Select--</option>
                                         @foreach (var item in Model.Customer_Quality.Qualities)
-                                    {
-                                        if (Model.Customer_Quality.Quality_Id == item.Quality_Id)
                                         {
-                                    <option value="@item.Quality_Id" selected="selected">@item.Quality_No</option>
+                                            if (Model.Customer_Quality.Quality_Id == item.Quality_Id)
+                                            {
+                                                <option value="@item.Quality_Id" selected="selected">@item.Quality_No</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Quality_Id">@item.Quality_No</option>
+                                            }
                                         }
-                                        else
-                                        {
-                                    <option value="@item.Quality_Id">@item.Quality_No</option>
-                                        }
-                                    }
                                     </select>
                                     <input type="hidden" id="hdnQuality_Id" value="@Model.Customer_Quality.Quality_Id" name="Customer_Quality.Quality_Id">
                                 </div>
 
                                 <div class="form-group">
                                     @if (Model.Customer_Quality.Is_Active == false)
-                                {
-                                <label>
-                                    <input type="checkbox" name="chkIs_Active" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                                </label>
-                                }
-                                else
-                                {
-                                <label>
-                                    <input type="checkbox" name="chkIs_Active" checked="checked" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                                </label>
-                                }
+                                    {
+                                        <label>
+                                            <input type="checkbox" name="chkIs_Active" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label>
+                                            <input type="checkbox" name="chkIs_Active" checked="checked" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                        </label>
+                                    }
                                     <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer_Quality.Is_Active" value="@Model.Customer_Quality.Is_Active.ToString()">
                                 </div>
 
                             </div>
-                            <div class="col-md-8">
+                           
+                            @*<div class="col-md-8">
 
+                            </div>*@
+                        </div>
+
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                <button type="button" id="btnSave_Primary" class="btn btn-success btn-sm">Save Primary</button>
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
                             </div>
                         </div>
-                        <div class="btn-group box-footer">
-                            <button type="button" id="btnSave_Primary" class="btn btn-success btn-sm">Save Primary</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
-                        </div>
+
                     </form>
                 </div>
 
@@ -158,10 +159,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="btn-group box-footer">
-                            <button type="button" class="btn btn-success btn-sm" id="btnSave_Customer_Specific_Information">Save Customer Specific Information</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm" id="btnSave_Customer_Specific_Information">Save Customer Specific Information</button>
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                            </div>
                         </div>
+
                     </form>
                 </div>
 
@@ -282,9 +286,11 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="btn-group box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
-                        <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                    <div class=" box-footer">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
+                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                        </div>
                     </div>
                 </div>
 
@@ -364,14 +370,15 @@
                                 </table>
                             </div>
                         </div>
-                    <div class="btn-group box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">Save Test</button>
-                        <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                    <div class="box-footer">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-success btn-sm">Save Test</button>
+                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
         </div>
-    </div>
    
-</div>

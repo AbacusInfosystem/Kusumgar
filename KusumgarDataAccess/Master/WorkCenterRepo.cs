@@ -458,13 +458,14 @@ namespace KusumgarDataAccess
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 WorkCenterProcessInfo work_Center_Process = new WorkCenterProcessInfo();
-
+               
                 work_Center_Process.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
                 work_Center_Process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
+                work_Center_Process.Process_Name = Convert.ToString(dr["Process_Name"]);
 
                 work_Center_Processes.Add(work_Center_Process);
             }
-
+          
             return work_Center_Processes;
         }
 

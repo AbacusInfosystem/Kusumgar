@@ -110,6 +110,9 @@ namespace KusumgarBusinessEntities
        
         public string PreviousCategoryName {get;set; }
 
+       //
+        public int Material_Id { get; set; }
+
         #endregion
     }
 }

@@ -59,7 +59,7 @@ function BindVendorInGrid(data, mode) {
 
         htmlText += "<input type='hidden' id='hdfVendorId_" + data.Vendor_Grid[i].Vendor_Id + "' value='" + data.Vendor_Grid[i].Vendor_Id + "' />";
         htmlText += "<input type='hidden' id='hdfVendor_Name_" + data.Vendor_Grid[i].Vendor_Name + "' value='" + data.Vendor_Grid[i].Vendor_Name + "' />";
-
+           
         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
 
         htmlText += "</td>";
@@ -124,7 +124,7 @@ function BindVendorInGrid(data, mode) {
             $("#hdVendor_Id").val($(this).parents('tr').find('input[id^=hdfVendorId]').val());
             $("#hdfVendor_Name").val($(this).parents('tr').find('input[id^=hdfVendor_Name]').val());
 
-            
+            $('#btnView').show();
             $('#btnEdit').show(); 
             $('#btnView_Material').show();
         }

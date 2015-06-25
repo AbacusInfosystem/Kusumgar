@@ -20,6 +20,15 @@
         $("#frmSearch_Work_Center").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmSearch_Work_Center").attr("action", "/master/view-workcenter");
+
+        $("#frmSearch_Work_Center").attr("method", "POST");
+
+        $("#frmSearch_Work_Center").submit();
+    });
+
     $("#drpFactory").change(function () {
 
         $.ajax({

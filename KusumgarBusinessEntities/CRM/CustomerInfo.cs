@@ -55,7 +55,7 @@ namespace KusumgarBusinessEntities
 
         public DateTime Expiration_Date_Of_Contract { get; set; }
 
-        public int Credit_limit { get; set; }
+        //public int Credit_limit { get; set; }
 
         public bool Auto_Mail_Delivery { get; set; }
 

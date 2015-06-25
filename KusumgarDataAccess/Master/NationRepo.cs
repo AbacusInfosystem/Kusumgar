@@ -49,13 +49,34 @@ namespace KusumgarDataAccess
 
             nation.NationName = Convert.ToString(dr["NationName"]);
 
-            nation.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            //nation.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            nation.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            //nation.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            nation.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            //nation.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            nation.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            //nation.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+
+            if (dr["CreatedBy"] != DBNull.Value)
+            {
+
+                nation.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            }
+
+            if (dr["CreatedOn"] != DBNull.Value)
+            {
+                nation.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            }
+
+            if (dr["UpdatedBy"] != DBNull.Value)
+            {
+                nation.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            }
+
+            if (dr["UpdatedOn"] != DBNull.Value)
+            {
+                nation.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            }
 
             nation.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 

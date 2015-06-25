@@ -118,6 +118,7 @@ function Bind_G_Article_Grid(data) {
     $('[name="r1"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnG_Article_Id").val(this.id.replace("r1_", ""));
+            $("#btnView").show();
             $("#btnEdit").show();
         }
     });

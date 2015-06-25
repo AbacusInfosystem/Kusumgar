@@ -1,0 +1,276 @@
+﻿@model Kusumgar.Models.VendorViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Vendor">
+    <input type="hidden" id="hdfVendor_Id" name="Vendor.Vendor_Id" value="@Model.Vendor.Vendor_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-primary">
+            <div class="box-header">
+
+                <div class="box-title">
+                    Vendor Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @* hidden Fields *@
+                    <input type="hidden" id="hdnVendor_Id" name="" value="@Model.Vendor.Vendor_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Vendor Name : </label> @Model.Vendor.Vendor_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Product Category : </label> @Model.Vendor.Product_Category
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Code : </label> @Model.Vendor.Code
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Email Id : </label>@Model.Vendor.Email
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Head Office Address : </label>@Model.Vendor.HeadOfficeAddress
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Head Office Nation : </label>@Model.Vendor.Head_Office_Nation
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Head Office State : </label>@Model.Vendor.Head_Office_State
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Zipcode : </label>@Model.Vendor.Head_Office_ZipCode
+                                </div> 
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Landline 1 : </label>@Model.Vendor.Head_Office_Landline1
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Landline 2 : </label>@Model.Vendor.Head_Office_Landline2
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Fax no : </label>@Model.Vendor.Head_Office_FaxNo
+                                </div>
+                                
+                                    @if (Model.Vendor.Is_Active == true)
+                                    {
+                                        <div class="form-group">
+                                            <label style="color: #333">Active Status : </label>Active
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label style="color: #333">Active Status : </label>InActive
+                                        </div>
+
+                                    }
+                                
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="box-header">
+                            <div class="box-title">
+                                Certificates
+                            </div>
+                        </div>
+                        <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label style="color: #333">Performance Certification Year : </label> @Model.Vendor.Performance_Certification_Year
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: #333">Performance Certification : </label> @Model.Vendor.Performance_Certification
+                                    </div>                                   
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality Certification Year : </label>@Model.Vendor.Quality_Certification_Year
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality Certification : </label>@Model.Vendor.Quality_Certification
+                                    </div>                                
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label style="color: #333">Performance Certification Category : </label>@Model.Vendor.Performance_Certification_Category
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality Certification Category : </label>@Model.Vendor.Quality_Certification_Category
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="box-header">
+                                <div class="box-title">
+                                    Central Excise Registration Details
+                                </div>
+                            </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Central Excise Registration Details : </label> @Model.Vendor.Central_Excise_Registration_Details
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Division : </label> @Model.Vendor.Division
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Tax Excemption Code : </label> @Model.Vendor.Tax_Excemption_Code
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Payment Terms : </label> @Model.Vendor.PaymentTerms
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Registration No : </label>@Model.Vendor.Registration_No
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">PAN : </label>@Model.Vendor.PAN
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Currency Code : </label>@Model.Vendor.Currency_Code
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Range : </label>@Model.Vendor.Range
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">TAN : </label>@Model.Vendor.TAN
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">VAT Type : </label>@Model.Vendor.VAT_Type
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="box-header">
+                            <div class="box-title">
+                                Other Details
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Delivary Term Code : </label> @Model.Vendor.Delivary_Term_Code
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Supplier Method : </label> @Model.Vendor.Shipment_Methods
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Flagged Supplier : </label> @Model.Vendor.Flagged_Supplier
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Remark about Supplier : </label> @Model.Vendor.Remark_about_Supplier
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                
+                                    @if (Model.Vendor.Is_Approved_By_Director == true)
+                                    {
+                                        <div class="form-group">
+                                            <label style="color: #333">Approved By Director : </label>Approved
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label style="color: #333">Approved By Director : </label>Not Approved
+                                        </div>
+                                    }
+                                    
+                                    @if (Model.Vendor.Block_Payment == true)
+                                    {
+                                        <div class="form-group">
+                                            <label style="color: #333">Payment Block : </label>Blocked
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label style="color: #333">Payment Block : </label>UnBlocked
+                                        </div>
+                                    }
+                                    
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="box-header">
+                            <div class="box-title">
+                                Vendor Material Details
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                           
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-10">
+                                @if (Model.Materials.Count > 0)
+                                { 
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-striped" id="tblMaterialGrid">
+                                        <tr>
+                                            <th>Material Code</th>
+                                            <th>Material Category Name</th>
+                                            <th>Material Name</th>
+                                            <th>Material Type</th>
+                                        </tr>
+                                        @foreach (var item in Model.Materials)
+                                        {
+                                            <tr id="tr_@item.Material_Id">
+                                                <td>@item.Material_Code</td>
+                                                <td>@item.Material_Category_Name</td>
+                                                <td>@item.Material_Name</td>
+                                                <td>@item.Material_Type</td>
+                                                
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                                }
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+    </div>
+
+    <!-- /.content -->
+</form>

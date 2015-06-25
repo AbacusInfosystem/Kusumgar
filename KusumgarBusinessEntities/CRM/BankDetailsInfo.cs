@@ -58,5 +58,7 @@ namespace KusumgarBusinessEntities
         public int Payment_Term_Id { get; set; }
 
         public string Tax_Excemption_Code { get; set; }
+
+        public int Credit_limit { get; set; }
     }
 }

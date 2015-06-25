@@ -242,6 +242,70 @@ namespace Kusumgar.Controllers
             return View("Index", wcViewModel);
         }
 
+        // 
+        public ActionResult View_Work_Center(WorkCenterViewModel wcViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                wcViewModel.Work_Center = _workcenterMan.Get_Work_Centers_By_Work_Center_Id(wcViewModel.Work_Center.Work_Center_Id);
+
+                wcViewModel.Work_Center.Work_Center_Processes = _workcenterMan.Get_Work_Center_Processes(wcViewModel.Work_Center.Work_Center_Id, ref pager);
+
+                //if(wcViewModel.Work_Center.Work_Center_Processes.Count > 0)
+                //{
+                    foreach (var item in wcViewModel.Work_Center.Work_Center_Processes)
+                    {
+                        wcViewModel.Process_Names += item.Process_Name +", ";
+                    }
+                //}
+  
+            }
+            catch (Exception ex)
+            {
+                wcViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Work Center Controller - View_Vendor " + ex.ToString());
+            }
+
+            return View("View", wcViewModel);
+        }
+
+        public PartialViewResult Printable_Work_Center(int work_Center_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            WorkCenterViewModel wcViewModel = new WorkCenterViewModel();
+
+            wcViewModel.Work_Center.Work_Center_Id = work_Center_Id;
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                wcViewModel.Work_Center = _workcenterMan.Get_Work_Centers_By_Work_Center_Id(wcViewModel.Work_Center.Work_Center_Id);
+
+                wcViewModel.Work_Center.Work_Center_Processes = _workcenterMan.Get_Work_Center_Processes(wcViewModel.Work_Center.Work_Center_Id, ref pager);
+
+                //if(wcViewModel.Work_Center.Work_Center_Processes.Count > 0)
+                //{
+                foreach (var item in wcViewModel.Work_Center.Work_Center_Processes)
+                {
+                    wcViewModel.Process_Names += item.Process_Name + ", ";
+                }
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                wcViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Work Center Controller - Printable_Vendor " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", wcViewModel);
+        }
 
     }
 }

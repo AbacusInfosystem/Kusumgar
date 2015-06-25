@@ -49,5 +49,14 @@
         $("#frmSearch_Prod").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmSearch_Prod").attr("action", "/master/view-material");
+
+        $("#frmSearch_Prod").attr("method", "POST");
+
+        $("#frmSearch_Prod").submit();
+    });
+
 
 });

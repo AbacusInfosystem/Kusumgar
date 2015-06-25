@@ -302,9 +302,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="drpWarp_yarn_supplier">Warp yarn supplier</label>
+                            <label for="drpWarp_yarn_supplier">Warp yarn Vendor</label>
                             <select id="drpWarp_yarn_supplier" class="form-control input-sm" name="G_Article.Warp_Yarn_Vendor">
-                                <option value="">-Select Warp yarn supplier-</option>
+                                <option value="">-Select Warp yarn vendor-</option>
                                 @foreach (var item in Model.G_Article.Vendors)
                                 {
                                     if (Model.G_Article.Warp_Yarn_Vendor == item.Vendor_Id)
@@ -320,9 +320,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="drpWeft_yarn_supplier">Weft yarn supplier</label>
+                            <label for="drpWeft_yarn_supplier">Weft yarn Vendor</label>
                             <select id="drpWeft_yarn_supplier" class="form-control input-sm" name="G_Article.Weft_Yarn_Vendor">
-                                <option value="">-Select Weft yarn supplier-</option>
+                                <option value="">-Select Weft yarn vendor-</option>
                                 @foreach (var item in Model.G_Article.Vendors)
                                 {
                                     if (Model.G_Article.Weft_Yarn_Vendor == item.Vendor_Id)
