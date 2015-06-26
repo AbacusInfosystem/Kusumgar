@@ -61,11 +61,11 @@
 
             "CArticle.Quality_Id":
             {
-                required: "Quality No. is required."                
+                required: "Quality no. is required."                
             },
             "CArticle.Yarn_Type_Id":
             {
-                required: "Yarn Type is required."                
+                required: "Yarn type is required."                
             },
             "CArticle.Weave":
             {
@@ -77,11 +77,11 @@
             },
             "CArticle.Chemical_Finish":
             {
-                required: "Chemical Finish is required."
+                required: "Chemical finish is required."
             },
             "CArticle.Chemical_Finish":
             {
-                required: "Mechanical Finish is required."
+                required: "Mechanical finish is required."
             },
             "CArticle.Type":
             {
@@ -89,7 +89,7 @@
             },
             "CArticle.C_Finish_Width":
             {
-                required: "C Finish Width is required."
+                required: "C finish width is required."
             },
             "CArticle.Coat":
             {

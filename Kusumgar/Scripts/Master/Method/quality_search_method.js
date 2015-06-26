@@ -127,11 +127,16 @@ function BindQualityInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $("#btnView").hide();
+
+    $('#btnEdit').hide();
 }
 
  function PageMore(Id) {
 
      $("#btnView").hide();
+
+     $('#btnEdit').hide();
 
      $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

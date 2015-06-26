@@ -108,9 +108,13 @@ function BindCompGrid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+
 }
 
 function PageMore(Id) {
+
+    $("#btnEdit").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

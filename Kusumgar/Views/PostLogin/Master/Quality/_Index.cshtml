@@ -159,7 +159,7 @@
                             <div class="form-group">
                                 <div class="auto-complete">
                                     <input type="text" class="form-control input-sm" id="txtApplicationName" placeholder="Enter Application Name" value="">
-                                    <input type="hidden" id="hdfApplicationId" value="@Model.Application.Application_Id" name="Application.Application_Id" class="auto-complete-value">
+                                    <input type="hidden" id="hdfApplicationId" value="@(Model.Application.Application_Id == 0 ? "" : Model.Application.Application_Id.ToString())" name="Application.Application_Id" class="auto-complete-value">
                                     <input type="hidden" id="txtApplicationName" value="@Model.Application.Application_Name" name="Application.Application_Name" class="auto-complete-label">
                                 </div>
                             </div>
@@ -211,7 +211,7 @@
                             <div class="form-group">
                                 <div class="auto-complete">
                                     <input type="text" class="form-control input-sm" id="txtMarketSegmentName" placeholder="Enter Segment Name" value="">
-                                    <input type="hidden" id="hdfMarketSegmentId" value="@Model.Market_Segment.Market_Segment_Id" name="Market_Segment.Market_Segment_Id" class="auto-complete-value">
+                                    <input type="hidden" id="hdfMarketSegmentId" value="@(Model.Market_Segment.Market_Segment_Id == 0 ? "" : Model.Market_Segment.Market_Segment_Id.ToString())" name="Market_Segment.Market_Segment_Id" class="auto-complete-value">
                                     <input type="hidden" id="txtMarketSegmentName" value="@Model.Market_Segment.Market_Segment_Name" name="Market_Segment.Market_Segment_Name" class="auto-complete-label">
                                 </div>
                             </div>

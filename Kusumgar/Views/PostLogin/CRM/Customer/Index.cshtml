@@ -269,7 +269,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == null ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
+                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == DateTime.MinValue ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>

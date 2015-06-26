@@ -214,7 +214,7 @@ namespace KusumgarDataAccess
                 bank_details.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             }
 
-           // bank_details.BanWrite method for autocomplete for segment also add grid for both,resoved error in application and segment pagek_Name = Convert.ToString(dr["Bank_Name"]);
+            bank_details.Bank_Name = Convert.ToString(dr["Bank_Name"]);
             bank_details.Bank_Account_No = Convert.ToString(dr["Bank_Account_No"]);
             bank_details.Branch_Name = Convert.ToString(dr["Branch_Name"]);
             bank_details.Ifsc_Code = Convert.ToString(dr["Ifsc_Code"]);
@@ -338,7 +338,14 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Organised_UnOrganised_Sector));
             sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Proprietary_Private_Limited));
             sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Progressive_Stable_Turmoil));
-            sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
+            if (customer.Expiration_Date_Of_Contract != null && customer.Expiration_Date_Of_Contract != DateTime.MinValue)
+            {
+                sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
+            }
+            else
+            {
+                sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", DBNull.Value));
+            }
             //sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
             sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Auto_Mail_Delivery));
             sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Order_Minimum_Value));

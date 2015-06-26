@@ -132,11 +132,15 @@ function BindTestUnitInGrid(data, mode) {
     });
 
     $("#divSearchGridOverlay").hide();
+
+    $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $('#btnEdit').hide();
 
     var tViewModel = {
 

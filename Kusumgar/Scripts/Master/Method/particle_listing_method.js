@@ -121,6 +121,8 @@ function Bind_PArticle_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+
 }
 
 function PageMore(Id) {

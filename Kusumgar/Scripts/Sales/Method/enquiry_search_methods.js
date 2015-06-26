@@ -143,6 +143,9 @@ function Bind_Enquiry_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+
+    $("#btnView").hide();
 }
 
 function PageMore(Id) {

@@ -51,38 +51,38 @@
 
             "Quality.Yarn_Type_Id":
                 {
-                    required: "Select Yarn Type.."
+                    required: "Select yarn type."
 
                 },
 
             "Quality.Quality_No":
            {
 
-               required: "Enter Quality No.."
+               required: "Enter quality no."
            },
 
             "Quality.Weave":
           {
 
-              required: "Select Weave Type.."
+              required: "Select weave type.."
           },
 
             "Quality.Minimum_Order_Size":
          {
 
-             required: "Enter Minimum Order Size.."
+             required: "Enter minimum order size.."
          },
 
             "Quality.Ideal_Roll_Length":
            {
 
-               required: "Enter Ideal Roll Length.."
+               required: "Enter ideal roll length."
            },
 
             "Quality.Our_Sample_No":
            {
 
-               required: "Enter Our Sample No.."
+               required: "Enter sample no."
            }
     }
  });
@@ -101,7 +101,7 @@
 
             "Application.Application_Id":
                 {
-                    required: "Enter Application Name.."
+                    required: "Enter application name."
 
                 }
         }
@@ -123,7 +123,7 @@
 
             "Market_Segment.Market_Segment_Id":
                 {
-                    required: "Enter Segment Name.."
+                    required: "Enter segment name."
 
                 }
         }
@@ -148,7 +148,7 @@
         }
         return result;
 
-    }, "Quality No already exists.");
+    }, "Quality no already exists.");
 
 });
 

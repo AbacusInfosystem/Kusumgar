@@ -174,6 +174,9 @@ function Bind_Work_Center_Grid(data) {
         }
     });
 
+
+    $('#btnView').hide();
+    $("#btnEdit").hide();
 }
 
 function PageMore(Id) {

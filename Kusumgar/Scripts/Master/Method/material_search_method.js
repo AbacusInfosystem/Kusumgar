@@ -98,9 +98,16 @@ function Bind_Material_Grid(data) {
         }
     });
 
+    $("#btnView").hide();
+    $("#btnEdit").hide();
+    $("#btnView_Vendor").hide();
 }
 
 function PageMore(Id) {
+
+    $("#btnView").hide();
+    $("#btnEdit").hide();
+    $("#btnView_Vendor").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

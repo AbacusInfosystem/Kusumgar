@@ -12,7 +12,7 @@
 
             "Packing.Packing_Name":
             {
-                required: "Packing Name is required."
+                required: "Packing name is required."
             }
         }
     });

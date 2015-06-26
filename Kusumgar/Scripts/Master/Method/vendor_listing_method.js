@@ -132,9 +132,16 @@ function BindVendorInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $('#btnView').hide();
+    $('#btnEdit').hide();
+    $("#btnView_Material").hide();
+
 }
 
 function PageMore(Id) {
+    $("#btnView_Material").hide();
+    $('#btnView').hide();
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

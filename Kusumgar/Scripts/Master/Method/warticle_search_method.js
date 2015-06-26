@@ -127,6 +127,7 @@ function Bind_WArticle_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
 }
 
 function PageMore(Id) {

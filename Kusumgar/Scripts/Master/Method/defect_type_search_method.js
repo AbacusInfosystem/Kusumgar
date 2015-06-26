@@ -126,10 +126,14 @@ function BindDefectTypeInGrid(data, mode) {
         }
     });
 
-    $("#divSearchGridOverlay").hide();
+  $("#divSearchGridOverlay").hide();
+
+  $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
+
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

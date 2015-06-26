@@ -194,9 +194,13 @@ function Bind_Customer_Grid(data) {
                 }
               
                 }
-          
-           
         });
+
+        $("#btnEdit").hide();
+        $("#btnViewContact").hide();
+        $("#btnPurchaseHistory").hide();
+        $("#btnBlock").hide();
+        $("#btnUnblock").hide();
     
 }
 
@@ -214,6 +218,22 @@ function PageMore(Id) {
 
     
     SearchCustomer();
+}
+
+function PageMoreByStatus(Id)
+{
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+    SearchCustomerByStatus();
+
 }
 
 function Save_Customer_Order() {

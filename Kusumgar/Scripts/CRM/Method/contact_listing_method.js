@@ -140,6 +140,11 @@ function Bind_Contact_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+    $("#btnViewCompany").hide();
+    $("#btnSellProduct").hide();
+    $("#btnView").hide();
+
 }
 
 function PageMore(Id) {

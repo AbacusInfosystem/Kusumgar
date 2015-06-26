@@ -397,7 +397,7 @@ namespace Kusumgar.Controllers
             {
                 cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Customer Controller - Get_Customers " + ex.ToString());
+                Logger.Error("Customer Controller - Get_Customers" + ex.ToString());
             }
             finally
                 {
@@ -415,6 +415,7 @@ namespace Kusumgar.Controllers
             try
             {
                 cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
+                pager.IsPagingRequired = false;
                 cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id, ref pager);
             }
             catch(Exception ex)
@@ -582,8 +583,9 @@ namespace Kusumgar.Controllers
                 cViewModel.Customer.Customer_Contact_Type.CreatedOn = DateTime.Now;                
                 _customerMan.Insert_Customer_Contact_Type(cViewModel.Customer.Customer_Contact_Type);
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CU010"));
+                pager.IsPagingRequired = false;
                 cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Contact_Type.Customer_Id, ref pager);
-                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
+                //cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
             }
             catch (Exception ex)
             {

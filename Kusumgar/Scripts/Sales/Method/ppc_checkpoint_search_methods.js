@@ -132,6 +132,8 @@ function Bind_Enquiry_Grid(data) {
         }
     });
 
+
+    $("#btnEdit_Enquiry_PPC").hide();
 }
 
 function PageMore(Id) {

@@ -153,10 +153,14 @@ function BindDefectInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $('#btnEdit').hide();
+
     }
 
 function PageMore(Id) {
     
+    $('#btnEdit').hide();
+
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
    
     var dViewModel = {

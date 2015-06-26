@@ -146,9 +146,13 @@ function BindAttributeCodesInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $('#btnEdit').hide();
+
 }
 
 function PageMore(Id) {
+
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
@@ -163,7 +167,6 @@ function PageMore(Id) {
 
             CurrentPage: $('#hdfCurrentPage').val(),
               },
-
     };
 
     $("#divSearchGridOverlay").show();

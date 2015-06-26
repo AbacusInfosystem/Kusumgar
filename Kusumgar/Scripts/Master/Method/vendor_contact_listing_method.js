@@ -116,6 +116,8 @@ function Bind_Vendor_Contact_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+    $("#btnView").hide();
 }
 
 function PageMore(Id) {

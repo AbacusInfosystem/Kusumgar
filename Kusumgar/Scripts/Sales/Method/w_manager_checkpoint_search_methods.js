@@ -130,6 +130,8 @@ function Bind_Enquiry_Grid(data) {
         }
     });
 
+    $("#btnCreate_Article").hide();
+
 }
 
 function PageMore(Id) {

@@ -123,6 +123,8 @@ function Bind_G_Article_Grid(data) {
         }
     });
 
+
+    $('#btnEdit').hide();
 }
 
 

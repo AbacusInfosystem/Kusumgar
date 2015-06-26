@@ -179,6 +179,8 @@ function Bind_YArticle_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+
 }
 
 function PageMore(Id) {

@@ -199,10 +199,13 @@ function BindTestInGrid(data, mode) {
     });
 
     $("#divSearchGridOverlay").hide();
+
+    $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
 
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

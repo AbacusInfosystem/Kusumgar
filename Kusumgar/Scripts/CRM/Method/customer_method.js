@@ -62,7 +62,7 @@ function Set_Customer()
 
                             Head_Office_ZipCode: $("#txtHead_Office_ZipCode").val(),
 
-                            Head_Office_Nation: $("#drpHead_Office_Nation").val(),
+                            Head_Office_Nation: $("#drpHead_Office_Nation").val().split("_")[0],
 
                             Head_Office_Landline1: $("#txtHead_Office_Landline1").val(),
 
@@ -160,14 +160,14 @@ function Bind_Customer_Contact_Type_Data_Callback(data) {
 
     $('#tblConTypeGrid tr:first').after(htmlText);
 
-    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
+    //$('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
+    //if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
-        $('.pagination').html(data.Pager.PageHtmlString);
-    }
+    //    $('.pagination').html(data.Pager.PageHtmlString);
+    //}
 
-    $("#divSearchGridOverlay").hide();
+   // $("#divSearchGridOverlay").hide();
 
     $("#hdnCustomer_Contact_Type_Id").val(0);
 
