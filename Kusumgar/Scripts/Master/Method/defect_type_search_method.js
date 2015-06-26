@@ -53,7 +53,7 @@ function BindDefectTypeInGrid(data, mode) {
 
          htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].Defect_Type_Id + "' />";
 
-         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+         htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
          htmlText += "</td>";
 
@@ -111,7 +111,7 @@ function BindDefectTypeInGrid(data, mode) {
         $('.pagination').html("");
     }
 
- $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
  });

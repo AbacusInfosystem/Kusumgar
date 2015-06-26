@@ -34,7 +34,7 @@ function Bind_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Contacts[i].Contact_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Contacts[i].Contact_Id + "' class='iradio-list'/>";
 
             htmlText += "<input type='hidden'  id='hdnCust_" + data.Contacts[i].Contact_Id + "' value='" + data.Contacts[i].Customer_Id + "' />";
 
@@ -106,7 +106,7 @@ function Bind_Contact_Grid(data) {
     $('#tblcontact tr:first').after(htmlText);
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });

@@ -15,12 +15,14 @@
             "WArticle.Reed_Space_Inch":
             {
                 required: true,
-                full_code_validator: true
+                full_code_validator: true,
+                number: true
             },
             "WArticle.Total_No_Of_Ends":
             {
                 required: true,
-                full_code_validator: true
+                full_code_validator: true,
+                number:true
             },
             "WArticle.Ideal_Beam":
             {

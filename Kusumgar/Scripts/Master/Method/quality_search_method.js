@@ -55,7 +55,7 @@ function BindQualityInGrid(data, mode) {
 
             htmlText += "<input type='hidden' id='hdfQualityId_" + data.Quality_Grid[i].Quality_Id + "' value='" + data.Quality_Grid[i].Quality_Id + "' />";
 
-            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -108,7 +108,7 @@ function BindQualityInGrid(data, mode) {
         $('.pagination').html(data.Pager.PageHtmlString);
 
     }
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });

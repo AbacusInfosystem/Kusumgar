@@ -40,7 +40,8 @@
             "CArticle.C_Finish_Width":
             {
                 required: true,
-                full_code_validator: true
+                full_code_validator: true,
+                number: true
             },
             "CArticle.Coat":
             {

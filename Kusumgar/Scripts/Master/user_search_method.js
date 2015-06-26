@@ -36,7 +36,7 @@ function BindUserGrid(data)
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Users[i].UserId + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Users[i].UserId + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -95,7 +95,7 @@ function BindUserGrid(data)
 
     $('#tblUserGrid tr:first').after(htmlText);
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
