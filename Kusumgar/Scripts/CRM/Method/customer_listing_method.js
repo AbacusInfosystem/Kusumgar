@@ -71,6 +71,7 @@ function SearchCustomerByStatus() {
        CallAjax("/crm/search-customers-by-status", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
     
 }
+
 function Bind_Customer_Grid(data) {
 
 
@@ -211,6 +212,7 @@ function Bind_Customer_Grid(data) {
         $("#btnPurchaseHistory").hide();
         $("#btnBlock").hide();
         $("#btnUnblock").hide();
+        $("#btnView").hide();
     
 }
 

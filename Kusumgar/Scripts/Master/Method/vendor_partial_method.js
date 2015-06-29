@@ -6,7 +6,7 @@
         CallAjax("/master/insert-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Data_Callback, "", null);
     }
     else {
-        var vViewModel = Set_Vendor_Other_Details();
+        var vViewModel = Set_Vendor_Details();
         CallAjax("/master/update-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Data_Callback, "", null);
     }
 
@@ -67,11 +67,8 @@ function Set_Vendor() {
 
             Attribute_Code:
                 {
-                    AttributeCodeEntity:
-                        {
                             Name: $("#txtVendorName").val(),
                             Code: $("#txtYarnCode").val()
-                        }
                 }
        }
 

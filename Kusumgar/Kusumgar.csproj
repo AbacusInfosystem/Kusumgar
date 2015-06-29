@@ -2058,9 +2058,6 @@
     <Content Include="Views\PostLogin\Master\Material\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Vendor\_Vendor.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PostLogin\System\UnAuthorize.cshtml" />
   </ItemGroup>
   <ItemGroup>

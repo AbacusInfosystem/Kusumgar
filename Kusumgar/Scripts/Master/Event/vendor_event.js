@@ -7,26 +7,17 @@
         }
     });
 
-    //$('[name="Vendor.Is_Active"]').on('ifChanged', function (event) {
-    //    if ($(this).prop('checked')) {
-    //        $("#hdnStatus").val(true);
-    //    }
-    //    else {
-    //        $("#hdnStatus").val(false);
-    //    }
-    //});
-
     $("#btnSaveCertificationDetails").click(function () {
       
         if ($("#frmCertificationDetails").valid()) {
-            Save_Vendors_Other_Details();
+            Save_Vendors_Certificate();
         }
     });
 
     $("#btnCentralRegistrationDetails").click(function () {
 
         if ($("#frmCentralRegistrationDetails").valid()) {
-            Save_Vendors_Other_Details();
+            Save_Vendors_Central_Excise();
         }
     });
     
@@ -47,19 +38,5 @@
             $("#hdnApprovedByDirector").val(false);
         }
     });
-  
-    $("#drpHeadOfficeNation").change(function () {
-
-        $.ajax({
-            url: '/master/get-state-by-nation-id',
-            data: { nation_Id: $("#drpHeadOfficeNation").val() },
-            method: 'GET',
-            async: false,
-            success: function (data) {
-                if (data != null) {
-                    Bind_States(data);
-                }
-            }
-        });
-    });
+ 
 });

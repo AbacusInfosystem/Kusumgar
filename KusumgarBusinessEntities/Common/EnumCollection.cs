@@ -354,6 +354,9 @@ namespace KusumgarBusinessEntities.Common
         Check_Existing_Vendor_Sp,
         Get_Vendors_By_Vendor_Id_Material_Id_Sp,
         Get_Vendors_By_Material_Id_Sp,
+        Update_Vendor_Certificate_Sp,
+        Update_Vendor_Other_Details_Sp,
+        Update_Vendor_Central_Excise_Sp,
 
         
         Update_Attribute_Code_Name_sp,

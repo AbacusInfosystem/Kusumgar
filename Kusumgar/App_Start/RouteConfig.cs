@@ -382,6 +382,8 @@ namespace Kusumgar
             defaults: new { controller = "Customer", action = "Printable_Customer", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+           
+
             #endregion
 
             #region Contact
@@ -1295,6 +1297,24 @@ namespace Kusumgar
            url: "master/print-view-vendor",
            defaults: new { controller = "Vendor", action = "Printable_Vendor", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+         name: "vendor-13",
+         url: "master/update-vendor-certificate",
+         defaults: new { controller = "Vendor", action = "Update_Vendor_Certificate", id = UrlParameter.Optional },
+         namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+          name: "vendor-14",
+          url: "master/update-vendor-other-details",
+          defaults: new { controller = "Vendor", action = "Update_Vendor_Other_Details", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+          name: "vendor-15",
+          url: "master/update-vendor-central-excise",
+          defaults: new { controller = "Vendor", action = "Update_Vendor_Central_Excise", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
 
             #endregion
