@@ -41,7 +41,7 @@ function Bind_Packing_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Packings[i].Is_Active;
+            htmlText += (data.Packings[i].Is_Active ? "Active":"Inactive");
 
             htmlText += "</td>";
 

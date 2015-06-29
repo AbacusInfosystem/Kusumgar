@@ -38,11 +38,11 @@ function Set_Quality() {
 
                             Quality_No: $("#txtQualityNo ").val(),
 
-                            Minimum_Order_Size: $("#txtMinimumOrderSize").val(),
+                            Minimum_Order_Size: parseInt($("#txtMinimumOrderSize").val()),
 
-                            Ideal_Roll_Length: $("#txtIdealRollLength").val(),
+                            Ideal_Roll_Length: parseInt($("#txtIdealRollLength").val()),
 
-                            Our_Sample_No: $("#txtSampleNo").val(),
+                            Our_Sample_No: parseInt($("#txtSampleNo").val()),
 
                             Reed: $("#txtReedName").val(),
 

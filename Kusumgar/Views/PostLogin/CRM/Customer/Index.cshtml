@@ -116,7 +116,7 @@
 
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                                                    <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6">
+                                                    <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6" onkeypress="return isNumber(event)">
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_Landline1" class="form-control input-sm" name="Customer.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline1" />
+                                                <input type="text" id="txtHead_Office_Landline1" class="form-control input-sm" name="Customer.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline1" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -140,7 +140,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_Landline2" class="form-control input-sm" name="Customer.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline2" />
+                                                <input type="text" id="txtHead_Office_Landline2" class="form-control input-sm" name="Customer.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline2" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -151,7 +151,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-fax"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_FaxNo" class="form-control" name="Customer.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_FaxNo" />
+                                                <input type="text" id="txtHead_Office_FaxNo" class="form-control" name="Customer.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_FaxNo" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
