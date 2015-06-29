@@ -227,7 +227,7 @@ namespace Kusumgar.Controllers
             {
                 mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
 
-                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id);
 
                 VendorManager _vendorMan = new VendorManager();
 
@@ -254,7 +254,7 @@ namespace Kusumgar.Controllers
             {
                 mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
 
-                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id);
 
                 VendorManager _vendorMan = new VendorManager();
 
