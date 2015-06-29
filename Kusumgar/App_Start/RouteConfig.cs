@@ -364,6 +364,12 @@ namespace Kusumgar
             defaults: new { controller = "Customer", action = "Delete_Customer_Contact_Type_By_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+           name: "customer-19",
+           url: "crm/update-customer-other",
+           defaults: new { controller = "Customer", action = "Update_Customer_Other", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region Contact

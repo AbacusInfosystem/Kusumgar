@@ -2085,9 +2085,6 @@
     <Content Include="uploads\Multiple Solr Instance - Copy.docx" />
     <Content Include="uploads\Multiple Solr Instance.docx" />
     <Content Include="uploads\STEPS FOR CREATING JOBS.docx" />
-    <Content Include="Views\PostLogin\Master\CustomerQuality\Index.cshtml" />
-    <Content Include="Views\PostLogin\Master\CustomerQuality\Search.cshtml" />
-    <Content Include="Views\PostLogin\Master\CustomerQuality\_CustomerSpecificInformation.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\PPC_Planning.cshtml" />
     <Content Include="Views\PostLogin\Sales\Scheduler\_Schedular.cshtml" />
     <Content Include="Views\PostLogin\Master\VendorContact\View.cshtml" />

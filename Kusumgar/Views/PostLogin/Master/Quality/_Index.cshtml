@@ -24,7 +24,7 @@
                             <input type="hidden" id="hdnQualityId" name="Quality.Quality_Id" value="@Model.Quality.Quality_Id">
 
                             <div class="form-group">
-                                <label>Yarn Type</label>
+                                <label style="color: #333">Yarn Type</label>
                                 <select class="form-control input-sm" id="drpYarnType" name="Quality.Yarn_Type_Id">
                                     <option value="">Select Yarn Type </option>
 
@@ -47,13 +47,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="txtQuality_No">Quality No.</label>
-                                <input type="text" class="form-control input-sm" id="txtQualityNo" placeholder="Enter Quality No." name="Quality.Quality_No" value="@Model.Quality.Quality_No" />
+                                <label for="txtQuality_No" style="color: #333">Quality No.</label>
+                                <input type="text" class="form-control input-sm" id="txtQualityNo" placeholder="Enter Quality No." name="Quality.Quality_No" value="@(Model.Quality.Quality_No == 0 ?"": Model.Quality.Quality_No.ToString() ) " />
                                 <input type="hidden" class="form-control input-sm" id="hdnQualityNo" value="@Model.Quality.Quality_No">
                             </div>
 
                             <div class="form-group">
-                                <label>Weave Type</label>
+                                <label style="color: #333">Weave Type</label>
                                 <select class="form-control input-sm" id="drpWeaveType" name="Quality.Weave">
                                     <option value="">Select Weave Type </option>
 
@@ -76,32 +76,32 @@
 
                             
                             <div class="form-group">
-                                <label for="txtMinimum_Order_Size">Minimum Order Size</label>
-                                <input type="text" class="form-control input-sm" id="txtMinimumOrderSize" placeholder="Enter minimum order size" name="Quality.Minimum_Order_Size" value="@Model.Quality.Minimum_Order_Size" />
+                                <label for="txtMinimum_Order_Size" style="color: #333">Minimum Order Size</label>
+                                <input type="text" class="form-control input-sm" id="txtMinimumOrderSize" placeholder="Enter minimum order size" name="Quality.Minimum_Order_Size" value="@(Model.Quality.Minimum_Order_Size == 0 ? "" : Model.Quality.Minimum_Order_Size.ToString())" />
                             </div>
 
                             <div class="form-group">
-                                <label for="txtIdeal_Roll_Length">Ideal Roll Length</label>
-                                <input type="text" class="form-control input-sm" id="txtIdealRollLength" placeholder="Enter Ideal Roll Length" name="Quality.Ideal_Roll_Length" value="@Model.Quality.Ideal_Roll_Length" />
+                                <label for="txtIdeal_Roll_Length" style="color: #333">Ideal Roll Length</label>
+                                <input type="text" class="form-control input-sm" id="txtIdealRollLength" placeholder="Enter Ideal Roll Length" name="Quality.Ideal_Roll_Length" value="@(Model.Quality.Ideal_Roll_Length == 0 ? "" : Model.Quality.Ideal_Roll_Length.ToString())" />
                             </div>
 
                             <div class="form-group">
-                                <label for="txtSample_No">Our Sample No</label>
-                                <input type="text" class="form-control input-sm" id="txtSampleNo" placeholder="Enter Our Sample No" name="Quality.Our_Sample_No" value="@Model.Quality.Our_Sample_No" />
+                                <label for="txtSample_No" style="color: #333">Our Sample No</label>
+                                <input type="text" class="form-control input-sm" id="txtSampleNo" placeholder="Enter Our Sample No" name="Quality.Our_Sample_No" value="@(Model.Quality.Our_Sample_No == 0 ? "" : Model.Quality.Our_Sample_No.ToString())" />
                             </div>
 
                             <div class="form-group">
-                                <label for="txtReed_Name">Reed</label>
+                                <label for="txtReed_Name" style="color: #333">Reed</label>
                                 <input type="text" class="form-control input-sm" id="txtReedName" placeholder="Enter Reed Name" name="Quality.Reed" value="@Model.Quality.Reed" />
                             </div>
 
                             <div class="form-group">
-                                <label for="txtPick_Name">Pick</label>
+                                <label for="txtPick_Name" style="color: #333">Pick</label>
                                 <input type="text" class="form-control input-sm" id="txtPickName" placeholder="Enter Pick Name" name="Quality.Pick" value="@Model.Quality.Pick" />
                             </div>
 
                             <div class="form-group">
-                                <label for="chkStatus">Status</label><br>
+                                <label for="chkStatus" style="color: #333">Status</label><br>
                                 @if (Model.Quality.Status)
                                 {
                                     @:<input type="checkbox" name="Quality.Status" value="false" checked />

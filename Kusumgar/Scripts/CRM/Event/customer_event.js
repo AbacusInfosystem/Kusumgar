@@ -28,7 +28,8 @@ $(function () {
     $("#btnSaveOther").click(function () {
 
         if ($("#frmOthers").valid()) {
-            Save_Customer_Details();
+            //Save_Customer_Details();
+            Save_Customer_Other_Details();
         }
     });
 

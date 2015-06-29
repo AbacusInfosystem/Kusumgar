@@ -70,7 +70,7 @@
             "Quality.Minimum_Order_Size":
          {
 
-             required: "Enter minimum order size.."
+             required: "Enter minimum order size."
          },
 
             "Quality.Ideal_Roll_Length":

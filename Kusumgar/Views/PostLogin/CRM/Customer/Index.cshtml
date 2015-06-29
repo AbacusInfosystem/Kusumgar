@@ -248,7 +248,7 @@
                                             </div>
                                         }
 
-                                        @if (@Model.Customer.Order_Maximum_Value == 0)
+                                        @if (Model.Customer.Order_Maximum_Value == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
@@ -299,15 +299,16 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Block_Order == true)
-                                                        {
-                                                            <input type="checkbox" name="chkBlockOrder" checked />
-                                                        }
+                                                        @*@if (Model.Customer.Block_Order == true)
+                                                        {*@
+                                                            @*<input type="checkbox" name="chkBlockOrder" checked />*@
+                                                            <label>Block Order : </label> &nbsp;&nbsp;&nbsp;@(Model.Customer.Block_Order ? "Yes" : "No")
+                                                        @*}
                                                         else
                                                         {
                                                             <input type="checkbox" name="chkBlockOrder" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order*@
                                                     </label>
                                                     <input type="hidden" id="hdnBlock_Order" value="@((Model.Customer.Block_Order== null ? false :Model.Customer.Block_Order).ToString())">
                                                 </div>
