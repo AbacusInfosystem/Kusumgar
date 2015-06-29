@@ -30,7 +30,7 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Id + "' class='iradio-list'/>";
         
         htmlText += "</td>";
 
@@ -66,7 +66,7 @@ function Bind_Material_Grid(data) {
     
     $('#tblProdGrid tr:first').after(htmlText);
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -92,15 +92,22 @@ function Bind_Material_Grid(data) {
             $("#hdMaterial_Id").val(this.id.replace("r1_", ""));
             $("#hdfMaterial_Name").val($("#Material_" + this.id.replace("r1_", "")).text());
 
-           
+            $("#btnView").show();
             $("#btnEdit").show();
             $("#btnView_Vendor").show();
         }
     });
 
+    $("#btnView").hide();
+    $("#btnEdit").hide();
+    $("#btnView_Vendor").hide();
 }
 
 function PageMore(Id) {
+
+    $("#btnView").hide();
+    $("#btnEdit").hide();
+    $("#btnView_Vendor").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

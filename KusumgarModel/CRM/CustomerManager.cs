@@ -209,5 +209,10 @@ namespace KusumgarModel
         {
             _customerRepo.Delete_Customer_Contact_Type_By_Id(customer_Contact_Type_Id);
         }
+
+        public void Update_Customer_Other(CustomerInfo customer)
+        {
+            _customerRepo.Update_Customer_Other(customer);
+        }
     }
 }

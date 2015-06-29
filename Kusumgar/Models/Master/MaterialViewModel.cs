@@ -22,6 +22,8 @@ namespace Kusumgar.Models
         public int Material_Id { get; set; }
         public bool Is_Primary { get; set; }
 
+        public List<VendorInfo> Vendor_Grid { get; set; }
+
         public MaterialViewModel()
         {
             Material = new MaterialInfo();
@@ -33,6 +35,8 @@ namespace Kusumgar.Models
             Material_SubCategories = new List<MaterialSubCategoryInfo>();
             Friendly_Message = new List<FriendlyMessageInfo>();
             Filter = new MaterialFilter();
+
+            Vendor_Grid = new List<VendorInfo>();
         }
     }
 

@@ -81,7 +81,7 @@
         $("#lst_Available_Lot_No").parents('.form-group').find(".todo-list").find('.fa-remove').click(function (event) {
             event.preventDefault();
 
-            var html = "<option value'" + $(this).parents('li').find('.lot_no').val() + "'>" + $(this).parents('li').find('.text').text() + "</option>";
+            var html = "<option value'" + $(this).parent().find('.lot_no').val() + "'>" + $(this).parent().find('.text').text() + "</option>";
 
             $("#lst_Available_Lot_No").append(html);
 

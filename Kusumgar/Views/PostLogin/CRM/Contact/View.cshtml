@@ -8,7 +8,8 @@
         <div class="row ">
             <div class="col-md-12 ">
                 <div class="btn-group pull-right">
-                    <button class="btn-primary btn-sm btn-success" type="button" value="Printable View" id="btnPrintable_View">Printable View</button>
+                    @*<button class="btn-primary btn-sm btn-success" type="button" value="Printable View" id="btnPrintable_View">Printable View</button>*@
+                    <button class="btn-primary btn-sm btn-success hidden-print " type="button" value="Print" id="btnPrint" onclick="window.print()"><span class="fa fa-print"></span></button>
                 </div>
             </div>
         </div>
@@ -26,7 +27,7 @@
 
             $("#frmPrintable_Contact").attr("method", "POST");
 
-            $("#frmPrintable_Contact").attr("target", "_blank");
+            $("#frmPrintable_Contact").attr("target", "blank");
 
             $("#frmPrintable_Contact").submit();
 

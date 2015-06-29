@@ -198,6 +198,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Customers_By_State_Id_Nation_Id_Sp,
         Get_Customers_By_Pin_Code_Sp,
         Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
+        Update_Customer_Other_By_Customer_Id_Sp,
 
 
 

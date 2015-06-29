@@ -1,5 +1,26 @@
 ﻿$(function () {
 
+
+
+    //$('.iradio-list').initialize(function () {
+
+    //    $(this).iCheck({
+    //        radioClass: 'iradio_square-green',
+    //        increaseArea: '20%' // optional
+    //    });
+    //});
+
+    //$('input:not(.non-iCheck input:checkbox)').initialize(function () {
+
+
+    //    $(this).iCheck({
+    //        checkboxClass: 'icheckbox_square-green',
+    //        radioClass: 'iradio_square-green',
+    //        increaseArea: '20%'
+    //    });
+
+    //});
+
     InitializeAutoComplete($('#txtCustomer_Name'));
 
     $("#hdfCustomer_Id").val(0);
@@ -115,3 +136,5 @@
     });
 
 });
+
+

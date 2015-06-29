@@ -174,7 +174,10 @@ namespace KusumgarDataAccess
                  customer.Order_Minimum_Value = Convert.ToInt32(dr["Order_Minimum_Value"]);
              }
 
-
+             if (dr["Order_Maximum_Value"] != DBNull.Value)
+             {
+                 customer.Order_Maximum_Value = Convert.ToInt32(dr["Order_Maximum_Value"]);
+             }
 
              if (dr["Is_Approved_By_Director"] != DBNull.Value)
              {
@@ -214,7 +217,7 @@ namespace KusumgarDataAccess
                 bank_details.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
             }
 
-           // bank_details.BanWrite method for autocomplete for segment also add grid for both,resoved error in application and segment pagek_Name = Convert.ToString(dr["Bank_Name"]);
+            bank_details.Bank_Name = Convert.ToString(dr["Bank_Name"]);
             bank_details.Bank_Account_No = Convert.ToString(dr["Bank_Account_No"]);
             bank_details.Branch_Name = Convert.ToString(dr["Branch_Name"]);
             bank_details.Ifsc_Code = Convert.ToString(dr["Ifsc_Code"]);
@@ -240,6 +243,11 @@ namespace KusumgarDataAccess
             }
 
             bank_details.Tax_Excemption_Code = Convert.ToString(dr["Tax_Excemption_Code"]);
+
+            if (dr["Credit_limit"] != DBNull.Value)
+            {
+                bank_details.Credit_limit = Convert.ToInt32(dr["Credit_limit"]);
+            }
 
             return bank_details;
         }
@@ -289,6 +297,11 @@ namespace KusumgarDataAccess
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer(customer), StoredProcedures.Update_Customer_Sp.ToString(), CommandType.StoredProcedure);
         }
 
+        public void Update_Customer_Other(CustomerInfo customer)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Other(customer), StoredProcedures.Update_Customer_Other_By_Customer_Id_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
         public void Insert_Customer_Address(CustomerAddressInfo customer_Address)
         {
 
@@ -328,18 +341,25 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Head_Office_Landline1", customer.Head_Office_Landline1));
             sqlparam.Add(new SqlParameter("@Head_Office_Landline2", customer.Head_Office_Landline2));
             sqlparam.Add(new SqlParameter("@Head_Office_FaxNo", customer.Head_Office_FaxNo));
-            sqlparam.Add(new SqlParameter("@Company_Turnover", customer.Company_Turnover));
-            sqlparam.Add(new SqlParameter("@Public_Private_Sector", customer.Public_Private_Sector));
-            sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Organised_UnOrganised_Sector));
-            sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Proprietary_Private_Limited));
-            sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Progressive_Stable_Turmoil));
-            sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
-            sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
-            sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Auto_Mail_Delivery));
-            sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Order_Minimum_Value));
-            sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Order_Maximum_Value));
-            sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", customer.Is_Approved_By_Director));
-            sqlparam.Add(new SqlParameter("@Block_Order", customer.Block_Order));
+            //sqlparam.Add(new SqlParameter("@Company_Turnover", customer.Company_Turnover));
+            //sqlparam.Add(new SqlParameter("@Public_Private_Sector", customer.Public_Private_Sector));
+            //sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Organised_UnOrganised_Sector));
+            //sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Proprietary_Private_Limited));
+            //sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Progressive_Stable_Turmoil));
+            //if (customer.Expiration_Date_Of_Contract != null && customer.Expiration_Date_Of_Contract != DateTime.MinValue)
+            //{
+            //    sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
+            //}
+            //else
+            //{
+            //    sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", DBNull.Value));
+            //}
+            ////sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
+            //sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Auto_Mail_Delivery));
+            //sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Order_Minimum_Value));
+            //sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Order_Maximum_Value));
+            //sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", customer.Is_Approved_By_Director));
+            //sqlparam.Add(new SqlParameter("@Block_Order", customer.Block_Order));
             sqlparam.Add(new SqlParameter("@Is_Active", customer.Is_Active));
             if (customer.Customer_Id == 0)
             {
@@ -350,6 +370,41 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@UpdatedOn", customer.UpdatedOn));
 
             sqlparam.Add(new SqlParameter("@Is_Domistic", customer.Is_Domistic));
+
+            return sqlparam;
+        }
+
+        private List<SqlParameter> Set_Values_In_Customer_Other(CustomerInfo customer)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+
+            if (customer.Customer_Id != 0)
+            {
+                sqlparam.Add(new SqlParameter("@Customer_Id", customer.Customer_Id));
+            }
+
+            sqlparam.Add(new SqlParameter("@Company_Turnover", customer.Company_Turnover));
+            sqlparam.Add(new SqlParameter("@Public_Private_Sector", customer.Public_Private_Sector));
+            sqlparam.Add(new SqlParameter("@Organised_UnOrganised_Sector", customer.Organised_UnOrganised_Sector));
+            sqlparam.Add(new SqlParameter("@Proprietary_Private_Limited", customer.Proprietary_Private_Limited));
+            sqlparam.Add(new SqlParameter("@Progressive_Stable_Turmoil", customer.Progressive_Stable_Turmoil));
+            if (customer.Expiration_Date_Of_Contract != null && customer.Expiration_Date_Of_Contract != DateTime.MinValue)
+            {
+                sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", customer.Expiration_Date_Of_Contract));
+            }
+            else
+            {
+                sqlparam.Add(new SqlParameter("@Expiration_Date_Of_Contract", DBNull.Value));
+            }
+            //sqlparam.Add(new SqlParameter("@Credit_limit", customer.Credit_limit));
+            sqlparam.Add(new SqlParameter("@Auto_Mail_Delivery", customer.Auto_Mail_Delivery));
+            sqlparam.Add(new SqlParameter("@Order_Minimum_Value", customer.Order_Minimum_Value));
+            sqlparam.Add(new SqlParameter("@Order_Maximum_Value", customer.Order_Maximum_Value));
+            sqlparam.Add(new SqlParameter("@Is_Approved_By_Director", customer.Is_Approved_By_Director));
+            //sqlparam.Add(new SqlParameter("@Block_Order", customer.Block_Order));
+
+            sqlparam.Add(new SqlParameter("@UpdatedBy", customer.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", customer.UpdatedOn));
 
             return sqlparam;
         }
@@ -385,6 +440,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Currency_Id", bank_Details.Currency_Id));
             sqlparam.Add(new SqlParameter("@Payment_Term_Id", bank_Details.Payment_Term_Id));
             sqlparam.Add(new SqlParameter("@Tax_Excemption_Code", bank_Details.Tax_Excemption_Code));
+            sqlparam.Add(new SqlParameter("@Credit_limit", bank_Details.Credit_limit));
             sqlparam.Add(new SqlParameter("@UpdatedBy", bank_Details.UpdatedBy));
 
             return sqlparam;
@@ -987,5 +1043,7 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Customer_Contact_Type_Id", customer_Contact_Type_Id));
             _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Customer_Contact_Type_By_Id_Sp.ToString(), CommandType.StoredProcedure);
         }
+
+
     }
 }

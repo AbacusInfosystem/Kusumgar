@@ -78,6 +78,7 @@
                 </select>
             </div>
         </div>
+            
     </div>
 
     <div class="row">
@@ -104,8 +105,23 @@
                         }
                     }
                 </select>
+            </div>           
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="txtCredit_Limit" style="color: #333">Credit limit</label>
+                @if (Model.Customer.Bank_Details.Credit_limit == 0)
+                {
+                    <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Bank_Details.Credit_limit">
+                }
+                else
+                {
+                    <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Bank_Details.Credit_limit" value="@Model.Customer.Bank_Details.Credit_limit">
+                }
             </div>
         </div>
+
+
         <div class="col-md-4">
         </div>
     </div>

@@ -1,6 +1,8 @@
 ﻿
 $(function () {
 
+   
+
     $("#hdnIs_Active").val(true);
 
     $("#hdnIs_Approved_By_Director").val(true);
@@ -26,7 +28,8 @@ $(function () {
     $("#btnSaveOther").click(function () {
 
         if ($("#frmOthers").valid()) {
-            Save_Customer_Details();
+            //Save_Customer_Details();
+            Save_Customer_Other_Details();
         }
     });
 
@@ -114,6 +117,10 @@ $(function () {
        
         var Nation_Id = "";
 
+        var State_Id = "";
+
+        State_Id = $("#drpHead_Office_State").val();
+
         var Text = "";
 
         if ($("#drpHead_Office_Nation").val() != "")
@@ -124,7 +131,7 @@ $(function () {
 
             if ($("#drpHead_Office_Nation option:selected").text().toLowerCase().trim(" ") == "india") {
         
-                $("#dvIs_Dosmistic").html("<h4><span class='label label-default'> <span class='flag-icon " + $("#drpHead_Office_Nation").val().split("_")[2] + "'> </span> Domistic  <i class='fa " + $("#drpHead_Office_Nation").val().split("_")[1] + "'></i></span></h4>");
+                $("#dvIs_Dosmistic").html("<h4><span class='label label-default'> <span class='flag-icon " + $("#drpHead_Office_Nation").val().split("_")[2] + "'> </span> Domestic  <i class='fa " + $("#drpHead_Office_Nation").val().split("_")[1] + "'></i></span></h4>");
             }
             else {
 
@@ -140,6 +147,15 @@ $(function () {
             success: function (data) {
                 if (data != null) {
                     Bind_States(data);
+
+                    $("#drpHead_Office_State option").each(function () {
+
+                        if($(this).val() == State_Id)
+                        {
+                            $("#drpHead_Office_State").val(State_Id);
+                        }
+
+                    });
                 }
             }
         });

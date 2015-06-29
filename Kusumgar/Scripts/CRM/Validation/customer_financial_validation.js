@@ -47,6 +47,10 @@
             {
 
             },
+            "Customer.Bank_Details.Credit_limit":
+            {
+                number: true
+            },
         },
         messages:
             {
@@ -93,6 +97,10 @@
                 "Customer.Bank_Details.Payment_Term_Id":
                 {
 
+                },
+                "Customer.Bank_Details.Credit_limit":
+                {
+              
                 },
             },
     });

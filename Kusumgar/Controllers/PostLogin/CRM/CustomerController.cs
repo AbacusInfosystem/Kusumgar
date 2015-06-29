@@ -205,6 +205,29 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+
+        public JsonResult Update_Customer_Other(CustomerViewModel cViewModel)
+        {
+            try
+            {
+                cViewModel.Customer.UpdatedOn = DateTime.Now;
+
+                cViewModel.Customer.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _customerMan.Update_Customer_Other(cViewModel.Customer);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU004"));
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Update_Customer_Address " + ex.ToString());
+            }
+
+            return Json(cViewModel);
+        }
+
         [AuthorizeUser(AppFunction.Customer_Create)]
 
         public JsonResult Insert_Bank_Details(CustomerViewModel cViewModel)
@@ -397,7 +420,7 @@ namespace Kusumgar.Controllers
             {
                 cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Customer Controller - Get_Customers " + ex.ToString());
+                Logger.Error("Customer Controller - Get_Customers" + ex.ToString());
             }
             finally
                 {

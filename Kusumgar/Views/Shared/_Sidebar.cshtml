@@ -1,5 +1,5 @@
 ﻿@using KusumgarBusinessEntities
-<aside class="main-sidebar">
+<aside class="main-sidebar hidden-print">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -8,26 +8,26 @@
                 <img src="~/Content/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>@( ((UserInfo)Session["User"]).First_Name == null ? "" : ((UserInfo)Session["User"]).First_Name + " " + ((UserInfo)Session["User"]).Last_Name == null ? "" : ((UserInfo)Session["User"]).Last_Name)</p>
+                <p>@( ((UserInfo)Session["User"]).First_Name + " " + ((UserInfo)Session["User"]).Last_Name)</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
         <!-- search form -->
         @*<form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..." />
-                <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>*@
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search..." />
+                    <span class="input-group-btn">
+                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>*@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active"><a href="@Url.Action("Index","Dashboard")"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-             <li class="treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-link"></i>
                     <span>CRM</span>
@@ -46,59 +46,83 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="@Url.Action("Search","DefectType")"><i class="fa fa-circle-o text-info"></i> Defect Type </a></li>
-                    <li><a href="@Url.Action("Search","Defect")"><i class="fa fa-circle-o text-info"></i> Defect </a></li>
-                    
-                    <li><a href="@Url.Action("Search","TestUnit")"><i class="fa fa-circle-o text-info"></i> Test Unit </a></li>
-                    <li><a href="@Url.Action("Search","Test")"><i class="fa fa-circle-o text-info"></i> Test </a></li>
 
-                    
-                    <li><a href="@Url.Action("Search", "AttributeCode")"><i class="fa fa-circle-o text-info"></i> Attribute Code </a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> User Management <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Search", "User")"><i class="fa fa-circle-o text-info"></i>Employee</a></li>
+                            <li><a href="@Url.Action("Search", "Role")"><i class="fa fa-circle-o text-info"></i>Role</a></li>
+                        </ul>
+                    </li>
 
-                  
-                    <li><a href="@Url.Action("Search", "User")"><i class="fa fa-circle-o text-info"></i>Employee</a></li>
-                    <li><a href="@Url.Action("Search", "Role")"><i class="fa fa-circle-o text-info"></i>Role</a></li>
-                    <li><a href="@Url.Action("Search", "Vendor")"><i class="fa fa-circle-o text-info"></i>Vendor</a></li>
-                    @*<li><a href="@Url.Action("Search", "Industrial")"><i class="fa fa-circle-o text-info"></i>Industrial</a></li>
-                    <li><a href="@Url.Action("Search", "Consumable")"><i class="fa fa-circle-o text-info"></i>Consumable</a></li>*@
-                    <li><a href="@Url.Action("Search", "VendorContact")"><i class="fa fa-circle-o text-info"></i>Vendor Contact</a></li>
-                    <li><a href="@Url.Action("Search", "Material")"><i class="fa fa-circle-o text-info"></i>Material</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i>Vendor & Material <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Search", "Vendor")"><i class="fa fa-circle-o text-info"></i>Vendor</a></li>
+                            @*<li><a href="@Url.Action("Search", "Industrial")"><i class="fa fa-circle-o text-info"></i>Industrial</a></li>
+                        <li><a href="@Url.Action("Search", "Consumable")"><i class="fa fa-circle-o text-info"></i>Consumable</a></li>*@
+                            <li><a href="@Url.Action("Search", "VendorContact")"><i class="fa fa-circle-o text-info"></i>Vendor Contact</a></li>
+                            <li><a href="@Url.Action("Search", "Material")"><i class="fa fa-circle-o text-info"></i>Material</a></li>
+                        </ul>
+                    </li>
 
-                    <li><a href="@Url.Action("Search", "YArticle")"><i class="fa fa-circle-o text-info"></i> Y Article </a></li>
-                    <li><a href="@Url.Action("Search", "WArticle")"><i class="fa fa-circle-o text-info"></i> W Article </a></li>
-                    <li><a href="@Url.Action("Search", "GArticle")"><i class="fa fa-circle-o text-info"></i> G Article </a></li>
-                    <li><a href="@Url.Action("Search", "PArticle")"><i class="fa fa-circle-o text-info"></i> P Article </a></li>
-                    <li><a href="@Url.Action("Search", "CArticle")"><i class="fa fa-circle-o text-info"></i> C Article </a></li>
-                    <li><a href="@Url.Action("Search", "PegPlan")"><i class="fa fa-circle-o text-info"></i> Peg Plan </a></li>
+                    @*<li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Article <i class="fa fa-angle-left pull-right"></i></a>
+                        
+                    </li>*@
 
-                    <li><a href="@Url.Action("Search", "ArticleProcessWorkcenter")"><i class="fa fa-circle-o text-info"></i> Article Process Workcenter </a></li>
-                    <li><a href="@Url.Action("Search", "Quality")"><i class="fa fa-circle-o text-info"></i>Quality Creation</a></li>
-                    <li><a href="@Url.Action("Search", "CustomerQuality")"><i class="fa fa-circle-o text-info"></i>Customer Quality Creation</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Quality Management <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
 
-                    <li><a href="@Url.Action("Search","Process")"><i class="fa fa-circle-o text-info"></i> Process </a></li>
-                    <li><a href="@Url.Action("Search","ProcessRouteCode")"><i class="fa fa-circle-o text-info"></i> Process Route Code </a></li>
-                    <li><a href="@Url.Action("Search","Workcenter")"><i class="fa fa-circle-o text-info"></i> Workcenter </a></li>
-                    <li><a href="@Url.Action("Search","Packing")"><i class="fa fa-circle-o text-info"></i> Packing </a></li>
+                            <li><a href="@Url.Action("Search", "YArticle")"><i class="fa fa-circle-o text-info"></i> Y Article </a></li>
+                            <li><a href="@Url.Action("Search", "WArticle")"><i class="fa fa-circle-o text-info"></i> W Article </a></li>
+                            <li><a href="@Url.Action("Search", "GArticle")"><i class="fa fa-circle-o text-info"></i> G Article </a></li>
+                            <li><a href="@Url.Action("Search", "PArticle")"><i class="fa fa-circle-o text-info"></i> P Article </a></li>
+                            <li><a href="@Url.Action("Search", "CArticle")"><i class="fa fa-circle-o text-info"></i> C Article </a></li>
+
+                            <li><a href="@Url.Action("Search", "Quality")"><i class="fa fa-circle-o text-info"></i>Quality Creation</a></li>
+                            <li><a href="@Url.Action("Search", "CustomerQuality")"><i class="fa fa-circle-o text-info"></i>Customer Quality Creation</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Others <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Search","Process")"><i class="fa fa-circle-o text-info"></i> Process </a></li>
+                            <li><a href="@Url.Action("Search","Workcenter")"><i class="fa fa-circle-o text-info"></i> Workcenter </a></li>
+                            <li><a href="@Url.Action("Search","Packing")"><i class="fa fa-circle-o text-info"></i> Packing </a></li>
+                            <li><a href="@Url.Action("Search","DefectType")"><i class="fa fa-circle-o text-info"></i> Defect Type </a></li>
+                            <li><a href="@Url.Action("Search","Defect")"><i class="fa fa-circle-o text-info"></i> Defect </a></li>
+                            <li><a href="@Url.Action("Search","TestUnit")"><i class="fa fa-circle-o text-info"></i> Test Unit </a></li>
+                            <li><a href="@Url.Action("Search","Test")"><i class="fa fa-circle-o text-info"></i> Test </a></li>
+                            <li><a href="@Url.Action("Search", "AttributeCode")"><i class="fa fa-circle-o text-info"></i> Attribute Code </a></li>
+
+                            <li><a href="@Url.Action("Search", "PegPlan")"><i class="fa fa-circle-o text-info"></i> Peg Plan </a></li>
+                            @*<li><a href="@Url.Action("Search", "ArticleProcessWorkcenter")"><i class="fa fa-circle-o text-info"></i> Article Process Workcenter </a></li>
+                            <li><a href="@Url.Action("Search","ProcessRouteCode")"><i class="fa fa-circle-o text-info"></i> Process Route Code </a></li>*@
+                        </ul>
+                    </li>
                 </ul>
             </li>
-              <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-link"></i>
-                    <span>Sales</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="@Url.Action("Search", "Enquiry")"><i class="fa fa-circle-o text-info"></i> Enquiry </a></li>
-                    <li><a href="@Url.Action("Search_PPC_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> PPC Check point </a></li>
-                    <li><a href="@Url.Action("Search_W_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> W Manager Check point </a></li>
-                    <li><a href="@Url.Action("Search_P_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> P Manager Check point </a></li>
-                    <li><a href="@Url.Action("Search_C_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> C Manager Check point </a></li>
-                    <li><a href="@Url.Action("Search_Quality_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> Quality Manager Check point </a></li>
-                    <li><a href="@Url.Action("Search_PPC_Planning", "Enquiry")"><i class="fa fa-circle-o text-info"></i> PPC Planning </a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-link"></i>
+                            <span>Sales</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Search", "Enquiry")"><i class="fa fa-circle-o text-info"></i> Enquiry </a></li>
+                            <li><a href="@Url.Action("Search_PPC_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> PPC Check point </a></li>
+                            <li><a href="@Url.Action("Search_W_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> W Manager Check point </a></li>
+                            <li><a href="@Url.Action("Search_P_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> P Manager Check point </a></li>
+                            <li><a href="@Url.Action("Search_C_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> C Manager Check point </a></li>
+                            <li><a href="@Url.Action("Search_Quality_Manager_Checkpoint", "Enquiry")"><i class="fa fa-circle-o text-info"></i> Quality Manager Check point </a></li>
+                            <li><a href="@Url.Action("Search_PPC_Planning", "Enquiry")"><i class="fa fa-circle-o text-info"></i> PPC Planning </a></li>
 
-                </ul>
-            </li>
-            @*<li class="treeview">CustomerQuality
+                        </ul>
+                    </li>
+                    @*<li class="treeview">CustomerQuality
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -125,7 +149,7 @@
                     <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
                 </a>
             </li>
-            
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
@@ -229,7 +253,7 @@
             <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
             <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
             <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>*@
-        </ul>
+                </ul>
     </section>
     <!-- /.sidebar -->
 </aside>

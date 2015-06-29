@@ -35,8 +35,8 @@
             },
             "PArticle.P_Finish_width":
             {
-                required: true
-               
+                required: true,
+               number:true
             },
             "PArticle.Type_Id":
             {
@@ -64,12 +64,12 @@
            
             "PArticle.Quality_No":
             {
-                required: "Quality No is required."
+                required: "Quality no is required."
             },
            
             "PArticle.Yarn_Type_Id":
            {
-               required: "Yarn Type is required."
+               required: "Yarn type is required."
            },
             "PArticle.Weave_Id":
             {
@@ -81,33 +81,33 @@
             },
             "PArticle.Chemical_Finish_Id":
             {
-                required: "Chemical Finish  is required."
+                required: "Chemical finish  is required."
             },
             "PArticle.Mechanical_Finish_Id":
             {
-                required: "Mechanical Finish is required."
+                required: "Mechanical finish is required."
             },
             "PArticle.P_Finish_width":
             {
-                required: "P Finish Width is required."
+                required: "P finish width is required."
             },
             "PArticle.Type_Id":
             {
-                required: "Type  is required."
+                required: "Type is required."
             },
             "PArticle.Given_By_Id":
             {
-                required: "required field"
+                required: "Given by is required."
 
             },
             "PArticle.Validated_By_Id":
             {
-                required: "required field."
+                required: "Validated by required."
 
             },
             "PArticle.Developed_Under_Id":
             {
-                required: "required field."
+                required: "Developed under is required."
 
             },
         }

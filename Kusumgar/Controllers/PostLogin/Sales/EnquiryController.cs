@@ -33,9 +33,15 @@ namespace Kusumgar.Controllers
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
+            PackingManager pMan = new PackingManager();
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
             try
             {
-
+                eViewModel.Packing = pMan.Get_Packings(ref pager);
             }
             catch (Exception ex)
             {

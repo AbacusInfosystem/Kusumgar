@@ -62,7 +62,7 @@ function Set_Customer()
 
                             Head_Office_ZipCode: $("#txtHead_Office_ZipCode").val(),
 
-                            Head_Office_Nation: $("#drpHead_Office_Nation").val(),
+                            Head_Office_Nation: $("#drpHead_Office_Nation").val().split("_")[0],
 
                             Head_Office_Landline1: $("#txtHead_Office_Landline1").val(),
 
@@ -158,9 +158,9 @@ function Bind_Customer_Contact_Type_Data_Callback(data) {
     }
     $("#tblConTypeGrid").find("tr:gt(0)").remove();
 
-    $('#tblConTypeGrid tr:first').after(htmlText);    
+    $('#tblConTypeGrid tr:first').after(htmlText);
 
-    $("#divSearchGridOverlay").hide();
+
 
     $("#hdnCustomer_Contact_Type_Id").val(0);
 
@@ -202,4 +202,55 @@ function RemoveContactType(id) {
             Friendly_Message(data);
         }
     });
+}
+
+function Set_Customer_Other() {
+
+    var cViewModel =
+        {
+            Customer:
+                {
+
+                    Customer_Id: $("#hdnCustomer_Id").val(),
+
+                    Company_Turnover: $("#txtCompany_Turnover").val(),
+
+                    Public_Private_Sector: $("#hdnPublic_Private_Sector").val(),
+
+                    Organised_UnOrganised_Sector: $("#hdnOrganised_UnOrganised_Sector").val(),
+
+                    Proprietary_Private_Limited: $("#hdnProprietary_Private_Limited").val(),
+
+                    Progressive_Stable_Turmoil: $("#hdnProgressive_Stable_Turmoil").val(),
+
+                    Expiration_Date_Of_Contract: $("#dtpExpiration_Date_Of_Contract").val(),
+
+                    Credit_limit: $("#txtCredit_Limit").val(),
+
+                    Auto_Mail_Delivery: $("#hdnAuto_Mail_Delivery").val(),
+
+                    Order_Minimum_Value: $("#txtOrder_Minimum_Value").val(),
+
+                    Order_Maximum_Value: $("#txtOrder_Maximum_Value").val(),
+
+                    Is_Approved_By_Director: $("#hdnIs_Approved_By_Director").val()
+
+                    //Block_Order: $("#hdnBlock_Order").val()
+
+                }
+        }
+
+    return cViewModel;
+}
+
+
+function Save_Customer_Other_Details() {
+    var cViewModel = Set_Customer();
+
+
+    if ($("#hdnCustomer_Id").val() != 0) {
+        CallAjax("/crm/update-customer-other/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
+    }
+   
+
 }

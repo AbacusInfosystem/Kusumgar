@@ -103,27 +103,27 @@
 
             "Vendor.Performance_Certification":
              {
-                 required: "Performance Certification is required."
+                 required: "Performance certification is required."
              },
             "Vendor.Quality_Certification_Year":
                 {
-                    required: "Quality Certification Year is required."
+                    required: "Quality certification Year is required."
                 },
             "Vendor.Performance_Certification_Year":
                 {
-                    required: " Performance Certification Year address is required."
+                    required: " Performance certification year address is required."
                 },
             "Vendor.Quality_Certification":
                 {
-                    required: "Quality Certification is required."
+                    required: "Quality certification is required."
                 },
             "Vendor.Quality_Certification_Category":
                 {
-                    required: "Quality Certification Category is required."
+                    required: "Quality certification category is required."
                 },
             "Vendor.Performance_Certification_Category":
                 {
-                    required: "Performance Certification Category is required."
+                    required: "Performance certification category is required."
                 },
            
 
@@ -185,7 +185,7 @@
 
             "Vendor.Registration_No":
             {
-                required: "Registration No is required." ,
+                required: "Registration no is required." ,
             },
             "Vendor.Range":
                 {
@@ -193,7 +193,7 @@
                 },
             "Vendor.Division":
             {
-                required: "Registration No is required."
+                required: "Registration no is required."
             },
             "PAN":
             {
@@ -207,13 +207,13 @@
 
             "Vendor.Tax_Excemption_Code":
            {
-               required: "Tax Excemption Code is required."
+               required: "Tax excemption code is required."
            },
 
 
             "Vendor.Currency_Code":
            {
-               required: "Currency Code is required."
+               required: "Currency code is required."
            },
 
 
@@ -223,7 +223,7 @@
          },
             "Vendor.PaymentTerms":
          {
-             required: "PaymentTerms is required."
+             required: "Payment terms is required."
          },
 
         }
@@ -233,7 +233,7 @@
 
     jQuery.validator.addMethod("validate_PAN", function (value, element) {
         return this.optional(element) || /^[A-Z]{5}\d{4}[A-Z]{1}$/.test(value);
-    }, "Invalid Pan Number");
+    }, "Invalid pan number");
  
 
 });

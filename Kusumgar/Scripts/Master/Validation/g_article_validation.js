@@ -160,7 +160,7 @@
 
             "G_Article.Quality_Id":
              {
-                 required: "Quality Number is required."
+                 required: "Quality number is required."
              },
             "G_Article.Yarn_Type_Id":
             {
@@ -172,7 +172,7 @@
             },
             "G_Article.Grey_with_Cms":
             {
-                required: "Grey with Cms is required"
+                required: "Grey with cms is required"
             },
             "G_Article.GSM":
             {
@@ -223,11 +223,11 @@
             },
             "G_Article.Total_Ends":
             {
-                required: "Total Ends is required"
+                required: "Total ends is required"
             },
             "G_Article.Beam_Weight":
             {
-                required: "Beam Weight is required"
+                required: "Beam weight is required"
             },
             "G_Article.Beam_Roll":
             {
@@ -235,11 +235,11 @@
             },
             "G_Article.Warp_Yarn_Vendor":
             {
-                required: "Warp Yarn Vendor is required"
+                required: "Warp yarn vendor is required"
             },
             "G_Article.Weft_Yarn_Vendor":
             {
-                required: "Weft Yarn Vendor is required"
+                required: "Weft yarn vendor is required"
             },
             "G_Article.RSP":
             {
@@ -251,7 +251,7 @@
             },
             "G_Article.Crimp_In_Percentage":
             {
-                required: "Crimp In Percentage is required"
+                required: "Crimp in percentage is required"
             },
             "G_Article.R_S":
             {
@@ -267,31 +267,31 @@
             },
             "G_Article.No_Of_Healds":
             {
-                required: "No Of Healds is required"
+                required: "No. of healds is required"
             },
             "G_Article.Drawing_Sequence_Body":
             {
-                required: "Drawing Sequence Body is required"
+                required: "Drawing sequence body is required"
             },
             "G_Article.Drawing_Sequence_Selvedge":
             {
-                required: "Drawing Sequence Selvedge is required"
+                required: "Drawing sequence selvedge is required"
             },
             "G_Article.Roll_Size":
             {
-                required: "Roll Size is required"
+                required: "Roll size is required"
             },
             "G_Article.Warping_Meters":
             {
-                required: "Warping Meters is required"
+                required: "Warping meters is required"
             },
             "G_Article.Peg_Plan_Rows":
             {
-                required: "Peg Plan Rows is required"
+                required: "Peg plan rows is required"
             },
             "G_Article.Peg_Plan_Columns":
             {
-                required: "Peg Plan Columns is required"
+                required: "Peg plan columns is required"
             }
 
         }

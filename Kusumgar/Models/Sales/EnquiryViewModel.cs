@@ -22,6 +22,8 @@ namespace Kusumgar.Models
             Filter = new Enquiry_Filter();
 
             Attribute_Codes = new List<AttributeCodeInfo>();
+
+            Packing = new List<PackingInfo>();
         }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
@@ -35,6 +37,8 @@ namespace Kusumgar.Models
         public Enquiry_Filter Filter { get; set; }
 
         public List<AttributeCodeInfo> Attribute_Codes { get; set; }
+
+        public List<PackingInfo> Packing { get; set; }
        
     }
 

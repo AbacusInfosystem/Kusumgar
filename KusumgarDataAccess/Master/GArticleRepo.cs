@@ -266,6 +266,9 @@ namespace KusumgarDataAccess
              g_Grticle.Weft_Name_3 = Convert.ToString(dr["Weft_Name_3"]);
              g_Grticle.Weft_Name_4 = Convert.ToString(dr["Weft_Name_4"]);
 
+             g_Grticle.Yarn_Type_Code = Convert.ToString(dr["Yarn_Type_Code"]);     //Additional
+             g_Grticle.Weave_Code = Convert.ToString(dr["Weave_Code"]);
+
              return g_Grticle;
          }
 

@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    
+
     //InitializeAutoComplete($('#txtCustomer_Name'), autoCustomerCallback);
     InitializeAutoComplete($('#txtCustomer_Name'));
 

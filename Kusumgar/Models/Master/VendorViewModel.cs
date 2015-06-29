@@ -39,6 +39,8 @@ namespace Kusumgar.Models
 
             Material_Category_Info = new MaterialCategoryInfo();
 
+            Materials = new List<MaterialInfo>();
+
         }
 
          public bool Is_Primary { get; set; }
@@ -66,6 +68,8 @@ namespace Kusumgar.Models
         public AttributeCodeInfo Attribute_Code { get; set; }
 
         public MaterialCategoryInfo Material_Category_Info { get; set; }
+
+        public List<MaterialInfo> Materials { get; set; }
        
     
     public class Vendor_Filter

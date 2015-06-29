@@ -1,16 +1,12 @@
 ﻿@model Kusumgar.Models.CustomerQualityViewModel
 @using KusumgarBusinessEntities.Common
 
-@*<script src="~/Scripts/Master/Event/customer_specific_information_event.js"></script>
-<script src="~/Scripts/Master/Method/customer_specific_information_method.js"></script>*@
 
 <script src="~/Scripts/Master/Event/customer_quality_event.js"></script>
     <script src="~/Scripts/Master/Method/customer_quality_method.js"></script>
     <script src="~/Scripts/Master/Validation/customer_quality_validation.js"></script>
 
 
-<div class="row">
-    <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
@@ -36,51 +32,56 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="drpQuality_No">Quality No.</label>
+                                    <label for="drpQuality_No" style="color: #333">Quality No.</label>
                                     <select id="drpQuality_No" class="form-control input-sm" name="Customer_Quality.Quality.Quality_No">
                                         <option value="">--Select--</option>
                                         @foreach (var item in Model.Customer_Quality.Qualities)
-                                    {
-                                        if (Model.Customer_Quality.Quality_Id == item.Quality_Id)
                                         {
-                                    <option value="@item.Quality_Id" selected="selected">@item.Quality_No</option>
+                                            if (Model.Customer_Quality.Quality_Id == item.Quality_Id)
+                                            {
+                                                <option value="@item.Quality_Id" selected="selected">@item.Quality_No</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Quality_Id">@item.Quality_No</option>
+                                            }
                                         }
-                                        else
-                                        {
-                                    <option value="@item.Quality_Id">@item.Quality_No</option>
-                                        }
-                                    }
                                     </select>
                                     <input type="hidden" id="hdnQuality_Id" value="@Model.Customer_Quality.Quality_Id" name="Customer_Quality.Quality_Id">
                                 </div>
 
                                 <div class="form-group">
                                     @if (Model.Customer_Quality.Is_Active == false)
-                                {
-                                <label>
-                                    <input type="checkbox" name="chkIs_Active" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                                </label>
-                                }
-                                else
-                                {
-                                <label>
-                                    <input type="checkbox" name="chkIs_Active" checked="checked" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                                </label>
-                                }
+                                    {
+                                        <label>
+                                            <input type="checkbox" name="chkIs_Active" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label>
+                                            <input type="checkbox" name="chkIs_Active" checked="checked" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                        </label>
+                                    }
                                     <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer_Quality.Is_Active" value="@Model.Customer_Quality.Is_Active.ToString()">
                                 </div>
 
                             </div>
-                            <div class="col-md-8">
+                           
+                            @*<div class="col-md-8">
 
+                            </div>*@
+                        </div>
+
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                <button type="button" id="btnSave_Primary" class="btn btn-success btn-sm">Save Primary</button>
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
                             </div>
                         </div>
-                        <div class="btn-group box-footer">
-                            <button type="button" id="btnSave_Primary" class="btn btn-success btn-sm">Save Primary</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
-                        </div>
+
                     </form>
                 </div>
 
@@ -90,52 +91,52 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="txtCustomer_Roll_Length">Customer Roll Length</label>
+                                    <label for="txtCustomer_Roll_Length" style="color: #333">Customer Roll Length</label>
                                     <input type="text" class="form-control input-sm" id="txtCustomer_Roll_Length" value="@Model.Customer_Quality.Customer_Roll_Length" placeholder="Enter Customer Roll Length">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtStorage">Storage</label>
+                                    <label for="txtStorage" style="color: #333">Storage</label>
                                     <input type="text" class="form-control input-sm" id="txtStorage" value="@Model.Customer_Quality.Storage" placeholder="Enter Storage">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtEnd_Product_Criteria">End Product Criteria</label>
+                                    <label for="txtEnd_Product_Criteria" style="color: #333">End Product Criteria</label>
                                     <textarea class="form-control input-sm" id="txtEnd_Product_Criteria" placeholder="Enter End Product Criteria">@Model.Customer_Quality.End_Product_Criteria</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtTesting_Requirements">Testing Requirements</label>
+                                    <label for="txtTesting_Requirements" style="color: #333">Testing Requirements</label>
                                     <textarea class="form-control input-sm" id="txtTesting_Requirements" placeholder="Enter Testing Requirements">@Model.Customer_Quality.Testing_Requirements</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtSpecial_Requirements_Packaging">Special Requirements Packaging</label>
+                                    <label for="txtSpecial_Requirements_Packaging" style="color: #333">Special Requirements Packaging</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Packaging" placeholder="Enter Special Requirements Packaging">@Model.Customer_Quality.Special_Requirements_Packaging</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="txtTransport">Transport</label>
+                                    <label for="txtTransport" style="color: #333">Transport</label>
                                     <input type="text" class="form-control input-sm" id="txtTransport" value="@Model.Customer_Quality.Transport" placeholder="Enter Transport">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtLot_Testing">Lot Testing</label>
+                                    <label for="txtLot_Testing" style="color: #333">Lot Testing</label>
                                     <input type="text" class="form-control input-sm" id="txtLot_Testing" value="@Model.Customer_Quality.Lot_Testing" placeholder="Enter Lot Testing">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtInspection_Requirements">Inspection Requirements</label>
+                                    <label for="txtInspection_Requirements" style="color: #333">Inspection Requirements</label>
                                     <textarea class="form-control input-sm" id="txtInspection_Requirements" placeholder="Enter Inspection Requirements">@Model.Customer_Quality.Inspection_Requirements</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtProcess_Control">Process Control</label>
+                                    <label for="txtProcess_Control" style="color: #333">Process Control</label>
                                     <textarea class="form-control input-sm" id="txtProcess_Control" placeholder="Enter Process Control">@Model.Customer_Quality.Process_Control</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtSpecial_Requirements_Defects_Defination">Special Requirements Defects Defination</label>
+                                    <label for="txtSpecial_Requirements_Defects_Defination" style="color: #333">Special Requirements Defects Defination</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Defects_Defination" placeholder="Enter Special Requirements Defects Defination">@Model.Customer_Quality.Special_Requirements_Defect_Defination</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                
                                 <div class="form-group">
-                                    <label for="txtCustomer_Sample_No">Customer Sample No</label>
+                                    <label for="txtCustomer_Sample_No" style="color: #333">Customer Sample No</label>
                                     <div class="auto-complete">
                                         <input type="text" class="form-control input-sm" id="txtCustomer_Sample_No" placeholder="Enter sample no" name="Customer_Quality.Sample.Sample_Id" value="">
                                         @*<input type="hidden" id="hdnSample_Id" value="@(Model.Customer_Quality.Sample.Sample_Id == 0 ? "" : Model.Customer_Quality.Sample.Sample_Id.ToString())" name="Customer_Quality.Sample_Id" class="auto-complete-value">*@
@@ -145,23 +146,26 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtSpecial_Care_Details">Special Care Details</label>
+                                    <label for="txtSpecial_Care_Details" style="color: #333">Special Care Details</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Care_Details" placeholder="Enter Special Care Details">@Model.Customer_Quality.Special_Care_Details</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtSpecial_Requirements_Material_Handling">Special Requirements Material Handling</label>
+                                    <label for="txtSpecial_Requirements_Material_Handling" style="color: #333">Special Requirements Material Handling</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Material_Handling" placeholder="Enter Special Requirements Material Handling">@Model.Customer_Quality.Special_Requirements_Material_Handling</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtSpecial_Requirements_Verdicting">Special Requirements Verdicting</label>
+                                    <label for="txtSpecial_Requirements_Verdicting" style="color: #333">Special Requirements Verdicting</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Verdicting" placeholder="Enter Special Requirements Verdicting">@Model.Customer_Quality.Special_Requirements_Verdicting</textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="btn-group box-footer">
-                            <button type="button" class="btn btn-success btn-sm" id="btnSave_Customer_Specific_Information">Save Customer Specific Information</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm" id="btnSave_Customer_Specific_Information">Save Customer Specific Information</button>
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                            </div>
                         </div>
+
                     </form>
                 </div>
 
@@ -170,11 +174,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="txtLabel_Details">Label Details</label>
+                                    <label for="txtLabel_Details" style="color: #333">Label Details</label>
                                     <textarea class="form-control input-sm" id="txtLabel_Details" placeholder="Enter Label Details"></textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtLabel_Details">Attach Label Details</label>
+                                    <label for="txtLabel_Details" style="color: #333">Attach Label Details</label>
                                     <input type="file" class="form-control input-sm" id="fileselect" name="fileselect[]" multiple="multiple" />
                                 </div>
                                 <div class="form-group ">
@@ -183,11 +187,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtReport_Details">Report Format Details</label>
+                                    <label for="txtReport_Details" style="color: #333">Report Format Details</label>
                                     <textarea class="form-control input-sm" id="txtReport_Details" placeholder="Enter Label Details"></textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="fileReport_Details">Attach Report Format Details</label>
+                                    <label for="fileReport_Details" style="color: #333">Attach Report Format Details</label>
                                     <input type="file" class="form-control input-sm" id="fileReport_Details" name="fileselect[]" multiple="multiple" />
                                 </div>
                                 <div class="form-group ">
@@ -196,11 +200,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtLabel_Details">Customer Given Information</label>
+                                    <label for="txtLabel_Details" style="color: #333">Customer Given Information</label>
                                     <textarea class="form-control input-sm" id="txtCustomer_Given_Information" placeholder="Enter Customer Given Information"></textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="fileCustomer_Given_Information">Attach Customer Given Information</label>
+                                    <label for="fileCustomer_Given_Information" style="color: #333">Attach Customer Given Information</label>
                                     <input type="file" class="form-control input-sm" id="fileCustomer_Given_Information" name="fileselect[]" multiple="multiple" />
                                 </div>
                                 <div class="form-group ">
@@ -282,9 +286,11 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="btn-group box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
-                        <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                    <div class=" box-footer">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
+                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                        </div>
                     </div>
                 </div>
 
@@ -292,11 +298,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="btn-group form-group ">
-                                    <label for="txtTest_Name">Test Name</label>
+                                    <label for="txtTest_Name" style="color: #333">Test Name</label>
                                     <input type="text" class="form-control input-sm" id="txtTest_Name" placeholder="Enter Test Name">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtUnit_Name">Unit Name</label>
+                                    <label for="txtUnit_Name" style="color: #333">Unit Name</label>
                                     <input type="text" class="form-control input-sm" id="txtUnit_Name" placeholder="Enter Unit Name">
                                 </div>
                             </div>
@@ -364,14 +370,15 @@
                                 </table>
                             </div>
                         </div>
-                    <div class="btn-group box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">Save Test</button>
-                        <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                    <div class="box-footer">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-success btn-sm">Save Test</button>
+                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
         </div>
-    </div>
    
-</div>

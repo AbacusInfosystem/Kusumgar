@@ -53,7 +53,7 @@ function Bind_Work_Center_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Work_Centers[i].Work_Center_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Work_Centers[i].Work_Center_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -142,7 +142,7 @@ function Bind_Work_Center_Grid(data) {
     $('#tblWork_Center tr:first').after(htmlText);
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -168,11 +168,15 @@ function Bind_Work_Center_Grid(data) {
         if ($(this).prop('checked')) {
 
             $("#hdnWork_Center_Id").val(this.id.replace("r1_", ""));
+            $('#btnView').show();
             $("#btnEdit").show();
 
         }
     });
 
+
+    $('#btnView').hide();
+    $("#btnEdit").hide();
 }
 
 function PageMore(Id) {

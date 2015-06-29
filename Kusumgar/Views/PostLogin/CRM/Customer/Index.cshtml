@@ -218,7 +218,7 @@
                                             <label for="txtCustomerName" style="color: #333">Company turnover</label>
                                             <input type="text" class="form-control input-sm" id="txtCompany_Turnover" placeholder="Enter company turnover" name="Customer.Company_Turnover" value="@(Model.Customer.Company_Turnover == null ? "" : Model.Customer.Company_Turnover)">
                                         </div>
-                                        @if (Model.Customer.Credit_limit == 0)
+                                        @*@if (Model.Customer.Credit_limit == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Credit limit</label>
@@ -231,7 +231,7 @@
                                                 <label for="txtCreditLimit" style="color: #333">Credit limit</label>
                                                 <input type="text" class="form-control input-sm" id="txtCredit_Limit" placeholder="Enter credit limit" name="Customer.Credit_limit" value="@Model.Customer.Credit_limit">
                                             </div>
-                                        }
+                                        }*@
 
                                         @if (Model.Customer.Order_Minimum_Value == 0)
                                         {
@@ -248,7 +248,7 @@
                                             </div>
                                         }
 
-                                        @if (@Model.Customer.Order_Maximum_Value == 0)
+                                        @if (Model.Customer.Order_Maximum_Value == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
@@ -269,7 +269,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == null ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
+                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == DateTime.MinValue ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -278,7 +278,7 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="form-group">
+                                                @*<div class="form-group">
                                                     <label style="color: #333">
                                                         @if (Model.Customer.Auto_Mail_Delivery == true)
                                                         {
@@ -291,7 +291,7 @@
                                                         &nbsp;&nbsp;&nbsp;&nbsp; Auto Mail Delivery
                                                     </label>
                                                     <input type="hidden" id="hdnAuto_Mail_Delivery" value="@((Model.Customer.Auto_Mail_Delivery == null ? false : Model.Customer.Auto_Mail_Delivery).ToString())">
-                                                </div>
+                                                </div>*@
                                             </div>
                                         </div>
 
@@ -299,15 +299,16 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Block_Order == true)
-                                                        {
-                                                            <input type="checkbox" name="chkBlockOrder" checked />
-                                                        }
+                                                        @*@if (Model.Customer.Block_Order == true)
+                                                        {*@
+                                                            @*<input type="checkbox" name="chkBlockOrder" checked />*@
+                                                            <label>Block Order : </label> &nbsp;&nbsp;&nbsp;@(Model.Customer.Block_Order ? "Yes" : "No")
+                                                        @*}
                                                         else
                                                         {
                                                             <input type="checkbox" name="chkBlockOrder" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order*@
                                                     </label>
                                                     <input type="hidden" id="hdnBlock_Order" value="@((Model.Customer.Block_Order== null ? false :Model.Customer.Block_Order).ToString())">
                                                 </div>

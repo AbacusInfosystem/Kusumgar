@@ -10,6 +10,15 @@
         SearchVendors();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmVendorSearch").attr("action", "/master/view-vendor");
+
+        $("#frmVendorSearch").attr("method", "POST");
+
+        $("#frmVendorSearch").submit();
+    });
+
     $('#btnEdit').click(function () {
 
         $("#frmVendorSearch").attr("action", "/Vendor/Get_Vendor_By_Id");

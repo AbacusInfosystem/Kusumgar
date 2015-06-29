@@ -74,11 +74,13 @@
             },
             "User.Password":
             {
-                validate_password: true
+                validate_password: true,
+                password_required: true
             },
             "User.ConformPassword":
             {
-                validate_password: true
+                validate_password: true,
+                conform_password_required: true
             },
             "User.Role_Ids":
             {
@@ -110,7 +112,7 @@
             },
             "User.Mobile_No1":
             {
-                required: "Mobile no1 is required."
+                required: "Mobile no. is required."
             },
             "User.Last_Name":
             {
@@ -150,6 +152,32 @@
         return result;
 
     }, "Password not matched.");
+
+    jQuery.validator.addMethod("password_required", function (value, element) {
+        var result = true;
+
+        if ($("#ChkSystem_User_Flag").is(':checked')) {
+
+            if ($("#txtPassword").val() == "") {
+                result = false;
+            }
+        }
+        return result;
+
+    }, "Password is required.");
+
+    jQuery.validator.addMethod("conform_password_required", function (value, element) {
+        var result = true;
+
+        if ($("#ChkSystem_User_Flag").is(':checked')) {
+
+            if ($("#txtConform_Password").val() == "") {
+                result = false;
+            }
+        }
+        return result;
+
+    }, "Conform password is required.");
 
     jQuery.validator.addMethod("validate_username", function (value, element) {
         var result = true;

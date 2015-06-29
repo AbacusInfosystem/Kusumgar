@@ -93,16 +93,16 @@
 
                                 <div class="row">
                                     <div class="col-md-10 col-xs-10">
-                                        <input type="text" class="form-control input-sm" id="txtReed_Space_Inch" placeholder="Enter Reed Space Inch" name="WArticle.Reed_Space_Inch" value="@Model.WArticle.Reed_Space_Inch">
+                                        <input type="text" class="form-control input-sm" id="txtReed_Space_Inch" placeholder="Enter Reed Space Inch" name="WArticle.Reed_Space_Inch" value="@(Model.WArticle.Reed_Space_Inch == 0 ? "" : Model.WArticle.Reed_Space_Inch.ToString())">
                                     </div>
                                     <div class="col-md-2 col-xs-2">
-                                        @if (Model.WArticle.W_Article_Id == 0)
+                                        @if (Model.WArticle.W_Article_Id == 0 )
                                         { 
                                             <label class="attribute-code">-</label>
                                         }
                                         else
                                         {
-                                            <label class="attribute-code">@Model.WArticle.Reed_Space_Inch</label>
+                                            <label class="attribute-code">@(Model.WArticle.Reed_Space_Inch == 0 ? "-" : Model.WArticle.Reed_Space_Inch.ToString())</label>
                                         }
                                     </div>
                                 </div>
@@ -110,16 +110,16 @@
 
                                 <div class="row">
                                     <div class="col-md-10 col-xs-10">
-                                        <input type="text" class="form-control input-sm" id="txtTotal_No_Ends" placeholder="Enter Total No of Ends" name="WArticle.Total_No_Of_Ends" value="@Model.WArticle.Total_No_Of_Ends" />
+                                        <input type="text" class="form-control input-sm" id="txtTotal_No_Ends" placeholder="Enter Total No of Ends" name="WArticle.Total_No_Of_Ends" value="@(Model.WArticle.Total_No_Of_Ends == 0 ? "" : Model.WArticle.Total_No_Of_Ends.ToString())" />
                                     </div>
                                     <div class="col-md-2 col-xs-2">
-                                        @if (Model.WArticle.W_Article_Id == 0)
+                                        @if (Model.WArticle.W_Article_Id == 0 )
                                         {
                                             <label class="attribute-code">-</label>
                                         }
                                         else
                                         {
-                                            <label class="attribute-code">@Model.WArticle.Total_No_Of_Ends</label>
+                                            <label class="attribute-code">@(Model.WArticle.Total_No_Of_Ends == 0 ? "-" : Model.WArticle.Total_No_Of_Ends.ToString())</label>
                                         }
                                     </div>
                                 </div>

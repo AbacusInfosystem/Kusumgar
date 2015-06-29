@@ -36,7 +36,7 @@ function Bind_Enquiry_Grid(data) {
 
                 htmlText += "<td>";
 
-                htmlText += "<input type='radio' name='r1' id='r1_" + data.Enquiries[i].Enquiry_Id + "' class='iradio_square-green'/>";
+                htmlText += "<input type='radio' name='r1' id='r1_" + data.Enquiries[i].Enquiry_Id + "' class='iradio-list'/>";
 
                 htmlText += "</td>";
             }
@@ -100,7 +100,7 @@ function Bind_Enquiry_Grid(data) {
     $('#tblEnquiry tr:first').after(htmlText);
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -129,6 +129,8 @@ function Bind_Enquiry_Grid(data) {
             $("#btnCreate_Article").show();
         }
     });
+
+    $("#btnCreate_Article").hide();
 
 }
 

@@ -86,7 +86,7 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -146,10 +146,19 @@ function Bind_Customer_Grid(data) {
         $('#tblcustomer tr:first').after(htmlText);
 
   
-        $('input').iCheck({
+        $('.iradio-list').iCheck({
             radioClass: 'iradio_square-green',
             increaseArea: '20%' // optional
-        });
+    });
+
+        //$('input:not(.non-iCheck input:checkbox)').on("onload", function () {
+
+        //    $(this).iCheck({
+        //        checkboxClass: 'icheckbox_square-green',
+        //        radioClass: 'iradio_square-green',
+        //        increaseArea: '20%'
+        //    });
+        //});
 
 
         if (data.Customers.length > 0) {
@@ -195,9 +204,13 @@ function Bind_Customer_Grid(data) {
                 }
               
                 }
-          
-           
         });
+
+        $("#btnEdit").hide();
+        $("#btnViewContact").hide();
+        $("#btnPurchaseHistory").hide();
+        $("#btnBlock").hide();
+        $("#btnUnblock").hide();
     
 }
 
@@ -216,6 +229,22 @@ function PageMore(Id) {
 
     
     SearchCustomer();
+}
+
+function PageMoreByStatus(Id)
+{
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+    SearchCustomerByStatus();
+
 }
 
 function Save_Customer_Order() {

@@ -33,6 +33,8 @@ namespace KusumgarBusinessEntities
 
         public string Process_Name { get; set; }
 
+        public string Processes_Name { get; set; }
+
         #endregion
     }
 
