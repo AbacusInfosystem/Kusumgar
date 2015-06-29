@@ -45,6 +45,15 @@
         $("#frmSearch_customer").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmSearch_customer").attr("action", "/crm/view-customer");
+
+        $("#frmSearch_customer").attr("method", "POST");
+
+        $("#frmSearch_customer").submit();
+    });
+
     $("#btnSearch").click(function () {
         $('#hdfCurrentPage').val(0);
 

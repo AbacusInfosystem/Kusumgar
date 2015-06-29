@@ -282,17 +282,26 @@ namespace KusumgarDataAccess
             return sqlParamList;
         }
 
-        public List<MaterialVendorInfo> Get_Material_Vendors_By_Id(int Material_Id, ref PaginationInfo pager)
+        public List<MaterialVendorInfo> Get_Material_Vendors_By_Id(int Material_Id)
         {
             List<MaterialVendorInfo> Material_Vendors = new List<MaterialVendorInfo>();
             List<SqlParameter> sqlParams = new List<SqlParameter>();
             sqlParams.Add(new SqlParameter("@Material_Id", Material_Id));
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Material_Vendors_By_Id_Sp.ToString(), CommandType.StoredProcedure);
-            //var tupleData = CommonMethods.GetRows(dt, pager);
-
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            if (dt != null && dt.Rows.Count > 0)
             {
-                Material_Vendors.Add(Get_Material_Vendor_Values(dr));
+                int count = 0;
+
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+
+                foreach (DataRow dr in drList)
+                {
+                    Material_Vendors.Add(Get_Material_Vendor_Values(dr));
+                }
             }
             return Material_Vendors;
         }

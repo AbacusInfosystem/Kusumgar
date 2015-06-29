@@ -2100,6 +2100,8 @@
     <Content Include="Views\PostLogin\CRM\Complaint\_InsertComplaint.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\View.cshtml" />
     <Content Include="Views\PostLogin\Master\Quality\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Customer\View.cshtml" />
+    <Content Include="Views\PostLogin\CRM\Customer\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -158,14 +158,7 @@ function Bind_Customer_Contact_Type_Data_Callback(data) {
     }
     $("#tblConTypeGrid").find("tr:gt(0)").remove();
 
-    $('#tblConTypeGrid tr:first').after(htmlText);
-
-    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
-
-        $('.pagination').html(data.Pager.PageHtmlString);
-    }
+    $('#tblConTypeGrid tr:first').after(htmlText);    
 
     $("#divSearchGridOverlay").hide();
 

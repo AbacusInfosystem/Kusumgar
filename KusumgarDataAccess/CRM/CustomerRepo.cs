@@ -947,15 +947,25 @@ namespace KusumgarDataAccess
             return sqlParams;
         }
 
-        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id, ref PaginationInfo pager)
+        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id)
         {
             List<CustomerContactTypeInfo> customerContactTypes = new List<CustomerContactTypeInfo>();
             List<SqlParameter> sqlParam = new List<SqlParameter>();
             sqlParam.Add(new SqlParameter("@Customer_Id", customer_Id));
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_Customer_Contact_Type_By_Id_Sp.ToString(), CommandType.StoredProcedure);
-            foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
+            if (dt != null && dt.Rows.Count > 0)
             {
-                customerContactTypes.Add(Get_Customer_Contact_Type_Values(dr));
+                int count = 0;
+
+                List<DataRow> drList = new List<DataRow>();
+
+                drList = dt.AsEnumerable().ToList();
+
+                count = drList.Count();
+                foreach (DataRow dr in drList)
+                {
+                    customerContactTypes.Add(Get_Customer_Contact_Type_Values(dr));
+                }
             }
             return customerContactTypes;
         }

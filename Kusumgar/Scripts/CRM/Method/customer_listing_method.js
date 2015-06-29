@@ -174,6 +174,7 @@ function Bind_Customer_Grid(data) {
                 $("#hdfCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#hdCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#hdfCustomer_Name").val($("#Cust_" + this.id.replace("r1_", "")).text());
+                $("#btnView").show();
                 $("#btnEdit").show();
                 $("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();
@@ -202,6 +203,7 @@ function Bind_Customer_Grid(data) {
 
 function PageMore(Id) {
 
+    $("#btnView").hide();
     $("#btnEdit").hide();
     $("#btnViewContact").hide();
     $("#btnPurchaseHistory").hide();

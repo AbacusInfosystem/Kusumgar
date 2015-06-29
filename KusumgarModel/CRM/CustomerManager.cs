@@ -200,9 +200,9 @@ namespace KusumgarModel
             _customerRepo.Insert_Customer_Contact_Type(CustomerContactType);
         }
 
-        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id, ref PaginationInfo pager)
+        public List<CustomerContactTypeInfo> Get_Customer_Contact_Type_By_Id(int customer_Id)
         {
-            return _customerRepo.Get_Customer_Contact_Type_By_Id(customer_Id, ref pager);
+            return _customerRepo.Get_Customer_Contact_Type_By_Id(customer_Id);
         }
 
         public void Delete_Customer_Contact_Type_By_Id(int customer_Contact_Type_Id)
