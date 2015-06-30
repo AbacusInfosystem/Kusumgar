@@ -907,16 +907,16 @@ namespace Kusumgar
             #region P Article
 
             routes.MapRoute(
-            name: "p-article-1",
-            url: "master/p-article",
-            defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+           name: "p-article-1",
+           url: "master/p-article",
+           defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "p-article-2",
-            url: "master/p-article/get-by-id",
-            defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+          name: "p-article-2",
+          url: "master/p-article/get-by-id",
+          defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "p-article-3",
@@ -1149,17 +1149,17 @@ namespace Kusumgar
             // defaults: new { controller = "CustomerQuality", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
-            //routes.MapRoute(
-            //name: "customer-quality-8",
-            //url: "master/insert-customer-quality-attachment",
-            //defaults: new { controller = "CustomerQuality", action = "Insert_Attachment", id = UrlParameter.Optional },
-            //namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "customer-quality-8",
+            url: "master/view-customer-quality",
+            defaults: new { controller = "CustomerQuality", action = "View_Customer_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-            //routes.MapRoute(
-            //name: "customer-quality-9",
-            //url: "master/update-customer-quality-attachment",
-            //defaults: new { controller = "CustomerQuality", action = "Update_Attachment", id = UrlParameter.Optional },
-            //namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "customer-quality-9",
+            url: "master/print-view-customer-quality",
+            defaults: new { controller = "CustomerQuality", action = "Printable_Customer_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

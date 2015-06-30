@@ -1,4 +1,4 @@
-﻿@model Kusumgar.Models.CustomerViewModel
+﻿@model Kusumgar.Models.CustomerQualityViewModel
 @using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
@@ -18,19 +18,3 @@
 
 </div>
 <!-- /.content-wrapper -->
-<script>
-    $(function () {
-
-        $("#btnPrintable_View").click(function () {
-
-            $("#frmPrintable_Customer").attr("action", "/system/printable-view/Customer/" + $("#hdfCustomer_Id").val());
-
-            $("#frmPrintable_Customer").attr("method", "POST");
-
-            $("#frmPrintable_Customer").attr("target", "_blank");
-
-            $("#frmPrintable_Customer").submit();
-
-        });
-    });
-</script>

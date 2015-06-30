@@ -633,10 +633,13 @@ namespace Kusumgar.Controllers
         public ActionResult View_Customer(CustomerViewModel cViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Search";
-
+            ContactManager contactMan = new ContactManager();
+            PaginationInfo pager = new PaginationInfo();
             try
             {
                 cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
+                cViewModel.Customer.Expiration_Date_Of_Contract = cViewModel.Customer.Expiration_Date_Of_Contract.Date;
+                cViewModel.Customer.Contacts = contactMan.Get_Contacts_By_Name(cViewModel.Customer.Customer_Id, ref pager);
                 cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id);
             }
             catch (Exception ex)
