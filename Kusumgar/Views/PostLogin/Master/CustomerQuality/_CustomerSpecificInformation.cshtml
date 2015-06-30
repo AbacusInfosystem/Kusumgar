@@ -2,17 +2,29 @@
 @using KusumgarBusinessEntities.Common
 
 
-<script src="~/Scripts/Master/Event/customer_quality_event.js"></script>
+    <script src="~/Scripts/Master/Event/customer_quality_event.js"></script>
     <script src="~/Scripts/Master/Method/customer_quality_method.js"></script>
     <script src="~/Scripts/Master/Validation/customer_quality_validation.js"></script>
 
+<style>
+    .div-drag-drop {
+        width: 100%;
+        background-color: rgb(255, 255, 214);
+        height: 100px;
+        border: 1px dashed #E7E7E7;
+        text-align: center;
+        color: #878787;
+        border-radius: 7px;
+    }
+
+</style>
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
                 <li><a href="#tab_2" data-toggle="tab" id="tbCustomer_Specific_Information">Customer Specific Information</a></li>
                 <li><a href="#tab_3" data-toggle="tab" id="tbAttachment">Attachments</a></li>
-                <li><a href="#tab_4" data-toggle="tab" id="Spefic_Functional_Standerds">Specific Funcational Standards</a></li>
+                <li><a href="#tab_4" data-toggle="tab" id="Spefic_Functional_Standerds">Specific Functional Standards</a></li>
                 <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
             </ul>
             <div class="tab-content">
@@ -171,213 +183,180 @@
 
 
                 <div class="tab-pane" id="tab_3">
+                    <form id="frmAttachment">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group ">
-                                    <label for="txtLabel_Details">Label Details</label>
-                                    <textarea class="form-control input-sm" id="txtLabel_Details" placeholder="Enter Label Details"></textarea>
+                                @*<input type="hidden" id="hdnRefType" value="@Model.Attachment.Ref_Type">*@
+
+                                <div class="form-group">
+                                    <label for="drpRef_Type" style="color: #333">Referance Type</label>
+                                    <select class="form-control" id="drpRef_Type" name="Attachment.Ref_Type">
+                                        <option value="">-Select Referance Type-</option>
+                                        @foreach (var item in LookupInfo.Get_RefTypes())
+                                        {
+                                            if (Model.Attachment.Ref_Type == item.Key)
+                                            {
+                                                <option value="@item.Key" selected="selected">@item.Value</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Key">@item.Value</option>
+                                            }
+                                        }
+                                    </select>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtLabel_Details">Attach Label Details</label>
-                                    <input type="file" class="form-control input-sm" id="fileselect" name="fileselect[]" multiple="multiple" />
+                                    <label for="txtRemark">Remark</label>
+                                    <textarea class="form-control input-sm" id="txtRemark" placeholder="Enter Remark" name="Attachment.Remark"></textarea>
                                 </div>
-                                <div class="form-group ">
-                                    <div id="Labelfiledrag" style="border: 1px dashed;font-weight: bold; text-align: center; padding: 1em 0; margin: 1em 0; color: #555; border-radius: 7px; cursor: default;">
-                                        or drop files here
-                                    </div>
+                                <div class="form-group">
+                                    <label for="drag_drop_file" style="color: #333">Attach Files</label>
+                                    <div class="div-drag-drop" id="drag_drop_file" style="display:none;">drag and drop here.</div>
+                                    <br>
+                                    <div class="multiple-list"></div>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="txtReport_Details">Report Format Details</label>
-                                    <textarea class="form-control input-sm" id="txtReport_Details" placeholder="Enter Label Details"></textarea>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="fileReport_Details">Attach Report Format Details</label>
-                                    <input type="file" class="form-control input-sm" id="fileReport_Details" name="fileselect[]" multiple="multiple" />
-                                </div>
-                                <div class="form-group ">
-                                    <div id="Report_Details_filedrag" style="border: 1px dashed;font-weight: bold; text-align: center; padding: 1em 0; margin: 1em 0; color: #555; border-radius: 7px; cursor: default;">
-                                        or drop files here
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="txtLabel_Details">Customer Given Information</label>
-                                    <textarea class="form-control input-sm" id="txtCustomer_Given_Information" placeholder="Enter Customer Given Information"></textarea>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="fileCustomer_Given_Information">Attach Customer Given Information</label>
-                                    <input type="file" class="form-control input-sm" id="fileCustomer_Given_Information" name="fileselect[]" multiple="multiple" />
-                                </div>
-                                <div class="form-group ">
-                                    <div id="Customer_Given_Information_filedrag" style="border: 1px dashed;font-weight: bold; text-align: center; padding: 1em 0; margin: 1em 0; color: #555; border-radius: 7px; cursor: default;">
-                                        or drop files here
-                                    </div>
-                                </div>
+
                             </div>
-                            <div class="col-md-8 ">
-                                <div class="table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>File Name</th>
-                                            <th>File Size</th>
-                                            <th>Type</th>
-                                            <th style="min-width: 81px;">&nbsp; </th>
-                                        </tr>
-                                        <tr>
-                                            <td>File 1</td>
-                                            <td>1024</td>
-                                            <td>Label</td>
-                                            <td>
-                                                <div class="btn-group pull-right">
-                                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>File 2</td>
-                                            <td>1024</td>
-                                            <td>Report</td>
-                                            <td>
-                                                <div class="btn-group pull-right">
-                                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>File 3</td>
-                                            <td>1024</td>
-                                            <td>Customer Information</td>
-                                            <td>
-                                                <div class="btn-group pull-right">
-                                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>File 4</td>
-                                            <td>1024</td>
-                                            <td>Label</td>
-                                            <td>
-                                                <div class="btn-group pull-right">
-                                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>File 5</td>
-                                            <td>1024</td>
-                                            <td>Customer Information</td>
-                                            <td>
-                                                <div class="btn-group pull-right">
-                                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>File 6</td>
-                                            <td>1024</td>
-                                            <td>Report</td>
-                                            <td>
-                                                <div class="btn-group pull-right">
-                                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                            <div class="col-md-4 ">
+                                <div class="form-group">   
+                                    <br>
+                                    <div class="multiple-list"></div>
                                 </div>
                             </div>
                         </div>
-                    <div class=" box-footer">
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-success btn-sm">Save Customer Specific Information</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                @*<button type="button" id="btnSave_Attachment" class="btn btn-success btn-sm">Save Attachment</button>*@
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 <div class="tab-pane " id="tab_4">
+                    <div class="box-body">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="btn-group form-group ">
-                                    <label for="txtTest_Name">Test Name</label>
-                                    <input type="text" class="form-control input-sm" id="txtTest_Name" placeholder="Enter Test Name">
+
+                            <form id="frmSpecific_Functional_Standards_Test">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtTest" style="color: #333">Test Name</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control input-sm" id="txtTest" />
+                                            <input type="hidden" id="hdnTest" name="Test">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success btn-flat" type="button" id="btnAdd_Test">Add</button>
+                                            </span>
+                                        </div>
+                                        <br>
+                                        <div class="multiple-list"></div>
+                                    </div>
+
+                                    <!-- /input-group -->
+
                                 </div>
-                                <div class="form-group ">
-                                    <label for="txtUnit_Name">Unit Name</label>
-                                    <input type="text" class="form-control input-sm" id="txtUnit_Name" placeholder="Enter Unit Name">
+                            </form>
+                            <form id="frmSpecific_Functional_Standards_Unit">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtUnit" style="color: #333">Unit Name</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" id="txtUnit">
+                                            <input type="hidden" id="hdnUnit" name="Unit">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success btn-flat" type="button" id="btnAdd_Unit">Add</button>
+                                            </span>
+                                        </div>
+                                        <br>
+                                        <div class="multiple-list"></div>
+                                    </div>
+                                    <!-- /input-group -->
                                 </div>
-                            </div>
-                            <div class="col-md-8 ">
-                                <table class="table table-hover">
-                                    <tr>
-                                        <th>Test Name</th>
-                                        <th>Unit Name</th>
-                                        <th style="min-width: 81px;">&nbsp; </th>
-                                    </tr>
-                                    <tr>
-                                        <td>Test 1</td>
-                                        <td>Unit 1</td>
-                                        <td>
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Test 2</td>
-                                        <td>Unit 2</td>
-                                        <td>
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Test 3</td>
-                                        <td>Unit 3</td>
-                                        <td>
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Test 4</td>
-                                        <td>Unit 4</td>
-                                        <td>
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Test 5</td>
-                                        <td>Unit 5</td>
-                                        <td>
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Test 6</td>
-                                        <td>Unit 6</td>
-                                        <td>
-                                            <div class="btn-group pull-right">
-                                                <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    <div class="box-footer">
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-success btn-sm">Save Test</button>
-                            <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle and Open Search</a>
+                            </form>
+
+                            @*<div class="col-md-4">
+                    <div class="btn-group form-group ">
+                        <label for="txtTest_Name">Test Name</label>
+                        <input type="text" class="form-control input-sm" id="txtTest_Name" placeholder="Enter Test Name">
+                    </div>
+                    <div class="form-group ">
+                        <label for="txtUnit_Name">Unit Name</label>
+                        <input type="text" class="form-control input-sm" id="txtUnit_Name" placeholder="Enter Unit Name">
+                    </div>
+                </div>
+                <div class="col-md-8 ">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Test Name</th>
+                            <th>Unit Name</th>
+                            <th style="min-width: 81px;">&nbsp; </th>
+                        </tr>
+                        <tr>
+                            <td>Test 1</td>
+                            <td>Unit 1</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 2</td>
+                            <td>Unit 2</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 3</td>
+                            <td>Unit 3</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 4</td>
+                            <td>Unit 4</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 5</td>
+                            <td>Unit 5</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 6</td>
+                            <td>Unit 6</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>*@
                         </div>
                     </div>
+                        <div class="box-footer">
+                            <div class="btn-group">
+                                @*<button type="button" class="btn btn-success btn-sm">Save Test</button>*@
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                            </div>
+                        </div>
 
-                </div>
+                    </div>
 
             </div>
         </div>

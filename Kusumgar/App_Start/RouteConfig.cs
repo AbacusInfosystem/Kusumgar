@@ -760,6 +760,18 @@ namespace Kusumgar
             defaults: new { controller = "YArticle", action = "Get_Work_Stations_By_Code_Purpose", work_Station_Code = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "y-article-9",
+            url: "master/view-y-article",
+            defaults: new { controller = "YArticle", action = "View_Y_Article", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "y-article-10",
+            url: "master/print-view-y-article",
+            defaults: new { controller = "YArticle", action = "Printable_Y_Article", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region W Article
@@ -804,6 +816,18 @@ namespace Kusumgar
             name: "w-article-7",
             url: "master/w-articles-by-full-code/{full_Code}",
             defaults: new { controller = "WArticle", action = "Get_WArticles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-8",
+            url: "master/view-w-article",
+            defaults: new { controller = "WArticle", action = "View_W_Article", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "w-article-9",
+            url: "master/print-view-w-article",
+            defaults: new { controller = "WArticle", action = "Printable_W_Article", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -863,16 +887,16 @@ namespace Kusumgar
             #region P Article
 
             routes.MapRoute(
-           name: "p-article-1",
-           url: "master/p-article",
-           defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "p-article-1",
+            url: "master/p-article",
+            defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-          name: "p-article-2",
-          url: "master/p-article/get-by-id",
-          defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
+            name: "p-article-2",
+            url: "master/p-article/get-by-id",
+            defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "p-article-3",
@@ -897,6 +921,19 @@ namespace Kusumgar
             url: "master/p-articles-by-full-code/{full_Code}",
             defaults: new { controller = "PArticle", action = "Get_PArticles_By_Full_Code", full_Code = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "p-article-7",
+            url: "master/view-p-article",
+            defaults: new { controller = "PArticle", action = "View_P_Article", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "p-article-8",
+            url: "master/print-view-p-article",
+            defaults: new { controller = "PArticle", action = "Printable_P_Article", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region C Article
@@ -941,6 +978,18 @@ namespace Kusumgar
             name: "c-article-7",
             url: "master/c-articles-by-full-code/{full_Code}",
             defaults: new { controller = "CArticle", action = "Get_CArticles_By_Full_Code", full_Code = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-8",
+            url: "master/view-c-article",
+            defaults: new { controller = "CArticle", action = "View_C_Article", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "c-article-9",
+            url: "master/print-view-c-article",
+            defaults: new { controller = "CArticle", action = "Printable_C_Article", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -1079,6 +1128,18 @@ namespace Kusumgar
             defaults: new { controller = "CustomerQuality", action = "Update_Details", id = UrlParameter.Optional },
             // defaults: new { controller = "CustomerQuality", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            //routes.MapRoute(
+            //name: "customer-quality-8",
+            //url: "master/insert-customer-quality-attachment",
+            //defaults: new { controller = "CustomerQuality", action = "Insert_Attachment", id = UrlParameter.Optional },
+            //namespaces: new string[] { "Kusumgar.Controllers" });
+
+            //routes.MapRoute(
+            //name: "customer-quality-9",
+            //url: "master/update-customer-quality-attachment",
+            //defaults: new { controller = "CustomerQuality", action = "Update_Attachment", id = UrlParameter.Optional },
+            //namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

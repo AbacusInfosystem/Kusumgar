@@ -381,7 +381,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Material_Vendors_By_Id_Sp,
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
-Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Material_SubCategory_By_CategoryId_Sp,
         Get_Materials_By_Material_Id_Vendor_Id_Sp,
         Get_Materials_By_Vendor_Id_Sp,
 
@@ -570,13 +570,13 @@ Get_Material_SubCategory_By_CategoryId_Sp,
         Euros = 3,
         Pounds = 4,
     }
+
     public enum PriorityOrder
     {
         Primary = 1,
         Secondary = 2,
         Last_Option = 3,
     }
-
 
     public enum PaymentTerms
     {
@@ -659,7 +659,11 @@ Get_Material_SubCategory_By_CategoryId_Sp,
 
     public enum RefType
     {
-        Enquiry = 1, 
+        Enquiry = 1,
+
+        Label = 2,
+        Report_Format = 3,
+        Customer_Given = 4,
     }
 
     public enum DispatchType

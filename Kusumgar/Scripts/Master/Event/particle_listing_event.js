@@ -15,6 +15,14 @@
         $("#frmSearchPArticle").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmSearchPArticle").attr("action", "/master/view-p-article");
+
+        $("#frmSearchPArticle").attr("method", "POST");
+
+        $("#frmSearchPArticle").submit();
+    });
 
 
     $("#btnSearch").click(function () {

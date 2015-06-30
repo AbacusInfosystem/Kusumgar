@@ -228,6 +228,7 @@ namespace KusumgarDataAccess
             bank_details.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
             bank_details.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
             bank_details.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            bank_details.Bank_Name = Convert.ToString(dr["Bank_Name"]);     //
 
             bank_details.Vat = Convert.ToString(dr["Vat"]);
             if (dr["Currency_Id"] != DBNull.Value)

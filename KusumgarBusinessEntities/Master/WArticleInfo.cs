@@ -45,6 +45,9 @@ namespace KusumgarBusinessEntities
 
         public string Yarn_Type_Name { get; set; }
 
+        //
+        public string Yarn_Type_Code { get; set; }
+
         #endregion
     }
 }

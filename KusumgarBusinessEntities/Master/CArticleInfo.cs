@@ -67,6 +67,19 @@ namespace KusumgarBusinessEntities
 
         public string Type_Name { get; set; }
 
+        //
+        public string Yarn_Type_Code { get; set; }
+
+        public string Weave_Code { get; set; }
+
+        public string Shade_Code { get; set; }
+
+        public string Chemical_Finish_Code { get; set; }
+
+        public string Mechanical_Finish_Code { get; set; }
+
+        public string Type_Code { get; set; }
+
         #endregion
     }
 }

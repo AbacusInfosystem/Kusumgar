@@ -86,7 +86,7 @@ function Upload(file, data) {
 
         var key = result[i][j];
 
-        var value = result[i][j + 1];
+        var value = $(result[i][j + 1]).val();
 
         xhr.setRequestHeader(key, value);
     }

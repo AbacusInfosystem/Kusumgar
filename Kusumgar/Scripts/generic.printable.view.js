@@ -30,5 +30,25 @@
         $("#dvLoad_Printabel_View").load("/master/print-view-g-article", { G_Article_Id: $("#hdfId").val() }, null);
     }
 
+    if ($("#hdfpage_String").val() == "P_Article")
+    {
+        $("#dvLoad_Printabel_View").load("/master/print-view-p-article", { P_Article_Id: $("#hdfId").val() }, null);
+    }
+
+    if ($("#hdfpage_String").val() == "C_Article")
+    {
+        $("#dvLoad_Printabel_View").load("/master/print-view-c-article", { C_Article_Id: $("#hdfId").val() }, null);
+    }
+
+    if ($("#hdfpage_String").val() == "Y_Article")
+    {
+        $("#dvLoad_Printabel_View").load("/master/print-view-y-article", { Y_Article_Id: $("#hdfId").val() }, null);
+    }
+
+    if ($("#hdfpage_String").val() == "W_Article")
+    {
+        $("#dvLoad_Printabel_View").load("/master/print-view-w-article", { W_Article_Id: $("#hdfId").val() }, null);
+    }
+
 
 });

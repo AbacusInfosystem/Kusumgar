@@ -24,6 +24,8 @@ namespace KusumgarBusinessEntities.Common
 
         public DateTime UpdatedOn { get; set; }
 
+        public string Remark { get; set; }
+
         #region Additional Fields
 
         public string Label 

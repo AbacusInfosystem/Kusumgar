@@ -99,3 +99,4 @@ function Multiple_Autocomplete(elementObject, data, callback)
         $(this).parents('li').remove();
     });
 }
+

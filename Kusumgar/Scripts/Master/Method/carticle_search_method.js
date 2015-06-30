@@ -118,6 +118,7 @@ function Bind_CArticle_Grid(data) {
         if ($(this).prop('checked')) {
             $("#hdfC_Article_Id").val(this.id.replace("r1_", ""));
             $("#btnEdit").show();
+            $("#btnView").show();
         }
     });
 
@@ -126,6 +127,7 @@ function Bind_CArticle_Grid(data) {
 function PageMore(Id) {
 
     $("#btnEdit").hide();
+    $("#btnView").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

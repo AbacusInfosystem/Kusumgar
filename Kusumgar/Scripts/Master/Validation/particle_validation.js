@@ -35,7 +35,8 @@
             },
             "PArticle.P_Finish_width":
             {
-                required: true
+                required: true,
+                number: true
                
             },
             "PArticle.Type_Id":

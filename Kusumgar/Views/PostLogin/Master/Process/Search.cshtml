@@ -6,7 +6,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-    @*@{Html.RenderPartial("_ServerMessage");}*@
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -74,6 +74,7 @@
                                 <tr id="subhead">
                                     <th></th>
                                     <th>Process Name</th>
+                                    <th>Article Type</th>
                                     <th>Is Active</th>                                    
                                 </tr>
                             </table>

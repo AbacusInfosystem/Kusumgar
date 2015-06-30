@@ -113,7 +113,7 @@ $(function () {
     // Start : Attachments
 
     // Drag and Drop Initialization
-    InitializeDragDrop($("#Enquiry_Attach_Emails_Files"), "/ajax/attachments", Callback, { RefType: $('#hdnRefType').val(), RefId: $('#hdnEnquiry_Id').val() });
+    InitializeDragDrop($("#Enquiry_Attach_Emails_Files"), "/ajax/attachments", Callback, { RefType: $('#hdnRefType'), RefId: $('#hdnEnquiry_Id') });
 
     Bind_Attachments();
 

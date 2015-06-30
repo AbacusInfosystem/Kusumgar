@@ -39,9 +39,26 @@ function Bind_Process_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += data.Processes[i].Is_Active;
+        htmlText += data.Processes[i].Article_Type_Name;
 
         htmlText += "</td>";
+
+        if (data.Processes[i].Is_Active == true) {
+
+            htmlText += "<td>";
+
+            htmlText += "Active";
+
+            htmlText += "</td>";
+        }
+        if (data.Processes[i].Is_Active == false) {
+
+            htmlText += "<td>";
+
+            htmlText += "Inactive";
+
+            htmlText += "</td>";
+        }
         
         htmlText += "</tr>";
     }

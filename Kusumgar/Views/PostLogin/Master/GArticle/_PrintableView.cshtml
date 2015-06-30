@@ -30,15 +30,26 @@
                                 </div>
                                 <br />
 
+                                @if (Model.G_Article.Quality_No != 0)
+                                {
                                 <div class="form-group">
                                     <label style="color: #333">Quality No : </label>@Model.G_Article.Quality_No (@Model.G_Article.Quality_No)
                                 </div>
-                                <div class="form-group">
-                                    <label style="color: #333">Yarn Type : </label> @Model.G_Article.Yarn_Type_Name (@Model.G_Article.Yarn_Type_Code)
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: #333">Weave : </label>@Model.G_Article.Weave_Name (@Model.G_Article.Weave_Code)  
-                                </div>
+                                }
+                                
+                                @if (Model.G_Article.Yarn_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Yarn Type : </label> @Model.G_Article.Yarn_Type_Name (@Model.G_Article.Yarn_Type_Code)
+                                    </div>
+                                }
+                                
+                                @if (Model.G_Article.Weave != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Weave : </label>@Model.G_Article.Weave_Name (@Model.G_Article.Weave_Code)
+                                    </div>
+                                }
                                 <div class="form-group">
                                     <label style="color: #333">Grey with Cms : </label> @Model.G_Article.Grey_with_Cms (@Model.G_Article.Grey_with_Cms)
                                 </div>

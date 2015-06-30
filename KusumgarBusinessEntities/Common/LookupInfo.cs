@@ -317,5 +317,21 @@ namespace KusumgarBusinessEntities.Common
             return Get_Lot_No;
         }
 
+        //
+        public static Dictionary<int, string> Get_RefTypes()
+        {
+            Dictionary<int, string> Get_RefTypes = new Dictionary<int, string>();
+
+            //Get_RefTypes.Add(1, RefType.Enquiry.ToString().Replace('_', ' ').ToString());
+                
+            Get_RefTypes.Add(2, RefType.Label.ToString().Replace('_', ' ').ToString());
+
+            Get_RefTypes.Add(3, RefType.Report_Format.ToString().Replace('_', ' ').ToString());
+
+            Get_RefTypes.Add(4, RefType.Customer_Given.ToString().Replace('_', ' ').ToString());
+
+            return Get_RefTypes;
+        }
+
     }
 }

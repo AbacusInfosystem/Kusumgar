@@ -150,6 +150,7 @@ namespace Kusumgar.Controllers
             catch (Exception ex)
             {
                 wViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
                 Logger.Error("WArticle Controller - Update " + ex.ToString());
             }
             return Index(wViewModel);
@@ -167,6 +168,50 @@ namespace Kusumgar.Controllers
                 Logger.Error("WArticle Controller - Get_WArticles_By_Full_Code " + ex.ToString());
             }
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
+        }
+
+        //
+        public ActionResult View_W_Article(WArticleViewModel wViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                wViewModel.WArticle = _wArticleMan.Get_WArticle_By_Id(wViewModel.WArticle.W_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                wViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("WArticle Controller - View_W_Article " + ex.ToString());
+            }
+
+            return View("View", wViewModel);
+        }
+
+
+        public PartialViewResult Printable_W_Article(int w_Article_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            WArticleViewModel wViewModel = new WArticleViewModel();
+
+            wViewModel.WArticle.W_Article_Id = w_Article_Id;
+
+            try
+            {
+                wViewModel.WArticle = _wArticleMan.Get_WArticle_By_Id(wViewModel.WArticle.W_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                wViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("WArticle Controller - Printable_W_Article " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", wViewModel);
         }
 
     }

@@ -66,9 +66,9 @@ namespace Kusumgar.Controllers
                 var fileType = Request.Headers["X-File-Type"];
                 var ref_Id = Request.Headers["RefId"];
                 var ref_Type = Request.Headers["RefType"];
+                var remark = Request.Headers["Remark"];
 
                
-
                 aViewModel.Attachment.Document_Name = fileName;
 
                 aViewModel.Attachment.Ref_Type = Convert.ToInt32(ref_Type);
@@ -82,6 +82,8 @@ namespace Kusumgar.Controllers
                 aViewModel.Attachment.CreatedOn = DateTime.Now;
 
                 aViewModel.Attachment.UpdatedOn = DateTime.Now;
+
+                aViewModel.Attachment.Remark = remark;
 
                  var saveToFileLoc = string.Format("{0}\\{1}",
                                                Server.MapPath("/uploads/" + aViewModel.Attachment.Ref_Type_Str + "/" + aViewModel.Attachment.Ref_Id),
