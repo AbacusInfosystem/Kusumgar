@@ -2104,6 +2104,8 @@
     <Content Include="Views\PostLogin\Master\GArticle\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\CRM\Customer\View.cshtml" />
     <Content Include="Views\PostLogin\CRM\Customer\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\CustomerQuality\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

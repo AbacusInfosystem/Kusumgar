@@ -1098,6 +1098,18 @@ namespace Kusumgar
             // defaults: new { controller = "CustomerQuality", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "customer-quality-8",
+            url: "master/view-customer-quality",
+            defaults: new { controller = "CustomerQuality", action = "View_Customer_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-9",
+            url: "master/print-view-customer-quality",
+            defaults: new { controller = "CustomerQuality", action = "Printable_Customer_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
             #endregion
 
             #region User
