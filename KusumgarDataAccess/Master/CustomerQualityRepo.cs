@@ -329,5 +329,46 @@ namespace KusumgarDataAccess
              return customer_Quality;
          }
 
+        //
+         public void Insert_Attachment(AttachmentsInfo attachment)
+         {
+             //int attachment_Id = 0;
+
+             _sqlRepo.ExecuteNonQuery(Set_Values_In_Attachment(attachment), StoredProcedures.Insert_Attachment_Sp.ToString(), CommandType.StoredProcedure);
+
+             //attachment_Id = Convert.ToInt32(_sqlRepo.ExecuteNonQuery(Set_Values_In_Attachment(attachment), StoredProcedures.Insert_Attachment_Sp.ToString(), CommandType.StoredProcedure));
+
+             //return attachment_Id;
+         }
+
+         //public void Update_Attachment(AttachmentsInfo attachment)
+         //{
+         //    _sqlRepo.ExecuteNonQuery(Set_Values_In_Attachment(attachment), StoredProcedures.Update_Attachment_Sp.ToString(), CommandType.StoredProcedure);
+         //}
+
+         private List<SqlParameter> Set_Values_In_Attachment(AttachmentsInfo attachment)
+         {
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+             if (attachment.Attachment_Id != 0)
+             {
+                 sqlParams.Add(new SqlParameter("@Attachment_Id", attachment.Attachment_Id));
+             }
+             sqlParams.Add(new SqlParameter("@Ref_Id", attachment.Ref_Id));
+             sqlParams.Add(new SqlParameter("@Ref_Type", attachment.Ref_Type));
+             sqlParams.Add(new SqlParameter("@Document_Name", attachment.Document_Name));
+             sqlParams.Add(new SqlParameter("@Remark", attachment.Remark));
+             
+             if (attachment.Attachment_Id == 0)
+             {
+                 sqlParams.Add(new SqlParameter("@CreatedBy", attachment.CreatedBy));
+                 sqlParams.Add(new SqlParameter("@CreatedOn", attachment.CreatedOn));
+             }
+             sqlParams.Add(new SqlParameter("@UpdatedBy", attachment.UpdatedBy));
+             sqlParams.Add(new SqlParameter("@UpdatedOn", attachment.UpdatedOn));
+             
+             return sqlParams;
+         }
+
     }
 }

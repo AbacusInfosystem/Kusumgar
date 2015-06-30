@@ -249,6 +249,22 @@ function PageMoreByStatus(Id)
 
 }
 
+function PageMoreByStatus(Id) {
+
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+
+    SearchCustomerByStatus();
+}
+
 function Save_Customer_Order() {
 
     var cViewModel = Set_Customer_Order();

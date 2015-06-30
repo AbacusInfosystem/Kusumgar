@@ -1,7 +1,6 @@
 ﻿$(function () {
     $("#frmWork_Station").validate({
-
-
+       
         rules: {
             "Work_Station.Factory_Id":
                 {

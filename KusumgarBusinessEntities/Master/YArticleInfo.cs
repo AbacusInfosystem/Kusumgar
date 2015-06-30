@@ -103,6 +103,33 @@ namespace KusumgarBusinessEntities
 
         public string Work_Center_Code { get; set; }
 
+        //
+        public string Denier_Code { get; set; }
+
+        public string Twist_Mingle_Code { get; set; }
+
+        public string Twist_Type_Code { get; set; }
+
+        public string Ply_Code { get; set; }
+
+        public string Yarn_Type_Code { get; set; }
+
+        public string Shade_Code { get; set; }
+
+        public string Filaments_Code { get; set; }
+
+        public string Origin_Code { get; set; }
+
+        public string Shrinkage_Code { get; set; }
+
+        public string Tenasity_Code { get; set; }
+
+        public string Chemical_Treatment_Code { get; set; }
+
+        public string Colour_Code { get; set; }
+
+        public string Supplier_Code { get; set; }
+
         #endregion
 
     }

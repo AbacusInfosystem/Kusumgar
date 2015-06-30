@@ -43,7 +43,25 @@
                                     <div class="form-group">
                                         <label for="txtProcessName" style="color: #333">Process Name</label>
                                         <input type="text" class="form-control input-sm" name="Process.Process_Name" id="txtProcessName" placeholder="Enter Process Name" value="@Model.Process.Process_Name">
-                                    </div>                                    
+                                    </div> 
+                                    <div class="form-group">
+                                        <label for="drpArticle_Types" style="color: #333">Article Types</label>
+                                        <select id="drpArticle_Types" class="form-control input-sm" name="Process.Article_Type">
+                                            <option value="">Select Article_Types</option>
+                                            @foreach (var item in LookupInfo.Get_Article_Types())
+                                            {
+                                                if (Model.Process.Article_Type == item.Key)
+                                                {
+                                                    <option value="@item.Key" selected="selected">@item.Value</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                                                       
                                     <div class="form-group">
                                         <label>
                                             @if (Model.Process.Is_Active == true)

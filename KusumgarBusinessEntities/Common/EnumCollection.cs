@@ -575,13 +575,13 @@ namespace KusumgarBusinessEntities.Common
         Euros = 3,
         Pounds = 4,
     }
+
     public enum PriorityOrder
     {
         Primary = 1,
         Secondary = 2,
         Last_Option = 3,
     }
-
 
     public enum PaymentTerms
     {
@@ -664,7 +664,11 @@ namespace KusumgarBusinessEntities.Common
 
     public enum RefType
     {
-        Enquiry = 1, 
+        Enquiry = 1,
+
+        Label = 2,
+        Report_Format = 3,
+        Customer_Given = 4,
     }
 
     public enum DispatchType

@@ -26,7 +26,9 @@ namespace KusumgarDataAccess
         public int Insert_CArticle(CArticleInfo cArticle)
         {
             int cArticle_Id = 0;
+
             _sqlRepo.ExecuteNonQuery(Set_Values_In_CArticle(cArticle), StoredProcedures.Insert_C_Article_Sp.ToString(), CommandType.StoredProcedure);
+
             return cArticle_Id;
         }
 
@@ -38,6 +40,7 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_CArticle(CArticleInfo cArticle)
         {
             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
             if (cArticle.C_Article_Id != 0)
             {
                 sqlParams.Add(new SqlParameter("@C_Article_Id", cArticle.C_Article_Id));
@@ -55,6 +58,7 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@Full_Code", cArticle.Full_Code));
             sqlParams.Add(new SqlParameter("@Batch", cArticle.Batch));
             sqlParams.Add(new SqlParameter("@Is_Active", cArticle.Is_Active));
+
             if (cArticle.C_Article_Id == 0)
             {
                 sqlParams.Add(new SqlParameter("@CreatedBy", cArticle.CreatedBy));
@@ -63,71 +67,98 @@ namespace KusumgarDataAccess
             }
             sqlParams.Add(new SqlParameter("@UpdatedBy", cArticle.UpdatedBy));
             sqlParams.Add(new SqlParameter("@UpdatedOn", cArticle.UpdatedOn));
+
             return sqlParams;
         }
 
         public List<CArticleInfo> Get_CArticles(ref PaginationInfo pager)
         {
             List<CArticleInfo> cArticles = new List<CArticleInfo>();
+
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_C_Articles_Sp.ToString(), CommandType.StoredProcedure);
+
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 cArticles.Add(Get_CArticle_Values(dr));
             }
+
             return cArticles;
         }
         public CArticleInfo Get_CArticle_By_Id(int cArticle_Id)
         {
             CArticleInfo cArticle = new CArticleInfo();
+
             List<SqlParameter> sqlparam = new List<SqlParameter>();
+
             sqlparam.Add(new SqlParameter("@cArticle_Id", cArticle_Id));
+
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_C_Article_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
             List<DataRow> drList = new List<DataRow>();
+
             drList = dt.AsEnumerable().ToList();
+
             foreach (DataRow dr in drList)
             {
                 cArticle = Get_CArticle_Values(dr);
             }
+
             return cArticle;
         }
 
         public List<CArticleInfo> Get_CArticles_By_CArticle_Id(int cArticle_Id, ref PaginationInfo pager)
         {
             List<CArticleInfo> cArticles = new List<CArticleInfo>();
+
             List<SqlParameter> sqlParam = new List<SqlParameter>();
+
             sqlParam.Add(new SqlParameter("@cArticle_Id", cArticle_Id));
+
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_C_Article_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 cArticles.Add(Get_CArticle_Values(dr));
             }
+
             return cArticles;
         }
 
         public List<CArticleInfo> Get_CArticles_By_Yarn_Type_Id(int yarn_Type_Id, ref PaginationInfo pager)
         {
             List<CArticleInfo> cArticles = new List<CArticleInfo>();
+
             List<SqlParameter> sqlParam = new List<SqlParameter>();
+
             sqlParam.Add(new SqlParameter("@yarn_Type_Id", yarn_Type_Id));
+
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_C_Articles_By_Yarn_Type_Id_Sp.ToString(), CommandType.StoredProcedure);
+
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 cArticles.Add(Get_CArticle_Values(dr));
             }
+
             return cArticles;
         }
 
         public List<CArticleInfo> Get_C_Articles_By_CArticle_Id_Yarn_Type(int cArticle_Id, int yarn_Type_Id, ref PaginationInfo pager)
         {
             List<CArticleInfo> cArticles = new List<CArticleInfo>();
+
             List<SqlParameter> sqlParam = new List<SqlParameter>();
+
             sqlParam.Add(new SqlParameter("@yarn_Type_Id", yarn_Type_Id));
+
             sqlParam.Add(new SqlParameter("@cArticle_Id", cArticle_Id));
+
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_C_Articles_By_CArticle_Id_Yarn_Type_Sp.ToString(), CommandType.StoredProcedure);
+
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 cArticles.Add(Get_CArticle_Values(dr));
             }
+
             return cArticles;
         }
 
@@ -159,43 +190,65 @@ namespace KusumgarDataAccess
             cArticle.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             cArticle.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             cArticle.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            //
+            cArticle.Yarn_Type_Code = Convert.ToString(dr["Yarn_Type_Code"]);
+            cArticle.Weave_Code = Convert.ToString(dr["Weave_Code"]);
+            cArticle.Shade_Code = Convert.ToString(dr["Shade_Code"]);
+            cArticle.Chemical_Finish_Code = Convert.ToString(dr["Chemical_Finish_Code"]);
+            cArticle.Mechanical_Finish_Code = Convert.ToString(dr["Mechanical_Finish_Code"]);
+            cArticle.Type_Code = Convert.ToString(dr["Type_Code"]);
+
             return cArticle;
         }
 
         public List<AutocompleteInfo> Get_CArticles_By_Full_Code(string full_Code)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
+
             List<SqlParameter> sqlParam = new List<SqlParameter>();
+
             sqlParam.Add(new SqlParameter("@full_Code", full_Code));
+
             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParam, StoredProcedures.Get_C_Articles_By_Full_Code_Sp.ToString(), CommandType.StoredProcedure);
+
             List<DataRow> drList = new List<DataRow>();
+
             drList = dt.AsEnumerable().ToList();
+
             foreach (DataRow dr in drList)
             {
                 AutocompleteInfo auto = new AutocompleteInfo();
+
                 auto.Value = Convert.ToInt32(dr["C_Article_Id"]);
                 auto.Label = Convert.ToString(dr["Full_Code"]);
+
                 autoCompletes.Add(auto);
             }
+
             return autoCompletes;
         }
 
         public List<QualityInfo> Get_Quality(ref PaginationInfo pager)
         {
             List<QualityInfo> qualities = new List<QualityInfo>();
+
             DataTable dt = _sqlRepo.ExecuteDataTable(null, StoredProcedures.Get_Qualities_Sp.ToString(), CommandType.StoredProcedure);
+
             foreach (DataRow dr in CommonMethods.GetRows(dt, ref pager))
             {
                 qualities.Add(Get_Quality_Values(dr));
             }
+
             return qualities;
         }
 
         public QualityInfo Get_Quality_Values(DataRow dr)
         {
             QualityInfo quality = new QualityInfo();
+
             quality.Quality_Id = Convert.ToInt32(dr["Quality_Id"]);
             quality.Quality_No = Convert.ToInt32(dr["Quality_No"]);
+
             return quality;
         }
     }

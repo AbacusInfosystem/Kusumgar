@@ -112,17 +112,51 @@ function Bind_Work_Station_Grid(data) {
 
             htmlText += "</td>";
 
-            htmlText += "<td>";
+            //htmlText += "<td>";
 
-            htmlText += (data.Work_Stations[i].Under_Maintainance == null ? "" : (data.Work_Stations[i].Under_Maintainance ? "Yes" : "No"));
+            //htmlText += data.Work_Centers[i].Under_Maintainance == null ? "" : data.Work_Centers[i].Under_Maintainance;
 
-            htmlText += "</td>";
+            //htmlText += "</td>";
 
-            htmlText += "<td>";
+            if (data.Work_Centers[i].Under_Maintainance == true) {
 
-            htmlText += (data.Work_Stations[i].Is_Active == null ? "" : (data.Work_Stations[i].Is_Active ? "Active":"Inactive"));
+                htmlText += "<td>";
 
-            htmlText += "</td>";
+                htmlText += "Yes";
+
+                htmlText += "</td>";
+            }
+            if (data.Work_Centers[i].Under_Maintainance == false) {
+
+                htmlText += "<td>";
+
+                htmlText += "No";
+
+                htmlText += "</td>";
+            }
+
+            //htmlText += "<td>";
+
+            //htmlText += data.Work_Centers[i].Is_Active == null ? "" : data.Work_Centers[i].Is_Active;
+
+            //htmlText += "</td>";
+
+            if (data.Work_Centers[i].Is_Active == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            if (data.Work_Centers[i].Is_Active == false) {
+
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
 
             htmlText += "</tr>";
         }

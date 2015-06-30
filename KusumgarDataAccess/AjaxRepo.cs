@@ -191,6 +191,7 @@ namespace KusumgarDataAccess
         private List<SqlParameter> Set_Values_In_Attachment(AttachmentsInfo attachment)
         {
             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
             sqlParams.Add(new SqlParameter("@Ref_Id", attachment.Ref_Id));
             sqlParams.Add(new SqlParameter("@Ref_Type", attachment.Ref_Type));
             sqlParams.Add(new SqlParameter("@Document_Name", attachment.Document_Name));
@@ -198,6 +199,8 @@ namespace KusumgarDataAccess
             sqlParams.Add(new SqlParameter("@CreatedOn", attachment.CreatedOn));
             sqlParams.Add(new SqlParameter("@UpdatedBy", attachment.UpdatedBy));
             sqlParams.Add(new SqlParameter("@UpdatedOn", attachment.UpdatedOn));
+            sqlParams.Add(new SqlParameter("@Remark", attachment.Remark));    //
+
             return sqlParams;
         }
 
@@ -213,6 +216,7 @@ namespace KusumgarDataAccess
             attachments.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             attachments.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             attachments.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            //attachments.Remark = Convert.ToString(dr["Remark"]);
             return attachments;
         }
 

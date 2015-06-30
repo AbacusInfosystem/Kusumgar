@@ -31,5 +31,10 @@ namespace KusumgarBusinessEntities
         public DateTime UpdatedOn { get; set; }
 
         public int UpdatedBy { get; set; }
+
+        public int Article_Type { get; set; }
+
+        public string Article_Type_Name { get; set; }
+
     }
 }

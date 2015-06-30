@@ -39,11 +39,28 @@ function Bind_Packing_Grid(data) {
 
             htmlText += "</td>";
 
-            htmlText += "<td>";
+            //htmlText += "<td>";
 
-            htmlText += (data.Packings[i].Is_Active ? "Active":"Inactive");
+            //htmlText += data.Packings[i].Is_Active;
 
-            htmlText += "</td>";
+            //htmlText += "</td>";
+
+            if (data.Packings[i].Is_Active == true) {
+
+                htmlText += "<td>";
+
+                htmlText += "Active";
+
+                htmlText += "</td>";
+            }
+            if (data.Packings[i].Is_Active == false) {
+
+                htmlText += "<td>";
+
+                htmlText += "Inactive";
+
+                htmlText += "</td>";
+            }
 
             htmlText += "</tr>";
         }

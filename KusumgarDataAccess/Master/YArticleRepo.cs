@@ -165,7 +165,20 @@ namespace KusumgarDataAccess
                 yArticle.Validated_By_Name = Convert.ToString(dr["Validated_By_Name"]);
                 yArticle.Given_By_Name = Convert.ToString(dr["Given_By_Name"]);
                 yArticle.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
-            
+            //
+                yArticle.Denier_Code = Convert.ToString(dr["Denier_Code"]);
+                yArticle.Twist_Mingle_Code = Convert.ToString(dr["Twist_Mingle_Code"]);
+                yArticle.Twist_Type_Code = Convert.ToString(dr["Twist_Type_Code"]);
+                yArticle.Ply_Code = Convert.ToString(dr["Ply_Code"]);
+                yArticle.Yarn_Type_Code = Convert.ToString(dr["Yarn_Type_Code"]);
+                yArticle.Shade_Code = Convert.ToString(dr["Shade_Code"]);
+                yArticle.Filaments_Code = Convert.ToString(dr["Filaments_Code"]);
+                yArticle.Shrinkage_Code = Convert.ToString(dr["Shrinkage_Code"]);
+                yArticle.Tenasity_Code = Convert.ToString(dr["Tenasity_Code"]);
+                yArticle.Chemical_Treatment_Code = Convert.ToString(dr["Chemical_Treatment_Code"]);
+                yArticle.Colour_Code = Convert.ToString(dr["Colour_Code"]);
+                yArticle.Supplier_Code = Convert.ToString(dr["Supplier_Code"]);
+                yArticle.Origin_Code = Convert.ToString(dr["Origin_Code"]);
 
             return yArticle;
         }

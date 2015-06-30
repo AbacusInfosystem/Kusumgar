@@ -23,6 +23,10 @@ namespace Kusumgar.Models
 
             Filter = new CustomerQualityFilter();
 
+            Attachment = new AttachmentsInfo();
+
+            Attachments = new List<AttachmentsInfo>();
+
         }
 
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
@@ -34,6 +38,10 @@ namespace Kusumgar.Models
         public List<CustomerQualityInfo> Customer_Qualities { get; set; }
 
         public CustomerQualityFilter Filter { get; set; }
+
+        public AttachmentsInfo Attachment { get; set; }
+
+        public List<AttachmentsInfo> Attachments { get; set; }
 
         public class CustomerQualityFilter
         {

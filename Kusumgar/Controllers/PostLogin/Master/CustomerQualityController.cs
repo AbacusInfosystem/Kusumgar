@@ -205,5 +205,32 @@ namespace Kusumgar.Controllers
             return View("Index", cqViewModel);
         }
 
+        //Attachment
+        //public JsonResult Insert_Attachment(CustomerQualityViewModel cqViewModel)
+        //{
+        //    try
+        //    {
+        //        cqViewModel.Attachment.CreatedOn = DateTime.Now;
+
+        //        cqViewModel.Attachment.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+        //        cqViewModel.Attachment.UpdatedOn = DateTime.Now;
+
+        //        cqViewModel.Attachment.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+        //        _customerqualityMan.Insert_Attachment(cqViewModel.Attachment);
+
+        //        cqViewModel.Friendly_Message.Add(MessageStore.Get("CQ001"));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        cqViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+        //        Logger.Error("Customer quality Controller - Insert_Attachment " + ex.ToString());
+        //    }
+
+        //    return Json(cqViewModel);
+        //}
+
     }
 }

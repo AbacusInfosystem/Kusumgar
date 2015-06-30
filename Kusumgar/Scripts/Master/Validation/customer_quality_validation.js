@@ -1,7 +1,7 @@
 ﻿
 $(function () {
     $("#frmCustomer_Quality").validate({
- 
+        
         rules: {
             "Customer_Quality.Customer.Customer_Entity.Customer_Id":
                 {
@@ -29,4 +29,6 @@ $(function () {
                 }
         }
     });
+
+    
 });

@@ -2101,6 +2101,14 @@
     <Content Include="Views\PostLogin\Master\GArticle\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\CRM\Customer\View.cshtml" />
     <Content Include="Views\PostLogin\CRM\Customer\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\PArticle\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\PArticle\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\CArticle\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\CArticle\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\YArticle\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\YArticle\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\WArticle\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\WArticle\_PrintableView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

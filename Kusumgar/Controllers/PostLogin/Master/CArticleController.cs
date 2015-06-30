@@ -169,5 +169,49 @@ namespace Kusumgar.Controllers
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult View_C_Article(CArticleViewModel cViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                cViewModel.CArticle = _cArticleMan.Get_CArticle_By_Id(cViewModel.CArticle.C_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("CArticle Controller - View_C_Article " + ex.ToString());
+            }
+
+            return View("View", cViewModel);
+        }
+
+
+        public PartialViewResult Printable_C_Article(int c_Article_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            CArticleViewModel cViewModel = new CArticleViewModel();
+
+            cViewModel.CArticle.C_Article_Id = c_Article_Id;
+
+            try
+            {
+                cViewModel.CArticle = _cArticleMan.Get_CArticle_By_Id(cViewModel.CArticle.C_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("CArticle Controller - Printable_C_Article " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", cViewModel);
+        }
+
     }
 }
