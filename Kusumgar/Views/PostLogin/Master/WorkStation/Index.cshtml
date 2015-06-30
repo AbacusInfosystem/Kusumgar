@@ -1,10 +1,10 @@
-﻿@model Kusumgar.Models.WorkCenterViewModel
+﻿@model Kusumgar.Models.WorkStationViewModel
 @using KusumgarBusinessEntities.Common
 
 
-<script src="~/Scripts/Master/Event/work_center_event.js"></script>
-<script src="~/Scripts/Master/Method/work_center_method.js"></script>
-<script src="~/Scripts/Master/Validation/work_center_validation.js"></script>
+<script src="~/Scripts/Master/Event/work_station_event.js"></script>
+<script src="~/Scripts/Master/Method/work_station_method.js"></script>
+<script src="~/Scripts/Master/Validation/work_station_validation.js"></script>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -12,18 +12,18 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Workcenter
+            WorkStation
 
             <small>Master</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>Master</li>
-            <li class="active">Workcenter</li>
+            <li class="active">WorkStation</li>
         </ol>
     </section>
 
-    <form id="frmWork_Center">
+    <form id="frmWork_Station">
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -42,14 +42,14 @@
                             <div class="row">
                                 <div class="col-md-4">
 
-                                    <input type="hidden" id="hdnWork_Center_Id" value="@Model.Work_Center.Work_Center_Id" name="Work_Center.Work_Center_Id">
+                                    <input type="hidden" id="hdnWork_Station_Id" value="@Model.Work_Station.Work_Station_Id" name="Work_Station.Work_Station_Id">
                                     <div class="form-group">
                                         <label style="color: #333">Factory</label>
-                                        <select class="form-control input-sm" id="drpFactory" name="Work_Center.Factory_Id">
+                                        <select class="form-control input-sm" id="drpFactory" name="Work_Station.Factory_Id">
                                             <option value="">-Select factory-</option>
-                                            @foreach (var item in Model.Work_Center.Factories)
+                                            @foreach (var item in Model.Work_Station.Factories)
                                             {
-                                                if (Model.Work_Center.Factory.Factory_Id == item.Factory_Id)
+                                                if (Model.Work_Station.Factory.Factory_Id == item.Factory_Id)
                                                 {
                                                     <option value="@item.Factory_Id" selected="selected">@item.Factory_Name</option>
                                                 }
@@ -62,19 +62,19 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label style="color: #333">Work Station</label>
-                                        @*<select class="form-control " id="drpWork_Station" name="Work_Center.Work_Center_Entity.Work_Station_Id">*@
-                                        <select class="form-control input-sm" id="drpWork_Station" name="work_Center.Work_Station.Work_Station_Id">
-                                            <option value="">-Select work station-</option>
-                                            @foreach (var item in Model.Work_Center.Work_Stations)
+                                        <label style="color: #333">Work Center</label>
+                                        @*<select class="form-control " id="drpWork_Center" name="Work_Station.Work_Station_Entity.Work_Center_Id">*@
+                                        <select class="form-control input-sm" id="drpWork_Center" name="work_Station.Work_Center.Work_Center_Id">
+                                            <option value="">-Select work Center-</option>
+                                            @foreach (var item in Model.Work_Station.Work_Centers)
                                             {
-                                                if (Model.Work_Center.Work_Station_Id == item.Work_Station_Id)
+                                                if (Model.Work_Station.Work_Center_Id == item.Work_Center_Id)
                                                 {
-                                                    <option value="@item.Work_Station_Id" selected="selected">@item.Work_Station_Name</option>
+                                                    <option value="@item.Work_Center_Id" selected="selected">@item.Work_Center_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Work_Station_Id">@item.Work_Station_Name</option>
+                                                    <option value="@item.Work_Center_Id">@item.Work_Center_Name</option>
                                                 }
                                             }
                                         </select>
@@ -86,10 +86,10 @@
                                         <div class="btn-group non-iCheck" id="divProcess" data-toggle="buttons">
                                             @{
 
-                                                foreach (var item in Model.Work_Center.Processes)
+                                                foreach (var item in Model.Work_Station.Processes)
                                                 {
 
-                                                    if (Model.Work_Center.Work_Center_Processes.Where(a => a.Process_Id == item.Process_Id).Count() > 0)
+                                                    if (Model.Work_Station.Work_Station_Processes.Where(a => a.Process_Id == item.Process_Id).Count() > 0)
                                                     {
                                                         <label class="btn btn-primary active">
                                                             <input type="checkbox" autocomplete="off" name="ChkProcess" id="ChkProcess" checked="checked" value="@item.Process_Id"> @item.Process_Name
@@ -105,87 +105,87 @@
                                                 }
 
 
-                                                <input type="hidden" id="hdnProcess_Id" name="Work_Center.Process_Ids">
+                                                <input type="hidden" id="hdnProcess_Id" name="Work_Station.Process_Ids">
                                             }
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtWork_Center_Code" style="color: #333">Work Center Code</label>
-                                        <input type="text" class="form-control input-sm" id="txtWork_Center_Code" name="Work_Center.Work_Center_Code" placeholder="Enter work center code" value="@Model.Work_Center.Work_Center_Code" />
+                                        <label for="txtWork_Station_Code" style="color: #333">Work Station Code</label>
+                                        <input type="text" class="form-control input-sm" id="txtWork_Station_Code" name="Work_Station.Work_Station_Code" placeholder="Enter work Station code" value="@Model.Work_Station.Work_Station_Code" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtMachine_Name" style="color: #333">Machine Name</label>
-                                        <input type="text" class="form-control input-sm" id="txtMachine_Name" name="Work_Center.Machine_Name" placeholder="Enter machine name" value="@Model.Work_Center.Machine_Name" />
+                                        <input type="text" class="form-control input-sm" id="txtMachine_Name" name="Work_Station.Machine_Name" placeholder="Enter machine name" value="@Model.Work_Station.Machine_Name" />
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtMachine_Properties" style="color: #333">Machine Properties</label>
-                                        <textarea class="form-control input-sm" id="txtMachine_Properties" name="Work_Center.Machine_Properties" placeholder="Enter machine properties">@Model.Work_Center.Machine_Properties</textarea>
+                                        <textarea class="form-control input-sm" id="txtMachine_Properties" name="Work_Station.Machine_Properties" placeholder="Enter machine properties">@Model.Work_Station.Machine_Properties</textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtTPM_Speed" style="color: #333">TPM Speed</label>
-                                        @if (Model.Work_Center.Work_Center_Id == 0)
+                                        @if (Model.Work_Station.Work_Station_Id == 0)
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtTPM_Speed" name="Work_Center.TPM_Speed" placeholder="Enter TPM speed" value="" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtTPM_Speed" name="Work_Station.TPM_Speed" placeholder="Enter TPM speed" value="" onkeypress="return isNumber(event)" />
                                         }
                                         else
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtTPM_Speed" name="Work_Center.TPM_Speed" placeholder="Enter TPM speed" value="@Model.Work_Center.TPM_Speed" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtTPM_Speed" name="Work_Station.TPM_Speed" placeholder="Enter TPM speed" value="@Model.Work_Station.TPM_Speed" onkeypress="return isNumber(event)" />
                                         }
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtAverage_Order_Length" style="color: #333">Average Order Length</label>
-                                        @if (Model.Work_Center.Work_Center_Id == 0)
+                                        @if (Model.Work_Station.Work_Station_Id == 0)
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtAverage_Order_Length" name="Work_Center.Average_Order_Length" placeholder="Enter average order length" value="" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtAverage_Order_Length" name="Work_Station.Average_Order_Length" placeholder="Enter average order length" value="" onkeypress="return isNumber(event)" />
                                         }
                                         else
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtAverage_Order_Length" name="Work_Center.Average_Order_Length" placeholder="Enter average order length" value="@Model.Work_Center.Average_Order_Length" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtAverage_Order_Length" name="Work_Station.Average_Order_Length" placeholder="Enter average order length" value="@Model.Work_Station.Average_Order_Length" onkeypress="return isNumber(event)" />
                                         }
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtCapacity" style="color: #333">Capacity</label>
-                                        <input type="text" class="form-control input-sm" id="txtCapacity" name="Work_Center.Capacity" placeholder="Enter capacity" value="@Model.Work_Center.Capacity" />
+                                        <input type="text" class="form-control input-sm" id="txtCapacity" name="Work_Station.Capacity" placeholder="Enter capacity" value="@Model.Work_Station.Capacity" />
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtWastage" style="color: #333">Wastage</label>
-                                        @if (Model.Work_Center.Work_Center_Id == 0)
+                                        @if (Model.Work_Station.Work_Station_Id == 0)
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtWastage" name="Work_Center.Wastage" placeholder="Enter wastage" value="" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtWastage" name="Work_Station.Wastage" placeholder="Enter wastage" value="" onkeypress="return isNumber(event)" />
                                         }
                                         else
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtWastage" name="Work_Center.Wastage" placeholder="Enter wastage" value="@Model.Work_Center.Wastage" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtWastage" name="Work_Station.Wastage" placeholder="Enter wastage" value="@Model.Work_Station.Wastage" onkeypress="return isNumber(event)" />
                                         }
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtTarget_Efficiency" style="color: #333">Target Efficiency</label>
-                                        @if (Model.Work_Center.Work_Center_Id == 0)
+                                        @if (Model.Work_Station.Work_Station_Id == 0)
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtTarget_Efficiency" name="Work_Center.Target_Efficiency" placeholder="Enter target efficiency" value="" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtTarget_Efficiency" name="Work_Station.Target_Efficiency" placeholder="Enter target efficiency" value="" onkeypress="return isNumber(event)" />
                                         }
                                         else
                                         {
-                                            <input type="text" class="form-control input-sm" id="txtTarget_Efficiency" name="Work_Center.Target_Efficiency" placeholder="Enter target efficiency" value="@Model.Work_Center.Target_Efficiency" onkeypress="return isNumber(event)" />
+                                            <input type="text" class="form-control input-sm" id="txtTarget_Efficiency" name="Work_Station.Target_Efficiency" placeholder="Enter target efficiency" value="@Model.Work_Station.Target_Efficiency" onkeypress="return isNumber(event)" />
                                         }
 
                                     </div>
 
                                     <div class="form-group">
 
-                                        @if (Model.Work_Center.Under_Maintainance == false)
+                                        @if (Model.Work_Station.Under_Maintainance == false)
                                         {
                                             <label>
                                                 <input type="checkbox" name="chkUnder_Maintainance" />
@@ -199,11 +199,11 @@
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Under Maintainance Status
                                             </label>
                                         }
-                                        <input type="hidden" class="form-control input-sm" id="hdnUnder_Maintainance" name="Work_Center.Under_Maintainance" value="@Model.Work_Center.Under_Maintainance.ToString()">
+                                        <input type="hidden" class="form-control input-sm" id="hdnUnder_Maintainance" name="Work_Station.Under_Maintainance" value="@Model.Work_Station.Under_Maintainance.ToString()">
                                     </div>
 
                                     <div class="form-group">
-                                        @if (Model.Work_Center.Is_Active == false)
+                                        @if (Model.Work_Station.Is_Active == false)
                                         {
                                             <label>
                                                 <input type="checkbox" name="chkIs_Active" />
@@ -217,7 +217,7 @@
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Active Status
                                             </label>
                                         }
-                                        <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Work_Center.Is_Active" value="@Model.Work_Center.Is_Active.ToString()">
+                                        <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Work_Station.Is_Active" value="@Model.Work_Station.Is_Active.ToString()">
 
                                     </div>
 
@@ -227,7 +227,7 @@
                             <div class="box-footer">
                                 <div class="btn-group">
                                     <button type="button" id="btnSave" class="btn btn-success btn-sm">Save</button>
-                                    <a href="@Url.Action("Search", "Workcenter")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                                    <a href="@Url.Action("Search", "WorkStation")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
                                 </div>
                             </div>
 

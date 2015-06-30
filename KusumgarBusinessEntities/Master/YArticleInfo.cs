@@ -55,7 +55,7 @@ namespace KusumgarBusinessEntities
 
         public string Lead_Time_To_Purchase { get; set; }
 
-        public int Work_Station_Id { get; set; }
+        public int Work_Center_Id { get; set; }
 
         public bool Is_Active { get; set; }
 
@@ -101,7 +101,7 @@ namespace KusumgarBusinessEntities
 
         public string Validated_By_Name { get; set; }
 
-        public string Work_Station_Code { get; set; }
+        public string Work_Center_Code { get; set; }
 
         #endregion
 

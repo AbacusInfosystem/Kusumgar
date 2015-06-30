@@ -53,8 +53,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "menu-7",
-            url: "master/workcenter/search",
-            defaults: new { controller = "Workcenter", action = "Search", id = UrlParameter.Optional },
+            url: "master/workStation/search",
+            defaults: new { controller = "WorkStation", action = "Search", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -113,8 +113,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "menu-17",
-            url: "master/article-process-workcenter/search",
-            defaults: new { controller = "ArticleProcessWorkCenter", action = "Search", id = UrlParameter.Optional },
+            url: "master/article-process-workStation/search",
+            defaults: new { controller = "ArticleProcessWorkStation", action = "Search", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -776,8 +776,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "y-article-8",
-            url: "master/y-articles/get-work-stations-by-code-purpose/{work_Station_Code}",
-            defaults: new { controller = "YArticle", action = "Get_Work_Stations_By_Code_Purpose", work_Station_Code = UrlParameter.Optional },
+            url: "master/y-articles/get-work-centers-by-code-purpose/{work_Center_Code}",
+            defaults: new { controller = "YArticle", action = "Get_Work_Centers_By_Code_Purpose", work_Center_Code = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -975,12 +975,12 @@ namespace Kusumgar
 
             #endregion
 
-            #region Article Process Workcenter
+            #region Article Process WorkStation
 
             routes.MapRoute(
-            name: "article-process-workcenter-1",
-            url: "master/article-process-workcenter",
-            defaults: new { controller = "ArticleProcessWorkCenter", action = "Index", id = UrlParameter.Optional },
+            name: "article-process-workstation-1",
+            url: "master/article-process-workStation",
+            defaults: new { controller = "ArticleProcessWorkStation", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -1582,48 +1582,48 @@ namespace Kusumgar
 
             #endregion
 
-            #region WorkCenter
+            #region WorkStation
 
             routes.MapRoute(
-            name: "workcenter-1",
-            url: "master/work-station-by-factory-id",
-            defaults: new { controller = "WorkCenter", action = "Get_Work_Stations_By_Factory_Id", id = UrlParameter.Optional },
+            name: "workstation-1",
+            url: "master/work-center-by-factory-id",
+            defaults: new { controller = "WorkStation", action = "Get_Work_Centers_By_Factory_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-2",
-            url: "master/insert-work-center",
-            defaults: new { controller = "WorkCenter", action = "Insert", id = UrlParameter.Optional },
+            name: "workstation-2",
+            url: "master/insert-work-Station",
+            defaults: new { controller = "WorkStation", action = "Insert", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-3",
-            url: "master/work-center-search",
-            defaults: new { controller = "WorkCenter", action = "Get_Work_Centers", id = UrlParameter.Optional },
+            name: "workstation-3",
+            url: "master/work-station-search",
+            defaults: new { controller = "WorkStation", action = "Get_Work_Stations", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-4",
-            url: "master/get-work-center-by-id",
-            defaults: new { controller = "WorkCenter", action = "Get_Work_Centers_By_Work_Center_Id", id = UrlParameter.Optional },
+            name: "workstation-4",
+            url: "master/get-work-station-by-id",
+            defaults: new { controller = "WorkStation", action = "Get_Work_Stations_By_Work_Station_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-5",
-            url: "master/update-work-center",
-            defaults: new { controller = "WorkCenter", action = "Update", id = UrlParameter.Optional },
+            name: "workstation-5",
+            url: "master/update-work-Station",
+            defaults: new { controller = "WorkStation", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-           name: "workcenter-6",
-           url: "master/view-workcenter",
-           defaults: new { controller = "WorkCenter", action = "View_Work_Center", id = UrlParameter.Optional },
+           name: "workstation-6",
+           url: "master/view-workStation",
+           defaults: new { controller = "WorkStation", action = "View_Work_Station", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-7",
-            url: "master/print-view-work_center",
-            defaults: new { controller = "WorkCenter", action = "Printable_Work_Center", id = UrlParameter.Optional },
+            name: "workstation-7",
+            url: "master/print-view-work_Station",
+            defaults: new { controller = "WorkStation", action = "Printable_Work_Station", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

@@ -270,7 +270,7 @@
     <Compile Include="Controllers\PostLogin\Master\UserController.cs" />
     <Compile Include="Controllers\PostLogin\Master\VendorController.cs" />
     <Compile Include="Controllers\PostLogin\Master\WArticleController.cs" />
-    <Compile Include="Controllers\PostLogin\Master\WorkcenterController.cs" />
+    <Compile Include="Controllers\PostLogin\Master\WorkStationController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessRouteCodeController.cs" />
     <Compile Include="Controllers\PostLogin\Master\ProcessController.cs" />
     <Compile Include="Controllers\PostLogin\Master\DefectController.cs" />
@@ -309,7 +309,7 @@
     <Compile Include="Models\Master\UserViewModel.cs" />
     <Compile Include="Models\Master\VendorContactViewModel.cs" />
     <Compile Include="Models\Master\VendorViewModel.cs" />
-    <Compile Include="Models\Master\WorkCenterViewModel.cs" />
+    <Compile Include="Models\Master\WorkStationViewModel.cs" />
     <Compile Include="Models\Master\WArticleViewModel.cs" />
     <Compile Include="Models\Master\YArticleViewModel.cs" />
     <Compile Include="Models\PreLogin\LoginViewModel.cs" />
@@ -1503,8 +1503,8 @@
     <Content Include="Scripts\Master\Event\vendor_event.js" />
     <Content Include="Scripts\Master\Event\vendor_listing_event.js" />
     <Content Include="Scripts\Master\Event\vendor_partial_event.js" />
-    <Content Include="Scripts\Master\Event\work_center_event.js" />
-    <Content Include="Scripts\Master\Event\work_center_listing_event.js" />
+    <Content Include="Scripts\Master\Event\work_station_event.js" />
+    <Content Include="Scripts\Master\Event\work_station_listing_event.js" />
     <Content Include="Scripts\Master\Method\customer_quality_method.js" />
     <Content Include="Scripts\Master\Method\customer_quality_search_method.js" />
     <Content Include="Scripts\Master\Method\customer_specific_information_method.js" />
@@ -1574,8 +1574,8 @@
     <Content Include="Scripts\Master\Method\consumable_method.js" />
     <Content Include="Scripts\Master\Method\consumable_search_method.js" />
     <Content Include="Scripts\Master\Method\vendor_partial_method.js" />
-    <Content Include="Scripts\Master\Method\work_center_listing_method.js" />
-    <Content Include="Scripts\Master\Method\work_center_method.js" />
+    <Content Include="Scripts\Master\Method\work_station_listing_method.js" />
+    <Content Include="Scripts\Master\Method\work_station_method.js" />
     <Content Include="Scripts\Master\Method\warticle_method.js" />
     <Content Include="Scripts\Master\Method\warticle_search_method.js" />
     <Content Include="Scripts\Master\Method\yarticle_listing_method.js" />
@@ -1625,7 +1625,7 @@
     <Content Include="Scripts\Master\Validation\vendor_contact_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_partial_validation.js" />
     <Content Include="Scripts\Master\Validation\vendor_validation.js" />
-    <Content Include="Scripts\Master\Validation\work_center_validation.js" />
+    <Content Include="Scripts\Master\Validation\work_station_validation.js" />
     <Content Include="Scripts\Master\Validation\warticle_validation.js" />
     <Content Include="Scripts\Master\Validation\yarticle_validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -1862,10 +1862,10 @@
     <Content Include="Views\PostLogin\Master\ProcessRouteCode\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Workcenter\Index.cshtml" />
+    <Content Include="Views\PostLogin\Master\WorkStation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PostLogin\Master\Workcenter\Search.cshtml" />
+    <Content Include="Views\PostLogin\Master\WorkStation\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PostLogin\Master\TestUnit\Index.cshtml" />
@@ -2090,8 +2090,8 @@
     <Content Include="Views\PostLogin\Master\Vendor\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\Master\Material\View.cshtml" />
     <Content Include="Views\PostLogin\Master\Material\_PrintableView.cshtml" />
-    <Content Include="Views\PostLogin\Master\Workcenter\View.cshtml" />
-    <Content Include="Views\PostLogin\Master\Workcenter\_PrintableView.cshtml" />
+    <Content Include="Views\PostLogin\Master\WorkStation\View.cshtml" />
+    <Content Include="Views\PostLogin\Master\WorkStation\_PrintableView.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Search.cshtml" />
     <Content Include="Views\PostLogin\Master\Packing\Index.cshtml" />
     <Content Include="Views\PostLogin\CRM\Complaint\_InsertComplaint.cshtml" />

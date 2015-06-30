@@ -82,7 +82,7 @@
     <Compile Include="Master\UserRepo.cs" />
     <Compile Include="Master\VendorContactRepo.cs" />
     <Compile Include="Master\VendorRepo.cs" />
-    <Compile Include="Master\WorkCenterRepo.cs" />
+    <Compile Include="Master\WorkStationRepo.cs" />
     <Compile Include="Master\WArticleRepo.cs" />
     <Compile Include="Master\YArticleRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

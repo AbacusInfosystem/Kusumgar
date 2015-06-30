@@ -85,7 +85,7 @@
     <Compile Include="Master\UserManager.cs" />
     <Compile Include="Master\VendorContactManager.cs" />
     <Compile Include="Master\VendorManager.cs" />
-    <Compile Include="Master\WorkCenterManager.cs" />
+    <Compile Include="Master\WorkStationManager.cs" />
     <Compile Include="Master\WArticleManager.cs" />
     <Compile Include="Master\YArticleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -227,17 +227,17 @@ namespace Kusumgar.Controllers
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
+        public JsonResult Get_Work_Centers_By_Code_Purpose(string work_Center_Code)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
             try
             {
-                autoCompletes = _yArticleMan.Get_Work_Stations_By_Code_Purpose(work_Station_Code);
+                autoCompletes = _yArticleMan.Get_Work_Centers_By_Code_Purpose(work_Center_Code);
             }
             catch (Exception ex)
             {
-                Logger.Error("YArticle Controller - Get_Work_Stations " + ex.ToString());
+                Logger.Error("YArticle Controller - Get_Work_Centers_By_Code_Purpose " + ex.ToString());
             }
 
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);

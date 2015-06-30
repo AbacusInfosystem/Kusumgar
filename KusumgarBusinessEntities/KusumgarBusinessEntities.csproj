@@ -107,9 +107,9 @@
     <Compile Include="Master\VendorContactInfo.cs" />
     <Compile Include="Master\VendorInfo.cs" />
     <Compile Include="Master\WArticleInfo.cs" />
-    <Compile Include="Master\WorkCenterInfo.cs" />
-    <Compile Include="Master\WorkCenterProcessInfo.cs" />
     <Compile Include="Master\WorkStationInfo.cs" />
+    <Compile Include="Master\WorkStationProcessInfo.cs" />
+    <Compile Include="Master\WorkCenterInfo.cs" />
     <Compile Include="Master\YArticleInfo.cs" />
     <Compile Include="Master\YearInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

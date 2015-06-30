@@ -91,8 +91,8 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/y-articles-by-full-code/" + $('#txtYArticle_Full_Code').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtWork_Station') {
-                urlString = "/master/y-articles/get-work-stations-by-code-purpose/" + $('#txtWork_Station').val();
+            if ($(elementObject).attr("id") == 'txtWork_Center') {
+                urlString = "/master/y-articles/get-work-centers-by-code-purpose/" + $('#txtWork_Center').val();
             }
 
             if ($(elementObject).attr("id") == 'txtMaterialName') {

@@ -138,7 +138,7 @@ namespace KusumgarDataAccess
             yArticle.Validated_By_Id = Convert.ToInt32(dr["Validated_By_Id"]);
             yArticle.Developed_Under_Id = Convert.ToInt32(dr["Developed_Under_Id"]);
             yArticle.Lead_Time_To_Purchase = Convert.ToString(dr["Lead_Time_To_Purchase"]);
-            yArticle.Work_Station_Id = Convert.ToInt32(dr["Work_Station_Id"]);
+            yArticle.Work_Center_Id = Convert.ToInt32(dr["Work_Center_Id"]);
             yArticle.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
             yArticle.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
             yArticle.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
@@ -164,7 +164,7 @@ namespace KusumgarDataAccess
                 yArticle.Developed_Under_Name = Convert.ToString(dr["Developed_Under_Name"]);
                 yArticle.Validated_By_Name = Convert.ToString(dr["Validated_By_Name"]);
                 yArticle.Given_By_Name = Convert.ToString(dr["Given_By_Name"]);
-                yArticle.Work_Station_Code = Convert.ToString(dr["Work_Station_Code"]);
+                yArticle.Work_Center_Code = Convert.ToString(dr["Work_Center_Code"]);
             
 
             return yArticle;
@@ -210,7 +210,7 @@ namespace KusumgarDataAccess
             sqlparam.Add(new SqlParameter("@Validated_By_Id", yArticle.Validated_By_Id));
             sqlparam.Add(new SqlParameter("@Developed_Under_Id", yArticle.Developed_Under_Id));
             sqlparam.Add(new SqlParameter("@Lead_Time_To_Purchase", yArticle.Lead_Time_To_Purchase));
-            sqlparam.Add(new SqlParameter("@Work_Station_Id", yArticle.Work_Station_Id));
+            sqlparam.Add(new SqlParameter("@Work_Center_Id", yArticle.Work_Center_Id));
             sqlparam.Add(new SqlParameter("@Is_Active", yArticle.Is_Active));
             if (yArticle.Y_Article_Id == 0)
             {
@@ -249,17 +249,17 @@ namespace KusumgarDataAccess
             return autoCompletes;
         }
 
-        public List<AutocompleteInfo> Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
+        public List<AutocompleteInfo> Get_Work_Centers_By_Code_Purpose(string work_Center_Code)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            sqlparam.Add(new SqlParameter("@work_Station_Code", work_Station_Code));
+            sqlparam.Add(new SqlParameter("@work_Center_Code", work_Center_Code));
 
             sqlparam.Add(new SqlParameter("@purpose", Convert.ToInt32(ArticleType.YArticle)));
 
-            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Work_Stations_By_Code_Purpose_Sp.ToString(), CommandType.StoredProcedure);
+            DataTable dt = _sqlRepo.ExecuteDataTable(sqlparam, StoredProcedures.Get_Work_Centers_By_Code_Purpose_Sp.ToString(), CommandType.StoredProcedure);
 
             List<DataRow> drList = new List<DataRow>();
 
@@ -269,9 +269,9 @@ namespace KusumgarDataAccess
             {
                 AutocompleteInfo auto = new AutocompleteInfo();
 
-                auto.Value = Convert.ToInt32(dr["Work_Station_Id"]);
+                auto.Value = Convert.ToInt32(dr["Work_Center_Id"]);
 
-                auto.Label = Convert.ToString(dr["Work_Station_Code"]);
+                auto.Label = Convert.ToString(dr["Work_Center_Code"]);
 
                 autoCompletes.Add(auto);
             }

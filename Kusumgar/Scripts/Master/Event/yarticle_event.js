@@ -6,7 +6,7 @@
 
     InitializeAutoComplete($('#txtDeveloped_Under'));
 
-    InitializeAutoComplete($('#txtWork_Station'));
+    InitializeAutoComplete($('#txtWork_Center'));
 
     $('.attribute-name').change(function () {
         if ($(this).val() != "") {
