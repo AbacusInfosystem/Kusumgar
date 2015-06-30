@@ -205,6 +205,29 @@ namespace Kusumgar.Controllers
             return Json(cViewModel);
         }
 
+
+        public JsonResult Update_Customer_Other(CustomerViewModel cViewModel)
+        {
+            try
+            {
+                cViewModel.Customer.UpdatedOn = DateTime.Now;
+
+                cViewModel.Customer.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _customerMan.Update_Customer_Other(cViewModel.Customer);
+
+                cViewModel.Friendly_Message.Add(MessageStore.Get("CU004"));
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Update_Customer_Address " + ex.ToString());
+            }
+
+            return Json(cViewModel);
+        }
+
         [AuthorizeUser(AppFunction.Customer_Create)]
 
         public JsonResult Insert_Bank_Details(CustomerViewModel cViewModel)
@@ -397,7 +420,7 @@ namespace Kusumgar.Controllers
             {
                 cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("Customer Controller - Get_Customers " + ex.ToString());
+                Logger.Error("Customer Controller - Get_Customers" + ex.ToString());
             }
             finally
                 {
@@ -415,7 +438,7 @@ namespace Kusumgar.Controllers
             try
             {
                 cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
-                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id, ref pager);
+                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id);
             }
             catch(Exception ex)
             {
@@ -582,8 +605,7 @@ namespace Kusumgar.Controllers
                 cViewModel.Customer.Customer_Contact_Type.CreatedOn = DateTime.Now;                
                 _customerMan.Insert_Customer_Contact_Type(cViewModel.Customer.Customer_Contact_Type);
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CU010"));
-                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Contact_Type.Customer_Id, ref pager);
-                cViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", cViewModel.Pager.TotalRecords, cViewModel.Pager.CurrentPage + 1, cViewModel.Pager.PageSize, 10, true);
+                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Contact_Type.Customer_Id);
             }
             catch (Exception ex)
             {
@@ -606,6 +628,48 @@ namespace Kusumgar.Controllers
                 Logger.Error("Customer Controller - Delete_Customer_Contact_Type " + ex.ToString());
             }
             return Json(cViewModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult View_Customer(CustomerViewModel cViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
+                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Search " + ex.ToString());
+            }
+
+            return View("View", cViewModel);
+        }
+
+        public PartialViewResult Printable_Customer(int customer_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            CustomerViewModel cViewModel = new CustomerViewModel();
+
+            cViewModel.Customer.Customer_Id = customer_Id;
+
+            try
+            {
+                cViewModel.Customer = _customerMan.Get_Customer_By_Id(cViewModel.Customer.Customer_Id);
+                cViewModel.Customer.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Customer.Customer_Id);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Controller - Search " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", cViewModel);
         }
 
     }

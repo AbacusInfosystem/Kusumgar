@@ -23,7 +23,7 @@
 
             "Attribute_Code.Attribute_Id":
             {
-                required: "Attribute Name is required."
+                required: "Attribute name is required."
 
             },
 

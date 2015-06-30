@@ -86,7 +86,7 @@ function Set_G_Article() {
 
                     G_W: $("#txtG_W").val(),
 
-                    Total_Ends: $("#txtTotal_Ends").val(),
+                    Total_Ends: parseInt($("#txtTotal_Ends").val()),
 
                     Beam_Weight: $("#txtBeam_Weight").val(),
 
@@ -100,23 +100,23 @@ function Set_G_Article() {
 
                     Drawing_Sequence_Selvedge: $("#txtDrawing_Sequence_Selvedge").val(),
 
-                    Roll_Size: $("#txtRoll_Size").val(),
+                    Roll_Size: parseInt($("#txtRoll_Size").val()),
 
                     Warp_Yarn_Vendor: $("#drpWarp_yarn_supplier").val(),
 
                     Weft_yarn_Vendor: $("#drpWeft_yarn_supplier").val(),
 
-                    RSP: $("#txtRSP").val(),
+                    RSP: parseInt($("#txtRSP").val()),
 
-                    Warping_Meters: $("#txtWarping_Meters").val(),
+                    Warping_Meters: parseInt($("#txtWarping_Meters").val()),
 
                     Draft: $("#txtDraft").val(),
 
-                    Crimp_In_Percentage: $("#txtCrimp_in_Percentage").val(),
+                    Crimp_In_Percentage: parseInt($("#txtCrimp_in_Percentage").val()),
 
-                    Peg_Plan_Rows: $("#txtPeg_Plan_Rows").val(),
+                    Peg_Plan_Rows: parseInt($("#txtPeg_Plan_Rows").val()),
 
-                    Peg_Plan_Columns: $("#txtPeg_Plan_Columns").val(),
+                    Peg_Plan_Columns: parseInt($("#txtPeg_Plan_Columns").val()),
 
                     Is_Active: $("#hdnIs_Active").val(),
 

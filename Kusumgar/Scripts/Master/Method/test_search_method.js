@@ -53,7 +53,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "<input type='hidden' id='hdfTestId_" + data.Test_Grid[i].Test_Id + "' value='" + data.Test_Grid[i].Test_Id + "' />";
 
-            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -181,7 +181,7 @@ function BindTestInGrid(data, mode) {
         $('.pagination').html("");
     }
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -199,10 +199,13 @@ function BindTestInGrid(data, mode) {
     });
 
     $("#divSearchGridOverlay").hide();
+
+    $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
 
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

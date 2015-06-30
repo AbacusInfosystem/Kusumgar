@@ -198,6 +198,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Customers_By_State_Id_Nation_Id_Sp,
         Get_Customers_By_Pin_Code_Sp,
         Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
+        Update_Customer_Other_By_Customer_Id_Sp,
 
 
 
@@ -337,7 +338,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Article_By_Id_sp,
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
         Get_Y_Articles_By_YArticle_Id_Yarn_Type_sp,
-        Get_Work_Stations_By_Code_Purpose_Sp,
+        Get_Work_Centers_By_Code_Purpose_Sp,
 
         //Vendor
 
@@ -353,6 +354,9 @@ namespace KusumgarBusinessEntities.Common
         Check_Existing_Vendor_Sp,
         Get_Vendors_By_Vendor_Id_Material_Id_Sp,
         Get_Vendors_By_Material_Id_Sp,
+        Update_Vendor_Certificate_Sp,
+        Update_Vendor_Other_Details_Sp,
+        Update_Vendor_Central_Excise_Sp,
 
         
         Update_Attribute_Code_Name_sp,
@@ -389,21 +393,22 @@ namespace KusumgarBusinessEntities.Common
 
         Get_Factories_Sp,
         Get_Processes_Sp,
-        Get_Work_Stations_Sp,
-        Get_Work_Stations_By_Factory_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_Sp,
-        Get_Work_Centers_By_Work_Station_Id_Sp,
-        Get_Work_Centers_By_Process_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Process_Id_Sp,
-        Get_Work_Centers_By_Work_Station_Id_By_Process_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_By_Process_Id_Sp,
-        Insert_Work_Center_sp,
-        Update_Work_Center_sp,
         Get_Work_Centers_Sp,
-        Get_Work_Centers_By_Work_Center_Id_Sp,
-        Insert_Work_Center_Process_sp,
-        Delete_Work_Center_Process_By_Work_Center_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_Sp,
+        Get_Work_Stations_By_Work_Center_Id_Sp,
+        Get_Work_Stations_By_Process_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_By_Work_Center_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_By_Process_Id_Sp,
+        Get_Work_Stations_By_Work_Center_Id_By_Process_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_By_Work_Center_Id_By_Process_Id_Sp,
+        Insert_Work_Station_sp,
+        Update_Work_Station_sp,
+        Get_Work_Stations_Sp,
+        Get_Work_Stations_By_Work_Station_Id_Sp,
+        Insert_Work_Station_Process_sp,
+        Delete_Work_Station_Process_By_Work_Station_Id_Sp,
+        Get_Work_Center_By_Work_Station_Id_Sp,
 
         //Quality
 
@@ -423,7 +428,7 @@ namespace KusumgarBusinessEntities.Common
         Delete_Quality_Market_Segment_By_Id_sp,
         Get_Segment_AutoComplete_sp,
         Check_Existing_Quality_No_Sp,
-        Get_Work_Center_Processes_Sp,
+        Get_Work_Station_Processes_Sp,
 
         //Customer Quality
         Get_Qualities_Sp,

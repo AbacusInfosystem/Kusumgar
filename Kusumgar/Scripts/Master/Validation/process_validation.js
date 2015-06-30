@@ -12,7 +12,7 @@
 
             "Process.Process_Name":
             {
-                required: "Process Name is required."
+                required: "Process name is required."
             }            
         }
     });

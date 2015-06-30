@@ -40,7 +40,7 @@ function Bind_WArticle_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.WArticles[i].W_Article_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.WArticles[i].W_Article_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -98,7 +98,7 @@ function Bind_WArticle_Grid(data) {
     $('#tblWArticle tr:first').after(htmlText);
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -129,6 +129,7 @@ function Bind_WArticle_Grid(data) {
         }
     });
 
+    $("#btnEdit").hide();
 }
 
 function PageMore(Id) {

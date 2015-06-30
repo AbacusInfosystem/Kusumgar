@@ -52,7 +52,9 @@
 
         if ($("#frmSegment").valid()) {
 
-        Save_Quality_Segment_Details();
+            Save_Quality_Segment_Details();
+
+            $('.fa-remove').trigger("click");
         }
 
     });
@@ -63,7 +65,9 @@
 
         if ($("#frmApplication").valid()) {
 
-        Save_Quality_Application_Details();
+            Save_Quality_Application_Details();
+
+            $('.fa-remove').trigger("click");
         }
 
     });

@@ -26,25 +26,29 @@
     });
     
     $('#txtReed_Space_Inch').keyup(function () {
-        var val = this.value;        
-        if (val != "") {
-            $(this).parent().parent().find('.attribute-code').text(val);            
-        }
-        else {
-            $(this).parent().parent().find('.attribute-code').text("-");
-        }
-        Get_Full_Code();
+       // if ((this.value.match(/^(\d{1,3}\.\d{1,2}|\d{4}\.\d|\d{1,5})$/))) {
+            var val = this.value;
+            if (val != "") {
+                $(this).parent().parent().find('.attribute-code').text(val);
+            }
+            else {
+                $(this).parent().parent().find('.attribute-code').text("-");
+            }
+            Get_Full_Code();
+       // }
     });    
 
     $('#txtTotal_No_Ends').keyup(function () {
-        var val = this.value;        
-        if (val != "") {
-            $(this).parent().parent().find('.attribute-code').text(val);            
-        }
-        else {
-            $(this).parent().parent().find('.attribute-code').text("-");
-        }
-        Get_Full_Code();
+        //if ((this.value.match(/^(\d{1,3}\.\d{1,2}|\d{4}\.\d|\d{1,5})$/))) {
+            var val = this.value;
+            if (val != "") {
+                $(this).parent().parent().find('.attribute-code').text(val);
+            }
+            else {
+                $(this).parent().parent().find('.attribute-code').text("-");
+            }
+            Get_Full_Code();
+       // }
     });    
 
     $('[name="chkIsActive"]').on('ifChanged', function (event) {

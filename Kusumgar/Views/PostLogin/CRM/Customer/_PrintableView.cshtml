@@ -1,0 +1,245 @@
+﻿@model Kusumgar.Models.CustomerViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Customer">
+    <input type="hidden" id="hdfCustomer_Id" name="Customer.Customer_Id" value="@Model.Customer.Customer_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-primary">
+            <div class="box-header">
+
+                <div class="box-title">
+                    Customer Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @* Hidden Fields *@
+                    <input type="hidden" id="hdnCustomer_Id" name="" value="@Model.Customer.Customer_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Customer Name : </label> @Model.Customer.Customer_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Email : </label> @Model.Customer.Company_Email
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Head Office Address : </label> @Model.Customer.Head_Office_Address , @Model.Customer.Head_Office_ZipCode , @Model.Customer.Head_Office_State , @Model.Customer.Head_Office_Nation
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Head Office Landline : </label> @Model.Customer.Head_Office_Landline1 / @Model.Customer.Head_Office_Landline2
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Head Office Fax No : </label> @Model.Customer.Head_Office_FaxNo
+                                </div>                                
+                            </div>                            
+                        </div>                        
+
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Billing
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Landline 1</th>
+                                    <th>Landline 2</th>
+                                    <th>Fax No</th>
+                                </tr>
+                                @foreach (var item in Model.Customer.Customer_Address_List)
+                                {
+                                    if (item.Address_Type == 2)
+                                    { 
+                                        <tr>
+                                            <td>@item.Addresss</td>
+                                            <td>@item.Landline1</td>
+                                            <td>@item.landline2</td>
+                                            <td>@item.FaxNo</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Shipping
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Landline 1</th>
+                                    <th>Landline 2</th>
+                                    <th>Fax No</th>
+                                </tr>
+                                @foreach (var item in Model.Customer.Customer_Address_List)
+                                {
+                                    if (item.Address_Type == 1)
+                                    {
+                                        <tr>
+                                            <td>@item.Addresss</td>
+                                            <td>@item.Landline1</td>
+                                            <td>@item.landline2</td>
+                                            <td>@item.FaxNo</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Contact Type
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var item in Model.Customer.Customer_Contact_Types)
+                            {
+                                <div class="col-md-4">
+                                    @item.Contact_Type
+                                </div>
+                            }
+                        </div>
+
+                        <br />
+                        
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Other
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Company Turnover : </label> @Model.Customer.Company_Turnover
+                                </div>
+                                <div class="form-group">
+                                    @*<label style="color: #333">Credit Limit : </label> @Model.Customer.Credit_limit*@
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Order Minimum Value : </label> @Model.Customer.Order_Minimum_Value
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Order Maximum Value : </label> @Model.Customer.Order_Maximum_Value
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Expiration Date Of Contract : </label> @Model.Customer.Expiration_Date_Of_Contract
+                                </div>                                
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label style="color: #333">Auto Mail Delivery : </label> @(Model.Customer.Auto_Mail_Delivery == true ? "Yes" : "No")
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Block Order : </label> @(Model.Customer.Block_Order == true ? "Yes" : "No")
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Public/Private Sector : </label> @(Model.Customer.Public_Private_Sector == true ? "Public" : "Private")
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Organised/Unorganised Sector : </label> @(Model.Customer.Organised_UnOrganised_Sector == true ? "Organised" : "UnOrganised")
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Proprietary/Private/Limited : </label> 
+                                    @if (Model.Customer.Proprietary_Private_Limited == 1)
+                                    {
+                                        <a style="color: #333">Proprietary</a>
+                                    }
+                                    else if (Model.Customer.Proprietary_Private_Limited == 2)
+                                    {
+                                        <a style="color: #333">Private</a>
+                                    }
+                                    else if (Model.Customer.Proprietary_Private_Limited == 3)
+                                    {
+                                        <a style="color: #333">Limited</a>
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Progressive/Stable/Turmoil : </label> 
+                                    @if (Model.Customer.Progressive_Stable_Turmoil == 1)
+                                    {
+                                        <a style="color: #333">Progressive</a>
+                                    }
+                                    else if (Model.Customer.Progressive_Stable_Turmoil == 2)
+                                    {
+                                        <a style="color: #333">Stable</a>
+                                    }
+                                    else if (Model.Customer.Progressive_Stable_Turmoil == 3)
+                                    {
+                                        <a style="color: #333">Turmoil</a>
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @*<div class="box-header">
+
+                            <div class="box-title">
+                                Applications
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var item in Model.Quality_Application_Mapping_Grid)
+                            {
+                                <div class="col-md-4">
+                                    @item.Application_Name
+                                </div>
+                            }
+                        </div>
+
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Segment
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var item in Model.Quality_Market_Segment_Mapping_Grid)
+                            {
+                                <div class="col-md-4">
+                                    @item.Segment_Name
+                                </div>
+                            }
+                        </div>*@
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+    </div>
+
+    <!-- /.content -->
+</form>

@@ -1,4 +1,4 @@
-﻿@model Kusumgar.Models.WorkCenterViewModel
+﻿@model Kusumgar.Models.CustomerViewModel
 @using KusumgarBusinessEntities.Common
 
 <!-- Content Wrapper. Contains page content -->
@@ -22,13 +22,13 @@
 
         $("#btnPrintable_View").click(function () {
 
-            $("#frmPrintable_Work_Center").attr("target", "_blank");     //for open page on new browser tab
+            $("#frmPrintable_Customer").attr("action", "/system/printable-view/Customer/" + $("#hdfCustomer_Id").val());
 
-            $("#frmPrintable_Work_Center").attr("action", "/system/printable-view/Work_Center/" + $("#hdfWork_Center_Id").val());
+            $("#frmPrintable_Customer").attr("method", "POST");
 
-            $("#frmPrintable_Work_Center").attr("method", "POST");
+            $("#frmPrintable_Customer").attr("target", "_blank");
 
-            $("#frmPrintable_Work_Center").submit();
+            $("#frmPrintable_Customer").submit();
 
         });
     });

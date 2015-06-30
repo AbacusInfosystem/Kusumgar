@@ -75,7 +75,7 @@ function Set_YArticle()
 
                             Validated_By_Id: $("#hdnValidated_by").val(),
 
-                            Work_Station_Id: $("#hdnWork_Station_Id").val(),
+                            Work_Center_Id: $("#hdnWork_Center_Id").val(),
 
                             Y_Article_Id: $("#hdnYArticle_Id").val(),
 

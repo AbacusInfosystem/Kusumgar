@@ -116,7 +116,7 @@
 
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                                                    <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6">
+                                                    <input type="text" class="form-control input-sm" id="txtHead_Office_ZipCode" name="Customer.Head_Office_ZipCode" placeholder="Enter zipcode" value="@Model.Customer.Head_Office_ZipCode" maxlength="6" onkeypress="return isNumber(event)">
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_Landline1" class="form-control input-sm" name="Customer.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline1" />
+                                                <input type="text" id="txtHead_Office_Landline1" class="form-control input-sm" name="Customer.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline1" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -140,7 +140,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_Landline2" class="form-control input-sm" name="Customer.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline2" />
+                                                <input type="text" id="txtHead_Office_Landline2" class="form-control input-sm" name="Customer.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_Landline2" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -151,7 +151,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-fax"></i>
                                                 </div>
-                                                <input type="text" id="txtHead_Office_FaxNo" class="form-control" name="Customer.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_FaxNo" />
+                                                <input type="text" id="txtHead_Office_FaxNo" class="form-control" name="Customer.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask value="@Model.Customer.Head_Office_FaxNo" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -248,7 +248,7 @@
                                             </div>
                                         }
 
-                                        @if (@Model.Customer.Order_Maximum_Value == 0)
+                                        @if (Model.Customer.Order_Maximum_Value == 0)
                                         {
                                             <div class="form-group">
                                                 <label for="txtCreditLimit" style="color: #333">Order maximum value</label>
@@ -269,7 +269,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == null ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
+                                                <input type="text" class="form-control  input-sm pull-right" id="dtpExpiration_Date_Of_Contract" name="Customer.Expiration_Date_Of_Contract" value="@((Model.Customer.Expiration_Date_Of_Contract == DateTime.MinValue ? "" : Model.Customer.Expiration_Date_Of_Contract.ToShortDateString()))" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -299,15 +299,16 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #333">
-                                                        @if (Model.Customer.Block_Order == true)
-                                                        {
-                                                            <input type="checkbox" name="chkBlockOrder" checked />
-                                                        }
+                                                        @*@if (Model.Customer.Block_Order == true)
+                                                        {*@
+                                                            @*<input type="checkbox" name="chkBlockOrder" checked />*@
+                                                            <label>Block Order : </label> &nbsp;&nbsp;&nbsp;@(Model.Customer.Block_Order ? "Yes" : "No")
+                                                        @*}
                                                         else
                                                         {
                                                             <input type="checkbox" name="chkBlockOrder" />
                                                         }
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; Block order*@
                                                     </label>
                                                     <input type="hidden" id="hdnBlock_Order" value="@((Model.Customer.Block_Order== null ? false :Model.Customer.Block_Order).ToString())">
                                                 </div>

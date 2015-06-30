@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="drpQuality_No">Quality No.</label>
+                                    <label for="drpQuality_No" style="color: #333">Quality No.</label>
                                     <select id="drpQuality_No" class="form-control input-sm" name="Customer_Quality.Quality.Quality_No">
                                         <option value="">--Select--</option>
                                         @foreach (var item in Model.Customer_Quality.Qualities)
@@ -103,52 +103,52 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="txtCustomer_Roll_Length">Customer Roll Length</label>
+                                    <label for="txtCustomer_Roll_Length" style="color: #333">Customer Roll Length</label>
                                     <input type="text" class="form-control input-sm" id="txtCustomer_Roll_Length" value="@Model.Customer_Quality.Customer_Roll_Length" placeholder="Enter Customer Roll Length">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtStorage">Storage</label>
+                                    <label for="txtStorage" style="color: #333">Storage</label>
                                     <input type="text" class="form-control input-sm" id="txtStorage" value="@Model.Customer_Quality.Storage" placeholder="Enter Storage">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtEnd_Product_Criteria">End Product Criteria</label>
+                                    <label for="txtEnd_Product_Criteria" style="color: #333">End Product Criteria</label>
                                     <textarea class="form-control input-sm" id="txtEnd_Product_Criteria" placeholder="Enter End Product Criteria">@Model.Customer_Quality.End_Product_Criteria</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtTesting_Requirements">Testing Requirements</label>
+                                    <label for="txtTesting_Requirements" style="color: #333">Testing Requirements</label>
                                     <textarea class="form-control input-sm" id="txtTesting_Requirements" placeholder="Enter Testing Requirements">@Model.Customer_Quality.Testing_Requirements</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtSpecial_Requirements_Packaging">Special Requirements Packaging</label>
+                                    <label for="txtSpecial_Requirements_Packaging" style="color: #333">Special Requirements Packaging</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Packaging" placeholder="Enter Special Requirements Packaging">@Model.Customer_Quality.Special_Requirements_Packaging</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="txtTransport">Transport</label>
+                                    <label for="txtTransport" style="color: #333">Transport</label>
                                     <input type="text" class="form-control input-sm" id="txtTransport" value="@Model.Customer_Quality.Transport" placeholder="Enter Transport">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtLot_Testing">Lot Testing</label>
+                                    <label for="txtLot_Testing" style="color: #333">Lot Testing</label>
                                     <input type="text" class="form-control input-sm" id="txtLot_Testing" value="@Model.Customer_Quality.Lot_Testing" placeholder="Enter Lot Testing">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtInspection_Requirements">Inspection Requirements</label>
+                                    <label for="txtInspection_Requirements" style="color: #333">Inspection Requirements</label>
                                     <textarea class="form-control input-sm" id="txtInspection_Requirements" placeholder="Enter Inspection Requirements">@Model.Customer_Quality.Inspection_Requirements</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtProcess_Control">Process Control</label>
+                                    <label for="txtProcess_Control" style="color: #333">Process Control</label>
                                     <textarea class="form-control input-sm" id="txtProcess_Control" placeholder="Enter Process Control">@Model.Customer_Quality.Process_Control</textarea>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="txtSpecial_Requirements_Defects_Defination">Special Requirements Defects Defination</label>
+                                    <label for="txtSpecial_Requirements_Defects_Defination" style="color: #333">Special Requirements Defects Defination</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Defects_Defination" placeholder="Enter Special Requirements Defects Defination">@Model.Customer_Quality.Special_Requirements_Defect_Defination</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                
                                 <div class="form-group">
-                                    <label for="txtCustomer_Sample_No">Customer Sample No</label>
+                                    <label for="txtCustomer_Sample_No" style="color: #333">Customer Sample No</label>
                                     <div class="auto-complete">
                                         <input type="text" class="form-control input-sm" id="txtCustomer_Sample_No" placeholder="Enter sample no" name="Customer_Quality.Sample.Sample_Id" value="">
                                         @*<input type="hidden" id="hdnSample_Id" value="@(Model.Customer_Quality.Sample.Sample_Id == 0 ? "" : Model.Customer_Quality.Sample.Sample_Id.ToString())" name="Customer_Quality.Sample_Id" class="auto-complete-value">*@
@@ -158,15 +158,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtSpecial_Care_Details">Special Care Details</label>
+                                    <label for="txtSpecial_Care_Details" style="color: #333">Special Care Details</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Care_Details" placeholder="Enter Special Care Details">@Model.Customer_Quality.Special_Care_Details</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtSpecial_Requirements_Material_Handling">Special Requirements Material Handling</label>
+                                    <label for="txtSpecial_Requirements_Material_Handling" style="color: #333">Special Requirements Material Handling</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Material_Handling" placeholder="Enter Special Requirements Material Handling">@Model.Customer_Quality.Special_Requirements_Material_Handling</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtSpecial_Requirements_Verdicting">Special Requirements Verdicting</label>
+                                    <label for="txtSpecial_Requirements_Verdicting" style="color: #333">Special Requirements Verdicting</label>
                                     <textarea class="form-control input-sm" id="txtSpecial_Requirements_Verdicting" placeholder="Enter Special Requirements Verdicting">@Model.Customer_Quality.Special_Requirements_Verdicting</textarea>
                                 </div>
                             </div>

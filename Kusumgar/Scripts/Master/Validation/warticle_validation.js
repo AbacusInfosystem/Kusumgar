@@ -15,12 +15,14 @@
             "WArticle.Reed_Space_Inch":
             {
                 required: true,
-                full_code_validator: true
+                full_code_validator: true,
+                number: true
             },
             "WArticle.Total_No_Of_Ends":
             {
                 required: true,
-                full_code_validator: true
+                full_code_validator: true,
+                number:true
             },
             "WArticle.Ideal_Beam":
             {
@@ -31,23 +33,23 @@
 
             "WArticle.Quality_Id":
             {
-                required: "Quality No. is required."                
+                required: "Quality no. is required."                
             },
             "WArticle.Yarn_Type_Id":
             {
-                required: "Yarn Type is required."                
+                required: "Yarn type is required."                
             },
             "WArticle.Reed_Space_Inch":
             {
-                required: "Reed Space Inch is required."                
+                required: "Reed space inch is required."                
             },
             "WArticle.Total_No_Of_Ends":
             {
-                required: "Total No. of Ends is required."                
+                required: "Total no. of ends is required."                
             },
             "WArticle.Ideal_Beam":
             {
-                required: "Ideal Beam is required"
+                required: "Ideal beam is required"
             }
             
         }

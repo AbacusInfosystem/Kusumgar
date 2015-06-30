@@ -1,44 +1,44 @@
 ﻿
-function Bind_Work_Stations(data) {
+function Bind_Work_Centers(data) {
    
-    $("#drpWork_Station").html("");
+    $("#drpWork_Center").html("");
 
     var htmltext = "";
 
-    htmltext += "<option>-Select Work Station-</option>";
+    htmltext += "<option>-Select Work Center-</option>";
    
-    if (data.Work_Center.Work_Stations.length > 0) {
-        for (var i = 0; i < data.Work_Center.Work_Stations.length ; i++) {
+    if (data.Work_Station.Work_Centers.length > 0) {
+        for (var i = 0; i < data.Work_Station.Work_Centers.length ; i++) {
 
-            htmltext += "<option value='" + data.Work_Center.Work_Stations[i].Work_Station_Id + "'>" + data.Work_Center.Work_Stations[i].Work_Station_Name + "</option>";
+            htmltext += "<option value='" + data.Work_Station.Work_Centers[i].Work_Center_Id + "'>" + data.Work_Station.Work_Centers[i].Work_Center_Name + "</option>";
         }
     }
-    $("#drpWork_Station").html(htmltext);
+    $("#drpWork_Center").html(htmltext);
 }
 
 
-//function Save_Work_Center() {
+//function Save_Work_Station() {
 
-//    var wcViewModel = Get_Work_Center_values();
+//    var wcViewModel = Get_Work_Station_values();
 
-//    if ($("#hdnWork_Center_Id").val() == 0) {
+//    if ($("#hdnWork_Station_Id").val() == 0) {
 
-//        CallAjax("/master/insert-work-center", "json", JSON.stringify(wcViewModel), "POST", "application/json", false, Work_Center_CallBack, "", null);
+//        CallAjax("/master/insert-work-Station", "json", JSON.stringify(wcViewModel), "POST", "application/json", false, Work_Station_CallBack, "", null);
 //    }
 //    else {
-//        CallAjax("/master/update-work-center", "json", JSON.stringify(wcViewModel), "POST", "application/json", false, Work_Center_CallBack, "", null);
+//        CallAjax("/master/update-work-Station", "json", JSON.stringify(wcViewModel), "POST", "application/json", false, Work_Station_CallBack, "", null);
 //    }
 //}
 
 
-//function Work_Center_CallBack(data) {
+//function Work_Station_CallBack(data) {
    
-//    //$("#hdnWork_Center_Id").val(data.Work_Center.Work_Center_Id);
-//    $("#hdnWork_Center_Id").val(0);
+//    //$("#hdnWork_Station_Id").val(data.Work_Station.Work_Station_Id);
+//    $("#hdnWork_Station_Id").val(0);
 
 //    $("#drpFactory").val("");
-//    $("#drpWork_Station").val("");
-//    $("#txtWork_Center_Code").val("");
+//    $("#drpWork_Center").val("");
+//    $("#txtWork_Station_Code").val("");
 //    $("#txtMachine_Name").val("");
 //    $("#txtMachine_Properties").val("");
 //    $("#txtTPM_Speed").val("");
@@ -53,28 +53,28 @@ function Bind_Work_Stations(data) {
 //}
 
 
-//function Get_Work_Center_values() {
+//function Get_Work_Station_values() {
 
 //    var wcViewModel =
 //        {
-//            Work_Center:
+//            Work_Station:
 //                {
 //                    Process:
 //                       {
 //                           Process_Ids: $("#hdnProcess_Id").val(),
 //                       },
 
-//                    Work_Station:
+//                    Work_Center:
 //                        {
                          
-//                                Work_Station_Id: $("#drpWork_Station").val(),
+//                                Work_Center_Id: $("#drpWork_Center").val(),
                             
                          
 //                        },
                    
-//                            Work_Center_Id: $("#hdnWork_Center_Id").val(),
+//                            Work_Station_Id: $("#hdnWork_Station_Id").val(),
 
-//                            Work_Center_Code: $("#txtWork_Center_Code").val(),
+//                            Work_Station_Code: $("#txtWork_Station_Code").val(),
 
 //                            Machine_Name: $("#txtMachine_Name").val(),
 

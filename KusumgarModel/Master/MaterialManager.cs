@@ -59,9 +59,9 @@ namespace KusumgarModel
             return _materialRepo.Get_Material_SubCategories(Material_Category_Id, ref pager);
         }
 
-        public List<MaterialVendorInfo> Get_Material_Vendors_By_Id(int Material_Id, ref PaginationInfo pager)
+        public List<MaterialVendorInfo> Get_Material_Vendors_By_Id(int Material_Id)
         {
-            return _materialRepo.Get_Material_Vendors_By_Id(Material_Id, ref pager);
+            return _materialRepo.Get_Material_Vendors_By_Id(Material_Id);
         }
 
         public int Insert_Material_Vendor(MaterialVendorInfo MaterialVendorInfo)

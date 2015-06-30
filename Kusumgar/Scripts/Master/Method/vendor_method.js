@@ -1,14 +1,35 @@
 ﻿function Save_Vendors_Other_Details() {
     var vViewModel = Set_Vendor_Other_Details();
     
-    if ($("#hdnVendorId").val() == 0) {
+    if ($("#hdnVendorId").val() != 0) {
       
-        CallAjax("/master/insert-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+        CallAjax("/master/update-vendor-other-details/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+
+        
     }
-    else {
-        CallAjax("/master/update-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+
+}
+
+function Save_Vendors_Certificate() {
+    var vViewModel = Set_Vendor_Other_Details();
+
+    if ($("#hdnVendorId").val() != 0) {
+
+        CallAjax("/master/update-vendor-certificate/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+
     }
-   
+
+}
+
+
+function Save_Vendors_Central_Excise() {
+    var vViewModel = Set_Vendor_Other_Details();
+
+    if ($("#hdnVendorId").val() != 0) {
+
+        CallAjax("/master/update-vendor-central-excise/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+    }
+
 }
 
 function Bind_Vendor_Other_Details_Data_Callback(data) {

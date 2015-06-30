@@ -123,7 +123,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-mobile"></i>
                                                 </div>
-                                                <input type="text" id="txtMobile1" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.Mobile1" value="@Model.Contact.Mobile1" maxlength="10" />
+                                                <input type="text" id="txtMobile1" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.Mobile1" value="@Model.Contact.Mobile1" maxlength="10" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -133,7 +133,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-mobile"></i>
                                                 </div>
-                                                <input type="text" id="txtMobile2" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.Mobile2" value="@Model.Contact.Mobile2" maxlength="10" />
+                                                <input type="text" id="txtMobile2" class="form-control input-sm" data-inputmask='"mask": "(99) 9999999999"' data-mask name="contact.Mobile2" value="@Model.Contact.Mobile2" maxlength="10" onkeypress="return isNumber(event)" />
                                             </div>
                                             <!-- /.input group -->
                                         </div>
@@ -275,7 +275,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-mobile"></i>
                                             </div>
-                                            <input type="text" id="txtHeadOfficeLandline1" class="form-control" data-inputmask='"mask": "(99) 9999999999"' data-mask />
+                                            <input type="text" id="txtHeadOfficeLandline1" class="form-control" data-inputmask='"mask": "(99) 9999999999"' data-mask onkeypress="return isNumber(event)" />
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -286,7 +286,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-mobile"></i>
                                             </div>
-                                            <input type="text" id="txtHeadOfficeLandline2" class="form-control" data-inputmask='"mask": "(99) 9999999999"' data-mask />
+                                            <input type="text" id="txtHeadOfficeLandline2" class="form-control" data-inputmask='"mask": "(99) 9999999999"' data-mask onkeypress="return isNumber(event)" />
                                         </div>
                                         <!-- /.input group -->
                                     </div>

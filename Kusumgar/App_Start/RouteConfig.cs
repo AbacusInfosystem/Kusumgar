@@ -53,8 +53,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "menu-7",
-            url: "master/workcenter/search",
-            defaults: new { controller = "Workcenter", action = "Search", id = UrlParameter.Optional },
+            url: "master/workStation/search",
+            defaults: new { controller = "WorkStation", action = "Search", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -113,8 +113,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "menu-17",
-            url: "master/article-process-workcenter/search",
-            defaults: new { controller = "ArticleProcessWorkCenter", action = "Search", id = UrlParameter.Optional },
+            url: "master/article-process-workStation/search",
+            defaults: new { controller = "ArticleProcessWorkStation", action = "Search", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -363,6 +363,26 @@ namespace Kusumgar
             url: "master/delete-customer-contact-type",
             defaults: new { controller = "Customer", action = "Delete_Customer_Contact_Type_By_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+           name: "customer-19",
+           url: "crm/update-customer-other",
+           defaults: new { controller = "Customer", action = "Update_Customer_Other", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-20",
+            url: "crm/view-customer",
+            defaults: new { controller = "Customer", action = "View_Customer", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-21",
+            url: "crm/print-view-customer",
+            defaults: new { controller = "Customer", action = "Printable_Customer", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+           
 
             #endregion
 
@@ -756,8 +776,8 @@ namespace Kusumgar
 
             routes.MapRoute(
             name: "y-article-8",
-            url: "master/y-articles/get-work-stations-by-code-purpose/{work_Station_Code}",
-            defaults: new { controller = "YArticle", action = "Get_Work_Stations_By_Code_Purpose", work_Station_Code = UrlParameter.Optional },
+            url: "master/y-articles/get-work-centers-by-code-purpose/{work_Center_Code}",
+            defaults: new { controller = "YArticle", action = "Get_Work_Centers_By_Code_Purpose", work_Center_Code = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
@@ -1004,12 +1024,12 @@ namespace Kusumgar
 
             #endregion
 
-            #region Article Process Workcenter
+            #region Article Process WorkStation
 
             routes.MapRoute(
-            name: "article-process-workcenter-1",
-            url: "master/article-process-workcenter",
-            defaults: new { controller = "ArticleProcessWorkCenter", action = "Index", id = UrlParameter.Optional },
+            name: "article-process-workstation-1",
+            url: "master/article-process-workStation",
+            defaults: new { controller = "ArticleProcessWorkStation", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
@@ -1302,29 +1322,29 @@ namespace Kusumgar
            defaults: new { controller = "Vendor", action = "Update_Product_Service", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "vendor-7",
-           url: "master/delete-product-service",
-           defaults: new { controller = "Vendor", action = "Delete_Product_Service_By_Id", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+          routes.MapRoute(
+          name: "vendor-7",
+          url: "master/delete-product-service",
+          defaults: new { controller = "Vendor", action = "Delete_Product_Service_By_Id", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "vendor-8",
-           url: "master/check-vendor",
-           defaults: new { controller = "Vendor", action = "Check_Existing_Vendor", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+          routes.MapRoute(
+            name: "vendor-8",
+            url: "master/check-vendor",
+            defaults: new { controller = "Vendor", action = "Check_Existing_Vendor", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "vendor-9",
-           url: "master/partial-vendor",
-           defaults: new { controller = "Vendor", action = "Load_Vendor", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+          routes.MapRoute(
+         name: "vendor-9",
+         url: "master/partial-vendor",
+         defaults: new { controller = "Vendor", action = "Load_Vendor", id = UrlParameter.Optional },
+         namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "vendor-10",
-           url: "ajax/vendor-list/{vendor_Name}",
-           defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+          routes.MapRoute(
+       name: "vendor-10",
+       url: "ajax/vendor-list/{vendor_Name}",
+       defaults: new { controller = "Vendor", action = "Get_Vendor_Autocomplete", id = UrlParameter.Optional },
+       namespaces: new string[] { "Kusumgar.Controllers" });
 
 
            routes.MapRoute(
@@ -1338,6 +1358,24 @@ namespace Kusumgar
            url: "master/print-view-vendor",
            defaults: new { controller = "Vendor", action = "Printable_Vendor", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+         name: "vendor-13",
+         url: "master/update-vendor-certificate",
+         defaults: new { controller = "Vendor", action = "Update_Vendor_Certificate", id = UrlParameter.Optional },
+         namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+          name: "vendor-14",
+          url: "master/update-vendor-other-details",
+          defaults: new { controller = "Vendor", action = "Update_Vendor_Other_Details", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+          name: "vendor-15",
+          url: "master/update-vendor-central-excise",
+          defaults: new { controller = "Vendor", action = "Update_Vendor_Central_Excise", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
 
             #endregion
@@ -1562,10 +1600,10 @@ namespace Kusumgar
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "VendorContact-4",
-            url: "master/get-vendor-contact-by-id",
-            defaults: new { controller = "VendorContact", action = "Get_Vendor_Contact_By_Id", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+           name: "VendorContact-4",
+           url: "master/get-vendor-contact-by-id",
+           defaults: new { controller = "VendorContact", action = "Get_Vendor_Contact_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "VendorContact-5",
@@ -1605,48 +1643,48 @@ namespace Kusumgar
 
             #endregion
 
-            #region WorkCenter
+            #region WorkStation
 
             routes.MapRoute(
-            name: "workcenter-1",
-            url: "master/work-station-by-factory-id",
-            defaults: new { controller = "WorkCenter", action = "Get_Work_Stations_By_Factory_Id", id = UrlParameter.Optional },
+            name: "workstation-1",
+            url: "master/work-center-by-factory-id",
+            defaults: new { controller = "WorkStation", action = "Get_Work_Centers_By_Factory_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-2",
-            url: "master/insert-work-center",
-            defaults: new { controller = "WorkCenter", action = "Insert", id = UrlParameter.Optional },
+            name: "workstation-2",
+            url: "master/insert-work-Station",
+            defaults: new { controller = "WorkStation", action = "Insert", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-3",
-            url: "master/work-center-search",
-            defaults: new { controller = "WorkCenter", action = "Get_Work_Centers", id = UrlParameter.Optional },
+            name: "workstation-3",
+            url: "master/work-station-search",
+            defaults: new { controller = "WorkStation", action = "Get_Work_Stations", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-4",
-            url: "master/get-work-center-by-id",
-            defaults: new { controller = "WorkCenter", action = "Get_Work_Centers_By_Work_Center_Id", id = UrlParameter.Optional },
+            name: "workstation-4",
+            url: "master/get-work-station-by-id",
+            defaults: new { controller = "WorkStation", action = "Get_Work_Stations_By_Work_Station_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-5",
-            url: "master/update-work-center",
-            defaults: new { controller = "WorkCenter", action = "Update", id = UrlParameter.Optional },
+            name: "workstation-5",
+            url: "master/update-work-Station",
+            defaults: new { controller = "WorkStation", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-           name: "workcenter-6",
-           url: "master/view-workcenter",
-           defaults: new { controller = "WorkCenter", action = "View_Work_Center", id = UrlParameter.Optional },
+           name: "workstation-6",
+           url: "master/view-workStation",
+           defaults: new { controller = "WorkStation", action = "View_Work_Station", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "workcenter-7",
-            url: "master/print-view-work_center",
-            defaults: new { controller = "WorkCenter", action = "Printable_Work_Center", id = UrlParameter.Optional },
+            name: "workstation-7",
+            url: "master/print-view-work_Station",
+            defaults: new { controller = "WorkStation", action = "Printable_Work_Station", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion

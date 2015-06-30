@@ -110,14 +110,7 @@ function Bind_Material_Vendor_Data_Callback(data)
     }
     $("#tblProdVenGrid").find("tr:gt(0)").remove();
 
-    $('#tblProdVenGrid tr:first').after(htmlText);    
-
-    $('#hdfCurrentPage').val(data.Pager.CurrentPage);
-
-    if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
-
-        $('.pagination').html(data.Pager.PageHtmlString);
-    }
+    $('#tblProdVenGrid tr:first').after(htmlText);        
 
     $("#divSearchGridOverlay").hide();
 

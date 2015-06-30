@@ -9,9 +9,9 @@ using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class WorkCenterProcessInfo
+    public class WorkStationProcessInfo
     {
-        public WorkCenterProcessInfo()
+        public WorkStationProcessInfo()
         {
            // Work_Center_Process_Entity = new M_Work_Center_Process();
 
@@ -19,9 +19,9 @@ namespace KusumgarBusinessEntities
 
         // public M_Work_Center_Process Work_Center_Process_Entity { get; set; }
 
-        public int Work_Center_Process_Id { get; set; }
+        public int Work_Station_Process_Id { get; set; }
 
-        public int Work_Center_Id { get; set; }
+        public int Work_Station_Id { get; set; }
 
         public int Process_Id { get; set; }
 

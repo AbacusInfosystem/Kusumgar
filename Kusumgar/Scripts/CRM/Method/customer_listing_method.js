@@ -71,6 +71,7 @@ function SearchCustomerByStatus() {
        CallAjax("/crm/search-customers-by-status", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
     
 }
+
 function Bind_Customer_Grid(data) {
 
 
@@ -86,7 +87,7 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -146,10 +147,19 @@ function Bind_Customer_Grid(data) {
         $('#tblcustomer tr:first').after(htmlText);
 
   
-        $('input').iCheck({
+        $('.iradio-list').iCheck({
             radioClass: 'iradio_square-green',
             increaseArea: '20%' // optional
-        });
+    });
+
+        //$('input:not(.non-iCheck input:checkbox)').on("onload", function () {
+
+        //    $(this).iCheck({
+        //        checkboxClass: 'icheckbox_square-green',
+        //        radioClass: 'iradio_square-green',
+        //        increaseArea: '20%'
+        //    });
+        //});
 
 
         if (data.Customers.length > 0) {
@@ -174,6 +184,7 @@ function Bind_Customer_Grid(data) {
                 $("#hdfCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#hdCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#hdfCustomer_Name").val($("#Cust_" + this.id.replace("r1_", "")).text());
+                $("#btnView").show();
                 $("#btnEdit").show();
                 $("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();
@@ -194,14 +205,20 @@ function Bind_Customer_Grid(data) {
                 }
               
                 }
-          
-           
         });
+
+        $("#btnEdit").hide();
+        $("#btnViewContact").hide();
+        $("#btnPurchaseHistory").hide();
+        $("#btnBlock").hide();
+        $("#btnUnblock").hide();
+        $("#btnView").hide();
     
 }
 
 function PageMore(Id) {
 
+    $("#btnView").hide();
     $("#btnEdit").hide();
     $("#btnViewContact").hide();
     $("#btnPurchaseHistory").hide();
@@ -214,6 +231,22 @@ function PageMore(Id) {
 
     
     SearchCustomer();
+}
+
+function PageMoreByStatus(Id)
+{
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+    SearchCustomerByStatus();
+
 }
 
 function PageMoreByStatus(Id) {

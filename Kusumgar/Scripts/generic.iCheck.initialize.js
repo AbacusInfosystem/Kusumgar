@@ -1,6 +1,6 @@
 ﻿function Initialize_ICheck() {
     var html = "";
-    html += "<script> $('input:not(.non-iCheck input:checkbox)').iCheck({";
+    html += "<script> $('input:not(.non-iCheck input:checkbox,.iradio-list)').iCheck({";
     html += "    checkboxClass: 'icheckbox_square-green',";
     html += "   radioClass: 'iradio_square-green',";
     html += "  increaseArea: '20%' ";

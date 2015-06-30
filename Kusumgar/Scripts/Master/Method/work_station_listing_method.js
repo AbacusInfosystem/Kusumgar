@@ -1,30 +1,30 @@
 ﻿
-function Bind_Work_Stations(data) {
+function Bind_Work_Centers(data) {
 
-    $("#drpWork_Station").html("");
+    $("#drpWork_Center").html("");
 
     var htmltext = "";
 
-    htmltext += "<option>-Select work center-</option>";
+    htmltext += "<option>-Select work Station-</option>";
 
-    if (data.Work_Center.Work_Stations.length > 0) {
-        for (var i = 0; i < data.Work_Center.Work_Stations.length ; i++) {
+    if (data.Work_Station.Work_Centers.length > 0) {
+        for (var i = 0; i < data.Work_Station.Work_Centers.length ; i++) {
 
-            htmltext += "<option value='" + data.Work_Center.Work_Stations[i].Work_Station_Id + "'>" + data.Work_Center.Work_Stations[i].Work_Station_Name + "</option>";
+            htmltext += "<option value='" + data.Work_Station.Work_Centers[i].Work_Center_Id + "'>" + data.Work_Station.Work_Centers[i].Work_Center_Name + "</option>";
         }
     }
-    $("#drpWork_Station").html(htmltext);
+    $("#drpWork_Center").html(htmltext);
 }
 
 
-function Search_Work_Station() {
+function Search_Work_Center() {
     var wcViewModel =
         {
             Filter:
                 {
                     Factory_Id: $("#drpFactory").val(),
 
-                    Work_Station_Id: $("#drpWork_Station").val(),
+                    Work_Center_Id: $("#drpWork_Center").val(),
 
                     Process_Id: $("#drpProcess").val(),
                 },
@@ -36,79 +36,79 @@ function Search_Work_Station() {
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/master/work-center-search", "json", JSON.stringify(wcViewModel), "POST", "application/json", false, Bind_Work_Center_Grid, "", null);
+    CallAjax("/master/work-station-search", "json", JSON.stringify(wcViewModel), "POST", "application/json", false, Bind_Work_Station_Grid, "", null);
 }
 
-function Bind_Work_Center_Grid(data) {
+function Bind_Work_Station_Grid(data) {
 
-    $('#tblWork_Center tr.subhead').html("");
+    $('#tblWork_Station tr.subhead').html("");
 
     var htmlText = "";
 
-    if (data.Work_Centers.length > 0) {
+    if (data.Work_Stations.length > 0) {
        
-        for (i = 0; i < data.Work_Centers.length; i++) {
+        for (i = 0; i < data.Work_Stations.length; i++) {
 
             htmlText += "<tr>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Work_Centers[i].Work_Center_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Work_Stations[i].Work_Station_Id + "' class='iradio-list'/>";
+
+            htmlText += "</td>";
+
+            htmlText += "<td>"; 
+            
+            htmlText += data.Work_Stations[i].Work_Center.Work_Center_Name ;
+            //htmlText += data.Work_Station.Work_Centers[i].Work_Center_Name == null ? "" : data.Work_Station.Work_Centers[i].Work_Center_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Station_Id == null ? "" : data.Work_Centers[i].Work_Station_Id;
-            //htmlText += data.Work_Center.Work_Stations[i].Work_Station_Name == null ? "" : data.Work_Center.Work_Stations[i].Work_Station_Name;
+            htmlText += data.Work_Stations[i].Work_Station_Code == null ? "" : data.Work_Stations[i].Work_Station_Code;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Work_Center_Code == null ? "" : data.Work_Centers[i].Work_Center_Code;
+            htmlText += data.Work_Stations[i].Machine_Name == null ? "" : data.Work_Stations[i].Machine_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Machine_Name == null ? "" : data.Work_Centers[i].Machine_Name;
+            htmlText += data.Work_Stations[i].Machine_Properties == null ? "" : data.Work_Stations[i].Machine_Properties;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Machine_Properties == null ? "" : data.Work_Centers[i].Machine_Properties;
+            htmlText += data.Work_Stations[i].TPM_Speed == null ? "" : data.Work_Stations[i].TPM_Speed;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].TPM_Speed == null ? "" : data.Work_Centers[i].TPM_Speed;
+            htmlText += data.Work_Stations[i].Average_Order_Length == null ? "" : data.Work_Stations[i].Average_Order_Length;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Average_Order_Length == null ? "" : data.Work_Centers[i].Average_Order_Length;
+            htmlText += data.Work_Stations[i].Capacity == null ? "" : data.Work_Stations[i].Capacity;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Capacity == null ? "" : data.Work_Centers[i].Capacity;
+            htmlText += data.Work_Stations[i].Wastage == null ? "" : data.Work_Stations[i].Wastage;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Work_Centers[i].Wastage == null ? "" : data.Work_Centers[i].Wastage;
-
-            htmlText += "</td>";
-
-            htmlText += "<td>";
-
-            htmlText += data.Work_Centers[i].Target_Efficiency == null ? "" : data.Work_Centers[i].Target_Efficiency;
+            htmlText += data.Work_Stations[i].Target_Efficiency == null ? "" : data.Work_Stations[i].Target_Efficiency;
 
             htmlText += "</td>";
 
@@ -171,18 +171,18 @@ function Bind_Work_Center_Grid(data) {
 
         htmlText += "</tr>";
     }
-    $("#tblWork_Center").find("tr:gt(0)").remove();
+    $("#tblWork_Station").find("tr:gt(0)").remove();
 
-    $('#tblWork_Center tr:first').after(htmlText);
+    $('#tblWork_Station tr:first').after(htmlText);
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
 
 
-    if (data.Work_Centers.length > 0) {
+    if (data.Work_Stations.length > 0) {
         $('#hdfCurrent_Page').val(data.Pager.CurrentPage);
         
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
@@ -201,13 +201,16 @@ function Bind_Work_Center_Grid(data) {
     $('[name="r1"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
 
-            $("#hdnWork_Center_Id").val(this.id.replace("r1_", ""));
+            $("#hdnWork_Station_Id").val(this.id.replace("r1_", ""));
             $('#btnView').show();
             $("#btnEdit").show();
 
         }
     });
 
+
+    $('#btnView').hide();
+    $("#btnEdit").hide();
 }
 
 function PageMore(Id) {
@@ -216,5 +219,5 @@ function PageMore(Id) {
     $('#hdfCurrent_Page').val((parseInt(Id) - 1));
     $(".selectAll").prop("checked", false);
 
-    Search_Work_Station();
+    Search_Work_Center();
 }

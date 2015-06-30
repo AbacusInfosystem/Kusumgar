@@ -37,7 +37,7 @@ namespace Kusumgar.Controllers
             PaginationInfo pager = new PaginationInfo();
             try
             {
-                cViewModel.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Contact.Customer_Id, ref pager);
+                cViewModel.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Contact.Customer_Id);
             }
             catch (Exception ex)
             {
@@ -240,7 +240,7 @@ namespace Kusumgar.Controllers
             {
                 PaginationInfo pager = new PaginationInfo();
                 pager.IsPagingRequired = false;
-                Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(customer_Id, ref pager);
+                Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(customer_Id);
             }
             catch (Exception ex)
             {                

@@ -135,7 +135,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
         //    return Json(vViewModel);
         //}
 
-        public ActionResult Update_Vendor(VendorViewModel vViewModel)
+        public JsonResult Update_Vendor(VendorViewModel vViewModel)
         {
             try
             {
@@ -152,6 +152,72 @@ namespace Kusumgar.Controllers.PostLogin.Master
                 vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Vendor Controller - Update_Vendor_Details " + ex.ToString());
+            }
+
+            return Json(vViewModel);
+        }
+
+        public JsonResult Update_Vendor_Certificate(VendorViewModel vViewModel)
+        {
+            try
+            {
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _vendorMan.Update_Vendor_Certificate(vViewModel.Vendor);
+
+                vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Update_Vendor_Certificate " + ex.ToString());
+            }
+
+            return Json(vViewModel);
+        }
+
+        public JsonResult Update_Vendor_Other_Details(VendorViewModel vViewModel)
+        {
+            try
+            {
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _vendorMan.Update_Vendor_Other_Details(vViewModel.Vendor);
+
+                vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Update_Vendor_Other_Details " + ex.ToString());
+            }
+
+            return Json(vViewModel);
+        }
+
+        public JsonResult Update_Vendor_Central_Excise(VendorViewModel vViewModel)
+        {
+            try
+            {
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _vendorMan.Update_Vendor_Central_Excise(vViewModel.Vendor);
+
+                vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Update_Vendor_Central_Excise " + ex.ToString());
             }
 
             return Json(vViewModel);

@@ -56,7 +56,7 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<input type='hidden' id='hdfDefectId_" + data.DefectGrid[i].Defect_Id + "' value='" + data.DefectGrid[i].Defect_Id + "' />";
 
-            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -136,7 +136,7 @@ function BindDefectInGrid(data, mode) {
     }
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -153,10 +153,14 @@ function BindDefectInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $('#btnEdit').hide();
+
     }
 
 function PageMore(Id) {
     
+    $('#btnEdit').hide();
+
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
    
     var dViewModel = {

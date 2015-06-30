@@ -60,7 +60,7 @@ function BindVendorInGrid(data, mode) {
         htmlText += "<input type='hidden' id='hdfVendorId_" + data.Vendor_Grid[i].Vendor_Id + "' value='" + data.Vendor_Grid[i].Vendor_Id + "' />";
         htmlText += "<input type='hidden' id='hdfVendor_Name_" + data.Vendor_Grid[i].Vendor_Name + "' value='" + data.Vendor_Grid[i].Vendor_Name + "' />";
            
-        htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
         htmlText += "</td>";
 
@@ -132,9 +132,16 @@ function BindVendorInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $('#btnView').hide();
+    $('#btnEdit').hide();
+    $("#btnView_Material").hide();
+
 }
 
 function PageMore(Id) {
+    $("#btnView_Material").hide();
+    $('#btnView').hide();
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

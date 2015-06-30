@@ -25,7 +25,7 @@ $(function () {
                 },
             "Customer_Quality.Quality.Quality_No":
                 {
-                    required: "Quality number name is required"
+                    required: "Quality number name is required."
                 }
         }
     });
