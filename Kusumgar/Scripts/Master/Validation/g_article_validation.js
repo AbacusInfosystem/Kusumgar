@@ -30,10 +30,10 @@
             },
 
                 //Warp_1 to Weft_4
-            //"G_Article.Warp_1":
-            //{
-            //    required: true
-            //},
+            "G_Article.Warp_1":
+            {
+                required: true
+            },
             //"G_Article.Warp_2":
             //{
             //    required: true
@@ -46,10 +46,10 @@
             //{
             //    required: true
             //},
-            //"G_Article.Weft_1":
-            //{
-            //    required: true
-            //},
+            "G_Article.Weft_1":
+            {
+                required: true
+            },
             //"G_Article.Weft_2":
             //{
             //    required: true

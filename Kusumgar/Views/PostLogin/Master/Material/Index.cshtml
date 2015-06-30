@@ -174,10 +174,12 @@
                                         <div class="form-group">
                                             <label for="txt_auto_Vendor_Name" style="color: #333">Vendor Name</label>
                                             <div class="auto-complete">
-                                                <div class="input-group-btn form-inline">
-                                                    <input type="text" class="form-control input-sm"  id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name" >
-                                                    <button type="button" id="btnNew" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">New Vendor</button>
-                                                </div>
+                                                <div class="input-group input-group-sm">
+                                                    <input type="text" class="form-control input-sm" id="txt_auto_Vendor_Name" placeholder="Enter Vendor Name">
+                                                    <span class="input-group-btn">
+                                                        <button type="button" id="btnNew" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">New Vendor</button>
+                                                        </span>
+</div>
                                                 <input type="hidden" id="hdnVendor_Id" name="Material_Vendor.Vendor_Id" class="auto-complete-value">
                                                 <input type="hidden" id="hdnVendor_Name" value="@Model.Material_Vendor.Vendor_Name" name="Material_Vendor.Vendor_Name" class="auto-complete-label">
                                             </div>

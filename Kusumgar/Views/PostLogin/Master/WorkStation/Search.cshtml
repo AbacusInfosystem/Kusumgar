@@ -1,4 +1,4 @@
-﻿@model Kusumgar.Models.WorkCenterViewModel
+﻿@model Kusumgar.Models.WorkStationViewModel
 @using KusumgarBusinessEntities.Common
 
 <style>
@@ -17,8 +17,8 @@
     }
 </style>
 
-<script src="~/Scripts/Master/Event/work_center_listing_event.js"></script>
-<script src="~/Scripts/Master/Method/work_center_listing_method.js"></script>
+<script src="~/Scripts/Master/Event/work_station_listing_event.js"></script>
+<script src="~/Scripts/Master/Method/work_station_listing_method.js"></script>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -26,18 +26,18 @@
     @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Workcenter
+        <h1>WorkStation
            
             <small>Search</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
             <li>Master</li>
-            <li class="active">Workcenter Search</li>
+            <li class="active">WorkStation Search</li>
         </ol>
     </section>
 
-    <form id="frmSearch_Work_Center">
+    <form id="frmSearch_Work_Station">
         <!-- Main content -->
         <section class="content">
             <!-- Customer Search -->
@@ -48,17 +48,17 @@
                         <!-- form start -->
                         <div class="box-body">
                             <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                            <input type="hidden" id="hdnWork_Center_Id" name="Work_Center.Work_Center_Id">
+                            <input type="hidden" id="hdnWork_Station_Id" name="Work_Station.Work_Station_Id">
                             <div class="row">
                                 <div class="col-md-12">
 
                                     <div class="form-group">
                                         <label>Factory</label>
-                                        <select class="form-control input-sm" id="drpFactory" name="Work_Center.Factory.Factory_Id">
+                                        <select class="form-control input-sm" id="drpFactory" name="Work_Station.Factory.Factory_Id">
                                             <option value="">-Select factory-</option>
-                                            @foreach (var item in Model.Work_Center.Factories)
+                                            @foreach (var item in Model.Work_Station.Factories)
                                             {
-                                                if (Model.Work_Center.Factory.Factory_Id == item.Factory_Id)
+                                                if (Model.Work_Station.Factory.Factory_Id == item.Factory_Id)
                                                 {
                                                     <option value="@item.Factory_Id" selected="selected">@item.Factory_Name</option>
                                                 }
@@ -70,29 +70,29 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Work Station</label>
-                                        <select class="form-control input-sm" id="drpWork_Station" name="Work_Center.Work_Station_Name">
-                                            <option value="">-Select work station-</option>
-                                            @foreach (var item in Model.Work_Center.Work_Stations)
+                                        <label>Work Center</label>
+                                        <select class="form-control input-sm" id="drpWork_Center" name="Work_Station.Work_Center_Name">
+                                            <option value="">-Select work Center-</option>
+                                            @foreach (var item in Model.Work_Station.Work_Centers)
                                             {
-                                                if (Model.Work_Center.Work_Station_Id == item.Work_Station_Id)
+                                                if (Model.Work_Station.Work_Center_Id == item.Work_Center_Id)
                                                 {
-                                                    <option value="@item.Work_Station_Id" selected="selected">@item.Work_Station_Name</option>
+                                                    <option value="@item.Work_Center_Id" selected="selected">@item.Work_Center_Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Work_Station_Id">@item.Work_Station_Name</option>
+                                                    <option value="@item.Work_Center_Id">@item.Work_Center_Name</option>
                                                 }
                                             }
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Process</label>
-                                        <select class="form-control input-sm" id="drpProcess" name="Work_Center.Process.Process_Name">
+                                        <select class="form-control input-sm" id="drpProcess" name="Work_Station.Process.Process_Name">
                                             <option value="">-Select process-</option>
-                                            @foreach (var item in Model.Work_Center.Processes)
+                                            @foreach (var item in Model.Work_Station.Processes)
                                             {
-                                                if (Model.Work_Center.Process.Process_Id == item.Process_Id)
+                                                if (Model.Work_Station.Process.Process_Id == item.Process_Id)
                                                 {
                                                     <option value="@item.Process_Id" selected="selected">@item.Process_Name</option>
                                                 }
@@ -113,7 +113,7 @@
                                     <div class="col-md-6">
                                         <div class="btn-group pull-left">
                                             <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
-                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","Workcenter")" role="button">Create </a>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","WorkStation")" role="button">Create </a>
                                         </div>
                                     </div>
 
@@ -139,11 +139,11 @@
                     <div class="box box-solid">
                         <div class="box-body table-responsive no-padding">
 
-                            <table class="table table-striped" id="tblWork_Center">
+                            <table class="table table-striped" id="tblWork_Station">
                                 <tr id="subhead">
                                     <th style="width:50px;"></th>
-                                    <th >Work Station Id</th>
-                                    <th>Work Center Code</th>
+                                    <th >Work Center</th>
+                                    <th>Work Station Code</th>
                                     <th>Machine Name</th>
                                     <th>Machine Properties</th>
                                     <th >TPM Speed</th>

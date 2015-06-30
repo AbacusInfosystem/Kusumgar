@@ -5,13 +5,13 @@ $(function () {
     $("#drpFactory").change(function () {
 
         $.ajax({
-            url: '/master/work-station-by-factory-id',
+            url: '/master/work-center-by-factory-id',
             data: { factory_Id: $("#drpFactory").val() },
             method: 'GET',
             async: false,
             success: function (data) {
                 if (data != null) {
-                    Bind_Work_Stations(data);
+                    Bind_Work_Centers(data);
                 }
             }
         });
@@ -34,22 +34,22 @@ $(function () {
 
         $("#hdnProcess_Id").val(Process_Ids);
 
-        if ($("#frmWork_Center").valid()) {
-            //Save_Work_Center();
+        if ($("#frmWork_Station").valid()) {
+            //Save_Work_Station();
 
-            if ($("#hdnWork_Center_Id").val() == 0) {
-                $("#frmWork_Center").attr("action", "/master/insert-work-center");
+            if ($("#hdnWork_Station_Id").val() == 0) {
+                $("#frmWork_Station").attr("action", "/master/insert-work-station");
 
-                $("#frmWork_Center").attr("method", "POST");
+                $("#frmWork_Station").attr("method", "POST");
 
-                $("#frmWork_Center").submit();
+                $("#frmWork_Station").submit();
             }
             else {
-                $("#frmWork_Center").attr("action", "/master/update-work-center");
+                $("#frmWork_Station").attr("action", "/master/update-work-station");
 
-                $("#frmWork_Center").attr("method", "POST");
+                $("#frmWork_Station").attr("method", "POST");
 
-                $("#frmWork_Center").submit();
+                $("#frmWork_Station").submit();
             }
 
         }

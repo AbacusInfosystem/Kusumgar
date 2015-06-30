@@ -63,5 +63,10 @@ namespace KusumgarModel
         {
             return _customerqualityRepo.Get_Customer_Qualities_By_Customer_Id_By_Quality_Id(customer_Id, quality_Id, ref pager);
         }
+
+        public void Insert_Attachment(AttachmentsInfo attachment)
+        {
+            _customerqualityRepo.Insert_Attachment(attachment);
+        }
     }
 }

@@ -176,6 +176,7 @@ function Bind_YArticle_Grid(data) {
         if ($(this).prop('checked')) {
             $("#hdfY_Article_Id").val(this.id.replace("r1_", ""));
             $("#btnEdit").show();
+            $("#btnView").show();
         }
     });
 
@@ -186,6 +187,7 @@ function Bind_YArticle_Grid(data) {
 function PageMore(Id) {
 
     $("#btnEdit").hide();
+    $("#btnView").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

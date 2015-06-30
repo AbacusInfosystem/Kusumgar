@@ -48,7 +48,7 @@
 
                             <div class="form-group">
                                 <label for="txtQuality_No" style="color: #333">Quality No.</label>
-                                <input type="text" class="form-control input-sm" id="txtQualityNo" placeholder="Enter Quality No." name="Quality.Quality_No" value="@(Model.Quality.Quality_No == 0 ?"": Model.Quality.Quality_No.ToString() ) " />
+                                <input type="text" class="form-control input-sm" id="txtQualityNo" placeholder="Enter Quality No." name="Quality.Quality_No" value="@(Model.Quality.Quality_No == 0 ? "": Model.Quality.Quality_No.ToString()) " />
                                 <input type="hidden" class="form-control input-sm" id="hdnQualityNo" value="@Model.Quality.Quality_No">
                             </div>
 

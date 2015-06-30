@@ -129,12 +129,12 @@
                             <div class="col-md-8 col-xs-8">
                                 
                             @if (Model.G_Article.G_Article_Id == 0)
-                            {
-                                <input type="text" class="form-control input-sm " id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" name="G_Article.Grey_with_Cms" value="" />
-                            }
+{
+    <input type="text" class="form-control input-sm " id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" name="G_Article.Grey_with_Cms" value="" onkeypress="return isNumber(event)" />
+}
                             else
                             {
-                                <input type="text" class="form-control input-sm " id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" name="G_Article.Grey_with_Cms" value="@Model.G_Article.Grey_with_Cms" />
+                                <input type="text" class="form-control input-sm " id="txtGrey_with_Cms" placeholder="Enter Grey with Cms" name="G_Article.Grey_with_Cms" value="@Model.G_Article.Grey_with_Cms" onkeypress="return isNumber(event)" />
                             }
                             </div>
                             <div class="col-md-4 col-xs-4">
@@ -268,12 +268,12 @@
                         <div class="form-group" >
                             <label for="txtTotal_Ends" style="color: #333">Total Ends</label>
                             @if (Model.G_Article.G_Article_Id == 0)
-                            {
-                                <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" name="G_Article.Total_Ends" value="" />
-                            }
+{
+    <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" name="G_Article.Total_Ends" value="" onkeypress="return isNumber(event)" />
+}
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" name="G_Article.Total_Ends" value="@Model.G_Article.Total_Ends" />
+                                <input type="text" class="form-control input-sm" id="txtTotal_Ends" placeholder="Enter Total Ends" name="G_Article.Total_Ends" value="@Model.G_Article.Total_Ends" onkeypress="return isNumber(event)" />
                             }
                         </div>
 
@@ -341,12 +341,12 @@
                             <label for="txtRSP" style="color: #333">RSP</label>
 
                             @if (Model.G_Article.G_Article_Id == 0)
-                            {
-                                <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" name="G_Article.RSP" value="" />
-                            }
+{
+    <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" name="G_Article.RSP" value="" onkeypress="return isNumber(event)" />
+}
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" name="G_Article.RSP" value="@Model.G_Article.RSP" />
+                                <input type="text" class="form-control input-sm" id="txtRSP" placeholder="Enter RSP" name="G_Article.RSP" value="@Model.G_Article.RSP" onkeypress="return isNumber(event)" />
                             }
                         </div>
 
@@ -359,11 +359,11 @@
                             <label for="txtCrimp_in_Percentage" style="color: #333">Crimp in Percentage</label>
                             @if (Model.G_Article.G_Article_Id == 0)
                             {
-                                <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" name="G_Article.Crimp_In_Percentage" value="" />
+                            <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" name="G_Article.Crimp_In_Percentage" value="" onkeypress="return isNumber(event)" />
                             }
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" name="G_Article.Crimp_In_Percentage" value="@Model.G_Article.Crimp_In_Percentage" />
+                            <input type="text" class="form-control input-sm" id="txtCrimp_in_Percentage" placeholder="Enter Crimp in Percentage" name="G_Article.Crimp_In_Percentage" value="@Model.G_Article.Crimp_In_Percentage" onkeypress="return isNumber(event)" />
                             }
                         </div>
                         
@@ -451,12 +451,12 @@
                         <div class="form-group">
                             <label for="txtRoll_Size" style="color: #333">Roll Size</label>
                             @if (Model.G_Article.G_Article_Id == 0)
-                            {
-                                <input type="text" class="form-control input-sm" id="txtRoll_Size" placeholder="Enter Roll Size" name="G_Article.Roll_Size" value="" />
-                            }
+{
+    <input type="text" class="form-control input-sm" id="txtRoll_Size" placeholder="Enter Roll Size" name="G_Article.Roll_Size" value="" onkeypress="return isNumber(event)" />
+}
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtRoll_Size" placeholder="Enter Roll Size" name="G_Article.Roll_Size" value="@Model.G_Article.Roll_Size" />
+                                <input type="text" class="form-control input-sm" id="txtRoll_Size" placeholder="Enter Roll Size" name="G_Article.Roll_Size" value="@Model.G_Article.Roll_Size" onkeypress="return isNumber(event)" />
                             }
                         </div>
                         
@@ -464,11 +464,11 @@
                             <label for="txtWarping_Meters" style="color: #333">Warping Meters</label>
                             @if (Model.G_Article.G_Article_Id == 0)
                             {
-                                <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" name="G_Article.Warping_Meters" value="" />
+                            <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" name="G_Article.Warping_Meters" value="" onkeypress="return isNumber(event)" />
                             }
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" name="G_Article.Warping_Meters" value="@Model.G_Article.Warping_Meters" />
+                            <input type="text" class="form-control input-sm" id="txtWarping_Meters" placeholder="Enter Warping Meters" name="G_Article.Warping_Meters" value="@Model.G_Article.Warping_Meters" onkeypress="return isNumber(event)" />
                             }
                         </div>
 
@@ -476,11 +476,11 @@
                             <label for="txtPeg_Plan_Rows" style="color: #333">Peg Plan Rows</label>
                             @if (Model.G_Article.G_Article_Id == 0)
                             {
-                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" name="G_Article.Peg_Plan_Rows" value="" />
+                            <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" name="G_Article.Peg_Plan_Rows" value="" onkeypress="return isNumber(event)" />
                             }
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" name="G_Article.Peg_Plan_Rows" value="@Model.G_Article.Peg_Plan_Rows" />
+                            <input type="text" class="form-control input-sm" id="txtPeg_Plan_Rows" placeholder="Enter Peg Plan Rows" name="G_Article.Peg_Plan_Rows" value="@Model.G_Article.Peg_Plan_Rows" onkeypress="return isNumber(event)" />
                             }
                         </div>
 
@@ -488,11 +488,11 @@
                             <label for="txtPeg_Plan_Columns" style="color: #333">Peg Plan Columns</label>
                             @if (Model.G_Article.G_Article_Id == 0)
                             {
-                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" name="G_Article.Peg_Plan_Columns" value="" />
+                            <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" name="G_Article.Peg_Plan_Columns" value="" onkeypress="return isNumber(event)" />
                             }
                             else
                             {
-                                <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" name="G_Article.Peg_Plan_Columns" value="@Model.G_Article.Peg_Plan_Columns" />
+                            <input type="text" class="form-control input-sm" id="txtPeg_Plan_Columns" placeholder="Enter Peg Plan Columns" name="G_Article.Peg_Plan_Columns" value="@Model.G_Article.Peg_Plan_Columns" onkeypress="return isNumber(event)" />
                             }
                         </div>
 

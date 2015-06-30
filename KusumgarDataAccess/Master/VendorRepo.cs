@@ -154,32 +154,32 @@ namespace KusumgarDataAccess
              sqlParamList.Add(new SqlParameter("@Head_Office_Landline2", vendors.Head_Office_Landline2));
              sqlParamList.Add(new SqlParameter("@Head_Office_FaxNo", vendors.Head_Office_FaxNo));
              sqlParamList.Add(new SqlParameter("@Email", vendors.Email));
-             sqlParamList.Add(new SqlParameter("@Quality_Certification", vendors.Quality_Certification));
-             sqlParamList.Add(new SqlParameter("@Quality_Certification_Year", vendors.Quality_Certification_Year));
-             sqlParamList.Add(new SqlParameter("@Quality_Certification_Category", vendors.Quality_Certification_Category));
-             sqlParamList.Add(new SqlParameter("@Performance_Certification", vendors.Performance_Certification));
-             sqlParamList.Add(new SqlParameter("@Performance_Certification_Year", vendors.Performance_Certification_Year));
-             sqlParamList.Add(new SqlParameter("@Performance_Certification_Category", vendors.Performance_Certification_Category));
-             sqlParamList.Add(new SqlParameter("@Remark_about_Supplier", vendors.Remark_about_Supplier));
-             sqlParamList.Add(new SqlParameter("@Block_Payment", vendors.Block_Payment));
-             sqlParamList.Add(new SqlParameter("@Shipment_Methods", vendors.Shipment_Methods));
-             sqlParamList.Add(new SqlParameter("@Flagged_Supplier", vendors.Flagged_Supplier));
+             //sqlParamList.Add(new SqlParameter("@Quality_Certification", vendors.Quality_Certification));
+             //sqlParamList.Add(new SqlParameter("@Quality_Certification_Year", vendors.Quality_Certification_Year));
+             //sqlParamList.Add(new SqlParameter("@Quality_Certification_Category", vendors.Quality_Certification_Category));
+             //sqlParamList.Add(new SqlParameter("@Performance_Certification", vendors.Performance_Certification));
+             //sqlParamList.Add(new SqlParameter("@Performance_Certification_Year", vendors.Performance_Certification_Year));
+             //sqlParamList.Add(new SqlParameter("@Performance_Certification_Category", vendors.Performance_Certification_Category));
+            // sqlParamList.Add(new SqlParameter("@Remark_about_Supplier", vendors.Remark_about_Supplier));
+            // sqlParamList.Add(new SqlParameter("@Block_Payment", vendors.Block_Payment));
+            // sqlParamList.Add(new SqlParameter("@Shipment_Methods", vendors.Shipment_Methods));
+            // sqlParamList.Add(new SqlParameter("@Flagged_Supplier", vendors.Flagged_Supplier));
 
-            sqlParamList.Add(new SqlParameter("@Delivary_Term_Code", vendors.Delivary_Term_Code));
+            //sqlParamList.Add(new SqlParameter("@Delivary_Term_Code", vendors.Delivary_Term_Code));
 
-            sqlParamList.Add(new SqlParameter("@Is_Approved_By_Director", vendors.Is_Approved_By_Director));
+            //sqlParamList.Add(new SqlParameter("@Is_Approved_By_Director", vendors.Is_Approved_By_Director));
 
-            sqlParamList.Add(new SqlParameter("@Central_Excise_Registration_Details", vendors.Central_Excise_Registration_Details));
+            //sqlParamList.Add(new SqlParameter("@Central_Excise_Registration_Details", vendors.Central_Excise_Registration_Details));
 
-            sqlParamList.Add(new SqlParameter("@Registration_No", vendors.Registration_No));
-            sqlParamList.Add(new SqlParameter("@Range", vendors.Range));
-            sqlParamList.Add(new SqlParameter("@Division", vendors.Division));
-            sqlParamList.Add(new SqlParameter("@PAN", vendors.PAN));
-            sqlParamList.Add(new SqlParameter("@TAN", vendors.TAN));
-            sqlParamList.Add(new SqlParameter("@Tax_Excemption_Code", vendors.Tax_Excemption_Code));
-            sqlParamList.Add(new SqlParameter("@Currency_Code", vendors.Currency_Code));
-            sqlParamList.Add(new SqlParameter("@VAT_Type", vendors.VAT_Type));
-            sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.PaymentTerms));
+            //sqlParamList.Add(new SqlParameter("@Registration_No", vendors.Registration_No));
+            //sqlParamList.Add(new SqlParameter("@Range", vendors.Range));
+            //sqlParamList.Add(new SqlParameter("@Division", vendors.Division));
+            //sqlParamList.Add(new SqlParameter("@PAN", vendors.PAN));
+            //sqlParamList.Add(new SqlParameter("@TAN", vendors.TAN));
+            //sqlParamList.Add(new SqlParameter("@Tax_Excemption_Code", vendors.Tax_Excemption_Code));
+            //sqlParamList.Add(new SqlParameter("@Currency_Code", vendors.Currency_Code));
+            //sqlParamList.Add(new SqlParameter("@VAT_Type", vendors.VAT_Type));
+            //sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.PaymentTerms));
             sqlParamList.Add(new SqlParameter("@Is_Active", vendors.Is_Active));
             sqlParamList.Add(new SqlParameter("@Product_Category", vendors.Product_Category));
             sqlParamList.Add(new SqlParameter("@Code", vendors.Code));
@@ -194,6 +194,61 @@ namespace KusumgarDataAccess
             {
                 sqlParamList.Add(new SqlParameter("@Vendor_Id", vendors.Vendor_Id));
             }
+
+            return sqlParamList;
+        }
+
+        private List<SqlParameter> Set_Values_In_Vendor_Certificate(VendorInfo vendors)
+        {
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+
+            sqlParamList.Add(new SqlParameter("@Vendor_Id", vendors.Vendor_Id));
+            sqlParamList.Add(new SqlParameter("@Quality_Certification", vendors.Quality_Certification));
+            sqlParamList.Add(new SqlParameter("@Quality_Certification_Year", vendors.Quality_Certification_Year));
+            sqlParamList.Add(new SqlParameter("@Quality_Certification_Category", vendors.Quality_Certification_Category));
+            sqlParamList.Add(new SqlParameter("@Performance_Certification", vendors.Performance_Certification));
+            sqlParamList.Add(new SqlParameter("@Performance_Certification_Year", vendors.Performance_Certification_Year));
+            sqlParamList.Add(new SqlParameter("@Performance_Certification_Category", vendors.Performance_Certification_Category));
+            sqlParamList.Add(new SqlParameter("@UpdatedOn", vendors.UpdatedOn));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", vendors.UpdatedBy));
+
+            return sqlParamList;
+        }
+
+        private List<SqlParameter> Set_Values_In_Vendor_Other_Details(VendorInfo vendors)
+        {
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+
+            sqlParamList.Add(new SqlParameter("@Vendor_Id", vendors.Vendor_Id));
+            sqlParamList.Add(new SqlParameter("@Remark_about_Supplier", vendors.Remark_about_Supplier));
+            sqlParamList.Add(new SqlParameter("@Block_Payment", vendors.Block_Payment));
+            sqlParamList.Add(new SqlParameter("@Shipment_Methods", vendors.Shipment_Methods));
+            sqlParamList.Add(new SqlParameter("@Flagged_Supplier", vendors.Flagged_Supplier));
+            sqlParamList.Add(new SqlParameter("@Delivary_Term_Code", vendors.Delivary_Term_Code));
+            sqlParamList.Add(new SqlParameter("@Is_Approved_By_Director", vendors.Is_Approved_By_Director));
+            sqlParamList.Add(new SqlParameter("@UpdatedOn", vendors.UpdatedOn));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", vendors.UpdatedBy));
+
+            return sqlParamList;
+        }
+
+        private List<SqlParameter> Set_Values_In_Vendor_Central_Excise(VendorInfo vendors)
+        {
+            List<SqlParameter> sqlParamList = new List<SqlParameter>();
+
+            sqlParamList.Add(new SqlParameter("@Vendor_Id", vendors.Vendor_Id));
+            sqlParamList.Add(new SqlParameter("@Central_Excise_Registration_Details", vendors.Central_Excise_Registration_Details));
+            sqlParamList.Add(new SqlParameter("@Registration_No", vendors.Registration_No));
+            sqlParamList.Add(new SqlParameter("@Range", vendors.Range));
+            sqlParamList.Add(new SqlParameter("@Division", vendors.Division));
+            sqlParamList.Add(new SqlParameter("@PAN", vendors.PAN));
+            sqlParamList.Add(new SqlParameter("@TAN", vendors.TAN));
+            sqlParamList.Add(new SqlParameter("@Tax_Excemption_Code", vendors.Tax_Excemption_Code));
+            sqlParamList.Add(new SqlParameter("@Currency_Code", vendors.Currency_Code));
+            sqlParamList.Add(new SqlParameter("@VAT_Type", vendors.VAT_Type));
+            sqlParamList.Add(new SqlParameter("@PaymentTerms", vendors.PaymentTerms));
+            sqlParamList.Add(new SqlParameter("@UpdatedOn", vendors.UpdatedOn));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", vendors.UpdatedBy));
 
             return sqlParamList;
         }
@@ -237,6 +292,22 @@ namespace KusumgarDataAccess
         {
             _sqlRepo.ExecuteNonQuery(Set_Values_In_Vendor(vendors), StoredProcedures.Update_Vendor_sp.ToString(), CommandType.StoredProcedure);
         }
+
+        public void Update_Vendor_Certificate(VendorInfo vendors)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Vendor_Certificate(vendors), StoredProcedures.Update_Vendor_Certificate_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Update_Vendor_Other_Details(VendorInfo vendors)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Vendor_Other_Details(vendors), StoredProcedures.Update_Vendor_Other_Details_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
+        public void Update_Vendor_Central_Excise(VendorInfo vendors)
+        {
+            _sqlRepo.ExecuteNonQuery(Set_Values_In_Vendor_Central_Excise(vendors), StoredProcedures.Update_Vendor_Central_Excise_Sp.ToString(), CommandType.StoredProcedure);
+        }
+
 
         //public void Update_Product_Services(ProductVendorInfo productVendors)
         //{

@@ -243,7 +243,7 @@ namespace Kusumgar.Controllers
             {
                 gaViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-                Logger.Error("GArticle Controller - Printable_Vendor " + ex.ToString());
+                Logger.Error("GArticle Controller - Printable_G_Article " + ex.ToString());
             }
 
             return PartialView("_PrintableView", gaViewModel);

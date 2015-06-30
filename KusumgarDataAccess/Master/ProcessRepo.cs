@@ -41,7 +41,8 @@ namespace KusumgarDataAccess
                 sqlParams.Add(new SqlParameter("@Process_Id", ProcessInfo.Process_Id));
             }
             sqlParams.Add(new SqlParameter("@Process_Name", ProcessInfo.Process_Name));
-            sqlParams.Add(new SqlParameter("@Is_Active", ProcessInfo.Is_Active));            
+            sqlParams.Add(new SqlParameter("@Is_Active", ProcessInfo.Is_Active));
+            sqlParams.Add(new SqlParameter("@Article_Type", ProcessInfo.Article_Type));   //
             if (ProcessInfo.Process_Id == 0)
             {
                 sqlParams.Add(new SqlParameter("@CreatedOn", ProcessInfo.CreatedOn));
@@ -92,10 +93,14 @@ namespace KusumgarDataAccess
             process.Process_Id = Convert.ToInt32(dr["Process_Id"]);
             process.Process_Name = Convert.ToString(dr["Process_Name"]);
             process.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            process.Article_Type = Convert.ToInt32(dr["Article_Type"]);
             process.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
             process.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
             process.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
             process.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+
+            process.Article_Type_Name = LookupInfo.Get_Article_Types()[process.Article_Type];
+
             return process;
         }
 

@@ -14,6 +14,14 @@
         $("#frmSearch_WArticle").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmSearch_WArticle").attr("action", "/master/view-w-article");
+
+        $("#frmSearch_WArticle").attr("method", "POST");
+
+        $("#frmSearch_WArticle").submit();
+    });
 
 
     $("#btnSearch").click(function () {

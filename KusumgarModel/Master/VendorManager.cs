@@ -123,6 +123,27 @@ namespace KusumgarModel
 
             return vRepo.Get_Vendors_By_Material_Id(material_Id, ref pager);
         }
+
+        public void Update_Vendor_Certificate(VendorInfo vendors)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            vRepo.Update_Vendor_Certificate(vendors);
+        }
+
+        public void Update_Vendor_Other_Details(VendorInfo vendors)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            vRepo.Update_Vendor_Other_Details(vendors);
+        }
+
+        public void Update_Vendor_Central_Excise(VendorInfo vendors)
+        {
+            VendorRepo vRepo = new VendorRepo();
+
+            vRepo.Update_Vendor_Central_Excise(vendors);
+        }
      }
 }
 

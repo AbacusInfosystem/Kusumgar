@@ -1,0 +1,131 @@
+﻿@model Kusumgar.Models.CArticleViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_C_Article">
+    <input type="hidden" id="hdfC_Article_Id" name="C_Article.C_Article_Id" value="@Model.CArticle.C_Article_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="box-title">
+                    C Article Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <input type="hidden" id="hdnC_Article_Id" name="" value="@Model.CArticle.C_Article_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        C Article Full Code
+                                    </div>
+                                </div>
+                                <br />
+
+                                @if (Model.CArticle.Quality_No != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality No : </label>@Model.CArticle.Quality_No (@Model.CArticle.Quality_No)
+                                    </div>
+                                }
+
+                                @if (Model.CArticle.Yarn_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Yarn Type : </label> @Model.CArticle.Yarn_Type_Name (@Model.CArticle.Yarn_Type_Code)
+                                    </div>
+                                }
+
+                                @if (Model.CArticle.C_Finish_Width != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">C Finish Width : </label>@Model.CArticle.C_Finish_Width (@Model.CArticle.C_Finish_Width)
+                                    </div>
+                                }
+                                @if (Model.CArticle.Weave_Id != 0)
+                                {
+                                <div class="form-group">
+                                    <label style="color: #333">Weave : </label> @Model.CArticle.Weave_Name (@Model.CArticle.Weave_Code)
+                                </div>
+                                }
+                                @if (Model.CArticle.Shade_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Shade : </label>@Model.CArticle.Shade_Name (@Model.CArticle.Shade_Code)
+                                    </div>
+                                }
+                                @if (Model.CArticle.Chemical_Finish_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Chemical Finish : </label>@Model.CArticle.Chemical_Finish_Name (@Model.CArticle.Chemical_Finish_Code)
+                                    </div>
+                                }
+                                @if (Model.CArticle.Mechanical_Finish_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Mechanical Finish : </label>@Model.CArticle.Mechanical_Finish_Name (@Model.CArticle.Mechanical_Finish_Code)
+                                    </div>
+                                }
+                                @if (Model.CArticle.Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Type : </label>@Model.CArticle.Type_Name (@Model.CArticle.Type_Code)
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">Coat : </label>@Model.CArticle.Coat (@Model.CArticle.Coat)
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">C gsm : </label>@Model.CArticle.C_gsm (@Model.CArticle.C_gsm)
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Full Code : </label>@Model.CArticle.Full_Code
+                                </div>
+                               
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        Other Information
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label style="color: #333">Batch : </label>@Model.CArticle.Batch
+                                </div>
+                                @if (Model.CArticle.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>InActive
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+    </div>
+
+    <!-- /.content -->
+</form>

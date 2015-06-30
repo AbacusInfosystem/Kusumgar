@@ -227,20 +227,64 @@ namespace Kusumgar.Controllers
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
+        public JsonResult Get_Work_Centers_By_Code_Purpose(string work_Center_Code)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
             try
             {
-                autoCompletes = _yArticleMan.Get_Work_Stations_By_Code_Purpose(work_Station_Code);
+                autoCompletes = _yArticleMan.Get_Work_Centers_By_Code_Purpose(work_Center_Code);
             }
             catch (Exception ex)
             {
-                Logger.Error("YArticle Controller - Get_Work_Stations " + ex.ToString());
+                Logger.Error("YArticle Controller - Get_Work_Centers_By_Code_Purpose " + ex.ToString());
             }
 
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult View_Y_Article(YArticleViewModel yViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.Y_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - View_Y_Article " + ex.ToString());
+            }
+
+            return View("View", yViewModel);
+        }
+
+
+        public PartialViewResult Printable_Y_Article(int y_Article_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            YArticleViewModel yViewModel = new YArticleViewModel();
+
+            yViewModel.YArticle.Y_Article_Id = y_Article_Id;
+
+            try
+            {
+                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.Y_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Printable_Y_Article " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", yViewModel);
         }
 
     }

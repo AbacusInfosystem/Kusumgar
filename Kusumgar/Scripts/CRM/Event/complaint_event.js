@@ -79,13 +79,13 @@
         $("#lst_Available_Lot_No").parents(".form-group").find(".todo-list").append(html);
 
         $("#lst_Available_Lot_No").parents('.form-group').find(".todo-list").find('.fa-remove').click(function (event) {
-            event.preventDefault();
+            //event.preventDefault();
 
-            var html = "<option value'" + $(this).parent().find('.lot_no').val() + "'>" + $(this).parent().find('.text').text() + "</option>";
+            var html = "<option value='" + $(this).parent().parent('li').find('.lot_no').val() + "'>" + $(this).parent().parent('li').find('.text').text() + "</option>";
 
             $("#lst_Available_Lot_No").append(html);
 
-            $(this).parents('li').remove();
+            $(this).parent().parent('li').remove();
         });
 
     });

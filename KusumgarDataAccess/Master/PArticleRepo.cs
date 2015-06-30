@@ -143,7 +143,18 @@ namespace KusumgarDataAccess
                 pArticle.Given_By_Name = Convert.ToString(dr["Given_By_Name"]);
 
                 pArticle.Quality_Nos = Convert.ToInt32(dr["Quality_Nos"]);
-              
+                //
+                pArticle.Type_Name = Convert.ToString(dr["Type_Name"]);
+                pArticle.Chemical_Finish_Name = Convert.ToString(dr["Chemical_Finish"]);
+                pArticle.Mechanical_Finish_Name = Convert.ToString(dr["Mechanical_Finish"]);
+
+                pArticle.Yarn_Type_Code = Convert.ToString(dr["Yarn_Type_Code"]);
+                pArticle.Weave_Code = Convert.ToString(dr["Weave_Code"]);
+                pArticle.Shade_Code = Convert.ToString(dr["Shade_Code"]);
+                pArticle.Chemical_Finish_Code = Convert.ToString(dr["Chemical_Finish_Code"]);
+                pArticle.Mechanical_Finish_Code = Convert.ToString(dr["Mechanical_Finish_Code"]);
+                pArticle.Type_Code = Convert.ToString(dr["Type_Code"]);
+
                 return pArticle;
             }
 

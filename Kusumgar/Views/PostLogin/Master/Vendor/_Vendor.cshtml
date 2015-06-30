@@ -164,7 +164,13 @@
     <div class="box-footer">
         <div class="btn-group">
             <button type="button" id="btnSave" class="btn btn-success btn-sm">Save Primary</button>
+            @if (Model.Is_Primary== true) {
             <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+            }
+            else
+            {
+                <button id="btnCancel" class="btn btn-warning btn-sm" data-dismiss="modal"  type="button" value="Cancle">Cancle</button>
+            }
         </div>
     </div>
 </form>

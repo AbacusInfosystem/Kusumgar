@@ -71,6 +71,7 @@ function SearchCustomerByStatus() {
        CallAjax("/crm/search-customers-by-status", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
     
 }
+
 function Bind_Customer_Grid(data) {
 
 
@@ -211,6 +212,7 @@ function Bind_Customer_Grid(data) {
         $("#btnPurchaseHistory").hide();
         $("#btnBlock").hide();
         $("#btnUnblock").hide();
+        $("#btnView").hide();
     
 }
 
@@ -245,6 +247,22 @@ function PageMoreByStatus(Id)
 
     SearchCustomerByStatus();
 
+}
+
+function PageMoreByStatus(Id) {
+
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+
+    SearchCustomerByStatus();
 }
 
 function Save_Customer_Order() {
