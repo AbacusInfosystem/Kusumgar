@@ -1154,7 +1154,8 @@ namespace Kusumgar
            url: "master/insert-customer-quality-functional-parameters",
            defaults: new { controller = "CustomerQuality", action = "Insert_Customer_Quality_Functional_Parameters", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
-           
+
+            routes.MapRoute(
             name: "customer-quality-9",
             url: "master/view-customer-quality",
             defaults: new { controller = "CustomerQuality", action = "View_Customer_Quality", id = UrlParameter.Optional },
