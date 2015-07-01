@@ -1255,34 +1255,6 @@ namespace Kusumgar
 
             #endregion
 
-            #region Ajax
-
-            routes.MapRoute(
-            name: "ajax-1",
-            url: "ajax/test/{testUnitName}",
-            defaults: new { controller = "Test", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
-          name: "ajax-2",
-          url: "ajax/attachments",
-          defaults: new { controller = "Ajax", action = "Insert_Attachment", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
-          name: "ajax-3",
-          url: "ajax/delete-attachments",
-          defaults: new { controller = "Ajax", action = "Delete_Attachment", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
-          name: "ajax-4",
-          url: "ajax/get-attachments-by-ref-type-id",
-          defaults: new { controller = "Ajax", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
-
-            #endregion
-
             #region Vendor
 
             routes.MapRoute(
@@ -2000,25 +1972,47 @@ namespace Kusumgar
 
             #region Ajax
 
+            routes.MapRoute(
+            name: "ajax-1",
+            url: "ajax/test/{testUnitName}",
+            defaults: new { controller = "Test", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "ajax-2",
+            url: "ajax/attachments",
+            defaults: new { controller = "Ajax", action = "Insert_Attachment", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "ajax-3",
+            url: "ajax/delete-attachments",
+            defaults: new { controller = "Ajax", action = "Delete_Attachment", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-         
-           
+            routes.MapRoute(
+            name: "ajax-4",
+            url: "ajax/get-attachments-by-ref-type-id",
+            defaults: new { controller = "Ajax", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           
+            routes.MapRoute(
+            name: "ajax-6",
+            url: "ajax/application-list/{applicationName}",
+            defaults: new { controller = "Quality", action = "Get_Application_Name_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "ajax-6",
-           url: "ajax/application-list/{applicationName}",
-           defaults: new { controller = "Quality", action = "Get_Application_Name_AutoComplete", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "ajax-7",
+            url: "ajax/segment-list/{segmentName}",
+            defaults: new { controller = "Quality", action = "Get_Segment_Name_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "ajax-7",
-           url: "ajax/segment-list/{segmentName}",
-           defaults: new { controller = "Quality", action = "Get_Segment_Name_AutoComplete", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "ajax-8",
+            url: "ajax/get-web-element-authorize",
+            defaults: new { controller = "Ajax", action = "Get_Web_Element_Authorize", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
            
             #endregion
 

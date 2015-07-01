@@ -222,5 +222,30 @@ namespace KusumgarDataAccess
 
         #endregion
 
+        #region Autorize Web Elements 
+        
+        public bool Get_Web_Element_Authorize(WebElementInfo webElement)
+        {
+
+            List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+            sqlParams.Add(new SqlParameter("@User_Id", webElement.User_Id));
+
+            sqlParams.Add(new SqlParameter("@Access_Function_Name", webElement.Access_Function));
+
+            DataTable dt = sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Authorize_Web_Element_Sp.ToString(), CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
     }
 }

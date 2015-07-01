@@ -1483,6 +1483,7 @@
     <Content Include="Scripts\generic.iCheck.initialize.js" />
     <Content Include="Scripts\generic.multi.autocomplete.js" />
     <Content Include="Scripts\generic.printable.view.js" />
+    <Content Include="Scripts\genric.authorize.js" />
     <Content Include="Scripts\jquery.initialize.js" />
     <Content Include="Scripts\Master\Event\carticle_event.js" />
     <Content Include="Scripts\Master\Event\carticle_search_event.js" />

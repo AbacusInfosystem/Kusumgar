@@ -31,12 +31,12 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
-                        <li><a href="#tab_2" id="tabFinancial" data-toggle="tab">Financial</a></li>
-                        <li><a href="#tab_3" id="tabBilling" data-toggle="tab">Billing</a></li>
-                        <li><a href="#tab_4" id="tabShipping" data-toggle="tab">Shipping</a></li>
-                        <li><a href="#tab_5" id="tabOther" data-toggle="tab">Other</a></li>
-                        <li><a href="#tab_6" id="tabContactType" data-toggle="tab">Contact Type</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab" id="tabPrimary" name="@(WebAppFunction.Primary_Customer.ToString())">Primary</a></li>
+                        <li><a href="#tab_2" id="tabFinancial" data-toggle="tab" name="@(WebAppFunction.Financial_Customer.ToString())">Financial</a></li>
+                        <li><a href="#tab_3" id="tabBilling" data-toggle="tab" name="@(WebAppFunction.Billing_Customer.ToString())">Billing</a></li>
+                        <li><a href="#tab_4" id="tabShipping" data-toggle="tab" name="@(WebAppFunction.Shipping_Customer.ToString())">Shipping</a></li>
+                        <li><a href="#tab_5" id="tabOther" data-toggle="tab" name="@(WebAppFunction.Other_Customer.ToString())">Other</a></li>
+                        <li><a href="#tab_6" id="tabContactType" data-toggle="tab" name="@(WebAppFunction.Contact_Type_Customer.ToString())">Contact Type</a></li>
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
                     </ul>
                     <div class="tab-content">

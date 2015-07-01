@@ -112,13 +112,7 @@ function Bind_Work_Station_Grid(data) {
 
             htmlText += "</td>";
 
-            //htmlText += "<td>";
-
-            //htmlText += data.Work_Centers[i].Under_Maintainance == null ? "" : data.Work_Centers[i].Under_Maintainance;
-
-            //htmlText += "</td>";
-
-            if (data.Work_Centers[i].Under_Maintainance == true) {
+            if (data.Work_Stations[i].Under_Maintainance == true) {
 
                 htmlText += "<td>";
 
@@ -126,7 +120,7 @@ function Bind_Work_Station_Grid(data) {
 
                 htmlText += "</td>";
             }
-            if (data.Work_Centers[i].Under_Maintainance == false) {
+            if (data.Work_Stations[i].Under_Maintainance == false) {
 
                 htmlText += "<td>";
 
@@ -135,13 +129,8 @@ function Bind_Work_Station_Grid(data) {
                 htmlText += "</td>";
             }
 
-            //htmlText += "<td>";
 
-            //htmlText += data.Work_Centers[i].Is_Active == null ? "" : data.Work_Centers[i].Is_Active;
-
-            //htmlText += "</td>";
-
-            if (data.Work_Centers[i].Is_Active == true) {
+            if (data.Work_Stations[i].Is_Active == true) {
 
                 htmlText += "<td>";
 
@@ -149,7 +138,7 @@ function Bind_Work_Station_Grid(data) {
 
                 htmlText += "</td>";
             }
-            if (data.Work_Centers[i].Is_Active == false) {
+            if (data.Work_Stations[i].Is_Active == false) {
 
                 htmlText += "<td>";
 

@@ -1,7 +1,7 @@
 ﻿
 $(function () {
 
-   
+    Authorize(["#tabPrimary", "#tabFinancial", "#tabBilling", "#tabShipping", "#tabOther", "#tabContactType"]);
 
     $("#hdnIs_Active").val(true);
 
