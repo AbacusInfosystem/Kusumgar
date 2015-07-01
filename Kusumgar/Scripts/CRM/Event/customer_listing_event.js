@@ -116,24 +116,38 @@
 
     $("#btnBlock").click(function () {
        
-        $('#hdfBlockOrder').val(true);
+        if ($("#btnBlock").text() == "Block") {
+            $('#hdfBlockOrder').val(true);
+        }
+        else {
+            $('#hdfBlockOrder').val(false);
+        }
 
        // alert($('#hdfBlockOrder').val());
         Save_Customer_Order();
-        $("#btnBlock").hide();
-        $("#btnUnblock").show();
+        //$("#btnBlock").hide();
+        //$("#btnUnblock").show();
+
+        if($("#btnBlock").text() == "Block")
+        {
+            $('#btnBlock').text("UnBlock");
+        }
+        else
+        {
+            $('#btnBlock').text("Block");
+        }
        
         
     });
 
-    $("#btnUnblock").click(function () {
+    //$("#btnUnblock").click(function () {
        
-        $('#hdfBlockOrder').val(false);
-        Save_Customer_Order();
-        $("#btnUnblock").hide();
-        $("#btnBlock").show();
+    //    $('#hdfBlockOrder').val(false);
+    //    Save_Customer_Order();
+    //    $("#btnUnblock").hide();
+    //    $("#btnBlock").show();
       
-    });
+    //});
 
 });
 

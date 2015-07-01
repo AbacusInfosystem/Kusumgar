@@ -91,11 +91,11 @@
                                     <div class="col-md-7">
                                        
                                         <div class="btn-group pull-right">
-                                            <button type="button" id="btnView" style="display:none;" class="btn btn-success btn-sm">View</button>
-                                            <button type="button" class="btn btn-warning btn-sm" id="btnEdit" style="display:none">Edit</button>
-                                            <button type="button" id="btnBlock" class="btn btn-warning btn-sm" style="display:none;">Block</button>
-                                            <button type="button" id="btnUnblock" class="btn btn-warning btn-sm" style="display:none;">UnBlock</button>
-                                            <button type="button" id="btnViewContact" class="btn btn-primary btn-sm" style="display:none;">View contacts</button>
+                                            <button type="button" id="btnView" style="display:none;" class="btn btn-success btn-sm" name="@(WebAppFunction.View_Customer)">View</button>
+                                            <button type="button" class="btn btn-warning btn-sm" id="btnEdit" style="display:none" name="@(WebAppFunction.Edit_Customer)">Edit</button>
+                                            <button type="button" id="btnBlock" class="btn btn-warning btn-sm" style="display:none;" name="@(WebAppFunction.Block_Customer)">Block</button>
+                                            @*<button type="button" id="btnUnblock" class="btn btn-warning btn-sm" style="display:none;" name="@(WebAppFunction.Block_Customer)">UnBlock</button>*@
+                                            <button type="button" id="btnViewContact" class="btn btn-primary btn-sm" style="display:none;" name="@(WebAppFunction.View_Contact)">View contacts</button>
                                             <button type="button" id="btnPurchaseHistory" class="btn btn-primary btn-sm " style="display:none;">Purchase history</button>
                                            
                                             <div class="btn-group">

@@ -113,6 +113,11 @@ namespace KusumgarBusinessEntities.Common
         Other_Customer,
         Contact_Type_Customer,
 
+        View_Customer,
+        Edit_Customer,
+        Block_Customer,
+        View_Contact,
+
     }
 
     public enum UserRoles
