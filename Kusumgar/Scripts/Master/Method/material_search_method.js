@@ -1,10 +1,13 @@
 ﻿function SearchMaterial() {
-
+   
     var mViewModel =
         {
             Filter: {
                 Material_Name: $('#txtMaterialName').val(),
-                Material_Id: $('#hdfMaterial_Id').val()
+                Material_Id: $('#hdfMaterial_Id').val(),
+                Vendor_Name: $('#txtVendorName').val(),
+                Vendor_Id: $('#hdfVendor_Id').val()
+                
             },
             Pager: {
                 CurrentPage: $('#hdfCurrentPage').val(),
@@ -27,13 +30,15 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Entity.Material_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Materials[i].Material_Id + "' class='iradio-list'/>";
         
         htmlText += "</td>";
 
-        htmlText += "<td>";
+        //htmlText += "<td>";
 
-        htmlText += data.Materials[i].Material_Entity.Material_Code;
+        htmlText += "<td id='Material_" + data.Materials[i].Material_Id + "'>";     //
+
+        htmlText += data.Materials[i].Material_Code;
 
         htmlText += "</td>";
 
@@ -45,7 +50,7 @@ function Bind_Material_Grid(data) {
 
         htmlText += "<td>";
         
-        htmlText += data.Materials[i].Material_Entity.Material_Name;
+        htmlText += data.Materials[i].Material_Name;
 
         htmlText += "</td>";
         
@@ -61,7 +66,7 @@ function Bind_Material_Grid(data) {
     
     $('#tblProdGrid tr:first').after(htmlText);
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -83,13 +88,26 @@ function Bind_Material_Grid(data) {
     $('[name="r1"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnMaterial_Id").val(this.id.replace("r1_", ""));
+
+            $("#hdMaterial_Id").val(this.id.replace("r1_", ""));
+            $("#hdfMaterial_Name").val($("#Material_" + this.id.replace("r1_", "")).text());
+
+            $("#btnView").show();
             $("#btnEdit").show();
+            $("#btnView_Vendor").show();
         }
     });
 
+    $("#btnView").hide();
+    $("#btnEdit").hide();
+    $("#btnView_Vendor").hide();
 }
 
 function PageMore(Id) {
+
+    $("#btnView").hide();
+    $("#btnEdit").hide();
+    $("#btnView_Vendor").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
@@ -108,7 +126,7 @@ function PageMore(Id) {
 
 //    if (data.length > 0) {
 //        for (var i = 0; i < data.length ; i++) {
-//            htmltext += "<option value='" + data[i].Material_SubCategory_Entity.Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Entity.Material_SubCategory_Name + "</option>";
+//            htmltext += "<option value='" + data[i].Material_SubCategory_Id + "'>" + data[i].Material_SubCategory_Name + "</option>";
 //        }
 //    }
 //    $("#drpSubCatName").html(htmltext);

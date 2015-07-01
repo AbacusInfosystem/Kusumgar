@@ -212,17 +212,17 @@ namespace Kusumgar
 
             #region Material
 
-            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Material has been added successfully.");
-            hash.Add("P001", P001);
+            FriendlyMessageInfo M001 = new FriendlyMessageInfo("M001", MessageType.Success, "Material has been added successfully.");
+            hash.Add("M001", M001);
 
-            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Material has been updated successfully.");
-            hash.Add("P002", P002);
+            FriendlyMessageInfo M002 = new FriendlyMessageInfo("M002", MessageType.Success, "Material has been updated successfully.");
+            hash.Add("M002", M002);
 
-            FriendlyMessageInfo P003 = new FriendlyMessageInfo("P003", MessageType.Success, "Material Vendor has been added successfully.");
-            hash.Add("P003", P003);
+            FriendlyMessageInfo M003 = new FriendlyMessageInfo("M003", MessageType.Success, "Material Vendor has been added successfully.");
+            hash.Add("M003", M003);
 
-            FriendlyMessageInfo P004 = new FriendlyMessageInfo("P004", MessageType.Success, "Material Vendor has been deleted successfully.");
-            hash.Add("P004", P004);
+            FriendlyMessageInfo M004 = new FriendlyMessageInfo("M004", MessageType.Success, "Material Vendor has been deleted successfully.");
+            hash.Add("M004", M004);
 
             #endregion
 
@@ -233,6 +233,101 @@ namespace Kusumgar
 
             FriendlyMessageInfo WC002 = new FriendlyMessageInfo("WC002", MessageType.Success, "Work center has been updated successfully.");
             hash.Add("WC002", WC002);
+
+            #endregion
+
+
+            #region QualityCreation
+
+            FriendlyMessageInfo Q011 = new FriendlyMessageInfo("Q011", MessageType.Success, "Quality has been added successfully.");
+            hash.Add("Q011", Q011);
+
+            FriendlyMessageInfo Q012 = new FriendlyMessageInfo("Q012", MessageType.Success, "Quality has been updated successfully.");
+            hash.Add("Q012", Q012);
+            #region VendorContact
+
+            FriendlyMessageInfo CQ001 = new FriendlyMessageInfo("CQ001", MessageType.Success, "Customer Quality has been added successfully.");
+            hash.Add("CQ001", CQ001);
+
+            FriendlyMessageInfo CQ002 = new FriendlyMessageInfo("CQ002", MessageType.Success, "Customer Quality has been updated successfully.");
+            hash.Add("CQ002", CQ002);
+
+
+            FriendlyMessageInfo QA011 = new FriendlyMessageInfo("QA011", MessageType.Success, "Quality Application has been added successfully.");
+            hash.Add("QA011", QA011);
+
+            FriendlyMessageInfo QA012 = new FriendlyMessageInfo("QA012", MessageType.Success, "Quality Application has been deleted successfully.");
+            hash.Add("QA012", QA012);
+
+            FriendlyMessageInfo QS011 = new FriendlyMessageInfo("QS011", MessageType.Success, "Quality Segment has been added successfully.");
+            hash.Add("QS011", QS011);
+
+            FriendlyMessageInfo QS012 = new FriendlyMessageInfo("QS012", MessageType.Success, "Quality Segment has been deleted successfully.");
+            hash.Add("QS012", QS012);
+            #endregion
+
+            #region GArticle
+
+            FriendlyMessageInfo GA001 = new FriendlyMessageInfo("GA001", MessageType.Success, "G Article has been added successfully.");
+            hash.Add("GA001", GA001);
+
+            FriendlyMessageInfo GA002 = new FriendlyMessageInfo("GA002", MessageType.Success, "G Article has been updated successfully.");
+            hash.Add("GA002", GA002);
+
+            #endregion
+
+            #endregion
+
+            #region P_Article
+
+            FriendlyMessageInfo PA011 = new FriendlyMessageInfo("PA011", MessageType.Success, "PArticle has been added successfully.");
+            hash.Add("PA011", PA011);
+
+            FriendlyMessageInfo PA012 = new FriendlyMessageInfo("PA012", MessageType.Success, "PArticle has been updated successfully.");
+            hash.Add("PA012", PA012);
+
+            #endregion
+
+
+
+
+            #region WArticle
+
+            FriendlyMessageInfo WA001 = new FriendlyMessageInfo("WA001", MessageType.Success, "W Article has been added successfully.");
+            hash.Add("WA001", WA001);
+
+            FriendlyMessageInfo WA002 = new FriendlyMessageInfo("WA002", MessageType.Success, "W Article has been updated successfully.");
+            hash.Add("WA002", WA002);
+
+            #endregion
+
+            #region CArticle
+
+            FriendlyMessageInfo CA001 = new FriendlyMessageInfo("CA001", MessageType.Success, "C Article has been added successfully.");
+            hash.Add("CA001", CA001);
+
+            FriendlyMessageInfo CA002 = new FriendlyMessageInfo("CA002", MessageType.Success, "C Article has been updated successfully.");
+            hash.Add("CA002", CA002);
+
+            #endregion
+
+            #region Process
+
+            FriendlyMessageInfo P001 = new FriendlyMessageInfo("P001", MessageType.Success, "Process has been added successfully.");
+            hash.Add("P001", P001);
+
+            FriendlyMessageInfo P002 = new FriendlyMessageInfo("P002", MessageType.Success, "Process has been updated successfully.");
+            hash.Add("P002", P002);
+
+            #endregion 
+
+            #region Packing
+
+            FriendlyMessageInfo PC001 = new FriendlyMessageInfo("PC001", MessageType.Success, "Packing has been added successfully.");
+            hash.Add("PC001", PC001);
+
+            FriendlyMessageInfo PC002 = new FriendlyMessageInfo("PC002", MessageType.Success, "Packing has been updated successfully.");
+            hash.Add("PC002", PC002);
 
             #endregion
 
@@ -263,6 +358,19 @@ namespace Kusumgar
             FriendlyMessageInfo CU007 = new FriendlyMessageInfo("CU007", MessageType.Success, "Customer Address Deleted successfully.");
             hash.Add("CU007", CU007);
 
+            FriendlyMessageInfo CU008 = new FriendlyMessageInfo("CU008", MessageType.Success, "Customer has been block successfully.");
+            hash.Add("CU008", CU008);
+
+            FriendlyMessageInfo CU009 = new FriendlyMessageInfo("CU009", MessageType.Success, "Customer has been unblock successfully.");
+            hash.Add("CU009", CU009);
+
+
+            FriendlyMessageInfo CU010 = new FriendlyMessageInfo("CU010", MessageType.Success, "Customer Contact Type has been added successfully.");
+            hash.Add("CU010", CU010);
+
+            FriendlyMessageInfo CU011 = new FriendlyMessageInfo("CU011", MessageType.Success, "Customer Contact Type has been deleted successfully.");
+            hash.Add("CU011", CU011);
+
             #endregion
 
             #region Contact
@@ -291,6 +399,66 @@ namespace Kusumgar
             hash.Add("COM002", COM002);
 
             #endregion
+
+            #endregion
+
+            #region Sales
+
+            FriendlyMessageInfo EQ001 = new FriendlyMessageInfo("EQ001", MessageType.Success, "Enquiry has been added successfully.");
+            hash.Add("EQ001", EQ001);
+
+            FriendlyMessageInfo EQ002 = new FriendlyMessageInfo("EQ002", MessageType.Success, "Enquiry has been updated successfully.");
+            hash.Add("EQ002", EQ002);
+
+            FriendlyMessageInfo EQ003 = new FriendlyMessageInfo("EQ003", MessageType.Success, "Staggered order has been added successfully.");
+            hash.Add("EQ003", EQ003);
+
+            FriendlyMessageInfo EQ004 = new FriendlyMessageInfo("EQ004", MessageType.Success, "Staggered order has been updated successfully.");
+            hash.Add("EQ004", EQ004);
+
+            FriendlyMessageInfo EQ005 = new FriendlyMessageInfo("EQ005", MessageType.Success, "Staggered order has been deleted successfully.");
+            hash.Add("EQ005", EQ005);
+
+            FriendlyMessageInfo EQ006 = new FriendlyMessageInfo("EQ006", MessageType.Success, "Supporting details has been added successfully.");
+            hash.Add("EQ006", EQ006);
+
+            FriendlyMessageInfo EQ007 = new FriendlyMessageInfo("EQ007", MessageType.Success, "Supporting details has been updated successfully.");
+            hash.Add("EQ007", EQ007);
+
+            FriendlyMessageInfo EQ008 = new FriendlyMessageInfo("EQ008", MessageType.Success, "Attachment has been added successfully.");
+            hash.Add("EQ008", EQ008);
+
+            FriendlyMessageInfo EQ009 = new FriendlyMessageInfo("EQ009", MessageType.Success, "Attachment has been deleted successfully.");
+            hash.Add("EQ009", EQ009);
+
+            FriendlyMessageInfo EQ010 = new FriendlyMessageInfo("EQ010", MessageType.Success, "Funcational parameter has been added successfully.");
+            hash.Add("EQ010", EQ010);
+
+            FriendlyMessageInfo EQ011 = new FriendlyMessageInfo("EQ011", MessageType.Success, "Funcational parameter has been deleted successfully.");
+            hash.Add("EQ011", EQ011);
+
+            FriendlyMessageInfo EQ012 = new FriendlyMessageInfo("EQ012", MessageType.Success, "Visual parameter has been added successfully.");
+            hash.Add("EQ012", EQ012);
+
+            FriendlyMessageInfo EQ013 = new FriendlyMessageInfo("EQ013", MessageType.Success, "Visual parameter has been deleted successfully.");
+            hash.Add("EQ013", EQ013);
+
+            FriendlyMessageInfo EQ014 = new FriendlyMessageInfo("EQ014", MessageType.Success, "PPC Check Point has been updated successfully.");
+            hash.Add("EQ014", EQ014);
+
+
+            #endregion
+
+            #region Ajax
+
+            FriendlyMessageInfo AJ001 = new FriendlyMessageInfo("AJ001", MessageType.Success, "Attachments has been added successfully.");
+            hash.Add("AJ001", AJ001);
+
+            FriendlyMessageInfo AJ002 = new FriendlyMessageInfo("AJ002", MessageType.Success, "Attachment has been deleted successfully.");
+            hash.Add("AJ002", AJ002);
+
+            FriendlyMessageInfo AJ003 = new FriendlyMessageInfo("AJ003", MessageType.Warning, "Attachment already exist.");
+            hash.Add("AJ003", AJ003);
 
             #endregion
 

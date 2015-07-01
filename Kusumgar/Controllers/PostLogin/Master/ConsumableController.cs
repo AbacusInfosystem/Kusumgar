@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using KusumgarModel;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarHelper.PageHelper;
 using KusumgarBusinessEntities.Common;
 using KusumgarCrossCutting.Logging;
@@ -27,22 +27,50 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
+            try
+            {
+                cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
+
+                cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error(" Consumable Controller - Index " + ex.ToString());
+            }
+
+            return View("Index", cViewModel);
+        }
+
+        public ActionResult Search(ConsumableViewModel cViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+            try
+            {
+
             cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
 
-            cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
+             }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-            return View(cViewModel);
+                Logger.Error(" Consumable Controller - Index " + ex.ToString());
+            }
+           
+            return View("Search", cViewModel);
         }
 
         public JsonResult Insert(ConsumableViewModel cViewModel)
         {
-            ViewBag.Title = "KPCL ERP :: Search";
-
+           
             try
             {
+
                 int consumableId = _consumableMan.Insert_Consumable(cViewModel.Consumable);
 
-                cViewModel.Consumable.Consumable_Entity.Consumable_Id = consumableId;
+                cViewModel.Consumable.Consumable_Id = consumableId;
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("C011"));
             }
@@ -52,14 +80,6 @@ namespace Kusumgar.Controllers.PostLogin.Master
             }
 
             return Json(cViewModel,JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Search(ConsumableViewModel cViewModel)
-        {
-
-            cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
-
-            return View(cViewModel);
         }
 
         public ActionResult Get_Consumables(ConsumableViewModel cViewModel)
@@ -115,12 +135,12 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                cViewModel.Consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id = _consumableMan.Insert_Consumable_Vendor(cViewModel.Consumable);
+                cViewModel.Consumable.Consumable_Vendor.Consumable_Vendor_Id = _consumableMan.Insert_Consumable_Vendor(cViewModel.Consumable);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CV011"));
 
-                //cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Entity.Consumable_Id));
-                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(cViewModel.Consumable.Consumable_Entity.Consumable_Id);
+                //cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Id));
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(cViewModel.Consumable.Consumable_Id);
 
             }
             catch (Exception ex)
@@ -154,10 +174,10 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                cViewModel.Consumable = _consumableMan.Get_Consumable_By_Id(cViewModel.Consumable.Consumable_Entity.Consumable_Id);
+                cViewModel.Consumable = _consumableMan.Get_Consumable_By_Id(cViewModel.Consumable.Consumable_Id);
                 cViewModel.Categories = _consumableMan.Get_Category_Name(cViewModel.Pager);
                 cViewModel.SubCategories = _consumableMan.Get_SubCategory_Name(cViewModel.Pager);
-                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Entity.Consumable_Id));
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(Convert.ToInt32(cViewModel.Consumable.Consumable_Id));
             }
             catch (Exception ex)
             {
@@ -189,7 +209,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 _consumableMan.Update_Consumable_Vendors(cViewModel.Consumable);
 
-                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(cViewModel.Consumable.Consumable_Entity.Consumable_Id);
+                cViewModel.Consumable.Consumable_Vendors = _consumableMan.Get_Consumable_Vendor_By_Consumable_Id(cViewModel.Consumable.Consumable_Id);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CV014"));
             }

@@ -1,8 +1,6 @@
 ﻿@model Kusumgar.Models.ComplaintViewModel
 @using KusumgarBusinessEntities.Common
-@{
-    ViewBag.Title = "Index";
-}
+
 <script src="/Scripts/CRM/Event/complaint_event.js"></script>
 <script src="/Scripts/CRM/Method/complaint_method.js"></script>
 <script src="/Scripts/CRM/Validation/complaint_validation.js"></script>
@@ -23,68 +21,10 @@
             <li class="active">Complaint</li>
         </ol>
     </section>
-    <form id="frmComp">
-        <input type="hidden" class="form-control input-sm" name="Complaint.Complaint_Entity.Complaint_Id" id="hdnComplaint_Id" value="@Model.Complaint.Complaint_Entity.Complaint_Id">        
-        <!-- Main content -->
-        <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Complaint Information</h3>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <div class="box-body">                            
-                            <div class="row">
-                                <div class="col-md-6">                                    
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="txtCustName" style="color: #333">Customer Name</label>
-                                                <div class="auto-complete">
-                                                    <input type="text" class="form-control input-sm" name="Complaint.Customer_Name" id="txtCustName" placeholder="Enter Customer Name" value="@Model.Complaint.Customer_Name">
-                                                    <input type="hidden" id="hdnCustId" value="@Model.Complaint.Complaint_Entity.Customer_Id" name="Complaint.Complaint_Entity.Customer_Id" />
-                                            </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtOrdId" style="color: #333">Order Id</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Order_Id" id="txtOrdId" placeholder="Enter Order Id" value="@Model.Complaint.Complaint_Entity.Order_Id">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtOrdItemId" style="color: #333">Order Item Id</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Order_Item_Id" id="txtOrdItemId" placeholder="Enter Order Item Id" value="@Model.Complaint.Complaint_Entity.Order_Item_Id">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtChallanNo" style="color: #333">Challan No</label>
-                                                <input type="text" class="form-control input-sm" name="Complaint.Complaint_Entity.Challan_No" id="txtChallanNo" placeholder="Enter Challan No" value="@Model.Complaint.Complaint_Entity.Challan_No">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtDescription" style="color: #333">Description</label>
-                                                <textarea class="form-control input-sm" id="txtDescription" placeholder="Enter Complaint Description" name="Complaint.Complaint_Entity.CDescription">@Model.Complaint.Complaint_Entity.CDescription</textarea>
-                                            </div>
+   
+    <div id="Load_Complaint">
+        @{Html.RenderPartial("_InsertComplaint", Model); }
+    </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-footer">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="btn-group">
-                                        <button type="submit" id="btnSave" class="btn btn-success btn-sm">Save</button>
-                                        <a href="@Url.Action("Search", "Complaint")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel and Open Search</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- /.row -->
-        </section>
-        <!-- /.content -->
-    </form>
 </div>
 <!-- /.content-wrapper -->

@@ -53,19 +53,19 @@ function BindTestUnitInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Id + "' />";
+            htmlText += "<input type='hidden' id='hdfTestUnitId_" + data.Test_Unit_Grid[i].Test_Unit_Id + "' value='" + data.Test_Unit_Grid[i].Test_Unit_Id + "' />";
 
-            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Test_Unit_Grid[i].TestUnitEntity.Test_Unit_Name;
+            htmlText += data.Test_Unit_Grid[i].Test_Unit_Name;
 
             htmlText += "</td>";
 
-            if (data.Test_Unit_Grid[i].TestUnitEntity.Status == true) {
+            if (data.Test_Unit_Grid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -73,7 +73,7 @@ function BindTestUnitInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.Test_Unit_Grid[i].TestUnitEntity.Status == false) {
+            if (data.Test_Unit_Grid[i].Status == false) {
 
                 htmlText += "<td>";
 
@@ -116,7 +116,7 @@ function BindTestUnitInGrid(data, mode) {
         $('.pagination').html("");
     }
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -132,11 +132,15 @@ function BindTestUnitInGrid(data, mode) {
     });
 
     $("#divSearchGridOverlay").hide();
+
+    $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $('#btnEdit').hide();
 
     var tViewModel = {
 

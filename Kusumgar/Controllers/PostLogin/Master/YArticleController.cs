@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -33,15 +33,15 @@ namespace Kusumgar.Controllers
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
-            PaginationInfo pager = new PaginationInfo();
+            //PaginationInfo pager = new PaginationInfo();
 
-            pager.IsPagingRequired = false; 
+           // pager.IsPagingRequired = false; 
 
             try
             {
-                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
+               // yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
 
-                yViewModel.Is_Primary = true;
+               // yViewModel.Is_Primary = true;
             }
             catch(Exception ex)
             {
@@ -51,7 +51,7 @@ namespace Kusumgar.Controllers
             }
             finally
             {
-                pager = null;
+             //   pager = null;
             }
             return View("Index",yViewModel);
         }
@@ -84,6 +84,28 @@ namespace Kusumgar.Controllers
 
         public PartialViewResult Load_YArticle(YArticleViewModel yViewModel)
         {
+
+            PaginationInfo pager = new PaginationInfo();
+
+            pager.IsPagingRequired = false;
+
+            try
+            {
+                yViewModel.Attribute_Codes = _attMan.Get_Attribute_Codes(ref pager);
+
+                yViewModel.Is_Primary = true;
+            }
+            catch (Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Load_YArticle " + ex.ToString());
+            }
+            finally
+            {
+                pager = null;
+            }
+
             return PartialView("_YArticle", yViewModel);
         }
 
@@ -91,9 +113,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                yViewModel.YArticle.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 int yArticle_Id = _yArticleMan.Insert_YArticle(yViewModel.YArticle);
 
@@ -115,7 +137,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                yViewModel.YArticle.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _yArticleMan.Update_YArticle(yViewModel.YArticle);
 
@@ -205,20 +227,64 @@ namespace Kusumgar.Controllers
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
+        public JsonResult Get_Work_Centers_By_Code_Purpose(string work_Center_Code)
         {
             List<AutocompleteInfo> autoCompletes = new List<AutocompleteInfo>();
 
             try
             {
-                autoCompletes = _yArticleMan.Get_Work_Stations_By_Code_Purpose(work_Station_Code);
+                autoCompletes = _yArticleMan.Get_Work_Centers_By_Code_Purpose(work_Center_Code);
             }
             catch (Exception ex)
             {
-                Logger.Error("YArticle Controller - Get_Work_Stations " + ex.ToString());
+                Logger.Error("YArticle Controller - Get_Work_Centers_By_Code_Purpose " + ex.ToString());
             }
 
             return Json(autoCompletes, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult View_Y_Article(YArticleViewModel yViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.Y_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - View_Y_Article " + ex.ToString());
+            }
+
+            return View("View", yViewModel);
+        }
+
+
+        public PartialViewResult Printable_Y_Article(int y_Article_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            YArticleViewModel yViewModel = new YArticleViewModel();
+
+            yViewModel.YArticle.Y_Article_Id = y_Article_Id;
+
+            try
+            {
+                yViewModel.YArticle = _yArticleMan.Get_YArticle_By_Id(yViewModel.YArticle.Y_Article_Id);
+
+            }
+            catch (Exception ex)
+            {
+                yViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("YArticle Controller - Printable_Y_Article " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", yViewModel);
         }
 
     }

@@ -29,7 +29,7 @@ function BindAttributeCodesInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Name;
+            htmlText += data.Attribute_Code_Grid[i].Attribute_Code_Name;
 
             htmlText += "</td>";
 
@@ -41,11 +41,11 @@ function BindAttributeCodesInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Code;
+            htmlText += data.Attribute_Code_Grid[i].Code;
 
             htmlText += "</td>";
 
-            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == true) {
+            if (data.Attribute_Code_Grid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -53,7 +53,7 @@ function BindAttributeCodesInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == false) {
+            if (data.Attribute_Code_Grid[i].Status == false) {
 
                 htmlText += "<td>";
 

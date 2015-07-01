@@ -4,16 +4,16 @@
 
 
         rules: {
-            "Attribute_Code.AttributeCodeEntity.Attribute_Id":
+            "Attribute_Code.Attribute_Id":
             {
                 required: true
             },
 
-            "Attribute_Code.AttributeCodeEntity.Attribute_Code_Name":
+            "Attribute_Code.Attribute_Code_Name":
             {
                 required: true
             },
-            "Attribute_Code.AttributeCodeEntity.Code":
+            "Attribute_Code.Code":
             {
                 required: true
             }
@@ -21,19 +21,19 @@
         },
         messages: {
 
-            "Attribute_Code.AttributeCodeEntity.Attribute_Id":
+            "Attribute_Code.Attribute_Id":
             {
-                required: "Attribute Name is required."
+                required: "Attribute name is required."
 
             },
 
-            "Attribute_Code.AttributeCodeEntity.Attribute_Code_Name":
+            "Attribute_Code.Attribute_Code_Name":
             {
                 required: "Code name is required."
 
             },
 
-            "Attribute_Code.AttributeCodeEntity.Code":
+            "Attribute_Code.Code":
             {
                 required: "Code is required."
 

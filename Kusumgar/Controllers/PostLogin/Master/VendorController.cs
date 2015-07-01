@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -57,25 +57,25 @@ namespace Kusumgar.Controllers.PostLogin.Master
         public ActionResult Insert_Vendor(VendorViewModel vViewModel)
         {
             try
-            {   vViewModel.Vendor.Vendor_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+            {   vViewModel.Vendor.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vViewModel.Vendor.Vendor_Entity.CreatedOn = DateTime.Now;
+                vViewModel.Vendor.CreatedOn = DateTime.Now;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
 
-                vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Name = vViewModel.Vendor.Vendor_Entity.Vendor_Name;
+                vViewModel.Attribute_Code.Attribute_Code_Name = vViewModel.Vendor.Vendor_Name;
 
-                vViewModel.Vendor.Vendor_Entity.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
+                vViewModel.Vendor.Vendor_Id = _vendorMan.Insert_Vendor(vViewModel.Vendor);
 
-                vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
+                vViewModel.Attribute_Code.Attribute_Id = Convert.ToInt32(AttributeName.Supplier);
 
                 if (vViewModel.Vendor.Material_Category_Entity.Material_Category_Name == "YarnCategory")
                 {
-                    vViewModel.Attribute_Code.AttributeCodeEntity.Status = true;
+                    vViewModel.Attribute_Code.Status = true;
 
-                    vViewModel.Attribute_Code.AttributeCodeEntity.Attribute_Code_Id = _vendorMan.Insert_Attribute_Code(vViewModel.Attribute_Code);
+                    vViewModel.Attribute_Code.Attribute_Code_Id = _vendorMan.Insert_Attribute_Code(vViewModel.Attribute_Code);
                 }
               
                vViewModel.Friendly_Message.Add(MessageStore.Get("V011"));
@@ -135,13 +135,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
         //    return Json(vViewModel);
         //}
 
-        public ActionResult Update_Vendor(VendorViewModel vViewModel)
+        public JsonResult Update_Vendor(VendorViewModel vViewModel)
         {
             try
             {
-                vViewModel.Vendor.Vendor_Entity.UpdatedOn = DateTime.Now;
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
 
-                vViewModel.Vendor.Vendor_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
               
                 _vendorMan.Update_Vendor(vViewModel.Vendor);
 
@@ -152,6 +152,72 @@ namespace Kusumgar.Controllers.PostLogin.Master
                 vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
                 Logger.Error("Vendor Controller - Update_Vendor_Details " + ex.ToString());
+            }
+
+            return Json(vViewModel);
+        }
+
+        public JsonResult Update_Vendor_Certificate(VendorViewModel vViewModel)
+        {
+            try
+            {
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _vendorMan.Update_Vendor_Certificate(vViewModel.Vendor);
+
+                vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Update_Vendor_Certificate " + ex.ToString());
+            }
+
+            return Json(vViewModel);
+        }
+
+        public JsonResult Update_Vendor_Other_Details(VendorViewModel vViewModel)
+        {
+            try
+            {
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _vendorMan.Update_Vendor_Other_Details(vViewModel.Vendor);
+
+                vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Update_Vendor_Other_Details " + ex.ToString());
+            }
+
+            return Json(vViewModel);
+        }
+
+        public JsonResult Update_Vendor_Central_Excise(VendorViewModel vViewModel)
+        {
+            try
+            {
+                vViewModel.Vendor.UpdatedOn = DateTime.Now;
+
+                vViewModel.Vendor.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                _vendorMan.Update_Vendor_Central_Excise(vViewModel.Vendor);
+
+                vViewModel.Friendly_Message.Add(MessageStore.Get("V012"));
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Update_Vendor_Central_Excise " + ex.ToString());
             }
 
             return Json(vViewModel);
@@ -184,9 +250,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
+                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
                 
-                //vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Vendor.Vendor_Entity.Vendor_Id);
+                //vViewModel.Product_Vendor_Grid = _vendorMan.Get_Product_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
             }
             catch(Exception ex)
             {
@@ -206,9 +272,17 @@ namespace Kusumgar.Controllers.PostLogin.Master
             {
                 pager = vViewModel.Pager;
 
-                if (vViewModel.Filter.Vendor_Id != 0)
+                if (vViewModel.Filter.Vendor_Id != 0 && vViewModel.Filter.Material_Id != 0)
+                {
+                    vViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Vendor_Id_Material_Id(vViewModel.Filter.Vendor_Id, vViewModel.Filter.Material_Id, ref  pager);
+                }
+                else if (vViewModel.Filter.Vendor_Id != 0)
                 {
                     vViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Id(vViewModel.Filter.Vendor_Id, ref  pager);
+                }
+                else if (vViewModel.Filter.Material_Id != 0)
+                {
+                    vViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Material_Id(vViewModel.Filter.Material_Id, ref  pager);
                 }
                 else
                 {
@@ -287,10 +361,63 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             vViewModel.Nations = _nationMan.Get_Nations(ref pager);
 
-            vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Vendor_Entity.Head_Office_Nation), ref pager);
+            vViewModel.States = _stateMan.Get_States(Convert.ToInt32(vViewModel.Vendor.Head_Office_Nation), ref pager);
 
             return PartialView("_Vendor", vViewModel);
         }
+
+        //View_Vendor
+        public ActionResult View_Vendor(VendorViewModel vViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
+
+                MaterialManager _materialMan = new MaterialManager();
+
+                vViewModel.Materials = _materialMan.Get_Materials_By_Vendor_Id(vViewModel.Vendor.Vendor_Id, ref pager);
+
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - View_Vendor " + ex.ToString());
+            }
+
+            return View("View", vViewModel);
+        }
+
+        public PartialViewResult Printable_Vendor(int vendor_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            VendorViewModel vViewModel = new VendorViewModel();
+
+            vViewModel.Vendor.Vendor_Id = vendor_Id;
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                vViewModel.Vendor = _vendorMan.Get_Vendor_By_Id(vViewModel.Vendor.Vendor_Id);
+
+                MaterialManager _materialMan = new MaterialManager();
+
+                vViewModel.Materials = _materialMan.Get_Materials_By_Vendor_Id(vViewModel.Vendor.Vendor_Id, ref pager);
+            }
+            catch (Exception ex)
+            {
+                vViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Controller - Printable_Vendor " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", vViewModel);
+        }
+
     }
 }
 

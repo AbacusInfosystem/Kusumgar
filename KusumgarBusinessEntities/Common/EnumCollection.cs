@@ -44,6 +44,7 @@ namespace KusumgarBusinessEntities.Common
         Vendor_Create,
         Vendor_Edit,
 
+
         // Vendor Contact
         Vendor_Contact_Search,
         Vendor_Contact_Create,
@@ -89,15 +90,33 @@ namespace KusumgarBusinessEntities.Common
         Complaint_Create,
         Complaint_Edit,
 
+
         // YArticle
         YArticle_Search,
         YArticle_Create,
         YArticle_Edit,
 
         
+        
 
 
 
+    }
+
+    public enum WebAppFunction
+    {
+        // Customer 
+        Primary_Customer,
+        Financial_Customer,
+        Billing_Customer,
+        Shipping_Customer,
+        Other_Customer,
+        Contact_Type_Customer,
+
+        View_Customer,
+        Edit_Customer,
+        Block_Customer,
+        View_Contact,
 
     }
 
@@ -117,7 +136,7 @@ namespace KusumgarBusinessEntities.Common
         TwistMingle = 2,
         Twist_type = 3,
         Ply = 4,
-        Yarn_type = 5,
+        Yarn_Type = 5,
         Shade = 6,
         Filaments = 7,
         Origin = 8,
@@ -186,11 +205,31 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_By_Turnover_Customer_Id_Sp,
         Get_Customer_By_Turnover_Customer_Id_Nation_Id_Sp,
         Get_Customer_By_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Status_Sp,
+        //
+        Get_Customers_By_Pin_Code_Nation_Id_State_Id_Customer_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_State_Id_Customer_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Customer_Id_Sp,
+        Get_Customers_by_Nation_Id_Pin_Code_Sp,
+        Get_Customers_By_State_Id_Nation_Id_Sp,
+        Get_Customers_By_Pin_Code_Sp,
+        Get_Customers_By_Pin_Cide_Nation_Id_State_Id_Sp,
+        Update_Customer_Other_By_Customer_Id_Sp,
+
+
+
+        Update_Customer_Block_Order_Sp,
 
         // Customer Address 
         Insert_Customer_Address,
         Update_Customer_Address,
         Delete_Customer_Address_By_Id,
+
+        // Customer Contact Type
+        Insert_Customer_Contact_Type_Sp,
+        Delete_Customer_Contact_Type_By_Id_Sp,
+        Get_Customer_Contact_Type_By_Id_Sp,
 
         // Financial Details
         Insert_Bank_Details_Sp,
@@ -198,6 +237,7 @@ namespace KusumgarBusinessEntities.Common
 
         //Nation
         Get_Nation_Sp,
+        Get_Nation_By_Customer_Id_Sp,
 
         //State
         Get_State_By_Nation_Id_Sp,
@@ -225,13 +265,12 @@ namespace KusumgarBusinessEntities.Common
 
         //Defect
         Get_Defects_sp,
-        List_Defect_Types_sp,
         Get_Defect_By_Id_sp,
-        Get_Defect_By_Name_By_Type_sp,
+        Get_Defect_By_Defect_Name_By_Process_Name_sp,
         Get_Defect_By_Name_sp,
-        Get_Defect_By_Type_sp,
         Insert_Defect_sp,
         Update_Defect_sp,
+        Get_Defect_By_Process_Id_sp,
         Get_Defect_Type_AutoComplete_Sp,
 
         //TestUnit
@@ -246,9 +285,11 @@ namespace KusumgarBusinessEntities.Common
         Insert_Test_sp,
         Update_Test_sp,
         Get_Test_By_Id_sp,
-        Get_Fabric_Types_sp,
-        Get_Test_By_Fabric_Type_sp,
+        //Get_Fabric_Types_sp,
+        //Get_Test_By_Fabric_Type_sp,
+        Get_Test_By_Process_Id_sp,
         Get_Test_Unit_AutoComplete_sp,
+        Get_Test_By_Test_Name_sp,
 
         //AttributeCode
         Get_Attribute_Codes_sp,
@@ -263,6 +304,8 @@ namespace KusumgarBusinessEntities.Common
         Get_Complaints_Sp,
         Get_Complaint_By_Id_Sp,
         Get_Complaint_By_Cust_Id_Sp,
+        Insert_Complaint_Lot_Mapping_Sp,
+        Get_Complaint_Lot_Mapping_By_Complaint_Id_Sp,
 
         //ConsumableMaster
         Get_Category_Name_sp,
@@ -302,6 +345,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Industrial_Masters_By_Category_Name_Sp,
         Get_Industrial_Masters_By_Category_Group_Name_Sp,
 
+
         // Y Article 
         Insert_Y_Article_sp,
         Update_Y_Article_sp,
@@ -311,7 +355,7 @@ namespace KusumgarBusinessEntities.Common
         Get_Y_Article_By_Id_sp,
         Get_Y_Articles_By_Full_Code_Yarn_Type_sp,
         Get_Y_Articles_By_YArticle_Id_Yarn_Type_sp,
-        Get_Work_Stations_By_Code_Purpose_Sp,
+        Get_Work_Centers_By_Code_Purpose_Sp,
 
         //Vendor
 
@@ -325,6 +369,12 @@ namespace KusumgarBusinessEntities.Common
         Delete_Product_Service_By_Id,
         Get_Product_Vendor_By_Id_Sp,
         Check_Existing_Vendor_Sp,
+        Get_Vendors_By_Vendor_Id_Material_Id_Sp,
+        Get_Vendors_By_Material_Id_Sp,
+        Update_Vendor_Certificate_Sp,
+        Update_Vendor_Other_Details_Sp,
+        Update_Vendor_Central_Excise_Sp,
+
         
         Update_Attribute_Code_Name_sp,
 
@@ -353,26 +403,169 @@ namespace KusumgarBusinessEntities.Common
         Insert_Material_Vendor_Sp,
         Get_Material_Categories_sp,
         Get_Material_SubCategory_By_CategoryId_Sp,
+        Get_Materials_By_Material_Id_Vendor_Id_Sp,
+        Get_Materials_By_Vendor_Id_Sp,
 
         // Work Center
 
         Get_Factories_Sp,
         Get_Processes_Sp,
-        Get_Work_Stations_Sp,
-        Get_Work_Stations_By_Factory_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_Sp,
-        Get_Work_Centers_By_Work_Station_Id_Sp,
-        Get_Work_Centers_By_Process_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Process_Id_Sp,
-        Get_Work_Centers_By_Work_Station_Id_By_Process_Id_Sp,
-        Get_Work_Centers_By_Factory_Id_By_Work_Station_Id_By_Process_Id_Sp,
-        Insert_Work_Center_sp,
-        Update_Work_Center_sp,
         Get_Work_Centers_Sp,
-        Get_Work_Centers_By_Work_Center_Id_Sp,
-        Insert_Work_Center_Process_sp,
-        Delete_Work_Center_Process_By_Work_Center_Id_Sp,
+        Get_Work_Centers_By_Factory_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_Sp,
+        Get_Work_Stations_By_Work_Center_Id_Sp,
+        Get_Work_Stations_By_Process_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_By_Work_Center_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_By_Process_Id_Sp,
+        Get_Work_Stations_By_Work_Center_Id_By_Process_Id_Sp,
+        Get_Work_Stations_By_Factory_Id_By_Work_Center_Id_By_Process_Id_Sp,
+        Insert_Work_Station_sp,
+        Update_Work_Station_sp,
+        Get_Work_Stations_Sp,
+        Get_Work_Stations_By_Work_Station_Id_Sp,
+        Insert_Work_Station_Process_sp,
+        Delete_Work_Station_Process_By_Work_Station_Id_Sp,
+        Get_Work_Center_By_Work_Station_Id_Sp,
+
+        //Quality
+
+        Insert_Quality_Sp,
+        Update_Quality_Sp,
+        Get_Quality_Sp,
+        Get_Quality_By_Id_Sp,
+        Get_Yarn_Types_sp,
+        Get_Quality_By_Yarn_Types_Sp,
+        Get_Weaves_Types_sp,
+        Get_Application_AutoComplete_sp,
+        Insert_Application_sp,
+        Delete_Quality_Application_By_Id,
+        Get_Quality_Application_sp,
+        Get_Quality_Market_Segment_sp,
+        Insert_Segment_sp,
+        Delete_Quality_Market_Segment_By_Id_sp,
+        Get_Segment_AutoComplete_sp,
+        Check_Existing_Quality_No_Sp,
+        Get_Work_Station_Processes_Sp,
+
+        //Customer Quality
+        Get_Qualities_Sp,
+        Insert_Customer_Quality_Sp,
+        Get_Customer_Quality_By_Id_Sp,
+        Update_Customer_Quality_Sp,
+        Get_Sample_By_No_Sp,
+        Get_Customer_Qualities_Sp,
+        Get_Customer_Qualities_By_Customer_Id_Sp,
+        Get_Customer_Qualities_By_Quality_Id_Sp,
+        Get_Customer_Qualities_By_Customer_Id_Quality_Id_Sp,
+        Insert_Customer_Quality_Functional_Parameter_Sp,
+        Insert_Customer_Quality_Visual_Parameter_Sp,
+        Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id_Sp,
+        Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id_Sp,
+        Delete_Customer_Quality_Functional_Parameter_By_Id_Sp,
+        Delete_Customer_Quality_Visual_Parameter_By_Id_Sp,
+
+        //G Article
+        Insert_G_Article_Sp,
+        Update_G_Article_Sp,
+        Get_G_Articles_Sp,
+        Get_G_Articles_By_G_Article_Id_By_Yarn_Type_Id_Sp,
+        Get_G_Articles_By_G_Article_Id_Sp,
+
+        //PArticle
+
+        Insert_P_Article_Sp,
+        Update_P_Article_Sp,
+        Get_P_Article_Sp,
+ 
+        Get_P_Article_By_Id_sp,
+        Get_P_Articles_By_Full_Code_sp,
+        Get_P_Articles_By_Yarn_Type_Id_sp,
+        Get_P_Articles_By_PArticle_Id_Yarn_Type_sp,
+        // Enquiry
+        Insert_Enquiry_Sp,
+        Update_Enquiry_Sp,
+        Get_Enquiries_Sp,
+        Get_Enquiry_By_Id_Sp,
+        Get_Enquiries_By_Status_Sp,
+        Insert_Staggered_Order_Sp,
+        Update_Staggered_Order_Sp,
+        Get_Staggered_Order_Sp,
+        Get_Staggered_Order_By_Id_Sp,
+        Get_Staggered_Order_By_Enquiry_Id_Sp,
+        Delete_Staggered_Order_By_Id,
+        Insert_Temp_Customer_Quality_Details_Sp,
+        Update_Temp_Customer_Quality_Details_Sp,
+        Get_Temp_Customer_Quality_Details_By_Id_Sp,
+        Insert_Supporting_Details_Sp,
+        Update_Supporting_Details_Sp,
+        Get_Supporting_Details_Sp,
+        Get_Supporting_Details_By_Enquiry_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Sp,
+        Get_Enquiries_By_Customer_Id_Quality_Id_Sp,
+        Get_Enquiries_By_Quality_Id_Sp,
+        Update_Enquiry_Quality_Id_Status_Sp,
+        Get_Enquiries_By_Status_Ids_Sp,
+        Get_Enquiries_For_PPC_Checkpoint_Sp,
+        Get_Quality_Details_By_Id_Sp,
+        Update_Enquiry_PPC_Checkpoint_Sp,
+
+        // Quality 
+        Get_Quality_Autocomplete,
+        Get_G_Articles_By_Yarn_Type_Id_Sp,
+        Get_G_Articles_By_Full_Code_Sp,
+
+
+
+        // Attachments
+        Insert_Attachment_Sp,
+        Delete_Attachment_By_Id,
+        Get_Attachments_By_Ref_Type_Ref_Id_Sp,
+        Get_Attachments_By_Id_Sp,
+
+        // Temp Functional Visual Parameters
+        Insert_Temp_Functional_Parameters_Sp,
+        Insert_Temp_Visual_Parameters_Sp,
+        Get_Temp_Visual_Parameters_By_Enquiry_Id,
+        Get_Temp_Functional_Parameters_By_Enquiry_Id,
+        Delete_Temp_Functional_Parameters_By_Id,
+        Delete_Temp_Visual_Parameters_By_Id,
+
+
+        //Process
+        Insert_Process_Sp,
+        Update_Process_Sp,
+        Get_Process_Sp,
+        Get_Process_By_Id_Sp,
+        Get_Process_By_Process_Name_Sp,
+
+        //W Article
+        Insert_W_Article_Sp,
+        Update_W_Article_Sp,
+        Get_W_Articles_Sp,
+        Get_W_Article_By_Id_Sp,
+        Get_W_Articles_By_Full_Code_Sp,
+        Get_W_Articles_By_Yarn_Type_Id_Sp,
+        Get_W_Articles_By_WArticle_Id_Yarn_Type_Sp,
+        
+        //C Article
+        Insert_C_Article_Sp,
+        Update_C_Article_Sp,
+        Get_C_Articles_Sp,
+        Get_C_Article_By_Id_Sp,
+        Get_C_Articles_By_Full_Code_Sp,
+        Get_C_Articles_By_Yarn_Type_Id_Sp,
+        Get_C_Articles_By_CArticle_Id_Yarn_Type_Sp,
+
+        //Packing
+        Insert_Packing_Sp,
+        Update_Packing_Sp,
+        Get_Packing_Sp,
+        Get_Packing_By_Id_Sp,
+        Get_Packing_By_Packing_Name_Sp,
+
+        // Authorize 
+
+        Authorize_Web_Element_Sp,
     }
 
     public enum GenderType
@@ -409,13 +602,13 @@ namespace KusumgarBusinessEntities.Common
         Euros = 3,
         Pounds = 4,
     }
+
     public enum PriorityOrder
     {
         Primary = 1,
         Secondary = 2,
         Last_Option = 3,
     }
-
 
     public enum PaymentTerms
     {
@@ -425,11 +618,13 @@ namespace KusumgarBusinessEntities.Common
 
     public enum DMUStatusRole
     {
-        option1 = 1,
-        option2 = 2,
-        option3 = 3,
-        option4 = 4,
-        option5 = 5,
+        Initiator = 1,
+        Decider = 2,
+        Influencer = 3,
+        User = 4,
+        Gatekeeper = 5,
+        Champion = 6,
+        Coach = 7,
     }
 
     public enum DMUStatusInfluence
@@ -447,7 +642,6 @@ namespace KusumgarBusinessEntities.Common
           Service=2
       }
    
-      
     public enum ShipmentMethod
     {
         method1=1,
@@ -469,5 +663,76 @@ namespace KusumgarBusinessEntities.Common
         Raw_Material =2,
         Service = 3
     }
+
+    public enum EnquiryType
+    {
+        Trial =1,
+        Stock = 2,
+        General = 3
+    }
+
+    public enum EnquiryStatus
+    {
+        Enquiry_Arrived = 1,
+        Passed_PPC_Check_Point = 2,
+        Passed_W_Manager_Check_Point = 3,
+        Passed_P_Manager_Check_Point = 4,
+        Passed_C_Manager_Check_Point = 5,
+        Temp_Quality_Set_Created = 6,
+        Quality_Assigned = 7,
+        Planned = 8
+    }
+
+    public enum OrderStatus
+    {
+        Order_Arrived = 1,
+        
+    }
+
+    public enum RefType
+    {
+        Enquiry = 1,
+
+        Label = 2,
+        Report_Format = 3,
+        Customer_Given = 4,
+    }
+
+    public enum DispatchType
+    {
+        By_Sea = 1,
+        By_Air = 2,
+        By_Route = 3,
+    }
+
+    // Temp Enums
+    public enum Order
+    {
+        ord0001 = 1,
+        ord0002 = 2,
+        ord0003 = 3,
+        ord0004 = 4,
+        ord0005 = 5,
+    }
+
+    public enum Challan_No
+    {
+        cha001 = 1,
+        cha002 = 2,
+        cha003 = 3,
+        cha004 = 4,
+        cha005 = 5,
+    }
+
+    public enum Lot_No
+    {
+        lot001 = 1,
+        lot002 = 2,
+        lot003 = 3,
+        lot004 = 4,
+        lot005 = 5,
+    }
+
+    // 
 
 }

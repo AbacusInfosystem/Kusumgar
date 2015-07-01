@@ -4,16 +4,22 @@
 
 
         rules: {
-            "Defect.DefectEntity.Defect_Type_Id":
+            "Defect.Process_Id":
             {
                 required: true
             },
 
-            "Defect.DefectEntity.Defect_Code":
-    {
-        required: true
-    },
-            "Defect.DefectEntity.Defect_Name":
+            "Defect.Defect_Major":
+           {
+              required: true
+           },
+           
+            "Defect.Defect_Minor":
+         {
+             required: true
+         },
+
+            "Defect.Defect_Name":
             {
                 required: true
             }
@@ -21,19 +27,24 @@
 
         },
         messages: {
-            "Defect.DefectEntity.Defect_Type_Id":
+            "Defect.Process_Id":
             {
-                required: "Defect type is required."
+                required: "Process is required."
 
             },
 
-            "Defect.DefectEntity.Defect_Code":
+            "Defect.Defect_Major":
             {
-                required: "Defect code is required."
+                required: "Defect major is required."
 
             },
 
-            "Defect.DefectEntity.Defect_Name":
+            "Defect.Defect_Minor":
+            {
+                required: "Defect minor is required."
+            },
+
+            "Defect.Defect_Name":
             {
                 required: "Defect name is required."
 

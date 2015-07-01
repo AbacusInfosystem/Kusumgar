@@ -9,7 +9,7 @@
 
     <title>@ViewBag.Title</title>
 
-    <link href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- FontAwesome 4.3.0 -->
     @*<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />*@
@@ -21,26 +21,26 @@
 
 
     <!-- Theme style -->
-    <link href="~/Content/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link href="~/Content/AdminLTE/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" media="all" />
 
      <!-- iCheck -->
-    <link href="~/Content/AdminLTE/plugins/iCheck/skins/square/green.css" rel="stylesheet" />
+    <link href="~/Content/AdminLTE/plugins/iCheck/skins/square/green.css" rel="stylesheet" media="all" />
 
     <!-- Morris chart -->
-    <link href="~/Content/AdminLTE/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/plugins/morris/morris.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- jvectormap -->
-    <link href="~/Content/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- Date Picker -->
-    <link href="~/Content/AdminLTE/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- Daterange picker -->
-    <link href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- bootstrap wysihtml5 - text editor -->
     @*<link href="~/Content/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />*@
@@ -119,10 +119,13 @@
     <script src="/Scripts/generic.message.js"></script>
     <script src="/Scripts/generic.autocomplete.js"></script>
     <script src="/Scripts/generic.message.js"></script>
-    <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" media="all" />
+    <script src="/Scripts/generic.iCheck.initialize.js"> </script>
+    <script src="/Scripts/generic.dragdrop.js"></script>
+    <script src="/Scripts/generic.multi.autocomplete.js"></script>
+    <script src="/Scripts/genric.authorize.js"></script>
     <style>
-    
-    .example-modal .modal {
+     .example-modal .modal {
         position: relative;
         top: auto;
         bottom: auto;
@@ -133,15 +136,14 @@
     }
 
     .example-modal .modal {
-        background: transparent!important;
+        background: transparent !important;
     }
 
     .td-radiobutton {
         line-height: 20px;
         padding-left: 9px;
     }
-
-    </style>
+</style>
     <!-- Ends --> 
 </head>
 
@@ -166,14 +168,20 @@
 </html>
 
 <script type="text/javascript">
-
+    
     $(document).ready(function () {
 
-        // get all checkboxes other than those which are added in .non-iCheck
-        $('input:not(.non-iCheck input:checkbox)').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
+        //// get all checkboxes other than those which are added in .non-iCheck
+        //$('input:not(.non-iCheck input:checkbox)').iCheck({
+        //    checkboxClass: 'icheckbox_square-green',
+        //    radioClass: 'iradio_square-green',
+        //    increaseArea: '20%' // optional
+        //});
+        $.getScript("/Content/AdminLTE/plugins/iCheck/icheck.js", function () {
+
+            $("body").append(Initialize_ICheck());
         });
+       
+      
     });
 </script>

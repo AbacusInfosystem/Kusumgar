@@ -1,0 +1,80 @@
+﻿@model Kusumgar.Models.PackingViewModel
+@using KusumgarBusinessEntities.Common
+
+<script src="/Scripts/Master/Event/packing_event.js"></script>
+<script src="/Scripts/Master/Method/packing_method.js"></script>
+<script src="/Scripts/Master/Validation/packing_validation.js"></script>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Packing
+
+            <small>Master</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Masters</li>
+            <li class="active">Packing</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Packing Information</h3>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form id="frmPacking">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <input type="hidden" id="hdnPacking_Id" name="Packing.Packing_Id" value="@Model.Packing.Packing_Id">
+
+                                    <div class="form-group">
+                                        <label for="txtPackingName" style="color: #333">Packing Name</label>
+                                        <input type="text" class="form-control input-sm" name="Packing.Packing_Name" id="txtPackingName" placeholder="Enter Packing Name" value="@Model.Packing.Packing_Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            @if (Model.Packing.Is_Active == true)
+                                            {
+                                                <input type="checkbox" name="chkIsActive" id="chkIsActive" value="false" checked />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" name="chkIsActive" id="chkIsActive" value="true" />
+                                            }
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Is Active
+                                            <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Packing.Is_Active" value="@Model.Packing.Is_Active.ToString()">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="btn-group">
+                                            <button type="button" id="btnPackingSave" class="btn btn-success btn-sm">Save </button>
+                                            <a href="@Url.Action("Search", "Packing")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </section>
+</div>
+<!-- /.content-wrapper -->

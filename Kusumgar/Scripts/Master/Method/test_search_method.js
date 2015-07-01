@@ -4,7 +4,7 @@
 
         Filter: {  
 
-            Fabric_Type_Id: $('#hdfFabricTypeId').val()
+            Process_Id: $('#hdfProcessId').val()
         },
     
         Pager: {
@@ -24,7 +24,7 @@ function GetAllTests() {
 
         Filter: {
 
-            Fabric_Type_Id: ""
+            Process_Id: ""
         },
 
         Pager: {
@@ -51,21 +51,21 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' id='hdfTestId_" + data.Test_Grid[i].TestEntity.Test_Id + "' value='" + data.Test_Grid[i].TestEntity.Test_Id + "' />";
+            htmlText += "<input type='hidden' id='hdfTestId_" + data.Test_Grid[i].Test_Id + "' value='" + data.Test_Grid[i].Test_Id + "' />";
 
-            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
-
-            htmlText += "</td>";
-
-            htmlText += "<td>";
-
-            htmlText += data.Test_Grid[i].Fabric_Type_Name;
+            htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Test_Grid[i].TestEntity.Test_Name;
+            htmlText += data.Test_Grid[i].Process_Name;
+
+            htmlText += "</td>";
+
+            htmlText += "<td>";
+
+            htmlText += data.Test_Grid[i].Test_Name;
 
             htmlText += "</td>";
 
@@ -129,7 +129,7 @@ function BindTestInGrid(data, mode) {
 
             htmlText += "</td>";
 
-            if (data.Test_Grid[i].TestEntity.Status == true) {
+            if (data.Test_Grid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -137,7 +137,7 @@ function BindTestInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.Test_Grid[i].TestEntity.Status == false) {
+            if (data.Test_Grid[i].Status == false) {
 
                 htmlText += "<td>";
 
@@ -181,7 +181,7 @@ function BindTestInGrid(data, mode) {
         $('.pagination').html("");
     }
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -199,10 +199,13 @@ function BindTestInGrid(data, mode) {
     });
 
     $("#divSearchGridOverlay").hide();
+
+    $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
 
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
@@ -210,7 +213,7 @@ function PageMore(Id) {
 
         Filter: {
 
-            Fabric_Type_Id: $('#hdfFabricTypeId').val()
+            Process_Id: $('#hdfProcessId').val()
         },
 
         Pager: {
@@ -224,5 +227,4 @@ function PageMore(Id) {
     $("#divSearchGridOverlay").show();
 
     CallAjax("/Test/Get_Tests", "json", JSON.stringify(tViewModel), "POST", "application/json", false, BindTestInGrid, "", null);
-
 }

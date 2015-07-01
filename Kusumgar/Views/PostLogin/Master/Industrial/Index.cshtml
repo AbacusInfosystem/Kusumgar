@@ -41,53 +41,53 @@
                                 <div class="row">
                                     <div class="col-md-4">
 
-                                        <input type="hidden" id="hdnIndustrial_Id" value="@Model.Industrial.Industrial_Entity.Industrial_Master_Id">
+                                        <input type="hidden" id="hdnIndustrial_Id" value="@Model.Industrial.Industrial_Master_Id">
 
                                         <div class="form-group">
                                             <label for="drpIndCatName" style="color: #333">Industrial Category Name</label>
-                                            <select class="form-control input-sm" id="drpIndCatName" name="Industrial.Industrial_Entity.Industrial_Category_Name">
+                                            <select class="form-control input-sm" id="drpIndCatName" name="Industrial.Industrial_Category_Name">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Industrial_Categories)
                                                 {
-                                                    if(Model.Industrial.Industrial_Entity.Industrial_Category_Id == item.Industrial_Category_Entity.Industrial_Category_Id)
+                                                    if(Model.Industrial.Industrial_Category_Id == item.Industrial_Category_Id)
                                                     {
-                                                        <option value="@item.Industrial_Category_Entity.Industrial_Category_Id" selected="selected">@item.Industrial_Category_Entity.Industrial_Category_Name</option>
+                                                        <option value="@item.Industrial_Category_Id" selected="selected">@item.Industrial_Category_Name</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.Industrial_Category_Entity.Industrial_Category_Id">@item.Industrial_Category_Entity.Industrial_Category_Name</option>
+                                                        <option value="@item.Industrial_Category_Id">@item.Industrial_Category_Name</option>
                                                     }
                                                 }
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="drpIndGroupName" style="color: #333">Industrial Group Name</label>
-                                            <select class="form-control input-sm" id="drpIndGroupName" name="Industrial.Industrial_Entity.Industrial_Group_Name">
+                                            <select class="form-control input-sm" id="drpIndGroupName" name="Industrial.Industrial_Group_Name">
                                                 <option value="" selected="selected">--Select--</option>
                                                 @foreach (var item in Model.Industrial_Groups)
                                                 {
-                                                    if (Model.Industrial.Industrial_Entity.Industrial_Group_Id == item.Industrial_Group_Entity.Industrial_Group_Id)
+                                                    if (Model.Industrial.Industrial_Group_Id == item.Industrial_Group_Id)
                                                     {
-                                                        <option value="@item.Industrial_Group_Entity.Industrial_Group_Id" selected="selected">@item.Industrial_Group_Entity.Industrial_Group_Name</option>
+                                                        <option value="@item.Industrial_Group_Id" selected="selected">@item.Industrial_Group_Name</option>
                                                     }
                                                     else
                                                     {
-                                                        <option value="@item.Industrial_Group_Entity.Industrial_Group_Id">@item.Industrial_Group_Entity.Industrial_Group_Name</option>
+                                                        <option value="@item.Industrial_Group_Id">@item.Industrial_Group_Name</option>
                                                     }
                                                 }
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="txtSubGroupName" style="color: #333">Industrial Sub-Group Name</label>
-                                            <input type="text" class="form-control input-sm" name="Industrial.Industrial_Entity.Industrial_SubGrp_Name" id="txtSubGroupName" placeholder="Enter Sub-Group Name" value="@Model.Industrial.Industrial_Entity.Industrial_SubGrp_Name">
+                                            <input type="text" class="form-control input-sm" name="Industrial.Industrial_SubGrp_Name" id="txtSubGroupName" placeholder="Enter Sub-Group Name" value="@Model.Industrial.Industrial_SubGrp_Name">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtSize" style="color: #333">Size</label>
-                                            <input type="text" class="form-control input-sm" name="Industrial.Industrial_Entity.Size" id="txtSize" placeholder="Enter Size" value="@Model.Industrial.Industrial_Entity.Size">
+                                            <input type="text" class="form-control input-sm" name="Industrial.Size" id="txtSize" placeholder="Enter Size" value="@Model.Industrial.Size">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtCOD" style="color: #333">COD</label>
-                                            <input type="text" class="form-control input-sm" name="Industrial.Industrial_Entity.COD" id="txtCOD" placeholder="Enter COD" value="@Model.Industrial.Industrial_Entity.COD">
+                                            <input type="text" class="form-control input-sm" name="Industrial.COD" id="txtCOD" placeholder="Enter COD" value="@Model.Industrial.COD">
                                         </div>
                                     </div>
                                 </div>
@@ -104,21 +104,21 @@
                             <br/>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="hidden" id="hdnIndustrial_Vendor_Id" value="@Model.Industrial_Vendor.Industrial_Vendor_Entity.Industrial_Vendor_Id">
+                                    <input type="hidden" id="hdnIndustrial_Vendor_Id" value="@Model.Industrial_Vendor.Industrial_Vendor_Id">
                                     <div class="form-group">
                                         <label for="txtVendorName" style="color: #333">Vendor Name</label>
                                         <div class="auto-complete">
                                             <input type="text" class="form-control input-sm" name="Industrial_Vendor.Vendor_Name" id="txtVendorName" placeholder="Enter Vendor Name" value="@Model.Industrial_Vendor.Vendor_Name">
-                                            <input type="hidden" id="hdnVendor_Id" value="@Model.Industrial_Vendor.Industrial_Vendor_Entity.Vendor_Id">
+                                            <input type="hidden" id="hdnVendor_Id" value="@Model.Industrial_Vendor.Vendor_Id">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="drpPriorityOrder" style="color: #333">Priority Order</label>
-                                        <select class="form-control input-sm" id="drpPriorityOrder" name="Industrial_Vendor.Industrial_Vendor_Entity.Priority_Order">
+                                        <select class="form-control input-sm" id="drpPriorityOrder" name="Industrial_Vendor.Priority_Order">
                                             <option value="" selected="selected">--Select--</option>
                                             @foreach (var item in LookupInfo.Get_Priority_Orders())
                                             {
-                                                if (Model.Industrial_Vendor.Industrial_Vendor_Entity.Priority_Order == item.Key)
+                                                if (Model.Industrial_Vendor.Priority_Order == item.Key)
                                                 {
                                                     <option value="@item.Key" selected="selected">@item.Value</option>
                                                 }
@@ -141,12 +141,12 @@
                                             </tr>
                                             @foreach (var item in Model.Industrial_Vendors)
                                             {
-                                                <tr id="tr_ivendor_@item.Industrial_Vendor_Entity.Industrial_Vendor_Id">
+                                                <tr id="tr_ivendor_@item.Industrial_Vendor_Id">
                                                     <td>@item.Vendor_Name</td>
-                                                    <td>@item.Industrial_Vendor_Entity.Priority_Order</td>
+                                                    <td>@item.Priority_Order</td>
                                                     <td>
                                                         <div class="btn-group pull-right">
-                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm" onclick="RemoveVendor(@item.Industrial_Vendor_Entity.Industrial_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                            <button type="button" id="btnRemove" class="btn btn-danger btn-sm" onclick="RemoveVendor(@item.Industrial_Vendor_Id)"><i class='fa fa-times'></i></button>
                                                         </div>
                                                     </td>
                                                 </tr>

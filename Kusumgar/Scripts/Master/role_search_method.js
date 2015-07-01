@@ -36,17 +36,17 @@ function BindRoleGrid(data)
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].RoleEntity.Role_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Roles[i].Role_Id + "' class='iradio-list'/>";
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Roles[i].RoleEntity.Role_Name;
+        htmlText += data.Roles[i].Role_Name;
 
         htmlText += "</td>";
 
-            if (data.Roles[i].RoleEntity.Is_Active == true) {
+            if (data.Roles[i].Is_Active == true) {
 
                 htmlText += "<td>";
 
@@ -82,7 +82,7 @@ function BindRoleGrid(data)
 
     $('#tblRoleGrid tr:first').after(htmlText);
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -111,9 +111,13 @@ function BindRoleGrid(data)
         }
     });
 
+    $("#btnEdit").hide();
+
 }
 
 function PageMore(Id) {
+
+    $("#btnEdit").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

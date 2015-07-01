@@ -1,0 +1,363 @@
+﻿@model Kusumgar.Models.CustomerQualityViewModel
+@using KusumgarBusinessEntities.Common
+
+
+    <script src="~/Scripts/Master/Event/customer_quality_event.js"></script>
+    <script src="~/Scripts/Master/Method/customer_quality_method.js"></script>
+    <script src="~/Scripts/Master/Validation/customer_quality_validation.js"></script>
+
+<style>
+    .div-drag-drop {
+        width: 100%;
+        background-color: rgb(255, 255, 214);
+        height: 100px;
+        border: 1px dashed #E7E7E7;
+        text-align: center;
+        color: #878787;
+        border-radius: 7px;
+    }
+
+</style>
+
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab">Primary</a></li>
+                <li><a href="#tab_2" data-toggle="tab" id="tbCustomer_Specific_Information">Customer Specific Information</a></li>
+                <li><a href="#tab_3" data-toggle="tab" id="tbAttachment">Attachments</a></li>
+                <li><a href="#tab_4" data-toggle="tab" id="tabFuncational_Visual">Functional / Visual Parameters</a></li>
+                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-info"></i></a></li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="tab_1">
+                    <form id="frmCustomer_Quality">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="hidden" id="hdnCustomer_Quality_Id" name="Customer_Quality.Customer_Quality_Id" value="@Model.Customer_Quality.Customer_Quality_Id">
+                                <div class="form-group">
+                                    <label style="color: #333" for="txtCustomer_Name">Customer name</label>
+                                    <div class="auto-complete">
+                                        <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="">
+                                        <input type="hidden" id="hdnCustomer_Id" value="@(Model.Customer_Quality.Customer_Id == 0 ? "" : Model.Customer_Quality.Customer_Id.ToString())" name="Customer_Quality.Customer.Customer_Entity.Customer_Id" class="auto-complete-value">
+                                        <input type="hidden" id="hdnContact_Name" value="@Model.Customer_Quality.Customer.Customer_Name" name="Customer_Quality.Customer.Customer_Name" class="auto-complete-label">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="drpQuality_No" style="color: #333">Quality No.</label>
+                                    <select id="drpQuality_No" class="form-control input-sm" name="Customer_Quality.Quality.Quality_No">
+                                        <option value="">--Select--</option>
+                                        @foreach (var item in Model.Customer_Quality.Qualities)
+                                        {
+                                            if (Model.Customer_Quality.Quality_Id == item.Quality_Id)
+                                            {
+                                                <option value="@item.Quality_Id" selected="selected">@item.Quality_No</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Quality_Id">@item.Quality_No</option>
+                                            }
+                                        }
+                                    </select>
+                                    <input type="hidden" id="hdnQuality_Id" value="@Model.Customer_Quality.Quality_Id" name="Customer_Quality.Quality_Id">
+                                </div>
+
+                                <div class="form-group">
+                                    @if (Model.Customer_Quality.Is_Active == false)
+                                    {
+                                        <label>
+                                            <input type="checkbox" name="chkIs_Active" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label>
+                                            <input type="checkbox" name="chkIs_Active" checked="checked" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                        </label>
+                                    }
+                                    <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Customer_Quality.Is_Active" value="@Model.Customer_Quality.Is_Active.ToString()">
+                                </div>
+
+                            </div>
+                           
+                            @*<div class="col-md-8">
+
+                            </div>*@
+                        </div>
+
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                <button type="button" id="btnSave_Primary" class="btn btn-success btn-sm">Save Primary</button>
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <div class="tab-pane " id="tab_2">
+                    <form id="frmCustomer_Specific_Information">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="txtCustomer_Roll_Length" style="color: #333">Customer Roll Length</label>
+                                    <input type="text" class="form-control input-sm" id="txtCustomer_Roll_Length" value="@Model.Customer_Quality.Customer_Roll_Length" placeholder="Enter Customer Roll Length">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtStorage" style="color: #333">Storage</label>
+                                    <input type="text" class="form-control input-sm" id="txtStorage" value="@Model.Customer_Quality.Storage" placeholder="Enter Storage">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtEnd_Product_Criteria" style="color: #333">End Product Criteria</label>
+                                    <textarea class="form-control input-sm" id="txtEnd_Product_Criteria" placeholder="Enter End Product Criteria">@Model.Customer_Quality.End_Product_Criteria</textarea>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtTesting_Requirements" style="color: #333">Testing Requirements</label>
+                                    <textarea class="form-control input-sm" id="txtTesting_Requirements" placeholder="Enter Testing Requirements">@Model.Customer_Quality.Testing_Requirements</textarea>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtSpecial_Requirements_Packaging" style="color: #333">Special Requirements Packaging</label>
+                                    <textarea class="form-control input-sm" id="txtSpecial_Requirements_Packaging" placeholder="Enter Special Requirements Packaging">@Model.Customer_Quality.Special_Requirements_Packaging</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="txtTransport" style="color: #333">Transport</label>
+                                    <input type="text" class="form-control input-sm" id="txtTransport" value="@Model.Customer_Quality.Transport" placeholder="Enter Transport">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtLot_Testing" style="color: #333">Lot Testing</label>
+                                    <input type="text" class="form-control input-sm" id="txtLot_Testing" value="@Model.Customer_Quality.Lot_Testing" placeholder="Enter Lot Testing">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtInspection_Requirements" style="color: #333">Inspection Requirements</label>
+                                    <textarea class="form-control input-sm" id="txtInspection_Requirements" placeholder="Enter Inspection Requirements">@Model.Customer_Quality.Inspection_Requirements</textarea>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtProcess_Control" style="color: #333">Process Control</label>
+                                    <textarea class="form-control input-sm" id="txtProcess_Control" placeholder="Enter Process Control">@Model.Customer_Quality.Process_Control</textarea>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtSpecial_Requirements_Defects_Defination" style="color: #333">Special Requirements Defects Defination</label>
+                                    <textarea class="form-control input-sm" id="txtSpecial_Requirements_Defects_Defination" placeholder="Enter Special Requirements Defects Defination">@Model.Customer_Quality.Special_Requirements_Defect_Defination</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                               
+                                <div class="form-group">
+                                    <label for="txtCustomer_Sample_No" style="color: #333">Customer Sample No</label>
+                                    <div class="auto-complete">
+                                        <input type="text" class="form-control input-sm" id="txtCustomer_Sample_No" placeholder="Enter sample no" name="Customer_Quality.Sample.Sample_Id" value="">
+                                        @*<input type="hidden" id="hdnSample_Id" value="@(Model.Customer_Quality.Sample.Sample_Id == 0 ? "" : Model.Customer_Quality.Sample.Sample_Id.ToString())" name="Customer_Quality.Sample_Id" class="auto-complete-value">*@
+                                        <input type="hidden" id="hdnSample_Id" value="@Model.Customer_Quality.Sample_Id" name="Customer_Quality.Sample_Id" class="auto-complete-value">
+                                        @*<input type="hidden" id="hdnSample_Id" value="@(Model.Customer_Quality.Sample.Sample_Id ==0 ? " " : Model.Customer_Quality.Sample_Id.ToString())" name="Customer_Quality.Sample_Id" class="auto-complete-value">*@
+                                        <input type="hidden" id="hdnSample_No" value="@Model.Customer_Quality.Sample.Sample_No.ToString()" name="Customer_Quality.Sample.Sample_No" class="auto-complete-label">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSpecial_Care_Details" style="color: #333">Special Care Details</label>
+                                    <textarea class="form-control input-sm" id="txtSpecial_Care_Details" placeholder="Enter Special Care Details">@Model.Customer_Quality.Special_Care_Details</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSpecial_Requirements_Material_Handling" style="color: #333">Special Requirements Material Handling</label>
+                                    <textarea class="form-control input-sm" id="txtSpecial_Requirements_Material_Handling" placeholder="Enter Special Requirements Material Handling">@Model.Customer_Quality.Special_Requirements_Material_Handling</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSpecial_Requirements_Verdicting" style="color: #333">Special Requirements Verdicting</label>
+                                    <textarea class="form-control input-sm" id="txtSpecial_Requirements_Verdicting" placeholder="Enter Special Requirements Verdicting">@Model.Customer_Quality.Special_Requirements_Verdicting</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm" id="btnSave_Customer_Specific_Information">Save Customer Specific Information</button>
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <div class="tab-pane" id="tab_3">
+                    <form id="frmAttachment">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @*<input type="hidden" id="hdnRefType" value="@Model.Attachment.Ref_Type">*@
+
+                                <div class="form-group">
+                                    <label for="drpRef_Type" style="color: #333">Referance Type</label>
+                                    <select class="form-control" id="drpRef_Type" name="Attachment.Ref_Type">
+                                        <option value="">-Select Referance Type-</option>
+                                        @foreach (var item in LookupInfo.Get_RefTypes())
+                                        {
+                                            if (Model.Attachment.Ref_Type == item.Key)
+                                            {
+                                                <option value="@item.Key" selected="selected">@item.Value</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Key">@item.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="txtRemark">Remark</label>
+                                    <textarea class="form-control input-sm" id="txtRemark" placeholder="Enter Remark" name="Attachment.Remark"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="drag_drop_file" style="color: #333">Attach Files</label>
+                                    <div class="div-drag-drop" id="drag_drop_file" style="display:none;">drag and drop here.</div>
+                                    <br>
+                                    <div class="multiple-list"></div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group">   
+                                    <br>
+                                    <div class="multiple-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" box-footer">
+                            <div class="btn-group">
+                                @*<button type="button" id="btnSave_Attachment" class="btn btn-success btn-sm">Save Attachment</button>*@
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane " id="tab_4">
+                    <div class="box-body">
+                        <div class="row">
+
+                            <form id="frmFunctional_Parameters">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtFunctional_Parameters" style="color: #333">Functional Parameters</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control input-sm" id="txtFunctional_Parameters" />
+                                            <input type="hidden" id="hdnFunctional_Parameters" name="Functional_Parameters">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success btn-flat" type="button" id="btnAdd_Functional_Parameters">Add</button>
+                                            </span>
+                                        </div>
+                                        <br>
+                                        <div class="multiple-list"></div>
+                                    </div>
+
+                                    <!-- /input-group -->
+
+                                </div>
+                            </form>
+                            <form id="frmVisualParameters">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtVisual_Parameters" style="color: #333">Visual Parameters</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" id="txtVisual_Parameters">
+                                            <input type="hidden" id="hdnVisual_Parameters" name="Visual_Parameters">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success btn-flat" type="button" id="btnAdd_Visual_Parameters">Add</button>
+                                            </span>
+                                        </div>
+                                        <br>
+                                        <div class="multiple-list"></div>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                            </form>
+
+                            @*<div class="col-md-4">
+                    <div class="btn-group form-group ">
+                        <label for="txtTest_Name">Test Name</label>
+                        <input type="text" class="form-control input-sm" id="txtTest_Name" placeholder="Enter Test Name">
+                    </div>
+                    <div class="form-group ">
+                        <label for="txtUnit_Name">Unit Name</label>
+                        <input type="text" class="form-control input-sm" id="txtUnit_Name" placeholder="Enter Unit Name">
+                    </div>
+                </div>
+                <div class="col-md-8 ">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Test Name</th>
+                            <th>Unit Name</th>
+                            <th style="min-width: 81px;">&nbsp; </th>
+                        </tr>
+                        <tr>
+                            <td>Test 1</td>
+                            <td>Unit 1</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 2</td>
+                            <td>Unit 2</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 3</td>
+                            <td>Unit 3</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 4</td>
+                            <td>Unit 4</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 5</td>
+                            <td>Unit 5</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test 6</td>
+                            <td>Unit 6</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button type="button" id="btnRemove" class="btn btn-danger btn-sm"><i class='fa fa-times'></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>*@
+                        </div>
+                    </div>
+                        <div class="box-footer">
+                            <div class="btn-group">
+                                @*<button type="button" class="btn btn-success btn-sm">Save Test</button>*@
+                                <a href="@Url.Action("Search", "CustomerQuality")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+        </div>
+   

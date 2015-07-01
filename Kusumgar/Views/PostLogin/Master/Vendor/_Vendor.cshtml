@@ -1,37 +1,35 @@
 ﻿@model Kusumgar.Models.VendorViewModel
 
-<script src="~/Scripts/Master/Event/vendor_partial_event.js"></script>
 
-<script src="~/Scripts/Master/Method/vendor_partial_method.js"></script>
 
-<script src="~/Scripts/Master/Validation/vendor_partial_validation.js"></script>
+
 
 <form id="frmVendor">
 
     <div class="row">
         <div class="col-md-4">
 
-            <input type="hidden" id="hdnVendorId" name="Vendor.Vendor_Entity.Vendor_Id" value="@Model.Vendor.Vendor_Entity.Vendor_Id">
+            <input type="hidden" id="hdnVendorId" name="Vendor.Vendor_Id" value="@Model.Vendor.Vendor_Id">
             <input type="hidden" id="hdnIs_Primary" value="@Model.Is_Primary">
             <div class="form-group">
                 <label for="txtVendorName" style="color: #333">Vendor Name :</label>
-                <input type="text" id="txtVendorName" class="form-control input-sm" name="Vendor.Vendor_Entity.Vendor_Name" value="@Model.Vendor.Vendor_Entity.Vendor_Name" placeholder="Enter Vendor Name">
-                <input type="hidden" class="form-control input-sm" id="hdnVendorName" value="@Model.Vendor.Vendor_Entity.Vendor_Name">
+                <input type="text" id="txtVendorName" class="form-control input-sm" name="Vendor.Vendor_Name" value="@Model.Vendor.Vendor_Name" placeholder="Enter Vendor Name">
+                <input type="hidden" class="form-control input-sm" id="hdnVendorName" value="@Model.Vendor.Vendor_Name">
             </div>
 
             <div class="form-group">
                 <label style="color: #333">Product-Category</label>
-                <select class="form-control input-sm" id="drpProductCategory" name="Vendor.Vendor_Entity.Product_Category">
+                <select class="form-control input-sm" id="drpProductCategory" name="Vendor.Product_Category">
                     <option value="">Select Product-Category</option>
                     @foreach (var item in Model.Material_Category)
                     {
-                        if (Model.Vendor.Vendor_Entity.Product_Category == item.Material_Category_Entity.Material_Category_Id)
+                        if (Model.Vendor.Product_Category == item.Material_Category_Id)
                         {
-                            <option value="@item.Material_Category_Entity.Material_Category_Id" selected="selected">@item.Material_Category_Entity.Material_Category_Name</option>
+                            <option value="@item.Material_Category_Id" selected="selected">@item.Material_Category_Name</option>
                         }
                         else
                         {
-                            <option value="@item.Material_Category_Entity.Material_Category_Id">@item.Material_Category_Entity.Material_Category_Name</option>
+                            <option value="@item.Material_Category_Id">@item.Material_Category_Name</option>
                         }
                     }
                 </select>
@@ -40,14 +38,14 @@
 
             <div class="form-group">
                 <label for="txtYarnCode" style="color: #333"> Code</label>
-                <input type="text" class="form-control" id="txtYarnCode" name="Vendor.Vendor_Entity.Code" value="@Model.Vendor.Vendor_Entity.Code" placeholder="Enter Yarn Code">
+                <input type="text" class="form-control" id="txtYarnCode" name="Vendor.Code" value="@Model.Vendor.Code" placeholder="Enter Yarn Code">
             </div>
 
             <div class="form-group">
                 <label for="txtEmailId" style="color: #333">Email Id</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input type="text" class="form-control input-sm" id="txtEmailId" name="Vendor.Vendor_Entity.Email" value="@Model.Vendor.Vendor_Entity.Email" placeholder="Enter email">
+                    <input type="text" class="form-control input-sm" id="txtEmailId" name="Vendor.Email" value="@Model.Vendor.Email" placeholder="Enter email">
                 </div>
             </div>
 
@@ -57,22 +55,22 @@
             <div class="form-group">
                 <div class="form-group">
                     <label for="txtHeadOfficeAddress" style="color: #333">Head Office Address :</label>
-                    <textarea id="txtHeadOfficeAddress" class="form-control input-sm" name="Vendor.Vendor_Entity.HeadOfficeAddress" placeholder="Enter Head Office Address">@Model.Vendor.Vendor_Entity.HeadOfficeAddress</textarea>
+                    <textarea id="txtHeadOfficeAddress" class="form-control input-sm" name="Vendor.HeadOfficeAddress" placeholder="Enter Head Office Address">@Model.Vendor.HeadOfficeAddress</textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="drpHeadOfficeNation" style="color: #333">Head Office Nation : </label>
-                <select id="drpHeadOfficeNation" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Nation">
+                <select id="drpHeadOfficeNation" class="form-control input-sm" name="Vendor.Head_Office_Nation">
                     <option value="">- Select Nation -</option>
                     @foreach (var item in Model.Nations)
                     {
-                        if (Model.Vendor.Vendor_Entity.Head_Office_Nation == item.Nation_Entity.NationId)
+                        if (Model.Vendor.Head_Office_Nation == item.NationId)
                         {
-                            <option value="@item.Nation_Entity.NationId" selected="selected">@item.Nation_Entity.NationName</option>
+                            <option value="@item.NationId" selected="selected">@item.NationName</option>
                         }
                         else
                         {
-                            <option value="@item.Nation_Entity.NationId">@item.Nation_Entity.NationName</option>
+                            <option value="@item.NationId">@item.NationName</option>
                         }
                     }
                 </select>
@@ -81,17 +79,17 @@
 
             <div class="form-group">
                 <label for="drpHeadOfficeState" style="color: #333">Head Office State : </label>
-                <select id="drpHeadOfficeState" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_State">
+                <select id="drpHeadOfficeState" class="form-control input-sm" name="Vendor.Head_Office_State">
                     <option value="">- Select State-</option>
                     @foreach (var item in Model.States)
                     {
-                        if (Model.Vendor.Vendor_Entity.Head_Office_State == item.State_Entity.StateId)
+                        if (Model.Vendor.Head_Office_State == item.StateId)
                         {
-                            <option value="@item.State_Entity.StateId" selected="selected">@item.State_Entity.StateName</option>
+                            <option value="@item.StateId" selected="selected">@item.StateName</option>
                         }
                         else
                         {
-                            <option value="@item.State_Entity.StateId">@item.State_Entity.StateName</option>
+                            <option value="@item.StateId">@item.StateName</option>
                         }
                     }
                 </select>
@@ -101,7 +99,7 @@
 
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                    <input type="text" class="form-control input-sm" id="txtHeadOfficeZipCode" name="Vendor.Vendor_Entity.Head_Office_ZipCode" value="@Model.Vendor.Vendor_Entity.Head_Office_ZipCode" placeholder="Enter zipcode" maxlength="6">
+                    <input type="text" class="form-control input-sm" id="txtHeadOfficeZipCode" name="Vendor.Head_Office_ZipCode" value="@Model.Vendor.Head_Office_ZipCode" placeholder="Enter zipcode" maxlength="6">
                 </div>
             </div>
 
@@ -115,7 +113,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-phone"></i>
                     </div>
-                    <input type="text" id="txtHeadOfficeLandline1" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Vendor_Entity.Head_Office_Landline1" />
+                    <input type="text" id="txtHeadOfficeLandline1" class="form-control input-sm" name="Vendor.Head_Office_Landline1" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Head_Office_Landline1" />
                 </div>
                 <!-- /.input group -->
             </div>
@@ -125,7 +123,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-phone"></i>
                     </div>
-                    <input type="text" id="txtHeadOfficeLandline2" class="form-control input-sm" name="Vendor.Vendor_Entity.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Vendor_Entity.Head_Office_Landline2" />
+                    <input type="text" id="txtHeadOfficeLandline2" class="form-control input-sm" name="Vendor.Head_Office_Landline2" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Head_Office_Landline2" />
                 </div>
                 <!-- /.input group -->
             </div>
@@ -136,7 +134,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-fax"></i>
                     </div>
-                    <input type="text" id="txtHeadOfficeFaxNo" class="form-control" name="Vendor.Vendor_Entity.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Vendor_Entity.Head_Office_FaxNo" />
+                    <input type="text" id="txtHeadOfficeFaxNo" class="form-control" name="Vendor.Head_Office_FaxNo" data-inputmask='"mask": "(999) 999-9999"' data-mask" value="@Model.Vendor.Head_Office_FaxNo" />
                 </div>
                 <!-- /.input group -->
             </div>
@@ -144,17 +142,17 @@
 
             <div class="form-group">
                 <label for="chkStatus">Status :</label><br>
-                @if (Model.Vendor.Vendor_Entity.Is_Active)
+                @if (Model.Vendor.Is_Active)
                     {
-            @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="false" checked />
+            @:<input type="checkbox" class="iCheck" name="Vendor.Is_Active" value="false" checked />
                                                 }
                     else
                     {
-            @:<input type="checkbox" name="Vendor.Vendor_Entity.Is_Active" value="true" />
+            @:<input type="checkbox" class="iCheck" name="Vendor.Is_Active" value="true" />
                                                 }
 
                 Active &nbsp;&nbsp;&nbsp;
-                <input type="hidden" id="hdnStatus" value="@((Model.Vendor.Vendor_Entity.Is_Active == null ? false : Model.Vendor.Vendor_Entity.Is_Active).ToString())">
+                <input type="hidden" class="iCheck-hidden" id="hdnStatus" value="@((Model.Vendor.Is_Active == null ? false : Model.Vendor.Is_Active).ToString())">
 
 
             </div>
@@ -166,9 +164,17 @@
     <div class="box-footer">
         <div class="btn-group">
             <button type="button" id="btnSave" class="btn btn-success btn-sm">Save Primary</button>
+            @if (Model.Is_Primary== true) {
             <a href="@Url.Action("Search","Vendor")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle </a>
+            }
+            else
+            {
+                <button id="btnCancel" class="btn btn-warning btn-sm" data-dismiss="modal"  type="button" value="Cancle">Cancle</button>
+            }
         </div>
     </div>
 </form>
 
-
+<script src="~/Scripts/Master/Method/vendor_partial_method.js"></script>
+<script src="~/Scripts/Master/Event/vendor_partial_event.js"></script>
+<script src="~/Scripts/Master/Validation/vendor_partial_validation.js"></script>

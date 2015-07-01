@@ -1,5 +1,5 @@
 ﻿$(function () {
-    InitializeAutoComplete($('#txtFull_Code'));
+    InitializeAutoComplete($('#txtYArticle_Full_Code'));
 
     $('#hdfCurrentPage').val(0);
 
@@ -14,8 +14,16 @@
         $("#frmSearch_YArticle").submit();
     });
 
-   
+    $("#btnView").click(function () {
 
+        $("#frmSearch_YArticle").attr("action", "/master/view-y-article");
+
+        $("#frmSearch_YArticle").attr("method", "POST");
+
+        $("#frmSearch_YArticle").submit();
+    });
+
+   
     $("#btnSearch").click(function () {
         $('#hdfCurrentPage').val(0);
         SearchYArticle();

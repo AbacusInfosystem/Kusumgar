@@ -1,4 +1,32 @@
 ﻿
+function Bind_States(data) {
+
+    $("#drpState_Id").html("");
+
+    var htmltext = "";
+
+    htmltext += "<option>-Select States-</option>";
+
+    if (data.States.length > 0) {
+        for (var i = 0; i < data.States.length ; i++) {
+
+            htmltext += "<option value='" + data.States[i].StateId + "'>" + data.States[i].StateName + "</option>";
+        }
+    }
+    $("#drpState_Id").html(htmltext);
+}
+
+function Remove_Bind_States() {
+   
+    $("#drpState_Id").html("");
+
+    var htmltext = "";
+
+    htmltext += "<option >-Select States-</option>";
+
+    $("#drpState_Id").html(htmltext);
+}
+
 function SearchCustomer()
 {
     var cViewModel =
@@ -7,8 +35,30 @@ function SearchCustomer()
                 {
                     Customer_Name: $("#txtCustomer_Name").val(),
                     Customer_Id: $("#hdnCustomer_Id").val(),
-                    Turnover: $("#txtTurnover").val(),
-                    Nation_Id: $("#drpNation_Id").val()
+                    //Turnover: $("#txtTurnover").val(),
+                    Nation_Id: $("#drpNation_Id").val(),
+                    Pin_Code: $("#txtPin_Code").val(),
+                    State_Id: $("#drpState_Id").val()
+
+                },
+
+            Pager: {
+                CurrentPage: $('#hdfCurrentPage').val(),
+            },
+        }
+    
+    $("#divSearchGridOverlay").show();
+   
+      CallAjax("/crm/search-customer", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
+    
+}
+
+function SearchCustomerByStatus() {
+    var cViewModel =
+        {
+            Filter:
+                {
+                    Status_Id: $("#hdfCustomer_Status_Id").val()
                 },
 
             Pager: {
@@ -17,12 +67,10 @@ function SearchCustomer()
         }
 
     $("#divSearchGridOverlay").show();
-   
 
-    CallAjax("/crm/search-customer", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
+       CallAjax("/crm/search-customers-by-status", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Bind_Customer_Grid, "", null);
+    
 }
-
-
 
 function Bind_Customer_Grid(data) {
 
@@ -39,41 +87,47 @@ function Bind_Customer_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Entity.Customer_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Customers[i].Customer_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
-            htmlText += "<td id='Cust_" + data.Customers[i].Customer_Entity.Customer_Id + "'>";
+            htmlText += "<td id='Cust_" + data.Customers[i].Customer_Id + "'>";
 
-            htmlText += data.Customers[i].Customer_Entity.Customer_Name == null ? "" : data.Customers[i].Customer_Entity.Customer_Name;
-
-            htmlText += "</td>";
-
-
-
-            htmlText += "<td>";
-
-            htmlText += data.Customers[i].Customer_Entity.Company_Email == null ? "" : data.Customers[i].Customer_Entity.Company_Email;
+            htmlText += data.Customers[i].Customer_Name == null ? "" : data.Customers[i].Customer_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Head_Office_Landline1 == null ? "" : data.Customers[i].Customer_Entity.Head_Office_Landline1;
+            htmlText += data.Customers[i].Company_Email == null ? "" : data.Customers[i].Company_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Head_Office_Landline2 == null ? "" : data.Customers[i].Customer_Entity.Head_Office_Landline2;
+            htmlText += data.Customers[i].Nation_Name == null ? "" : data.Customers[i].Nation_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Customers[i].Customer_Entity.Company_Turnover;
+            //htmlText += data.Customers[i].Is_Active == null ? "" : data.Customers[i].Is_Active;
+            if (data.Customers[i].Is_Active == null)
+            {
+                htmlText += " ";
+            }
+            else if (data.Customers[i].Is_Active == true)
+            {
+            htmlText += "Active";
+            }
+            else
+            {
+                htmlText += "In Active";
+            }
 
             htmlText += "</td>";
+
+            htmlText += "<input type='hidden' id='btnBlock_Unblock_" + data.Customers[i].Customer_Id + "' class='Block_Unblock' value='" + data.Customers[i].Block_Order + "'>";
 
             htmlText += "</tr>";
         }
@@ -93,10 +147,19 @@ function Bind_Customer_Grid(data) {
         $('#tblcustomer tr:first').after(htmlText);
 
   
-        $('input').iCheck({
+        $('.iradio-list').iCheck({
             radioClass: 'iradio_square-green',
             increaseArea: '20%' // optional
-        });
+    });
+
+        //$('input:not(.non-iCheck input:checkbox)').on("onload", function () {
+
+        //    $(this).iCheck({
+        //        checkboxClass: 'icheckbox_square-green',
+        //        radioClass: 'iradio_square-green',
+        //        increaseArea: '20%'
+        //    });
+        //});
 
 
         if (data.Customers.length > 0) {
@@ -121,24 +184,118 @@ function Bind_Customer_Grid(data) {
                 $("#hdfCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#hdCustomer_Id").val(this.id.replace("r1_", ""));
                 $("#hdfCustomer_Name").val($("#Cust_" + this.id.replace("r1_", "")).text());
-                $("#btnEdit").show();
-                $("#btnViewContact").show();
+                //$("#btnView").show();
+                //$("#btnEdit").show();
+                //$("#btnViewContact").show();
                 $("#btnPurchaseHistory").show();
+
+                Authorize(["#btnView", "#btnEdit", "#btnBlock", "#btnViewContact"]);
+                // alert("ïd "+ ($('#btnBlock_Unblock_'+ $("#hdfCustomer_Id").val()).val() == "true"));
+
+                if ($('#btnBlock_Unblock_' + $("#hdfCustomer_Id").val()).val() == "true") {
+                   // $("#btnUnblock").show();
+                    //$("#btnBlock").hide();
+                    $("#btnBlock").text("UnBlock");
+                }
+                if ($('#btnBlock_Unblock_' + $("#hdfCustomer_Id").val()).val() == "false") {
+                    //$("#btnBlock").show();
+                    //$("#btnUnblock").hide();
+                    $("#btnBlock").text("Block");
+                }
             }
         });
+
+        $("#btnEdit").hide();
+        $("#btnViewContact").hide();
+        $("#btnPurchaseHistory").hide();
+        $("#btnBlock").hide();
+        $("#btnUnblock").hide();
+        $("#btnView").hide();
     
 }
 
 function PageMore(Id) {
 
+    $("#btnView").hide();
     $("#btnEdit").hide();
     $("#btnViewContact").hide();
     $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+    
+    SearchCustomer();
+}
+
+function PageMoreByStatus(Id)
+{
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
+
+    $('#hdfCurrentPage').val((parseInt(Id) - 1));
+
+    $(".selectAll").prop("checked", false);
+
+    SearchCustomerByStatus();
+
+}
+
+function PageMoreByStatus(Id) {
+
+    $("#btnEdit").hide();
+    $("#btnViewContact").hide();
+    $("#btnPurchaseHistory").hide();
+    $("#btnBlock").hide();
+    $("#btnUnblock").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
     $(".selectAll").prop("checked", false);
 
 
-        SearchCustomer();
+    SearchCustomerByStatus();
+}
+
+function Save_Customer_Order() {
+
+    var cViewModel = Set_Customer_Order();
+
+    if ($("#hdfCustomer_Id").val() != 0) {
+
+        CallAjax("/customer/block-order/", "json", JSON.stringify(cViewModel), "POST", "application/json", false, Customer_CallBack, "", null);
+    }
+
+}
+
+function Customer_CallBack(data) {
+   
+    $("#hdfCustomer_Id").val(data.Customer.Customer_Id);
+
+    $("#btnBlock_Unblock_" + data.Customer.Customer_Id).val(data.Customer.Block_Order);
+
+    Friendly_Message(data);
+
+}
+
+function Set_Customer_Order() {
+    var cViewModel =
+        {
+            Customer:
+                {
+
+                    Customer_Id: $("#hdfCustomer_Id").val(),
+
+                    Block_Order: $("#hdfBlockOrder").val(),
+
+                }
+        }
+
+    return cViewModel;
 }

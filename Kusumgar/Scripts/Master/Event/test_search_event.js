@@ -17,15 +17,15 @@
 
     $("#divSearchGridOverlay").hide();
 
-    $('#drpFabricTypeName').change(function () {
+    $('#drpProcesssId').change(function () {
 
-        $('#hdfFabricTypeId').val($('#drpFabricTypeName :selected').val());
+        $('#hdfProcessId').val($('#drpProcesssId :selected').val());
        
     })
 
-    if ($("#hdfFabricTypeId").val() != 0) {
+    if ($("#hdfProcessId").val() != 0) {
        
-        $('#drpFabricTypeName').val($("#hdfFabricTypeId").val());
+        $('#drpProcesssId').val($("#hdfProcessId").val());
     }
 
 });

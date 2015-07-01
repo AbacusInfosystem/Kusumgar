@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    
+
     //InitializeAutoComplete($('#txtCustomer_Name'), autoCustomerCallback);
     InitializeAutoComplete($('#txtCustomer_Name'));
 
@@ -24,6 +26,17 @@
 
         $("#frmSearch_contact").submit();
     });
+
+    $("#btnView").click(function () {
+
+        $("#frmSearch_contact").attr("action", "/crm/view-contact");
+
+        $("#frmSearch_contact").attr("method", "POST");
+
+        $("#frmSearch_contact").submit();
+    });
+
+
 
     $("#btnSearch").click(function () {
         $('#hdfCurrentPage').val(0);

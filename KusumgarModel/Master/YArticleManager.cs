@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities;
 using KusumgarDataAccess;
 using KusumgarBusinessEntities.Common;
@@ -59,9 +59,9 @@ namespace KusumgarModel
              return yArticleRepo.Get_YArticles_By_Full_Code(full_Code);
          }
 
-         public List<AutocompleteInfo> Get_Work_Stations_By_Code_Purpose(string work_Station_Code)
+         public List<AutocompleteInfo> Get_Work_Centers_By_Code_Purpose(string work_Center_Code)
          {
-             return yArticleRepo.Get_Work_Stations_By_Code_Purpose(work_Station_Code);
+             return yArticleRepo.Get_Work_Centers_By_Code_Purpose(work_Center_Code);
          }
 
     }

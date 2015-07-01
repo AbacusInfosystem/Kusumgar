@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 
@@ -39,6 +39,8 @@ namespace Kusumgar.Models
 
             Material_Category_Info = new MaterialCategoryInfo();
 
+            Materials = new List<MaterialInfo>();
+
         }
 
          public bool Is_Primary { get; set; }
@@ -66,12 +68,19 @@ namespace Kusumgar.Models
         public AttributeCodeInfo Attribute_Code { get; set; }
 
         public MaterialCategoryInfo Material_Category_Info { get; set; }
+
+        public List<MaterialInfo> Materials { get; set; }
        
     
     public class Vendor_Filter
     {
         public string Vendor_Name { get; set; }
+
         public int Vendor_Id { get; set; }
+
+        public string Material_Name { get; set; }
+
+        public int Material_Id { get; set; }
   
     }
 

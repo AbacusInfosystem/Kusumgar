@@ -1,0 +1,94 @@
+﻿@model Kusumgar.Models.WArticleViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_W_Article">
+    <input type="hidden" id="hdfW_Article_Id" name="WArticle.W_Article_Id" value="@Model.WArticle.W_Article_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+
+            <div class="box-header">
+                <div class="box-title">
+                    W Article Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <input type="hidden" id="hdnW_Article_Id" name="" value="@Model.WArticle.W_Article_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        W Article Full Code
+                                    </div>
+                                </div>
+                                <br />
+
+                                @if (Model.WArticle.Quality_No != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality No : </label>@Model.WArticle.Quality_No (@Model.WArticle.Quality_No)
+                                    </div>
+                                }
+
+                                @if (Model.WArticle.Yarn_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Yarn Type : </label> @Model.WArticle.Yarn_Type_Name (@Model.WArticle.Yarn_Type_Code)
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">Reed Space Inch : </label>@Model.WArticle.Reed_Space_Inch (@Model.WArticle.Reed_Space_Inch)
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Total No Of Ends : </label>@Model.WArticle.Total_No_Of_Ends (@Model.WArticle.Total_No_Of_Ends)
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Full Code : </label>@Model.WArticle.Full_Code
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        Other Information
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label style="color: #333">Ideal Beam : </label>@Model.WArticle.Ideal_Beam
+                                </div>
+                                @if (Model.WArticle.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>InActive
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+    </div>
+
+    <!-- /.content -->
+</form>

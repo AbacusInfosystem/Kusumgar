@@ -1,7 +1,13 @@
-﻿<form>
-
+﻿@model Kusumgar.Models.WArticleViewModel
+@using KusumgarBusinessEntities.Common
+<script src="/Scripts/Master/Event/warticle_event.js"></script>
+<script src="/Scripts/Master/Method/warticle_method.js"></script>
+<script src="/Scripts/Master/Validation/warticle_validation.js"></script>
+<form id="frmWArticle">
     <div class="row">
 
+        <input type="hidden" id="hdnWArticle_Id" value="@Model.WArticle.W_Article_Id">
+        <input type="hidden" id="hdnIs_Primary" value="@Model.Is_Primary">
         <div class="col-md-6">
 
             <div class="box-header with-border">
@@ -11,83 +17,136 @@
             <div class="box-body">
 
                 <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="row">
-                            <div class="col-md-10 col-xs-10">
-                                <label>Attributes</label>
-                            </div>
-                            <div class="col-md-2 col-xs-2">
-                                <label>Code</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10 col-xs-10">
-                                <select id="drpQualityNo" class="form-control input-sm">
-                                    <option>-Select Quality No-</option>
-                                    <option>4042</option>
-                                    <option>4041</option>
-                                    <option>4043</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 col-xs-2">
-                                <label>4042</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-10 col-xs-10">
-                                <select id="drpYarn_type" class="form-control input-sm">
-                                    <option>-Select Yarn type-</option>
-                                    <option>Polyster texturised</option>
-                                    <option>Air texturised Nylon</option>
-                                    <option>Viscose Staple</option>
-                                    <option>Polyster Cotton Mix</option>
-                                    <option>Meta aramide</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 col-xs-2">
-                                <label>0PES</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-10 col-xs-10">
-                                <input type="text" class="form-control input-sm" id="txtReed_Space_Inch" placeholder="Enter Reed Space Inch">
-                            </div>
-                            <div class="col-md-2 col-xs-2">
-                                <label>062.00</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-10 col-xs-10">
-                                <input type="text" class="form-control input-sm" id="txtReed_Space_Inch" placeholder="Enter Total No of Ends" />
-                            </div>
-                            <div class="col-md-2 col-xs-2">
-                                <label>02740</label>
-                            </div>
-                        </div>
-                        <br />
+                    <div class="col-md-6">
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="well text-center">
-                                    <label>4042  0PES  062.00"  02740 </label>
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <label style="color: #333">Attributes</label>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label style="color: #333">Code</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <select id="drpQualityNo" class="form-control input-sm attribute-name" name="WArticle.Quality_Id">
+                                            <option value="">-Select Quality No-</option>
+                                            @if (Model.Quality_List.Count > 0)
+                                            {
+                                                foreach (var item in Model.Quality_List)
+                                                {
+                                                    if (Model.WArticle.Quality_Id == item.Quality_Id)
+                                                    {
+                                                        <option value="@(item.Quality_Id +"_"+ item.Quality_No)" selected="selected">@item.Quality_No</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.Quality_Id +"_"+ item.Quality_No)">@item.Quality_No</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <select id="drpYarnType" class="form-control input-sm attribute-name" name="WArticle.Yarn_Type_Id">
+                                            <option value="">-Select Yarn Type-</option>
+                                            @if (Model.Attribute_Codes.Count > 0)
+                                            {
+                                                foreach (var item in Model.Attribute_Codes.Where(a => a.Attribute_Name == AttributeName.Yarn_Type.ToString().Replace("_"," ")))
+                                                {
+                                                    if (Model.WArticle.Yarn_Type_Id == item.Attribute_Code_Id)
+                                                    {
+                                                        <option value="@(item.Attribute_Code_Id +"_"+ item.Code)" selected="selected">@item.Attribute_Code_Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@(item.Attribute_Code_Id +"_"+ item.Code)">@item.Attribute_Code_Name</option>
+                                                    }
+                                                }
+                                            }
+                                            @if (Model.WArticle.Yarn_Type_Id == 0 && Model.WArticle.W_Article_Id != 0)
+                                            {
+                                                <option value="0_" selected="selected">none</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0_">none</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <label class="attribute-code">-</label>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <input type="text" class="form-control input-sm" id="txtReed_Space_Inch" placeholder="Enter Reed Space Inch" name="WArticle.Reed_Space_Inch" value="@(Model.WArticle.Reed_Space_Inch == 0 ? "" : Model.WArticle.Reed_Space_Inch.ToString())">
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        @if (Model.WArticle.W_Article_Id == 0 )
+                                        { 
+                                            <label class="attribute-code">-</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="attribute-code">@(Model.WArticle.Reed_Space_Inch == 0 ? "-" : Model.WArticle.Reed_Space_Inch.ToString())</label>
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-10 col-xs-10">
+                                        <input type="text" class="form-control input-sm" id="txtTotal_No_Ends" placeholder="Enter Total No of Ends" name="WArticle.Total_No_Of_Ends" value="@(Model.WArticle.Total_No_Of_Ends == 0 ? "" : Model.WArticle.Total_No_Of_Ends.ToString())" />
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        @if (Model.WArticle.W_Article_Id == 0 )
+                                        {
+                                            <label class="attribute-code">-</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="attribute-code">@(Model.WArticle.Total_No_Of_Ends == 0 ? "-" : Model.WArticle.Total_No_Of_Ends.ToString())</label>
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="well text-center">
+                                            @if (Model.WArticle.W_Article_Id == 0)
+                                            { 
+                                                <label class="full-code">- - - -</label>
+                                            }
+                                            else
+                                            {
+                                                <label class="full-code">@Model.WArticle.Full_Code</label>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
+                    </div>                                    
                 </div>
-            </div>
+            </div>            
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
 
             <div class="box-header with-border">
                 <h3 class="box-title">Other Information</h3>
@@ -98,27 +157,38 @@
                     <div class="col-md-12">
 
                         <div class="form-group">
-                            <label for="txtIdealBeam">Ideal Beam</label>
-                            <input type="text" class="form-control input-sm" id="txtIdealBeam" placeholder="Enter Ideal Beam" />
+                            <label style="color: #333" for="txtIdealBeam">Ideal Beam</label>
+                            <input type="text" class="form-control input-sm" id="txtIdealBeam" placeholder="Enter Ideal Beam" name="WArticle.Ideal_Beam" value="@Model.WArticle.Ideal_Beam" />
                         </div>
 
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" name="chkStatus" checked />
+                                @if (Model.WArticle.Is_Active == true)
+                                            {
+                                    <input type="checkbox" name="chkIsActive" id="chkIsActive" value="false" checked />
+                                            }
+                                            else
+                                            {
+                                    <input type="checkbox" name="chkIsActive" id="chkIsActive" value="true" />
+                                            }
                                 &nbsp;&nbsp;&nbsp;&nbsp; Active Status
+                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="WArticle.Is_Active" value="@Model.WArticle.Is_Active.ToString()">
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="box-footer">
-        <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-        <a href="@Url.Action("Search", "WArticle")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-
+        <div class="row">
+            <div class="col-md-4">
+                <div class="btn-group">
+                    <button type="button" id="btnSave_WArticle" class="btn btn-success btn-sm">Save</button>
+                    <a href="@Url.Action("Search", "WArticle")" id="btnCancel_WArticle" class="btn btn-warning btn-sm" role="button">Cancel</a>
+                </div>
+            </div>
+        </div>
     </div>
-
 </form>

@@ -1,0 +1,108 @@
+﻿@model Kusumgar.Models.VendorContactViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Vendor_Contact">
+    <input type="hidden" id="hdfVendor_Contact_Id" name="contact.Contact_Id" value="@Model.Vendor_Contact.Contact_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+            <div class="box-header">
+                <div class="box-title">
+                    Vendor Contact Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @* hidden Fields *@
+                    <input type="hidden" id="hdnContact_Id" name="" value="@Model.Vendor_Contact.Contact_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label style="color: #333">Vendor name : </label>@Model.Vendor_Contact.Vendor_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Contact name : </label> @Model.Vendor_Contact.Contact_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Designation : </label> @Model.Vendor_Contact.Designation
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Official email Id : </label>@Model.Vendor_Contact.Official_Email
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Personal email : </label> @Model.Vendor_Contact.Personal_Email
+                                </div>
+
+                                @if (Model.Vendor_Contact.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Inactive
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label style="color: #333">Office address : </label>@Model.Vendor_Contact.Office_Address
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Landline 1 : </label>@Model.Vendor_Contact.Office_Landline1
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Landline 2 : </label>@Model.Vendor_Contact.Office_Landline2
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Mobile 1 : </label>@Model.Vendor_Contact.Mobile1
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Mobile 2 : </label>@Model.Vendor_Contact.Mobile2
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="box-header">
+
+                            <div class="box-title">
+                                Custom Field Details
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var item in Model.Vendor_Contact.Vendor_Custom_Fields)
+                            {
+                                <div class="col-md-5">
+                                    <label>@item.Field_Name : </label> @item.Field_Value
+                                </div>
+
+                            }
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+        </div>
+
+
+
+    <!-- /.content -->
+</form>

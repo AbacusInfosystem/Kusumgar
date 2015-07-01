@@ -39,13 +39,13 @@ namespace Kusumgar.Controllers
         {
             try
             {  
-                dViewModel.DefectType.DefectTypeEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.DefectType.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.DefectType.DefectTypeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.DefectType.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                dViewModel.DefectType.DefectTypeEntity.CreatedOn = DateTime.Now;
+                dViewModel.DefectType.CreatedOn = DateTime.Now;
 
-                dViewModel.DefectType.DefectTypeEntity.UpdatedOn = DateTime.Now;
+                dViewModel.DefectType.UpdatedOn = DateTime.Now;
 
                 DefectTypeManager dMan = new DefectTypeManager();
 
@@ -69,9 +69,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                dViewModel.DefectType.DefectTypeEntity.UpdatedOn = DateTime.Now;
+                dViewModel.DefectType.UpdatedOn = DateTime.Now;
 
-                dViewModel.DefectType.DefectTypeEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                dViewModel.DefectType.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 DefectTypeManager dMan = new DefectTypeManager();
 

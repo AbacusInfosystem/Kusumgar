@@ -1,6 +1,8 @@
 ﻿
 $(function () {
 
+    Authorize(["#tabPrimary", "#tabFinancial", "#tabBilling", "#tabShipping", "#tabOther", "#tabContactType"]);
+
     $("#hdnIs_Active").val(true);
 
     $("#hdnIs_Approved_By_Director").val(true);
@@ -12,6 +14,7 @@ $(function () {
         $("#tabBilling").hide();
         $("#tabShipping").hide();
         $("#tabOther").hide();
+        $("#tabContactType").hide();
     }
 
     $("#btn_Save").click(function () {
@@ -25,7 +28,8 @@ $(function () {
     $("#btnSaveOther").click(function () {
 
         if ($("#frmOthers").valid()) {
-            Save_Customer_Details();
+            //Save_Customer_Details();
+            Save_Customer_Other_Details();
         }
     });
 
@@ -109,21 +113,63 @@ $(function () {
         }
     });
 
-
     $("#drpHead_Office_Nation").change(function () {
        
+        var Nation_Id = "";
+
+        var State_Id = "";
+
+        State_Id = $("#drpHead_Office_State").val();
+
+        var Text = "";
+
+        if ($("#drpHead_Office_Nation").val() != "")
+        {
+            Nation_Id = $("#drpHead_Office_Nation").val().split("_")[0];
+            
+            Text = "";
+
+            if ($("#drpHead_Office_Nation option:selected").text().toLowerCase().trim(" ") == "india") {
+        
+                $("#dvIs_Dosmistic").html("<h4><span class='label label-default'> <span class='flag-icon " + $("#drpHead_Office_Nation").val().split("_")[2] + "'> </span> Domestic  <i class='fa " + $("#drpHead_Office_Nation").val().split("_")[1] + "'></i></span></h4>");
+            }
+            else {
+
+                $("#dvIs_Dosmistic").html("<h4><span class='label label-default'>  <span class='flag-icon " + $("#drpHead_Office_Nation").val().split("_")[2] + "'> </span> International   <i class='fa " + $("#drpHead_Office_Nation").val().split("_")[1] + "'></i></span></h4>");
+            }
+        }
+
         $.ajax({
             url: '/crm/state-by-nation-id',
-            data: { nation_Id: $("#drpHead_Office_Nation").val() },
+            data: { nation_Id: Nation_Id },
             method: 'GET',
             async: false,
             success: function (data) {
                 if (data != null) {
                     Bind_States(data);
+
+                    $("#drpHead_Office_State option").each(function () {
+
+                        if($(this).val() == State_Id)
+                        {
+                            $("#drpHead_Office_State").val(State_Id);
+                        }
+
+                    });
                 }
             }
         });
     });
 
+    $("#btnSaveContact").click(function () {
+
+        if ($("#frmContact").valid()) {
+
+            Save_Customer_Contact_Type();
+        }
+    });
+
+
+    $("#drpHead_Office_Nation").trigger("change");
 
 });

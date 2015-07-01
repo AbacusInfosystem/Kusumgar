@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 
@@ -55,5 +55,12 @@ namespace Kusumgar.Models
         public string Turnover { get; set; }
 
         public int Nation_Id { get; set; }
+
+        public int Status_Id { get; set; }
+
+        public int State_Id { get; set; }
+
+        public string Pin_Code { get; set; }
+        
     }
 }

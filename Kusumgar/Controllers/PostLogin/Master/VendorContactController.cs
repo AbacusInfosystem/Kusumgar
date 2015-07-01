@@ -5,12 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarHelper.PageHelper;
 using KusumgarBusinessEntities.Common;
 using KusumgarCrossCutting.Logging;
-using KusumgarBusinessEntities;
 //using KusumgarBusinessEntities.CMS;
 
 
@@ -114,15 +113,15 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Contact_Entity.CreatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.CreatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vcViewModel.Vendor_Contact.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vcViewModel.Vendor_Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.Contact_Id = _vendorcontactMan.Insert_Vendor_Contact(vcViewModel.Vendor_Contact);
+                vcViewModel.Vendor_Contact.Contact_Id = _vendorcontactMan.Insert_Vendor_Contact(vcViewModel.Vendor_Contact);
 
                 vcViewModel.Friendly_Message.Add(MessageStore.Get("VC001"));
             }
@@ -140,9 +139,9 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vcViewModel.Vendor_Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _vendorcontactMan.Update_Vendor_Contact(vcViewModel.Vendor_Contact);
 
@@ -162,7 +161,7 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Entity.Contact_Id);
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Id);
             }
             catch (Exception ex)
             {
@@ -178,17 +177,17 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.CreatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _vendorcontactMan.Insert_Vendor_Contact_Custom_Field(vcViewModel.Vendor_Contact.Vendor_Custom_Field);
 
-                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.Contact_Id);
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Contact_Id);
 
                 vcViewModel.Friendly_Message.Add(MessageStore.Get("VC002"));
             }
@@ -206,13 +205,13 @@ namespace Kusumgar.Controllers.PostLogin.Master
         {
             try
             {
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedOn = DateTime.Now;
 
-                vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                vcViewModel.Vendor_Contact.Vendor_Custom_Field.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 _vendorcontactMan.Update_Vendor_Contact_Custom_Field(vcViewModel.Vendor_Contact.Vendor_Custom_Field);
 
-                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Custom_Fields_Entity.Contact_Id);
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Vendor_Custom_Field.Contact_Id);
 
                 vcViewModel.Friendly_Message.Add(MessageStore.Get("VC004"));
             }
@@ -225,7 +224,6 @@ namespace Kusumgar.Controllers.PostLogin.Master
 
             return Json(vcViewModel);
         }
-
 
         public ActionResult Delete_Vendor_Contact_Custom_Field(int contact_Custom_Field_Id)
         {
@@ -248,6 +246,46 @@ namespace Kusumgar.Controllers.PostLogin.Master
             return Json(new { Friendly_Message = friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult View_Vendor_Contact(VendorContactViewModel vcViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Id);
+            }
+            catch (Exception ex)
+            {
+                vcViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Contact Controller - Search " + ex.ToString());
+            }
+
+            return View("View", vcViewModel);
+        }
+
+        public PartialViewResult Printable_Vendor_Contact(int contact_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            VendorContactViewModel vcViewModel = new VendorContactViewModel();
+
+            vcViewModel.Vendor_Contact.Contact_Id = contact_Id;
+
+            try
+            {
+                vcViewModel.Vendor_Contact = _vendorcontactMan.Get_Vendor_Contact_By_Id(vcViewModel.Vendor_Contact.Contact_Id);
+            }
+            catch (Exception ex)
+            {
+                vcViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Vendor Contact Controller - Printable_Vendor_Contact " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", vcViewModel);
+        }
 
     }
 }

@@ -52,8 +52,8 @@
                         <div class="tab-pane active" id="tab_1">
                             <form id="frmSearch_contact">
                                 <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                <input type="hidden" id="hdfContact_Id" name="contact.contact_Entity.Contact_Id">
-                                <input type="hidden" id="hdCustomer_Id" name="Customer.Customer_Entity.Customer_Id">
+                                <input type="hidden" id="hdfContact_Id" name="contact.Contact_Id">
+                                <input type="hidden" id="hdCustomer_Id" name="Customer.Customer_Id">
                                 <br />
                                 <div class="row">
                                     <div class="col-md-12">
@@ -78,6 +78,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="btn-group pull-right">
+                                                <button type="button" id="btnView" style="display:none;" class="btn btn-success btn-sm">View</button>
                                                 <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit</button>
                                                 <button type="button" id="btnViewCompany" style="display:none;" class="btn btn-primary btn-sm"> company </button>
                                                 <button type="button" id="btnSellProduct" style="display:none;" class="btn btn-primary btn-sm">Sells products</button>
@@ -134,6 +135,9 @@
                                 <th>Email  </th>
                                 <th>Office landline 1</th>
                                 <th>Office landline 2</th>
+                                <th>Mobile 1</th>
+                                <th>Mobile 2</th>
+                                <th>DMU Status Role</th>
                             </tr>
                         </table>
                     </div>

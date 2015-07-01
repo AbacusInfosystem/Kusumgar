@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models; 
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
+using KusumgarCrossCutting.Logging;
 
 namespace Kusumgar.Controllers
 {
@@ -34,7 +35,9 @@ namespace Kusumgar.Controllers
             {
                 pager.IsPagingRequired = false;
                 mViewModel.Material_Categories = _materialMan.Get_Material_Categories(ref pager);
-                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Entity.Material_Category_Id, ref pager);
+                mViewModel.Material_SubCategories = _materialMan.Get_Material_SubCategories(mViewModel.Material.Material_Category_Id, ref pager);
+
+                mViewModel.Is_Primary = false;
             }
             catch (Exception ex)
             {
@@ -61,8 +64,12 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                mViewModel.Material.Material_Entity.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P001"));
+                mViewModel.Material.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                mViewModel.Material.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                mViewModel.Material.CreatedOn = DateTime.Now;
+                mViewModel.Material.UpdatedOn = DateTime.Now;
+                mViewModel.Material.Material_Id = _materialMan.Insert_Material(mViewModel.Material);
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M001"));
             }
             catch (Exception ex)
             {
@@ -75,8 +82,10 @@ namespace Kusumgar.Controllers
         {
             try
             {
+                mViewModel.Material.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                mViewModel.Material.UpdatedOn = DateTime.Now;
                 _materialMan.Update_Material(mViewModel.Material);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P002"));
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M002"));
             }
             catch (Exception ex)
             {
@@ -91,9 +100,17 @@ namespace Kusumgar.Controllers
             pager = mViewModel.Pager;
             try
             {
-                if (mViewModel.Filter.Material_Id != 0)
+                if (mViewModel.Filter.Material_Id != 0 && mViewModel.Filter.Vendor_Id != 0)
+                {
+                    mViewModel.Materials = _materialMan.Get_Materials_By_Material_Id_Vendor_Id(mViewModel.Filter.Material_Id, mViewModel.Filter.Vendor_Id, ref pager);
+                }
+                else if (mViewModel.Filter.Material_Id != 0)
                 {
                     mViewModel.Materials = _materialMan.Get_Materials_By_Material_Id(mViewModel.Filter.Material_Id, ref pager);
+                }
+                else if (mViewModel.Filter.Vendor_Id != 0)
+                {
+                    mViewModel.Materials = _materialMan.Get_Materials_By_Vendor_Id(mViewModel.Filter.Vendor_Id, ref pager);
                 }
                 else
                 {
@@ -114,7 +131,7 @@ namespace Kusumgar.Controllers
             try
             {
                 mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
-                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id);
             }
             catch (Exception ex)
             {
@@ -151,10 +168,9 @@ namespace Kusumgar.Controllers
             PaginationInfo pager = new PaginationInfo();
             try
             {
-                mViewModel.Material_Vendor.Material_Vendor_Entity.Material_Vendor_Id = _materialMan.Insert_Material_Vendor(mViewModel.Material_Vendor);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P003"));
-                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Vendor.Material_Vendor_Entity.Material_Id, ref pager);
-                mViewModel.Pager.PageHtmlString = PageHelper.NumericPager("javascript:PageMore({0})", mViewModel.Pager.TotalRecords, mViewModel.Pager.CurrentPage + 1, mViewModel.Pager.PageSize, 10, true);
+                mViewModel.Material_Vendor.Material_Vendor_Id = _materialMan.Insert_Material_Vendor(mViewModel.Material_Vendor);
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M003"));
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Vendor.Material_Id);                
             }
             catch (Exception ex)
             {
@@ -168,7 +184,7 @@ namespace Kusumgar.Controllers
             try
             {
                 _materialMan.Delete_Material_Vendor_By_Id(Material_Vendor_Id);
-                mViewModel.Friendly_Message.Add(MessageStore.Get("P004"));
+                mViewModel.Friendly_Message.Add(MessageStore.Get("M004"));
             }
             catch (Exception ex)
             {
@@ -183,5 +199,76 @@ namespace Kusumgar.Controllers
             autoList = _materialMan.Get_Vendor_Autocomplete(vendor_Name);
             return Json(autoList, JsonRequestBehavior.AllowGet);
         }
+
+        //
+        //public ActionResult Get_Materials_By_Vendor_Id(MaterialViewModel mViewModel)
+        //{
+        //    PaginationInfo pager = new PaginationInfo();
+        //    try
+        //    {
+        //        //mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
+
+        //        //mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id, ref pager);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+        //    }
+        //    return Index(mViewModel);
+        //}
+
+
+        public ActionResult View_Material(MaterialViewModel mViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            PaginationInfo pager = new PaginationInfo();
+            try
+            {
+                mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
+
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id);
+
+                VendorManager _vendorMan = new VendorManager();
+
+                mViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Material_Id(mViewModel.Material_Id, ref  pager);
+
+            }
+            catch (Exception ex)
+            {
+                mViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Material Controller - View_Material " + ex.ToString());
+            }
+
+            return View("View", mViewModel);
+        }
+
+        public PartialViewResult Printable_Material(MaterialViewModel mViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            PaginationInfo pager = new PaginationInfo();
+
+            try
+            {
+                mViewModel.Material = _materialMan.Get_Material_By_Id(mViewModel.Material_Id);
+
+                mViewModel.Material_Vendors = _materialMan.Get_Material_Vendors_By_Id(mViewModel.Material_Id);
+
+                VendorManager _vendorMan = new VendorManager();
+
+                mViewModel.Vendor_Grid = _vendorMan.Get_Vendors_By_Material_Id(mViewModel.Material_Id, ref  pager);
+            }
+            catch (Exception ex)
+            {
+                mViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Material Controller - Printable_Material " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", mViewModel);
+        }
+
     }
 }

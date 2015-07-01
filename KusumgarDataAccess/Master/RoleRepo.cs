@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -67,19 +67,19 @@ namespace KusumgarDataAccess
         {
             RoleInfo role = new RoleInfo();
 
-            role.RoleEntity.Role_Id = Convert.ToInt32(dr["Role_Id"]);
+            role.Role_Id = Convert.ToInt32(dr["Role_Id"]);
 
-            role.RoleEntity.Role_Name = Convert.ToString(dr["Role_Name"]);
+            role.Role_Name = Convert.ToString(dr["Role_Name"]);
 
-            role.RoleEntity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            role.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
 
-            role.RoleEntity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            role.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
 
-            role.RoleEntity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            role.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
 
-            role.RoleEntity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            role.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
 
-            role.RoleEntity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            role.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
 
             return role;
         }
@@ -150,16 +150,16 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
             
-            sqlParamList.Add(new SqlParameter("@Role_Name", RoleInfo.RoleEntity.Role_Name));
-            sqlParamList.Add(new SqlParameter("@Is_Active", RoleInfo.RoleEntity.Is_Active));
-            sqlParamList.Add(new SqlParameter("@UpdatedBy", RoleInfo.RoleEntity.UpdatedBy));
-            if (RoleInfo.RoleEntity.Role_Id == 0)
+            sqlParamList.Add(new SqlParameter("@Role_Name", RoleInfo.Role_Name));
+            sqlParamList.Add(new SqlParameter("@Is_Active", RoleInfo.Is_Active));
+            sqlParamList.Add(new SqlParameter("@UpdatedBy", RoleInfo.UpdatedBy));
+            if (RoleInfo.Role_Id == 0)
             {
-                sqlParamList.Add(new SqlParameter("@CreatedBy", RoleInfo.RoleEntity.CreatedBy));
+                sqlParamList.Add(new SqlParameter("@CreatedBy", RoleInfo.CreatedBy));
             }
-            if (RoleInfo.RoleEntity.Role_Id != 0)
+            if (RoleInfo.Role_Id != 0)
             {
-                sqlParamList.Add(new SqlParameter("@Role_Id", RoleInfo.RoleEntity.Role_Id));
+                sqlParamList.Add(new SqlParameter("@Role_Id", RoleInfo.Role_Id));
                
             }
 

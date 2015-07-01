@@ -22,18 +22,18 @@ namespace Kusumgar.Controllers.PreLogin
             {
                 LoginManager lMan = new LoginManager();
 
-                UserInfo user = lMan.AuthenticateUser(loginViewModel.User.UserEntity.User_Name, loginViewModel.User.UserEntity.Password);
+                UserInfo user = lMan.AuthenticateUser(loginViewModel.User.User_Name, loginViewModel.User.Password);
 
-                if (user.UserEntity.UserId != 0 && user.UserEntity.Is_Active == true)
+                if (user.UserId != 0 && user.Is_Active == true)
 
-                //if (loginViewModel.User.UserEntity.User_Name == "admin" && loginViewModel.User.UserEntity.Password == "admin")
+                //if (loginViewModel.User.User_Name == "admin" && loginViewModel.User.Password == "admin")
                 {
 
-                    FormsAuthentication.SetAuthCookie(loginViewModel.User.UserEntity.User_Name, false);
+                    FormsAuthentication.SetAuthCookie(loginViewModel.User.User_Name, false);
 
                     //set values in Users Session object.
 
-                    SetUsersSession(loginViewModel.User.UserEntity.User_Name, loginViewModel.User.UserEntity.Password);
+                    SetUsersSession(loginViewModel.User.User_Name, loginViewModel.User.Password);
 
                     if (Session["returnURL"] != null && !string.IsNullOrEmpty(Session["returnURL"].ToString()))
                     {
@@ -48,7 +48,7 @@ namespace Kusumgar.Controllers.PreLogin
                 }
                 else
                 {
-                    if (loginViewModel.User.UserEntity.UserId != 0 && loginViewModel.User.UserEntity.Is_Active == false)
+                    if (loginViewModel.User.UserId != 0 && loginViewModel.User.Is_Active == false)
                     {
                         TempData["FriendlyMessage"] = MessageStore.Get("SYS06");
                     }
@@ -96,7 +96,7 @@ namespace Kusumgar.Controllers.PreLogin
 
                 loginViewModel.User = lMan.SetSession(username, password);
 
-                //loginViewModel.User.UserEntity.UserId = 1;
+                //loginViewModel.User.UserId = 1;
 
                 //loginViewModel.Employee.EmployeeName = "Shakti";
 

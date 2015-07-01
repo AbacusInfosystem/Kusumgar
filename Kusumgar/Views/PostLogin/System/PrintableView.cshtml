@@ -1,0 +1,22 @@
+﻿@model Kusumgar.Models.SystemViewModel
+@{
+    Layout = null;
+}
+
+
+
+<script src="~/Scripts/jquery-1.11.2.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.2.js"></script>
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+@*<link href="~/Content/css/print.css" rel="stylesheet" media="print"/>*@
+
+<input type="hidden" id="hdfpage_String" value="@Model.page_String">
+<input type="hidden" id="hdfId" value="@Model.id">
+
+<button class="btn-primary btn-sm btn-success hidden-print " type="button" value="Print" id="btnPrint" onclick="window.print()"><span class="fa fa-print"></span></button>
+
+<div id="dvLoad_Printabel_View" >
+</div>
+<script src="/Scripts/generic.printable.view.js"></script>

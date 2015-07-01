@@ -2,10 +2,21 @@
 
     InitializeAutoComplete($('#txtVendorName'));
 
+    InitializeAutoComplete($('#txtMaterialName'));
+
     GetAllVendors();
 
     $("#btnSearch").click(function () {
         SearchVendors();
+    });
+
+    $("#btnView").click(function () {
+
+        $("#frmVendorSearch").attr("action", "/master/view-vendor");
+
+        $("#frmVendorSearch").attr("method", "POST");
+
+        $("#frmVendorSearch").submit();
     });
 
     $('#btnEdit').click(function () {
@@ -16,6 +27,16 @@
 
         $("#frmVendorSearch").submit();
     });
+
+    $('#btnView_Material').click(function () {
+
+        $("#frmVendorSearch").attr("action", "/master/material/search");
+
+        $("#frmVendorSearch").attr("method", "post");
+
+        $("#frmVendorSearch").submit();
+    });
+
 
     $("#divSearchGridOverlay").hide();
 

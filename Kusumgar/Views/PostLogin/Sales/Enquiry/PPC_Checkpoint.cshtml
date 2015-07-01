@@ -1,6 +1,7 @@
-﻿@{
-    ViewBag.Title = "Enquiry";
-}
+﻿@model Kusumgar.Models.EnquiryViewModel
+@using KusumgarBusinessEntities.Common
+
+
 <!-- daterange picker -->
 <link href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 <!-- InputMask -->
@@ -8,7 +9,9 @@
 <script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
 <script src="~/Content/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
 <script src="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-
+<script src="/Scripts/Sales/Method/ppc_checkpoint_methods.js"></script>
+<script src="/Scripts/Sales/Event/ppc_checkpoint_events.js"></script>
+<script src="/Scripts/Sales/Validation/ppc_checkpoint_validation.js"></script>
 <style>
     .div-drag-drop {
         width: 100%;
@@ -27,7 +30,7 @@
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
+    @{Html.RenderPartial("_ServerMessage");}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Enquiry
@@ -40,28 +43,31 @@
             <li class="active">Enquiry</li>
         </ol>
     </section>
-
+    <form id="frmPPC_Checkpoint">
+        <input type="hidden" id="hdnEnquiry_Id" value="@Model.Enquiry.Enquiry_Id" name="Enquiry.Enquiry_Id">
+        <input type="hidden" id="hdnStatus" value="@Model.Enquiry.Is_Active.ToString()" name="Enquiry.Is_Active">
+        <input type="hidden" id="hdnCustomer_Id" value="@Model.Enquiry.Customer_Id" name="Enquiry.Customer_Id">
+        <input type="hidden" id="hdnEnquiry_Type_Id" value="@Model.Enquiry.Enquiry_Type_Id" name="Enquiry.Enquiry_Type_Id">
+        <input type="hidden" id="hdnEnquiry_Type_Id" value="@Model.Enquiry.Customer_Id" name="Enquiry.Customer_Id">
+        <input type="hidden" id="hdnEnquiry_Status_Id" value="@(Convert.ToInt32(EnquiryStatus.Passed_PPC_Check_Point))" name="Enquiry.Enquiry_Status_Id">
+        <input type="hidden" id="hdnEnquiry_No" value="@Model.Enquiry.Enquiry_No" name="Enquiry.Enquiry_No">
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    <form>
 
                         <div class="row">
-
                             <div class="col-md-6">
-
                                 <div id="divEnquiryPrerequisites">
                                     <div class="box-header with-border">
                                         <h3 class="box-title">PPC Action Area</h3>
                                     </div>
 
                                     <div class="box-body">
-
                                         <div class="row">
                                             <div class="col-md-11 col-md-offset-1">
-                                                <label>Enquiry Type :</label> General Enquiry
+                                                <label>Enquiry Type :</label> @Model.Enquiry.Enquiry_Type
                                             </div>
                                         </div>
 
@@ -76,112 +82,62 @@
                                                 <br />
 
                                                 <div class="form-group">
-
-                                                    <input type="text" id="txtQualityNo" class="form-control input-sm" placeholder="Enter existing Quality #" />
-
-                                                    <ul class="todo-list ui-sortable">
-                                                        <li>
-                                                            <span class="text">42115</span>
-                                                            <div class="tools">
-                                                                <i class="fa fa-remove"></i>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                    <div class="auto-complete">
+                                                        <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code">
+                                                        <input type="hidden" id="hdnQuality_Id" value="@(Model.Enquiry.Quality_Id == 0 ? "" : Model.Enquiry.Quality_Id.ToString())" name="Enquiry.Quality_Id" class="auto-complete-value">
+                                                        <input type="hidden" id="hdnQuality_No" value="@Model.Enquiry.Quality_No" name="Enquiry.Quality_No" class="auto-complete-label">
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     
-                                                    <select id="drpExistingQualityArticleType" class="form-control input-sm">
-                                                        <option>Select final Article type to create</option>
-                                                        <option>G</option>
-                                                        <option>P</option>
-                                                        <option>C</option>
+                                                    <select id="drpExistingQualityArticleType" class="form-control input-sm" name="Enquiry.PPC_Existing_Article_Type_Id">
+                                                        <option value="">Select final Article type to create</option>
+                                                        @foreach (var item in LookupInfo.Get_Article_Types().Where(a => a.Value != "YArticle" && a.Value != "WArticle"))
+                                                        {
+                                                            if (item.Key == Model.Enquiry.PPC_Article_Type_Id)
+                                                            {
+                                                                <option value="@item.Key" selected="selected">@item.Value</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@item.Key">@item.Value</option>
+                                                            }
+                                                        }
                                                     </select>
                                                 </div>
 
                                                 <div class="box-body table-responsive no-padding">
-
-                                                    <table class="table table-striped">
-                                                        <tr>
-                                                            <th>Quality Attributes</th>
-                                                            <th>Values</th>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Yarn Type</td>
-                                                            <td>Nylon 66</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Reed
-                                                            </td>
-                                                            <td>50</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Pick
-                                                            </td>
-                                                            <td>62</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Weave
-                                                            </td>
-                                                            <td>62</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Minimum Order Size
-                                                            </td>
-                                                            <td>62</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Ideal Roll Length
-                                                            </td>
-                                                            <td>62</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Our Sample No
-                                                            </td>
-                                                            <td>62</td>
-                                                        </tr>
-                                                    </table>
+                                                    <table class="table table-striped" id="tblQuality_Details"></table>
                                                 </div>
-
                                             </div>
 
                                             <div class="col-md-1 col-xs-1">
-                                                <input type="radio" name="r1" id="rdbPPCCheckpoint" />
+                                                <input type="radio" name="r1" id="rdbPPCCheckpoint" disabled="disabled" />
                                             </div>
 
                                             <div class="col-md-11 col-xs-11">
                                                 <span class="label label-danger">Create new Quality</span>
-
                                                 <br />
                                                 <br />
                                                 <div class="form-group">
-
-                                                    <select id="drpArticleType" class="form-control input-sm" disabled>
-                                                        <option>Select final Article type to create</option>
-                                                        <option>G</option>
-                                                        <option>P</option>
-                                                        <option>C</option>
+                                                    <select id="drpArticleType" class="form-control input-sm"  name="Enquiry.PPC_Article_Type_Id">
+                                                        <option value="">Select final Article type to create</option>
+                                                        @foreach (var item in LookupInfo.Get_Article_Types().Where(a => a.Value != "YArticle" && a.Value != "WArticle"))
+                                                        {
+                                                            if (item.Key == Model.Enquiry.PPC_Article_Type_Id)
+                                                            {
+                                                                <option value="@item.Key" selected="selected">@item.Value</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@item.Key">@item.Value</option>
+                                                            }
+                                                        }
                                                     </select>
                                                 </div>
-
                                             </div>
-
-
                                         </div>
-
-
-
-
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -202,173 +158,158 @@
                                                 <div class="box-body table-responsive no-padding">
 
                                                     <table class="table table-striped">
-                                                        <tr>
+                                                        <tr class="Customer_Quality">
                                                             <th style="width: 200px;">Customer Quality Details</th>
                                                             <th>Values</th>
                                                         </tr>
 
-                                                        <tr>
+                                                        <tr class="Customer_Quality">
                                                             <td>Width of Fabric</td>
-                                                            <td>20</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Width_Of_Fabric</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Shade
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Shade
                                                             </td>
-                                                            <td>Bright Yarn</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Shade_Name</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Print
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Print
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Prints</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Coating
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Coating
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Coating</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Finish
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Finish
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Finish</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Customer Approved Sample                                                            </td>
+                                                        <tr class="Customer_Quality">
+                                                            <td>Customer Approved Sample</td>
                                                             <td>
                                                                 <ul class="todo-list ui-sortable">
                                                                     <li>
-                                                                        <span class="text">Sample1.jpg</span>
+                                                                        <span class="text">@Model.Enquiry.Temp_Customer_Quality_Details.Sample_No</span>
                                                                     </li>
-                                                                    <li style="" class="">
+                                                                    @*<li style="" class="">
                                                                         <span class="text">Sample2.jpg</span>
-                                                                    </li>
+                                                                    </li>*@
                                                                 </ul>
 
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Application
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Application
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Applications</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Market Segment
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Market Segment
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Market_Segment</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Physical Appearance
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Physical Appearance
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Physical_Appearance</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>Label / Tagging
+                                                        <tr class="Customer_Quality">
+                                                            <td>
+                                                                Label / Tagging
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Temp_Customer_Quality_Details.Lable_Tagging</td>
                                                         </tr>
+
                                                         <tr>
                                                             <th style="width: 200px;">Quality Supporting Details</th>
                                                             <th>Values</th>
                                                         </tr>
+
                                                         <tr>
                                                             <td>Rate
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Supporting_Details.Rate</td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Customer Roll Length
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Supporting_Details.Customer_Roll_Length</td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Packing
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Supporting_Details.Packing</td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Dispatch
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Supporting_Details.Dispatch</td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Additional Customer Property
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Supporting_Details.Additional_Customer_Prop</td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Source of Enquiry
                                                             </td>
-                                                            <td>62</td>
+                                                            <td>@Model.Enquiry.Supporting_Details.Source_Of_Enquiry</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Attached Emails
+                                                            <td>Attached Emails & Files
                                                             </td>
                                                             <td>
                                                                 <ul class="todo-list ui-sortable">
-                                                                    <li>
-                                                                        <span class="text">Email1.pub</span>
+                                                                    @foreach(var item in Model.Enquiry.Attachments)
+                                                                    {
+                                                                        <li>
+                                                                        <span class="text">@item.Document_Name</span>
                                                                     </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">Email2.pub</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">Email3.pub</span>
-                                                                    </li>
+                                                                    }
+                                                                        
                                                                 </ul>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Attached Files
-                                                            </td>
-                                                            <td>
-                                                                <ul class="todo-list ui-sortable">
-                                                                    <li>
-                                                                        <span class="text">1.doc</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">1.xlxs</span>
-                                                                    </li>
-                                                                    <li style="" class="">
-                                                                        <span class="text">1.jpg</span>
-                                                                    </li>
-                                                                </ul>
-
-                                                            </td>
-                                                        </tr>
+                                                      
                                                     </table>
                                                 </div>
-
-
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
 
-                        <div class="box-footer">
-                            <button type="submit" id="btnSearch" class="btn btn-success">Save</button>
-                            <a href="@Url.Action("Search", "Enquiry")" id="btnCancel" class="btn btn-warning" role="button">Cancle and Open Search</a>
-
+                    <div class="box-footer">
+                        <div class="btn-group">
+                            <button type="button" id="btnSave_PPC_Checkpoint" class="btn btn-success btn-sm">Save</button>
+                            <a href="@Url.Action("Search_PPC_Checkpoint", "Enquiry")" id="btnCancel" class="btn btn-warning btn-sm" role="button">Cancle</a>
                         </div>
-
-                    </form>
+                    </div>
                 </div>
             </div>
             <!-- /.col -->
@@ -376,36 +317,11 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
+        </form>
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
 
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-
-        $('[name="r1"]').on('ifChanged', function (event) {
-            var id = this.id;
-            if ($("#" + id).prop('checked')) {
-                if (id == 'rdbQualityNo') {
-                    $("#drpArticleType").attr('disabled', 'disabled');
-                    $("#txtQualityNo").removeAttr('disabled', 'disabled');
-                    $("#drpExistingQualityArticleType").removeAttr('disabled', 'disabled');
-                }
-                else {
-                    $("#drpArticleType").removeAttr('disabled', 'disabled');
-                    $("#txtQualityNo").attr('disabled', 'disabled');
-                    $("#drpExistingQualityArticleType").attr('disabled', 'disabled');
-                }
-            }
-        });
-    });
-</script>
 
 
 

@@ -19,8 +19,8 @@ namespace Kusumgar.Controllers
             ViewBag.Title = "KPCL ERP :: Create, Update";
 
             TestManager tMan = new TestManager();
-           
-            tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
+
+            tViewModel.Processes = tMan.Get_Processes();
             
             return View(tViewModel);
         }
@@ -35,8 +35,8 @@ namespace Kusumgar.Controllers
             {
                 tViewModel = (TestViewModel)TempData["tViewModel"];
             }
-            
-            tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
+
+            tViewModel.Processes = tMan.Get_Processes();
 
             return View("Search", tViewModel);
         }
@@ -45,13 +45,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                tViewModel.Test.TestEntity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                tViewModel.Test.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                tViewModel.Test.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                tViewModel.Test.TestEntity.CreatedOn = DateTime.Now;
+                tViewModel.Test.CreatedOn = DateTime.Now;
 
-                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+                tViewModel.Test.UpdatedOn = DateTime.Now;
 
                 TestManager tMan = new TestManager();
 
@@ -77,9 +77,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                tViewModel.Test.TestEntity.UpdatedOn = DateTime.Now;
+                tViewModel.Test.UpdatedOn = DateTime.Now;
 
-                tViewModel.Test.TestEntity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                tViewModel.Test.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
                 TestManager tMan = new TestManager();
 
@@ -108,7 +108,7 @@ namespace Kusumgar.Controllers
 
                 tViewModel.Test = tMan.Get_Test_By_Id(tViewModel.Edit_Mode.Test_Id);
 
-                tViewModel.Fabric_Type = tMan.Get_Fabric_Types();
+                tViewModel.Processes = tMan.Get_Processes();
             }
 
             catch (Exception ex)
@@ -130,9 +130,9 @@ namespace Kusumgar.Controllers
             {
                 pager = tViewModel.Pager;
 
-                if (tViewModel.Filter.Fabric_Type_Id > 0)
+                if (tViewModel.Filter.Process_Id > 0)
                 {
-                    tViewModel.Test_Grid = tMan.Get_Test_By_Fabric_Type(tViewModel.Filter.Fabric_Type_Id, ref pager);
+                    tViewModel.Test_Grid = tMan.Get_Test_By_Process_Id(tViewModel.Filter.Process_Id, ref pager);
                 }
                 else
                 {
@@ -159,17 +159,27 @@ namespace Kusumgar.Controllers
         
        }
 
-        public JsonResult Get_Test_AutoComplete(string testUnitName)
+        public JsonResult Get_Test_Unit_AutoComplete(string testUnitName)
         {
             TestManager tMan = new TestManager();
 
             List<AutocompleteInfo> testUnitNames = new List<AutocompleteInfo>();
 
-            testUnitNames = tMan.Get_Test_AutoComplete(testUnitName);
+            testUnitNames = tMan.Get_Test_Unit_AutoComplete(testUnitName);
 
             return Json(testUnitNames, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Get_Test_Autocomplete(string test_Name)
+        {
+            TestManager tMan = new TestManager();
+
+            List<AutocompleteInfo> test_Names = new List<AutocompleteInfo>();
+
+            test_Names = tMan.Get_Test_Autocomplete(test_Name);
+
+            return Json(test_Names, JsonRequestBehavior.AllowGet);
+        }
     }
  }
 

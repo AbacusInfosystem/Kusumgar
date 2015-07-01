@@ -1,0 +1,185 @@
+﻿@model Kusumgar.Models.WorkStationViewModel
+@using KusumgarBusinessEntities.Common
+
+<style>
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    .example-modal .modal {
+        background: transparent!important;
+    }
+</style>
+
+<script src="~/Scripts/Master/Event/work_station_listing_event.js"></script>
+<script src="~/Scripts/Master/Method/work_station_listing_method.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    @{Html.RenderPartial("_ServerMessage");}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>WorkStation
+           
+            <small>Search</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Master</li>
+            <li class="active">WorkStation Search</li>
+        </ol>
+    </section>
+
+    <form id="frmSearch_Work_Station">
+        <!-- Main content -->
+        <section class="content">
+            <!-- Customer Search -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <div class="box-body">
+                            <input type="hidden" id="hdfCurrent_Page" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
+                            <input type="hidden" id="hdnWork_Station_Id" name="Work_Station.Work_Station_Id">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label>Factory</label>
+                                        <select class="form-control input-sm" id="drpFactory" name="Work_Station.Factory.Factory_Id">
+                                            <option value="">-Select factory-</option>
+                                            @foreach (var item in Model.Work_Station.Factories)
+                                            {
+                                                if (Model.Work_Station.Factory.Factory_Id == item.Factory_Id)
+                                                {
+                                                    <option value="@item.Factory_Id" selected="selected">@item.Factory_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Factory_Id">@item.Factory_Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Work Center</label>
+                                        <select class="form-control input-sm" id="drpWork_Center" name="Work_Station.Work_Center_Name">
+                                            <option value="">-Select work Center-</option>
+                                            @foreach (var item in Model.Work_Station.Work_Centers)
+                                            {
+                                                if (Model.Work_Station.Work_Center_Id == item.Work_Center_Id)
+                                                {
+                                                    <option value="@item.Work_Center_Id" selected="selected">@item.Work_Center_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Work_Center_Id">@item.Work_Center_Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Process</label>
+                                        <select class="form-control input-sm" id="drpProcess" name="Work_Station.Process.Process_Name">
+                                            <option value="">-Select process-</option>
+                                            @foreach (var item in Model.Work_Station.Processes)
+                                            {
+                                                if (Model.Work_Station.Process.Process_Id == item.Process_Id)
+                                                {
+                                                    <option value="@item.Process_Id" selected="selected">@item.Process_Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Process_Id">@item.Process_Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="btn-group pull-left">
+                                            <button type="button" id="btnSearch" class="btn btn-success btn-sm">Search</button>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Index","WorkStation")" role="button">Create </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="btn-group pull-right">
+                                            <button type="button" id="btnView" style="display:none;" class="btn btn-success btn-sm">View</button>
+                                            <button type="button" id="btnEdit" style="display:none;" class="btn btn-warning btn-sm">Edit </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            <!-- Customer Search Ends -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-body table-responsive no-padding">
+
+                            <table class="table table-striped" id="tblWork_Station">
+                                <tr id="subhead">
+                                    <th style="width:50px;"></th>
+                                    <th >Work Center</th>
+                                    <th>Work Station Code</th>
+                                    <th>Machine Name</th>
+                                    <th>Machine Properties</th>
+                                    <th >TPM Speed</th>
+                                    <th>Average Order Length</th>
+                                    <th>Capacity</th>
+                                    <th>Wastage</th>
+                                    <th>Target Efficiency</th>
+                                    <th>Under Maintainance</th>
+                                    <th>Is Active</th>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                        
+                        <div class="box-footer clearfix">
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                <ul></ul>
+                            </div>
+                            <div id="divSearchGridOverlay" class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col (left) -->
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </form>
+</div>
+<!-- /.content-wrapper -->
+
+

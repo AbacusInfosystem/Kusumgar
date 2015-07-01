@@ -23,13 +23,15 @@ function BindCompGrid(data) {
 
     var htmlText = "";
 
+    if (data.Complaints.length > 0) {
+
     for (i = 0; i < data.Complaints.length; i++) {
 
         htmlText += "<tr>";
 
         htmlText += "<td>";
 
-        htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Entity.Complaint_Id + "' class='iradio_square-green'/>";
+        htmlText += "<input type='radio' name='r1' id='r1_" + data.Complaints[i].Complaint_Id + "' class='iradio-list'/>";
 
         htmlText += "</td>";
 
@@ -41,38 +43,33 @@ function BindCompGrid(data) {
 
         htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.Order_Id;
+        htmlText += data.Complaints[i].Order_No;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.Order_Item_Id;
+        htmlText += data.Complaints[i].Challan_No_Str;
 
         htmlText += "</td>";
 
         htmlText += "<td>";
 
-        htmlText += data.Complaints[i].Complaint_Entity.Challan_No;
-
-        htmlText += "</td>";
-
-        htmlText += "<td>";
-
-        htmlText += data.Complaints[i].Complaint_Entity.CDescription;
+        htmlText += data.Complaints[i].CDescription;
 
         htmlText += "</td>";
 
         htmlText += "</tr>";
     }
+
     }
-    else
-    {
+
+    else {
         htmlText += "<tr>";
 
         htmlText += "<td colspan='5'>";
 
-        htmlText +="No record found.";
+        htmlText += "No record found.";
 
         htmlText += "</td>";
 
@@ -82,12 +79,12 @@ function BindCompGrid(data) {
 
     $('#tblComGrid tr:first').after(htmlText);
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
 
-    if (data.ComplaintList.length > 0) {
+    if (data.Complaints.length > 0) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
@@ -111,9 +108,13 @@ function BindCompGrid(data) {
         }
     });
 
+    $("#btnEdit").hide();
+
 }
 
 function PageMore(Id) {
+
+    $("#btnEdit").hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

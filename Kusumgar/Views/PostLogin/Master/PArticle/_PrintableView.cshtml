@@ -1,0 +1,134 @@
+﻿@model Kusumgar.Models.PArticleViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_P_Article">
+    <input type="hidden" id="hdfP_Article_Id" name="PArticle.P_Article_Id" value="@Model.PArticle.P_Article_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+            <div class="box-header">
+                <div class="box-title">
+                    P Article Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @* hidden Fields *@
+                    <input type="hidden" id="hdnP_Article_Id" name="" value="@Model.PArticle.P_Article_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <br />
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        P Article Full Code
+                                    </div>
+                                </div>
+                                <br />
+
+                                @if (Model.PArticle.Quality_No != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality No : </label>@Model.PArticle.Quality_No (@Model.PArticle.Quality_No)
+                                    </div>
+                                }
+                                @if (Model.PArticle.Yarn_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Yarn Type : </label> @Model.PArticle.Yarn_Type_Name (@Model.PArticle.Yarn_Type_Code)
+                                    </div>
+                                }
+                                @if (Model.PArticle.Weave_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Weave Type : </label> @Model.PArticle.Weave_Name (@Model.PArticle.Weave_Code)
+                                    </div>
+                                }
+
+                                @if (Model.PArticle.Shade_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Shade : </label>@Model.PArticle.Shades_Name (@Model.PArticle.Shade_Code)
+                                    </div>
+                                }
+                                @if (Model.PArticle.Chemical_Finish_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Chemical Finish : </label>@Model.PArticle.Chemical_Finish_Name (@Model.PArticle.Chemical_Finish_Code)
+                                    </div>
+                                }
+                                @if (Model.PArticle.Mechanical_Finish_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Mechanical Finish : </label>@Model.PArticle.Mechanical_Finish_Name (@Model.PArticle.Mechanical_Finish_Code)
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">P Finish Width : </label>@Model.PArticle.P_Finish_width (@Model.PArticle.P_Finish_width)
+                                </div>
+                                @if (Model.PArticle.Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Type : </label>@Model.PArticle.Type_Name (@Model.PArticle.Type_Code)
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">Full Code : </label>@Model.PArticle.Full_Code
+                                </div>
+
+                            </div>
+                            <div class="col-md-5">
+                                <br />
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        Other Information
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label style="color: #333">Given By : </label>@Model.PArticle.Given_By_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Validated By : </label>@Model.PArticle.Validated_By_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Developed Under : </label>@Model.PArticle.Developed_Under_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Batch : </label>@Model.PArticle.Batch
+                                </div>
+                                @if (Model.PArticle.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>InActive
+                                    </div>
+
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+        </div>
+
+
+    <!-- /.content -->
+</form>

@@ -20,5 +20,15 @@
 
       $("#frmSearch_Contact").submit();
   });
+
+  $("#btnView").click(function () {
+
+      $("#frmSearch_Contact").attr("action", "/master/view-vendor-contact");
+
+      $("#frmSearch_Contact").attr("method", "POST");
+
+      $("#frmSearch_Contact").submit();
+  });
+
     
 });

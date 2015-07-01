@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 namespace Kusumgar.Models
@@ -20,6 +20,9 @@ namespace Kusumgar.Models
         public List<FriendlyMessageInfo> Friendly_Message { get; set; }
         public MaterialFilter Filter { get; set; }
         public int Material_Id { get; set; }
+        public bool Is_Primary { get; set; }
+
+        public List<VendorInfo> Vendor_Grid { get; set; }
 
         public MaterialViewModel()
         {
@@ -32,6 +35,8 @@ namespace Kusumgar.Models
             Material_SubCategories = new List<MaterialSubCategoryInfo>();
             Friendly_Message = new List<FriendlyMessageInfo>();
             Filter = new MaterialFilter();
+
+            Vendor_Grid = new List<VendorInfo>();
         }
     }
 
@@ -39,5 +44,8 @@ namespace Kusumgar.Models
     {
         public string Material_Name { get; set; }
         public int Material_Id { get; set; }
+
+        public string Vendor_Name { get; set; }
+        public int Vendor_Id { get; set; }
     }
 }

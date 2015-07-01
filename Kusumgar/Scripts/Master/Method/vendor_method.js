@@ -1,19 +1,40 @@
 ﻿function Save_Vendors_Other_Details() {
     var vViewModel = Set_Vendor_Other_Details();
     
-    if ($("#hdnVendorId").val() == 0) {
+    if ($("#hdnVendorId").val() != 0) {
       
-        CallAjax("/master/insert-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+        CallAjax("/master/update-vendor-other-details/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+
+        
     }
-    else {
-        CallAjax("/master/update-vendor/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+
+}
+
+function Save_Vendors_Certificate() {
+    var vViewModel = Set_Vendor_Other_Details();
+
+    if ($("#hdnVendorId").val() != 0) {
+
+        CallAjax("/master/update-vendor-certificate/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+
     }
-   
+
+}
+
+
+function Save_Vendors_Central_Excise() {
+    var vViewModel = Set_Vendor_Other_Details();
+
+    if ($("#hdnVendorId").val() != 0) {
+
+        CallAjax("/master/update-vendor-central-excise/", "json", JSON.stringify(vViewModel), "POST", "application/json", false, Bind_Vendor_Other_Details_Data_Callback, "", null);
+    }
+
 }
 
 function Bind_Vendor_Other_Details_Data_Callback(data) {
     
-    $("#hdnVendorId").val(data.Vendor.Vendor_Entity.Vendor_Id);
+    $("#hdnVendorId").val(data.Vendor.Vendor_Id);
 
     $("#hdnVendorName").val($("#txtVendorName").val());
    
@@ -26,8 +47,7 @@ function Set_Vendor_Other_Details() {
         {
             Vendor:
                 {
-                    Vendor_Entity:
-                        {
+                   
                             Vendor_Id: $("#hdnVendorId").val(),
                             Vendor_Name: $("#txtVendorName").val(),
                             Email: $("#txtEmailId ").val(),
@@ -63,7 +83,7 @@ function Set_Vendor_Other_Details() {
                             Flagged_Supplier: $("#txtSupplierName").val(),
                             Is_Approved_By_Director: $("#hdnApprovedByDirector").val(),
                             Delivary_Term_Code: $("#txtDelivaryTermCode").val(),
-                       }
+                       
               }
      }
 
@@ -79,7 +99,7 @@ function Bind_States(data) {
 
     if (data.length > 0) {
         for (var i = 0; i < data.length ; i++) {
-            htmltext += "<option value='" + data[i].State_Entity.StateId + "'>" + data[i].State_Entity.StateName + "</option>";
+            htmltext += "<option value='" + data[i].StateId + "'>" + data[i].StateName + "</option>";
         }
     }
     $("#drpHeadOfficeState").html(htmltext);

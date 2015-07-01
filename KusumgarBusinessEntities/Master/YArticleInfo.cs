@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KusumgarDatabaseEntities;
+
 using KusumgarBusinessEntities.Common;
 
 namespace KusumgarBusinessEntities
 {
-    public class YArticleInfo:M_Y_Article
+    public class YArticleInfo
     {
         public YArticleInfo()
         {
@@ -16,6 +16,58 @@ namespace KusumgarBusinessEntities
         }
 
         //public M_Y_Article YArticle_Entity { get; set; }
+
+        public int Y_Article_Id { get; set; }
+
+        public int Denier_Id { get; set; }
+
+        public int Twist_Mingle_Id { get; set; }
+
+        public int Twist_Type_Id { get; set; }
+
+        public int Ply_Id { get; set; }
+
+        public int Yarn_Type_Id { get; set; }
+
+        public int Shade_Id { get; set; }
+
+        public int Filaments_Id { get; set; }
+
+        public int Origin_Id { get; set; }
+
+        public int Shrinkage_Id { get; set; }
+
+        public int Tenasity_Id { get; set; }
+
+        public int Chemical_Treatment_Id { get; set; }
+
+        public int Colour_Id { get; set; }
+
+        public int Supplier_Id { get; set; }
+
+        public string Full_Code { get; set; }
+
+        public int Given_By_Id { get; set; }
+
+        public int Validated_By_Id { get; set; }
+
+        public int Developed_Under_Id { get; set; }
+
+        public string Lead_Time_To_Purchase { get; set; }
+
+        public int Work_Center_Id { get; set; }
+
+        public bool Is_Active { get; set; }
+
+        public int CreatedBy { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public int UpdatedBy { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
+
+        #region Additional Fields
 
         public string Denier_Name { get; set; }
 
@@ -49,7 +101,36 @@ namespace KusumgarBusinessEntities
 
         public string Validated_By_Name { get; set; }
 
-        public string Work_Station_Code { get; set; }
+        public string Work_Center_Code { get; set; }
+
+        //
+        public string Denier_Code { get; set; }
+
+        public string Twist_Mingle_Code { get; set; }
+
+        public string Twist_Type_Code { get; set; }
+
+        public string Ply_Code { get; set; }
+
+        public string Yarn_Type_Code { get; set; }
+
+        public string Shade_Code { get; set; }
+
+        public string Filaments_Code { get; set; }
+
+        public string Origin_Code { get; set; }
+
+        public string Shrinkage_Code { get; set; }
+
+        public string Tenasity_Code { get; set; }
+
+        public string Chemical_Treatment_Code { get; set; }
+
+        public string Colour_Code { get; set; }
+
+        public string Supplier_Code { get; set; }
+
+        #endregion
 
     }
 }

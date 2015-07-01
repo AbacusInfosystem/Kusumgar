@@ -16,7 +16,7 @@ function Save_Contact()
 function Contact_CallBack(data)
 {
     $("#tabcustom_fields").show();
-    $("#hdnContact_Id").val(data.Contact.contact_Entity.Contact_Id);
+    $("#hdnContact_Id").val(data.Contact.Contact_Id);
     Friendly_Message(data);
 }
 
@@ -26,8 +26,7 @@ function Set_Contact()
         {
             contact: 
                 {
-                    contact_Entity:
-                        {
+                    
                             Contact_Id: $("#hdnContact_Id").val(),
 
                             Contact_Name: $("#txtContact_Name").val(),
@@ -35,6 +34,8 @@ function Set_Contact()
                             Contact_Type: 1,
 
                             Customer_Id: $("#hdnCustomer_Id").val(),
+
+                            Customer_Contact_Type_Id: $("#drpContactType").val(),
 
                             Designation: $("#txtDesignation").val(),
 
@@ -62,9 +63,48 @@ function Set_Contact()
 
                             Supplier_Id:0
 
-                        }
+                        
                 }
         }
 
     return cViewModel;
+}
+
+function Get_Contact_Types(Customer_Id)
+{
+    $.ajax({
+        url: '/crm/contact-type-by-customer-id',
+        data: { customer_Id: $("#hdnCustomer_Id").val() },
+        method: 'GET',
+        async: false,
+        success: function (data) {
+
+            if (data != null) {
+                Bind_Contact_Types(data);
+            }
+        }
+    });
+}
+
+function Bind_Contact_Types(data) {
+    $("#drpContactType").html("");
+
+    var htmltext = "";
+
+    htmltext += "<option>-Select Contact Type-</option>";
+
+    if (data.length > 0) {
+        for (var i = 0; i < data.length ; i++) {
+            var id = $("#hdnContact_Type_Id").val();
+            if (id == data[i].Customer_Contact_Type_Id)
+            {
+                htmltext += "<option value='" + data[i].Customer_Contact_Type_Id + "' selected='selected'>" + data[i].Contact_Type + "</option>";
+            }
+            else
+            {
+                htmltext += "<option value='" + data[i].Customer_Contact_Type_Id + "'>" + data[i].Contact_Type + "</option>";
+            }            
+        }
+    }
+    $("#drpContactType").html(htmltext);
 }

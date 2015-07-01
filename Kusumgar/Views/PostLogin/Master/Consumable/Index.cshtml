@@ -43,7 +43,7 @@
                                         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
                                         <input type="hidden" id="hdfIsPagingRequired" name="" value="" />
 
-                                        <input type="hidden" id="hdnConsumable_Id" value="@Model.Consumable.Consumable_Entity.Consumable_Id">
+                                        <input type="hidden" id="hdnConsumable_Id" value="@Model.Consumable.Consumable_Id">
                                         <div class="form-group">
                                             <label for="CategoryName" style="color: #333">Category Name</label>
                                             <select id="ddlCategoryName" class="form-control input-sm" name="Consumable.Category_Name">
@@ -80,19 +80,19 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="txtMaterialName" style="color: #333">Material Name</label>
-                                            <input type="text" class="form-control input-sm" id="txtMaterialName" name="Consumable.Consumable_Entity.Material_Name" value="@Model.Consumable.Consumable_Entity.Material_Name" placeholder="Enter Material Name">
+                                            <input type="text" class="form-control input-sm" id="txtMaterialName" name="Consumable.Material_Name" value="@Model.Consumable.Material_Name" placeholder="Enter Material Name">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtMaterialCode" style="color: #333">Material Code</label>
-                                            <input type="text" class="form-control input-sm" id="txtMaterialCode" name="Consumable.Consumable_Entity.Material_Code" value="@Model.Consumable.Consumable_Entity.Material_Code" placeholder="Enter Material Code">
+                                            <input type="text" class="form-control input-sm" id="txtMaterialCode" name="Consumable.Material_Code" value="@Model.Consumable.Material_Code" placeholder="Enter Material Code">
                                         </div>
 
                                         <div class="form-group">
                                             
                                             <label style="color: #333">
-                                                <input type="checkbox" name="Consumable.Consumable_Entity.IsActive" id="chkStatus" />
+                                                <input type="checkbox" name="Consumable.IsActive" id="chkStatus" />
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Active Status
-                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Consumable.Consumable_Entity.IsActive" value="@Model.Consumable.Consumable_Entity.IsActive.ToString()">
+                                                <input type="hidden" class="form-control input-sm" id="hdnIs_Active" name="Consumable.IsActive" value="@Model.Consumable.IsActive.ToString()">
                                             </label>
                                             
                                         </div>
@@ -114,22 +114,22 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                       
-                                        <input type="hidden" id="hdnConsumable_Vendor_Id" class="Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Consumable_Vendor_Entity.Consumable_Vendor_Id">
+                                        <input type="hidden" id="hdnConsumable_Vendor_Id" class="Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Consumable_Vendor_Id">
                                         <div class="form-group">
                                             <label for="txtSupplierName" style="color: #333">Vendor Name</label>
                                             @*<div class="auto-complete">
-                                                <input type="text" class="form-control input-sm" id="txtSupplierName" placeholder="Enter Vendor Name" name="Consumable.Consumable_Vendors.Vendor_Entity.Vendor_Name" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Name"  />
-                                                <input type="hidden" id="hdnVendor_Id" name="Consumable.Consumable_Vendors.Vendor_Entity.Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Id" />
+                                                <input type="text" class="form-control input-sm" id="txtSupplierName" placeholder="Enter Vendor Name" name="Consumable.Consumable_Vendors.Vendor_Name" value="@Model.Consumable.Consumable_Vendor.Vendor_Name"  />
+                                                <input type="hidden" id="hdnVendor_Id" name="Consumable.Consumable_Vendors.Vendor_Id" value="@Model.Consumable.Consumable_Vendor.Vendor_Id" />
                                             </div>*@
                                             <div class="auto-complete">
-                                                <input type="text" class="form-control input-sm" id="txtSupplierName" placeholder="Enter vendor name" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Name">
-                                                <input type="hidden" id="hdnVendor_Id" value="@(Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Id == 0 ? "" : Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Id.ToString())" name="Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Id" class="auto-complete-value">
-                                                <input type="hidden" id="hdnVendor_Name" value="@Model.Consumable.Consumable_Vendor.Vendor_Entity.Vendor_Name" name="Vendor_Contact.Vendor_Name" class="auto-complete-value">
+                                                <input type="text" class="form-control input-sm" id="txtSupplierName" placeholder="Enter vendor name" value="@Model.Consumable.Consumable_Vendor.Vendor_Name">
+                                                <input type="hidden" id="hdnVendor_Id" value="@(Model.Consumable.Consumable_Vendor.Vendor_Id == 0 ? "" : Model.Consumable.Consumable_Vendor.Vendor_Id.ToString())" name="Consumable.Consumable_Vendor.Vendor_Id" class="auto-complete-value">
+                                                <input type="hidden" id="hdnVendor_Name" value="@Model.Consumable.Consumable_Vendor.Vendor_Name" name="Vendor_Contact.Vendor_Name" class="auto-complete-value">
                                             </div>
                                             </div>
                                         <div class="form-group">
                                             <label for="txtPriorityOrder" style="color: #333">Priority Order</label>
-                                            <input type="text" class="form-control input-sm Priority_Order" id="txtPriorityOrder" placeholder="Enter Priority Order" name="Consumable.Consumable_Vendors.Vendor_Entity.Priority_Order">
+                                            <input type="text" class="form-control input-sm Priority_Order" id="txtPriorityOrder" placeholder="Enter Priority Order" name="Consumable.Consumable_Vendors.Priority_Order">
 
                                         </div>
                                     </div>
@@ -147,22 +147,22 @@
                                             @foreach (var item in Model.Consumable.Consumable_Vendors)
                                             {
 
-                                                <tr id="tr_vendor_@item.Consumable_Vendor_Entity.Consumable_Vendor_Id">
+                                                <tr id="tr_vendor_@item.Consumable_Vendor_Id">
 
-                                                @*<td>@item.Consumable_Vendor_Entity.Consumable_Vendor_Id</td>*@
-                                                @*<td>@item.Consumable_Vendor_Entity.Vendor_Id</td>*@
-                                                <td>@item.Vendor_Entity.Vendor_Name</td>
-                                                @*<td>@item.Consumable_Vendor_Entity.Consumable_Id</td>*@
-                                                <td>@item.Consumable_Vendor_Entity.Priority_Order</td>
+                                                @*<td>@item.Consumable_Vendor_Id</td>*@
+                                                @*<td>@item.Vendor_Id</td>*@
+                                                <td>@item.Vendor_Name</td>
+                                                @*<td>@item.Consumable_Id</td>*@
+                                                <td>@item.Priority_Order</td>
                                                 <td>
-                                                    <input type="hidden"  class="hdn_Consumable_Vendor_Id" value="@item.Consumable_Vendor_Entity.Consumable_Vendor_Id">
+                                                    <input type="hidden"  class="hdn_Consumable_Vendor_Id" value="@item.Consumable_Vendor_Id">
 
-                                                    <input type="hidden" class="Vendor_Id_By_Name" @*value="@item.Consumable_Vendor_Entity.Vendor_Id"*@ value="@item.Vendor_Entity.Vendor_Name" >
-                                                    <input type="hidden" class="Priority_Order" value="@item.Consumable_Vendor_Entity.Priority_Order">
+                                                    <input type="hidden" class="Vendor_Id_By_Name" @*value="@item.Vendor_Id"*@ value="@item.Vendor_Name" >
+                                                    <input type="hidden" class="Priority_Order" value="@item.Priority_Order">
 
                                                     <div class="btn-group pull-right">
-                                                        <button type="button" id="btnEditVendor" class="btn btn-info btn-xs" onclick="EditVendors(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-pencil-square-o'></i></button>
-                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-xs " onclick="RemoveVendor(@item.Consumable_Vendor_Entity.Consumable_Vendor_Id)"><i class='fa fa-times'></i></button>
+                                                        <button type="button" id="btnEditVendor" class="btn btn-info btn-xs" onclick="EditVendors(@item.Consumable_Vendor_Id)"><i class='fa fa-pencil-square-o'></i></button>
+                                                        <button type="button" id="btnRemove" class="btn btn-danger btn-xs " onclick="RemoveVendor(@item.Consumable_Vendor_Id)"><i class='fa fa-times'></i></button>
                                                     </div>
                                                 </td>
                                             </tr>

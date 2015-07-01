@@ -13,7 +13,7 @@
 }
 function Consumable_CallBack(data) {
    
-    $("#hdnConsumable_Id").val(data.Consumable.Consumable_Entity.Consumable_Id);
+    $("#hdnConsumable_Id").val(data.Consumable.Consumable_Id);
 
     $("#Vendor_Tab").show();
  
@@ -28,14 +28,13 @@ function Get_Consumable_values() {
                     Category_Id: $("#ddlCategoryName").val(),
                     SubCategory_Id: $("#ddlSubCategoryName").val(),
 
-                    Consumable_Entity:
-                        {
+                    
                             Consumable_Id: $("#hdnConsumable_Id").val(),
                             Material_Name: $("#txtMaterialName").val(),
                             Material_Code: $("#txtMaterialCode").val(),
                             IsActive: $("#hdnIs_Active").val()
 
-                        }
+                        
                 }
         }
 
@@ -65,36 +64,36 @@ function Consumable_Vendor_CallBack(data) {
      
         for (var i = 0; i < data.Consumable.Consumable_Vendors.length; i++) {
 
-            htmlText += " <tr id='tr_vendor_" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + "'>";
+            htmlText += " <tr id='tr_vendor_" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Id + "'>";
 
             //htmlText += "<td>";
-            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id;
+            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Id;
             //htmlText += "</td>";
 
             htmlText += "<td>";
-            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Vendor_Id;
-            htmlText += data.Consumable.Consumable_Vendors[i].Vendor_Entity.Vendor_Name;
+            //htmlText += data.Consumable.Consumable_Vendors[i].Vendor_Id;
+            htmlText += data.Consumable.Consumable_Vendors[i].Vendor_Name;
             htmlText += "</td>";
 
             //htmlText += "<td>";
-            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Id;
+            //htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Id;
             //htmlText += "</td>";
 
             htmlText += "<td>";
-            htmlText += data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Priority_Order;
+            htmlText += data.Consumable.Consumable_Vendors[i].Priority_Order;
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' class='hdn_Consumable_Vendor_Id' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + "'>";
-            //htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Vendor_Id + "'>";
-            htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Vendor_Entity.Vendor_Name + "'>";
-            htmlText += "<input type='hidden' class='Priority_Order' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Priority_Order + "'>";
+            htmlText += "<input type='hidden' class='hdn_Consumable_Vendor_Id' value='" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Id + "'>";
+            //htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Vendor_Id + "'>";
+            htmlText += "<input type='hidden' class='Vendor_Id_By_Name' value='" + data.Consumable.Consumable_Vendors[i].Vendor_Name + "'>";
+            htmlText += "<input type='hidden' class='Priority_Order' value='" + data.Consumable.Consumable_Vendors[i].Priority_Order + "'>";
 
             htmlText += "<div class='btn-group pull-right'>";
 
-            htmlText += "<button type='button' id='btnEditVendor' class='btn btn-info btn-xs btn-Vendor' onclick='EditVendors(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + ")'><i class='fa fa-pencil-square-o'></i></button>";
-            htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Entity.Consumable_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
+            htmlText += "<button type='button' id='btnEditVendor' class='btn btn-info btn-xs btn-Vendor' onclick='EditVendors(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Id + ")'><i class='fa fa-pencil-square-o'></i></button>";
+            htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-xs' onclick='RemoveVendor(" + data.Consumable.Consumable_Vendors[i].Consumable_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
 
             htmlText += "</div>";
 
@@ -126,10 +125,9 @@ function Get_Consumable_Vendor_values() {
         {
             Consumable:
                 {
-                    Consumable_Entity:
-                        {
-                            Consumable_Id: $("#hdnConsumable_Id").val()
-                        },
+                    
+                            Consumable_Id: $("#hdnConsumable_Id").val(),
+                        
                     Consumable_Vendor:
                         {
                             Consumable_Vendor_Entity:

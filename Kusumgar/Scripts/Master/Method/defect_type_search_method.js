@@ -51,19 +51,19 @@ function BindDefectTypeInGrid(data, mode) {
 
          htmlText += "<td>";
 
-         htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Id + "' />";
+         htmlText += "<input type='hidden' id='hdfDefectTypeId_" + data.DefectTypeGrid[i].Defect_Type_Id + "' value='" + data.DefectTypeGrid[i].Defect_Type_Id + "' />";
 
-         htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+         htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
          htmlText += "</td>";
 
          htmlText += "<td>";
 
-         htmlText += data.DefectTypeGrid[i].DefectTypeEntity.Defect_Type_Name;
+         htmlText += data.DefectTypeGrid[i].Defect_Type_Name;
 
          htmlText += "</td>";
 
-         if (data.DefectTypeGrid[i].DefectTypeEntity.Status == true) {
+         if (data.DefectTypeGrid[i].Status == true) {
 
              htmlText += "<td>";
 
@@ -71,7 +71,7 @@ function BindDefectTypeInGrid(data, mode) {
 
              htmlText += "</td>";
          }
-         if (data.DefectTypeGrid[i].DefectTypeEntity.Status == false) {
+         if (data.DefectTypeGrid[i].Status == false) {
              htmlText += "<td>";
 
              htmlText += "Inactive";
@@ -100,8 +100,6 @@ function BindDefectTypeInGrid(data, mode) {
 
     $('#hdfCurrentPage').val(data.Pager.CurrentPage);
 
-    
-
     if (data.DefectTypeGrid.length > 0) {
         if (data.Pager.PageHtmlString != null || data.Pager.PageHtmlString != "") {
 
@@ -113,7 +111,7 @@ function BindDefectTypeInGrid(data, mode) {
         $('.pagination').html("");
     }
 
- $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
  });
@@ -128,10 +126,14 @@ function BindDefectTypeInGrid(data, mode) {
         }
     });
 
-    $("#divSearchGridOverlay").hide();
+  $("#divSearchGridOverlay").hide();
+
+  $('#btnEdit').hide();
 }
 
 function PageMore(Id) {
+
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 

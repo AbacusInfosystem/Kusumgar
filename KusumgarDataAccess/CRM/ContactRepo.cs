@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -59,29 +59,37 @@ namespace KusumgarDataAccess
         {
             ContactInfo contact = new ContactInfo();
 
-            contact.contact_Entity.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
-            contact.contact_Entity.Contact_Type = Convert.ToInt32(dr["Contact_Type"]);
-            contact.contact_Entity.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
-            contact.contact_Entity.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
-            contact.contact_Entity.Contact_Name = Convert.ToString(dr["Contact_Name"]);
-            contact.contact_Entity.Designation = Convert.ToString(dr["Designation"]);
-            contact.contact_Entity.Office_Address = Convert.ToString(dr["Office_Address"]);
-            contact.contact_Entity.Office_Landline1 = Convert.ToString(dr["Office_Landline1"]);
-            contact.contact_Entity.Office_Landline2 = Convert.ToString(dr["Office_Landline2"]);
-            contact.contact_Entity.Mobile1 = Convert.ToString(dr["Mobile1"]);
-            contact.contact_Entity.Mobile2 = Convert.ToString(dr["Mobile2"]);
-            contact.contact_Entity.Official_Email = Convert.ToString(dr["Official_Email"]);
-            contact.contact_Entity.Personal_Email = Convert.ToString(dr["Personal_Email"]);
-            contact.contact_Entity.Is_Billing_Contact = Convert.ToBoolean(dr["Is_Billing_Contact"]);
-            contact.contact_Entity.DMU_Status_Role = Convert.ToInt32(dr["DMU_Status_Role"]);
-            contact.contact_Entity.DMU_Status_Influence = Convert.ToInt32(dr["DMU_Status_Influence"]);
-            contact.contact_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            contact.contact_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            contact.contact_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            contact.contact_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            contact.contact_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+            contact.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
+            contact.Contact_Type = Convert.ToInt32(dr["Contact_Type"]);
+            contact.Customer_Id = Convert.ToInt32(dr["Customer_Id"]);
+            contact.Customer_Contact_Type_Id = Convert.ToInt32(dr["Customer_Contact_Type_Id"]);
+            contact.Vendor_Id = Convert.ToInt32(dr["Vendor_Id"]);
+            contact.Contact_Name = Convert.ToString(dr["Contact_Name"]);
+            contact.Designation = Convert.ToString(dr["Designation"]);
+            contact.Office_Address = Convert.ToString(dr["Office_Address"]);
+            contact.Office_Landline1 = Convert.ToString(dr["Office_Landline1"]);
+            contact.Office_Landline2 = Convert.ToString(dr["Office_Landline2"]);
+            contact.Mobile1 = Convert.ToString(dr["Mobile1"]);
+            contact.Mobile2 = Convert.ToString(dr["Mobile2"]);
+            contact.Official_Email = Convert.ToString(dr["Official_Email"]);
+            contact.Personal_Email = Convert.ToString(dr["Personal_Email"]);
+            contact.Is_Billing_Contact = Convert.ToBoolean(dr["Is_Billing_Contact"]);
+            contact.DMU_Status_Role = Convert.ToInt32(dr["DMU_Status_Role"]);
+            contact.DMU_Status_Influence = Convert.ToInt32(dr["DMU_Status_Influence"]);
+            contact.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            contact.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            contact.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            contact.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            contact.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
             contact.Customer_Name = Convert.ToString(dr["Customer_Name"]);
-
+            contact.Customer_Contact_Type = Convert.ToString(dr["Customer_Contact_Type"]);
+            //foreach (var item in LookupInfo.Get_DMU_Status_Role())
+            //{
+            //    if (contact.DMU_Status_Role == item.Key)
+            //    {
+            //        contact.DMU_Status_Role_Str = item.Value;
+            //    }
+            //}
             return contact;
         }
        
@@ -130,15 +138,15 @@ namespace KusumgarDataAccess
         {
             ContactCustomFieldsInfo customfields = new ContactCustomFieldsInfo();
 
-            customfields.Custom_Fields_Entity.Contact_Custom_Field_Id = Convert.ToInt32(dr["Contact_Custom_Field_Id"]);
-            customfields.Custom_Fields_Entity.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
-            customfields.Custom_Fields_Entity.Field_Name = Convert.ToString(dr["Field_Name"]);
-            customfields.Custom_Fields_Entity.Field_Value = Convert.ToString(dr["Field_Value"]);
-            customfields.Custom_Fields_Entity.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
-            customfields.Custom_Fields_Entity.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-            customfields.Custom_Fields_Entity.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-            customfields.Custom_Fields_Entity.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
-            customfields.Custom_Fields_Entity.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);   
+            customfields.Contact_Custom_Field_Id = Convert.ToInt32(dr["Contact_Custom_Field_Id"]);
+            customfields.Contact_Id = Convert.ToInt32(dr["Contact_Id"]);
+            customfields.Field_Name = Convert.ToString(dr["Field_Name"]);
+            customfields.Field_Value = Convert.ToString(dr["Field_Value"]);
+            customfields.Is_Active = Convert.ToBoolean(dr["Is_Active"]);
+            customfields.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+            customfields.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+            customfields.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+            customfields.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);   
 
             return customfields;
         }
@@ -161,33 +169,34 @@ namespace KusumgarDataAccess
         {
              List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if(contact.contact_Entity.Contact_Id != 0)
+            if(contact.Contact_Id != 0)
             {
-            sqlparam.Add(new SqlParameter("@Contact_Id",contact.contact_Entity.Contact_Id));
+            sqlparam.Add(new SqlParameter("@Contact_Id",contact.Contact_Id));
             }
-            sqlparam.Add(new SqlParameter("@Contact_Type",contact.contact_Entity.Contact_Type));
-            sqlparam.Add(new SqlParameter("@Customer_Id",contact.contact_Entity.Customer_Id));
-            sqlparam.Add(new SqlParameter("@Vendor_Id", contact.contact_Entity.Vendor_Id));
-            sqlparam.Add(new SqlParameter("@Contact_Name",contact.contact_Entity.Contact_Name ));
-            sqlparam.Add(new SqlParameter("@Designation",contact.contact_Entity.Designation ));
-            sqlparam.Add(new SqlParameter("@Office_Address",contact.contact_Entity.Office_Address ));
-            sqlparam.Add(new SqlParameter("@Office_Landline1",contact.contact_Entity.Office_Landline1));
-            sqlparam.Add(new SqlParameter("@Office_Landline2",contact.contact_Entity.Office_Landline2 ));
-            sqlparam.Add(new SqlParameter("@Mobile1",contact.contact_Entity.Mobile1)); 
-            sqlparam.Add(new SqlParameter("@Mobile2",contact.contact_Entity.Mobile2));    
-            sqlparam.Add(new SqlParameter("@Official_Email",contact.contact_Entity.Official_Email )); 
-            sqlparam.Add(new SqlParameter("@Personal_Email",contact.contact_Entity.Personal_Email ));    
-            sqlparam.Add(new SqlParameter("@Is_Billing_Contact",contact.contact_Entity.Is_Billing_Contact));
-            sqlparam.Add(new SqlParameter("@DMU_Status_Role", contact.contact_Entity.DMU_Status_Role));
-            sqlparam.Add(new SqlParameter("@DMU_Status_Influence", contact.contact_Entity.DMU_Status_Influence));
-            sqlparam.Add(new SqlParameter("@Is_Active",contact.contact_Entity.Is_Active ));   
-            if(contact.contact_Entity.Contact_Id == 0)
+            sqlparam.Add(new SqlParameter("@Contact_Type",contact.Contact_Type));
+            sqlparam.Add(new SqlParameter("@Customer_Id",contact.Customer_Id));
+            sqlparam.Add(new SqlParameter("@Customer_Contact_Type_Id", contact.Customer_Contact_Type_Id));
+            sqlparam.Add(new SqlParameter("@Vendor_Id", contact.Vendor_Id));
+            sqlparam.Add(new SqlParameter("@Contact_Name",contact.Contact_Name ));
+            sqlparam.Add(new SqlParameter("@Designation",contact.Designation ));
+            sqlparam.Add(new SqlParameter("@Office_Address",contact.Office_Address ));
+            sqlparam.Add(new SqlParameter("@Office_Landline1",contact.Office_Landline1));
+            sqlparam.Add(new SqlParameter("@Office_Landline2",contact.Office_Landline2 ));
+            sqlparam.Add(new SqlParameter("@Mobile1",contact.Mobile1)); 
+            sqlparam.Add(new SqlParameter("@Mobile2",contact.Mobile2));    
+            sqlparam.Add(new SqlParameter("@Official_Email",contact.Official_Email )); 
+            sqlparam.Add(new SqlParameter("@Personal_Email",contact.Personal_Email ));    
+            sqlparam.Add(new SqlParameter("@Is_Billing_Contact",contact.Is_Billing_Contact));
+            sqlparam.Add(new SqlParameter("@DMU_Status_Role", contact.DMU_Status_Role));
+            sqlparam.Add(new SqlParameter("@DMU_Status_Influence", contact.DMU_Status_Influence));
+            sqlparam.Add(new SqlParameter("@Is_Active",contact.Is_Active ));   
+            if(contact.Contact_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy",contact.contact_Entity.CreatedBy ));
-                sqlparam.Add(new SqlParameter("@CreatedOn", contact.contact_Entity.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy",contact.CreatedBy ));
+                sqlparam.Add(new SqlParameter("@CreatedOn", contact.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy",contact.contact_Entity.UpdatedBy ));
-            sqlparam.Add(new SqlParameter("@UpdatedOn", contact.contact_Entity.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy",contact.UpdatedBy ));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", contact.UpdatedOn));
 
             return sqlparam;
         }
@@ -206,21 +215,21 @@ namespace KusumgarDataAccess
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
 
-            if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id != 0)
+            if (custom_Fields.Contact_Custom_Field_Id != 0)
             {
-                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id));
+                sqlparam.Add(new SqlParameter("@Contact_Custom_Field_Id", custom_Fields.Contact_Custom_Field_Id));
             }
-            sqlparam.Add(new SqlParameter("@Contact_Id", custom_Fields.Custom_Fields_Entity.Contact_Id));
-            sqlparam.Add(new SqlParameter("@Field_Name", custom_Fields.Custom_Fields_Entity.Field_Name));
-            sqlparam.Add(new SqlParameter("@Field_Value", custom_Fields.Custom_Fields_Entity.Field_Value));
-            sqlparam.Add(new SqlParameter("@Is_Active", custom_Fields.Custom_Fields_Entity.Is_Active));
-            if (custom_Fields.Custom_Fields_Entity.Contact_Custom_Field_Id == 0)
+            sqlparam.Add(new SqlParameter("@Contact_Id", custom_Fields.Contact_Id));
+            sqlparam.Add(new SqlParameter("@Field_Name", custom_Fields.Field_Name));
+            sqlparam.Add(new SqlParameter("@Field_Value", custom_Fields.Field_Value));
+            sqlparam.Add(new SqlParameter("@Is_Active", custom_Fields.Is_Active));
+            if (custom_Fields.Contact_Custom_Field_Id == 0)
             {
-                sqlparam.Add(new SqlParameter("@CreatedBy", custom_Fields.Custom_Fields_Entity.CreatedBy));
-                sqlparam.Add(new SqlParameter("@CreatedOn", custom_Fields.Custom_Fields_Entity.CreatedOn));
+                sqlparam.Add(new SqlParameter("@CreatedBy", custom_Fields.CreatedBy));
+                sqlparam.Add(new SqlParameter("@CreatedOn", custom_Fields.CreatedOn));
             }
-            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.Custom_Fields_Entity.UpdatedBy));
-            sqlparam.Add(new SqlParameter("@UpdatedOn", custom_Fields.Custom_Fields_Entity.UpdatedOn));
+            sqlparam.Add(new SqlParameter("@UpdatedBy", custom_Fields.UpdatedBy));
+            sqlparam.Add(new SqlParameter("@UpdatedOn", custom_Fields.UpdatedOn));
 
             return sqlparam;
         }

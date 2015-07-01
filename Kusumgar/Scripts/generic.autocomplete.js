@@ -8,7 +8,7 @@ var InitializeAutoComplete = function (elementObject) {
             var urlString = ''
 
             if ($(elementObject).attr("id") == 'txtCustomer_Name') {
-                urlString = "/ajax/customer-list/" + $('#txtCustomer_Name').val();
+                urlString = "/customer/customer-list/" + $('#txtCustomer_Name').val();
             }
             if ($(elementObject).attr("id") == 'txtCustName') {
                 urlString = "/crm/get-customer-id-by-customername/" + $('#txtCustName').val();
@@ -87,12 +87,12 @@ var InitializeAutoComplete = function (elementObject) {
                 urlString = "/master/search-role-by-name//" + $('#txtRole_Name').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtFull_Code') {
-                urlString = "/master/y-articles-by-full-code/" + $('#txtFull_Code').val();
+            if ($(elementObject).attr("id") == 'txtYArticle_Full_Code') {
+                urlString = "/master/y-articles-by-full-code/" + $('#txtYArticle_Full_Code').val();
             }
 
-            if ($(elementObject).attr("id") == 'txtWork_Station') {
-                urlString = "/master/y-articles/get-work-stations-by-code-purpose/" + $('#txtWork_Station').val();
+            if ($(elementObject).attr("id") == 'txtWork_Center') {
+                urlString = "/master/y-articles/get-work-centers-by-code-purpose/" + $('#txtWork_Center').val();
             }
 
             if ($(elementObject).attr("id") == 'txtMaterialName') {
@@ -106,6 +106,90 @@ var InitializeAutoComplete = function (elementObject) {
 
             if ($(elementObject).attr("id") == 'txtDefectName') {
                 urlString = "/ajax/defect-list/" + $('#txtDefectName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtApplicationName') {
+                urlString = "/ajax/application-list/" + $('#txtApplicationName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtTestUnitName') {
+                urlString = "/ajax/test-unit-list/" + $('#txtTestUnitName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtMarketSegmentName') {
+                urlString = "/ajax/segment-list/" + $('#txtMarketSegmentName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtQuality_No') {
+                urlString = "/sales/quality-autocomplete/" + $('#txtQuality_No').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtPArticle_Full_Code') {
+                urlString = "/master/p-articles-by-full-code/" + $('#txtPArticle_Full_Code').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtCustomer_Sample_No') {
+                urlString = "/master/sample-no-list/" + $('#txtCustomer_Sample_No').val();
+            }
+
+
+            if ($(elementObject).attr("id") == 'txtGArticle_Full_Code') {
+                urlString = "/master/g-articles-by-full-code/" + $('#txtGArticle_Full_Code').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtProcessName') {
+                urlString = "/master/get-process-id-by-process-name/" + $('#txtProcessName').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWArticle_FullCode') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWArticle_FullCode').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtCArticle_FullCode') {
+                urlString = "/master/c-articles-by-full-code/" + $('#txtCArticle_FullCode').val();
+            }
+
+            //
+            if ($(elementObject).attr("id") == 'txtWarp_1') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_1').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWarp_2') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_2').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWarp_3') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_3').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWarp_4') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWarp_4').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_1') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_1').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_2') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_2').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_3') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_3').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtWeft_4') {
+                urlString = "/master/w-articles-by-full-code/" + $('#txtWeft_4').val();
+            }
+
+            if ($(elementObject).attr("id") == 'txtCustomer_Approved_Sample') {
+                urlString = "/master/sample-no-list/" + $('#txtCustomer_Approved_Sample').val();
+            }
+            //
+
+
+            if ($(elementObject).attr("id") == 'txtPackingName') {
+                urlString = "/master/get-packing-id-by-packing-name/" + $('#txtPackingName').val();
             }
 
             $.ajax({
@@ -160,6 +244,9 @@ var InitializeAutoComplete = function (elementObject) {
             $(this).parents('.form-group').find('.auto-complete-value').val(ui.item.value);
             $(this).parents('.form-group').find('.auto-complete-label').val(ui.item.label);
 
+            $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+            $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
+
             if ($(this).parents('.form-group').find(".todo-list")[0]) {
                 $(this).parents('.form-group').find('.todo-list').remove();
             }
@@ -174,11 +261,13 @@ var InitializeAutoComplete = function (elementObject) {
                 $(this).parents('.form-group').append(htmlText);
             }
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
             });
 
@@ -238,11 +327,13 @@ var InitializeAutoComplete = function (elementObject) {
 
             $(this).parents('.form-group').find('input[type=text]').val("");
 
-            $('.fa-remove').click(function (event) {
+            $(this).parents('.form-group').find('.fa-remove').click(function (event) {
                 event.preventDefault();
                 $(this).parents('.form-group').find('input[type=text]').val("");
                 $(this).parents('.form-group').find('.auto-complete-value').val("");
                 $(this).parents('.form-group').find('.auto-complete-label').val("");
+                $(this).parents('.form-group').find('.auto-complete-value').trigger('change');
+                $(this).parents('.form-group').find('.auto-complete-label').trigger('change');
                 $(this).parents('.form-group').find('.todo-list').remove();
 
             });

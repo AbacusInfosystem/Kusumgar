@@ -1,0 +1,31 @@
+﻿$(function () {
+    InitializeAutoComplete($('#txtWArticle_FullCode'));
+
+    $('#hdfCurrentPage').val(0);
+
+    SearchWArticle();
+
+    $("#btnEdit").click(function () {
+
+        $("#frmSearch_WArticle").attr("action", "/master/w-article/get-by-id");
+
+        $("#frmSearch_WArticle").attr("method", "POST");
+
+        $("#frmSearch_WArticle").submit();
+    });
+
+    $("#btnView").click(function () {
+
+        $("#frmSearch_WArticle").attr("action", "/master/view-w-article");
+
+        $("#frmSearch_WArticle").attr("method", "POST");
+
+        $("#frmSearch_WArticle").submit();
+    });
+
+
+    $("#btnSearch").click(function () {
+        $('#hdfCurrentPage').val(0);
+        SearchWArticle();
+    });
+});

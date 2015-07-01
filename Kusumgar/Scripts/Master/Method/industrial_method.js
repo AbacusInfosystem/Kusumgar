@@ -12,7 +12,7 @@
 
 function Bind_Industrial_Data_Callback(data)
 {    
-    $("#hdnIndustrial_Id").val(data.Industrial.Industrial_Entity.Industrial_Master_Id);
+    $("#hdnIndustrial_Id").val(data.Industrial.Industrial_Master_Id);
 
     $("#tabIndustrialVendor").show();
     
@@ -25,8 +25,7 @@ function Set_Industrial()
         {
             Industrial:
                 {
-                    Industrial_Entity:
-                        {
+                    
                             Industrial_Master_Id: $("#hdnIndustrial_Id").val(),
 
                             Industrial_Category_Id: $("#drpIndCatName").val(),
@@ -38,7 +37,7 @@ function Set_Industrial()
                             Size: $("#txtSize").val(),
 
                             COD: $("#txtCOD").val()
-                        }
+                        
                 }
         }
     return iViewModel;
@@ -56,7 +55,7 @@ function Bind_Groups(data)
     {
         for (var i = 0; i < data.length ; i++)
         {
-            htmltext += "<option value='" + data[i].Industrial_Group_Entity.Industrial_Group_Id + "'>" + data[i].Industrial_Group_Entity.Industrial_Group_Name + "</option>";            
+            htmltext += "<option value='" + data[i].Industrial_Group_Id + "'>" + data[i].Industrial_Group_Name + "</option>";            
         }
     }
     $("#drpIndGroupName").html(htmltext);
@@ -76,12 +75,12 @@ function Save_Industrial_Vendor()
 
 function Bind_Industrial_Vendor_Data_Callback(data)
 {
-    //$("#hdnIndustrial_Vendor_Id").val(data.Industrial_Vendor.Industrial_Vendor_Entity.IndustrialVendorId);    
+    //$("#hdnIndustrial_Vendor_Id").val(data.Industrial_Vendor.IndustrialVendorId);    
     var htmlText = "";
     
     for (i = 0; i < data.Industrial_Vendors.length; i++) {
         
-        htmlText += "<tr id='tr_ivendor_" + data.Industrial_Vendors[i].Industrial_Vendor_Entity.Industrial_Vendor_Id + "'>";
+        htmlText += "<tr id='tr_ivendor_" + data.Industrial_Vendors[i].Industrial_Vendor_Id + "'>";
 
         htmlText += "<td>";
 
@@ -91,7 +90,7 @@ function Bind_Industrial_Vendor_Data_Callback(data)
 
         htmlText += "<td>";
 
-        htmlText += data.Industrial_Vendors[i].Industrial_Vendor_Entity.Priority_Order;
+        htmlText += data.Industrial_Vendors[i].Priority_Order;
 
         htmlText += "</td>";        
 
@@ -99,7 +98,7 @@ function Bind_Industrial_Vendor_Data_Callback(data)
 
         htmlText += "<div class='btn-group pull-right'>";
 
-        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm' onclick='RemoveVendor(" + data.Industrial_Vendors[i].Industrial_Vendor_Entity.Industrial_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
+        htmlText += "<button type='button' id='btnRemove' class='btn btn-danger btn-sm' onclick='RemoveVendor(" + data.Industrial_Vendors[i].Industrial_Vendor_Id + ")'><i class='fa fa-times'></i></button>";
 
         htmlText += "</td>";
 
@@ -132,8 +131,7 @@ function Set_Industrial_Vendor()
         {
             Industrial_Vendor:
                 {
-                    Industrial_Vendor_Entity:
-                        {
+                    
                             Industrial_Vendor_Id: $("#hdnIndustrial_Vendor_Id").val(),
 
                             Industrial_Master_Id: $("#hdnIndustrial_Id").val(),
@@ -142,7 +140,7 @@ function Set_Industrial_Vendor()
 
                             Priority_Order: $("#drpPriorityOrder").val()
                             
-                        }
+                        
                 }
         }
     return iViewModel;

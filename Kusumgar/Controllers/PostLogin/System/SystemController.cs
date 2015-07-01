@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
 using KusumgarCrossCutting.Logging;
+using Kusumgar.Models;
 namespace Kusumgar.Controllers.PostLogin.Common
 {
     public class SystemController : Controller
@@ -16,7 +17,7 @@ namespace Kusumgar.Controllers.PostLogin.Common
             {
                 Session["ReturnURL"] = returnURL;
 
-                Logger.Debug("UnAuthorize Access to UserId" + ((UserInfo)Session["User"]).UserEntity.UserId + " on this URL: " + returnURL); 
+                Logger.Debug("UnAuthorize Access to UserId" + ((UserInfo)Session["User"]).UserId + " on this URL: " + returnURL); 
             }
             catch (Exception ex)
             {
@@ -31,6 +32,18 @@ namespace Kusumgar.Controllers.PostLogin.Common
         {
             return View();
         }
+
+        public ActionResult PrintableView(string page_String, int id)
+        {
+          SystemViewModel sViewModel = new SystemViewModel();
+
+          sViewModel.page_String = page_String;
+
+          sViewModel.id = id;
+
+            return View(sViewModel);
+        }
+        
        
     }
 }

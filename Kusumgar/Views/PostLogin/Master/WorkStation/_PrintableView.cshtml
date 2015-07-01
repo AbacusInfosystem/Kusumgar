@@ -1,0 +1,119 @@
+﻿@model Kusumgar.Models.WorkStationViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Work_Station">
+    <input type="hidden" id="hdfWork_Station_Id" name="Work_Station.Work_Station_Id" value="@Model.Work_Station.Work_Station_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+            <div class="box-header">
+                <div class="box-title">
+                    Work Station Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <input type="hidden" id="hdnWork_Station_Id" name="" value="@Model.Work_Station.Work_Station_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Factory : </label>@Model.Work_Station.Factory.Factory_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Work Center : </label> @Model.Work_Station.Work_Center.Work_Center_Name
+                                </div>
+                                @*<div class="form-group">
+                                    <label style="color: #333">Process : </label> @Model.Work_Station.Process
+                                </div>*@
+                                @if (Model.Work_Station.Work_Station_Processes.Count > 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Processes : </label>@Model.Process_Names.Trim().Substring(0, (Model.Process_Names.Trim().Length - 1))
+                                        @*@foreach (var item in Model.Work_Station.Work_Station_Processes)
+                                        {
+                                            @item.Process_Name
+                                            <h>,</h>
+                                        }*@
+
+                                    </div>
+
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">Work Station Code : </label> @Model.Work_Station.Work_Station_Code
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Machine Name: </label>@Model.Work_Station.Machine_Name
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Machine Properties: </label>@Model.Work_Station.Machine_Properties
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">TPM Speed : </label>@Model.Work_Station.TPM_Speed
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Average Order Length : </label>@Model.Work_Station.Average_Order_Length
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color: #333">Capacity : </label>@Model.Work_Station.Capacity
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Wastage :</label>@Model.Work_Station.Wastage
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Target Efficiency :</label>@Model.Work_Station.Target_Efficiency
+                                </div>
+
+                                @if (Model.Work_Station.Under_Maintainance == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Under Maintainance Status : </label>Yes
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Under Maintainance Status : </label>No
+                                    </div>
+
+                                }
+                                @if (Model.Work_Station.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>InActive
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+        </div>
+
+    <!-- /.content -->
+</form>

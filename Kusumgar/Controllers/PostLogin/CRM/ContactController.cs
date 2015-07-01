@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kusumgar.Models;
 using KusumgarBusinessEntities;
-using KusumgarDatabaseEntities;
+
 using KusumgarModel;
 using KusumgarBusinessEntities.Common;
 using KusumgarHelper.PageHelper;
@@ -21,10 +21,12 @@ namespace Kusumgar.Controllers
         // GET: /Customer/
 
         public ContactManager _contactMan;
+        public CustomerManager _customerMan;
 
         public ContactController()
         {
             _contactMan = new ContactManager();
+            _customerMan = new CustomerManager();
         }
 
         [AuthorizeUser(AppFunction.Customer_Contact_Create)]
@@ -32,10 +34,10 @@ namespace Kusumgar.Controllers
         public ActionResult Index(ContactViewModel cViewModel)
         {
             ViewBag.Title = "KPCL ERP :: Create, Update";
-
+            PaginationInfo pager = new PaginationInfo();
             try
             {
-
+                cViewModel.Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(cViewModel.Contact.Customer_Id);
             }
             catch (Exception ex)
             {
@@ -75,15 +77,15 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.contact_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.CreatedOn = DateTime.Now;
+                cViewModel.Contact.CreatedOn = DateTime.Now;
 
-                cViewModel.Contact.contact_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Contact.UpdatedOn = DateTime.Now;
 
-                cViewModel.Contact.contact_Entity.Contact_Id = _contactMan.Insert_Contact(cViewModel.Contact);
+                cViewModel.Contact.Contact_Id = _contactMan.Insert_Contact(cViewModel.Contact);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CO001"));
             }
@@ -103,9 +105,9 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.contact_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.contact_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Contact.UpdatedOn = DateTime.Now;
 
                 _contactMan.Update_Contact(cViewModel.Contact);
 
@@ -127,17 +129,17 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.CreatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.Custom_Fields.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.Custom_Fields.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.CreatedOn = DateTime.Now;
+                cViewModel.Contact.Custom_Fields.CreatedOn = DateTime.Now;
 
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Contact.Custom_Fields.UpdatedOn = DateTime.Now;
 
                 _contactMan.Insert_Contact_Custom_Fields(cViewModel.Contact.Custom_Fields);
 
-                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.Contact_Id);
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Custom_Fields.Contact_Id);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CO003"));
             }
@@ -157,13 +159,13 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedBy = ((UserInfo)Session["User"]).UserEntity.UserId;
+                cViewModel.Contact.Custom_Fields.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-                cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.UpdatedOn = DateTime.Now;
+                cViewModel.Contact.Custom_Fields.UpdatedOn = DateTime.Now;
 
                 _contactMan.Update_Contact_Custom_Fields(cViewModel.Contact.Custom_Fields);
 
-                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Custom_Fields.Custom_Fields_Entity.Contact_Id);
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Custom_Fields.Contact_Id);
 
                 cViewModel.Friendly_Message.Add(MessageStore.Get("CO004"));
             }
@@ -219,7 +221,7 @@ namespace Kusumgar.Controllers
         {
             try
             {
-                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.contact_Entity.Contact_Id);
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Contact_Id);
             }
             catch (Exception ex)
             {
@@ -229,6 +231,22 @@ namespace Kusumgar.Controllers
             }
 
             return Index(cViewModel);
+        }
+
+        public JsonResult Get_Contact_Type_By_Customer_Id(int customer_Id)
+        {
+            List<CustomerContactTypeInfo> Customer_Contact_Types = new List<CustomerContactTypeInfo>();
+            try
+            {
+                PaginationInfo pager = new PaginationInfo();
+                pager.IsPagingRequired = false;
+                Customer_Contact_Types = _customerMan.Get_Customer_Contact_Type_By_Id(customer_Id);
+            }
+            catch (Exception ex)
+            {                
+                Logger.Error("Contact Controller - Get_Contact_Type_By_Customer_Id " + ex.ToString());
+            }
+            return Json(Customer_Contact_Types, JsonRequestBehavior.AllowGet);
         }
 
         [AuthorizeUser(AppFunction.Customer_Contact_Edit)]
@@ -251,6 +269,46 @@ namespace Kusumgar.Controllers
             }
 
             return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult View_Contact(ContactViewModel cViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+
+            try
+            {
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Contact_Id);
+            }
+            catch(Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Search " + ex.ToString());
+            }
+
+            return View("View",cViewModel);
+        }
+     
+        public PartialViewResult Printable_Contact(int contact_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+
+            ContactViewModel cViewModel = new ContactViewModel();
+
+            cViewModel.Contact.Contact_Id = contact_Id;
+
+            try
+            {
+                cViewModel.Contact = _contactMan.Get_Contact_By_Id(cViewModel.Contact.Contact_Id);
+            }
+            catch (Exception ex)
+            {
+                cViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Contact Controller - Search " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", cViewModel);
         }
     }
 }

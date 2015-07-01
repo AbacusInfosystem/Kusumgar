@@ -1,0 +1,134 @@
+﻿@model Kusumgar.Models.MaterialViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Material">
+    <input type="hidden" id="hdfMaterial_Id" name="Material.Material_Id" value="@Model.Material.Material_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+            <div class="box-header">
+
+                <div class="box-title">
+                    Material Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @* hidden Fields *@
+                    <input type="hidden" id="hdnMaterial_Id" name="" value="@Model.Material.Material_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Material Code : </label> @Model.Material.Material_Code
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Material Category Name : </label> @Model.Material.Material_Category_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Material Sub Category Name : </label> @Model.Material.Material_SubCategory_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Material Name : </label>@Model.Material.Material_Name
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Size : </label>@Model.Material.Size
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">COD : </label>@Model.Material.COD
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Material Type : </label>@Model.Material.Material_Type
+                                </div>
+
+                                @if (Model.Material.Original_Manufacturer == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Original Manufacturer  : </label>Yes
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Original Manufacturer  : </label>No
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Inspection Facility : </label>@Model.Material.Inspection_Facility
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Testing Facility : </label>@Model.Material.Testing_Facility
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="box-header">
+                            <div class="box-title">
+                                Material Vendor Details
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            @*@foreach (var item in Model.Material_Vendors)
+                            {
+                                <div class="col-md-4">
+                                    <label>@item.Vendor_Name : </label> @item.Material_Vendor_Entity.Priority_Order
+                                </div>
+
+                            }*@
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-8">
+                                @if (Model.Vendor_Grid.Count > 0)
+                                {
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-striped" id="tblVendorGrid">
+                                            <tr>
+                                                <th>Vendor Name</th>
+                                                <th>Email</th>
+                                                <th>Head Office Address</th>
+                                            </tr>
+                                            @foreach (var item in Model.Vendor_Grid)
+                                            {
+                                                <tr id="tr_@item.Vendor_Id">
+                                                    <td>@item.Vendor_Name</td>
+                                                    <td>@item.Email</td>
+                                                    <td>@item.HeadOfficeAddress</td>
+
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+        </div>
+
+
+
+    <!-- /.content -->
+</form>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KusumgarBusinessEntities;
 using KusumgarBusinessEntities.Common;
-using KusumgarDatabaseEntities;
+
 using System.Data;
 using System.Net;
 using System.Web;
@@ -16,15 +16,11 @@ namespace KusumgarDataAccess
 {
     public class RoleAccessRepo
     {
-        private string _sqlCon = string.Empty;
         SQLHelperRepo sqlRepo;
-        public SQLHelperRepo _sqlHelper { get; set; }
 
         public RoleAccessRepo()
         {
-            _sqlCon = ConfigurationManager.ConnectionStrings["KusumgarDB"].ToString();
             sqlRepo = new SQLHelperRepo();
-            _sqlHelper = new SQLHelperRepo();
         }   
 
         public List<RoleAccessInfo> Get_Access_List()
@@ -47,7 +43,7 @@ namespace KusumgarDataAccess
 
                      RoleAccessInfo roleAccess = new RoleAccessInfo();
 
-                     roleAccess.RoleAccessEntity.Access_Function_Id = Convert.ToInt32(dr["Access_Fuction_Id"]);
+                     roleAccess.Access_Function_Id = Convert.ToInt32(dr["Access_Fuction_Id"]);
 
                      roleAccess.Access_Name = Convert.ToString(dr["Access_Function_Name"]);
 
@@ -81,7 +77,7 @@ namespace KusumgarDataAccess
 
                     RoleAccessInfo roleAccess = new RoleAccessInfo();
 
-                    roleAccess.RoleAccessEntity.Access_Function_Id = Convert.ToInt32(dr["Access_Function_Id"]);
+                    roleAccess.Access_Function_Id = Convert.ToInt32(dr["Access_Function_Id"]);
 
                     roleAccess.Access_Name = Convert.ToString(dr["Access_Function_Name"]);
 
@@ -103,7 +99,7 @@ namespace KusumgarDataAccess
                 sqlparam.Add(new SqlParameter("@CreatedBy", 1));
                 sqlparam.Add(new SqlParameter("@UpdatedBy", 1));
 
-                _sqlHelper.ExecuteNonQuery(sqlparam, StoredProcedures.Insert_Role_Access_Sp.ToString(), CommandType.StoredProcedure);
+                sqlRepo.ExecuteNonQuery(sqlparam, StoredProcedures.Insert_Role_Access_Sp.ToString(), CommandType.StoredProcedure);
             }
         }
     }

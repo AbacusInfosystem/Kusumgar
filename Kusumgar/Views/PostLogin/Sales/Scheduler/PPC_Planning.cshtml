@@ -1,0 +1,630 @@
+﻿@{
+    ViewBag.Title = "PPC_Planning";
+}
+<link href="~/Content/scheduler/demo.css" rel="stylesheet" />
+<link href="~/Content/scheduler/elements.css" rel="stylesheet" />
+<link href="~/Content/scheduler/layout.css" rel="stylesheet" />
+<script src="~/Scripts/ServerSideJs/daypilot-all.min.js"></script>
+@*<script src="~/Scripts/jquery-1.9.1.min.js"></script>*@
+<link href="~/Content/scheduler/scheduler_traditional.css" rel="stylesheet" />
+
+<div class="content-wrapper">
+    <input type="hidden" id="hdnEventId" value="0">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Enquiry <small>Master</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li>Sales</li>
+            <li class="active">Enquiry</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+       
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Planner</h3>
+
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool"><i class="fa fa-bar-chart fa-1x"></i></button>
+                            <button class="btn btn-box-tool"><i class="fa fa-calculator fa-1x"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="container-fluid">
+                            <div class="=row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-sm" value="@DateTime.Now" id="txtStartDate">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-sm" value="@DateTime.Now" id="txtEnddate">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="button" class="btn-success" id="btnApply" value="Apply">
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="=row">
+                                <div class="col-md-12">
+
+                                    <div id="Schedular">
+                                        @*@{Html.RenderAction("GetSchedule", "Enquiry");}*@
+                                        @*@{Html.RenderAction("GetSchedule", "Enquiry");}*@
+                                        @*@Html.("ppc/planning/scheduler");*@
+                                        <div id="dp">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+               
+
+ <script type="text/javascript">
+
+     //$(document).ready(function () {
+
+     //    $("#Schedular").load("/ppc/planning/scheduler", { StartDate: $("#txtStartDate").val(), EndDate: $("#txtEndDate").val() });
+     //    $("#btnApply").click(function () {
+
+     //        $("#Schedular").load("/ppc/planning/scheduler", { StartDate: $("#txtStartDate").val(), EndDate: $("#txtEndDate").val() });
+     //    });
+     //});
+
+   $(document).ready(function () {
+
+
+       var SchedulerViewModel =
+           {
+               //hours: $("#txthours").val()
+               StartDate: $("#txtStartDate").val(),
+               EndDate: $("#txtEnddate").val()
+           }
+
+       $.ajax({
+           url: "/ppc/planning/scheduler-bind",
+
+           dataType: "json",
+
+           data: JSON.stringify(SchedulerViewModel),
+
+           method: 'POST',
+
+           contentType: 'application/json',
+
+           cache: false,
+
+           success: function (data) {
+               alert("hi");
+               GetSchedule(data.SchedulerViewModel);
+           }
+       });
+   });
+    function GetSchedule(data) {
+
+        $("#hdnMonDate").val(data.MondayDateStr);
+        $("#hdnSunDate").val(data.SundayDateStr);
+
+        var dp = new DayPilot.Scheduler("dp");
+
+        dp.crosshairType = "Full";
+        //  dp.theme = "scheduler_blue";
+        // dp.cssClassPrefix = "scheduler_green";
+        dp.theme = "scheduler_traditional";
+        // hide duration Bar
+        dp.durationBarVisible = false;
+
+        // Event align
+        dp.useEventBoxes = "Never";
+        dp.durationBarMode = "PercentComplete";
+
+
+        //dp.days = 7;
+        dp.days = data.Days;
+        //dp.startDate = NewDate.getFullYear() + "-" + NewDate.getMonth() + "-" + NewDate.getDate();
+        alert(data.Days);
+        //dp.startDate = data.MondayDateStr.toString();
+        dp.startDate = data.StartDateStr;
+
+
+        dp.scale = "CellDuration";
+        dp.cellDuration = 15;
+        dp.timeHeaders = [
+          { groupBy: 'Day' },
+          { groupBy: 'Hour' },
+          { groupBy: 'Cell' }
+        ];
+        // bubble, sync loading
+        // see also DayPilot.Event.data.staticBubbleHTML property
+        dp.bubble = new DayPilot.Bubble();
+
+        dp.contextMenu = new DayPilot.Menu({
+            items: [
+                    { text: "Show event ID", onclick: function () { alert("Event value: " + this.source.value()); } },
+                    { text: "Show event text", onclick: function () { alert("Event text: " + this.source.text()); } },
+                    { text: "Show event start", onclick: function () { alert("Event start: " + this.source.start().toStringSortable()); } },
+                    { text: "Go to google.com", href: "http://www.google.com/?q={0}" },
+                    { text: "CallBack: Delete this event", onclick: function () { dp.events.remove(this.source); } },
+            ]
+        });
+
+        dp.treeEnabled = true;
+        dp.rowHeaderWidth = 200;
+
+        var MachineList = new Array();
+        var ProcessList = new Array();
+        //var AccList = new Array();
+        for (var i = 0; i < data.MachineProcessList.length ; i++) {
+            if (data.MachineProcessList[i].ProcessList.length > 0) {
+                ProcessList = [];
+                for (var j = 0; j < data.MachineProcessList[i].ProcessList.length; j++) {
+                    // AccList.push({ name: data.MachineProcessList[i].ProcessList[j].ProcessName, id: data.MachineProcessList[i].ProcessList[j].ProcessId.toString() });
+                    //ProcessList.push({ name: data.MachineProcessList[i].ProcessList[j].ProcessName, id: data.MachineProcessList[i].ProcessList[j].ProcessId.toString(), expanded: true, children: AccList });
+                    ProcessList.push({ name: data.MachineProcessList[i].ProcessList[j].ProcessName, id: data.MachineProcessList[i].ProcessList[j].ProcessId.toString() });
+                }
+                MachineList.push({ name: data.MachineProcessList[i].MachineName, id: data.MachineProcessList[i].MachineId.toString(), expanded: true, children: ProcessList });
+            }
+            else {
+                MachineList.push({ name: data.MachineProcessList[i].MachineName, id: data.MachineProcessList[i].MachineId.toString() });
+            }
+        }
+        dp.resources = MachineList;
+
+        for (var i = 0; i < data.MachineInfoList.length; i++) {
+            if (data.MachineInfoList[i].ProcessId != 0) {
+                var e = new DayPilot.Event({
+                    start: new DayPilot.Date(data.MachineInfoList[i].StartTimeStr),
+                    end: new DayPilot.Date(data.MachineInfoList[i].EndTimeStr),
+                    //id: DayPilot.guid(),
+                    id: (i + 1),
+                    resource: data.MachineInfoList[i].ProcessId.toString(),
+                    text: data.MachineInfoList[i].EventName,
+                    // text: "Utilization: 20%",
+                    /*backColor: "#cccccc",/*,
+            bubbleHtml: "Testing bubble"*/
+                    // For buffer
+                    complete: data.MachineInfoList[i].Percentage
+                });
+                dp.events.add(e);
+                // e.client.innerHTML("<div style='position: absolute; left: 0px; top:0px; right: 0px; height: 10px; padding-left: 3px; background-color: green; color:white; opacity: " + 1 + ";'><div style='position: absolute; left: 0px; top:0px;  height: 10px; padding-left: 3px; background-color: red; color:white; opacity: " + 1 + ";width:" + data.MachineInfoList[i].Percentage + "%;'></div>" + "" + "<div style='position: absolute; top:0px; right: 0px; height: 10px; padding-left: 3px; background-color: red; color:white; opacity: " + 1 + ";width:" + data.MachineInfoList[i].Percentage + "%;'></div><br>" + data.MachineInfoList[i].EventName + "</div>");
+            }
+            else {
+                var e = new DayPilot.Event({
+                    start: new DayPilot.Date(data.MachineInfoList[i].StartTimeStr),
+                    end: new DayPilot.Date(data.MachineInfoList[i].EndTimeStr),
+                    //id: DayPilot.guid(),
+                    id: (i + 1),
+                    resource: data.MachineInfoList[i].MachineId.toString(),
+                    text: data.MachineInfoList[i].EventName,
+                    /*backColor: "#cccccc",/*,
+            bubbleHtml: "Testing bubble"*/
+                    // For buffer
+                    complete: data.MachineInfoList[i].Percentage
+                });
+                dp.events.add(e);
+                //e.client.innerHTML("<b>New event HTML</b>");
+                // e.client.innerHTML("<div style='position: absolute; left: 0px; top:0px; right: 0px; height: 10px; padding-left: 3px; background-color: green; color:white; opacity: " + 1 + ";'><div style='position: absolute; left: 0px; top:0px; height: 10px; padding-left: 3px; background-color: red; color:white; opacity: " + 1 + ";width:" + data.MachineInfoList[i].Percentage + "%;'></div><br>" + "" + "<div style='position: absolute; top:0px; right: 0px; height: 10px; padding-left: 3px; background-color: red; color:white; opacity: " + 1 + ";width:" + data.MachineInfoList[i].Percentage + "%;'></div><br>" + data.MachineInfoList[i].EventName + "</div>");
+            }
+
+            $("#hdnEventId").val(i + 1);
+        }
+
+        //
+        dp.bubble = new DayPilot.Bubble({
+            cssClassPrefix: "bubble_default",
+            onLoad: function (args) {
+                var ev = args.source;
+                args.html = "Name :" + ev.text() + "<br>" + ev.data.start + "<br>" + ev.data.end;
+            }
+        });
+        //
+        dp.eventHoverHandling = "Bubble";
+
+        dp.onBeforeEventRender = function (args) {
+            //args.e.bubbleHtml = args.e.start + " " + args.e.end;
+
+        };
+
+        // Change Color Of Holidays
+        dp.onBeforeCellRender = function (args) {
+
+            //var utilization = args.cell.utilization("percentage");
+            ////var utilization = 10;
+            //var visible = utilization > 0;
+
+            //if (visible) {
+            //    var opacity = utilization / 100;
+            //    args.cell.html = "<div style='position: absolute; left: 0px; top:0px; right: 0px; height: 15px; padding-left: 3px; background-color: red; color:white; opacity: " + opacity + ";'>" + utilization + "%</div>";
+            //}
+
+
+            if (args.cell.start.getDayOfWeek() === 6) {
+                args.cell.backColor = "#dddddd";
+            }
+
+            if (args.cell.start.getDayOfWeek() === 0) {
+                args.cell.backColor = "#dddddd";
+            }
+
+            /* available:
+             *
+             * cell.color
+             * cell.html
+             * cell.css
+             * cell.image
+             * cell.repeat
+             *
+             * read-only:
+             *
+             * cell.start
+             * cell.end
+             * cell.resource
+             *
+             * */
+        };
+
+        // event moving
+        dp.onEventMoved = function (args) {
+            //dp.message("Moved: " + args.e.text());
+            args.e.data.backColor = "#ccaccc"
+            dp.events.update(args.e)
+
+            var Id = "";
+            var MachineId = "0";
+            var ProcessId = "0";
+
+            Id = args.e.data.resource.toString();
+
+            if (Id.indexOf(".") > -1) {
+                MachineId = Id.slice(0, Id.indexOf("."));
+                ProcessId = Id;
+            }
+            else {
+                MachineId = Id;
+                ProcessId = "0";
+            }
+
+            var SchedulerViewModel =
+                {
+                    MachineInfo:
+                        {
+                            StartTime: args.e.data.start,
+                            EndTime: args.e.data.end,
+                            EventName: name,
+                            MachineId: MachineId,
+                            ProcessId: ProcessId,
+                            EventId: args.e.data.id,
+                        }
+                }
+            $.ajax({
+                url: "/ppc/planning/scheduler-bind",
+
+                dataType: "json",
+
+                data: JSON.stringify(SchedulerViewModel),
+
+                method: 'POST',
+
+                contentType: 'application/json',
+
+                success: function (data) {
+                    dp.message("Moved: " + args.e.text());
+                }
+            });
+        };
+
+        // event resizing
+        dp.onEventResized = function (args) {
+            //dp.message("Resized: " + args.e.text());
+            alert(args.e.data.start);
+            alert(args.e.data.end);
+
+
+            var Id = "";
+            var MachineId = "0";
+            var ProcessId = "0";
+
+            Id = args.e.data.resource.toString();
+
+            if (Id.indexOf(".") > -1) {
+                MachineId = Id.slice(0, Id.indexOf("."));
+                ProcessId = Id;
+            }
+            else {
+                MachineId = Id;
+                ProcessId = "0";
+            }
+
+            var SchedulerViewModel =
+                {
+                    MachineInfo:
+                        {
+                            StartTime: args.e.data.start,
+                            EndTime: args.e.data.end,
+                            EventName: name,
+                            MachineId: MachineId,
+                            ProcessId: ProcessId,
+                            EventId: args.e.data.id,
+                        }
+                }
+            $.ajax({
+                url: "/ppc/planning/scheduler-bind",
+
+                dataType: "json",
+
+                data: JSON.stringify(SchedulerViewModel),
+
+                method: 'POST',
+
+                contentType: 'application/json',
+
+                success: function (data) {
+                    dp.message("Resized: " + args.e.text());
+                }
+            });
+        };
+
+        // event creating
+        dp.onTimeRangeSelected = function (args) {
+            var name = prompt("New event name:", "Event");
+           // MasterDataPopUp();
+            //var name = $("#txtName").val();
+            var Buffer = $("#txtBuffer").val();
+            dp.clearSelection();
+            if (!name) return;
+            //var e = new DayPilot.Event({
+            //    start: args.start,
+            //    end: args.end,
+            //    id: DayPilot.guid(),
+            //    resource: args.resource,
+            //    text: name
+            //});
+            //dp.events.add(e);
+            var Id = "";
+            var MachineId = "0";
+            var ProcessId = "0";
+            Id = args.resource.toString();
+            if (Id.indexOf(".") > -1) {
+                MachineId = Id.slice(0, Id.indexOf("."));
+                ProcessId = Id;
+            }
+            else {
+                MachineId = Id;
+                ProcessId = "0";
+            }
+
+            var SchedulerViewModel =
+                {
+                    MachineInfo:
+                        {
+                            StartTime: args.start,
+                            EndTime: args.end,
+                            EventName: name,
+                            MachineId: MachineId,
+                            ProcessId: ProcessId,
+                            EventId: 0,
+                            BufferTime: Buffer
+                        }
+                }
+            $.ajax({
+                url: "/ppc/planning/scheduler-bind",
+
+                dataType: "json",
+
+                data: JSON.stringify(SchedulerViewModel),
+
+                method: 'POST',
+
+                contentType: 'application/json',
+
+                success: function (data) {
+
+                    var EventId = parseInt(parseInt($("#hdnEventId").val()) + 1);
+                    $("#hdnEventId").val(EventId);
+                    alert("hi");
+                    alert(data.SchedulerViewModel.MachineInfo.ProcessId);
+
+                    if (data.SchedulerViewModel.MachineInfo.ProcessId != 0) {
+                        var e = new DayPilot.Event({
+                            start: data.SchedulerViewModel.MachineInfo.StartTimeStr,
+                            end: data.SchedulerViewModel.MachineInfo.EndTimeStr,
+                            id: EventId,
+                            resource: data.SchedulerViewModel.MachineInfo.ProcessId.toString(),
+                            text: name,
+                            complete: data.SchedulerViewModel.MachineInfo.Percentage
+                        });
+                        dp.events.add(e);
+                    }
+                    else {
+                        var e = new DayPilot.Event({
+                            start: data.SchedulerViewModel.MachineInfo.StartTimeStr,
+                            end: data.SchedulerViewModel.MachineInfo.EndTimeStr,
+                            id: EventId,
+                            resource: data.SchedulerViewModel.MachineInfo.MachineId.toString(),
+                            text: name,
+                            complete: data.SchedulerViewModel.MachineInfo.Percentage
+                        });
+                        dp.events.add(e);
+                    }
+
+                    dp.message("Created");
+                }
+            });
+        };
+
+
+        // Event clicked
+        dp.onEventClicked = function (args) {
+           // MasterDataPopUp();
+            alert("clicked: " + args.e.id());
+            var nametxt = args.e.text();
+            var name = prompt("New event name:", args.e.text());
+            if (!name) return;
+            args.e.text(name);
+            //dp.events.update(args.e);
+
+            var Id = "";
+            var MachineId = 0;
+            var ProcessId = 0;
+            if (name != nametxt) {
+                Id = args.e.data.resource.toString();
+
+                if (Id.indexOf(".") > -1) {
+                    MachineId = Id.slice(0, Id.indexOf("."));
+                    ProcessId = Id;
+                }
+                else {
+                    MachineId = Id;
+                    ProcessId = "0";
+                }
+
+
+                var SchedulerViewModel =
+                  {
+                      MachineInfo:
+                          {
+                              StartTime: args.e.data.start,
+                              EndTime: args.e.data.end,
+                              EventName: name,
+                              MachineId: MachineId,
+                              ProcessId: ProcessId,
+                              EventId: args.e.id()
+                          }
+                  }
+                $.ajax({
+                    url: "/ppc/planning/scheduler-bind",
+
+                    dataType: "json",
+
+                    data: JSON.stringify(SchedulerViewModel),
+
+                    method: 'POST',
+
+                    contentType: 'application/json',
+
+                    success: function (data) {
+                        dp.events.update(args.e);
+                    }
+                });
+            }
+
+        };
+
+        dp.onTimeHeaderClick = function (args) {
+            alert("clicked: " + args.header.start);
+        };
+        dp.init();
+        // $("#dp").html(dp.init());
+        dp.scrollTo(data.CurrentDateStr.toString());
+        $("#hdnDate").val(data.CurrentDateStr.toString());
+        // To Remove Demo text
+        //$('.scheduler_default_corner').html('');
+        // $('.scheduler_blue_corner').html('');
+        $('.scheduler_traditional_corner').html('');
+
+        //document.getElementById("btnNext").onclick = function ()
+        //{
+        //    var someDate = new Date($("#hdnDate").val());
+
+        //    someDate.setDate(someDate.getDate() + 1);
+        //    if ($("#hdnMonDate").val() != someDate.toISOString().substr(0, 10)) {
+        //        $("#btnPrevious").removeAttr("disabled", "disabled");
+        //    }
+        //    else {
+        //        $("#btnPrevious").attr("disabled", "disabled");
+        //    }
+
+        //    if ($("#hdnSunDate").val() == someDate.toISOString().substr(0, 10)) {
+
+        //        dp.scrollTo(someDate.toISOString().substr(0, 10));
+        //        $("#hdnDate").val(someDate.toISOString().substr(0, 10));
+        //        $("#btnNext").attr("disabled", "disabled");
+        //    }
+        //    else {
+
+        //        dp.scrollTo(someDate.toISOString().substr(0, 10));
+        //        $("#hdnDate").val(someDate.toISOString().substr(0, 10));
+        //    }
+
+
+        //};
+
+        //document.getElementById("btnPrevious").onclick = function () {
+        //    var someDate = new Date($("#hdnDate").val());
+        //    someDate.setDate(someDate.getDate() - 1);
+        //    if ($("#hdnMonDate").val() == someDate.toISOString().substr(0, 10)) {
+        //        dp.scrollTo(someDate.toISOString().substr(0, 10));
+        //        $("#hdnDate").val(someDate.toISOString().substr(0, 10));
+        //        $("#btnPrevious").attr("disabled", "disabled");
+        //        $("#btnNext").removeAttr("disabled", "disabled");
+
+
+
+        //        //var HomeModel =
+        //        //      {
+        //        //          tempDate: someDate
+        //        //      }
+        //        //$.ajax({
+        //        //    url: "/Home/BindSchedul",
+
+        //        //    dataType: "json",
+
+        //        //    data: JSON.stringify(HomeModel),
+
+        //        //    method: 'POST',
+
+        //        //    contentType: 'application/json',
+
+        //        //    success: function (data) {
+        //        //        $("#dp").html("");
+
+        //        //        GetSchedule(data.HomeModel);
+        //        //    }
+        //        //});
+        //        $.post("/Home/BindSchedul",
+        //          {
+        //              tempDate: someDate
+        //          },
+        //          function (data) {
+        //              alert(data.HomeModel.MondayDateStr.MachineInfoList[0].StartTime);
+        //              args.events = data;
+        //              args.loaded();
+        //          }
+        //        );
+        //    }
+        //    else {
+
+        //        dp.scrollTo(someDate.toISOString().substr(0, 10));
+        //        $("#hdnDate").val(someDate.toISOString().substr(0, 10));
+        //        $("#btnPrevious").removeAttr("disabled", "disabled");
+        //        $("#btnNext").removeAttr("disabled", "disabled");
+        //    }
+
+
+
+        //};
+
+        if ($("#hdnMonDate").val() == $("#hdnDate").val()) {
+            $("#btnPrevious").attr("disabled", "disabled");
+        }
+        if ($("#hdnSunDate").val() == $("#hdnDate").val()) {
+            $("#btnNext").attr("disabled", "disabled");
+        }
+    }
+
+    </script>
+</script>
+                <!-- /bottom -->

@@ -4,7 +4,7 @@
 
         Filter: {
 
-            Defect_Type_Id: $('#drpDefectTypeName').val(),
+            Process_Id: $('#drpProcessName').val(),
 
         },
 
@@ -17,7 +17,7 @@
 
     $("#divSearchGridOverlay").show();
 
-    CallAjax("/Defect/Get_Grid_By_Defect_Type", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
+    CallAjax("/Defect/Get_Grid_By_Process_Id", "json", JSON.stringify(dViewModel), "POST", "application/json", false, BindDefectInGrid, "", null);
 }
 
 function BindDefectInGrid(data, mode) {
@@ -34,23 +34,29 @@ function BindDefectInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].Defect_Type_Name;
+            htmlText += data.DefectGrid[i].Process_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Code;
+            htmlText += data.DefectGrid[i].Defect_Major;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.DefectGrid[i].DefectEntity.Defect_Name;
+            htmlText += data.DefectGrid[i].Defect_Minor;
 
             htmlText += "</td>";
 
-            if (data.DefectGrid[i].DefectEntity.Status == true) {
+            htmlText += "<td>";
+
+            htmlText += data.DefectGrid[i].Defect_Name;
+
+            htmlText += "</td>";
+
+            if (data.DefectGrid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -58,7 +64,7 @@ function BindDefectInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.DefectGrid[i].DefectEntity.Status == false) {
+            if (data.DefectGrid[i].Status == false) {
 
                 htmlText += "<td>";
 
@@ -84,6 +90,5 @@ function BindDefectInGrid(data, mode) {
 
     $('#tblSearchDefect tr:first').after(htmlText);
 
-  
 }
 

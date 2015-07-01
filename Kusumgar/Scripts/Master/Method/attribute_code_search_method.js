@@ -51,15 +51,15 @@ function BindAttributeCodesInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='hidden' id='hdfAttributeCodeId_" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' value='" + data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Id + "' />";
+            htmlText += "<input type='hidden' id='hdfAttributeCodeId_" + data.Attribute_Code_Grid[i].Attribute_Code_Id + "' value='" + data.Attribute_Code_Grid[i].Attribute_Code_Id + "' />";
 
-            htmlText += "<input type='radio' name='r1' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' class='iradio-list'/>";
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Attribute_Code_Name;
+            htmlText += data.Attribute_Code_Grid[i].Attribute_Code_Name;
 
             htmlText += "</td>";
 
@@ -71,11 +71,11 @@ function BindAttributeCodesInGrid(data, mode) {
 
             htmlText += "<td>";
 
-            htmlText += data.Attribute_Code_Grid[i].AttributeCodeEntity.Code;
+            htmlText += data.Attribute_Code_Grid[i].Code;
 
             htmlText += "</td>";
 
-            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == true) {
+            if (data.Attribute_Code_Grid[i].Status == true) {
 
                 htmlText += "<td>";
 
@@ -83,7 +83,7 @@ function BindAttributeCodesInGrid(data, mode) {
 
                 htmlText += "</td>";
             }
-            if (data.Attribute_Code_Grid[i].AttributeCodeEntity.Status == false) {
+            if (data.Attribute_Code_Grid[i].Status == false) {
 
                 htmlText += "<td>";
 
@@ -127,7 +127,7 @@ function BindAttributeCodesInGrid(data, mode) {
         $('.pagination').html("");
     }
 
-   $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -146,9 +146,13 @@ function BindAttributeCodesInGrid(data, mode) {
 
     $("#divSearchGridOverlay").hide();
 
+    $('#btnEdit').hide();
+
 }
 
 function PageMore(Id) {
+
+    $('#btnEdit').hide();
 
     $('#hdfCurrentPage').val((parseInt(Id) - 1));
 
@@ -163,7 +167,6 @@ function PageMore(Id) {
 
             CurrentPage: $('#hdfCurrentPage').val(),
               },
-
     };
 
     $("#divSearchGridOverlay").show();

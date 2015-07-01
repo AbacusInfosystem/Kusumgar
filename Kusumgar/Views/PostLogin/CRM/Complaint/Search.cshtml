@@ -37,8 +37,9 @@
                                     <div class="form-group">
                                         <label for="txtCustName">Customer Name</label>
                                         <div class="auto-complete">
-                                            <input type="text" class="form-control input-sm" id="txtCustName" placeholder="Enter Customer Name" name="Filter.Customer_Name" value="@Model.Filter.Customer_Name" />
-                                            <input type="hidden" id="hdfCustomer_Id" value="@Model.Filter.Customer_Id" name="Filter.Customer_Id">
+                                            <input type="text" class="form-control input-sm" id="txtCustName" placeholder="Enter Customer Name" value="" />
+                                            <input type="hidden" id="hdfCustomer_Id" value="@Model.Filter.Customer_Id" name="Filter.Customer_Id" class="auto-complete-value">
+                                            <input type="hidden" id="hdfCustomer_Name" value="@Model.Filter.Customer_Name" name="Filter.Customer_Name" class="auto-complete-label">
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +75,6 @@
                                     <th style="width:50px;"></th>
                                     <th style="width:300px;">Customer Name</th>
                                     <th style="width:100px;">Order Id</th>
-                                    <th style="width:100px;">Order Item Id</th>
                                     <th style="width:100px;">Challan No</th>
                                     <th style="width:300px;">Description</th>
                                 </tr>

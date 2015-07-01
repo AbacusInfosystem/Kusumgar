@@ -32,7 +32,7 @@ function Bind_Vendor_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += "<input type='radio' name='r1' id='r1_" + data.Vendor_Contacts[i].Contact_Entity.Contact_Id + "' class='iradio_square-green'/>";
+            htmlText += "<input type='radio' name='r1' id='r1_" + data.Vendor_Contacts[i].Contact_Id + "' class='iradio-list'/>";
 
             htmlText += "</td>";
 
@@ -44,25 +44,25 @@ function Bind_Vendor_Contact_Grid(data) {
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Contact_Name == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Contact_Name;
+            htmlText += data.Vendor_Contacts[i].Contact_Name == null ? "" : data.Vendor_Contacts[i].Contact_Name;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Official_Email == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Official_Email;
+            htmlText += data.Vendor_Contacts[i].Official_Email == null ? "" : data.Vendor_Contacts[i].Official_Email;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Office_Landline1 == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Office_Landline1;
+            htmlText += data.Vendor_Contacts[i].Office_Landline1 == null ? "" : data.Vendor_Contacts[i].Office_Landline1;
 
             htmlText += "</td>";
 
             htmlText += "<td>";
 
-            htmlText += data.Vendor_Contacts[i].Contact_Entity.Office_Landline2 == null ? "" : data.Vendor_Contacts[i].Contact_Entity.Office_Landline2;
+            htmlText += data.Vendor_Contacts[i].Office_Landline2 == null ? "" : data.Vendor_Contacts[i].Office_Landline2;
 
             htmlText += "</td>";
 
@@ -84,7 +84,7 @@ function Bind_Vendor_Contact_Grid(data) {
     $('#tblcontact tr:first').after(htmlText);
 
 
-    $('input').iCheck({
+    $('.iradio-list').iCheck({
         radioClass: 'iradio_square-green',
         increaseArea: '20%' // optional
     });
@@ -111,15 +111,19 @@ function Bind_Vendor_Contact_Grid(data) {
 
             $("#hdfContact_Id").val(this.id.replace("r1_", ""));
             $("#btnEdit").show();
+            $("#btnView").show();
             
         }
     });
 
+    $("#btnEdit").hide();
+    $("#btnView").hide();
 }
 
 function PageMore(Id) {
 
-    $("#btnEdit").hide(); 
+    $("#btnEdit").hide();
+    $("#btnView").hide();
     $('#hdfCurrent_Page').val((parseInt(Id) - 1));
     $(".selectAll").prop("checked", false);
 

@@ -1,0 +1,192 @@
+﻿@model Kusumgar.Models.GArticleViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_G_Article">
+    <input type="hidden" id="hdfG_Article_Id" name="G_Article.G_Article_Id" value="@Model.G_Article.G_Article_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+            <div class="box-header">
+                <div class="box-title">
+                    G Article Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <input type="hidden" id="hdnG_Article_Id" name="" value="@Model.G_Article.G_Article_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        G Article Full Code
+                                    </div>
+                                </div>
+                                <br />
+
+                                @if (Model.G_Article.Quality_No != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Quality No : </label>@Model.G_Article.Quality_No (@Model.G_Article.Quality_No)
+                                    </div>
+                                }
+
+                                @if (Model.G_Article.Yarn_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Yarn Type : </label> @Model.G_Article.Yarn_Type_Name (@Model.G_Article.Yarn_Type_Code)
+                                    </div>
+                                }
+
+                                @if (Model.G_Article.Weave != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Weave : </label>@Model.G_Article.Weave_Name (@Model.G_Article.Weave_Code)
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">Grey with Cms : </label> @Model.G_Article.Grey_with_Cms (@Model.G_Article.Grey_with_Cms)
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">GSM : </label>@Model.G_Article.GSM (@Model.G_Article.GSM)
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Full Code : </label>@Model.G_Article.Full_Code
+                                </div>
+                                @if (Model.G_Article.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>InActive
+                                    </div>
+
+                                }
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        Other Information
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label style="color: #333">Warp 1: </label>@Model.G_Article.Warp_Name_1
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Warp 2 : </label>@Model.G_Article.Warp_Name_2
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Warp 3 : </label>@Model.G_Article.Warp_Name_3
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Warp 4 : </label>@Model.G_Article.Warp_Name_4
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Reed : </label>@Model.G_Article.Reed
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Pick : </label>@Model.G_Article.Pick
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Total Ends : </label>@Model.G_Article.Total_Ends
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Beam Weight : </label>@Model.G_Article.Beam_Weight
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Beam Roll : </label>@Model.G_Article.Beam_Roll
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Warp yarn Vendor : </label>@Model.G_Article.Warp_Yarn_Vendor_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Weft yarn Vendor : </label>@Model.G_Article.Weft_Yarn_Vendor_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">RSP : </label>@Model.G_Article.RSP
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Draft : </label>@Model.G_Article.Draft
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Crimp in Percentage : </label>@Model.G_Article.Crimp_In_Percentage
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="box-header">
+                                    <div class="box-title">
+
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label style="color: #333">Weft 1 :</label>@Model.G_Article.Weft_Name_1
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Weft 2 :</label>@Model.G_Article.Weft_Name_2
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Weft 3 :</label>@Model.G_Article.Weft_Name_3
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Weft 4 :</label>@Model.G_Article.Weft_Name_4
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">R/S :</label>@Model.G_Article.R_S
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">G.S. :</label>@Model.G_Article.G_W
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Weave :</label>@Model.G_Article.Weave
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">No Of Healds :</label>@Model.G_Article.No_Of_Healds
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Drawing Sequence Body :</label>@Model.G_Article.Drawing_Sequence_Body
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Drawing Sequence Selvedge :</label>@Model.G_Article.Drawing_Sequence_Selvedge
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Roll Size :</label>@Model.G_Article.Roll_Size
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Warping Meters :</label>@Model.G_Article.Warping_Meters
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Peg Plan Rows :</label>@Model.G_Article.Peg_Plan_Rows
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Peg Plan Columns :</label>@Model.G_Article.Peg_Plan_Columns
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+        </div>
+
+    <!-- /.content -->
+</form>

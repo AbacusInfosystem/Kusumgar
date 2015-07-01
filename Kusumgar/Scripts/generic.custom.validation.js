@@ -13,7 +13,7 @@
         unhighlight: function (element, errorClass, validClass) {
             $(element).closest('.form-group').removeClass('has-error');
             // 
-            $(element).parent().removeClass('has-error');
+            $(element).parent().removeClass('has-error'); 
             //
             $(element).closest('.form-group').find('.input-group-addon').css({ 'color': 'black', 'background-color': '#FFF', 'border-color': '#D2D6DE' });
         },
@@ -39,3 +39,13 @@
         }
     });
 });
+
+
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}

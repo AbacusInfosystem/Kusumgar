@@ -1,0 +1,174 @@
+﻿@model Kusumgar.Models.YArticleViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Y_Article">
+    <input type="hidden" id="hdfY_Article_Id" name="YArticle.Y_Article_Id" value="@Model.YArticle.Y_Article_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+        <div class="box box-solid">
+            <div class="box-header">
+                <div class="box-title">
+                    Y Article Details
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <input type="hidden" id="hdnY_Article_Id" name="" value="@Model.YArticle.Y_Article_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        Y Article Full Code
+                                    </div>
+                                </div>
+                                <br />
+
+                                @if (Model.YArticle.Denier_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Denier  : </label>@Model.YArticle.Denier_Name (@Model.YArticle.Denier_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Twist_Mingle_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Twist Mingle  : </label>@Model.YArticle.Twist_Mingle_Name (@Model.YArticle.Twist_Mingle_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Twist_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Twist Type  : </label>@Model.YArticle.Twist_Type_Name (@Model.YArticle.Twist_Type_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Ply_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Ply  : </label>@Model.YArticle.Ply_Name (@Model.YArticle.Ply_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Yarn_Type_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Yarn Type  : </label> @Model.YArticle.Yarn_Type_Name (@Model.YArticle.Yarn_Type_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Shade_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Shade : </label>@Model.YArticle.Shade_Name (@Model.YArticle.Shade_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Filaments_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Filaments : </label>@Model.YArticle.Filaments_Name (@Model.YArticle.Filaments_Code)
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        <br />
+                                    </div>
+                                </div>
+                                <br />
+
+                                @if (Model.YArticle.Origin_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Origin : </label>@Model.YArticle.Origin_Name (@Model.YArticle.Origin_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Shrinkage_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Shrinkage : </label>@Model.YArticle.Shrinkage_Name (@Model.YArticle.Shrinkage_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Tenasity_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Tenasity : </label>@Model.YArticle.Tenasity_Name (@Model.YArticle.Tenasity_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Chemical_Treatment_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Chemical Treatment : </label>@Model.YArticle.Chemical_Treatment_Name (@Model.YArticle.Chemical_Treatment_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Colour_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Colour : </label>@Model.YArticle.Colour_Name (@Model.YArticle.Colour_Code)
+                                    </div>
+                                }
+                                @if (Model.YArticle.Supplier_Id != 0)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Supplier : </label>@Model.YArticle.Supplier_Name (@Model.YArticle.Supplier_Code)
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label style="color: #333">Full Code :</label>@Model.YArticle.Full_Code
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="box-header">
+                                    <div class="box-title">
+                                        Other Information
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label style="color: #333">Given By :</label>@Model.YArticle.Given_By_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Validated By :</label>@Model.YArticle.Validated_By_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Developed Under :</label>@Model.YArticle.Developed_Under_Name
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Lead Time to Purchase Raw Material :</label>@Model.YArticle.Lead_Time_To_Purchase
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Work Center :</label>@Model.YArticle.Work_Center_Code
+                                </div>
+                                @if (Model.YArticle.Is_Active == true)
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>Active
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label style="color: #333">Active Status : </label>InActive
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div><!-- /.col -->
+            </div>
+        </div>
+        </div>
+
+    <!-- /.content -->
+</form>

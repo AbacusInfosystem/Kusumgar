@@ -38,26 +38,29 @@
                                   <div class="form-group">
 
                                         <input type="hidden" id="hdfCurrentPage" name="Pager.CurrentPage" value="@Model.Pager.CurrentPage" />
-                                        <input type="hidden" id="hdfDefectTypeId" name="DefectType.DefectTypeEntity.Defect_Type_Id" value="@Model.DefectType.DefectTypeEntity.Defect_Type_Id" />
+                                        <input type="hidden" id="hdfDefectTypeId" name="DefectType.Defect_Type_Id" value="@Model.DefectType.Defect_Type_Id" />
                                         
                                       <label for="txtDefectTypeName" style="color: #333">Defect - Type </label>
-                                      <input type="text" class="form-control input-sm" id="txtDefectTypeName" name="DefectType.DefectTypeEntity.Defect_Type_Name" value="@Model.DefectType.DefectTypeEntity.Defect_Type_Name" placeholder="Enter defect - type">
+                                      <input type="text" class="form-control input-sm" id="txtDefectTypeName" name="DefectType.Defect_Type_Name" value="@Model.DefectType.Defect_Type_Name" placeholder="Enter defect - type">
                                     </div>
 
                                     <div class="form-group">
                                         <label>
-                                            @if (Model.DefectType.DefectTypeEntity.Status == true)
-                                            {
-                                                @:<input type="checkbox" name="DefectType.DefectTypeEntity.Status" value="false" checked />
-                                               }
-                                            else
-                                            {
-                                                @:<input type="checkbox" name="DefectType.DefectTypeEntity.Status" value="true" />
-                                               }
+                                            @if (Model.DefectType.Status == true)
+                                        {
+
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="false" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="chkIsActive" name="chkIsActive" value="true" />
+                                        }
                                         &nbsp;&nbsp;&nbsp;&nbsp; Approved Status
 
                                     </label>
                                 </div>
+                                    
+                                    <input type="hidden" id="hdnActive" name="DefectType.Status" value="@Model.DefectType.Status.ToString()">
 
                             </div>
                         </div>
@@ -86,14 +89,3 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
