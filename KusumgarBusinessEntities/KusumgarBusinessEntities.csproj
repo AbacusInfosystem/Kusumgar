@@ -65,7 +65,9 @@
     <Compile Include="Master\CArticleInfo.cs" />
     <Compile Include="Master\ConsumableInfo.cs" />
     <Compile Include="Master\ConsumableVendorInfo.cs" />
+    <Compile Include="Master\CustomerQualityFunctionalParameterInfo.cs" />
     <Compile Include="Master\CustomerQualityInfo.cs" />
+    <Compile Include="Master\CustomerQualityVisualParameterInfo.cs" />
     <Compile Include="Master\DefectInfo.cs" />
     <Compile Include="Master\DefectTypeInfo.cs" />
     <Compile Include="Master\FabricTypeInfo.cs" />

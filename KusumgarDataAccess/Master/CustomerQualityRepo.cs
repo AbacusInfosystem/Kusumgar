@@ -330,44 +330,133 @@ namespace KusumgarDataAccess
          }
 
         //
-         public void Insert_Attachment(AttachmentsInfo attachment)
+         public void Insert_Customer_Quality_Functional_Parameter(CustomerQualityFunctionalParameterInfo customer_Quality_Functional_Parameter)
          {
-             //int attachment_Id = 0;
-
-             _sqlRepo.ExecuteNonQuery(Set_Values_In_Attachment(attachment), StoredProcedures.Insert_Attachment_Sp.ToString(), CommandType.StoredProcedure);
-
-             //attachment_Id = Convert.ToInt32(_sqlRepo.ExecuteNonQuery(Set_Values_In_Attachment(attachment), StoredProcedures.Insert_Attachment_Sp.ToString(), CommandType.StoredProcedure));
-
-             //return attachment_Id;
+             _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Quality_Functional_Parameter(customer_Quality_Functional_Parameter), StoredProcedures.Insert_Customer_Quality_Functional_Parameter_Sp.ToString(), CommandType.StoredProcedure);
          }
 
-         //public void Update_Attachment(AttachmentsInfo attachment)
-         //{
-         //    _sqlRepo.ExecuteNonQuery(Set_Values_In_Attachment(attachment), StoredProcedures.Update_Attachment_Sp.ToString(), CommandType.StoredProcedure);
-         //}
-
-         private List<SqlParameter> Set_Values_In_Attachment(AttachmentsInfo attachment)
+         private List<SqlParameter> Set_Values_In_Customer_Quality_Functional_Parameter(CustomerQualityFunctionalParameterInfo customer_Quality_Functional_Parameter)
          {
              List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-             if (attachment.Attachment_Id != 0)
-             {
-                 sqlParams.Add(new SqlParameter("@Attachment_Id", attachment.Attachment_Id));
-             }
-             sqlParams.Add(new SqlParameter("@Ref_Id", attachment.Ref_Id));
-             sqlParams.Add(new SqlParameter("@Ref_Type", attachment.Ref_Type));
-             sqlParams.Add(new SqlParameter("@Document_Name", attachment.Document_Name));
-             sqlParams.Add(new SqlParameter("@Remark", attachment.Remark));
-             
-             if (attachment.Attachment_Id == 0)
-             {
-                 sqlParams.Add(new SqlParameter("@CreatedBy", attachment.CreatedBy));
-                 sqlParams.Add(new SqlParameter("@CreatedOn", attachment.CreatedOn));
-             }
-             sqlParams.Add(new SqlParameter("@UpdatedBy", attachment.UpdatedBy));
-             sqlParams.Add(new SqlParameter("@UpdatedOn", attachment.UpdatedOn));
-             
+             sqlParams.Add(new SqlParameter("@Customer_Quality_Id", customer_Quality_Functional_Parameter.Customer_Quality_Id));
+             sqlParams.Add(new SqlParameter("@Test_Id", customer_Quality_Functional_Parameter.Test_Id));
+             sqlParams.Add(new SqlParameter("@CreatedBy", customer_Quality_Functional_Parameter.CreatedBy));
+             sqlParams.Add(new SqlParameter("@CreatedOn", customer_Quality_Functional_Parameter.CreatedOn));
+             sqlParams.Add(new SqlParameter("@UpdatedBy", customer_Quality_Functional_Parameter.UpdatedBy));
+             sqlParams.Add(new SqlParameter("@UpdatedOn", customer_Quality_Functional_Parameter.UpdatedOn));
              return sqlParams;
+         }
+
+         public List<CustomerQualityFunctionalParameterInfo> Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id(int customer_Quality_Id)
+         {
+             List<CustomerQualityFunctionalParameterInfo> customer_Quality_Functional_Parameters = new List<CustomerQualityFunctionalParameterInfo>();
+
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+             sqlParams.Add(new SqlParameter("@Customer_Quality_Id", customer_Quality_Id));
+
+             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+             List<DataRow> drList = new List<DataRow>();
+
+             drList = dt.AsEnumerable().ToList();
+
+             foreach (DataRow dr in drList)
+             {
+                 customer_Quality_Functional_Parameters.Add(Get_Customer_Quality_Functional_Parameters_Values(dr));
+             }
+
+             return customer_Quality_Functional_Parameters;
+         }
+
+         private CustomerQualityFunctionalParameterInfo Get_Customer_Quality_Functional_Parameters_Values(DataRow dr)
+         {
+             CustomerQualityFunctionalParameterInfo customer_Quality_Functional_Parameter = new CustomerQualityFunctionalParameterInfo();
+
+             customer_Quality_Functional_Parameter.Customer_Quality_Functional_Parameter_Id = Convert.ToInt32(dr["Customer_Quality_Functional_Parameter_Id"]);
+             customer_Quality_Functional_Parameter.Customer_Quality_Id = Convert.ToInt32(dr["Customer_Quality_Id"]);
+             customer_Quality_Functional_Parameter.Test_Id = Convert.ToInt32(dr["Test_Id"]);
+             customer_Quality_Functional_Parameter.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+             customer_Quality_Functional_Parameter.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+             customer_Quality_Functional_Parameter.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+             customer_Quality_Functional_Parameter.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+             customer_Quality_Functional_Parameter.Test_Name = Convert.ToString(dr["Test_Name"]);
+             return customer_Quality_Functional_Parameter;
+         }
+
+         public void Delete_Customer_Quality_Functional_Parameter_By_Id(int customer_Quality_Functional_Parameters_Id)
+         {
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+             sqlParams.Add(new SqlParameter("@Customer_Quality_Functional_Parameter_Id", customer_Quality_Functional_Parameters_Id));
+
+             _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Customer_Quality_Functional_Parameter_By_Id_Sp.ToString(), CommandType.StoredProcedure);
+         }
+
+
+         public void Insert_Customer_Quality_Visual_Parameter(CustomerQualityVisualParameterInfo customer_Quality_Visual_Parameter)
+         {
+             _sqlRepo.ExecuteNonQuery(Set_Values_In_Customer_Quality_Visual_Parameter(customer_Quality_Visual_Parameter), StoredProcedures.Insert_Customer_Quality_Visual_Parameter_Sp.ToString(), CommandType.StoredProcedure);
+         }
+
+         private List<SqlParameter> Set_Values_In_Customer_Quality_Visual_Parameter(CustomerQualityVisualParameterInfo customer_Quality_Visual_Parameter)
+         {
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+             sqlParams.Add(new SqlParameter("@Customer_Quality_Id", customer_Quality_Visual_Parameter.Customer_Quality_Id));
+             sqlParams.Add(new SqlParameter("@Defect_Id", customer_Quality_Visual_Parameter.Defect_Id));
+             sqlParams.Add(new SqlParameter("@CreatedBy", customer_Quality_Visual_Parameter.CreatedBy));
+             sqlParams.Add(new SqlParameter("@CreatedOn", customer_Quality_Visual_Parameter.CreatedOn));
+             sqlParams.Add(new SqlParameter("@UpdatedBy", customer_Quality_Visual_Parameter.UpdatedBy));
+             sqlParams.Add(new SqlParameter("@UpdatedOn", customer_Quality_Visual_Parameter.UpdatedOn));
+             return sqlParams;
+         }
+
+         public List<CustomerQualityVisualParameterInfo> Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id(int customer_Quality_Id)
+         {
+             List<CustomerQualityVisualParameterInfo> customer_Quality_Visual_Parameters = new List<CustomerQualityVisualParameterInfo>();
+
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+             sqlParams.Add(new SqlParameter("@Customer_Quality_Id", customer_Quality_Id));
+
+             DataTable dt = _sqlRepo.ExecuteDataTable(sqlParams, StoredProcedures.Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id_Sp.ToString(), CommandType.StoredProcedure);
+
+             List<DataRow> drList = new List<DataRow>();
+
+             drList = dt.AsEnumerable().ToList();
+
+             foreach (DataRow dr in drList)
+             {
+                 customer_Quality_Visual_Parameters.Add(Get_Customer_Quality_Visual_Parameters_Values(dr));
+             }
+
+             return customer_Quality_Visual_Parameters;
+         }
+
+         private CustomerQualityVisualParameterInfo Get_Customer_Quality_Visual_Parameters_Values(DataRow dr)
+         {
+             CustomerQualityVisualParameterInfo customer_Quality_Visual_Parameter = new CustomerQualityVisualParameterInfo();
+
+             customer_Quality_Visual_Parameter.Customer_Quality_Visual_Parameter_Id = Convert.ToInt32(dr["Customer_Quality_Visual_Parameter_Id"]);
+             customer_Quality_Visual_Parameter.Customer_Quality_Id = Convert.ToInt32(dr["Customer_Quality_Id"]);
+             customer_Quality_Visual_Parameter.Defect_Id = Convert.ToInt32(dr["Defect_Id"]);
+             customer_Quality_Visual_Parameter.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
+             customer_Quality_Visual_Parameter.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
+             customer_Quality_Visual_Parameter.UpdatedBy = Convert.ToInt32(dr["UpdatedBy"]);
+             customer_Quality_Visual_Parameter.UpdatedOn = Convert.ToDateTime(dr["UpdatedOn"]);
+             customer_Quality_Visual_Parameter.Defect_Name = Convert.ToString(dr["Defect_Name"]);
+             return customer_Quality_Visual_Parameter;
+         }
+
+         public void Delete_Customer_Quality_Visual_Parameter_By_Id(int customer_Quality_Visual_Parameters_Id)
+         {
+             List<SqlParameter> sqlParams = new List<SqlParameter>();
+
+             sqlParams.Add(new SqlParameter("@Customer_Quality_Visual_Parameter_Id", customer_Quality_Visual_Parameters_Id));
+
+             _sqlRepo.ExecuteNonQuery(sqlParams, StoredProcedures.Delete_Customer_Quality_Visual_Parameter_By_Id_Sp.ToString(), CommandType.StoredProcedure);
          }
 
     }

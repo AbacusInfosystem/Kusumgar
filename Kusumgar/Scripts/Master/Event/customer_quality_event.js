@@ -8,7 +8,7 @@ $(function () {
 
         $("#tbCustomer_Specific_Information").hide();
         $("#tbAttachment").hide();
-        $("#Spefic_Functional_Standerds").hide();
+        $("#tabFuncational_Visual").hide();
     }
 
     $("#btnSave_Primary").click(function () {
@@ -26,16 +26,7 @@ $(function () {
 
     });
 
-    //$("#btnSave_Attachment").click(function () {
-
-    //    if ($("#frmCustomer_Quality").valid()) {
-
-    //        Save_Customer_Quality_Attachment();
-    //    }
-
-    //});
-
-
+    
     $('[name="chkIs_Active"]').on('ifChanged', function (event) {
         if ($(this).prop('checked')) {
             $("#hdnIs_Active").val(true);
@@ -66,25 +57,29 @@ $(function () {
 
     });
 
-    InitializeMultiAutoComplete($("#txtTest"));
+    InitializeMultiAutoComplete($("#txtFunctional_Parameters"));
 
-    InitializeMultiAutoComplete($("#txtUnit"));
+    InitializeMultiAutoComplete($("#txtVisual_Parameters"));
 
-    $("#btnAdd_Test").click(function () {
+    $("#btnAdd_Functional_Parameters").click(function () {
 
-        if ($("#frmSpecific_Functional_Standards_Test").valid())
+        if ($("#frmFunctional_Parameters").valid())
         {
-            //Save_Temp_Functional_Parameters();
+            Save_Customer_Quality_Functional_Parameters();
         }
     });
 
-    $("#btnAdd_Unit").click(function () {
+    $("#btnAdd_Visual_Parameters").click(function () {
 
-        if ($("#frmSpecific_Functional_Standards_Unit").valid())
+        if ($("#frmVisualParameters").valid())
         {
-            //Save_Temp_Visual_Parameters();
+            Save_Customer_Quality_Visual_Parameters();
         }
     });
+
+    Bind_Customer_Quality_Functional_Parameters();
+
+    Bind_Customer_Quality_Visual_Parameters();
 
 
 });

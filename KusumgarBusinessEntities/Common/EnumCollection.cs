@@ -440,6 +440,12 @@ namespace KusumgarBusinessEntities.Common
         Get_Customer_Qualities_By_Customer_Id_Sp,
         Get_Customer_Qualities_By_Quality_Id_Sp,
         Get_Customer_Qualities_By_Customer_Id_Quality_Id_Sp,
+        Insert_Customer_Quality_Functional_Parameter_Sp,
+        Insert_Customer_Quality_Visual_Parameter_Sp,
+        Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id_Sp,
+        Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id_Sp,
+        Delete_Customer_Quality_Functional_Parameter_By_Id_Sp,
+        Delete_Customer_Quality_Visual_Parameter_By_Id_Sp,
 
         //G Article
         Insert_G_Article_Sp,

@@ -1149,17 +1149,41 @@ namespace Kusumgar
             // defaults: new { controller = "CustomerQuality", action = "Update", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
-            //routes.MapRoute(
-            //name: "customer-quality-8",
-            //url: "master/insert-customer-quality-attachment",
-            //defaults: new { controller = "CustomerQuality", action = "Insert_Attachment", id = UrlParameter.Optional },
-            //namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+           name: "customer-quality-8",
+           url: "master/insert-customer-quality-functional-parameters",
+           defaults: new { controller = "CustomerQuality", action = "Insert_Customer_Quality_Functional_Parameters", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
-            //routes.MapRoute(
-            //name: "customer-quality-9",
-            //url: "master/update-customer-quality-attachment",
-            //defaults: new { controller = "CustomerQuality", action = "Update_Attachment", id = UrlParameter.Optional },
-            //namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "customer-quality-9",
+            url: "master/insert-customer-quality-visual-parameters",
+            defaults: new { controller = "CustomerQuality", action = "Insert_Customer_Quality_Visual_Parameters", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+            routes.MapRoute(
+            name: "customer-quality-10",
+            url: "master/get-customer-quality-functional-parameters-by-customer-quality-id",
+            defaults: new { controller = "CustomerQuality", action = "Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "customer-quality-11",
+           url: "master/get-customer-quality-visual-parameters-by-customer-quality-id",
+           defaults: new { controller = "CustomerQuality", action = "Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "customer-quality-12",
+           url: "master/delete_customer-quality_functional_parameters_by_id",
+           defaults: new { controller = "CustomerQuality", action = "Delete_Customer_Quality_Functional_Parameter_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
+
+           routes.MapRoute(
+           name: "customer-quality-13",
+           url: "master/delete_customer-quality_visual_parameters_by_id",
+           defaults: new { controller = "CustomerQuality", action = "Delete_Customer_Quality_Visual_Parameter_By_Id", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 

@@ -7,8 +7,7 @@
     <input type="hidden" id="hdfY_Article_Id" name="YArticle.Y_Article_Id" value="@Model.YArticle.Y_Article_Id">
     <!-- Main content -->
     <div id="DvPrint">
-        <div class="box box-primary">
-
+        <div class="box box-solid">
             <div class="box-header">
                 <div class="box-title">
                     Y Article Details
@@ -69,10 +68,10 @@
                                 @if (Model.YArticle.Filaments_Id != 0)
                                 {
                                     <div class="form-group">
-                                       <label style="color: #333">Filaments : </label>@Model.YArticle.Filaments_Name (@Model.YArticle.Filaments_Code)
+                                        <label style="color: #333">Filaments : </label>@Model.YArticle.Filaments_Name (@Model.YArticle.Filaments_Code)
                                     </div>
                                 }
-                               
+
                             </div>
 
                             <div class="col-md-4">
@@ -146,7 +145,7 @@
                                     <label style="color: #333">Lead Time to Purchase Raw Material :</label>@Model.YArticle.Lead_Time_To_Purchase
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #333">Work Center :</label>@Model.YArticle.Work_Station_Code
+                                    <label style="color: #333">Work Center :</label>@Model.YArticle.Work_Center_Code
                                 </div>
                                 @if (Model.YArticle.Is_Active == true)
                                 {
@@ -169,7 +168,7 @@
                 </div><!-- /.col -->
             </div>
         </div>
-    </div>
+        </div>
 
     <!-- /.content -->
 </form>

@@ -26,6 +26,10 @@ namespace KusumgarBusinessEntities
 
             Sample = new SampleInfo();
 
+            Customer_Quality_Functional_Parameter = new CustomerQualityFunctionalParameterInfo();
+
+            Customer_Quality_Visual_Parameter = new CustomerQualityVisualParameterInfo();
+
 
         }
 
@@ -86,6 +90,14 @@ namespace KusumgarBusinessEntities
         public DateTime UpdatedOn { get; set; }
 
         public int UpdatedBy { get; set; }
+
+        #region Additional Fields
+
+        public CustomerQualityFunctionalParameterInfo Customer_Quality_Functional_Parameter { get; set; }
+
+        public CustomerQualityVisualParameterInfo Customer_Quality_Visual_Parameter { get; set; }
+
+        #endregion
 
     }
 

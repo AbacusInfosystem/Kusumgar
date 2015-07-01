@@ -30,5 +30,27 @@ $(function () {
         }
     });
 
+    $("#frmFunctional_Parameters").validate({
+
+        rules: {
+            "Functional_Parameters":
+                {
+                    required: true
+                }
+        },
+        
+    });
+
+    $("#frmVisualParameters").validate({
+
+        rules: {
+            "Visual_Parameters":
+                {
+                    required: true
+                }
+        },
+       
+    });
+
     
 });

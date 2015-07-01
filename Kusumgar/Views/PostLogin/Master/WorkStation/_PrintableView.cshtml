@@ -7,9 +7,8 @@
     <input type="hidden" id="hdfWork_Station_Id" name="Work_Station.Work_Station_Id" value="@Model.Work_Station.Work_Station_Id">
     <!-- Main content -->
     <div id="DvPrint">
-        <div class="box box-primary">
+        <div class="box box-solid">
             <div class="box-header">
-
                 <div class="box-title">
                     Work Station Details
                 </div>
@@ -30,8 +29,8 @@
                                     <label style="color: #333">Work Center : </label> @Model.Work_Station.Work_Center.Work_Center_Name
                                 </div>
                                 @*<div class="form-group">
-                                        <label style="color: #333">Process : </label> @Model.Work_Station.Process
-                                    </div>*@
+                                    <label style="color: #333">Process : </label> @Model.Work_Station.Process
+                                </div>*@
                                 @if (Model.Work_Station.Work_Station_Processes.Count > 0)
                                 {
                                     <div class="form-group">
@@ -41,7 +40,7 @@
                                             @item.Process_Name
                                             <h>,</h>
                                         }*@
-                                        
+
                                     </div>
 
                                 }
@@ -114,7 +113,7 @@
                 </div><!-- /.col -->
             </div>
         </div>
-    </div>
+        </div>
 
     <!-- /.content -->
 </form>

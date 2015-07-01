@@ -205,32 +205,133 @@ namespace Kusumgar.Controllers
             return View("Index", cqViewModel);
         }
 
-        //Attachment
-        //public JsonResult Insert_Attachment(CustomerQualityViewModel cqViewModel)
-        //{
-        //    try
-        //    {
-        //        cqViewModel.Attachment.CreatedOn = DateTime.Now;
+        public JsonResult Insert_Customer_Quality_Functional_Parameters(CustomerQualityViewModel cqViewModel)
+        {
+            try
+            {
+                cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter.CreatedBy = ((UserInfo)Session["User"]).UserId;
 
-        //        cqViewModel.Attachment.CreatedBy = ((UserInfo)Session["User"]).UserId;
+                cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter.UpdatedBy = ((UserInfo)Session["User"]).UserId;
 
-        //        cqViewModel.Attachment.UpdatedOn = DateTime.Now;
+                cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter.CreatedOn = DateTime.Now;
 
-        //        cqViewModel.Attachment.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+                cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter.UpdatedOn = DateTime.Now;
 
-        //        _customerqualityMan.Insert_Attachment(cqViewModel.Attachment);
+                _customerqualityMan.Insert_Customer_Quality_Functional_Parameter(cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter);
 
-        //        cqViewModel.Friendly_Message.Add(MessageStore.Get("CQ001"));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cqViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                cqViewModel.Friendly_Message.Add(MessageStore.Get("EQ010"));
+            }
+            catch (Exception ex)
+            {
+                cqViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
 
-        //        Logger.Error("Customer quality Controller - Insert_Attachment " + ex.ToString());
-        //    }
+                Logger.Error("Customer Quality Controller - Insert_Customer_Quality_Functional_Parameters " + ex.ToString());
+            }
 
-        //    return Json(cqViewModel);
-        //}
+            return Json(cqViewModel);
+        }
+
+        public JsonResult Insert_Customer_Quality_Visual_Parameters(CustomerQualityViewModel cqViewModel)
+        {
+            try
+            {
+                cqViewModel.Customer_Quality.Customer_Quality_Visual_Parameter.CreatedBy = ((UserInfo)Session["User"]).UserId;
+
+                cqViewModel.Customer_Quality.Customer_Quality_Visual_Parameter.UpdatedBy = ((UserInfo)Session["User"]).UserId;
+
+                cqViewModel.Customer_Quality.Customer_Quality_Visual_Parameter.CreatedOn = DateTime.Now;
+
+                cqViewModel.Customer_Quality.Customer_Quality_Visual_Parameter.UpdatedOn = DateTime.Now;
+
+                _customerqualityMan.Insert_Customer_Quality_Visual_Parameter(cqViewModel.Customer_Quality.Customer_Quality_Visual_Parameter);
+
+                cqViewModel.Friendly_Message.Add(MessageStore.Get("EQ012"));
+            }
+            catch (Exception ex)
+            {
+                cqViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("Customer Quality Controller - Insert_Customer_Quality_Visual_Parameters " + ex.ToString());
+            }
+
+            return Json(cqViewModel);
+        }
+
+        //Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id
+        public JsonResult Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id(int customer_Quality_Id)
+        {
+            List<CustomerQualityFunctionalParameterInfo> customer_Quality_Functional_Parameters = new List<CustomerQualityFunctionalParameterInfo>();
+
+            try
+            {
+                customer_Quality_Functional_Parameters = _customerqualityMan.Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id(customer_Quality_Id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("CustomerQuality Controller - Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id " + ex.ToString());
+            }
+
+            return Json(new { customer_Quality_Functional_Parameters }, JsonRequestBehavior.AllowGet);
+        }
+
+        //Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id
+        public JsonResult Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id(int customer_Quality_Id)
+        {
+            List<CustomerQualityVisualParameterInfo> customer_Quality_Visual_Parameters = new List<CustomerQualityVisualParameterInfo>();
+
+            try
+            {
+                customer_Quality_Visual_Parameters = _customerqualityMan.Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id(customer_Quality_Id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("CustomerQuality Controller - Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id " + ex.ToString());
+            }
+
+            return Json(new { customer_Quality_Visual_Parameters }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Delete_Customer_Quality_Functional_Parameter_By_Id(int customer_Quality_Functional_Parameters_Id)
+        {
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+
+            try
+            {
+                _customerqualityMan.Delete_Customer_Quality_Functional_Parameter_By_Id(customer_Quality_Functional_Parameters_Id);
+
+                Friendly_Message.Add(MessageStore.Get("EQ011"));
+            }
+            catch (Exception ex)
+            {
+                Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("CustomerQuality Controller - Delete_Customer_Quality_Functional_Parameters_By_Id " + ex.ToString());
+            }
+
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        }
+
+        //Delete_Customer_Quality_Visual_Parameters_By_Id
+        public JsonResult Delete_Customer_Quality_Visual_Parameter_By_Id(int customer_Quality_Visual_Parameters_Id)
+        {
+            List<FriendlyMessageInfo> Friendly_Message = new List<FriendlyMessageInfo>();
+
+            try
+            {
+                _customerqualityMan.Delete_Customer_Quality_Visual_Parameter_By_Id(customer_Quality_Visual_Parameters_Id);
+
+                Friendly_Message.Add(MessageStore.Get("EQ013"));
+            }
+            catch (Exception ex)
+            {
+                Friendly_Message.Add(MessageStore.Get("SYS01"));
+
+                Logger.Error("CustomerQuality Controller - Delete_Customer_Quality_Functional_Parameters_By_Id " + ex.ToString());
+            }
+
+            return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }
