@@ -22,4 +22,13 @@ $(function () {
         $("#frmSearch_Customer_Quality").submit();
     });
 
+    $("#btnView").click(function () {
+
+        $("#frmSearch_Customer_Quality").attr("action", "/master/view-customer-quality");
+
+        $("#frmSearch_Customer_Quality").attr("method", "POST");
+
+        $("#frmSearch_Customer_Quality").submit();
+    });
+
 });

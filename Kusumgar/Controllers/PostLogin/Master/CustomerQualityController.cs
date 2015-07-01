@@ -205,6 +205,23 @@ namespace Kusumgar.Controllers
             return View("Index", cqViewModel);
         }
 
+        public ActionResult View_Customer_Quality(CustomerQualityViewModel cqViewModel)
+        {
+            ViewBag.Title = "KPCL ERP :: Search";
+            
+            try
+            {
+                cqViewModel.Customer_Quality = _customerqualityMan.Get_Customer_Quality_By_Id(cqViewModel.Customer_Quality.Customer_Quality_Id);
+            }
+            catch (Exception ex)
+            {
+                cqViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+       		Logger.Error("Customer Quality Controller - Search " + ex.ToString());
+            }
+            
+            return View("View", cqViewModel);
+        }
+        
         public JsonResult Insert_Customer_Quality_Functional_Parameters(CustomerQualityViewModel cqViewModel)
         {
             try
@@ -216,7 +233,7 @@ namespace Kusumgar.Controllers
                 cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter.CreatedOn = DateTime.Now;
 
                 cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter.UpdatedOn = DateTime.Now;
-
+            
                 _customerqualityMan.Insert_Customer_Quality_Functional_Parameter(cqViewModel.Customer_Quality.Customer_Quality_Functional_Parameter);
 
                 cqViewModel.Friendly_Message.Add(MessageStore.Get("EQ010"));
@@ -332,6 +349,23 @@ namespace Kusumgar.Controllers
             return Json(new { Friendly_Message }, JsonRequestBehavior.AllowGet);
         }
 
+public PartialViewResult Printable_Customer_Quality(int customer_Quality_Id)
+        {
+            ViewBag.Title = "KPCL ERP :: Print";
+            CustomerQualityViewModel cqViewModel = new CustomerQualityViewModel();
+            cqViewModel.Customer_Quality.Customer_Quality_Id = customer_Quality_Id;
 
+            try
+            {
+                cqViewModel.Customer_Quality = _customerqualityMan.Get_Customer_Quality_By_Id(cqViewModel.Customer_Quality.Customer_Quality_Id);
+            }
+            catch (Exception ex)
+            {
+                cqViewModel.Friendly_Message.Add(MessageStore.Get("SYS01"));
+                Logger.Error("Customer Quality Controller - Search " + ex.ToString());
+            }
+
+            return PartialView("_PrintableView", cqViewModel);
+        }
     }
 }

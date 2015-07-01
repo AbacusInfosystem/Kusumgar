@@ -92,6 +92,7 @@ function Bind_Customer_Quality_Grid(data) {
         if ($(this).prop('checked')) {
 
             $("#hdnCustomer_Quality_Id").val(this.id.replace("r1_", ""));
+            $("#btnView").show();
             $("#btnEdit").show();
 
         }
@@ -101,6 +102,7 @@ function Bind_Customer_Quality_Grid(data) {
 
 function PageMore(Id) {
 
+    $("#btnView").hide();
     $("#btnEdit").hide();
     $('#hdfCurrent_Page').val((parseInt(Id) - 1));
     $(".selectAll").prop("checked", false);

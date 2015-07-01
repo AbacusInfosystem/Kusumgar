@@ -23,6 +23,10 @@ namespace KusumgarBusinessEntities
             Customer_Contact_Types = new List<CustomerContactTypeInfo>();
 
             Customer_Contact_Type = new CustomerContactTypeInfo();
+
+            Contacts = new List<ContactInfo>();
+
+            Contact = new ContactInfo();
         }
 
       //  public Customer Customer_Entity { get; set; }
@@ -96,6 +100,10 @@ namespace KusumgarBusinessEntities
         public List<CustomerContactTypeInfo> Customer_Contact_Types { get; set; }
 
         public CustomerContactTypeInfo Customer_Contact_Type { get; set; }
+
+        public List<ContactInfo> Contacts { get; set; }
+
+        public ContactInfo Contact { get; set; }
 
         #endregion
     }

@@ -907,16 +907,16 @@ namespace Kusumgar
             #region P Article
 
             routes.MapRoute(
-            name: "p-article-1",
-            url: "master/p-article",
-            defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+           name: "p-article-1",
+           url: "master/p-article",
+           defaults: new { controller = "PArticle", action = "Index", id = UrlParameter.Optional },
+           namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
-            name: "p-article-2",
-            url: "master/p-article/get-by-id",
-            defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
+          name: "p-article-2",
+          url: "master/p-article/get-by-id",
+          defaults: new { controller = "PArticle", action = "Get_PArticle_By_Id", id = UrlParameter.Optional },
+          namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "p-article-3",
@@ -1154,33 +1154,45 @@ namespace Kusumgar
            url: "master/insert-customer-quality-functional-parameters",
            defaults: new { controller = "CustomerQuality", action = "Insert_Customer_Quality_Functional_Parameters", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
+           
             name: "customer-quality-9",
-            url: "master/insert-customer-quality-visual-parameters",
-            defaults: new { controller = "CustomerQuality", action = "Insert_Customer_Quality_Visual_Parameters", id = UrlParameter.Optional },
+            url: "master/view-customer-quality",
+            defaults: new { controller = "CustomerQuality", action = "View_Customer_Quality", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
             routes.MapRoute(
             name: "customer-quality-10",
+            url: "master/insert-customer-quality-visual-parameters",
+            defaults: new { controller = "CustomerQuality", action = "Insert_Customer_Quality_Visual_Parameters", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+            
+             routes.MapRoute(
+            name: "customer-quality-11",
+            url: "master/print-view-customer-quality",
+            defaults: new { controller = "CustomerQuality", action = "Printable_Customer_Quality", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
+
+
+            routes.MapRoute(
+            name: "customer-quality-12",
             url: "master/get-customer-quality-functional-parameters-by-customer-quality-id",
             defaults: new { controller = "CustomerQuality", action = "Get_Customer_Quality_Functional_Parameters_By_Customer_Quality_Id", id = UrlParameter.Optional },
             namespaces: new string[] { "Kusumgar.Controllers" });
 
            routes.MapRoute(
-           name: "customer-quality-11",
+           name: "customer-quality-13",
            url: "master/get-customer-quality-visual-parameters-by-customer-quality-id",
            defaults: new { controller = "CustomerQuality", action = "Get_Customer_Quality_Visual_Parameters_By_Customer_Quality_Id", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
            routes.MapRoute(
-           name: "customer-quality-12",
+           name: "customer-quality-14",
            url: "master/delete_customer-quality_functional_parameters_by_id",
            defaults: new { controller = "CustomerQuality", action = "Delete_Customer_Quality_Functional_Parameter_By_Id", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
 
            routes.MapRoute(
-           name: "customer-quality-13",
+           name: "customer-quality-15",
            url: "master/delete_customer-quality_visual_parameters_by_id",
            defaults: new { controller = "CustomerQuality", action = "Delete_Customer_Quality_Visual_Parameter_By_Id", id = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
@@ -1276,34 +1288,6 @@ namespace Kusumgar
            url: "master/search-role-by-name/{name}",
            defaults: new { controller = "Role", action = "Get_Roles_By_Name", name = UrlParameter.Optional },
            namespaces: new string[] { "Kusumgar.Controllers" });
-
-            #endregion
-
-            #region Ajax
-
-            routes.MapRoute(
-            name: "ajax-1",
-            url: "ajax/test/{testUnitName}",
-            defaults: new { controller = "Test", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
-            namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
-          name: "ajax-2",
-          url: "ajax/attachments",
-          defaults: new { controller = "Ajax", action = "Insert_Attachment", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
-          name: "ajax-3",
-          url: "ajax/delete-attachments",
-          defaults: new { controller = "Ajax", action = "Delete_Attachment", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
-
-            routes.MapRoute(
-          name: "ajax-4",
-          url: "ajax/get-attachments-by-ref-type-id",
-          defaults: new { controller = "Ajax", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional },
-          namespaces: new string[] { "Kusumgar.Controllers" });
 
             #endregion
 
@@ -2024,25 +2008,47 @@ namespace Kusumgar
 
             #region Ajax
 
+            routes.MapRoute(
+            name: "ajax-1",
+            url: "ajax/test/{testUnitName}",
+            defaults: new { controller = "Test", action = "Get_Test_Unit_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "ajax-2",
+            url: "ajax/attachments",
+            defaults: new { controller = "Ajax", action = "Insert_Attachment", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
+            routes.MapRoute(
+            name: "ajax-3",
+            url: "ajax/delete-attachments",
+            defaults: new { controller = "Ajax", action = "Delete_Attachment", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-         
-           
+            routes.MapRoute(
+            name: "ajax-4",
+            url: "ajax/get-attachments-by-ref-type-id",
+            defaults: new { controller = "Ajax", action = "Get_Attachments_By_Ref_Type_Ref_Id", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           
+            routes.MapRoute(
+            name: "ajax-6",
+            url: "ajax/application-list/{applicationName}",
+            defaults: new { controller = "Quality", action = "Get_Application_Name_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "ajax-6",
-           url: "ajax/application-list/{applicationName}",
-           defaults: new { controller = "Quality", action = "Get_Application_Name_AutoComplete", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "ajax-7",
+            url: "ajax/segment-list/{segmentName}",
+            defaults: new { controller = "Quality", action = "Get_Segment_Name_AutoComplete", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
 
-           routes.MapRoute(
-           name: "ajax-7",
-           url: "ajax/segment-list/{segmentName}",
-           defaults: new { controller = "Quality", action = "Get_Segment_Name_AutoComplete", id = UrlParameter.Optional },
-           namespaces: new string[] { "Kusumgar.Controllers" });
+            routes.MapRoute(
+            name: "ajax-8",
+            url: "ajax/get-web-element-authorize",
+            defaults: new { controller = "Ajax", action = "Get_Web_Element_Authorize", id = UrlParameter.Optional },
+            namespaces: new string[] { "Kusumgar.Controllers" });
            
             #endregion
 

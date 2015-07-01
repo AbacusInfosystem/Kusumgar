@@ -1,0 +1,95 @@
+﻿@model Kusumgar.Models.CustomerQualityViewModel
+@using KusumgarBusinessEntities.Common
+@{
+    Layout = null;
+}
+<form id="frmPrintable_Customer_Quality">
+    <input type="hidden" id="hdfCustomer_Quality_Id" name="Customer_Quality.Customer_Quality_Id" value="@Model.Customer_Quality.Customer_Quality_Id">
+    <!-- Main content -->
+    <div id="DvPrint">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+
+                        <div class="box-title">
+                            <strong>@Model.Customer_Quality.Customer.Customer_Name</strong>
+                        </div>
+                    </div>
+                    @* Hidden Fields *@
+                    <input type="hidden" id="hdnCustomer_Quality_Id" name="" value="@Model.Customer_Quality.Customer_Quality_Id">
+                    <br />
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>
+                                    @*<abbr class="initialism"> @Model.Customer_Quality.Customer.Customer_Name </abbr><br>*@                                    
+                                    <abbr><strong>Quality No :</strong></abbr> @Model.Customer_Quality.Quality.Quality_No<br />
+                                    
+                                </p>
+                            </div>
+                        </div>
+
+                        <h4><strong>Customer Specific Information :</strong></h4>                        
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Customer Roll Length : </label> @Model.Customer_Quality.Customer_Roll_Length
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Storage : </label> @Model.Customer_Quality.Storage
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">End Product Criteria : </label> @Model.Customer_Quality.End_Product_Criteria
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Testing Requirements : </label> @Model.Customer_Quality.Testing_Requirements
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Special Requirements Packaging : </label>  @Model.Customer_Quality.Special_Requirements_Packaging
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Transport : </label> @Model.Customer_Quality.Transport
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Lot Testing : </label> @Model.Customer_Quality.Lot_Testing
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Inspection Requirements : </label> @Model.Customer_Quality.Inspection_Requirements
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Process Control : </label> @Model.Customer_Quality.Process_Control
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Special Requirements Defects Definition : </label> @Model.Customer_Quality.Special_Requirements_Defect_Defination
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="color: #333">Customer Sample No : </label> @Model.Customer_Quality.Sample.Sample_No                                    
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Special Care Details : </label> @Model.Customer_Quality.Special_Care_Details
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Special Requirements Material Handling : </label> @Model.Customer_Quality.Special_Requirements_Material_Handling
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #333">Special Requirements Verdicting : </label> @Model.Customer_Quality.Special_Requirements_Verdicting
+                                </div>                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+        </div>
+    </div>
+
+    <!-- /.content -->
+</form>

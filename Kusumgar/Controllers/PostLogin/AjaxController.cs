@@ -187,5 +187,39 @@ namespace Kusumgar.Controllers
 
         #endregion
 
+        #region Autorize Web Elements
+
+        public JsonResult Get_Web_Element_Authorize(string[] access_Functions)
+        {
+            List<WebElementInfo> webElements = new List<WebElementInfo>();
+
+            try
+            {
+                foreach(var item in access_Functions)
+                {
+                    WebElementInfo webElement = new WebElementInfo();
+
+                    webElement.Access_Function = item.Split('@')[0];
+
+                    webElement.Web_Element_Id = item.Split('@')[1];
+
+                    webElement.User_Id = ((UserInfo)Session["User"]).UserId;
+
+
+                    webElement.Is_Authorize = _ajaxMgr.Get_Web_Element_Authorize(webElement);
+
+                    webElements.Add(webElement);
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.Error("Ajax Controller - Delete_Attachment " + ex.ToString());
+            }
+
+            return Json(new { webElements }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
     }
 }

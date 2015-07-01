@@ -112,7 +112,7 @@ function Bind_Work_Station_Grid(data) {
 
             htmlText += "</td>";
 
-            //htmlText += "<td>";
+            if (data.Work_Stations[i].Under_Maintainance == true) {
 
             //htmlText += data.Work_Centers[i].Under_Maintainance == null ? "" : data.Work_Centers[i].Under_Maintainance;
 

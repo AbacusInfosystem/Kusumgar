@@ -97,9 +97,21 @@ namespace KusumgarBusinessEntities.Common
         YArticle_Edit,
 
         
+        
 
 
 
+    }
+
+    public enum WebAppFunction
+    {
+        // Customer 
+        Primary_Customer,
+        Financial_Customer,
+        Billing_Customer,
+        Shipping_Customer,
+        Other_Customer,
+        Contact_Type_Customer,
 
     }
 
@@ -545,6 +557,10 @@ namespace KusumgarBusinessEntities.Common
         Get_Packing_Sp,
         Get_Packing_By_Id_Sp,
         Get_Packing_By_Packing_Name_Sp,
+
+        // Authorize 
+
+        Authorize_Web_Element_Sp,
     }
 
     public enum GenderType

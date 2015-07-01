@@ -54,5 +54,14 @@ namespace KusumgarModel
 
       #endregion
 
+      #region Autorize Web Elements
+
+      public bool Get_Web_Element_Authorize(WebElementInfo webElement)
+      {
+          return _ajaxRepo.Get_Web_Element_Authorize(webElement);
+      }
+
+      #endregion
+
     }
 }
