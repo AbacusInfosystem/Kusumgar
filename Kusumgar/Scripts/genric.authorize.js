@@ -37,6 +37,7 @@ function Authorize(access_Ids)
 
                                 if ($("#" + data.webElements[i].Web_Element_Id).parents("ul").prop("class").contains('nav-tabs')) {
 
+                                    // To activate the First tab 
                                     if (j == 0) {
 
                                         $("#" + data.webElements[i].Web_Element_Id).trigger("click");

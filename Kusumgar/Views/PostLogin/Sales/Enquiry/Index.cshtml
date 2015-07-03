@@ -99,51 +99,76 @@
                                                         </div>
                                                         <br />
 
-                                                        <div class="form-group">
-                                                            <label style="color: #333" for="txtCustomer_Name">Customer name</label>
-                                                            <div class="auto-complete">
-                                                                <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="@Model.Enquiry.Customer_Name">
-                                                                <input type="hidden" id="hdnCustomer_Id" value="@(Model.Enquiry.Customer_Id == 0 ? "" : Model.Enquiry.Customer_Id.ToString())" name="Enquiry.Customer_Id" class="auto-complete-value">
-                                                                <input type="hidden" id="hdnCustomer_Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name" class="auto-complete-label">
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                @if (Model.Enquiry.Customer_Id == 0 && Model.Enquiry.Enquiry_Id != 0)
+                                                                {
+                                                                    <div class="col-md-4 col-xs-4" id="dvSelf" >
+                                                                        <input type="checkbox" name="chSelf" id="chSelf" value="false" checked="checked" />&nbsp; Self
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    if(Model.Enquiry.Enquiry_Type.ToLower() != "genral" )
+                                                                    {
+                                                                        <div class="col-md-4 col-xs-4" id="dvSelf" >
+                                                                        <input type="checkbox" name="chSelf" id="chSelf" value="false" />&nbsp; Self
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    { 
+                                                                    <div class="col-md-4 col-xs-4" id="dvSelf" style="display:none;">
+                                                                        <input type="checkbox" name="chSelf" id="chSelf" value="false" />&nbsp; Self
+                                                                    </div>
+                                                                    }
+                                                                }
                                                             </div>
                                                         </div>
+                                                            <br />
 
-                                                        <div class="form-group" id="dvIs_Dosmistic">
-
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label style="color: #333" for="txtQuality_No">Quality name</label>
-                                                            <div class="auto-complete">
-                                                                <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code" value="@Model.Enquiry.Quality_No">
-                                                                <input type="hidden" id="hdnQuality_Id" value="@(Model.Enquiry.Quality_Id == 0 ? "" : Model.Enquiry.Quality_Id.ToString())" name="Enquiry.Quality_Id" class="auto-complete-value">
-                                                                <input type="hidden" id="hdnQuality_No" value="@Model.Enquiry.Quality_No" name="Enquiry.Quality_No" class="auto-complete-label">
+                                                            <div class="form-group">
+                                                                <label style="color: #333" for="txtCustomer_Name">Customer name</label>
+                                                                <div class="auto-complete">
+                                                                    <input type="text" class="form-control input-sm" id="txtCustomer_Name" placeholder="Enter customer name" value="@Model.Enquiry.Customer_Name">
+                                                                    <input type="hidden" id="hdnCustomer_Id" value="@(Model.Enquiry.Customer_Id == 0 ? "" : Model.Enquiry.Customer_Id.ToString())" name="Enquiry.Customer_Id" class="auto-complete-value">
+                                                                    <input type="hidden" id="hdnCustomer_Name" value="@Model.Enquiry.Customer_Name" name="Enquiry.Customer_Name" class="auto-complete-label">
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="box-body table-responsive no-padding">
-                                                            <table class="table table-striped" id="tblQuality_Details">
-                                                               
-                                                            </table>
+                                                            <div class="form-group" id="dvIs_Dosmistic">
 
-                                                        </div>
+                                                            </div>
 
-                                                        <div class="form-group">
-                                                            <label for="chkStatus">Status :</label><br>
-                                                            @if (Model.Enquiry.Is_Active)
-                                                            {
-                                                                @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="false" checked />
+                                                            <div class="form-group">
+                                                                <label style="color: #333" for="txtQuality_No">Quality name</label>
+                                                                <div class="auto-complete">
+                                                                    <input type="text" class="form-control input-sm" id="txtQuality_No" placeholder="Enter quality code" value="@Model.Enquiry.Quality_No">
+                                                                    <input type="hidden" id="hdnQuality_Id" value="@(Model.Enquiry.Quality_Id == 0 ? "" : Model.Enquiry.Quality_Id.ToString())" name="Enquiry.Quality_Id" class="auto-complete-value">
+                                                                    <input type="hidden" id="hdnQuality_No" value="@Model.Enquiry.Quality_No" name="Enquiry.Quality_No" class="auto-complete-label">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="box-body table-responsive no-padding">
+                                                                <table class="table table-striped" id="tblQuality_Details"></table>
+
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="chkStatus">Status :</label><br>
+                                                                @if (Model.Enquiry.Is_Active)
+                                                                {
+                                                                    @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="false" checked />
                                                             }
-                                                            else
-                                                            {
-                                                                @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="true" />
+                                                                else
+                                                                {
+                                                                    @:<input type="checkbox" class="iCheck" name="Enquiry.Is_Active" value="true" />
                                                             }
 
-                                                            Active &nbsp;&nbsp;&nbsp;
-                                                            <input type="hidden" class="iCheck-hidden" id="hdnStatus" value="@((Model.Enquiry.Is_Active == null ? false : Model.Enquiry.Is_Active).ToString())">
-                                                        </div>
+                                                                Active &nbsp;&nbsp;&nbsp;
+                                                                <input type="hidden" class="iCheck-hidden" id="hdnStatus" value="@((Model.Enquiry.Is_Active == null ? false : Model.Enquiry.Is_Active).ToString())">
+                                                            </div>
 
-                                                    </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>

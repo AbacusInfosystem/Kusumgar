@@ -49,5 +49,7 @@
             }
         }
     }
-    $('#message').html(message);
+    $('#message').append(message);
+
+    $("#message").find('.alert').fadeOut(2000);
 }

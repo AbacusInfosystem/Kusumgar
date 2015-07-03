@@ -31,12 +31,61 @@ $(function () {
         }
     });
 
+    if ($('[name="chSelf"]').prop("checked") == true)
+    {
+        $("#txtCustomer_Name").attr("disabled", "disabled");
+
+        $("#txtCustomer_Name").parents(".form-group").find(".fa-remove").trigger("click");
+
+        $("#hdnCustomer_Id").val(0);
+    }
+
     $('[name="Enquiry_Type"]').on('ifChanged', function (event) {
         if($(this).prop("checked"))
         {
             $("#hdnEnquiry_Type_Id").val($(this).val());
+
+            if($(this).prop("id").replace("rd_", "").toLowerCase() == "trial")
+            {
+                $("#dvSelf").show();
+
+                $('[name="chSelf"]').trigger("ifChanged");
+                
+            }
+            else if ($(this).prop("id").replace("rd_", "").toLowerCase() == "general")
+            {
+                $("#dvSelf").hide();
+
+                $("#txtCustomer_Name").removeAttr("disabled", "disabled");
+            }
+            else
+            {
+                $("#dvSelf").show();
+
+                $('[name="chSelf"]').trigger("ifChanged");
+            }
         }
     });
+
+    $('[name="chSelf"]').on("ifChanged", function (event) {
+
+        if($(this).prop("checked")==true)
+        {
+            $("#txtCustomer_Name").attr("disabled", "disabled");
+
+            $("#txtCustomer_Name").parents(".form-group").find(".fa-remove").trigger("click");
+
+            $("#hdnCustomer_Id").val(0);
+        }
+        else
+        {
+            $("#txtCustomer_Name").removeAttr("disabled", "disabled");
+
+            $("#hdnCustomer_Id").val("");
+        }
+    });
+
+    
 
     $("#hdnQuality_Id").change(function () {
 
