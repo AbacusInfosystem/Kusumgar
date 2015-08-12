@@ -39,10 +39,10 @@
                         <div class="container-fluid">
                             <div class="=row">
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-sm" value="@DateTime.Now" id="txtStartDate">
+                                    <input type="text" class="form-control input-sm" value="" id="txtStartDate">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-sm" value="@DateTime.Now" id="txtEnddate">
+                                    <input type="text" class="form-control input-sm" value="" id="txtEnddate">
                                 </div>
                                 <div class="col-md-4">
                                     <input type="button" class="btn-success" id="btnApply" value="Apply">
@@ -75,24 +75,35 @@
 
  <script type="text/javascript">
 
-     //$(document).ready(function () {
+     $(document).ready(function () {
 
-     //    $("#Schedular").load("/ppc/planning/scheduler", { StartDate: $("#txtStartDate").val(), EndDate: $("#txtEndDate").val() });
-     //    $("#btnApply").click(function () {
+         $('#txtStartDate').datepicker();
 
-     //        $("#Schedular").load("/ppc/planning/scheduler", { StartDate: $("#txtStartDate").val(), EndDate: $("#txtEndDate").val() });
-     //    });
-     //});
+         $('#txtEnddate').datepicker();
+
+         $("#Schedular").load("/ppc/planning/scheduler", { StartDate: $("#txtStartDate").val(), EndDate: $("#txtEnddate").val() });
+
+
+         $("#btnApply").click(function () {
+
+             $("#Schedular").load("/ppc/planning/scheduler", { StartDate: $("#txtStartDate").val(), EndDate: $("#txtEnddate").val() }, StartSchedule);
+         });
+     });
 
    $(document).ready(function () {
 
+       StartSchedule();
+      
+   });
 
+   function StartSchedule()
+   {
        var SchedulerViewModel =
-           {
-               //hours: $("#txthours").val()
-               StartDate: $("#txtStartDate").val(),
-               EndDate: $("#txtEnddate").val()
-           }
+          {
+              //hours: $("#txthours").val()
+              StartDate: $("#txtStartDate").val(),
+              EndDate: $("#txtEnddate").val()
+          }
 
        $.ajax({
            url: "/ppc/planning/scheduler-bind",
@@ -112,7 +123,8 @@
                GetSchedule(data.SchedulerViewModel);
            }
        });
-   });
+   }
+
     function GetSchedule(data) {
 
         $("#hdnMonDate").val(data.MondayDateStr);
@@ -626,5 +638,5 @@
     }
 
     </script>
-</script>
+
                 <!-- /bottom -->

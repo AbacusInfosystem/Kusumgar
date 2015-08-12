@@ -577,17 +577,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label>
+                           
                                 @if (Model.YArticle.Is_Active == true)
                                 {
-                                    <input type="checkbox" id="chkStatus" name="chkStatus" checked="checked" value="@Model.YArticle.Is_Active.ToString()" />
+                                    <input type="checkbox" id="chkStatus" name="chkStatus" checked="checked" value="@Model.YArticle.Is_Active.ToString()" class="iCheck" />
                                 }
                                 else
                                 {
-                                    <input type="checkbox" id="chkStatus" name="chkStatus" value="@Model.YArticle.Is_Active.ToString()" />
+                                    <input type="checkbox" id="chkStatus" name="chkStatus" value="@Model.YArticle.Is_Active.ToString()" class="iCheck" />
                                 }
+                            <label>
                                 &nbsp;&nbsp;&nbsp;&nbsp; Active Status
                             </label>
+
+                            <input id="hdnStatus" class="iCheck-hidden" type="hidden" value="False">
                         </div>
                     </div>
                 </div>
